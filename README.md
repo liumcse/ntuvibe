@@ -18,7 +18,7 @@ We aim to create a platform where NTU students can plan their timetable, give ra
 
 ### Front-end 
 
-React + Redux model, single page applicaiton with various routes.
+React + Redux model, a single page application with various routes.
 
 ### Back-end
 
