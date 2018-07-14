@@ -1,0 +1,5 @@
+# dependency
+www/node_modules
+
+# build
+www/dist
