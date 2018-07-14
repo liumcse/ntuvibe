@@ -28,6 +28,8 @@ const config = {
           loader: 'style-loader'
         }, {
           loader: 'css-loader'
+        },{
+          loader: 'resolve-url-loader'
         }, {
           loader: 'sass-loader'
         }],
