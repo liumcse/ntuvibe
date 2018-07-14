@@ -12,7 +12,7 @@ We aim to create a platform where NTU students can plan their timetable, give ra
 
 ## Use cases
 
-// To be added
+See Wiki.
 
 ## Project architecture
 
