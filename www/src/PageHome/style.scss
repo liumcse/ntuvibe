@@ -1,15 +1,24 @@
 :local {
-  .home_page {
+  .background_image {
     height: 100vh;
-    background: red;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    background: url('./assets/background.jpg') no-repeat;
+    background-size: cover;
+    filter: blur(5px);
+  }
+  
+  .home_page {
     text-align: center;
     font-size: 30px;
   }
 
   .search {
-    position: absolute;
-    height: 2rem;
+    color: white;
+    position: fixed;
+    font-size: 72px;
     top: 30%;
-    
   }
 }

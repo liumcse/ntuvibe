@@ -1,16 +1,17 @@
 import React from "React";
 import ReactDOM from "react-dom";
 import PageHome from "./PageHome/index";
+import './style.scss';
 
 class App extends React.Component {
-    render() {
-        return (
-            <PageHome />
-        );
-    }
+  render() {
+    return (
+      <PageHome />
+    );
+  }
 }
 
 ReactDOM.render(
-    <App />,
-    document.getElementById("app")
+  <App />,
+  document.getElementById("app")
 );
