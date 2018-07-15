@@ -7,9 +7,6 @@
     @include open-sans-regular;
     font-size: 16px;
   }
-  body {
-    overflow: hidden; // prevent scrolling
-  }
   textarea, select, input, button {
     outline: none;
   }

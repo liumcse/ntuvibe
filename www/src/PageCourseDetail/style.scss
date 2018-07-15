@@ -5,6 +5,7 @@
   .page_course_detail {
     display: flex;
     min-height: 100vh;
+    position: relative;
   }
 
   .background_image {
@@ -26,7 +27,8 @@
     flex: 4;
     display: flex;
     flex-direction: column;
-    padding: 3rem 7rem;
+    padding: 2rem 5rem;
+    margin-bottom: 2rem;
     background: white;
   }
 
@@ -84,5 +86,16 @@
     .requirement_content {
       flex: 3;
     }
+  }
+
+  .table {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .header {
+    @include open-sans-medium;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
   }
 }

@@ -1,14 +1,16 @@
 import React from "react";
 
 import Bar from "./components/Bar";
+import Timetable from "./components/Timetable";
 
 import * as styles from "./style.scss";
+import CommentList from "./components/CommentList";
 
 class PageCourseDetail extends React.Component {
   render() {
     return (
       <div className={styles.page_course_detail}>
-        <a href="https://www.freeiconspng.com/img/32672"><div className={styles.background_image} /></a>
+        {/* <a href="https://www.freeiconspng.com/img/32672"><div className={styles.background_image} /></a> */}
         <div className={styles.sidebar}></div>
         <div className={styles.content}>
           <div className={styles.upper_container}>
@@ -32,6 +34,20 @@ class PageCourseDetail extends React.Component {
               <div className={styles.rating_useful}><Bar label={"Useful"} value={"90%"}/></div>
               <div className={styles.rating_easy}><Bar label={"Easy"} value={"40%"}/></div>
             </div>
+          </div>
+          <div className={styles.table}>
+            <Timetable title={"Academic Year 2018/2019"} />
+          </div>
+          <div className={styles.table}>
+            <Timetable title={"Final Exam"} />
+          </div>
+          <div className={styles.header}>Course Comments</div>
+          <div className={styles.comment_list}>
+            <CommentList />
+          </div>
+          <div className={styles.header}>Instructors</div>
+          <div className={styles.comment_list}>
+            <CommentList />
           </div>
         </div>
       </div>
