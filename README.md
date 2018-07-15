@@ -1,4 +1,4 @@
-# ntubits
+# NTUVibe
 
 Please understand that the project is __currently strictly confidential__. One day we will make it open source; however, for now, please refrain from talking about it with you friends.
 

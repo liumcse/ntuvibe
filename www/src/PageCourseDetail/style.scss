@@ -1,0 +1,88 @@
+@import 'typography';
+@import 'colors';
+
+:local {
+  .page_course_detail {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .background_image {
+    background: url('./assets/background.png') no-repeat;
+    background-size: contain;
+    height: 10rem;
+    width: 7rem;
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+  }
+
+  .sidebar {
+    flex: 1;
+    background-color: #ccc;
+  }
+
+  .content {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 7rem;
+    background: white;
+  }
+
+  .upper_container {
+    display: flex;
+  }
+
+  .course_info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .course_code {
+      font-size: 3rem;
+      @include open-sans-bold;
+      color: $secondary;
+    }
+    .course_title {
+      font-size: 2rem;
+      @include open-sans-medium;
+      margin-top: 1.5rem;
+    }
+    .course_description {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .course_rating {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    .overall {
+      font-size: 3rem;
+      @include open-sans-bold;
+      color: $secondary;
+    }
+    .rating_useful {
+      margin-top: 5rem;
+    }
+    .rating_easy {
+      margin-top: 1rem;
+    }
+  }
+
+  .requirement {
+    display: flex;
+    margin-top: 1.5rem;
+    .label {
+      @include open-sans-medium;
+      color: $secondary;
+      margin-right: 1rem;
+      text-align: right;
+      flex: 1;
+    }
+    .requirement_content {
+      flex: 3;
+    }
+  }
+}

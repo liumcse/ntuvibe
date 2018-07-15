@@ -13,6 +13,7 @@ const config = {
   },
   output: {
     filename: "[name].[hash].js",
+    publicPath: "/",
     path: OUTPUT_PATH,
   },
   module: {
