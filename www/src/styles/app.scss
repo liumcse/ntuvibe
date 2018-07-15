@@ -10,4 +10,7 @@
   body {
     overflow: hidden; // prevent scrolling
   }
+  textarea, select, input, button {
+    outline: none;
+  }
 }

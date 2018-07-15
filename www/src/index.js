@@ -1,7 +1,15 @@
-import React from "React";
+import React from "react";
 import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+
+import * as ROUTES from "./routes";
 import PageHome from "./PageHome/index";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 import "react-select/dist/react-select.css";
 import "./styles/app.scss";
@@ -12,7 +20,12 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <NavBar />
-        <PageHome />
+        <Router>
+          <Switch>
+            <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
+          </Switch>
+        </Router>
+        <Footer />
       </React.Fragment>
     );
   }

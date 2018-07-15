@@ -26,7 +26,7 @@
   margin-top: 1rem;
   background: white;
   overflow: scroll;
-  min-height: 5rem;
+  min-height: 3.5rem;
   max-height: 50vh;
   border-radius: 10px;
   line-height: 2.5rem;
@@ -47,6 +47,7 @@
   /* border-radius: 10px; */
   height: 2.5rem;
   color: black;
+  cursor: pointer;
 }
 
 .suggestion:nth-child(even) {
@@ -54,5 +55,5 @@
 }
 
 .suggestionHighlighted {
-
+  background: #ccceee !important;
 }
