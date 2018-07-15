@@ -12,3 +12,4 @@ venv
 
 # data
 course_content_*.json
+class_schedule_*.json
