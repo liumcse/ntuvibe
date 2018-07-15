@@ -4,3 +4,11 @@ api/ENV
 
 # build
 www/dist
+
+# IDE
+.idea
+venv
+*.pyc
+
+# data
+course_content_*.json
