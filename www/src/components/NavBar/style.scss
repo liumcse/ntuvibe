@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'typography';
+
+:local {
+  .navbar_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5rem;
+    background-color: $primary;
+    opacity: 0.95;
+    z-index: 1;
+  }
+
+  .navbar_elements {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-evenly;
+    color: white;
+    @include open-sans-medium;
+    font-size: 1.2rem;
+  }
+}

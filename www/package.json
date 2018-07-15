@@ -17,15 +17,21 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "normalize.css": "^8.0.0",
     "react": "^16.4.1",
+    "react-autosuggest": "^9.3.4",
     "react-dom": "^16.4.1",
+    "react-fontawesome": "^1.6.1",
+    "react-select": "^1.2.1",
     "webpack-merge": "^4.1.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
@@ -46,6 +52,7 @@
   "babel": {
     "presets": [
       "env",
+      "es2015",
       "react",
       "stage-2"
     ]

@@ -30,15 +30,28 @@ const config = {
         use: [{ loader: "file-loader"}],
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.css$/,
+        use: [ "style-loader", "css-loader?modules=true&camelCase=true" ]
+      },
+      {
+        test: /\.scss$/,
         use: [{
           loader: "style-loader"
         }, {
-          loader: "css-loader"
+          loader: "css-loader",
+          options: {
+            minimize: true,
+            sourceMap: true,
+            localIdentName: "[hash:base64:10]",
+            importLoaders: 1,
+          },
         },{
           loader: "resolve-url-loader"
         }, {
-          loader: "sass-loader"
+          loader: "sass-loader",
+          options: {
+            includePaths: [path.resolve(SRC_PATH, "styles")],
+          },
         }],
       },
     ]
@@ -49,7 +62,7 @@ const config = {
     }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT,
-    })
+    }),
   ]
 };
 

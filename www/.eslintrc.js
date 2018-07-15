@@ -4,10 +4,12 @@ module.exports = {
     "es6": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     },
     "ecmaVersion": 7,
     "sourceType": "module"
@@ -31,6 +33,7 @@ module.exports = {
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    'no-console': 0,
   }
 };

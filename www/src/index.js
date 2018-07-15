@@ -1,12 +1,19 @@
 import React from "React";
 import ReactDOM from "react-dom";
 import PageHome from "./PageHome/index";
-import './style.scss';
+import NavBar from "./components/NavBar";
+
+import "react-select/dist/react-select.css";
+import "./styles/app.scss";
+import "normalize.css";
 
 class App extends React.Component {
   render() {
     return (
-      <PageHome />
+      <React.Fragment>
+        <NavBar />
+        <PageHome />
+      </React.Fragment>
     );
   }
 }

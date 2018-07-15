@@ -1,4 +1,6 @@
 import React from "react";
+
+import Dropdown from "./components/Dropdown";
 import * as styles from "./style.scss";
 
 class PageHome extends React.Component {
@@ -6,7 +8,9 @@ class PageHome extends React.Component {
     return (
       <div className={styles.home_page}>
         <div className={styles.background_image} />
-        <span className={styles.search}>Hello, world!</span>
+        <div className={styles.course_search}>
+          <Dropdown />
+        </div>
       </div>
     );
   }

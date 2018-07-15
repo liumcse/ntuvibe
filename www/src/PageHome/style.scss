@@ -11,14 +11,18 @@
   }
   
   .home_page {
-    text-align: center;
-    font-size: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
   }
 
-  .search {
+  .course_search {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    // height: 2rem;
     color: white;
-    position: fixed;
-    font-size: 72px;
+    position: absolute;
     top: 30%;
   }
 }
