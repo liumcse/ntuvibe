@@ -29,23 +29,25 @@ class PageCourseDetail extends React.Component {
                 <div className={styles.requirement_content}>Not available to students from BCE, BCG, CE, CEEC; not available to students with (Admyr 2004-2010)</div>
               </div>
             </div>
-            <div className={styles.course_rating}>
+            <div className={styles.middle_placeholder} />
+            <div className={styles.course_info_right}>
               <div className={styles.overall}>80%</div>
               <div className={styles.rating_useful}><Bar label={"Useful"} value={"90%"}/></div>
               <div className={styles.rating_easy}><Bar label={"Easy"} value={"40%"}/></div>
+              <div className={styles.au}>3.0 AU</div>
+              <div className={styles.availability}>
+                <div>✅ Available as Unrestricted Elective</div>
+                <div>❌ Available as General Education Prescribed Elective</div>
+              </div>
             </div>
           </div>
           <div className={styles.table}>
-            <Timetable title={"Academic Year 2018/2019"} />
+            <Timetable title={"Academic Year 2018/2019 Sem1"} />
           </div>
           <div className={styles.table}>
             <Timetable title={"Final Exam"} />
           </div>
           <div className={styles.header}>Course Comments</div>
-          <div className={styles.comment_list}>
-            <CommentList />
-          </div>
-          <div className={styles.header}>Instructors</div>
           <div className={styles.comment_list}>
             <CommentList />
           </div>

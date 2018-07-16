@@ -1,7 +1,7 @@
 import React from "react";
 import * as styles from "./style.scss";
 
-const copyright = "© 2018 NTUVibe 🚀";
+const copyright = "© 2018 NTUVibe 🏝 · You're cute";
 
 const Footer = () => {
   return (

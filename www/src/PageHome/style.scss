@@ -5,7 +5,8 @@
     left: 0;
     right: 0;
     z-index: 0;
-    background: url('./assets/background.jpg') no-repeat;
+    background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.jpg') no-repeat;
+    background-blend-mode: overlay;
     background-size: cover;
     filter: blur(8px);
     transform: scale(1.1); // scale the image larger to hide white border
@@ -15,7 +16,6 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    overflow: hidden; // prevent scrolling
   }
 
   .course_search {
@@ -24,6 +24,6 @@
     width: 50%;
     color: white;
     position: absolute;
-    top: 30%;
+    top: 35%;
   }
 }

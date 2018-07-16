@@ -20,7 +20,7 @@
 
   .sidebar {
     flex: 1;
-    background-color: #ccc;
+    background-color: rgba(204, 204, 204, 0.2);
   }
 
   .content {
@@ -52,24 +52,40 @@
     }
     .course_description {
       margin-top: 1.5rem;
+      text-align: justify;
     }
   }
 
-  .course_rating {
+  .middle_placeholder {
+    width: 5rem;
+  }
+
+  .course_info_right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    text-align: right;
     .overall {
       font-size: 3rem;
       @include open-sans-bold;
       color: $secondary;
+      text-align: right;
     }
     .rating_useful {
       margin-top: 5rem;
     }
     .rating_easy {
       margin-top: 1rem;
+    }
+    .au {
+      margin-top: 2rem;
+      @include open-sans-medium;
+      font-size: 2rem;
+    }
+    .availability {
+      margin-top: 0.5rem;
+      div {
+        margin-top: 1rem;
+      }
     }
   }
 
@@ -89,13 +105,13 @@
   }
 
   .table {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     width: 100%;
   }
 
   .header {
     @include open-sans-medium;
     font-size: 1.5rem;
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
   }
 }

@@ -12,7 +12,7 @@ const CommentCard = () => {
 
 class CommentList extends React.Component {
   render() {
-    const comments = [1, 2, 3, 4, 5, 6].map((value, index) => <CommentCard key={index} />);
+    const comments = [1, 2].map((value, index) => <CommentCard key={index} />);
     return comments;
   }
 }
