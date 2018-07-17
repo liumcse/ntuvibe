@@ -4,7 +4,7 @@ Please understand that the project is __currently strictly confidential__. One d
 
 ## Naming
 
-The name **ntubits** is tentative until we find a better name.
+The name **NTUVibe** is good to me.
 
 ## Mission
 
