@@ -2,9 +2,7 @@ import os
 import json
 import time
 from bs4 import BeautifulSoup
-from collections import deque
 from scrapers import request_manager
-from scrapers.constants import COURSE_CONTENT_DETAIL_TYPE
 from scrapers.utils import get_timestamp
 
 
@@ -41,6 +39,7 @@ def parse_schedule_details(detail_html):
         index_table = tables[i+1]
 
         course_code = course_general_table.find("td").text
+        course_title = course_general_table.find("td").find_next_sibling("td").text
         if all_schedule_details.get(course_code):
             continue
 
@@ -53,7 +52,10 @@ def parse_schedule_details(detail_html):
             else:
                 indices[current_index].append(slot)
 
-        all_schedule_details[course_code] = indices
+        all_schedule_details[course_code] = {
+            "title": course_title,
+            "indices": indices
+        }
 
 
 def parse_row(tr):

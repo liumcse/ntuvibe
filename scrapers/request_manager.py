@@ -48,3 +48,22 @@ def get_class_schedule_detail_html(semester, category):
                r_subj_code="Enter Keywords or Course Code",
                boption="CLoad",
                staff_access="false")
+
+
+def get_exam_schedule_main_html():
+    return get(EXAM_SCHEDULE_MAIN_URL, p_opt=1, bOption="Next")
+
+
+def get_exam_schedule_detail_html(academic_year, semester):
+    return get(EXAM_SCHEDULE_DETAIL_URL,
+               p_exam_dt="",
+               p_start_time="",
+               p_dept="",
+               p_subj="",
+               p_venue="",
+               p_matric="",
+               academic_session="Semester %s Academic Year %s-%s" % (semester, int(academic_year), int(academic_year)+1),
+               p_plan_no=EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE,
+               p_exam_yr=academic_year,
+               p_semester=semester,
+               bOption="Next")
