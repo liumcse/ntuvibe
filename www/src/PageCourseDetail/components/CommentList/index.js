@@ -4,9 +4,7 @@ import * as styles from "./style.scss";
 
 const CommentCard = () => {
   return (
-    <div className={styles.card_container}>
-      {"This is a mocked comment."}
-    </div>
+    <div className={styles.card_container}>{"This is a mocked comment."}</div>
   );
 };
 

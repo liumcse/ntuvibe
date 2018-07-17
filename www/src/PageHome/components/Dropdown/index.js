@@ -68,21 +68,24 @@ const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
 
-  return inputLength === 0 ? [] : courses.filter(lang =>
-    lang.code.toLowerCase().slice(0, inputLength) === inputValue
-  );
+  return inputLength === 0
+    ? []
+    : courses.filter(
+        lang => lang.code.toLowerCase().slice(0, inputLength) === inputValue
+      );
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => {suggestion.code.concat(" - ").concat(suggestion.title); window.location.assign("/courses/" + suggestion.code.toLowerCase());};
+const getSuggestionValue = suggestion => {
+  suggestion.code.concat(" - ").concat(suggestion.title);
+  window.location.assign("/courses/" + suggestion.code.toLowerCase());
+};
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-  <div>
-    {suggestion.code.concat(" - ").concat(suggestion.title)}
-  </div>
+  <div>{suggestion.code.concat(" - ").concat(suggestion.title)}</div>
 );
 
 class Dropdown extends React.Component {
@@ -126,7 +129,8 @@ class Dropdown extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: "Type the code or title of a course (e.g. CZ3003 | Algorithms)",
+      placeholder:
+        "Type the code or title of a course (e.g. CZ3003 | Algorithms)",
       value,
       onChange: this.onChange
     };

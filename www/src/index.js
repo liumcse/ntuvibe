@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
@@ -25,7 +21,11 @@ class App extends React.Component {
           <NavBar />
           <Switch>
             <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
-            <Route exact path={ROUTES.ROUTE_COURSE_PAGE} component={PageCourseDetail} />
+            <Route
+              exact
+              path={ROUTES.ROUTE_COURSE_PAGE}
+              component={PageCourseDetail}
+            />
           </Switch>
           <Footer />
         </div>
@@ -34,7 +34,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("app")
-);
+ReactDOM.render(<App />, document.getElementById("app"));
