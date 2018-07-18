@@ -22,3 +22,8 @@ CLASS_SCHEDULE_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_schedule.m
 CLASS_SCHEDULE_CATEGORY_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display"
 CLASS_SCHEDULE_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display1"
 
+EXAM_SCHEDULE_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/exam_timetable_und.MainSubmit"
+EXAM_SCHEDULE_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/exam_timetable_und.Get_detail"
+
+EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE = "3"
+
