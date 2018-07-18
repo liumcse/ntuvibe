@@ -1,3 +1,5 @@
+@import 'colors';
+
 :local {
   .container {
     display: flex;
@@ -28,7 +30,7 @@
       left: 0;
       top: 0;
       height: 100%;
-      background-color: #00B56D;
+      background-color: $indicator_a;
       z-index: 1;
       border-radius: 10px;
     }

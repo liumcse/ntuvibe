@@ -39,6 +39,13 @@
       &_text {
         margin-right: 5rem;
       }
+      a {
+        color: white;
+      }
+      a:hover {
+        color: white;
+        border-bottom: 2px solid white;
+      }
     };
   }
 }

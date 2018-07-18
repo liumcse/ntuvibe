@@ -43,6 +43,7 @@ class SideBar extends React.Component {
             }}
           />
           <div className={styles.button}>Rate This Course</div>
+          <div className={styles.button}>Rate An Instructor</div>
         </div>
       </div>
     );

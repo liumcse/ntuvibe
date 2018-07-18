@@ -41,6 +41,9 @@
         @include open-sans-bold;
         color: $secondary;
       }
+      .rating_overall {
+        color: $indicator_a;
+      }
     }
     &_course_title {
       font-size: 2rem;
@@ -79,7 +82,7 @@
     }
     .au {
       margin-top: 2.5rem;
-      @include open-sans-medium;
+      @include lato-medium;
       font-size: 2rem;
     }
     .availability {
@@ -137,7 +140,7 @@
     height: 3rem;
     position: absolute;
     padding: 1rem 0;
-    bottom: -3rem;
+    bottom: 0;
     color: white;
     text-align: center;
     width: 100%;

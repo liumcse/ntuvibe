@@ -1,16 +1,15 @@
 {
-  "name": "ntubits",
+  "name": "ntuvibe",
   "version": "0.1.0",
   "private": true,
-  "description": "ntubits",
+  "description": "NTUVibe",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack/webpack.dev.js",
-    "lint": "eslint --fix src",
-    "prebuild": "lint",
     "build": "webpack --config webpack/webpack.prod.js",
+    "lint": "eslint --fix src",
     "test": "echo \"Error: currently no test specified\" && exit 1"
   },
   "author": "",
