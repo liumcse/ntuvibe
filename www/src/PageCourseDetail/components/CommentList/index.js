@@ -1,12 +1,7 @@
 import React from "react";
+import CommentCard from "./components/CommentCard";
 
-import * as styles from "./style.scss";
-
-const CommentCard = () => {
-  return (
-    <div className={styles.card_container}>{"This is a mocked comment."}</div>
-  );
-};
+// import * as styles from "./style.scss";
 
 class CommentList extends React.Component {
   render() {

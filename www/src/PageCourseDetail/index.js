@@ -6,19 +6,30 @@ import Timetable from "./components/Timetable";
 import * as styles from "./style.scss";
 import CommentList from "./components/CommentList";
 
+const Heading = () => (
+  <div className={styles.heading}>
+    <div className={styles.heading_row}>
+      <div className={styles.course_code}>CZ2007</div>
+      <div className={styles.rating_overall}>80%</div>
+    </div>
+    <div className={styles.heading_course_title}>Introduction to Databases</div>
+  </div>
+);
+
+const Footer = () => (
+  // eslint-disable-next-line
+  <div className={styles.footer}>© 2018 NTUVibe 🏝 · You're cute</div>
+);
+
 class PageCourseDetail extends React.Component {
   render() {
     return (
       <div className={styles.page_course_detail}>
-        {/* <a href="https://www.freeiconspng.com/img/32672"><div className={styles.background_image} /></a> */}
         <div className={styles.sidebar} />
         <div className={styles.content}>
-          <div className={styles.upper_container}>
+          <Heading />
+          <div className={styles.row_box}>
             <div className={styles.course_info}>
-              <div className={styles.course_code}>CZ2007</div>
-              <div className={styles.course_title}>
-                Introduction to Databases
-              </div>
               <div className={styles.course_description}>
                 Overview of Database Management Systems (DBMS);
                 Entity-Relationship Data Model; Relational Data Model;
@@ -45,7 +56,6 @@ class PageCourseDetail extends React.Component {
             </div>
             <div className={styles.middle_placeholder} />
             <div className={styles.course_info_right}>
-              <div className={styles.overall}>80%</div>
               <div className={styles.rating_useful}>
                 <Bar label={"Useful"} value={"90%"} />
               </div>
@@ -70,6 +80,8 @@ class PageCourseDetail extends React.Component {
             <CommentList />
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }

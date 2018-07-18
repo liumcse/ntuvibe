@@ -12,3 +12,33 @@
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
 }
+
+@mixin raleway-regular {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+@mixin raleway-medium {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+}
+
+@mixin raleway-bold {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+@mixin lato-regular {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+@mixin lato-medium {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+}
+
+@mixin lato-bold {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}

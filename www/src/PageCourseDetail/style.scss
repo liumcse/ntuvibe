@@ -8,16 +8,6 @@
     position: relative;
   }
 
-  .background_image {
-    background: url('./assets/background.png') no-repeat;
-    background-size: contain;
-    height: 10rem;
-    width: 7rem;
-    position: absolute;
-    right: 2rem;
-    bottom: 2rem;
-  }
-
   .sidebar {
     flex: 1;
     background-color: rgba(204, 204, 204, 0.2);
@@ -32,27 +22,45 @@
     background: white;
   }
 
-  .upper_container {
+  .row_box {
     display: flex;
   }
+
+  .column_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    &_row {
+      display: flex;
+      justify-content: space-between;
+      .course_code, .rating_overall {
+        font-size: 3rem;
+        @include open-sans-bold;
+        color: $secondary;
+      }
+    }
+    &_course_title {
+      font-size: 2rem;
+      @include open-sans-medium;
+      margin-top: 2rem;
+    }
+  }
+
 
   .course_info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    .course_code {
-      font-size: 3rem;
-      @include open-sans-bold;
-      color: $secondary;
-    }
-    .course_title {
-      font-size: 2rem;
-      @include open-sans-medium;
-      margin-top: 1.5rem;
-    }
     .course_description {
-      margin-top: 1.5rem;
+      @include lato-regular;
+      margin-top: 2rem;
       text-align: justify;
+      line-height: 1.75rem;
+      font-size: 1rem;
     }
   }
 
@@ -64,54 +72,75 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    .overall {
-      font-size: 3rem;
-      @include open-sans-bold;
-      color: $secondary;
-      text-align: right;
-    }
     .rating_useful {
-      margin-top: 5rem;
+      margin-top: 2rem;
     }
     .rating_easy {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .au {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       @include open-sans-medium;
       font-size: 2rem;
     }
     .availability {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       div {
-        margin-top: 1rem;
+        margin-top: 1.5rem;
       }
     }
   }
 
   .requirement {
     display: flex;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     .label {
       @include open-sans-medium;
-      color: $secondary;
+      color: $complement;
       margin-right: 1rem;
       text-align: right;
       flex: 1;
     }
     .requirement_content {
       flex: 3;
+      font-size: 0.85rem;
+      line-height: 1.5rem;
     }
   }
 
   .table {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     width: 100%;
+  }
+
+  .availability {
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    line-height: 1.5rem;
   }
 
   .header {
     @include open-sans-medium;
     font-size: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .comment_list {
+    margin-top: 2rem;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: $primary;
+    height: 3rem;
+    position: absolute;
+    padding: 1rem 0;
+    bottom: -3rem;
+    color: white;
+    text-align: center;
+    width: 100%;
   }
 }

@@ -32,7 +32,10 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader?modules=true&camelCase=true"]
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", options: { modules: true, camelCase: true } }
+        ]
       },
       {
         test: /\.scss$/,
@@ -55,11 +58,22 @@ const config = {
           {
             loader: "sass-loader",
             options: {
-              includePaths: [path.resolve(SRC_PATH, "styles")]
+              includePaths: [path.resolve(SRC_PATH, "styles")],
+              sourceMap: true
             }
           }
         ]
       }
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     { loader: "babel-loader" },
+      //     {
+      //       loader: "react-svg-loader",
+      //       options: { jsx: true }
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [
