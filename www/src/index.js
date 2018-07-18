@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 
@@ -27,7 +26,6 @@ class App extends React.Component {
               component={PageCourseDetail}
             />
           </Switch>
-          <Footer />
         </div>
       </Router>
     );

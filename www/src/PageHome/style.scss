@@ -26,4 +26,18 @@
     position: absolute;
     top: 35%;
   }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 3rem;
+    position: absolute;
+    padding: 1rem 0;
+    bottom: 0;
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
-import Bar from "./components/Bar";
+import SideBar from "./components/SideBar";
+import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 
 import * as styles from "./style.scss";
@@ -25,7 +26,9 @@ class PageCourseDetail extends React.Component {
   render() {
     return (
       <div className={styles.page_course_detail}>
-        <div className={styles.sidebar} />
+        <div className={styles.sidebar}>
+          <SideBar />
+        </div>
         <div className={styles.content}>
           <Heading />
           <div className={styles.row_box}>
@@ -57,10 +60,10 @@ class PageCourseDetail extends React.Component {
             <div className={styles.middle_placeholder} />
             <div className={styles.course_info_right}>
               <div className={styles.rating_useful}>
-                <Bar label={"Useful"} value={"90%"} />
+                <RatingBar label={"Useful"} value={"90%"} />
               </div>
               <div className={styles.rating_easy}>
-                <Bar label={"Easy"} value={"40%"} />
+                <RatingBar label={"Easy"} value={"40%"} />
               </div>
               <div className={styles.au}>3.0 AU</div>
               <div className={styles.availability}>

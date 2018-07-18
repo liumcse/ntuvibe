@@ -10,14 +10,13 @@
 
   .sidebar {
     flex: 1;
-    background-color: rgba(204, 204, 204, 0.2);
   }
 
   .content {
-    flex: 4;
+    flex: 5;
     display: flex;
     flex-direction: column;
-    padding: 2rem 5rem;
+    padding: 3rem 5rem;
     margin-bottom: 2rem;
     background: white;
   }

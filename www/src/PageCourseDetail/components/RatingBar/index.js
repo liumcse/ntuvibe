@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import * as styles from "./style.scss";
 
-const Bar = props => {
+const RatingBar = props => {
   return (
     <div className={styles.container}>
       <div className={styles.label}>{props.label}</div>
@@ -15,9 +15,9 @@ const Bar = props => {
   );
 };
 
-Bar.propTypes = {
+RatingBar.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 };
 
-export default Bar;
+export default RatingBar;

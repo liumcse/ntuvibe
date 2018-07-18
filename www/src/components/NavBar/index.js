@@ -8,6 +8,7 @@ import * as styles from "./style.scss";
 const logo = (
   <div
     style={{
+      display: "inline-block",
       backgroundColor: "white",
       height: "3rem",
       width: "3rem",
@@ -27,7 +28,10 @@ const NavBar = () => {
     <div className={styles.navbar_container}>
       <div className={styles.navbar_elements}>
         <div className={styles.navbar_elements_left}>
-          <Link to="/">{logo}</Link>
+          <Link to="/">
+            {logo}
+            {/* <div className={styles.brand}>Vibe</div> */}
+          </Link>
         </div>
         <div className={styles.navbar_elements_right}>
           <div className={styles.navbar_elements_right_text}>HOME</div>

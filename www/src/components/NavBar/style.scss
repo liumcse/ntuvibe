@@ -15,6 +15,14 @@
     z-index: 1;
   }
 
+  .brand {
+    @include american-typewriter;
+    display: inline;
+    color: white;
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+
   .navbar_elements {
     display: flex;
     flex-direction: row;
