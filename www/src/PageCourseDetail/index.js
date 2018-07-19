@@ -26,6 +26,10 @@ const Footer = () => (
 );
 
 class PageCourseDetail extends React.Component {
+  componentDidMount() {
+    console.log("Mounted, should do something, right!");
+  }
+
   render() {
     return (
       <div className={styles.page_course_detail}>
@@ -71,11 +75,10 @@ class PageCourseDetail extends React.Component {
               <div className={styles.au}>3.0 AU</div>
               <div className={styles.availability}>
                 <div>
-                  <img src={yes} />Available as Unrestricted Elective
+                  <img src={yes} />Read as Unrestricted Elective
                 </div>
                 <div>
-                  <img src={no} />Available as General Education Prescribed
-                  Elective
+                  <img src={no} />Read as General Education Prescribed Elective
                 </div>
               </div>
             </div>
