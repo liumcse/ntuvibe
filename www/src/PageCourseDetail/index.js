@@ -7,6 +7,9 @@ import Timetable from "./components/Timetable";
 import * as styles from "./style.scss";
 import CommentList from "./components/CommentList";
 
+import no from "./assets/no.svg";
+import yes from "./assets/yes.svg";
+
 const Heading = () => (
   <div className={styles.heading}>
     <div className={styles.heading_row}>
@@ -67,8 +70,13 @@ class PageCourseDetail extends React.Component {
               </div>
               <div className={styles.au}>3.0 AU</div>
               <div className={styles.availability}>
-                <div>✅ Available as Unrestricted Elective</div>
-                <div>❌ Available as General Education Prescribed Elective</div>
+                <div>
+                  <img src={yes} />Available as Unrestricted Elective
+                </div>
+                <div>
+                  <img src={no} />Available as General Education Prescribed
+                  Elective
+                </div>
               </div>
             </div>
           </div>

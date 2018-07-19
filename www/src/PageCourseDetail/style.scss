@@ -1,4 +1,5 @@
 @import 'typography';
+@import 'functions';
 @import 'colors';
 
 :local {
@@ -10,10 +11,11 @@
 
   .sidebar {
     flex: 1;
+    // width: 100%;
   }
 
   .content {
-    flex: 5;
+    flex: 3;
     display: flex;
     flex-direction: column;
     padding: 3rem 5rem;
@@ -75,9 +77,11 @@
     display: flex;
     flex-direction: column;
     .rating_useful {
+      @include disable-select;
       margin-top: 2rem;
     }
     .rating_easy {
+      @include disable-select;
       margin-top: 1.5rem;
     }
     .au {
@@ -89,6 +93,14 @@
       margin-top: 1rem;
       div {
         margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+      img {
+        @include disable-select;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1.2rem;
       }
     }
   }

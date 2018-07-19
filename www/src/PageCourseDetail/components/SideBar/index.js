@@ -1,9 +1,9 @@
 import React from "react";
 
 // import top_img from "./assets/top_img.svg";
-import info from "./assets/info.svg";
-import clock from "./assets/clock.svg";
-import comment from "./assets/comment.svg";
+// import info from "./assets/info.svg";
+// import clock from "./assets/clock.svg";
+// import comment from "./assets/comment.svg";
 import * as styles from "./style.scss";
 
 // const topImg = (
@@ -24,15 +24,15 @@ class SideBar extends React.Component {
         {/* <div className={styles.header}>GO TO</div> */}
         <div className={styles.column_container}>
           <div>
-            <img src={info} />
+            {/* <img src={info} /> */}
             <span>Information</span>
           </div>
           <div>
-            <img src={clock} />
+            {/* <img src={clock} /> */}
             <span>Timetable</span>
           </div>
           <div>
-            <img src={comment} />
+            {/* <img src={comment} /> */}
             <span>Comment</span>
           </div>
           <div

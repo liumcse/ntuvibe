@@ -42,9 +42,9 @@
       }
       span {
         overflow: hidden;
-        width: 0;
+        // width: 0;
         // padding-left: 1.5rem;
-        transition: width 500ms;
+        // transition: width 500ms;
       }
     }
     div:hover{
@@ -53,7 +53,7 @@
       color: $primary;
       @include lato-medium;
       span {
-        width: 70%; // is there a better way? This is buggy // TODO
+        // width: 70%; // is there a better way? This is buggy // TODO
       }
     }
   }
