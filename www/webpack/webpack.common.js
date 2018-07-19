@@ -1,6 +1,11 @@
+// The recurring obnoxious webpack compile failure usually results from some weird libraries. Remove them from package.json!!
+
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const devMode = process.env.NODE_ENV !== "production";
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -28,20 +33,15 @@ const config = {
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
           /\/typefaces\/.*\.svg/
         ],
+        exclude: ["node_modules"],
         use: [{ loader: "file-loader" }]
       },
       {
-        test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader", options: { modules: true, camelCase: true } }
-        ]
-      },
-      {
-        test: /\.scss$/,
+        test: /\.s?css$/,
+        exclude: ["node_modules"],
         use: [
           {
-            loader: "style-loader"
+            loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
           },
           {
             loader: "css-loader",
@@ -49,7 +49,17 @@ const config = {
               minimize: true,
               sourceMap: true,
               localIdentName: "[hash:base64:10]",
-              importLoaders: 1
+              importLoaders: 1,
+              modules: true,
+              camelCase: true
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: path.resolve(PROJECT_ROOT, "postcss.config.js")
+              }
             }
           },
           {
@@ -64,16 +74,40 @@ const config = {
           }
         ]
       }
-      // {
-      //   test: /\.svg$/,
-      //   use: [
-      //     { loader: "babel-loader" },
-      //     {
-      //       loader: "react-svg-loader",
-      //       options: { jsx: true }
-      //     }
-      //   ]
-      // }
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: "~",
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    },
+    minimizer: [
+      // we specify a custom UglifyJsPlugin here to get source maps in production
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
     ]
   },
   plugins: [
@@ -82,6 +116,12 @@ const config = {
     }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? "[name].css" : "[name].[hash].css",
+      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
   ]
 };
