@@ -1,0 +1,12 @@
+:local {
+  .container {
+    color: black;
+    cursor: default !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container:hover {
+    background-color: none !important;
+  }
+}

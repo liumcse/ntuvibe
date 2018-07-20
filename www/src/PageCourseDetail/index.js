@@ -1,6 +1,5 @@
 import React from "react";
 
-// import SideBar from "./components/SideBar";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 
@@ -35,7 +34,6 @@ class PageCourseDetail extends React.Component {
     return (
       <div className={styles.page_course_detail}>
         <Menu />
-        <div className={styles.leftmargin}>{/* <SideBar /> */}</div>
         <div className={styles.content}>
           <Heading />
           <div className={styles.row_box}>

@@ -1,5 +1,7 @@
 import React from "react";
+
 import * as styles from "./style.scss";
+import RateCourse from "../RateCourse";
 
 const Menu = () => {
   return (
@@ -7,7 +9,9 @@ const Menu = () => {
       <div>Information</div>
       <div>Schedule</div>
       <div>Course Comments</div>
-      <div className={styles.action}>Rate the Course</div>
+      <RateCourse
+        trigger={<div className={styles.action}>Rate the Course</div>}
+      />
       <div className={styles.action}>Rate an Instructor</div>
     </div>
   );
