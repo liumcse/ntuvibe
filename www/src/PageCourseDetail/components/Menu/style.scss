@@ -1,0 +1,27 @@
+@import 'colors';
+@import 'functions';
+
+:local {
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.1)), $primary;
+    background-blend-mode: overlay;
+    z-index: 2;
+    color: white;
+    font-variant: all-petite-caps;
+    @include disable-select;
+    div {
+      padding: 1.5rem 2rem;      
+    }
+    div:hover {
+      cursor: pointer;
+      background: linear-gradient(rgba(255, 255, 255, 0.1)), $primary;
+    }
+    .action {
+      background: $primary;
+    }
+  }
+}

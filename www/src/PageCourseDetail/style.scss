@@ -5,20 +5,17 @@
 :local {
   .page_course_detail {
     display: flex;
+    flex-direction: column; // experiement
     min-height: 100vh;
     position: relative;
-  }
-
-  .sidebar {
-    flex: 1;
-    // width: 100%;
+    background-color: rgba(204, 204, 204, 0.1);
   }
 
   .content {
-    flex: 3;
+    // flex: 4;
     display: flex;
     flex-direction: column;
-    padding: 3rem 5rem;
+    padding: 3rem 6rem;
     margin-bottom: 2rem;
     background: white;
   }
@@ -40,16 +37,17 @@
       justify-content: space-between;
       .course_code, .rating_overall {
         font-size: 3rem;
-        @include open-sans-bold;
+        @include raleway-bold;
         color: $secondary;
       }
       .rating_overall {
         color: $indicator_a;
+        @include american-typewriter;
       }
     }
     &_course_title {
       font-size: 2rem;
-      @include open-sans-medium;
+      @include raleway-bold;
       margin-top: 2rem;
     }
   }
@@ -86,7 +84,7 @@
     }
     .au {
       margin-top: 2.5rem;
-      @include lato-medium;
+      @include american-typewriter;
       font-size: 2rem;
     }
     .availability {
@@ -134,7 +132,7 @@
   }
 
   .header {
-    @include open-sans-medium;
+    @include raleway-medium;
     font-size: 1.5rem;
     margin-top: 3rem;
   }

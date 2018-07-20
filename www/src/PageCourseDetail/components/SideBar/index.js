@@ -23,7 +23,7 @@ class SideBar extends React.Component {
         {/* <div className={styles.top_img}>{topImg}</div> */}
         {/* <div className={styles.header}>GO TO</div> */}
         <div className={styles.column_container}>
-          <div>
+          <div className={styles.selected}>
             {/* <img src={info} /> */}
             <span>Information</span>
           </div>
@@ -37,7 +37,6 @@ class SideBar extends React.Component {
           </div>
           <div
             style={{
-              width: "100%",
               padding: "0",
               margin: "1.5rem 0"
             }}

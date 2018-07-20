@@ -1,10 +1,11 @@
 import React from "react";
 
-import SideBar from "./components/SideBar";
+// import SideBar from "./components/SideBar";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 
 import * as styles from "./style.scss";
+import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
 
 import no from "./assets/no.svg";
@@ -22,7 +23,7 @@ const Heading = () => (
 
 const Footer = () => (
   // eslint-disable-next-line
-  <div className={styles.footer}>© 2018 NTUVibe 🏝 · You're cute</div>
+  <div className={styles.footer}>Copyright © 2018 NTUVibe 🏝 · You're cute</div>
 );
 
 class PageCourseDetail extends React.Component {
@@ -33,9 +34,8 @@ class PageCourseDetail extends React.Component {
   render() {
     return (
       <div className={styles.page_course_detail}>
-        <div className={styles.sidebar}>
-          <SideBar />
-        </div>
+        <Menu />
+        <div className={styles.leftmargin}>{/* <SideBar /> */}</div>
         <div className={styles.content}>
           <Heading />
           <div className={styles.row_box}>
@@ -94,7 +94,6 @@ class PageCourseDetail extends React.Component {
             <CommentList />
           </div>
         </div>
-
         <Footer />
       </div>
     );
