@@ -6,13 +6,19 @@ import RateCourse from "../RateCourse";
 const Menu = () => {
   return (
     <div className={styles.menu}>
-      <div>Information</div>
-      <div>Schedule</div>
-      <div>Course Comments</div>
+      <div className={styles.item}>Information</div>
+      <div className={styles.item}>Schedule</div>
+      <div className={styles.item}>Course Comments</div>
       <RateCourse
-        trigger={<div className={styles.action}>Rate the Course</div>}
+        trigger={
+          <div className={styles.action + " " + styles.item}>
+            Rate the Course
+          </div>
+        }
       />
-      <div className={styles.action}>Rate an Instructor</div>
+      <div className={styles.action + " " + styles.item}>
+        Rate an Instructor
+      </div>
     </div>
   );
 };
