@@ -13,15 +13,15 @@
     color: white;
     font-variant: all-petite-caps;
     @include disable-select;
-    div {
+    .item {
       padding: 1.5rem 2rem;      
     }
-    div:hover {
+    .item:hover {
       cursor: pointer;
       background: linear-gradient(rgba(255, 255, 255, 0.1)), $primary;
     }
     .action {
-      background: $primary;
+      background: linear-gradient(rgba(255, 255, 255, 0.1));
     }
   }
 }

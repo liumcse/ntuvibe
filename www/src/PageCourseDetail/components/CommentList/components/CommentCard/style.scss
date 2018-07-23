@@ -1,5 +1,6 @@
 @import 'functions';
 @import 'typography';
+@import 'colors';
 
 :local {
   .container {
@@ -68,13 +69,13 @@
     border-radius: 3px;
     @include disable-select;
     &_good {
-      background-color: #28a745;
+      background-color: $positive;
     }
     &_bad {
-      background-color: #c99027;
+      background-color: $negative;
     }
     &_moderate {
-      background-color: #cb2431;
+      background-color: $neutral;
     }
   }
 }
