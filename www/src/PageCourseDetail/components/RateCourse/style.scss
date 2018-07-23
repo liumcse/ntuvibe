@@ -11,6 +11,7 @@
     color: black;
     padding: 2rem !important;
     overflow-y: scroll;
+    max-height: 100vh;
   }
 }
 
@@ -45,7 +46,7 @@
   }
 
   .action {
-
+    margin-bottom: 4rem;
   }
 
   .sub_header {

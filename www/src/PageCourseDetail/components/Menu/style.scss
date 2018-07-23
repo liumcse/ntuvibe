@@ -21,7 +21,7 @@
       background: linear-gradient(rgba(255, 255, 255, 0.1)), $primary;
     }
     .action {
-      background: $indicator_a;
+      background: linear-gradient(rgba(255, 255, 255, 0.1));
     }
   }
 }

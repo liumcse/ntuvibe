@@ -5,7 +5,12 @@ import PropTypes from "prop-types";
 import * as styles from "./style.scss";
 
 const RateCourse = props => (
-  <Popup trigger={props.trigger} modal closeOnDocumentClick={false}>
+  <Popup
+    modal
+    closeOnDocumentClick={false}
+    open={props.open}
+    closePopup={props.closePopup}
+  >
     <div className={styles.container}>
       <div className={styles.header}>Rate the course</div>
       <div className={styles.section}>
@@ -34,6 +39,7 @@ const RateCourse = props => (
       </div>
       <div className={styles.section}>
         <div className={styles.sub_header}>
+          {/* eslint-disable-next-line */}
           Any thing you'd like to comment on?
         </div>
         <textarea placeholder="Type your comment here..." />
@@ -44,7 +50,7 @@ const RateCourse = props => (
             <button>Submit</button>
           </div>
           <div>
-            <button onClick={() => close()}>Cancel</button>
+            <button onClick={props.closePopup}>Cancel</button>
           </div>
         </div>
       </div>
@@ -53,7 +59,8 @@ const RateCourse = props => (
 );
 
 RateCourse.propTypes = {
-  trigger: PropTypes.object.isRequired
+  open: PropTypes.bool.isRequired,
+  closePopup: PropTypes.func.isRequired
 };
 
 export default RateCourse;
