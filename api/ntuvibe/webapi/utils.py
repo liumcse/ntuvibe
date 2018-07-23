@@ -9,7 +9,7 @@ class PositiveBigIntergerRelDbTypeMixin(models.PositiveIntegerRelDbTypeMixin):
 			return models.BigIntegerField().db_type(connection=connection)
 
 
-class PositiveBigIntegerField(PositiveBigIntegerRelDbTypeMixin, models.BigIntegerField):
+class PositiveBigIntegerField(PositiveBigIntergerRelDbTypeMixin, models.BigIntegerField):
 #credit to github user pinfort
 	description = _("Positive big integer")
 

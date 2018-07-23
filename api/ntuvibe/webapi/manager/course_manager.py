@@ -1,4 +1,4 @@
-from api.ntubits.webapi.models import (
+from api.ntuvibe.webapi.models import (
 	CourseTab,
 	UserTab,
 	CourseRatingTab,
@@ -6,7 +6,7 @@ from api.ntubits.webapi.models import (
 	ProfessorRatingTab,
 	ScheduleTab
 )
-from api.ntubits.webapi import utils
+from api.ntuvibe.webapi import utils
 
 def get_course_by_courseid(courseid):
 	return CourseTab.objects.filter(id=courseid).first()

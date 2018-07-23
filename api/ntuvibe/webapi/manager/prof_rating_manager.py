@@ -1,4 +1,4 @@
-from api.ntubits.webapi.models import (
+from api.ntuvibe.webapi.models import (
 	CourseTab,
 	UserTab,
 	CourseRatingTab,

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.ntubits.webapi.constants import STATIC_FILE_PATH
-from api.ntubits.webapi.manager import course_manager, course_rating_manager
+from api.ntuvibe.webapi.constants import STATIC_FILE_PATH
+from api.ntuvibe.webapi.manager import course_manager, course_rating_manager
 
 
 def get_course_detail(request, course_code):
