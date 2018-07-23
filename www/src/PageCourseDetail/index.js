@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
@@ -6,6 +8,7 @@ import Timetable from "./components/Timetable";
 import * as styles from "./style.scss";
 import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
+import { fetchCourseList } from "../redux/actions";
 
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
@@ -28,6 +31,7 @@ const Footer = () => (
 class PageCourseDetail extends React.Component {
   componentDidMount() {
     console.log("Mounted, should do something, right!");
+    this.props.fetchCourseList();
   }
 
   render() {
@@ -98,4 +102,15 @@ class PageCourseDetail extends React.Component {
   }
 }
 
-export default PageCourseDetail;
+PageCourseDetail.propTypes = {
+  fetchCourseList: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchCourseList: () => dispatch(fetchCourseList())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(PageCourseDetail);

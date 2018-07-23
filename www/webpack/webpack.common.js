@@ -13,9 +13,7 @@ const SRC_PATH = path.resolve(__dirname, "../src");
 const PROJECT_ROOT = path.resolve(__dirname, "../");
 
 const config = {
-  entry: {
-    main: SRC_PATH + "/index.js"
-  },
+  entry: ["babel-polyfill", SRC_PATH + "/index.js"],
   output: {
     filename: "[name].[hash].js",
     publicPath: "/",
