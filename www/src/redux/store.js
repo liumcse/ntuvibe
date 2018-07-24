@@ -4,10 +4,10 @@ import rootReducer from "./reducers";
 
 const initialState = {
   courseList: null,
-  course_detail: null,
-  course_rating: null,
-  course_schedule: null,
-  course_comment: null
+  courseDetail: null,
+  courseRating: null,
+  courseSchedule: null,
+  courseComment: null
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

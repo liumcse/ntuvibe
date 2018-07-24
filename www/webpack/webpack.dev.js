@@ -6,7 +6,7 @@ module.exports = merge(common, {
   devServer: {
     host: "localhost",
     historyApiFallback: true, // make sure Router works
-    port: 3000,
+    port: 8080,
     open: true
   }
 });

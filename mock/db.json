@@ -1,0 +1,40 @@
+{
+  "get_course_detail": [{
+    "id": "CZ2007",
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "AU": "3.0",
+    "description": "Overview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control.",
+    "prerequisite": "CZ1007 & CZ2001(Corequisite) OR CE1007 & CE2001(Corequisite) OR CE1007 & CZ2001(Corequisite) OR CE2001(Corequisite) & CZ1007",
+    "remark": "Not available to students from BCE, BCG, CE, CEEC; not available to students with (Admyr 2004-2010)",
+    "asUE": true,
+    "asPE": false
+  },
+  {
+    "id": "CZ2001",
+    "code": "CZ2001",
+    "title": "ALGORITHMS",
+    "AU": "3.0",
+    "description": "Yeah algorithms",
+    "prerequisite": "CZ1007 & CZ2001(Corequisite) OR CE1007 & CE2001(Corequisite) OR CE1007 & CZ2001(Corequisite) OR CE2001(Corequisite) & CZ1007",
+    "remark": "Not available to students from BCE, BCG, CE, CEEC; not available to students with (Admyr 2004-2010)",
+    "asUE": true,
+    "asPE": false
+  }
+  ],
+  "get_course_rating": [{
+    "id": "CZ2007",
+    "code": "CZ2007",
+    "overall": "76%",
+    "useful": "86%",
+    "easy": "20%"
+  },
+  {
+    "id": "CZ2001",
+    "code": "CZ2001",
+    "overall": "12%",
+    "useful": "1%",
+    "easy": "90%"
+  }
+  ]
+}
