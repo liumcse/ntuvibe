@@ -19,6 +19,11 @@ const config = {
     publicPath: "/",
     path: OUTPUT_PATH
   },
+  resolve: {
+    alias: {
+      src: SRC_PATH
+    }
+  },
   module: {
     rules: [
       {

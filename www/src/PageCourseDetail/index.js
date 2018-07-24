@@ -110,7 +110,7 @@ class PageCourseDetail extends React.Component {
                 <div className={styles.rating_easy}>
                   <RatingBar label={"Easy"} value={easy} />
                 </div>
-                <div className={styles.au}>{AU}</div>
+                <div className={styles.au}>{AU.concat(" ").concat("AU")}</div>
                 <div className={styles.availability}>
                   <div>
                     <img src={asUE ? yes : no} />Read as Unrestricted Elective

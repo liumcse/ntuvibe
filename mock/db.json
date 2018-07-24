@@ -9,8 +9,7 @@
     "remark": "Not available to students from BCE, BCG, CE, CEEC; not available to students with (Admyr 2004-2010)",
     "asUE": true,
     "asPE": false
-  },
-  {
+  }, {
     "id": "CZ2001",
     "code": "CZ2001",
     "title": "ALGORITHMS",
@@ -20,21 +19,74 @@
     "remark": "Not available to students from BCE, BCG, CE, CEEC; not available to students with (Admyr 2004-2010)",
     "asUE": true,
     "asPE": false
-  }
-  ],
+  }],
   "get_course_rating": [{
     "id": "CZ2007",
     "code": "CZ2007",
     "overall": "76%",
     "useful": "86%",
     "easy": "20%"
-  },
-  {
+  }, {
     "id": "CZ2001",
     "code": "CZ2001",
     "overall": "12%",
     "useful": "1%",
     "easy": "90%"
-  }
-  ]
+  }],
+  "get_course_list": [  {
+    "code": "CZ2001",
+    "title": "Algorithms"
+  },
+  {
+    "code": "CZ2002",
+    "title": "Object Oriented Design & Programming"
+  },
+  {
+    "code": "CZ2003",
+    "title": "Computer Graphics"
+  },
+  {
+    "code": "CZ2004",
+    "title": "Human Computer Interactions"
+  },
+  {
+    "code": "CZ2005",
+    "title": "Operating Systems"
+  },
+  {
+    "code": "CZ2006",
+    "title": "Software Engineering"
+  },
+  {
+    "code": "CZ2007",
+    "title": "Introduction to Database Systems"
+  },
+  {
+    "code": "CZ3001",
+    "title": "Advanced Computer Architecture"
+  },
+  {
+    "code": "CZ3002",
+    "title": "Advanced Software Engineering"
+  },
+  {
+    "code": "CZ3003",
+    "title": "System Design & Engineering"
+  },
+  {
+    "code": "CZ3004",
+    "title": "Multidisciplinary Project"
+  },
+  {
+    "code": "CZ3005",
+    "title": "Artificial Intelligence"
+  },
+  {
+    "code": "CZ3006",
+    "title": "Net-centric Computing"
+  },
+  {
+    "code": "CZ3007",
+    "title": "Compiler Techniques"
+  }]
 }

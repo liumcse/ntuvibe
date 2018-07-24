@@ -1,97 +1,16 @@
 import React from "react";
 import Autosuggest from "react-autosuggest";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import PropTypes from "prop-types";
+
+import { fetchCourseList } from "src/redux/actions";
 
 import theme from "./theme.css";
-
-// Imagine you have a list of languages that you'd like to autosuggest.
-const courses = [
-  {
-    code: "CZ2001",
-    title: "Algorithms"
-  },
-  {
-    code: "CZ2002",
-    title: "Object Oriented Design & Programming"
-  },
-  {
-    code: "CZ2003",
-    title: "Computer Graphics"
-  },
-  {
-    code: "CZ2004",
-    title: "Human Computer Interactions"
-  },
-  {
-    code: "CZ2005",
-    title: "Operating Systems"
-  },
-  {
-    code: "CZ2006",
-    title: "Software Engineering"
-  },
-  {
-    code: "CZ2007",
-    title: "Introduction to Database Systems"
-  },
-  {
-    code: "CZ3001",
-    title: "Advanced Computer Architecture"
-  },
-  {
-    code: "CZ3002",
-    title: "Advanced Software Engineering"
-  },
-  {
-    code: "CZ3003",
-    title: "System Design & Engineering"
-  },
-  {
-    code: "CZ3004",
-    title: "Multidisciplinary Project"
-  },
-  {
-    code: "CZ3005",
-    title: "Artificial Intelligence"
-  },
-  {
-    code: "CZ3006",
-    title: "Net-centric Computing"
-  },
-  {
-    code: "CZ3007",
-    title: "Compiler Techniques"
-  }
-];
-
-// Teach Autosuggest how to calculate suggestions for any given input value.
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0
-    ? []
-    : courses.filter(
-        lang => lang.code.toLowerCase().slice(0, inputLength) === inputValue
-      );
-};
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-const getSuggestionValue = suggestion => {
-  suggestion.code.concat(" - ").concat(suggestion.title);
-  window.location.assign("/courses/" + suggestion.code.toLowerCase());
-};
-
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
-  <div>{suggestion.code.concat(" - ").concat(suggestion.title)}</div>
-);
 
 class Dropdown extends React.Component {
   constructor() {
     super();
-
     // Autosuggest is a controlled component.
     // This means that you need to provide an input value
     // and an onChange handler that updates this value (see below).
@@ -103,6 +22,40 @@ class Dropdown extends React.Component {
     };
   }
 
+  // When suggestion is clicked, Autosuggest needs to populate the input
+  // based on the clicked suggestion. Teach Autosuggest how to calculate the
+  // input value for every given suggestion.
+  getSuggestionValue = suggestion => {
+    const { history } = this.props;
+    suggestion.code.concat(" - ").concat(suggestion.title);
+    history.push("/courses/" + suggestion.code.toLowerCase());
+  };
+
+  // Use your imagination to render suggestions.
+  renderSuggestion = suggestion => (
+    <div>{suggestion.code.concat(" - ").concat(suggestion.title)}</div>
+  );
+
+  // Teach Autosuggest how to calculate suggestions for any given input value.
+  getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    // return inputLength === 0
+    //   ? []
+    //   : courses.filter(
+    //       lang => lang.code.toLowerCase().slice(0, inputLength) === inputValue
+    //     );
+    if (inputLength === 0) return [];
+    else {
+      console.log("Trigger");
+      (async value => await this.props.fetchCourseList(value))(); // does it work?
+      console.log("Finished");
+      const { courseList } = this.props;
+      return courseList;
+    }
+  };
+
   onChange = (event, { newValue }) => {
     this.setState({
       value: newValue
@@ -113,7 +66,7 @@ class Dropdown extends React.Component {
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
   };
 
@@ -123,6 +76,10 @@ class Dropdown extends React.Component {
       suggestions: []
     });
   };
+
+  componentDidMount() {
+    this.props.fetchCourseList("Something");
+  }
 
   render() {
     const { value, suggestions } = this.state;
@@ -142,12 +99,35 @@ class Dropdown extends React.Component {
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
+        getSuggestionValue={this.getSuggestionValue}
+        renderSuggestion={this.renderSuggestion}
         inputProps={inputProps}
       />
     );
   }
 }
 
-export default Dropdown;
+Dropdown.propTypes = {
+  // from redux
+  courseList: PropTypes.array,
+  fetchCourseList: PropTypes.func.isRequired,
+  // from router
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  courseList: state && state.courseList
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchCourseList: input => dispatch(fetchCourseList(input))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Dropdown)
+);
