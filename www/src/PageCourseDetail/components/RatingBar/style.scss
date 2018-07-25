@@ -24,6 +24,7 @@
       width: 100%;
       background-color: #ccc;
       border-radius: 10px;
+      z-index: 0;
     }
     .front_bar {
       position: absolute;
@@ -31,7 +32,6 @@
       top: 0;
       height: 100%;
       background-color: $indicator_a;
-      z-index: 1;
       border-radius: 10px;
     }
   }

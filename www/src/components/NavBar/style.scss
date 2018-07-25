@@ -10,7 +10,7 @@
     height: 6rem;
     background-color: $primary;
     opacity: 1;
-    z-index: 1;
+    z-index: 100;
     @include disable-select;
     // box-shadow: 0 1px 4px rgba(0,0,0,0.2);
   }
@@ -21,6 +21,10 @@
     color: white;
     font-size: 2rem;
     margin-left: 1rem;
+  }
+
+  .right_button:hover {
+    cursor: pointer;
   }
 
   .navbar_elements {

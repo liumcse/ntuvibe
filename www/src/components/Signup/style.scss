@@ -1,0 +1,25 @@
+@import 'typography';
+@import 'colors';
+
+:local {
+  .header {
+    @include raleway-medium;
+    font-variant: all-petite-caps;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: $primary;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .section {
+    margin-bottom: 2rem;
+  }
+  .sub_header {
+    color: $primary;
+    margin-bottom: 2rem;
+  }
+}
