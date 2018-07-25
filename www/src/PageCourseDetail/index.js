@@ -39,11 +39,6 @@ class PageCourseDetail extends React.Component {
 
     this.props.fetchCourseDetail(courseCode.toUpperCase()); // do we really put the upper case here?
     this.props.fetchCourseRating(courseCode.toUpperCase()); // do we really put the upper case here?
-
-    // DEBUG
-    document.addEventListener("click", () =>
-      this.props.fetchCourseRating(courseCode.toUpperCase())
-    );
   }
 
   componentDidUpdate() {

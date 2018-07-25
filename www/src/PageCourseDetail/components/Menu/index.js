@@ -37,9 +37,9 @@ class Menu extends React.Component {
         >
           Rate the Course
         </div>
-        <div className={styles.action + " " + styles.item}>
+        {/* <div className={styles.action + " " + styles.item}>
           Rate an Instructor
-        </div>
+        </div> */}
         <RateCourse open={rateCourseOpen} closePopup={this.closePopup} />
       </div>
     );

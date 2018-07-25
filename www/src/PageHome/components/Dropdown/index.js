@@ -41,15 +41,10 @@ class Dropdown extends React.Component {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
-    // return inputLength === 0
-    //   ? []
-    //   : courses.filter(
-    //       lang => lang.code.toLowerCase().slice(0, inputLength) === inputValue
-    //     );
     if (inputLength === 0) return [];
     else {
       console.log("Trigger");
-      (async value => await this.props.fetchCourseList(value))(); // does it work?
+      (async () => await this.props.fetchCourseList(inputValue))(); // does it work?
       console.log("Finished");
       const { courseList } = this.props;
       return courseList;
