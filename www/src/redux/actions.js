@@ -71,3 +71,25 @@ export function fetchCourseList(input) {
       );
   };
 }
+
+export function fetchCourseComments(courseCode) {
+  return async function(dispatch) {
+    dispatch({
+      type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/get_course_comments/${courseCode}`)
+      .then(response =>
+        dispatch({
+          type: actionTypes.FETCH_COURSE_COMMENTS_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
+          payload: error
+        })
+      );
+  };
+}

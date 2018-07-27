@@ -17,7 +17,6 @@
   }
 
   .popup-overlay {
-    // nothing here yet
     z-index: 100;
   }
 
@@ -27,6 +26,6 @@
     padding: 2rem !important;
     overflow-y: scroll;
     max-height: 100vh;
-    // z-index: 100;
+    z-index: 100;
   }
 }

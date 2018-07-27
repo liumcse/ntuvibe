@@ -10,7 +10,7 @@
     height: 6rem;
     background-color: $primary;
     opacity: 1;
-    z-index: 100;
+    z-index: 2;
     @include disable-select;
     // box-shadow: 0 1px 4px rgba(0,0,0,0.2);
   }

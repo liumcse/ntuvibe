@@ -33,6 +33,16 @@ const reducer = (state, action) => {
         ...state,
         courseList: payload
       };
+    case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        courseComments: payload.data
+      };
+    case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
+      return {
+        ...state,
+        courseComments: payload
+      };
     default:
       // likely to be an error
       return { ...state };

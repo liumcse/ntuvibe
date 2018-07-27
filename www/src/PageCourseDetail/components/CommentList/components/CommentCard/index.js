@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import * as styles from "./style.scss";
 
@@ -32,31 +33,36 @@ class CommentCard extends React.Component {
         </div>
         <div className={styles.box}>
           <div className={styles.box_left}>
-            <div className={styles.username}>Some guy</div>
+            <div className={styles.username}>{this.props.username}</div>
             <div className={styles.glance}>
-              A Computer Science student on June 13th, 2018
+              A {this.props.major} student on {this.props.comment_date}
             </div>
             <div className={styles.content}>
-              <p>
-                Probably one of the best courses I’ve taken in NTU so far, if
-                not the best.
-              </p>
-              <p>
-                I’m using MySQL every day! Says me from another parallel
-                universe.
-              </p>
-              <p>Actually I think Firebase rocks.</p>
+              {this.props.comment_content && (
+                <p>{this.props.comment_content}</p>
+              )}
             </div>
           </div>
           <div className={styles.box_right}>
-            <Badge value={1} label={"Easy"} />
-            <Badge value={3} label={"Useful"} />
-            <Badge value={2} label={"Like"} />
+            <Badge value={this.props.easy} label={"Easy"} />
+            <Badge value={this.props.useful} label={"Useful"} />
+            <Badge value={this.props.like} label={"Like"} />
           </div>
         </div>
       </div>
     );
   }
 }
+
+CommentCard.propTypes = {
+  userid: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  major: PropTypes.string.isRequired,
+  easy: 0 | 1 | 2,
+  useful: 0 | 1 | 2,
+  like: 0 | 1 | 2,
+  comment_date: PropTypes.number.isRequired,
+  comment_content: PropTypes.string
+};
 
 export default CommentCard;

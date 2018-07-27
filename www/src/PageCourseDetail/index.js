@@ -9,7 +9,11 @@ import Timetable from "./components/Timetable";
 import * as styles from "./style.scss";
 import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
-import { fetchCourseDetail, fetchCourseRating } from "../redux/actions";
+import {
+  fetchCourseDetail,
+  fetchCourseRating,
+  fetchCourseComments
+} from "../redux/actions";
 
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
@@ -39,6 +43,7 @@ class PageCourseDetail extends React.Component {
 
     this.props.fetchCourseDetail(courseCode.toUpperCase()); // do we really put the upper case here?
     this.props.fetchCourseRating(courseCode.toUpperCase()); // do we really put the upper case here?
+    this.props.fetchCourseComments(courseCode.toUpperCase()); // do we really put the upper case here?
   }
 
   componentDidUpdate() {
@@ -46,9 +51,9 @@ class PageCourseDetail extends React.Component {
   }
 
   render() {
-    const { courseDetail, courseRating } = this.props;
+    const { courseDetail, courseRating, courseComments } = this.props;
 
-    if (!courseDetail || !courseRating) {
+    if (!courseDetail || !courseRating || !courseComments) {
       return "Loading...";
     } else {
       const {
@@ -125,7 +130,7 @@ class PageCourseDetail extends React.Component {
             </div>
             <div className={styles.header}>Course Comments</div>
             <div className={styles.comment_list}>
-              <CommentList />
+              <CommentList comments={courseComments} />
             </div>
           </div>
           <Footer />
@@ -145,8 +150,10 @@ PageCourseDetail.propTypes = {
   // from redux
   fetchCourseDetail: PropTypes.func.isRequired,
   fetchCourseRating: PropTypes.func.isRequired,
+  fetchCourseComments: PropTypes.func.isRequired,
   courseDetail: PropTypes.object,
   courseRating: PropTypes.object,
+  courseComments: PropTypes.object,
   // from router
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
@@ -155,12 +162,14 @@ PageCourseDetail.propTypes = {
 
 const mapStateToProps = state => ({
   courseDetail: state && state.courseDetail,
-  courseRating: state && state.courseRating
+  courseRating: state && state.courseRating,
+  courseComments: state && state.courseComments
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
-  fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode))
+  fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
+  fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode))
 });
 
 export default withRouter(

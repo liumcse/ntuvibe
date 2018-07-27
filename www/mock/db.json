@@ -88,5 +88,52 @@
   {
     "code": "CZ3007",
     "title": "Compiler Techniques"
+  }],
+  "get_course_comments": [{
+      "id": "CZ2007",
+      "data": [
+        { 
+          "userid": 123456,
+          "username": "Some dude",
+          "major": "Government",
+          "easy": 0,
+          "useful": 2,
+          "like": 2,
+          "comment_date": 1532663580,
+          "comment_content": "I am so fucked by this course but I like it at the same time."
+      },
+      {
+        "userid": 24213,
+        "username": "Some gurl",
+        "major": "Lingustic & Music",
+        "easy": 2,
+        "useful": 2,
+        "like": 0,
+        "comment_date": 1532663580,
+        "comment_content": "This course is easier than my secondary mathematics.\n What's the point?"
+      },
+      {
+        "id": "CZ2007",
+        "userid": 26532,
+        "username": "Passenger",
+        "major": "Law",
+        "easy": 2,
+        "useful": 0,
+        "like": 1,
+        "comment_date": 1532663581,
+        "comment_content": "No\nNo way\nIt can't be true!"
+      },
+      {
+        "id": "CZ2007",
+        "userid": 13295,
+        "username": "Jordan Peterson",
+        "major": "Clinical Psychology",
+        "easy": 2,
+        "useful": 2,
+        "like": 2,
+        "comment_date": 1532663591,
+        "comment_content": null
+      }
+      ]
   }]
 }

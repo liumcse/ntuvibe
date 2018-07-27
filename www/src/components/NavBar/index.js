@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import login from "./assets/login.svg";
+import login from "./assets/facebook.svg";
 
 import * as styles from "./style.scss";
 import Login from "../Login";

@@ -7,7 +7,7 @@ const initialState = {
   courseDetail: null,
   courseRating: null,
   courseSchedule: null,
-  courseComment: null
+  courseComments: null
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -38,8 +38,12 @@ class Dropdown extends React.Component {
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
+    console.log("Value", value);
     const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
+    const inputLength = inputValue === null ? 0 : inputValue.length;
+    console.log("inputValue", inputValue);
+    console.log("inputValue === null ?", inputValue === null);
+    console.log("inputLength", inputValue.length);
 
     if (inputLength === 0) return [];
     else {
@@ -71,10 +75,6 @@ class Dropdown extends React.Component {
       suggestions: []
     });
   };
-
-  componentDidMount() {
-    this.props.fetchCourseList("Something");
-  }
 
   render() {
     const { value, suggestions } = this.state;
