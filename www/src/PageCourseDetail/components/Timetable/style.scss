@@ -1,4 +1,5 @@
 @import "typography";
+@import "colors";
 
 :local {
   .container {
@@ -7,10 +8,37 @@
   }
 
   .title {
-    @include open-sans-medium
+    @include raleway-medium;
+    color: $secondary;
+    font-size: 1.2rem;
   }
 
-  .table {
-    margin-top: 1rem;
+  .table_container {
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    table {
+      width: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  
+    td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  
+    tr:hover {
+      background-color: #ddd;
+    }
+  
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: $complement;
+      color: white;
+    }
   }
 }

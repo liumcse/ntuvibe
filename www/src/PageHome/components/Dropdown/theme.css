@@ -11,7 +11,7 @@
   /* margin: 8px 0; */
   display: inline-block;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 5px;
   box-sizing: border-box;
   font-size: 1rem;
   /* background: blue; */
@@ -28,7 +28,7 @@
   overflow: scroll;
   min-height: 3.5rem;
   max-height: 35vh;
-  border-radius: 10px;
+  border-radius: 5px;
   line-height: 2.5rem;
   opacity: 0.95;
 }
@@ -51,9 +51,10 @@
 }
 
 .suggestion:nth-child(even) {
-  background: #cccccc;
+  background: #fafafa;
 }
 
 .suggestionHighlighted {
-  background: #ccceee !important;
+  background: #0C63AA !important;
+  color: white !important;
 }

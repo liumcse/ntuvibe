@@ -7,7 +7,26 @@
     @include open-sans-regular;
     font-size: 18px;
   }
+
   textarea, select, input, button {
     outline: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .popup-overlay {
+    position: absolute;
+    z-index: 100;
+  }
+
+  .popup-content {
+    font-variant: none;
+    color: black;
+    padding: 0 2rem !important;
+    overflow-y: scroll;
+    max-height: 100vh;
+    z-index: 100;
   }
 }

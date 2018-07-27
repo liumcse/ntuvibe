@@ -1,0 +1,59 @@
+@import "colors";
+@import "typography";
+@import "functions";
+
+:local {
+  .footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $primary;
+    color: white;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 3rem 0;
+    width: 60%;
+  }
+
+  .header {
+    @include raleway-medium;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .first_row, .second_row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .first_row {
+    margin-bottom: 2.5rem;
+    @include raleway-regular;
+  }
+
+  .second_row {
+    // border-top: 1px solid rgba(255,255,255,0.5);
+    // padding-top: 2.5rem;
+    align-items: center;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+  }
+
+  .brand {
+    font-size: 2rem;
+    @include american-typewriter;
+  }
+}

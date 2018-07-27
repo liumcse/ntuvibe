@@ -1,78 +1,160 @@
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
-import Bar from "./components/Bar";
+import NavBar from "src/components/NavBar";
+import Footer from "./components/Footer";
+import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 
 import * as styles from "./style.scss";
+import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
+import {
+  fetchCourseDetail,
+  fetchCourseRating,
+  fetchCourseComments
+} from "../redux/actions";
+
+import no from "./assets/no.svg";
+import yes from "./assets/yes.svg";
+
+const Heading = props => (
+  <div className={styles.heading}>
+    <div className={styles.heading_row}>
+      <div className={styles.course_code}>{props.code}</div>
+      <div className={styles.rating_overall}>{props.rating}</div>
+    </div>
+    <div className={styles.heading_course_title}>{props.title}</div>
+  </div>
+);
 
 class PageCourseDetail extends React.Component {
+  componentDidMount() {
+    const {
+      match: {
+        params: { courseCode }
+      }
+    } = this.props;
+
+    this.props.fetchCourseDetail(courseCode.toUpperCase()); // do we really put the upper case here?
+    this.props.fetchCourseRating(courseCode.toUpperCase()); // do we really put the upper case here?
+    this.props.fetchCourseComments(courseCode.toUpperCase()); // do we really put the upper case here?
+  }
+
   render() {
-    return (
-      <div className={styles.page_course_detail}>
-        {/* <a href="https://www.freeiconspng.com/img/32672"><div className={styles.background_image} /></a> */}
-        <div className={styles.sidebar} />
-        <div className={styles.content}>
-          <div className={styles.upper_container}>
-            <div className={styles.course_info}>
-              <div className={styles.course_code}>CZ2007</div>
-              <div className={styles.course_title}>
-                Introduction to Databases
-              </div>
-              <div className={styles.course_description}>
-                Overview of Database Management Systems (DBMS);
-                Entity-Relationship Data Model; Relational Data Model;
-                Functional Dependencies (FD) and Normalization; Relational
-                Algebra; Structured Query Language (SQL); Storage of Relational
-                Data; Indexing Techniques; Query Processing and Optimization;
-                Transaction Management and Concurrency Control.
-              </div>
-              <div className={styles.requirement}>
-                <div className={styles.label}>Prerequisites</div>
-                <div className={styles.requirement_content}>
-                  CZ1007 & CZ2001(Corequisite) OR CE1007 & CE2001(Corequisite)
-                  OR CE1007 & CZ2001(Corequisite) OR CE2001(Corequisite) &
-                  CZ1007
+    const { courseDetail, courseRating, courseComments } = this.props;
+
+    if (!courseDetail || !courseRating || !courseComments) {
+      console.log("Still loading!!");
+      return "Loading...";
+    } else {
+      const {
+        code,
+        title,
+        description,
+        AU,
+        prerequisite,
+        remark,
+        asUE,
+        asPE
+      } = courseDetail;
+      const { overall, useful, easy } = courseRating;
+
+      return (
+        <div className={styles.page_course_detail}>
+          <NavBar />
+          <Menu />
+          <div className={styles.content}>
+            <Heading code={code} rating={overall} title={title} />
+            <div className={styles.row_box}>
+              <div className={styles.course_info}>
+                <div className={styles.course_description}>{description}</div>
+                <div className={styles.requirement}>
+                  <div className={styles.label}>Prerequisites</div>
+                  <div className={styles.requirement_content}>
+                    {prerequisite}
+                  </div>
+                </div>
+                <div className={styles.requirement}>
+                  <div className={styles.label}>Remarks</div>
+                  <div className={styles.requirement_content}>{remark}</div>
                 </div>
               </div>
-              <div className={styles.requirement}>
-                <div className={styles.label}>Remarks</div>
-                <div className={styles.requirement_content}>
-                  Not available to students from BCE, BCG, CE, CEEC; not
-                  available to students with (Admyr 2004-2010)
+              <div className={styles.middle_placeholder} />
+              <div className={styles.course_info_right}>
+                <div className={styles.rating_useful}>
+                  <RatingBar label={"Useful"} value={useful} />
+                </div>
+                <div className={styles.rating_easy}>
+                  <RatingBar label={"Easy"} value={easy} />
+                </div>
+                <div className={styles.au}>{AU.concat(" ").concat("AU")}</div>
+                <div className={styles.availability}>
+                  <div>
+                    <img src={asUE ? yes : no} />Read as Unrestricted Elective
+                  </div>
+                  <div>
+                    <img src={asPE ? yes : no} />Read as General Education
+                    Prescribed Elective
+                  </div>
                 </div>
               </div>
             </div>
-            <div className={styles.middle_placeholder} />
-            <div className={styles.course_info_right}>
-              <div className={styles.overall}>80%</div>
-              <div className={styles.rating_useful}>
-                <Bar label={"Useful"} value={"90%"} />
-              </div>
-              <div className={styles.rating_easy}>
-                <Bar label={"Easy"} value={"40%"} />
-              </div>
-              <div className={styles.au}>3.0 AU</div>
-              <div className={styles.availability}>
-                <div>✅ Available as Unrestricted Elective</div>
-                <div>❌ Available as General Education Prescribed Elective</div>
-              </div>
+            <div className={styles.table}>
+              <Timetable title={"Academic Year 2018/2019 Sem1"} />
+            </div>
+            <div className={styles.table}>
+              <Timetable title={"Final Exam"} />
+            </div>
+            <div className={styles.header}>Course Comments</div>
+            <div className={styles.comment_list}>
+              <CommentList comments={courseComments} />
             </div>
           </div>
-          <div className={styles.table}>
-            <Timetable title={"Academic Year 2018/2019 Sem1"} />
-          </div>
-          <div className={styles.table}>
-            <Timetable title={"Final Exam"} />
-          </div>
-          <div className={styles.header}>Course Comments</div>
-          <div className={styles.comment_list}>
-            <CommentList />
-          </div>
+          <Footer />
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
-export default PageCourseDetail;
+Heading.propTypes = {
+  code: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
+};
+
+PageCourseDetail.propTypes = {
+  // from redux
+  fetchCourseDetail: PropTypes.func.isRequired,
+  fetchCourseRating: PropTypes.func.isRequired,
+  fetchCourseComments: PropTypes.func.isRequired,
+  courseDetail: PropTypes.object,
+  courseRating: PropTypes.object,
+  courseComments: PropTypes.object,
+  // from router
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  courseDetail: state && state.courseDetail,
+  courseRating: state && state.courseRating,
+  courseComments: state && state.courseComments
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
+  fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
+  fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PageCourseDetail)
+);

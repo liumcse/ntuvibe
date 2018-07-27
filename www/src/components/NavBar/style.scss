@@ -1,37 +1,55 @@
 @import 'colors';
 @import 'typography';
+@import 'functions';
 
 :local {
   .navbar_container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    // position: fixed;
-    // top: 0;
-    // left: 0;
     width: 100%;
     height: 6rem;
     background-color: $primary;
-    opacity: 0.9;
+    opacity: 1;
     z-index: 1;
+    @include disable-select;
+    // box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .brand {
+    @include american-typewriter;
+    display: inline;
+    color: white;
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+
+  .right_button:hover {
+    cursor: pointer;
   }
 
   .navbar_elements {
     display: flex;
     flex-direction: row;
     flex: 1;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: flex-end;
     color: white;
     @include open-sans-medium;
     font-size: 1.2rem;
-  }
-
-  .facebook {
-    height: 3rem;
-    width: 3rem;
-    background: rgba(0,0,0,0) url('./assets/facebook.svg') no-repeat;
-    background-size: scale;
-    filter: brightness(100%);
+    &_right {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      &_text {
+        margin-right: 5rem;
+      }
+      a {
+        color: white;
+      }
+      a:hover {
+        color: white;
+        border-bottom: 2px solid white;
+      }
+    };
   }
 }

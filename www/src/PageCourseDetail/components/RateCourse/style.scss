@@ -1,0 +1,64 @@
+@import 'typography';
+@import 'colors';
+
+:local {
+  .header {
+    @include raleway-medium;
+    font-variant: all-petite-caps;
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: $primary;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .radio_a, .radio_b, .radio_c {
+    padding: 0.5rem 2rem;
+    color: white;
+    border-radius: 3px;
+  }
+
+  .radio_a { background-color: $positive }
+  .radio_b { background-color: $neutral }
+  .radio_c { background-color: $negative }
+
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .action {
+    margin-bottom: 2rem;
+  }
+
+  .sub_header {
+    margin-bottom: 2rem;
+  }
+
+  textarea {
+    height: 10rem;
+    width: 100%;
+    padding: 0.6rem 1.2rem;
+    resize: none;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-family: 'American Typewriter' !important;
+    font-size: 1.2rem;
+    line-height: 2rem !important;
+    border-spacing: 10rem;
+  }
+
+  button {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border-radius: 5px;
+    border: 2px solid $primary;
+    cursor: pointer;
+    color: $primary;
+  }
+}
