@@ -1,10 +1,10 @@
-from api.ntuvibe.webapi.models import (
+from webapi.models import (
 	CourseTab,
 	UserTab,
 	CourseRatingTab,
 	ProfessorTab,
 	ProfessorRatingTab,
-	ScheduleTab
+	ClassScheduleTab
 )
 
 def get_prof_rating_by_id(id):

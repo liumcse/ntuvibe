@@ -1,11 +1,12 @@
-from api.ntuvibe.webapi.models import (
+from webapi.models import (
 	CourseTab,
 	UserTab,
 	CourseRatingTab,
 	ProfessorTab,
 	ProfessorRatingTab,
-	ScheduleTab
+	ClassScheduleTab
 )
+
 
 def get_rating_by_id(ratingid):
 	return CourseRatingTab.objects.filter(id=ratingid).first()
