@@ -1,11 +1,9 @@
-import os
-import json
 import time
 from bs4 import BeautifulSoup
 from collections import deque
 from scrapers import request_manager
 from scrapers.constants import COURSE_CONTENT_DETAIL_TYPE
-from scrapers.utils import get_timestamp
+from scrapers.utils import write_json_file
 
 
 def parse_latest_semester(main_site_html):
@@ -84,12 +82,7 @@ def crawl():
         time.sleep(0.1)
 
     global all_course_details
-
-    write_json_path = "data/course_content_%s.json"
-    if not os.path.exists(os.path.dirname(write_json_path)):
-        os.makedirs(os.path.dirname(write_json_path))
-    write_json = open(write_json_path % get_timestamp(), "wb")
-    write_json.write(json.dumps(all_course_details, ensure_ascii=False, indent=2).encode('utf8'))
+    write_json_file(json_path_current="data/course_content.json", json_dict=all_course_details)
     return all_course_details
 
 

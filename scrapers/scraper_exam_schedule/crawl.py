@@ -1,10 +1,8 @@
-import os
-import json
 import re
 from bs4 import BeautifulSoup
 from scrapers.constants import EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE
 from scrapers import request_manager
-from scrapers.utils import get_timestamp
+from scrapers.utils import write_json_file
 
 
 def parse_latest_semester(main_site_html):
@@ -65,12 +63,7 @@ def crawl():
 	parse_exam_details(detail_html)
 
 	global all_exam_details
-
-	write_json_path = "data/exam_schedule_%s.json"
-	if not os.path.exists(os.path.dirname(write_json_path)):
-		os.makedirs(os.path.dirname(write_json_path))
-	write_json = open(write_json_path % get_timestamp(), "wb+")
-	write_json.write(json.dumps(all_exam_details, ensure_ascii=False, indent=2).encode('utf8'))
+	write_json_file(json_path_current="data/exam_schedule.json", json_dict=all_exam_details)
 	return all_exam_details
 
 
