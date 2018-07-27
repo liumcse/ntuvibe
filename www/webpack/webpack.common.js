@@ -9,52 +9,57 @@ const PROJECT_ROOT = path.resolve(__dirname, "../");
 
 const config = {
   entry: {
-    main: SRC_PATH + "/index.js",
+    main: SRC_PATH + "/index.js"
   },
   output: {
     filename: "[name].[hash].js",
     publicPath: "/",
-    path: OUTPUT_PATH,
+    path: OUTPUT_PATH
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: ["node_modules"],
-        use: [{ loader: "babel-loader" }],
+        use: [{ loader: "babel-loader" }]
       },
       {
         test: [
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
-          /\/typefaces\/.*\.svg/,
+          /\/typefaces\/.*\.svg/
         ],
-        use: [{ loader: "file-loader"}],
+        use: [{ loader: "file-loader" }]
       },
       {
         test: /\.css$/,
-        use: [ "style-loader", "css-loader?modules=true&camelCase=true" ]
+        use: ["style-loader", "css-loader?modules=true&camelCase=true"]
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: "style-loader"
-        }, {
-          loader: "css-loader",
-          options: {
-            minimize: true,
-            sourceMap: true,
-            localIdentName: "[hash:base64:10]",
-            importLoaders: 1,
+        use: [
+          {
+            loader: "style-loader"
           },
-        },{
-          loader: "resolve-url-loader"
-        }, {
-          loader: "sass-loader",
-          options: {
-            includePaths: [path.resolve(SRC_PATH, "styles")],
+          {
+            loader: "css-loader",
+            options: {
+              minimize: true,
+              sourceMap: true,
+              localIdentName: "[hash:base64:10]",
+              importLoaders: 1
+            }
           },
-        }],
-      },
+          {
+            loader: "resolve-url-loader"
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [path.resolve(SRC_PATH, "styles")]
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
@@ -62,8 +67,8 @@ const config = {
       template: PROJECT_ROOT + "/index.html"
     }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
-      root: PROJECT_ROOT,
-    }),
+      root: PROJECT_ROOT
+    })
   ]
 };
 

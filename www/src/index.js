@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
@@ -20,21 +16,22 @@ import "normalize.css";
 class App extends React.Component {
   render() {
     return (
-      <div className={styles.app_container}>
-        <NavBar />
-        <Router>
+      <Router>
+        <div className={styles.app_container}>
+          <NavBar />
           <Switch>
             <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
-            <Route exact path={ROUTES.ROUTE_COURSE_PAGE} component={PageCourseDetail} />
+            <Route
+              exact
+              path={ROUTES.ROUTE_COURSE_PAGE}
+              component={PageCourseDetail}
+            />
           </Switch>
-        </Router>
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("app")
-);
+ReactDOM.render(<App />, document.getElementById("app"));

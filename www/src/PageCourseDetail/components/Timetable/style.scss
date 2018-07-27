@@ -1,0 +1,16 @@
+@import "typography";
+
+:local {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    @include open-sans-medium
+  }
+
+  .table {
+    margin-top: 1rem;
+  }
+}
