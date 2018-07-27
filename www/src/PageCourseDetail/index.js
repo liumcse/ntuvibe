@@ -43,14 +43,11 @@ class PageCourseDetail extends React.Component {
     this.props.fetchCourseComments(courseCode.toUpperCase()); // do we really put the upper case here?
   }
 
-  componentDidUpdate() {
-    console.log("props", this.props);
-  }
-
   render() {
     const { courseDetail, courseRating, courseComments } = this.props;
 
     if (!courseDetail || !courseRating || !courseComments) {
+      console.log("Still loading!!");
       return "Loading...";
     } else {
       const {
@@ -73,31 +70,16 @@ class PageCourseDetail extends React.Component {
             <Heading code={code} rating={overall} title={title} />
             <div className={styles.row_box}>
               <div className={styles.course_info}>
-                <div className={styles.course_description}>
-                  {/* Overview of Database Management Systems (DBMS);
-                Entity-Relationship Data Model; Relational Data Model;
-                Functional Dependencies (FD) and Normalization; Relational
-                Algebra; Structured Query Language (SQL); Storage of Relational
-                Data; Indexing Techniques; Query Processing and Optimization;
-                Transaction Management and Concurrency Control. */}
-                  {description}
-                </div>
+                <div className={styles.course_description}>{description}</div>
                 <div className={styles.requirement}>
                   <div className={styles.label}>Prerequisites</div>
                   <div className={styles.requirement_content}>
-                    {/* CZ1007 & CZ2001(Corequisite) OR CE1007 & CE2001(Corequisite)
-                    OR CE1007 & CZ2001(Corequisite) OR CE2001(Corequisite) &
-                    CZ1007 */}
                     {prerequisite}
                   </div>
                 </div>
                 <div className={styles.requirement}>
                   <div className={styles.label}>Remarks</div>
-                  <div className={styles.requirement_content}>
-                    {/* Not available to students from BCE, BCG, CE, CEEC; not
-                    available to students with (Admyr 2004-2010) */}
-                    {remark}
-                  </div>
+                  <div className={styles.requirement_content}>{remark}</div>
                 </div>
               </div>
               <div className={styles.middle_placeholder} />

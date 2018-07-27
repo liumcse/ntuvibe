@@ -6,7 +6,7 @@
     @include raleway-medium;
     font-variant: all-petite-caps;
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
     color: $primary;
   }
 
@@ -19,7 +19,10 @@
     margin-bottom: 2rem;
   }
   .sub_header {
-    color: $primary;
+    margin-bottom: 2rem;
+  }
+
+  .action {
     margin-bottom: 2rem;
   }
 }

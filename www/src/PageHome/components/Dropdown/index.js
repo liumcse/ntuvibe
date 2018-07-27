@@ -51,7 +51,7 @@ class Dropdown extends React.Component {
       (async () => await this.props.fetchCourseList(inputValue))(); // does it work?
       console.log("Finished");
       const { courseList } = this.props;
-      return courseList;
+      return courseList || [];
     }
   };
 

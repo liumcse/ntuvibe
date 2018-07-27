@@ -19,7 +19,7 @@ const Login = props => (
     <div className={styles.section}>
       <div className={styles.row}>
         <div>Email</div>
-        <div>
+        <div className={styles.input}>
           <input />
         </div>
       </div>
@@ -27,7 +27,7 @@ const Login = props => (
     <div className={styles.section}>
       <div className={styles.row}>
         <div>Password</div>
-        <div>
+        <div className={styles.input}>
           <input />
         </div>
       </div>
@@ -39,7 +39,9 @@ const Login = props => (
       </span>{" "}
       within 30 seconds!
     </div>
-    <button onClick={props.closePopup}>Close</button>
+    <div className={styles.action}>
+      <button onClick={props.closePopup}>Close</button>
+    </div>
   </Popup>
 );
 

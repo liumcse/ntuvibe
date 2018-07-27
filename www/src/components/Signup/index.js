@@ -17,7 +17,7 @@ const Signup = props => (
     </div>
     <div className={styles.sub_header}>
       Your NTU Email is solely used to verify that you are an NTU student. You
-      are free to remain anonymouse on Vibe, we defend your privacy.
+      are free to remain anonymous on Vibe, we defend your privacy.
     </div>
     <div className={styles.section}>
       <div className={styles.row}>
@@ -35,7 +35,9 @@ const Signup = props => (
         </div>
       </div>
     </div>
-    <button onClick={props.closePopup}>Close</button>
+    <div className={styles.action}>
+      <button onClick={props.closePopup}>Close</button>
+    </div>
   </Popup>
 );
 

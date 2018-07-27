@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
-import NavBar from "./components/NavBar";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import store from "./redux/store";
