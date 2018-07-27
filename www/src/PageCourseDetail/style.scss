@@ -32,16 +32,16 @@
   .heading {
     display: flex;
     flex-direction: column;
+    color: $secondary;
     &_row {
       display: flex;
       justify-content: space-between;
       .course_code, .rating_overall {
         font-size: 3rem;
         @include raleway-bold;
-        color: $secondary;
       }
       .rating_overall {
-        color: $indicator_a;
+        color: $indicator;
         @include american-typewriter;
       }
     }
@@ -133,6 +133,7 @@
 
   .header {
     @include raleway-medium;
+    color: $secondary;
     font-size: 1.5rem;
     margin-top: 3rem;
   }

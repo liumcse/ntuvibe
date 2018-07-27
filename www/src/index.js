@@ -20,7 +20,6 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <div className={styles.app_container}>
-            <NavBar />
             <Switch>
               <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
               <Route

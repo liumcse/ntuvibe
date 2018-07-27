@@ -9,6 +9,7 @@
 
   .title {
     @include raleway-medium;
+    color: $secondary;
     font-size: 1.2rem;
   }
 
@@ -36,7 +37,7 @@
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: $indicator_b;
+      background-color: $complement;
       color: white;
     }
   }

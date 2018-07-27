@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
+import NavBar from "src/components/NavBar";
 import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
@@ -66,6 +67,7 @@ class PageCourseDetail extends React.Component {
 
       return (
         <div className={styles.page_course_detail}>
+          <NavBar />
           <Menu />
           <div className={styles.content}>
             <Heading code={code} rating={overall} title={title} />

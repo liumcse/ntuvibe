@@ -18,13 +18,22 @@
     justify-content: center;
   }
 
-  .course_search {
+  .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .course_search {
+    // display: flex;
+    // justify-content: center;
     width: 50%;
     color: white;
-    position: absolute;
-    top: 35%;
+    // position: absolute;
+    margin-top: 15%;
   }
 
   .footer {
