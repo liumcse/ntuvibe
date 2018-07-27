@@ -3,10 +3,10 @@ import React from "react";
 import Dropdown from "./components/Dropdown";
 import * as styles from "./style.scss";
 
-const Footer = () => (
-  // eslint-disable-next-line
-  <div className={styles.footer}>© 2018 NTUVibe 🏝 · You're cute</div>
-);
+// const Footer = () => (
+//   // eslint-disable-next-line
+//   <div className={styles.footer}>© 2018 NTUVibe 🏝 · You're cute</div>
+// );
 
 class PageHome extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class PageHome extends React.Component {
           <Dropdown />
         </div>
 
-        <Footer />
+        <div className={styles.footer}>&copy; 2018 NTUVibe. You are cute</div>
       </div>
     );
   }

@@ -16,8 +16,8 @@ const Signup = props => (
       Sign up using your NTU Email (for students only)!
     </div>
     <div className={styles.sub_header}>
-      Your NTU Email is solely used for verifying that you are an NTU student.
-      You are free to remain anonymouse on Vibe, we defend your privacy.
+      Your NTU Email is solely used to verify that you are an NTU student. You
+      are free to remain anonymouse on Vibe, we defend your privacy.
     </div>
     <div className={styles.section}>
       <div className={styles.row}>

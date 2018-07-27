@@ -8,7 +8,6 @@
     flex-direction: column; // experiement
     min-height: 100vh;
     position: relative;
-    background-color: rgba(204, 204, 204, 0.1);
   }
 
   .content {
@@ -16,6 +15,7 @@
     display: flex;
     flex-direction: column;
     padding: 3rem 6rem;
+    padding-bottom: 0;
     margin-bottom: 2rem;
     background: white;
   }
@@ -139,21 +139,5 @@
 
   .comment_list {
     margin-top: 2rem;
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    background-color: $primary;
-    height: 3rem;
-    position: absolute;
-    padding: 1rem 0;
-    bottom: 0;
-    color: white;
-    text-align: center;
-    width: 100%;
   }
 }

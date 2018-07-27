@@ -58,9 +58,9 @@ CommentCard.propTypes = {
   userid: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
   major: PropTypes.string.isRequired,
-  easy: 0 | 1 | 2,
-  useful: 0 | 1 | 2,
-  like: 0 | 1 | 2,
+  easy: PropTypes.number.isRequired,
+  useful: PropTypes.number.isRequired,
+  like: PropTypes.number.isRequired,
   comment_date: PropTypes.number.isRequired,
   comment_content: PropTypes.string
 };

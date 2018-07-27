@@ -1,3 +1,7 @@
+$positive: #28a745;
+$neutral: #c99027;
+$negative: #cb2431;
+
 // ====== Classic Blue
 // $primary: #0C63AA;
 // $secondary: #0DA1AB;
@@ -12,16 +16,18 @@
 // $complement: #2243B6;
 
 // ====== Harvard Crimson
-$primary: #A50A0E;
-$secondary: rgb(13, 117, 124);
-$complement: #714315;
+// $primary: #A50A0E;
+// $secondary: rgb(13, 117, 124);
+// $complement: #714315;
 
-$indicator_a: #1B6AA5;
-$indicator_b: #A50A0E;
+// $indicator_a: #1B6AA5;
+// $indicator_b: #A50A0E;
 
-$positive: #28a745;
-$neutral: #c99027;
-$negative: #cb2431;
 
 // ====== Yale BLue
-// $primary: #00356B;
+$primary: #00356B;
+$secondary: #A50A0E;
+$complement: rgb(235, 169, 27);
+
+$indicator_a: #000000; // Princeton
+$indicator_b: #EE7F2D; // Princeton

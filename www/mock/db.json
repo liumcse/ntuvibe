@@ -128,9 +128,9 @@
         "userid": 13295,
         "username": "Jordan Peterson",
         "major": "Clinical Psychology",
-        "easy": 2,
-        "useful": 2,
-        "like": 2,
+        "easy": 1,
+        "useful": 1,
+        "like": 1,
         "comment_date": 1532663591,
         "comment_content": null
       }

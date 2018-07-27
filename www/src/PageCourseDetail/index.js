@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
+import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 
@@ -26,11 +27,6 @@ const Heading = props => (
     </div>
     <div className={styles.heading_course_title}>{props.title}</div>
   </div>
-);
-
-const Footer = () => (
-  // eslint-disable-next-line
-  <div className={styles.footer}>Copyright © 2018 NTUVibe 🏝 · You're cute</div>
 );
 
 class PageCourseDetail extends React.Component {
