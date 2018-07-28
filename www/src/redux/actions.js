@@ -1,13 +1,12 @@
-// export const fetchCourseList = () => async dispatch => {
-
-// }
+// @flow
+// $FlowFixMe
 import axios from "axios";
 import * as actionTypes from "./action_types";
 
 const BASE_URL = "http://localhost:3000";
 
-export function fetchCourseDetail(courseCode) {
-  return async function(dispatch) {
+export function fetchCourseDetail(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_DETAIL_REQUESTED
     });
@@ -22,14 +21,14 @@ export function fetchCourseDetail(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseRating(courseCode) {
-  return async function(dispatch) {
+export function fetchCourseRating(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_RATING_REQUESTED
     });
@@ -44,14 +43,14 @@ export function fetchCourseRating(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseList(input) {
-  return async function(dispatch) {
+export function fetchCourseList(input: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_LIST_REQUESTED
     });
@@ -66,14 +65,14 @@ export function fetchCourseList(input) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseComments(courseCode) {
-  return async function(dispatch) {
+export function fetchCourseComments(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
     });
@@ -88,13 +87,13 @@ export function fetchCourseComments(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function popupTrigger(popup) {
+export function popupTrigger(popup: number) {
   switch (popup) {
     case 1:
       return { type: actionTypes.POPUP_TRIGGER, payload: 1 };

@@ -1,3 +1,4 @@
+// flow
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -109,7 +110,7 @@ class PageCourseDetail extends React.Component {
             </div>
             <div className={styles.header}>Course Comments</div>
             <div className={styles.comment_list}>
-              <CommentList comments={courseComments.data} />
+              <CommentList comments={courseComments.data || []} />
             </div>
           </div>
           <Footer />
