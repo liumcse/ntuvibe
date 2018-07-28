@@ -16,6 +16,23 @@ def get_ratings_by_courseid(courseid):
 	return CourseRatingTab.objects.filter(courseid=courseid)
 
 
+def calculate_ratings_by_courseid(courseid):
+	ratings = get_ratings_by_courseid(courseid)
+	result = {}
+	useful = helpful = easy = count = 0
+	for r in ratings:
+		useful += r.useful
+		helpful += r.helpful
+		easy += r.easy
+		count += 1
+	try:
+		result['useful'] = useful / count
+		result['helpful'] = helpful / count
+		result['easy'] = easy / count
+	except ZeroDivisionError:
+		result = None
+	return result
+
 def get_ratings_by_userid(userid):
 	return CourseRatingTab.objects.filter(userid=userid)
 

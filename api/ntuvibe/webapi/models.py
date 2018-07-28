@@ -11,7 +11,7 @@ class CourseTab(models.Model):
 	constraint = models.TextField()  # {"prerequisite": , "mutex": , "na_to_..": }
 	grade_type = models.IntegerField()
 	as_pe = models.BooleanField()
-	as_ue = models.BigIntegerField()
+	as_ue = models.BooleanField()
 	create_time = models.PositiveIntegerField()
 	update_time = models.PositiveIntegerField()
 

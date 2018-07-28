@@ -80,6 +80,8 @@ DATABASES = {
 		'NAME': 'ntubits_db',
 		'USER': 'ntubitsadmin',
 		'PASSWORD': 'ntubitsadmin123',
+		'HOST': 'localhost',
+		'PORT': '3306',
 	}
 }
 

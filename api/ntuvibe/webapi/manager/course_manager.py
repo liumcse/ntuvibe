@@ -6,6 +6,7 @@ from webapi.models import (
 	ProfessorRatingTab,
 	ClassScheduleTab
 )
+from . import course_rating_manager
 from webapi.utils import get_timestamp
 
 
@@ -36,10 +37,15 @@ def get_courses(**kwargs):
 	return CourseTab.objects.filter(**kwargs)
 
 
-def add_course(course_code, course_title, description=None, update_time=None):
+def add_course(course_code, course_title, au, constraint, grade_type, as_pe=False, as_ue=False, description=None, update_time=None):
 	CourseTab.objects.create(
 		course_code=course_code,
 		course_title=course_title,
+		au=au,
+		constraint=constraint,
+		grade_type=grade_type,
+		as_pe=as_pe,
+		as_ue=as_ue,
 		description="" if not description else description,
 		update_time=get_timestamp() if not update_time else update_time,
 		create_time=get_timestamp()
@@ -47,8 +53,9 @@ def add_course(course_code, course_title, description=None, update_time=None):
 
 
 def prepare_course_detail_dict(course):
+	ratings = course_rating_manager.calculate_ratings_by_courseid(course.id)
 	return {
-
+		'ratings': ratings
 	}
 
 
