@@ -47,7 +47,6 @@ class PageCourseDetail extends React.Component {
     const { courseDetail, courseRating, courseComments } = this.props;
 
     if (!courseDetail || !courseRating || !courseComments) {
-      console.log("Still loading!!");
       return "Loading...";
     } else {
       const {
@@ -110,7 +109,7 @@ class PageCourseDetail extends React.Component {
             </div>
             <div className={styles.header}>Course Comments</div>
             <div className={styles.comment_list}>
-              <CommentList comments={courseComments} />
+              <CommentList comments={courseComments.data} />
             </div>
           </div>
           <Footer />
@@ -140,11 +139,14 @@ PageCourseDetail.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  courseDetail: state && state.courseDetail,
-  courseRating: state && state.courseRating,
-  courseComments: state && state.courseComments
-});
+const mapStateToProps = state => {
+  const { course } = state;
+  return {
+    courseDetail: course && course.courseDetail,
+    courseRating: course && course.courseRating,
+    courseComments: course && course.courseComments
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
