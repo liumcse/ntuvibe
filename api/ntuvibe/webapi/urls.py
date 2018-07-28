@@ -8,6 +8,11 @@ course_url_patterns = [
 	path(r'add_course_rating/', views.add_course_rating),
 ]
 
+prof_url_patterns = [
+	path(r'add_prof/<int:courseid>/$', views.create_prof),
+	path(r'add_prof_rating/<int:profid>', views.add_prof_rating),
+]
+
 urlpatterns = [
 	path(r'course/', include(course_url_patterns))
 ]
