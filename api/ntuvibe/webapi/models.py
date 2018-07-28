@@ -73,13 +73,13 @@ class ClassScheduleTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	courseid = PositiveBigIntegerField()
 	index = models.IntegerField()
-	start_time = models.TimeField()
-	end_time = models.TimeField()
+	start_time = models.TimeField()  # a datetime.time instance
+	end_time = models.TimeField()  # a datetime.time instance
 	day = models.IntegerField()  # 1 ~ 6
 	type = models.CharField(max_length=16)  # whether it is lab or tutorial or lecture
 	venue = models.CharField(max_length=16)
 	group = models.CharField(max_length=16)
-	remark = models.CharField(max_length=64)  # which teaching weeks does it take place
+	weeks = models.CharField(max_length=128)  # which teaching weeks does it take place
 
 	class Meta:
 		db_table = u"webapi_class_schedule_tab"
@@ -91,10 +91,8 @@ class ClassScheduleTab(models.Model):
 class ExamScheduleTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	courseid = PositiveBigIntegerField(db_index=True)
-	date = models.CharField(max_length=32)
-	day = models.IntegerField()
-	time = models.TimeField()
-	duration = models.FloatField()
+	start_time = PositiveBigIntegerField(db_index=True)
+	end_time = PositiveBigIntegerField(db_index=True)
 
 	class Meta:
 		db_table = u"webapi_exam_schedule_tab"
