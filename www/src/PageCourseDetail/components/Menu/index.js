@@ -1,31 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { popupTrigger } from "src/redux/actions";
 
 import * as styles from "./style.scss";
-import RateCourse from "../RateCourse";
 
-class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rateCourseOpen: false,
-      rateInstructorOpen: false
-    };
-  }
-
-  rateCourse = () => {
-    this.setState({ rateCourseOpen: true });
-  };
-
-  closePopup = () => {
-    this.setState({
-      rateCourseOpen: false,
-      rateInstructorOpen: false
-    });
-  };
-
+class Menu extends React.PureComponent {
   render() {
-    const { rateCourseOpen } = this.state;
-
+    const { popupTrigger } = this.props;
     return (
       <div className={styles.menu}>
         <div className={styles.item}>Information</div>
@@ -33,17 +15,27 @@ class Menu extends React.Component {
         <div className={styles.item}>Course Comments</div>
         <div
           className={styles.action + " " + styles.item}
-          onClick={() => this.rateCourse()}
+          onClick={() => popupTrigger(3)}
         >
           Rate the Course
         </div>
         {/* <div className={styles.action + " " + styles.item}>
           Rate an Instructor
         </div> */}
-        <RateCourse open={rateCourseOpen} closePopup={this.closePopup} />
       </div>
     );
   }
 }
 
-export default Menu;
+Menu.propTypes = {
+  popupTrigger: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  popupTrigger: option => dispatch(popupTrigger(option))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Menu);

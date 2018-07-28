@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
+import { popupTrigger } from "src/redux/actions";
 import login from "./assets/facebook.svg";
 
 import * as styles from "./style.scss";
-import Login from "../Login";
-import Signup from "../Signup";
 
 const logo = (
   <div
@@ -23,28 +24,9 @@ const rightButton = (
   <img src={login} style={{ height: "3rem", width: "auto" }} />
 );
 
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loginOpen: false,
-      signupOpen: false
-    };
-  }
-
-  closePopup = () => {
-    this.setState({ loginOpen: false, signupOpen: false });
-  };
-
-  openLogin = () => {
-    this.setState({ loginOpen: true });
-  };
-
-  switchToSignup = () => {
-    this.setState({ loginOpen: false, signupOpen: true });
-  };
-
+class NavBar extends React.PureComponent {
   render() {
+    const { popupTrigger } = this.props;
     return (
       <div className={styles.navbar_container}>
         <div className={styles.navbar_elements}>
@@ -67,21 +49,25 @@ class NavBar extends React.Component {
             <div className={styles.navbar_elements_right_text}>
               <Link to="#">HELP</Link>
             </div>
-            <div className={styles.rightButton} onClick={this.openLogin}>
+            <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
               {rightButton}
             </div>
           </div>
         </div>
-
-        <Login
-          open={this.state.loginOpen}
-          closePopup={this.closePopup}
-          switchToSignup={this.switchToSignup}
-        />
-        <Signup open={this.state.signupOpen} closePopup={this.closePopup} />
       </div>
     );
   }
 }
 
-export default NavBar;
+NavBar.propTypes = {
+  popupTrigger: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  popupTrigger: option => dispatch(popupTrigger(option))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NavBar);

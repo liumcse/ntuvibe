@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 import * as styles from "./style.scss";
 
-const Signup = props => (
+const SignUp = props => (
   <Popup
     modal
     closeOnDocumentClick={false}
     open={props.open}
     closePopup={props.closePopup}
   >
-    <div className={styles.header}>Login</div>
+    <div className={styles.header}>Sign Up</div>
     <div className={styles.sub_header}>
       Sign up using your NTU Email (for students only)!
     </div>
@@ -21,18 +21,12 @@ const Signup = props => (
     </div>
     <div className={styles.section}>
       <div className={styles.row}>
-        <div>Email</div>
-        <div>
-          <input />
-        </div>
+        <input />
       </div>
     </div>
     <div className={styles.section}>
       <div className={styles.row}>
-        <div>Password</div>
-        <div>
-          <input />
-        </div>
+        <input />
       </div>
     </div>
     <div className={styles.action}>
@@ -41,9 +35,9 @@ const Signup = props => (
   </Popup>
 );
 
-Signup.propTypes = {
+SignUp.propTypes = {
   open: PropTypes.bool.isRequired,
   closePopup: PropTypes.func.isRequired
 };
 
-export default Signup;
+export default SignUp;

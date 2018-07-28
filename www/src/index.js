@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
+import Popups from "./components/Popups";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import store from "./redux/store";
@@ -27,6 +28,7 @@ class App extends React.Component {
                 component={PageCourseDetail}
               />
             </Switch>
+            <Popups />
           </div>
         </Router>
       </Provider>

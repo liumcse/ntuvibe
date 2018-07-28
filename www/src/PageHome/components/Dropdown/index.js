@@ -112,9 +112,12 @@ Dropdown.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  courseList: state && state.courseList
-});
+const mapStateToProps = state => {
+  const { course } = state;
+  return {
+    courseList: course && course.courseList
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchCourseList: input => dispatch(fetchCourseList(input))

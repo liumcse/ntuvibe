@@ -18,6 +18,7 @@
 
   .popup-overlay {
     position: absolute;
+    background-color: rgba(255,255,255,.8) !important;
     z-index: 100;
   }
 
@@ -25,8 +26,30 @@
     font-variant: none;
     color: black;
     padding: 0 2rem !important;
-    overflow-y: scroll;
-    max-height: 100vh;
+    overflow-y: auto;
+    max-height: 75vh;
     z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    border: none !important;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: white; 
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
   }
 }

@@ -1,6 +1,22 @@
+import { combineReducers } from "redux";
 import * as actionTypes from "./action_types";
 
-const reducer = (state, action) => {
+const initialState = {
+  course: {
+    courseList: null,
+    courseDetail: null,
+    courseRating: null,
+    courseSchedule: null,
+    courseComments: null
+  },
+  popup: {
+    loginOpen: false,
+    signUpOpen: false,
+    rateCourseOpen: false
+  }
+};
+
+const course = (state = initialState.course, action) => {
   const { type, payload } = action;
   switch (type) {
     case actionTypes.FETCH_COURSE_DETAIL_SUCCESS:
@@ -36,7 +52,7 @@ const reducer = (state, action) => {
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
         ...state,
-        courseComments: payload.data
+        courseComments: payload
       };
     case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
       return {
@@ -45,8 +61,45 @@ const reducer = (state, action) => {
       };
     default:
       // likely to be an error
-      return { ...state };
+      return state;
   }
 };
 
-export default reducer;
+const popup = (state = initialState.popup, action) => {
+  const { type, payload } = action;
+  if (type === actionTypes.POPUP_TRIGGER) {
+    switch (payload) {
+      case 1:
+        // open Login
+        return {
+          ...state,
+          loginOpen: true
+        };
+      case 2:
+        // open SignUp
+        return {
+          ...state,
+          signUpOpen: true
+        };
+      case 3:
+        // open RateCourse
+        return {
+          ...state,
+          rateCourseOpen: true
+        };
+      default:
+        // close all
+        return {
+          loginOpen: false,
+          signUpOpen: false,
+          rateCourseOpen: false
+        };
+    }
+  } else {
+    return state;
+  }
+};
+
+const rootReducer = combineReducers({ course, popup });
+
+export default rootReducer;

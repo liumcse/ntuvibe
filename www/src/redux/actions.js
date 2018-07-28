@@ -93,3 +93,16 @@ export function fetchCourseComments(courseCode) {
       );
   };
 }
+
+export function popupTrigger(popup) {
+  switch (popup) {
+    case 1:
+      return { type: actionTypes.POPUP_TRIGGER, payload: 1 };
+    case 2:
+      return { type: actionTypes.POPUP_TRIGGER, payload: 2 };
+    case 3:
+      return { type: actionTypes.POPUP_TRIGGER, payload: 3 };
+    default:
+      return { type: actionTypes.POPUP_TRIGGER, payload: 0 }; // close all
+  }
+}
