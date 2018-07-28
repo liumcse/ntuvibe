@@ -10,7 +10,10 @@ www/dist
 venv
 *.pyc
 
+# Django
+*_initial.py
+
 # data
-course_content_*.json
-class_schedule_*.json
-exam_schedule_*.json
+course_content.json*
+class_schedule.json*
+exam_schedule.json*
