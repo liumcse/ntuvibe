@@ -72,28 +72,24 @@ const popup = (state = initialState.popup, action) => {
       case 1:
         // open Login
         return {
-          ...state,
+          ...initialState.popup,
           loginOpen: true
         };
       case 2:
         // open SignUp
         return {
-          ...state,
+          ...initialState.popup,
           signUpOpen: true
         };
       case 3:
         // open RateCourse
         return {
-          ...state,
+          ...initialState.popup,
           rateCourseOpen: true
         };
       default:
         // close all
-        return {
-          loginOpen: false,
-          signUpOpen: false,
-          rateCourseOpen: false
-        };
+        return initialState.popup;
     }
   } else {
     return state;

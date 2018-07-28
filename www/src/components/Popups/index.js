@@ -9,10 +9,16 @@ import RateCourse from "./RateCourse";
 
 class Popups extends React.Component {
   render() {
-    const { loginOpen, signUpOpen, rateCourseOpen, close } = this.props;
+    const {
+      loginOpen,
+      signUpOpen,
+      rateCourseOpen,
+      close,
+      openSignUp
+    } = this.props;
     return (
       <React.Fragment>
-        <Login open={loginOpen} closePopup={close} />
+        <Login open={loginOpen} closePopup={close} openSignUp={openSignUp} />
         <SignUp open={signUpOpen} closePopup={close} />
         <RateCourse open={rateCourseOpen} closePopup={close} />
       </React.Fragment>
@@ -24,7 +30,8 @@ Popups.propTypes = {
   loginOpen: PropTypes.bool.isRequired,
   signUpOpen: PropTypes.bool.isRequired,
   rateCourseOpen: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired,
+  openSignUp: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -37,7 +44,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  close: () => dispatch(popupTrigger(0))
+  close: () => dispatch(popupTrigger(0)),
+  openSignUp: () => dispatch(popupTrigger(2))
 });
 
 export default connect(

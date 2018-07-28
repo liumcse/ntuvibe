@@ -12,25 +12,21 @@ const SignUp = props => (
     closePopup={props.closePopup}
   >
     <div className={styles.header}>Sign Up</div>
-    <div className={styles.sub_header}>
-      Sign up using your NTU Email (for students only)!
-    </div>
-    <div className={styles.sub_header}>
-      Your NTU Email is solely used to verify that you are an NTU student. You
-      are free to remain anonymous on Vibe, we defend your privacy.
+    <div className={styles.description}>
+      <div>Create an account to have more fun!</div>
     </div>
     <div className={styles.section}>
-      <div className={styles.row}>
-        <input />
+      <div className={styles.email_container}>
+        <input className={styles.email} placeholder="Email" />
       </div>
     </div>
-    <div className={styles.section}>
-      <div className={styles.row}>
-        <input />
-      </div>
+    <div className={styles.note}>
+      <div>A verification Email will be sent to you.</div>
+      <div>Your Email is solely to verify that you are an NTU student.</div>
+      <div>We defend your privacy ⚔️.</div>
     </div>
     <div className={styles.action}>
-      <button onClick={props.closePopup}>Close</button>
+      <button onClick={props.closePopup}>Verify</button>
     </div>
   </Popup>
 );

@@ -23,7 +23,14 @@ const Login = props => (
         />
       </div>
     </div>
+    <div className={styles.section}>
+      No account?{" "}
+      <span className={styles.signUp} onClick={() => props.openSignUp()}>
+        Create one
+      </span>.
+    </div>
     <div className={styles.action}>
+      <button>Login</button>
       <button onClick={props.closePopup}>Close</button>
     </div>
   </Popup>
@@ -31,6 +38,7 @@ const Login = props => (
 
 Login.propTypes = {
   open: PropTypes.bool.isRequired,
+  openSignUp: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired
 };
 

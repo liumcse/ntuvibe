@@ -17,11 +17,6 @@
     justify-content: space-between;
   }
 
-  .email_container, .password_container {
-    display: flex;
-    // justify-content: center;
-  }
-
   .email_container {
     margin-bottom: 1.5rem;
   }
@@ -64,7 +59,15 @@
     }
   }
 
+  .signUp {
+    cursor: pointer;
+    color: $complement;
+  }
+
   .action {
     margin-bottom: 2rem;
+    button {
+      margin-right: 3rem;
+    }
   }
 }
