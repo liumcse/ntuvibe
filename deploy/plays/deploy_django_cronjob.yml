@@ -1,0 +1,10 @@
+---
+- hosts: "{{ app_name }}"
+  gather_facts: False
+  serial: 1
+  vars_files:
+    - ../ssh_credentials.yml
+    - ../var.yml
+  tasks:
+    - include: ../tasks/task_copy_files.yml
+    - include: ../tasks/task_update_crontab.yml

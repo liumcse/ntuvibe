@@ -1,0 +1,6 @@
+-------- CHECK RESPONSE --------
+ansible all -m ping -i ./host_live
+ansible all -m command -a 'df -h' -i ./host_live
+
+----------- PRODUCTION LIVE DEPLOY ------------
+ansible-playbook ./plays/deploy_django_cronjob.yml -i ./host_live -e "app_name=ntuvibe"
