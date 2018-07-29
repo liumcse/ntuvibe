@@ -2,7 +2,7 @@ import re
 from bs4 import BeautifulSoup
 from scrapers.constants import EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE
 from scrapers import request_manager
-from scrapers.utils import write_json_file
+from scrapers.utils import write_json_file, get_date_time
 
 
 def parse_latest_semester(main_site_html):
@@ -56,6 +56,7 @@ def parse_row(tr):
 
 
 def crawl():
+	print(get_date_time())
 	main_site_html = request_manager.get_exam_schedule_main_html()
 	latest_academic_year, latest_semester = parse_latest_semester(main_site_html)
 

@@ -1,0 +1,36 @@
+---
+# Copy wsgi config to server and restart uwsgi
+
+- name: ensure remote root dir exists
+  file: path={{ remote_root_dir }} state=directory
+  become: true
+
+
+- name: ensure remote uwsgi dir exists
+  file: path={{ remote_root_dir }}/uwsgi state=directory
+  become: true
+
+
+- name: generate uwsgi template config file to remote dir
+  template: src=../files/{{ app_name }}.uwsgi.template/{{ app_name }}_uwsgi.ini dest={{ remote_root_dir }}/uwsgi/{{ app_name }}_uwsgi.ini
+  become: true
+
+
+- name: check pid file exists
+  stat: path={{ remote_root_dir }}/uwsgi/{{ app_name }}_uwsgi.pid
+  register: uwsgi_pid_file
+
+
+- name: stop old uwsgi process if exists
+  shell: uwsgi --stop {{ remote_root_dir }}/uwsgi/{{ app_name }}_uwsgi.pid
+  become: true
+  when: uwsgi_pid_file.stat.exists
+
+
+- name: wait for 3 seconds
+  wait_for: timeout=3
+  become: true
+
+
+- name: start new uwsgi
+  shell: uwsgi {{ remote_root_dir }}/uwsgi/{{ app_name }}_uwsgi.ini

@@ -1,7 +1,7 @@
 import time
 from bs4 import BeautifulSoup
 from scrapers import request_manager
-from scrapers.utils import write_json_file
+from scrapers.utils import write_json_file, get_date_time
 
 
 def parse_latest_semester(main_site_html):
@@ -23,7 +23,6 @@ def parse_category_list(semester_html):
         if option["value"]:
             category_list.append(option["value"])
 
-    print(category_list)
     return category_list
 
 
@@ -73,6 +72,7 @@ def parse_row(tr):
 
 
 def crawl():
+    print(get_date_time())
     main_site_html = request_manager.get_class_schedule_main_html()
     latest_semester = parse_latest_semester(main_site_html)
 

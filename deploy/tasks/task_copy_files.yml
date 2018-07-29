@@ -1,0 +1,49 @@
+---
+# copy all scrapers and api related files (.py and .txt) to remote server
+
+- name: ensure remote root dir exists
+  file: path={{ remote_root_dir }} state=directory
+  become: true
+
+
+- name: create datetime release string
+  local_action: shell date +%Y%m%d_%H%M%S
+  register: release_datetime
+  run_once: true
+
+
+- name: ensure remote backup dir exists
+  file: path={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} state=directory
+  become: true
+
+
+- name: copy files from local api dir to remote
+  copy: src=../../api dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} mode=775
+  become: true
+
+
+- name: copy files from local scrapers dir to remote
+  copy: src=../../scrapers dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} mode=775
+  become: true
+
+
+- name: create symbolic link from remote backup dir to remote app dir
+  file: path={{ remote_root_dir }}/{{ app_name }} src={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} state=link
+  become: true
+
+
+- name: check current server indicator exists
+  stat: path={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/server.current
+  register: current_server
+  become: true
+
+
+- name: move current server indicator to backup
+  shell: mv server.current server.backup chdir={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}
+  when: current_server.stat.exists
+  become: true
+
+
+- name: create new current server indicator
+  copy: content="{{ release_datetime.stdout }}" dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/server.current
+  become: true
