@@ -40,12 +40,12 @@ class NavBar extends React.PureComponent {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/">HOME</Link>
             </div>
-            <div className={styles.navbar_elements_right_text}>
+            {/* <div className={styles.navbar_elements_right_text}>
               <Link to="#">EXPLORE</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
               <Link to="#">PLAN</Link>
-            </div>
+            </div> */}
             <div className={styles.navbar_elements_right_text}>
               <Link to="#">HELP</Link>
             </div>
