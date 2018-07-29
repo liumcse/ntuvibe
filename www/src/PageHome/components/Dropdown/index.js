@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 import { fetchCourseList } from "src/redux/actions";
 
+import * as styles from "./style.scss";
 import theme from "./theme.css";
 
 class Dropdown extends React.Component {
@@ -33,7 +34,9 @@ class Dropdown extends React.Component {
 
   // Use your imagination to render suggestions.
   renderSuggestion = suggestion => (
-    <div>{suggestion.code.concat(" - ").concat(suggestion.title)}</div>
+    <div className={styles.suggestion_title}>
+      {suggestion.code.concat(" - ").concat(suggestion.title)}
+    </div>
   );
 
   // Teach Autosuggest how to calculate suggestions for any given input value.

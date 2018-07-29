@@ -28,11 +28,8 @@
   }
 
   .course_search {
-    // display: flex;
-    // justify-content: center;
     width: 50%;
     color: white;
-    // position: absolute;
     margin-top: 15%;
   }
 
@@ -48,6 +45,7 @@
     color: white;
     text-align: center;
     width: 100%;
+    z-index: 1;
   }
   // .footer {
   //   position: absolute;
