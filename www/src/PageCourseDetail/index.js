@@ -8,6 +8,7 @@ import NavBar from "src/components/NavBar";
 import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
+import ExamSchedule from "./components/ExamSchedule";
 
 import * as styles from "./style.scss";
 import Menu from "./components/Menu";
@@ -106,7 +107,7 @@ class PageCourseDetail extends React.Component {
               <Timetable title={"Academic Year 2018/2019 Sem1"} />
             </div>
             <div className={styles.table}>
-              <Timetable title={"Final Exam"} />
+              <ExamSchedule title={"Final Exam"} />
             </div>
             <div className={styles.header}>Course Comments</div>
             <div className={styles.comment_list}>

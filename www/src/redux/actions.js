@@ -87,7 +87,7 @@ export function fetchCourseComments(courseCode: string) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
-          payload: null
+          payload: []
         })
       );
   };

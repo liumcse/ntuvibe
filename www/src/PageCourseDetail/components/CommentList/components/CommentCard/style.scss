@@ -5,32 +5,34 @@
 :local {
   .container {
     display: flex;
-    width: 85%;
+    width: 75%;
     margin-bottom: 3rem;
     .profile {
-      flex: 1;
-      text-align: right;
+      // flex: 1;
+      // text-align: right;
       margin-top: 1rem;
       margin-right: 3rem;
       position: relative;
       &_avatar {
-        position: absolute;
-        right: 0;
+        // position: absolute;
+        // left: 0;
         width: 5rem;
         height: 5rem;
         background-color: #ccc;
-        border-radius: 3rem;
+        border-radius: 50rem;
+        @include medium-shadow;
       }
     }
     .box {
-      flex: 4;
+      // flex: 4;
+      width: 100%;
       font-size: 0.9rem;
       min-height: 7rem;
       background-color: rgba(204, 204, 204, 0.2);
       border-radius: 5px;
       padding: 1rem 2rem;
       display: flex;
-      // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      @include medium-shadow;
       &_left {
         flex: 4;
         display: flex;
@@ -42,7 +44,7 @@
         }
         .glance {
           margin-bottom: 0.75rem;
-          color: #656363;
+          color: $grey;
         }
         .content {
           p {

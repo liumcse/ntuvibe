@@ -48,7 +48,7 @@ class Dropdown extends React.Component {
     if (inputLength === 0) return [];
     else {
       console.log("Trigger");
-      (async () => await this.props.fetchCourseList(inputValue))(); // does it work?
+      this.props.fetchCourseList(inputValue); // does it work?
       console.log("Finished");
       const { courseList } = this.props;
       return courseList || [];
@@ -60,6 +60,15 @@ class Dropdown extends React.Component {
       value: newValue
     });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.courseList !== this.props.courseList) {
+      console.log("Did update");
+      this.setState({
+        suggestions: this.props.courseList
+      });
+    }
+  }
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.

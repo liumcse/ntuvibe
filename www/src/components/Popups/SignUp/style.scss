@@ -1,5 +1,6 @@
 @import 'typography';
 @import 'colors';
+@import 'functions';
 
 :local {
   .header {
@@ -35,11 +36,11 @@
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 1rem;
-    /* background: blue; */
     opacity: 0.8;
     background-size: 1.5rem 1.5rem;
     background-repeat: no-repeat;
-    background-position: 0.8rem 0.6rem; 
+    background-position: 0.8rem 0.6rem;
+    @include medium-shadow;
   }
 
   .section {
