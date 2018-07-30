@@ -1,17 +1,9 @@
-from webapi.models import (
-	CourseTab,
-	UserTab,
-	CourseRatingTab,
-	ProfessorTab,
-	ProfessorRatingTab,
-	ClassScheduleTab
-)
-from . import course_rating_manager
+from webapi.models import CourseTab
 from webapi.utils import get_timestamp
 
 
-def get_course_by_courseid(courseid):
-	return CourseTab.objects.filter(id=courseid).first()
+def get_course_by_course_id(course_id):
+	return CourseTab.objects.filter(id=course_id).first()
 
 
 def get_course_by_course_code(course_code):
@@ -52,13 +44,6 @@ def add_course(course_code, course_title, au, constraint, grade_type, as_pe=Fals
 	)
 
 
-def prepare_course_detail_dict(course):
-	ratings = course_rating_manager.calculate_ratings_by_courseid(course.id)
-	return {
-		'ratings': ratings
-	}
-
-
 def prepare_course_list_dict(courses):
 	data = [
 		{
@@ -69,3 +54,21 @@ def prepare_course_list_dict(courses):
 	]
 	response_dict = {'data': data}
 	return response_dict
+
+
+def prepare_course_detail_dict(course):
+	constraint = eval(course.constraint)
+	return {
+		"data": {
+			"title": course.course_title,
+			"au": str(int(course.au)),
+			"description": course.description,
+			"constraint": {
+				"prerequisite": constraint["prerequisite"],
+				"mutex": constraint["mutex"],
+			},
+			"as_pe": course.as_pe,
+			"as_ue": course.as_ue,
+		}
+	}
+

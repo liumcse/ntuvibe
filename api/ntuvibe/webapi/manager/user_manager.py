@@ -13,8 +13,8 @@ def get_users(**kwargs):
 	return UserTab.objects.filter(**kwargs)
 
 
-def get_user_by_userid(userid):
-	return UserTab.objects.filter(id=userid).first()
+def get_user_by_user_id(user_id):
+	return UserTab.objects.filter(id=user_id).first()
 
 
 def get_user_by_email(email):
@@ -35,9 +35,9 @@ def register_user(username, password, email):
 	user.create()
 
 
-def login_verification(password, userid=None, email=None):
-	if userid:
-		user = get_user_by_userid(userid)
+def login_verification(password, user_id=None, email=None):
+	if user_id:
+		user = get_user_by_user_id(user_id)
 	elif email:
 		user = get_user_by_email(email)
 	else:

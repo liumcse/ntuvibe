@@ -33,8 +33,8 @@ class UserTab(models.Model):
 
 class CourseRatingTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	userid = PositiveBigIntegerField(db_index=True)
-	courseid = PositiveBigIntegerField(db_index=True)
+	user_id = PositiveBigIntegerField(db_index=True)
+	course_id = PositiveBigIntegerField(db_index=True)
 	useful = models.IntegerField()
 	easy = models.IntegerField()
 	like = models.IntegerField()
@@ -46,7 +46,7 @@ class CourseRatingTab(models.Model):
 
 class ProfessorTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	courseid = PositiveBigIntegerField(db_index=True)
+	course_id = PositiveBigIntegerField(db_index=True)
 	name = models.CharField(max_length=32)
 	title = models.CharField(max_length=16)
 	photo = models.CharField(max_length=64, default="")
@@ -58,8 +58,8 @@ class ProfessorTab(models.Model):
 
 class ProfessorRatingTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	userid = PositiveBigIntegerField(db_index=True)
-	profid = PositiveBigIntegerField(db_index=True)
+	user_id = PositiveBigIntegerField(db_index=True)
+	prof_id = PositiveBigIntegerField(db_index=True)
 	clarity = models.IntegerField()
 	enthusiasm = models.IntegerField()
 	helpful = models.IntegerField()
@@ -71,7 +71,7 @@ class ProfessorRatingTab(models.Model):
 
 class ClassScheduleTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	courseid = PositiveBigIntegerField()
+	course_id = PositiveBigIntegerField()
 	index = models.IntegerField()
 	start_time = models.TimeField()  # a datetime.time instance
 	end_time = models.TimeField()  # a datetime.time instance
@@ -84,13 +84,13 @@ class ClassScheduleTab(models.Model):
 	class Meta:
 		db_table = u"webapi_class_schedule_tab"
 		indexes = [
-			models.Index(fields=['courseid', 'index'])
+			models.Index(fields=['course_id', 'index'])
 		]
 
 
 class ExamScheduleTab(models.Model):
 	id = models.BigAutoField(primary_key=True)
-	courseid = PositiveBigIntegerField(db_index=True)
+	course_id = PositiveBigIntegerField(db_index=True)
 	start_time = PositiveBigIntegerField(db_index=True)
 	end_time = PositiveBigIntegerField(db_index=True)
 
