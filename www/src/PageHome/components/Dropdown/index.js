@@ -6,13 +6,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import { fetchCourseList } from "src/redux/actions";
+import { search_course_by_code_or_title, cap_first_letter } from "src/utils";
+
+import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
 import theme from "./theme.css";
 
 type Props = {
   // from redux
-  courseList: any,
+  courseList: CourseList,
   fetchCourseList: () => void,
   // from router
   match: Object,
@@ -22,7 +25,7 @@ type Props = {
 
 type States = {
   value: string,
-  suggestions: Array<any>
+  suggestions: Array<CourseListSnippet>
 };
 
 class Dropdown extends React.Component<Props, States> {
@@ -44,33 +47,29 @@ class Dropdown extends React.Component<Props, States> {
   // input value for every given suggestion.
   getSuggestionValue = suggestion => {
     const { history } = this.props;
-    suggestion.code.concat(" - ").concat(suggestion.title);
+    // suggestion.code.concat(" - ").concat(suggestion.title);
     history.push("/courses/" + suggestion.code.toLowerCase());
   };
 
   // Use your imagination to render suggestions.
   renderSuggestion = suggestion => (
     <div className={styles.suggestion_title}>
-      {suggestion.code.concat(" - ").concat(suggestion.title)}
+      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
     </div>
   );
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
-    console.log("Value", value);
+    const { courseList } = this.props;
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue === null ? 0 : inputValue.length;
-    console.log("inputValue", inputValue);
-    console.log("inputValue === null ?", inputValue === null);
-    console.log("inputLength", inputValue.length);
-
     if (inputLength === 0) return [];
     else {
-      console.log("Trigger");
-      this.props.fetchCourseList(); // does it work?
-      console.log("Finished");
-      const { courseList } = this.props;
-      return courseList || [];
+      const suggestions = search_course_by_code_or_title(
+        courseList,
+        inputValue
+      );
+      return suggestions;
     }
   };
 
@@ -80,13 +79,8 @@ class Dropdown extends React.Component<Props, States> {
     });
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.courseList !== this.props.courseList) {
-      console.log("Did update");
-      this.setState({
-        suggestions: this.props.courseList
-      });
-    }
+  componentDidMount() {
+    this.props.fetchCourseList();
   }
 
   // Autosuggest will call this function every time you need to update suggestions.

@@ -1,0 +1,7 @@
+{
+  "/api/courses/get_course_detail\\?code=:code": "/get_course_detail/:code",
+  "/api/courses/get_course_rating\\?code=:code": "/get_course_rating/:code",
+  "/api/courses/get_course_comments\\?code=:code": "/get_course_comments/:code",
+  "/api/courses/get_course_list": "/get_course_list"
+
+}

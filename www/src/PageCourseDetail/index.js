@@ -10,6 +10,7 @@ import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 import ExamSchedule from "./components/ExamSchedule";
 
+import { remove_trailing_newline } from "src/utils";
 import type {
   CourseDetail,
   CourseRating,
@@ -27,6 +28,9 @@ import {
 
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
+
+const NO_DESCRIPTION =
+  "This course has no descrption. I don't know why this would happen either...";
 
 type Props = {
   // from redux
@@ -71,82 +75,90 @@ class PageCourseDetail extends React.Component<Props> {
     this.props.fetchCourseComments(courseCode.toUpperCase()); // do we really put the upper case here?
   }
 
+  // eslint-disable-next-line
   render() {
     const { courseDetail, courseRating, courseComments } = this.props;
-
     if (!courseDetail || !courseRating || !courseComments) {
-      return "Loading...";
-    } else {
-      const {
-        title,
-        description,
-        AU,
-        prerequisite,
-        remark,
-        asUE,
-        asPE
-      } = courseDetail;
-      const { overall, useful, easy } = courseRating;
+      return "Waiting for response...";
+    }
 
-      return (
-        <div className={styles.page_course_detail}>
-          <NavBar />
-          <Menu />
-          <div className={styles.content}>
-            <Heading
-              code={this.props.match.params.courseCode}
-              rating={overall}
-              title={title}
-            />
-            <div className={styles.row_box}>
-              <div className={styles.course_info}>
-                <div className={styles.course_description}>{description}</div>
-                <div className={styles.requirement}>
-                  <div className={styles.label}>Prerequisites</div>
-                  <div className={styles.requirement_content}>
-                    {prerequisite}
+    const { courseCode } = this.props.match.params;
+    const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
+    const { number_of_rating, overall, useful, easy } = courseRating; // for courseRating
+
+    return (
+      <div className={styles.page_course_detail}>
+        <NavBar />
+        <Menu />
+        <div className={styles.content}>
+          <Heading
+            code={courseCode}
+            rating={overall || "-%"}
+            title={title || ""}
+          />
+          <div className={styles.row_box}>
+            <div className={styles.course_info}>
+              <div className={styles.course_description}>
+                {(description && remove_trailing_newline(description)) ||
+                  NO_DESCRIPTION}
+              </div>
+              {constraint &&
+                constraint.prerequisite &&
+                constraint.prerequisite.length > 0 && (
+                  <div className={styles.requirement}>
+                    <div className={styles.label}>Prerequisites</div>
+                    <div className={styles.requirement_content}>
+                      {constraint.prerequisite.join("\n")}
+                    </div>
                   </div>
+                )}
+              {constraint &&
+                constraint.mutex &&
+                constraint.mutex.length > 0 && (
+                  <div className={styles.requirement}>
+                    <div className={styles.label}>Remarks</div>
+                    <div className={styles.requirement_content}>
+                      {constraint.mutex}
+                    </div>
+                  </div>
+                )}
+            </div>
+            <div className={styles.middle_placeholder} />
+            <div className={styles.course_info_right}>
+              <div className={styles.rating_useful}>
+                <RatingBar label={"Useful"} value={useful || "0%"} />
+              </div>
+              <div className={styles.rating_easy}>
+                <RatingBar label={"Easy"} value={easy || "0%"} />
+              </div>
+              <div className={styles.au}>
+                {(au && au.concat(" ").concat("AU")) || "-"}
+              </div>
+              <div className={styles.availability}>
+                <div>
+                  <img src={as_ue ? yes : no} />Read as Unrestricted Elective
                 </div>
-                <div className={styles.requirement}>
-                  <div className={styles.label}>Remarks</div>
-                  <div className={styles.requirement_content}>{remark}</div>
+                <div>
+                  <img src={as_pe ? yes : no} />Read as General Education
+                  Prescribed Elective
                 </div>
               </div>
-              <div className={styles.middle_placeholder} />
-              <div className={styles.course_info_right}>
-                <div className={styles.rating_useful}>
-                  <RatingBar label={"Useful"} value={useful} />
-                </div>
-                <div className={styles.rating_easy}>
-                  <RatingBar label={"Easy"} value={easy} />
-                </div>
-                <div className={styles.au}>{AU.concat(" ").concat("AU")}</div>
-                <div className={styles.availability}>
-                  <div>
-                    <img src={asUE ? yes : no} />Read as Unrestricted Elective
-                  </div>
-                  <div>
-                    <img src={asPE ? yes : no} />Read as General Education
-                    Prescribed Elective
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.table}>
-              <Timetable title={"Schedule (Current Semester)"} />
-            </div>
-            <div className={styles.table}>
-              <ExamSchedule title={"Final Exam"} />
-            </div>
-            <div className={styles.header}>Course Comments</div>
-            <div className={styles.comment_list}>
-              <CommentList comments={courseComments.data || []} />
             </div>
           </div>
-          <Footer />
+          <div className={styles.table}>
+            <Timetable title={"Schedule (Current Semester)"} />
+          </div>
+          <div className={styles.table}>
+            <ExamSchedule title={"Final Exam"} />
+          </div>
+          <div className={styles.header}>Course Comments</div>
+          <div className={styles.comment_list}>
+            <CommentList comments={courseComments || []} />
+          </div>
         </div>
-      );
-    }
+        <Footer />
+      </div>
+    );
   }
 }
 

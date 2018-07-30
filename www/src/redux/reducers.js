@@ -10,7 +10,8 @@ const initialState: State = {
     courseDetail: null,
     courseRating: null,
     courseSchedule: null,
-    courseComments: null
+    courseComments: null,
+    examSchedule: null
   },
   popup: {
     loginOpen: false,
@@ -25,7 +26,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_DETAIL_SUCCESS:
       return {
         ...state,
-        courseDetail: payload
+        courseDetail: payload.data
       };
     case actionTypes.FETCH_COURSE_DETAIL_FAILURE:
       return {
@@ -35,7 +36,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_RATING_SUCCESS:
       return {
         ...state,
-        courseRating: payload
+        courseRating: payload.data
       };
     case actionTypes.FETCH_COURSE_RATING_FAILURE:
       return {
@@ -45,17 +46,27 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_LIST_SUCCESS:
       return {
         ...state,
-        courseList: payload
+        courseList: payload.data
       };
     case actionTypes.FETCH_COURSE_LIST_FAILURE:
       return {
         ...state,
         courseList: payload
       };
+    case actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        ExamSchedule: payload.data
+      };
+    case actionTypes.FETCH_EXAM_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        ExamSchedule: payload
+      };
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
         ...state,
-        courseComments: payload
+        courseComments: payload.data
       };
     case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
       return {

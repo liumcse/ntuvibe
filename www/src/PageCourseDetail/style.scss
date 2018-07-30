@@ -58,6 +58,7 @@
     display: flex;
     flex-direction: column;
     .course_description {
+      white-space: pre-line;
       @include lato-regular;
       margin-top: 2rem;
       text-align: justify;
@@ -114,6 +115,7 @@
       flex: 1;
     }
     .requirement_content {
+      white-space: pre-line;
       flex: 3;
       font-size: 0.85rem;
       line-height: 1.5rem;
