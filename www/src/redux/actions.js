@@ -1,17 +1,17 @@
 // @flow
-// $FlowFixMe
+
 import axios from "axios";
 import * as actionTypes from "./action_types";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://178.128.214.242/api";
 
-export function fetchCourseDetail(courseCode: string) {
-  return async function(dispatch: any) {
+export function fetchCourseDetail(courseCode: string): Function {
+  return async function(dispatch: Function) {
     dispatch({
       type: actionTypes.FETCH_COURSE_DETAIL_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_detail/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_SUCCESS,
@@ -27,13 +27,13 @@ export function fetchCourseDetail(courseCode: string) {
   };
 }
 
-export function fetchCourseRating(courseCode: string) {
-  return async function(dispatch: any) {
+export function fetchCourseRating(courseCode: string): Function {
+  return async function(dispatch: Function) {
     dispatch({
       type: actionTypes.FETCH_COURSE_RATING_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_rating/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_rating?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_SUCCESS,
@@ -49,13 +49,13 @@ export function fetchCourseRating(courseCode: string) {
   };
 }
 
-export function fetchCourseList(input: string) {
-  return async function(dispatch: any) {
+export function fetchCourseList() {
+  return async function(dispatch: Function): Function {
     dispatch({
       type: actionTypes.FETCH_COURSE_LIST_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_list?search=${input}`)
+      .get(`${BASE_URL}/courses/get_course_list`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_SUCCESS,
@@ -72,12 +72,12 @@ export function fetchCourseList(input: string) {
 }
 
 export function fetchCourseComments(courseCode: string) {
-  return async function(dispatch: any) {
+  return async function(dispatch: Function): Function {
     dispatch({
       type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_comments/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_comments?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_SUCCESS,
@@ -93,7 +93,7 @@ export function fetchCourseComments(courseCode: string) {
   };
 }
 
-export function popupTrigger(popup: number) {
+export function popupTrigger(popup: 0 | 1 | 2 | 3): Object {
   switch (popup) {
     case 1:
       return { type: actionTypes.POPUP_TRIGGER, payload: 1 };

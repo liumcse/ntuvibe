@@ -1,17 +1,18 @@
-// flow
+// @flow
 export type CourseDetail = {
-  code: string,
   title: string,
   au: string,
   description: string,
-  prerequisite: string,
-  remark: [{ key: string }],
-  asUE: boolean,
-  asPE: boolean
+  constraint: {
+    prerequisite: string[],
+    mutex: ?string
+  },
+  as_ue: boolean,
+  as_pe: boolean
 };
 
 export type CourseRating = {
-  code: string,
+  number_of_rating: number,
   overall: 0 | 1 | 2,
   useful: 0 | 1 | 2,
   easy: 0 | 1 | 2

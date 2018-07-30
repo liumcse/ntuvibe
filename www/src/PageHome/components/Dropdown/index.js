@@ -1,15 +1,31 @@
+// @flow
+
 import React from "react";
 import Autosuggest from "react-autosuggest";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import PropTypes from "prop-types";
 
 import { fetchCourseList } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 import theme from "./theme.css";
 
-class Dropdown extends React.Component {
+type Props = {
+  // from redux
+  courseList: any,
+  fetchCourseList: () => void,
+  // from router
+  match: Object,
+  location: Object,
+  history: Object
+};
+
+type States = {
+  value: string,
+  suggestions: Array<any>
+};
+
+class Dropdown extends React.Component<Props, States> {
   constructor() {
     super();
     // Autosuggest is a controlled component.
@@ -51,7 +67,7 @@ class Dropdown extends React.Component {
     if (inputLength === 0) return [];
     else {
       console.log("Trigger");
-      this.props.fetchCourseList(inputValue); // does it work?
+      this.props.fetchCourseList(); // does it work?
       console.log("Finished");
       const { courseList } = this.props;
       return courseList || [];
@@ -114,16 +130,6 @@ class Dropdown extends React.Component {
   }
 }
 
-Dropdown.propTypes = {
-  // from redux
-  courseList: PropTypes.array,
-  fetchCourseList: PropTypes.func.isRequired,
-  // from router
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-};
-
 const mapStateToProps = state => {
   const { course } = state;
   return {
@@ -132,7 +138,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCourseList: input => dispatch(fetchCourseList(input))
+  fetchCourseList: () => dispatch(fetchCourseList())
 });
 
 export default withRouter(
