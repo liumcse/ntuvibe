@@ -6,7 +6,7 @@ import * as styles from "./style.scss";
 const Timetable = props => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{props.title}</div>
+      <div className={styles.title}>Schedule (Current Semester)</div>
       <div className={styles.table_container}>
         <table>
           <tbody>

@@ -1,5 +1,6 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
+import moment from "moment";
 
 export function search_course_by_code_or_title(
   courseList: CourseList,
@@ -52,4 +53,26 @@ export function remove_trailing_newline(input: string): string {
   }
   const filteredString = splittedString.filter(s => s.length > 0);
   return filteredString.join("\n");
+}
+
+export function timestampToDate(timestamp: number): string {
+  return moment(timestamp, "X").format("MMMM Do, YYYY");
+}
+
+export function timestampToDay(timestamp: number): string {
+  return moment(timestamp, "X").format("dddd");
+}
+
+export function timestampToTime(timestamp: number): string {
+  return moment(timestamp, "X").format("hh:mm a");
+}
+
+export function timestampToDuration(
+  startTime: number,
+  endTime: number
+): string {
+  const start = new moment(startTime, "X");
+  const end = new moment(endTime, "X");
+  const duration = moment.duration(end.diff(start)).as("hours");
+  return duration.toString().concat(" h");
 }

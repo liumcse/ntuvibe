@@ -4698,6 +4698,13 @@
       }
     ]
   },
+  "get_exam_schedule": [{
+    "id": "CZ2007",
+    "data": {
+      "start_time": 1543568400,
+      "end_time": 1543575600
+    }
+  }],
   "get_course_comments": [{
       "id": "CZ2007",
       "data": [

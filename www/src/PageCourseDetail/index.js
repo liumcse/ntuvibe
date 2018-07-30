@@ -14,7 +14,8 @@ import { remove_trailing_newline } from "src/utils";
 import type {
   CourseDetail,
   CourseRating,
-  CourseComments
+  CourseComments,
+  ExamSchedule as CourseExamSchedule
 } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
@@ -23,23 +24,26 @@ import CommentList from "./components/CommentList";
 import {
   fetchCourseDetail,
   fetchCourseRating,
-  fetchCourseComments
+  fetchCourseComments,
+  fetchExamSchedule
 } from "../redux/actions";
 
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
 
 const NO_DESCRIPTION =
-  "This course has no descrption. I don't know why this would happen either...";
+  "This course has no description. I don't know why this would happen either...";
 
 type Props = {
   // from redux
   fetchCourseDetail: string => void,
   fetchCourseRating: string => void,
   fetchCourseComments: string => void,
+  fetchExamSchedule: string => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
   courseComments: CourseComments,
+  examSchedule: CourseExamSchedule,
   // from router
   match: Object,
   location: Object,
@@ -70,21 +74,30 @@ class PageCourseDetail extends React.Component<Props> {
       }
     } = this.props;
 
-    this.props.fetchCourseDetail(courseCode.toUpperCase()); // do we really put the upper case here?
-    this.props.fetchCourseRating(courseCode.toUpperCase()); // do we really put the upper case here?
-    this.props.fetchCourseComments(courseCode.toUpperCase()); // do we really put the upper case here?
+    const code = courseCode.toUpperCase(); // do we really put the upper case here?
+
+    this.props.fetchCourseDetail(code);
+    this.props.fetchCourseRating(code);
+    this.props.fetchCourseComments(code);
+    this.props.fetchExamSchedule(code);
   }
 
   // eslint-disable-next-line
   render() {
-    const { courseDetail, courseRating, courseComments } = this.props;
-    if (!courseDetail || !courseRating || !courseComments) {
+    const {
+      courseDetail,
+      courseRating,
+      courseComments,
+      examSchedule
+    } = this.props;
+    if (!courseDetail || !courseRating || !courseComments || !examSchedule) {
       return "Waiting for response...";
     }
 
     const { courseCode } = this.props.match.params;
     const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
     const { number_of_rating, overall, useful, easy } = courseRating; // for courseRating
+    const { start_time, end_time } = examSchedule; // for examSchedule
 
     return (
       <div className={styles.page_course_detail}>
@@ -148,9 +161,12 @@ class PageCourseDetail extends React.Component<Props> {
           <div className={styles.table}>
             <Timetable title={"Schedule (Current Semester)"} />
           </div>
-          <div className={styles.table}>
-            <ExamSchedule title={"Final Exam"} />
-          </div>
+          {start_time &&
+            end_time && (
+              <div className={styles.table}>
+                <ExamSchedule startTime={start_time} endTime={end_time} />
+              </div>
+            )}
           <div className={styles.header}>Course Comments</div>
           <div className={styles.comment_list}>
             <CommentList comments={courseComments || []} />
@@ -167,14 +183,16 @@ const mapStateToProps = state => {
   return {
     courseDetail: course && course.courseDetail,
     courseRating: course && course.courseRating,
-    courseComments: course && course.courseComments
+    courseComments: course && course.courseComments,
+    examSchedule: course && course.examSchedule
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
-  fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode))
+  fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
+  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode))
 });
 
 export default withRouter(

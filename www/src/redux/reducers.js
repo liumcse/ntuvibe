@@ -56,12 +56,12 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS:
       return {
         ...state,
-        ExamSchedule: payload.data
+        examSchedule: payload.data
       };
     case actionTypes.FETCH_EXAM_SCHEDULE_FAILURE:
       return {
         ...state,
-        ExamSchedule: payload
+        examSchedule: payload
       };
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
