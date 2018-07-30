@@ -1,4 +1,5 @@
 // @flow
+
 export type CourseDetail = {
   title: string,
   au: string,
@@ -18,7 +19,7 @@ export type CourseRating = {
   easy: 0 | 1 | 2
 };
 
-export type CourseComment = {
+export type CourseComments = {
   userid: number,
   usename: string,
   major: string,

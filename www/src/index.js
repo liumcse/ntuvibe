@@ -14,7 +14,7 @@ import "react-select/dist/react-select.css";
 import "./styles/app.scss";
 import "normalize.css";
 
-class App extends React.Component {
+class App extends React.PureComponent {
   render() {
     return (
       <Provider store={store}>

@@ -1,12 +1,13 @@
 // @flow
-
 import axios from "axios";
 import * as actionTypes from "./action_types";
 
+// import type { Action } from "src/FlowType/acitons";
+
 const BASE_URL = "http://178.128.214.242/api";
 
-export function fetchCourseDetail(courseCode: string): Function {
-  return async function(dispatch: Function) {
+export function fetchCourseDetail(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_DETAIL_REQUESTED
     });
@@ -27,8 +28,8 @@ export function fetchCourseDetail(courseCode: string): Function {
   };
 }
 
-export function fetchCourseRating(courseCode: string): Function {
-  return async function(dispatch: Function) {
+export function fetchCourseRating(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_RATING_REQUESTED
     });
@@ -50,7 +51,7 @@ export function fetchCourseRating(courseCode: string): Function {
 }
 
 export function fetchCourseList() {
-  return async function(dispatch: Function): Function {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_LIST_REQUESTED
     });
@@ -72,7 +73,7 @@ export function fetchCourseList() {
 }
 
 export function fetchCourseComments(courseCode: string) {
-  return async function(dispatch: Function): Function {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
     });
@@ -93,7 +94,7 @@ export function fetchCourseComments(courseCode: string) {
   };
 }
 
-export function popupTrigger(popup: 0 | 1 | 2 | 3): Object {
+export function popupTrigger(popup: 0 | 1 | 2 | 3) {
   switch (popup) {
     case 1:
       return { type: actionTypes.POPUP_TRIGGER, payload: 1 };

@@ -1,5 +1,4 @@
 // @flow
-
 import React from "react";
 import { connect } from "react-redux";
 
@@ -134,7 +133,7 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
             </div>
             <div className={styles.table}>
-              <Timetable title={"Academic Year 2018/2019 Sem1"} />
+              <Timetable title={"Schedule (Current Semester)"} />
             </div>
             <div className={styles.table}>
               <ExamSchedule title={"Final Exam"} />

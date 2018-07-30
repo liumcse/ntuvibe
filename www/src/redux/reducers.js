@@ -1,8 +1,8 @@
 // @flow
-
 import { combineReducers } from "redux";
 import * as actionTypes from "./action_types";
-import type { State } from "src/FlowType/state";
+import type { CourseState, PopupState, State } from "src/FlowType/states";
+import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
   course: {
@@ -19,7 +19,7 @@ const initialState: State = {
   }
 };
 
-const course = (state = initialState.course, action: Object): State.course => {
+const course = (state = initialState.course, action: Action): CourseState => {
   const { type, payload } = action;
   switch (type) {
     case actionTypes.FETCH_COURSE_DETAIL_SUCCESS:
@@ -68,7 +68,7 @@ const course = (state = initialState.course, action: Object): State.course => {
   }
 };
 
-const popup = (state = initialState.popup, action: Object): State.popup => {
+const popup = (state = initialState.popup, action: Action): PopupState => {
   const { type, payload } = action;
   if (type === actionTypes.POPUP_TRIGGER) {
     switch (payload) {
