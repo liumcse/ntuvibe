@@ -5,23 +5,32 @@
   .menu {
     display: flex;
     justify-content: space-around;
+    align-items: flex-start;
     position: sticky;
     top: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.1)), $primary;
+    background: linear-gradient(rgba(255, 255, 255, 0.3)), $primary;
     background-blend-mode: overlay;
     z-index: 1;
     color: white;
     font-variant: all-petite-caps;
     @include disable-select;
-    .item {
-      padding: 1.5rem 2rem;      
-    }
-    .item:hover {
-      cursor: pointer;
-      background: linear-gradient(rgba(255, 255, 255, 0.1)), $primary;
+    .search {
+      position: relative;
+      flex: 2;
+      .dropdown {
+        position: absolute;
+        top: 0.375rem;
+        left: 0;
+      }
     }
     .action {
+      flex: 1;
+      padding: 1.5rem 2rem;
       background: linear-gradient(rgba(255, 255, 255, 0.1));
+    }
+    .action:hover {
+      cursor: pointer;
+      background: linear-gradient(rgba(255, 255, 255, 0.2)), $primary;
     }
   }
 }

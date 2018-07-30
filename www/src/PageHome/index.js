@@ -4,12 +4,7 @@ import NavBar from "src/components/NavBar";
 import Dropdown from "./components/Dropdown";
 import * as styles from "./style.scss";
 
-// const Footer = () => (
-//   // eslint-disable-next-line
-//   <div className={styles.footer}>© 2018 NTUVibe 🏝 · You're cute</div>
-// );
-
-class PageHome extends React.Component {
+class PageHome extends React.PureComponent {
   render() {
     return (
       <div className={styles.home_page}>

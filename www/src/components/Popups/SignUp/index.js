@@ -22,11 +22,13 @@ const SignUp = props => (
     </div>
     <div className={styles.note}>
       <div>A verification Email will be sent to you.</div>
-      <div>Your Email is solely to verify that you are an NTU student.</div>
+      <div>
+        Your Email is solely used to verify that you are an NTU student.
+      </div>
       <div>We defend your privacy ⚔️.</div>
     </div>
     <div className={styles.action}>
-      <button onClick={props.closePopup}>Verify</button>
+      <button onClick={props.closePopup}>Let&#39;s Rock!</button>
     </div>
   </Popup>
 );

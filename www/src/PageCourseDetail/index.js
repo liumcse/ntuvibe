@@ -1,12 +1,20 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 import { withRouter } from "react-router";
 
 import NavBar from "src/components/NavBar";
 import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
+import ExamSchedule from "./components/ExamSchedule";
+
+import type {
+  CourseDetail,
+  CourseRating,
+  CourseComments
+} from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
 import Menu from "./components/Menu";
@@ -20,7 +28,27 @@ import {
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
 
-const Heading = props => (
+type Props = {
+  // from redux
+  fetchCourseDetail: string => void,
+  fetchCourseRating: string => void,
+  fetchCourseComments: string => void,
+  courseDetail: CourseDetail,
+  courseRating: CourseRating,
+  courseComments: CourseComments,
+  // from router
+  match: Object,
+  location: Object,
+  history: Object
+};
+
+type HeadingProps = {
+  code: string,
+  rating: string,
+  title: string
+};
+
+const Heading = (props: HeadingProps) => (
   <div className={styles.heading}>
     <div className={styles.heading_row}>
       <div className={styles.course_code}>{props.code}</div>
@@ -30,7 +58,7 @@ const Heading = props => (
   </div>
 );
 
-class PageCourseDetail extends React.Component {
+class PageCourseDetail extends React.Component<Props> {
   componentDidMount() {
     const {
       match: {
@@ -50,7 +78,6 @@ class PageCourseDetail extends React.Component {
       return "Loading...";
     } else {
       const {
-        code,
         title,
         description,
         AU,
@@ -66,7 +93,11 @@ class PageCourseDetail extends React.Component {
           <NavBar />
           <Menu />
           <div className={styles.content}>
-            <Heading code={code} rating={overall} title={title} />
+            <Heading
+              code={this.props.match.params.courseCode}
+              rating={overall}
+              title={title}
+            />
             <div className={styles.row_box}>
               <div className={styles.course_info}>
                 <div className={styles.course_description}>{description}</div>
@@ -102,14 +133,14 @@ class PageCourseDetail extends React.Component {
               </div>
             </div>
             <div className={styles.table}>
-              <Timetable title={"Academic Year 2018/2019 Sem1"} />
+              <Timetable title={"Schedule (Current Semester)"} />
             </div>
             <div className={styles.table}>
-              <Timetable title={"Final Exam"} />
+              <ExamSchedule title={"Final Exam"} />
             </div>
             <div className={styles.header}>Course Comments</div>
             <div className={styles.comment_list}>
-              <CommentList comments={courseComments.data} />
+              <CommentList comments={courseComments.data || []} />
             </div>
           </div>
           <Footer />
@@ -118,26 +149,6 @@ class PageCourseDetail extends React.Component {
     }
   }
 }
-
-Heading.propTypes = {
-  code: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};
-
-PageCourseDetail.propTypes = {
-  // from redux
-  fetchCourseDetail: PropTypes.func.isRequired,
-  fetchCourseRating: PropTypes.func.isRequired,
-  fetchCourseComments: PropTypes.func.isRequired,
-  courseDetail: PropTypes.object,
-  courseRating: PropTypes.object,
-  courseComments: PropTypes.object,
-  // from router
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-};
 
 const mapStateToProps = state => {
   const { course } = state;

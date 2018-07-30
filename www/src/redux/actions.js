@@ -1,18 +1,18 @@
-// export const fetchCourseList = () => async dispatch => {
-
-// }
+// @flow
 import axios from "axios";
 import * as actionTypes from "./action_types";
 
-const BASE_URL = "http://localhost:3000";
+// import type { Action } from "src/FlowType/acitons";
 
-export function fetchCourseDetail(courseCode) {
-  return async function(dispatch) {
+const BASE_URL = "http://178.128.214.242/api";
+
+export function fetchCourseDetail(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_DETAIL_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_detail/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_SUCCESS,
@@ -22,19 +22,19 @@ export function fetchCourseDetail(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseRating(courseCode) {
-  return async function(dispatch) {
+export function fetchCourseRating(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_RATING_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_rating/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_rating?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_SUCCESS,
@@ -44,19 +44,19 @@ export function fetchCourseRating(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseList(input) {
-  return async function(dispatch) {
+export function fetchCourseList() {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_LIST_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_list?search=${input}`)
+      .get(`${BASE_URL}/courses/get_course_list`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_SUCCESS,
@@ -66,19 +66,19 @@ export function fetchCourseList(input) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_FAILURE,
-          payload: error
+          payload: null
         })
       );
   };
 }
 
-export function fetchCourseComments(courseCode) {
-  return async function(dispatch) {
+export function fetchCourseComments(courseCode: string) {
+  return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/get_course_comments/${courseCode}`)
+      .get(`${BASE_URL}/courses/get_course_comments?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_SUCCESS,
@@ -88,13 +88,13 @@ export function fetchCourseComments(courseCode) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
-          payload: error
+          payload: []
         })
       );
   };
 }
 
-export function popupTrigger(popup) {
+export function popupTrigger(popup: 0 | 1 | 2 | 3) {
   switch (popup) {
     case 1:
       return { type: actionTypes.POPUP_TRIGGER, payload: 1 };
