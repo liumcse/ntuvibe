@@ -1,4 +1,5 @@
 from webapi.models import CourseRatingTab
+from webapi.manager import user_manager
 
 
 def get_rating_by_id(rating_id):
@@ -48,6 +49,19 @@ def calculate_ratings_by_course_id(course_id):
 	return result
 
 
-
+def get_course_comments(course_id):
+	ratings = get_ratings_by_course_id(course_id)
+	comment = []
+	for rating in ratings:
+		if rating.comment:
+			user = user_manager.get_user_by_user_id(rating.userid)
+			if not user:
+				continue
+			comment.append({
+				'username': user.username,
+				'profile_photo': user.profile_photo,
+				'comment': user.comment,
+			})
+	return comment
 
 
