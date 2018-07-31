@@ -4705,6 +4705,102 @@
       "end_time": 1543575600
     }
   }],
+  "get_course_rating": [{
+    "id": "CZ2007",
+    "data": {
+      "number_of_rating": 136,
+      "overall": 88,
+      "useful": 96,
+      "easy": 32
+    }
+  }],
+  "get_course_schedule": [{
+    "id": "CZ2007",
+    "data": {
+      "10220": [{
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  4,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  1,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "TUT",
+        "group": "SS1",
+        "day":  1,
+        "start_time": 1533094149,
+        "end_time": 1532029149,
+        "venue": "TR+37",
+        "remark": [2,3,4,5,6,7,8,9,10,11,12,13]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554094149,
+        "end_time": 1532239149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554899149,
+        "end_time": 1532359149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }],
+      "10221": [{
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  4,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  1,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "TUT",
+        "group": "SS1",
+        "day":  1,
+        "start_time": 1533094149,
+        "end_time": 1532029149,
+        "venue": "TR+37",
+        "remark": [2,3,4,5,6,7,8,9,10,11,12,13]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554094149,
+        "end_time": 1532239149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554899149,
+        "end_time": 1532359149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }]
+    }
+  }],
   "get_course_comments": [{
       "id": "CZ2007",
       "data": [

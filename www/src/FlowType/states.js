@@ -4,14 +4,16 @@ import type {
   CourseDetail,
   CourseRating,
   CourseComments,
+  CourseList,
+  CourseSchedule,
   ExamSchedule
 } from "./courses";
 
 export type CourseState = {
-  courseList: any,
+  courseList: CourseList,
   courseDetail: ?CourseDetail,
   courseRating: ?CourseRating,
-  courseSchedule: any,
+  courseSchedule: ?CourseSchedule,
   courseComments: ?CourseComments,
   examSchedule: ?ExamSchedule
 };

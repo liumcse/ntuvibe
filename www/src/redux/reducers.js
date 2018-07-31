@@ -63,6 +63,16 @@ const course = (state = initialState.course, action: Action): CourseState => {
         ...state,
         examSchedule: payload
       };
+    case actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        courseSchedule: payload.data
+      };
+    case actionTypes.FETCH_COURSE_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        courseSchedule: payload
+      };
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
         ...state,

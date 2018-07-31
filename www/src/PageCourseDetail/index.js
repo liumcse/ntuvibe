@@ -15,6 +15,7 @@ import type {
   CourseDetail,
   CourseRating,
   CourseComments,
+  CourseSchedule,
   ExamSchedule as CourseExamSchedule
 } from "src/FlowType/courses";
 
@@ -25,6 +26,7 @@ import {
   fetchCourseDetail,
   fetchCourseRating,
   fetchCourseComments,
+  fetchCourseSchedule,
   fetchExamSchedule
 } from "../redux/actions";
 
@@ -39,10 +41,12 @@ type Props = {
   fetchCourseDetail: string => void,
   fetchCourseRating: string => void,
   fetchCourseComments: string => void,
+  fetchCourseSchedule: string => void,
   fetchExamSchedule: string => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
   courseComments: CourseComments,
+  courseSchedule: CourseSchedule,
   examSchedule: CourseExamSchedule,
   // from router
   match: Object,
@@ -82,6 +86,7 @@ class PageCourseDetail extends React.Component<Props> {
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
+    this.props.fetchCourseSchedule(code);
     this.props.fetchExamSchedule(code);
   };
 
@@ -101,9 +106,16 @@ class PageCourseDetail extends React.Component<Props> {
       courseDetail,
       courseRating,
       courseComments,
+      courseSchedule,
       examSchedule
     } = this.props;
-    if (!courseDetail || !courseRating || !courseComments || !examSchedule) {
+    if (
+      !courseDetail ||
+      !courseRating ||
+      !courseComments ||
+      !examSchedule ||
+      !courseSchedule
+    ) {
       return "Waiting for response...";
     }
 
@@ -119,7 +131,7 @@ class PageCourseDetail extends React.Component<Props> {
         <div className={styles.content}>
           <Heading
             code={courseCode}
-            rating={overall || "-%"}
+            rating={(overall && overall.toString().concat(" %")) || "- %"}
             title={title || ""}
           />
           <div className={styles.row_box}>
@@ -152,10 +164,16 @@ class PageCourseDetail extends React.Component<Props> {
             <div className={styles.middle_placeholder} />
             <div className={styles.course_info_right}>
               <div className={styles.rating_useful}>
-                <RatingBar label={"Useful"} value={useful || "0%"} />
+                <RatingBar
+                  label={"Useful"}
+                  value={(useful && useful.toString().concat("%")) || "0%"}
+                />
               </div>
               <div className={styles.rating_easy}>
-                <RatingBar label={"Easy"} value={easy || "0%"} />
+                <RatingBar
+                  label={"Easy"}
+                  value={(easy && easy.toString().concat("%")) || "0%"}
+                />
               </div>
               <div className={styles.au}>
                 {(au && au.concat(" ").concat("AU")) || "-"}
@@ -171,9 +189,11 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
             </div>
           </div>
-          <div className={styles.table}>
-            <Timetable title={"Schedule (Current Semester)"} />
-          </div>
+          {courseSchedule && (
+            <div className={styles.table}>
+              <Timetable data={courseSchedule} />
+            </div>
+          )}
           {start_time &&
             end_time && (
               <div className={styles.table}>
@@ -197,6 +217,7 @@ const mapStateToProps = state => {
     courseDetail: course && course.courseDetail,
     courseRating: course && course.courseRating,
     courseComments: course && course.courseComments,
+    courseSchedule: course && course.courseSchedule,
     examSchedule: course && course.examSchedule
   };
 };
@@ -205,6 +226,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
+  fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
   fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode))
 });
 

@@ -37,6 +37,18 @@ export type CourseComments = {
   comment_content: ?string
 };
 
+export type CourseSchedule = {
+  [index: string]: Array<{
+    type: string,
+    group: string,
+    day: 1 | 2 | 3 | 4 | 5 | 6,
+    start_time: number,
+    end_time: number,
+    venue: string,
+    remark: number[]
+  }>
+};
+
 export type ExamSchedule = {
   start_time: number,
   end_time: number
