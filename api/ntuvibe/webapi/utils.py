@@ -1,4 +1,8 @@
 import time
+from django.core.mail import send_mail
+from django.template import Context
+from django.template.loader import render_to_string, get_template
+
 # from django.db import models
 from django.utils.translation import gettext as _
 from django.db.models.fields import PositiveIntegerRelDbTypeMixin, BigIntegerField
@@ -49,3 +53,12 @@ PositiveBigIntegerField = BigIntegerField
 
 def get_timestamp():
 	return int(time.time())
+
+
+def send_activate_account_email(username, useremail):
+	subject = "Welcome to ntuvibe"
+	to = [useremail]
+	from_email = 'ntuvibe_adminteam@gmail.com'
+
+	message = render_to_string('static/template/activate_account.html', {'username':username})
+	send_mail(subject, message, from_email, to, html_message=msg)

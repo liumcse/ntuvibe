@@ -1,2 +1,6 @@
 DEFAULT_COURSE_LIST_OFFSET = 0
 DEFAULT_COURSE_LIST_LIMIT = 30
+VALID_EMAIL_DOMAIN=[
+	'e.ntu.edu.sg',
+	'ntu.edu.sg'
+]
