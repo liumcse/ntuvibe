@@ -4,7 +4,7 @@
 :local {
   .menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     position: sticky;
     top: 0;
@@ -15,14 +15,17 @@
     font-variant: all-petite-caps;
     @include disable-select;
     .search {
-      width: 40%;
-      padding: 0 2rem;
+      width: 50%;
+      margin: 0 6rem
     }
-    .dropdown {
+
+    .actions {
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
   
     .action {
-      // flex: 1;
       padding: 1.5rem 2rem;
       background: linear-gradient(rgba(255, 255, 255, 0.1));
     }

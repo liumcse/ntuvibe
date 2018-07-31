@@ -68,18 +68,31 @@ const Heading = (props: HeadingProps) => (
 
 class PageCourseDetail extends React.Component<Props> {
   componentDidMount() {
+    this.fetchInformation();
+  }
+
+  fetchInformation = () => {
     const {
       match: {
         params: { courseCode }
       }
     } = this.props;
-
     const code = courseCode.toUpperCase(); // do we really put the upper case here?
 
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
     this.props.fetchExamSchedule(code);
+  };
+
+  componentDidUpdate(prevProps) {
+    const {
+      match: {
+        params: { courseCode }
+      }
+    } = this.props;
+    const prevCourseCode = prevProps.match.params.courseCode || courseCode;
+    if (prevCourseCode !== courseCode) this.fetchInformation();
   }
 
   // eslint-disable-next-line
@@ -119,7 +132,7 @@ class PageCourseDetail extends React.Component<Props> {
                 constraint.prerequisite &&
                 constraint.prerequisite.length > 0 && (
                   <div className={styles.requirement}>
-                    <div className={styles.label}>Prerequisites</div>
+                    <div className={styles.label}>Prerequisites </div>
                     <div className={styles.requirement_content}>
                       {constraint.prerequisite.join("\n")}
                     </div>
@@ -129,7 +142,7 @@ class PageCourseDetail extends React.Component<Props> {
                 constraint.mutex &&
                 constraint.mutex.length > 0 && (
                   <div className={styles.requirement}>
-                    <div className={styles.label}>Remarks</div>
+                    <div className={styles.label}>Antirequisites</div>
                     <div className={styles.requirement_content}>
                       {constraint.mutex}
                     </div>

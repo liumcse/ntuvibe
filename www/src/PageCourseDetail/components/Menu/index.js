@@ -16,12 +16,12 @@ class Menu extends React.PureComponent {
         <div className={styles.item}>Schedule</div>
         <div className={styles.item}>Course Comments</div> */}
         <div className={styles.search}>
-          <div className={styles.dropdown}>
             <Dropdown />
-          </div>
         </div>
-        <div className={styles.action} onClick={() => popupTrigger(3)}>
-          Rate the Course
+        <div className={styles.actions}>
+          <div className={styles.action} onClick={() => popupTrigger(3)}>
+            Rate the Course
+          </div>
         </div>
         {/* <div className={styles.action + " " + styles.item}>
           Rate an Instructor

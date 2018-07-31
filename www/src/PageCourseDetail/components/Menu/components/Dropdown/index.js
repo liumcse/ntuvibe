@@ -25,7 +25,8 @@ type Props = {
 
 type States = {
   value: string,
-  suggestions: Array<CourseListSnippet>
+  suggestions: Array<CourseListSnippet>,
+  isLoading: boolean
 };
 
 class Dropdown extends React.Component<Props, States> {
@@ -33,32 +34,40 @@ class Dropdown extends React.Component<Props, States> {
     super();
     this.state = {
       value: "",
-      suggestions: []
+      suggestions: [],
+      isLoading: false
     };
+    this.lastRequestId = null;
   }
 
-  goToCourse = (code: string) => {
-    const { history } = this.props;
-    history.push("/courses/" + code.toLowerCase());
+  loadSuggestions = (value: string) => {
+    if (this.lastRequestId !== null) {
+      clearTimeout(this.lastRequestId);
+    }
+
+    this.setState({
+      isLoading: true
+    });
+
+    this.lastRequestId = setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        suggestions: this.getSuggestions(value)
+      });
+    }, 500);
   };
 
   getSuggestionValue = suggestion => {
+    const { history } = this.props;
+    history.push("/courses/" + suggestion.code.toLowerCase());
     return suggestion.code.toUpperCase(); // necessary to prevent error
   };
 
-  // Use your imagination to render suggestions.
-  renderSuggestion = suggestion => {
-    return (
-      <div
-        onClick={() => this.goToCourse(suggestion.code)}
-        className={styles.suggestion_title}
-      >
-        {suggestion.code
-          .concat(" - ")
-          .concat(cap_first_letter(suggestion.title))}
-      </div>
-    );
-  };
+  renderSuggestion = suggestion => (
+    <div className={styles.suggestion_title}>
+      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
+    </div>
+  );
 
   getSuggestions = value => {
     if (!value || value === undefined) return [];
@@ -82,15 +91,14 @@ class Dropdown extends React.Component<Props, States> {
   };
 
   componentDidMount() {
-    if (!this.props.courseList) this.props.fetchCourseList();
+    this.props.fetchCourseList();
   }
 
   onSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    });
+    this.loadSuggestions(value);
   };
 
+  // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []

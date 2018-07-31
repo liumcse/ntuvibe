@@ -107,16 +107,17 @@
   .requirement {
     display: flex;
     margin-top: 2rem;
+    justify-content: flex-start;
     .label {
       @include open-sans-medium;
       color: $complement;
-      margin-right: 1rem;
+      margin-right: 2rem;
       // text-align: right;
-      flex: 1;
+      // flex: 1;
     }
     .requirement_content {
       white-space: pre-line;
-      flex: 3;
+      // flex: 3;
       font-size: 0.85rem;
       line-height: 1.5rem;
     }

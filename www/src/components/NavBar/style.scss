@@ -31,9 +31,10 @@
     display: flex;
     flex-direction: row;
     flex: 1;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-end;
     color: white;
+    padding: 0 6rem;
     @include open-sans-medium;
     font-size: 1.2rem;
     &_right {

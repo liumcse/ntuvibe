@@ -30,7 +30,7 @@
   max-height: 50vh;
   border-radius: 5px;
   line-height: 2.5rem;
-  width: 40%; /* width must be the same with outer search container*/
+  width: 50%; /* width must be the same with outer search container*/
   position: absolute;
 }
 
