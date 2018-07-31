@@ -1,0 +1,4851 @@
+{
+  "get_course_detail": [{
+    "id": "CZ2007",
+    "data": {"constraint": {"mutex": "CSC206", "prerequisite": ["CZ1007 & CZ2001(Corequisite) OR", "CE1007 & CE2001(Corequisite) OR", "CE1007 & CZ2001(Corequisite) OR", "CE2001(Corequisite) & CZ1007"]}, "title": "INTRODUCTION TO DATABASES", "description": "\nOverview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control\n", "as_ue": true, "au": "3", "as_pe": false}
+  }, {
+    "id": "CZ2001",
+    "data": {"constraint": {"mutex": "CSC202", "prerequisite": ["U15% & onwards students are also required to read CE/CZ1012", "CZ1001 & CZ1007 OR", "CE1001 & CE1007 OR", "CE1007 & MH1812 OR", "CZ1007 & MH1812"]}, "title": "ALGORITHMS", "description": "\nIntroduction to algorithms, basics for analysis of algorithms, sorting, searching, graphs, basic computability and complexity theory\n", "as_ue": true, "au": "3", "as_pe": false}
+  }, {
+    "id": "CZ3003",
+    "data": {"constraint": {"mutex": null, "prerequisite": ["CZ2006(Corequisite) OR", "CE2006(Corequisite)"]}, "title": "SOFTWARE SYSTEMS ANALYSIS & DESIGN", "description": "\n", "as_ue": true, "au": "3", "as_pe": false}
+  }, {
+    "id": "CZ3006",
+    "data": {"constraint": {"mutex": "CSC302", "prerequisite": ["CZ1006 & CZ2002 OR", "CE1006 & CE2002"]}, "title": "NET CENTRIC COMPUTING", "description": "\n", "as_ue": true, "au": "3", "as_pe": false}
+  }, {
+    "id": "CZ2004",
+    "data": {"constraint": {"mutex": null, "prerequisite": []}, "title": "HUMAN COMPUTER INTERACTION", "description": "\nIntroduction; Usability and application spaces; Guidelines and principles for text-based interactions; Hardware devices for interaction; Development processes and assessments; Software tools in user interface development; Interaction styles;  Practical UI development concepts; Design Issues\n", "as_ue": true, "au": "3", "as_pe": false}
+  }, {
+    "id": "CZ2005",
+    "data": {"constraint": {"mutex": null, "prerequisite": []}, "title": "HUMAN COMPUTER INTERACTION", "description": "\nIntroduction; Usability and application spaces; Guidelines and principles for text-based interactions; Hardware devices for interaction; Development processes and assessments; Software tools in user interface development; Interaction styles;  Practical UI development concepts; Design Issues\n", "as_ue": true, "au": "3", "as_pe": false}
+  }],
+  "get_course_list": {
+    "data": [
+      {
+        "code": "BG2141",
+        "title": "MECHANICS OF MATERIALS"
+      },
+      {
+        "code": "BS3018",
+        "title": "PLANT BIOLOGY"
+      },
+      {
+        "code": "SS2102",
+        "title": "INTRODUCTION TO SPORT BIOMECHANICS"
+      },
+      {
+        "code": "CE3007",
+        "title": "DIGITAL SIGNAL PROCESSING"
+      },
+      {
+        "code": "MS4601",
+        "title": "PRINCIPLES OF SEMICONDUCTOR DEVICES"
+      },
+      {
+        "code": "BU8341",
+        "title": "PRACTICAL ETHICS: THINKING ABOUT RIGHT & WRONG"
+      },
+      {
+        "code": "HA2014",
+        "title": "PUBLIC ORGANISATION & MANAGEMENT"
+      },
+      {
+        "code": "DM2000",
+        "title": "INTERACTIVE I"
+      },
+      {
+        "code": "HE1001",
+        "title": "MICROECONOMIC PRINCIPLES"
+      },
+      {
+        "code": "MA3004",
+        "title": "MATHEMATICAL METHODS IN ENGINEERING"
+      },
+      {
+        "code": "BF2213",
+        "title": "INTRODUCTION TO COMPLIANCE"
+      },
+      {
+        "code": "PH1104",
+        "title": "MECHANICS"
+      },
+      {
+        "code": "LL9002",
+        "title": "SINGAPORE SIGN LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "ET9121",
+        "title": "INTRODUCTION TO ENTREPRENEURSHIP"
+      },
+      {
+        "code": "HZ9101",
+        "title": "INTRODUCTION TO CREATIVE WRITING"
+      },
+      {
+        "code": "CV3015",
+        "title": "ENVIRONMENTAL ENGINEERING"
+      },
+      {
+        "code": "E3014L",
+        "title": "DIGITAL SIGNAL PROCESSING"
+      },
+      {
+        "code": "AC2401",
+        "title": "ACCOUNTING INFORMATION SYSTEMS"
+      },
+      {
+        "code": "CS2034",
+        "title": "KOREAN CINEMA IN THE GLOBAL CONTEXT"
+      },
+      {
+        "code": "CV2711",
+        "title": "CIVIL ENGINEERING LABORATORY A"
+      },
+      {
+        "code": "BS3001",
+        "title": "NEUROBIOLOGY"
+      },
+      {
+        "code": "HG3017",
+        "title": "ADVANCED STUDY OF LANGUAGE & LITERACY IN INFANCY"
+      },
+      {
+        "code": "MH1200",
+        "title": "LINEAR ALGEBRA I"
+      },
+      {
+        "code": "SS9001",
+        "title": "CONDITIONING FOR PHYSICAL FITNESS"
+      },
+      {
+        "code": "HL8025",
+        "title": "SOCIAL CONSTRUCTIONS OF UTOPIAS & DYSTOPIAS"
+      },
+      {
+        "code": "HL3002",
+        "title": "FILM, POLITICS & ETHICS"
+      },
+      {
+        "code": "IM3002",
+        "title": "COMMUNICATION PRINCIPLES"
+      },
+      {
+        "code": "CE1013",
+        "title": "PHYSICS FOR COMPUTING"
+      },
+      {
+        "code": "CY2002",
+        "title": "RESEARCH ATTACHMENT 2"
+      },
+      {
+        "code": "CE3005",
+        "title": "COMPUTER NETWORKS"
+      },
+      {
+        "code": "DP2000",
+        "title": "PHOTO IMAGING I: BLACK & WHITE FILM PHOTOGRAPHY"
+      },
+      {
+        "code": "HG3020",
+        "title": "LANGUAGE PLANNING & POLICY"
+      },
+      {
+        "code": "MA2001",
+        "title": "MECHANICS OF MATERIALS"
+      },
+      {
+        "code": "HG2002",
+        "title": "SEMANTICS & PRAGMATICS"
+      },
+      {
+        "code": "HH1001",
+        "title": "WHAT IS HISTORY?"
+      },
+      {
+        "code": "MA2005",
+        "title": "ENGINEERING GRAPHICS"
+      },
+      {
+        "code": "RE0011",
+        "title": "WRITING & REASONING"
+      },
+      {
+        "code": "CV3012",
+        "title": "STEEL DESIGN"
+      },
+      {
+        "code": "BG4215",
+        "title": "BIOMEDICAL NANOTECHNOLOGY"
+      },
+      {
+        "code": "CM3062",
+        "title": "CHEMISTRY & BIOLOGICAL CHEMISTRY LABORATORY 4"
+      },
+      {
+        "code": "BG3105",
+        "title": "BIOMEDICAL INSTRUMENTATION"
+      },
+      {
+        "code": "HC2005",
+        "title": "GENERAL HISTORY OF CHINA"
+      },
+      {
+        "code": "HG2034",
+        "title": "STRUCTURE OF MODERN ENGLISH"
+      },
+      {
+        "code": "BU8642",
+        "title": "LEADERSHIP IN THE 21ST CENTURY"
+      },
+      {
+        "code": "LJ9005",
+        "title": "JAPANESE LANGUAGE LEVEL 5"
+      },
+      {
+        "code": "CM2031",
+        "title": "ORGANIC & BIOORGANIC CHEMISTRY"
+      },
+      {
+        "code": "BS3338",
+        "title": "UAEB II - EFFECT OF ANTI-MITOTIC DRUGS ON CANCER CELLS"
+      },
+      {
+        "code": "LJ9004",
+        "title": "JAPANESE LANGUAGE LEVEL 4"
+      },
+      {
+        "code": "BM2502",
+        "title": "MARKET INTELLIGENCE"
+      },
+      {
+        "code": "MH4200",
+        "title": "ABSTRACT ALGEBRA II"
+      },
+      {
+        "code": "E2008L",
+        "title": "DATA STRUCTURES & ALGORITHMS"
+      },
+      {
+        "code": "LV9001",
+        "title": "VIETNAMESE LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "PH3602",
+        "title": "PHOTONICS"
+      },
+      {
+        "code": "RE1015",
+        "title": "CHEMICAL & BIO ENGINEERING FUNDAMENTALS & APPLICATIONS"
+      },
+      {
+        "code": "BA3203",
+        "title": "ACTUARIAL ASPECTS OF ASSET VALUATION"
+      },
+      {
+        "code": "CE2001",
+        "title": "ALGORITHMS"
+      },
+      {
+        "code": "HE2013",
+        "title": "INTERNATIONAL TRADE"
+      },
+      {
+        "code": "IM1004",
+        "title": "DIGITAL ELECTRONICS"
+      },
+      {
+        "code": "BG4102",
+        "title": "MEDICAL DEVICE DESIGN"
+      },
+      {
+        "code": "HC3011",
+        "title": "STUDIES OF SELECTED POETS"
+      },
+      {
+        "code": "EE3019",
+        "title": "INTEGRATED ELECTRONICS"
+      },
+      {
+        "code": "HG2033",
+        "title": "INTRODUCTION TO CONVERSATION ANALYSIS"
+      },
+      {
+        "code": "SS9205",
+        "title": "RUGBY"
+      },
+      {
+        "code": "EE4266",
+        "title": "COMPUTER VISION"
+      },
+      {
+        "code": "MA2014",
+        "title": "PRODUCT PRESENTATION"
+      },
+      {
+        "code": "HS2013",
+        "title": "MIGRATION & MULTICULTURALISM"
+      },
+      {
+        "code": "BH2603",
+        "title": "TALENT SOURCING & ACQUISITION"
+      },
+      {
+        "code": "LK9001",
+        "title": "KOREAN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HE2011",
+        "title": "LABOUR ECONOMICS & LABOUR RELATIONS"
+      },
+      {
+        "code": "EE4532",
+        "title": "POWER ELECTRONICS & DRIVES"
+      },
+      {
+        "code": "BS3344",
+        "title": "UAEB II - MACROMOLECULAR CRYSTALLOGRAPHY"
+      },
+      {
+        "code": "CZ3001",
+        "title": "ADVANCED COMPUTER ARCHITECTURE"
+      },
+      {
+        "code": "CS4023",
+        "title": "ADVANCED PHOTOJOURNALISM"
+      },
+      {
+        "code": "DN1003",
+        "title": "FOUNDATION 3D"
+      },
+      {
+        "code": "BG1101",
+        "title": "INTRODUCTION TO BIOMEDICAL ENGINEERING"
+      },
+      {
+        "code": "HC1002",
+        "title": "INTRODUCTION TO CHINESE LANGUAGE"
+      },
+      {
+        "code": "HE2005",
+        "title": "PRINCIPLES OF ECONOMETRICS"
+      },
+      {
+        "code": "HP8003",
+        "title": "ARE YOU OKAY? MENTAL HEALTH IN SINGAPORE"
+      },
+      {
+        "code": "CS4027",
+        "title": "NARRATIVE FILM & TV:CONCEPTS & APPLICATIONS"
+      },
+      {
+        "code": "CS4032",
+        "title": "COMMUNICATION CAMPAIGNS"
+      },
+      {
+        "code": "AAU08A",
+        "title": "THEATRE GAMES: ENGAGEMENT THROUGH PLAY"
+      },
+      {
+        "code": "AAA18D",
+        "title": "LIFE DRAWING"
+      },
+      {
+        "code": "DN1002",
+        "title": "FOUNDATION 2D"
+      },
+      {
+        "code": "DF2001",
+        "title": "FILM EDITING"
+      },
+      {
+        "code": "HS4001",
+        "title": "RESEARCH PRACTICUM I: QUALITATIVE SOCIAL RESEARCH"
+      },
+      {
+        "code": "HG4046",
+        "title": "MALAY LINGUISTICS 2 - DIALECTOLOGY AND LANGUAGE CONTACT"
+      },
+      {
+        "code": "E3019L",
+        "title": "INTEGRATED ELECTRONICS"
+      },
+      {
+        "code": "MS4013",
+        "title": "BIOMATERIALS"
+      },
+      {
+        "code": "MS4631",
+        "title": "CORROSION ENGINEERING"
+      },
+      {
+        "code": "LL9001",
+        "title": "SINGAPORE SIGN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "CS2054",
+        "title": "INTERPERSONAL COMMUNICATION"
+      },
+      {
+        "code": "CS2071",
+        "title": "NEWS PRACTICUM"
+      },
+      {
+        "code": "CV1711",
+        "title": "ENGINEERING DRAWING  & 3D BUILDING INFORMATION MODELLING"
+      },
+      {
+        "code": "HG4063",
+        "title": "SPECIAL TOPIC: ADVANCED WORLD ENGLISHES"
+      },
+      {
+        "code": "DD2005",
+        "title": "SURVEY OF NEW MEDIA"
+      },
+      {
+        "code": "EE4646",
+        "title": "VLSI TECHNOLOGY"
+      },
+      {
+        "code": "HL4034",
+        "title": "BRITISH ASIAN LITERATURE"
+      },
+      {
+        "code": "AED28D",
+        "title": "BASIC COUNSELLING SKILLS FOR TEACHERS IN INITIAL TRG PROGRAM"
+      },
+      {
+        "code": "EE3013",
+        "title": "SEMICONDUCTOR DEVICES & PROCESSING"
+      },
+      {
+        "code": "LC9002",
+        "title": "CHINESE LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "CZ3006",
+        "title": "NET CENTRIC COMPUTING"
+      },
+      {
+        "code": "CH3802",
+        "title": "CHEMICAL & BIOMOLECULAR ENGINEERING LABORATORY 5"
+      },
+      {
+        "code": "DR2013",
+        "title": "FURNITURE DESIGN I"
+      },
+      {
+        "code": "SS0111",
+        "title": "SPORT & CULTURE IN SINGAPORE: A SOCIOLOGICAL PERSPECTIVE"
+      },
+      {
+        "code": "MH4700",
+        "title": "NUMERICAL ANALYSIS II"
+      },
+      {
+        "code": "HC2004",
+        "title": "DIRECTED READINGS OF LITERARY WORKS: YUAN, MING & QING"
+      },
+      {
+        "code": "CV0002",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "MH2200",
+        "title": "GROUPS & SYMMETRIES"
+      },
+      {
+        "code": "CM4016",
+        "title": "PHARMACEUTICAL CHEMISTRY"
+      },
+      {
+        "code": "HP4021",
+        "title": "LABORATORY IN HUMAN & ANIMAL NEUROSCIENCE"
+      },
+      {
+        "code": "EE2002",
+        "title": "ANALOG ELECTRONICS"
+      },
+      {
+        "code": "HC4064",
+        "title": "HISTORY & ISSUES: TRANSCULTURAL CHINESE THEATRE IN SINGAPO"
+      },
+      {
+        "code": "LF9003",
+        "title": "FRENCH LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "BF3207",
+        "title": "ALTERNATIVE INVESTMENTS"
+      },
+      {
+        "code": "CS4187",
+        "title": "ONLINE MAGAZINE PRACTICUM"
+      },
+      {
+        "code": "MH1100",
+        "title": "CALCULUS I"
+      },
+      {
+        "code": "BS3103",
+        "title": "TCM INTERNSHIP II"
+      },
+      {
+        "code": "BG4103",
+        "title": "BIOMEDICAL PROJECT DESIGN &  MANAGEMENT"
+      },
+      {
+        "code": "HS2009",
+        "title": "SOCIOLOGY OF THE LIFE COURSE"
+      },
+      {
+        "code": "HE3001",
+        "title": "MATHEMATICAL ECONOMICS"
+      },
+      {
+        "code": "HC2010",
+        "title": "CLASSICAL CHINESE FICTION"
+      },
+      {
+        "code": "BS3021",
+        "title": "BIOIMAGING TECHNIQUES IN EM"
+      },
+      {
+        "code": "E3012L",
+        "title": "COMMUNICATION PRINCIPLES"
+      },
+      {
+        "code": "CH9201",
+        "title": "FOOD CHEMISTRY"
+      },
+      {
+        "code": "MS4012",
+        "title": "QUALITY CONTROL"
+      },
+      {
+        "code": "EE8085",
+        "title": "ELECTRIFICATION FOR THE BUILT ENVIRONMENT"
+      },
+      {
+        "code": "CV2015",
+        "title": "HYDRAULICS"
+      },
+      {
+        "code": "HY1001",
+        "title": "INTRODUCTION TO PHILOSOPHY"
+      },
+      {
+        "code": "AB0601",
+        "title": "COMMUNICATION MANAGEMENT FUNDAMENTALS"
+      },
+      {
+        "code": "HP4222",
+        "title": "THE NEUROSCIENCE OF LOVE"
+      },
+      {
+        "code": "BS3108",
+        "title": "ACUPUNCTURE & MOXIBUSTION"
+      },
+      {
+        "code": "CE4016",
+        "title": "ADVANCED TOPICS IN ALGORITHMS"
+      },
+      {
+        "code": "CS2057",
+        "title": "MEDIA EFFECTS"
+      },
+      {
+        "code": "E3010L",
+        "title": "ELECTRICAL DEVICES & MACHINES"
+      },
+      {
+        "code": "HC3051",
+        "title": "SOCIOLINGUISTICS"
+      },
+      {
+        "code": "BC2406",
+        "title": "ANALYTICS I: VISUAL & PREDICTIVE TECHNIQUES"
+      },
+      {
+        "code": "CH2106",
+        "title": "INTRODUCTION TO MULTIDISCIPLINARY ENGINEERING"
+      },
+      {
+        "code": "IM4476",
+        "title": "IMAGE PROCESSING"
+      },
+      {
+        "code": "BM3505",
+        "title": "SERVICES MARKETING"
+      },
+      {
+        "code": "EN2002",
+        "title": "ENVIRONMENTAL BIOLOGY & MICROBIOLOGY"
+      },
+      {
+        "code": "LG9003",
+        "title": "GERMAN LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "CE4062",
+        "title": "COMPUTER SECURITY (SYSTEM SECURITY)"
+      },
+      {
+        "code": "HY2026",
+        "title": "BUSINESS ETHICS"
+      },
+      {
+        "code": "AC2301",
+        "title": "PRINCIPLES OF TAXATION"
+      },
+      {
+        "code": "AAA08D",
+        "title": "ABSTRACT PAINTING: WHY IT'S HERE & HOW IT'S MADE"
+      },
+      {
+        "code": "MT4002",
+        "title": "ESSENTIALS OF PROJECT MANAGEMENT"
+      },
+      {
+        "code": "PH4501",
+        "title": "STATISTICAL MECHANICS II"
+      },
+      {
+        "code": "ES0138",
+        "title": "INTRODUCTION TO SCIENTIFIC WRITING"
+      },
+      {
+        "code": "MS4014",
+        "title": "NANOMATERIALS: FUNDAMENTALS & APPLICATIONS"
+      },
+      {
+        "code": "HC4051",
+        "title": "TEXT, RHETORIC & STYLE"
+      },
+      {
+        "code": "HT9101",
+        "title": "TRANSLATION: HISTORY, THEORIES & PRINCIPLES"
+      },
+      {
+        "code": "ES8005",
+        "title": "ENVIRONMENTAL EARTH SYSTEMS SCIENCE"
+      },
+      {
+        "code": "BS3023",
+        "title": "REGULATORY CONTROL OF HEALTHCARE PRODUCTS & MEDICAL DEVICES"
+      },
+      {
+        "code": "MA4856",
+        "title": "NAVAL ARCHITECTURE & MARINE ENGINEERING"
+      },
+      {
+        "code": "E3001L",
+        "title": "ENGINEERING ELECTROMAGNETICS"
+      },
+      {
+        "code": "CH4250",
+        "title": "SPECIAL TOPICS: POLYMERS FOR NANOTECHNOLOGY"
+      },
+      {
+        "code": "LN9001",
+        "title": "SWEDISH LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "MT1003",
+        "title": "TRADE PRACTICE & INCOTERMS"
+      },
+      {
+        "code": "CE4045",
+        "title": "NATURAL LANGUAGE PROCESSING"
+      },
+      {
+        "code": "CE2005",
+        "title": "OPERATING SYSTEMS"
+      },
+      {
+        "code": "HP2200",
+        "title": "BIOLOGICAL PSYCHOLOGY"
+      },
+      {
+        "code": "CS4183",
+        "title": "TELEVISION PRACTICUM"
+      },
+      {
+        "code": "DN1004",
+        "title": "FOUNDATION 4D"
+      },
+      {
+        "code": "CH9221",
+        "title": "FOOD INDUSTRY SEMINAR SERIES"
+      },
+      {
+        "code": "ET9122",
+        "title": "E-STARTUPS & SOCIAL MEDIA STRATEGIES"
+      },
+      {
+        "code": "IM2007",
+        "title": "ENGINEERING MATHEMATICS II"
+      },
+      {
+        "code": "LK9006",
+        "title": "KOREAN LANGUAGE LEVEL 6"
+      },
+      {
+        "code": "HY2008",
+        "title": "ENVIRONMENTAL ETHICS"
+      },
+      {
+        "code": "HW9018",
+        "title": "EFFECTIVE COMMUNICATION IN THE GLOBAL WORKPLACE"
+      },
+      {
+        "code": "CM8022",
+        "title": "APPLICATIONS OF FORENSIC SCIENCE"
+      },
+      {
+        "code": "HH1007",
+        "title": "THE MAKING OF CIVILIZATIONS"
+      },
+      {
+        "code": "CS2005",
+        "title": "SPEECH & ARGUMENTATION"
+      },
+      {
+        "code": "ET9135",
+        "title": "BUSINESS VENTURE IMPLEMENTATION"
+      },
+      {
+        "code": "SS3211",
+        "title": "EXPERIMENTAL BIOMECHANICS"
+      },
+      {
+        "code": "BS211S",
+        "title": "EQUATIONS OF LIFE"
+      },
+      {
+        "code": "EE4341",
+        "title": "ADVANCED ANALOG CIRCUITS"
+      },
+      {
+        "code": "CE4057",
+        "title": "TIME-CRITICAL COMPUTING"
+      },
+      {
+        "code": "IM2003",
+        "title": "COMPUTER COMMUNICATIONS"
+      },
+      {
+        "code": "CE3001",
+        "title": "ADVANCED COMPUTER ARCHITECTURE"
+      },
+      {
+        "code": "MA4825",
+        "title": "ROBOTICS"
+      },
+      {
+        "code": "MT2002",
+        "title": "SHIPPING ECONOMICS"
+      },
+      {
+        "code": "BH3601",
+        "title": "TALENT DEVELOPMENT & MANAGEMENT"
+      },
+      {
+        "code": "AB0901",
+        "title": "PRINCIPLES OF ECONOMICS: A SINGAPORE PERSPECTIVE"
+      },
+      {
+        "code": "CE2007",
+        "title": "MICROPROCESSOR-BASED SYSTEMS DESIGN"
+      },
+      {
+        "code": "CM4017",
+        "title": "BIOMEDICAL IMAGING & SENSING"
+      },
+      {
+        "code": "EE8094",
+        "title": "IMPACT OF ELECTROMAGNETIC RADIATION ON HUMANS"
+      },
+      {
+        "code": "BG2111",
+        "title": "COMPUTATIONAL METHODS IN BIOMEDICAL ENGINEERING"
+      },
+      {
+        "code": "PH3101",
+        "title": "QUANTUM MECHANICS II"
+      },
+      {
+        "code": "DT2009",
+        "title": "STORYBOARDING & PRODUCTION DESIGN"
+      },
+      {
+        "code": "MS2018",
+        "title": "ELECTRONICS & MAGNETIC PROPERTIES OF MATERIALS"
+      },
+      {
+        "code": "HE4015",
+        "title": "PERSONNEL ECONOMICS"
+      },
+      {
+        "code": "HG2024",
+        "title": "X-RATED LINGUISTICS: LANGUAGE, SEXUALITY & DESIRE"
+      },
+      {
+        "code": "AD1101",
+        "title": "FINANCIAL ACCOUNTING"
+      },
+      {
+        "code": "HL4013",
+        "title": "ADVANCED STUDIES IN LITERATURE & CULTURE"
+      },
+      {
+        "code": "AAI28A",
+        "title": "IMPROVISATION"
+      },
+      {
+        "code": "HA4006",
+        "title": "SPECIAL TOPIC IN PUBLIC ADMINISTRATION"
+      },
+      {
+        "code": "MS2014",
+        "title": "MATERIALS STRUCTURE & DEFECTS"
+      },
+      {
+        "code": "BG2112",
+        "title": "CARDIOVASCULAR ENGINEERING"
+      },
+      {
+        "code": "CY1308",
+        "title": "PHYSICS"
+      },
+      {
+        "code": "IM4483",
+        "title": "ARTIFICIAL INTELLIGENCE & DATA MINING"
+      },
+      {
+        "code": "EN2711",
+        "title": "ENVIRONMENTAL ENGINEERING LABORATORY A"
+      },
+      {
+        "code": "MA2006",
+        "title": "ENGINEERING MATHEMATICS"
+      },
+      {
+        "code": "EE4530",
+        "title": "POWER SYSTEM ANALYSIS & CONTROL"
+      },
+      {
+        "code": "BL9311",
+        "title": "LAW OF COMMERCIAL TRANSACTIONS"
+      },
+      {
+        "code": "EE4717",
+        "title": "WEB APPLICATION DESIGN"
+      },
+      {
+        "code": "AC3102",
+        "title": "RISK REPORTING & ANALYSIS"
+      },
+      {
+        "code": "MA2004",
+        "title": "MANUFACTURING PROCESSES"
+      },
+      {
+        "code": "SS9103",
+        "title": "SQUASH"
+      },
+      {
+        "code": "HY3011",
+        "title": "MINDS & MACHINES"
+      },
+      {
+        "code": "MA9001",
+        "title": "INTRODUCTION TO ENERGY"
+      },
+      {
+        "code": "RE1014",
+        "title": "ELECTRONIC & INFORMATION ENGINEERING"
+      },
+      {
+        "code": "DD9009",
+        "title": "DESIGN THINKING"
+      },
+      {
+        "code": "BS1003",
+        "title": "ORGANIC CHEMISTRY"
+      },
+      {
+        "code": "FL8001",
+        "title": "INTRODUCTION TO FILM STUDIES"
+      },
+      {
+        "code": "BG4234",
+        "title": "STEM CELL FUNDAMENTALS"
+      },
+      {
+        "code": "MH2814",
+        "title": "PROBABILITY & STATISTICS"
+      },
+      {
+        "code": "LJ9003",
+        "title": "JAPANESE LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "HA4022",
+        "title": "INTERNATIONAL POLITICS OF THE ASIA-PACIFIC"
+      },
+      {
+        "code": "CS2056",
+        "title": "PSYCHOLOGY &  COMMUNICATION"
+      },
+      {
+        "code": "CM1021",
+        "title": "BASIC INORGANIC CHEMISTRY WITH LABORATORY"
+      },
+      {
+        "code": "CZ1013",
+        "title": "PHYSICS FOR COMPUTING"
+      },
+      {
+        "code": "CS2044",
+        "title": "PHOTOJOURNALISM"
+      },
+      {
+        "code": "MH1300",
+        "title": "FOUNDATIONS OF MATHEMATICS"
+      },
+      {
+        "code": "CV4107",
+        "title": "ENGINEERING ECONOMICS & FINANCE"
+      },
+      {
+        "code": "ET0001",
+        "title": "ENTERPRISE & INNOVATION"
+      },
+      {
+        "code": "HP3901",
+        "title": "CULTURAL PSYCHOLOGY"
+      },
+      {
+        "code": "AB2000",
+        "title": "CAREER FOUNDATIONS II"
+      },
+      {
+        "code": "CS4185",
+        "title": "FILM FESTIVAL"
+      },
+      {
+        "code": "HY4133",
+        "title": "SPECIAL TOPICS IN CHINESE PHILOSOPHY III"
+      },
+      {
+        "code": "AAA18G",
+        "title": "TABLETOP GAME DESIGN I"
+      },
+      {
+        "code": "CZ2003",
+        "title": "COMPUTER GRAPHICS & VISUALISATION"
+      },
+      {
+        "code": "MA4702",
+        "title": "AIRCRAFT STRUCTURES II"
+      },
+      {
+        "code": "MH4320",
+        "title": "COMPUTATIONAL ECONOMICS"
+      },
+      {
+        "code": "BS3101",
+        "title": "TREATISE ON EXOGENOUS FEBRILE DISEASES"
+      },
+      {
+        "code": "MA8103",
+        "title": "HUMAN RESOURCE MANAGEMENT"
+      },
+      {
+        "code": "CV2011",
+        "title": "STRUCTURAL ANALYSIS I"
+      },
+      {
+        "code": "HZ9301",
+        "title": "ADVANCED CREATIVE WRITING"
+      },
+      {
+        "code": "CH1104",
+        "title": "MATERIALS & ENERGY BALANCES"
+      },
+      {
+        "code": "DD1003",
+        "title": "INTRODUCTION TO THE HISTORIES OF ART"
+      },
+      {
+        "code": "AAE28B",
+        "title": "INTRODUCTION TO CHILDREN'S LITERATURE"
+      },
+      {
+        "code": "BS2003",
+        "title": "BIOCHEMISTRY II"
+      },
+      {
+        "code": "EE2006",
+        "title": "ENGINEERING MATHEMATICS I"
+      },
+      {
+        "code": "ES4301",
+        "title": "CONSERVATION BIOLOGY & BIODIVERSITY"
+      },
+      {
+        "code": "EE2010",
+        "title": "SIGNALS & SYSTEMS"
+      },
+      {
+        "code": "MA2003",
+        "title": "INTRODUCTION TO THERMO-FLUIDS"
+      },
+      {
+        "code": "LT9001",
+        "title": "THAI LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "BE2601",
+        "title": "MANAGEMENT PRINCIPLES, SKILLS & COMPETENCIES"
+      },
+      {
+        "code": "HL1002",
+        "title": "SURVEY OF ENGLISH LITERATURE 1"
+      },
+      {
+        "code": "HG2094",
+        "title": "WORD OF MOUTH: TRANSMISSION OF ORAL CULTURE"
+      },
+      {
+        "code": "LR9002",
+        "title": "RUSSIAN LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "HS2001",
+        "title": "CLASSICAL SOCIAL THEORY"
+      },
+      {
+        "code": "MA4011",
+        "title": "ENGINEERING PRODUCT DESIGN"
+      },
+      {
+        "code": "BU8501",
+        "title": "MARKETING FOR THE 21ST CENTURY"
+      },
+      {
+        "code": "CM9101",
+        "title": "FOOD CHEMISTRY & NUTRITION"
+      },
+      {
+        "code": "HC4020",
+        "title": "LITERARY CRITICISM & CRITICAL THEORIES"
+      },
+      {
+        "code": "MA3072",
+        "title": "ENGINEERING EXPERIMENTS (AE)"
+      },
+      {
+        "code": "BC2402",
+        "title": "DESIGNING & DEVELOPING DATABASES"
+      },
+      {
+        "code": "CZ4057",
+        "title": "TIME-CRITICAL COMPUTING"
+      },
+      {
+        "code": "SS9303",
+        "title": "INTRODUCTION TO HIP-HOP & ITS DANCES"
+      },
+      {
+        "code": "HH4091",
+        "title": "SPECIAL TOPICS IN HISTORY- INTERDISCIPLINARY HISTORY"
+      },
+      {
+        "code": "ES2001",
+        "title": "COMPUTATIONAL EARTH SYSTEMS SCIENCE"
+      },
+      {
+        "code": "HE4002",
+        "title": "ADVANCED MACROECONOMICS"
+      },
+      {
+        "code": "AAA08C",
+        "title": "EXPRESSIVE DRAWING: DEVELOPING PERSONAL APPROACH & STYLE"
+      },
+      {
+        "code": "CE4056",
+        "title": "CYBER PHYSICAL SYSTEMS DESIGN"
+      },
+      {
+        "code": "SS9102",
+        "title": "TENNIS"
+      },
+      {
+        "code": "AAA08H",
+        "title": "AMAZING CHINESE MUSIC"
+      },
+      {
+        "code": "CH4306",
+        "title": "BIOANALYTICAL TECHNIQUES"
+      },
+      {
+        "code": "ADP26J",
+        "title": "TRADITIONAL THEATRE: STYLES & CONVENTIONS"
+      },
+      {
+        "code": "BS4014",
+        "title": "MOLECULAR BASIS OF DISEASES"
+      },
+      {
+        "code": "AAI48B",
+        "title": "STUDIES IN MALAY MUSIC"
+      },
+      {
+        "code": "CE4068",
+        "title": "APPLICATION SECURITY"
+      },
+      {
+        "code": "HA3014",
+        "title": "SINGAPORE'S FOREIGN POLICY"
+      },
+      {
+        "code": "CH4244",
+        "title": "NUMERICAL METHODS & DATA ANALYTICS"
+      },
+      {
+        "code": "CZ3005",
+        "title": "ARTIFICIAL INTELLIGENCE"
+      },
+      {
+        "code": "ES4902",
+        "title": "GEOPHYSICAL DATA ANALYSIS"
+      },
+      {
+        "code": "CE4003",
+        "title": "COMPUTER VISION"
+      },
+      {
+        "code": "SS3010",
+        "title": "APPLIED STATISTICS"
+      },
+      {
+        "code": "AAI38N",
+        "title": "STUDIES IN INDONESIAN GAMELAN II"
+      },
+      {
+        "code": "SS3111",
+        "title": "ENVIRONMENTAL EXERCISE PHYSIOLOGY"
+      },
+      {
+        "code": "DR2005",
+        "title": "COMPUTER AIDED DESIGN WORKSHOP I"
+      },
+      {
+        "code": "HC4063",
+        "title": "A STUDY OF SINOPHONE CULTURE IN SINGAPORE AND MALAYSIA"
+      },
+      {
+        "code": "HL2024",
+        "title": "APPROACHES TO LITERATURE"
+      },
+      {
+        "code": "LM9001",
+        "title": "MALAY LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "DR2011",
+        "title": "HUMAN FACTORS FOR DESIGN"
+      },
+      {
+        "code": "HG1001",
+        "title": "MIND & MEANING"
+      },
+      {
+        "code": "AB9601",
+        "title": "NEGOTIATE TO GET WHAT YOU WANT: STRATEGY & PRACTICE"
+      },
+      {
+        "code": "DP2001",
+        "title": "DIGITAL PHOTOGRAPHY"
+      },
+      {
+        "code": "HY4002",
+        "title": "KNOWLEDGE AND REALITY"
+      },
+      {
+        "code": "LC9101",
+        "title": "ADVANCED PRACTICAL CHINESE"
+      },
+      {
+        "code": "CS4090",
+        "title": "GOING OVERSEAS FOR ADVANCED REPORTING"
+      },
+      {
+        "code": "BR3207",
+        "title": "CYBER RISK MANAGEMENT & INSURANCE"
+      },
+      {
+        "code": "LS9001",
+        "title": "SPANISH LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HY4113",
+        "title": "SPECIAL TOPICS IN CHINESE PHILOSOPHY"
+      },
+      {
+        "code": "DT2005",
+        "title": "LIGHTING & RENDERING PIPELINE"
+      },
+      {
+        "code": "AC2312",
+        "title": "COMPANY LAW & CORPORATE GOVERNANCE"
+      },
+      {
+        "code": "HP3704",
+        "title": "INTRODUCTION TO CLINICAL NEUROPSYCHOLOGY"
+      },
+      {
+        "code": "CH4801",
+        "title": "FINAL YEAR DESIGN PROJECT"
+      },
+      {
+        "code": "HC2060",
+        "title": "CHINESE EDUCATION IN SOUTHEAST ASIA"
+      },
+      {
+        "code": "MA4830",
+        "title": "REALTIME SOFTWARE FOR MECHATRONIC SYSTEMS"
+      },
+      {
+        "code": "HY4122",
+        "title": "SPECIAL TOPICS IN PHILOSOPHY II"
+      },
+      {
+        "code": "EN4104",
+        "title": "ENVIRONMENTAL HYDRAULICS"
+      },
+      {
+        "code": "DD3014",
+        "title": "FROM MODERN TO POST-MODERN: ART 1945-1985"
+      },
+      {
+        "code": "HG3021",
+        "title": "LANGUAGE CHANGE"
+      },
+      {
+        "code": "MH9102",
+        "title": "ADVANCED INVESTIGATIONS IN CALCULUS III"
+      },
+      {
+        "code": "DD0002",
+        "title": "THE CONTEMPORARY CREATIVE & CULTURAL INDUSTRY OF SINGAPORE"
+      },
+      {
+        "code": "CM4043",
+        "title": "MOLECULAR MODELLING:PRINCIPLES & APPLICATIONS"
+      },
+      {
+        "code": "BS1008",
+        "title": "BIOSTATISTICS"
+      },
+      {
+        "code": "BS4223",
+        "title": "PROFESSIONAL CAREER DEVELOPMENT"
+      },
+      {
+        "code": "DT3002",
+        "title": "VISUAL EFFECTS I"
+      },
+      {
+        "code": "MA4704",
+        "title": "AEROELASTICITY"
+      },
+      {
+        "code": "CZ4031",
+        "title": "DATABASE SYSTEM PRINCIPLES"
+      },
+      {
+        "code": "LF9005",
+        "title": "FRENCH LANGUAGE LEVEL 5"
+      },
+      {
+        "code": "BG3103",
+        "title": "SIGNAL PROCESSING IN BIOSYSTEMS"
+      },
+      {
+        "code": "E3011L",
+        "title": "MODELLING & CONTROL"
+      },
+      {
+        "code": "MS4651",
+        "title": "THIN FILM TECHNOLOGY"
+      },
+      {
+        "code": "CS4085",
+        "title": "FILM FESTIVAL"
+      },
+      {
+        "code": "HY2003",
+        "title": "CHINESE PHILOSOPHY"
+      },
+      {
+        "code": "BS0001",
+        "title": "BIOLOGY & SOCIETY"
+      },
+      {
+        "code": "DP2008",
+        "title": "EXPERIMENTAL PHOTOGRAPHY"
+      },
+      {
+        "code": "HE9091",
+        "title": "PRINCIPLES OF ECONOMICS"
+      },
+      {
+        "code": "DD3016",
+        "title": "HISTORY OF DESIGN"
+      },
+      {
+        "code": "CS4037",
+        "title": "AUDIENCE RESEARCH METHODS"
+      },
+      {
+        "code": "CE1012",
+        "title": "ENGINEERING MATHEMATICS II"
+      },
+      {
+        "code": "HY3012",
+        "title": "PHILOSOPHY OF TECHNOLOGY"
+      },
+      {
+        "code": "HL2029",
+        "title": "AMERICAN MODERNISM"
+      },
+      {
+        "code": "SS9203",
+        "title": "HOCKEY"
+      },
+      {
+        "code": "MH2810",
+        "title": "MATHEMATICS A"
+      },
+      {
+        "code": "EE1003",
+        "title": "INTRODUCTION TO MATERIALS FOR ELECTRONICS"
+      },
+      {
+        "code": "EE3018",
+        "title": "INTRODUCTION TO PHOTONICS"
+      },
+      {
+        "code": "HG2001",
+        "title": "MORPHOLOGY & SYNTAX"
+      },
+      {
+        "code": "MA3705",
+        "title": "AEROSPACE CONTROL THEORY"
+      },
+      {
+        "code": "EN3003",
+        "title": "ENVIRONMENTAL TRANSPORT PROCESSES"
+      },
+      {
+        "code": "DT3009",
+        "title": "CINEMATIC CONCEPTS & MOTION CAPTURE APPLICATIONS"
+      },
+      {
+        "code": "HS8008",
+        "title": "UNDERSTANDING CULTURE & GLOBALISATION"
+      },
+      {
+        "code": "DR2007",
+        "title": "SURFACE DESIGN"
+      },
+      {
+        "code": "ML0002",
+        "title": "CAREER POWER UP!"
+      },
+      {
+        "code": "DD3005",
+        "title": "SURVEY OF MODERN ART,1900-1945"
+      },
+      {
+        "code": "CS2058",
+        "title": "INTEGRATED MARKETING COMMUNICATION"
+      },
+      {
+        "code": "SS9002",
+        "title": "PRINCIPLES OF STRENGTH TRAINING"
+      },
+      {
+        "code": "DP3002",
+        "title": "PHOTOGRAPHIC LIGHTING FOR STUDIO & LOCATION"
+      },
+      {
+        "code": "DT2010",
+        "title": "DIGITAL COMPOSITING"
+      },
+      {
+        "code": "EE8061",
+        "title": "INNOVATION & TECHNOLOGY MANAGEMENT"
+      },
+      {
+        "code": "DA3000",
+        "title": "THINKING & COMMUNICATING VISUALLY III"
+      },
+      {
+        "code": "HP1100",
+        "title": "FUNDAMENTALS OF SOCIAL SCIENCE RESEARCH"
+      },
+      {
+        "code": "ADP16A",
+        "title": "INTRODUCTION TO THEATRE  & PERFORMANCE"
+      },
+      {
+        "code": "HL3001",
+        "title": "FILM THEORY"
+      },
+      {
+        "code": "HA2015",
+        "title": "CHINA IN AFRICA"
+      },
+      {
+        "code": "DM3000",
+        "title": "WEB DESIGN"
+      },
+      {
+        "code": "CS4074",
+        "title": "CONSUMER BEHAVIOR"
+      },
+      {
+        "code": "CH1801",
+        "title": "CHEMICAL & BIOMOLECULAR ENGINEERING LABORATORY 1A"
+      },
+      {
+        "code": "HN9010",
+        "title": "SINGAPORE: IMAGINING THE NEXT 50 YEARS"
+      },
+      {
+        "code": "HS1003",
+        "title": "SOCIAL PROBLEMS IN A GLOBAL CONTEXT"
+      },
+      {
+        "code": "AGE08G",
+        "title": "INTRODUCTORY CODING & IOT FOR SPORTS, EXERCISE & PHYSICAL ED"
+      },
+      {
+        "code": "CH3111",
+        "title": "PROCESS CONTROL & DYNAMICS"
+      },
+      {
+        "code": "BU8643",
+        "title": "CULTURAL INTELLIGENCE: MAKING THE WORLD YOUR CLASSROOM"
+      },
+      {
+        "code": "AC3104",
+        "title": "RISK MANAGEMENT & ADVANCED AUDITING"
+      },
+      {
+        "code": "HG4041",
+        "title": "THEORIES OF GRAMMAR"
+      },
+      {
+        "code": "SS2101",
+        "title": "FOUNDATIONS OF MOTOR BEHAVIOUR"
+      },
+      {
+        "code": "BF2101",
+        "title": "FINANCIAL STATEMENT  ANALYSIS"
+      },
+      {
+        "code": "EE0002",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "MA4838",
+        "title": "NON-CONVENTIONAL MANUFACTURING PROCESSES"
+      },
+      {
+        "code": "CY1001",
+        "title": "INTRODUCTORY BIOLOGY"
+      },
+      {
+        "code": "SS3613",
+        "title": "LEGAL ASPECTS IN SPORT"
+      },
+      {
+        "code": "MT2003",
+        "title": "MARITIME TECHNOLOGY"
+      },
+      {
+        "code": "CH4451",
+        "title": "PROCESS ENGINEERING FOR GAS\/LNG & PHARMACEUTICAL INDUSTRIES"
+      },
+      {
+        "code": "CS0201",
+        "title": "FOUNDATIONS OF COMMUNICATION STUDIES"
+      },
+      {
+        "code": "AAA18R",
+        "title": "SCULPTURE"
+      },
+      {
+        "code": "CV4011",
+        "title": "PROJECT PLANNING & MANAGEMENT"
+      },
+      {
+        "code": "DA9013",
+        "title": "DRAWING & SKETCHING FOR DESIGN"
+      },
+      {
+        "code": "MS8301",
+        "title": "MATERIALS & MAN"
+      },
+      {
+        "code": "EE4758",
+        "title": "INFORMATION SECURITY"
+      },
+      {
+        "code": "EE3017",
+        "title": "COMPUTER COMMUNICATIONS"
+      },
+      {
+        "code": "CV2013",
+        "title": "ENGINEERING GEOLOGY & SOIL MECHANICS"
+      },
+      {
+        "code": "AED38B",
+        "title": "FACILITATING ASYNCHRONOUS ONLINE DISCUSSION"
+      },
+      {
+        "code": "CE3004",
+        "title": "MULTIDISCIPLINARY DESIGN PROJECT"
+      },
+      {
+        "code": "BF2206",
+        "title": "WEALTH MANAGEMENT"
+      },
+      {
+        "code": "SS3620",
+        "title": "SPORT IN SOCIETY"
+      },
+      {
+        "code": "BL9304",
+        "title": "NEGOTIATION & DISPUTE RESOLUTION"
+      },
+      {
+        "code": "BR2202",
+        "title": "INSURANCE LAW & REGULATIONS"
+      },
+      {
+        "code": "HC8005",
+        "title": "DIRECTED READINGS OF MODERN CHINESE SONG LYRICS (IN CHINESE)"
+      },
+      {
+        "code": "SS3412",
+        "title": "ADAPTED PHYSICAL ACTIVITY & RECREATION"
+      },
+      {
+        "code": "CZ3007",
+        "title": "COMPILER TECHNIQUES"
+      },
+      {
+        "code": "HA2017",
+        "title": "FOREIGN POLICY ANALYSIS"
+      },
+      {
+        "code": "HW0106",
+        "title": "ACADEMIC COMMUNICATION IN CHINESE STUDIES I"
+      },
+      {
+        "code": "AAA18L",
+        "title": "SILKSCREEN PRINTING"
+      },
+      {
+        "code": "HL2027",
+        "title": "EARLY AMERICAN LITERATURE"
+      },
+      {
+        "code": "CZ1007",
+        "title": "DATA STRUCTURES"
+      },
+      {
+        "code": "HY3912",
+        "title": "PHILOSOPHY OF TECHNOLOGY"
+      },
+      {
+        "code": "AAL28D",
+        "title": "GOVERNMENT & POLITICS OF SINGAPORE"
+      },
+      {
+        "code": "MH3300",
+        "title": "GRAPH THEORY"
+      },
+      {
+        "code": "EM9104",
+        "title": "AIR QUALITY MANAGEMENT"
+      },
+      {
+        "code": "CS2068",
+        "title": "ONLINE MAGAZINE PRACTICUM"
+      },
+      {
+        "code": "BS4006",
+        "title": "VIROLOGY"
+      },
+      {
+        "code": "AB0602",
+        "title": "COMMUNICATION MANAGEMENT STRATEGIES"
+      },
+      {
+        "code": "CS2023",
+        "title": "PRINT & DIGITAL PUBLICATIONS"
+      },
+      {
+        "code": "HY2012",
+        "title": "MODERN PHILOSOPHY: REASON & EXPERIENCE"
+      },
+      {
+        "code": "HL2002",
+        "title": "RENAISSANCE LITERATURE"
+      },
+      {
+        "code": "HL4023",
+        "title": "ADVANCED STUDIES IN AMERICAN LITERATURE"
+      },
+      {
+        "code": "GC0001",
+        "title": "SUSTAINABILITY: SEEING THROUGH THE HAZE"
+      },
+      {
+        "code": "BG4231",
+        "title": "ADVANCED BIOMATERIALS"
+      },
+      {
+        "code": "HA1012",
+        "title": "FUNDAMENTALS OF POLITICS"
+      },
+      {
+        "code": "HL0201",
+        "title": "IMAGES OF SINGAPORE: LITERATURE, FILM AND CULTURE"
+      },
+      {
+        "code": "CM4012",
+        "title": "STRUCTURAL DETERMINATION"
+      },
+      {
+        "code": "HL2011",
+        "title": "REPRESENTATIONS OF ASIA"
+      },
+      {
+        "code": "LK9003",
+        "title": "KOREAN LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "DT2011",
+        "title": "STOP MOTION"
+      },
+      {
+        "code": "MA2009",
+        "title": "INTRODUCTION TO ELECTRICAL CIRCUITS & ELECTRONIC DEVICES"
+      },
+      {
+        "code": "MA4804",
+        "title": "OPTIMIZATION THEORY & APPLICATIONS"
+      },
+      {
+        "code": "CM2011",
+        "title": "ANALYTICAL CHEMISTRY"
+      },
+      {
+        "code": "SS3619",
+        "title": "ADVANCED TOPICS IN SPORT MARKETING & SPONSORSHIP"
+      },
+      {
+        "code": "AAL28B",
+        "title": "GLOBALISATION: EXAMINING INTERCONNECTEDNESS"
+      },
+      {
+        "code": "CS4029",
+        "title": "ADVERTISING CREATIVITY & COPYWRITING"
+      },
+      {
+        "code": "AB3601",
+        "title": "STRATEGIC MANAGEMENT"
+      },
+      {
+        "code": "MT4101",
+        "title": "INTERMODAL TRANSPORTATION"
+      },
+      {
+        "code": "CV4711",
+        "title": "SEMINARS & SITE VISITS"
+      },
+      {
+        "code": "HA4015",
+        "title": "PERFORMANCE MANAGEMENT IN THE PUBLIC SECTOR"
+      },
+      {
+        "code": "BF2301",
+        "title": "INTERNATIONAL TAX & TRADING LAW"
+      },
+      {
+        "code": "HS3001",
+        "title": "CONTEMPORARY SOCIAL THEORY"
+      },
+      {
+        "code": "CS2006",
+        "title": "THEORIES OF VISUAL COMMUNICATION & THEIR APPLICATIONS"
+      },
+      {
+        "code": "EN4711",
+        "title": "SEMINARS & SITE VISITS"
+      },
+      {
+        "code": "AAU28B",
+        "title": "CREATIVE CLASSROOM:INTRODUCING DRAMA THRU IMAGINATION & PLAY"
+      },
+      {
+        "code": "E3015L",
+        "title": "POWER SYSTEMS & PROTECTION"
+      },
+      {
+        "code": "HP3204",
+        "title": "AN APE'S GUIDE TO HUMAN LANGUAGE"
+      },
+      {
+        "code": "E3013L",
+        "title": "SEMICONDUCTOR DEVICES & PROCESSING"
+      },
+      {
+        "code": "CS4150",
+        "title": "HEALTH COMMUNICATION"
+      },
+      {
+        "code": "CZ1005",
+        "title": "DIGITAL LOGIC"
+      },
+      {
+        "code": "DP2010",
+        "title": "ART & ECOLOGY WORKSHOP"
+      },
+      {
+        "code": "DN1001",
+        "title": "FOUNDATION DRAWING"
+      },
+      {
+        "code": "AC3103",
+        "title": "ACCOUNTING ANALYSIS & EQUITY VALUATION"
+      },
+      {
+        "code": "MH2801",
+        "title": "COMPLEX METHODS FOR THE SCIENCES"
+      },
+      {
+        "code": "HE2006",
+        "title": "INTERNATIONAL MONETARY ECONOMICS"
+      },
+      {
+        "code": "MS4640",
+        "title": "ADVANCED ANALYSIS OF MATERIALS"
+      },
+      {
+        "code": "IM4413",
+        "title": "DSP SYSTEM DESIGN"
+      },
+      {
+        "code": "BR2201",
+        "title": "RISK MODELLING"
+      },
+      {
+        "code": "HC4015",
+        "title": "SPECIAL TOPICS IN CLASSICAL CHINESE LITERATURE"
+      },
+      {
+        "code": "HA2013",
+        "title": "COMPARATIVE PUBLIC POLITICS"
+      },
+      {
+        "code": "BU8543",
+        "title": "TOURISM & SOCIETY: JOURNEYS OF DISCOVERY"
+      },
+      {
+        "code": "HA4016",
+        "title": "GLOBAL CITIES: POLICY & POLITICS"
+      },
+      {
+        "code": "CH1131",
+        "title": "BIOMOLECULAR ENGINEERING"
+      },
+      {
+        "code": "DF3009",
+        "title": "FILM DIRECTING"
+      },
+      {
+        "code": "HT9401",
+        "title": "TRANSLATION: APPRECIATION, CRITICISM & EVALUATION"
+      },
+      {
+        "code": "HE3024",
+        "title": "INTRODUCTION TO APPLIED ECONOMIC POLICY RESEARCH"
+      },
+      {
+        "code": "AB0301",
+        "title": "LEGAL & ETHICAL ISSUES IN SUSTAINABILITY"
+      },
+      {
+        "code": "HC3003",
+        "title": "SOUTHEAST ASIAN CHINESE"
+      },
+      {
+        "code": "CS2164",
+        "title": "TELEVISION PRACTICUM"
+      },
+      {
+        "code": "EM9105",
+        "title": "ENERGY RESOURCES MANAGEMENT"
+      },
+      {
+        "code": "HG2021",
+        "title": "INTERCULTURAL COMMUNICATION"
+      },
+      {
+        "code": "BF3211",
+        "title": "COMMODITIES TRADING & RISK MANAGEMENT"
+      },
+      {
+        "code": "LR9001",
+        "title": "RUSSIAN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HH3039",
+        "title": "MARITIME ASIA IN THE LONGUE DUREE"
+      },
+      {
+        "code": "CS4058",
+        "title": "INTERCULTURAL COMMUNICATION"
+      },
+      {
+        "code": "PH3502",
+        "title": "CHAOTIC DYNAMICAL SYSTEMS"
+      },
+      {
+        "code": "EE8086",
+        "title": "ASTRONOMY - STARS, GALAXIES & COSMOLOGY"
+      },
+      {
+        "code": "HA3004",
+        "title": "UNITED STATES & EAST ASIA"
+      },
+      {
+        "code": "MA2012",
+        "title": "INTRODUCTION TO MECHATRONICS SYSTEMS DESIGN"
+      },
+      {
+        "code": "ES8001",
+        "title": "NATURAL HAZARDS & SOCIETY"
+      },
+      {
+        "code": "HS4011",
+        "title": "THE SELF IN SOUTHEAST ASIA"
+      },
+      {
+        "code": "BG2104",
+        "title": "ELECTRONICS FOR BIOMEDICAL ENGINEERS"
+      },
+      {
+        "code": "CH2107",
+        "title": "COMPUTATIONAL METHODS IN CHEMICAL ENGINEERING"
+      },
+      {
+        "code": "BS3003",
+        "title": "DEVELOPMENTAL BIOLOGY"
+      },
+      {
+        "code": "DT3001",
+        "title": "3D CHARACTER ANIMATION"
+      },
+      {
+        "code": "BF3204",
+        "title": "FINANCIAL MODELLING"
+      },
+      {
+        "code": "MS3014",
+        "title": "ANALYSIS OF MATERIALS"
+      },
+      {
+        "code": "DT3006",
+        "title": "ANIMATION SEMINAR"
+      },
+      {
+        "code": "MA2072",
+        "title": "LABORATORY EXPERIMENTS (AE)"
+      },
+      {
+        "code": "CS4095",
+        "title": "INTERNATIONAL STRATEGIC COMMUNICATIONS MANAGEMENT"
+      },
+      {
+        "code": "HG8002",
+        "title": "THE STORY OF ENGLISH"
+      },
+      {
+        "code": "HW0001",
+        "title": "ENGLISH PROFICIENCY"
+      },
+      {
+        "code": "AED38C",
+        "title": "DESIGNING ICT-BASED CONSTRUCTIVIST ACTIVITIES"
+      },
+      {
+        "code": "CM2021",
+        "title": "INORGANIC & BIOINORGANIC CHEMISTRY"
+      },
+      {
+        "code": "CE1005",
+        "title": "DIGITAL LOGIC"
+      },
+      {
+        "code": "CM4013",
+        "title": "CURRENT TOPICS IN ANALYTICAL CHEMISTRY"
+      },
+      {
+        "code": "HL3038",
+        "title": "THEATRE OF THE ABSURD"
+      },
+      {
+        "code": "AAG23H",
+        "title": "INTRODUCTION TO GEOGRAPHICAL INFORMATION SYSTEMS"
+      },
+      {
+        "code": "HP4081",
+        "title": "LABORATORY IN INDUSTRIAL & ORGANIZATIONAL PSYCHOLOGY"
+      },
+      {
+        "code": "SS9105",
+        "title": "VOLLEYBALL"
+      },
+      {
+        "code": "CV4101",
+        "title": "STRUCTURAL ANALYSIS III"
+      },
+      {
+        "code": "DF2009",
+        "title": "HISTORY OF WORLD CINEMA"
+      },
+      {
+        "code": "HL4019",
+        "title": "ADVANCED STUDIES IN VICTORIAN LITERATURE"
+      },
+      {
+        "code": "AAA28H",
+        "title": "TRADITIONAL & CREATIVE CHINESE PAINTING"
+      },
+      {
+        "code": "HL4036",
+        "title": "LITERATURE & MEDICINE"
+      },
+      {
+        "code": "HC2015",
+        "title": "COMING OF AGE IN MODERN CHINA"
+      },
+      {
+        "code": "RE1013",
+        "title": "MATERIALS & MANUFACTURING"
+      },
+      {
+        "code": "HL2041",
+        "title": "ASIAN HISTORICAL FICTION"
+      },
+      {
+        "code": "CS4091",
+        "title": "NEWS PRACTICUM"
+      },
+      {
+        "code": "ES3003",
+        "title": "INTRODUCTION TO GEOCHEMISTRY"
+      },
+      {
+        "code": "AED28B",
+        "title": "CRITICAL PERSPECTIVES ON EDUCATION"
+      },
+      {
+        "code": "AGE18A",
+        "title": "PHYSICS OF GEMSTONES"
+      },
+      {
+        "code": "AED16A",
+        "title": "PRACTICES & ISSUES IN EARLY CHILDHOOD EDUCATION"
+      },
+      {
+        "code": "CE2002",
+        "title": "OBJECT ORIENTED DESIGN & PROGRAMMING"
+      },
+      {
+        "code": "E1002L",
+        "title": "PHYSICS FOUNDATION FOR ELECTRICAL & ELECTRONIC ENGINEERING"
+      },
+      {
+        "code": "HG2031",
+        "title": "HISTORY OF ENGLISH"
+      },
+      {
+        "code": "HH1002",
+        "title": "ASIA-PACIFIC IN GLOBAL HISTORY: PRE-1800"
+      },
+      {
+        "code": "HH2020",
+        "title": "SCIENCE & WAR"
+      },
+      {
+        "code": "HL3017",
+        "title": "THE RISE OF THE NOVEL"
+      },
+      {
+        "code": "E2001L",
+        "title": "CIRCUIT ANALYSIS"
+      },
+      {
+        "code": "CS2171",
+        "title": "NEWS PRACTICUM"
+      },
+      {
+        "code": "HA3013",
+        "title": "MANAGING HUMAN RESOURCE & BEHAVIOR IN THE PUBLIC SECTOR"
+      },
+      {
+        "code": "MA3704",
+        "title": "AIRCRAFT ELECTRICAL DEVICES"
+      },
+      {
+        "code": "MS3015",
+        "title": "MATERIALS ASPECTS IN DESIGN"
+      },
+      {
+        "code": "DT2007",
+        "title": "HISTORY OF ANIMATION"
+      },
+      {
+        "code": "HL4028",
+        "title": "SCIENCE & LITERATURE"
+      },
+      {
+        "code": "EE8084",
+        "title": "CYBER SECURITY"
+      },
+      {
+        "code": "MS8001",
+        "title": "MANAGEMENT WITH HUMOUR"
+      },
+      {
+        "code": "MH3210",
+        "title": "NUMBER THEORY"
+      },
+      {
+        "code": "MH1401",
+        "title": "ALGORITHMS & COMPUTING I"
+      },
+      {
+        "code": "HF9801",
+        "title": "ADVANCED CREATIVE WRITING: CHINESE FICTION"
+      },
+      {
+        "code": "CZ4023",
+        "title": "ADVANCED COMPUTER NETWORKS"
+      },
+      {
+        "code": "HH4012",
+        "title": "INTELLECTUAL HISTORY OF MODERN CHINA"
+      },
+      {
+        "code": "HA4025",
+        "title": "DESIGNING & CONDUCTING QUALITATIVE RESEARCH"
+      },
+      {
+        "code": "HP4041",
+        "title": "LABORATORY IN SOCIAL PSYCHOLOGY"
+      },
+      {
+        "code": "DT2004",
+        "title": "GRAPHIC STORYTELLING"
+      },
+      {
+        "code": "EN3002",
+        "title": "WASTEWATER ENGINEERING"
+      },
+      {
+        "code": "BM2501",
+        "title": "MARKET BEHAVIOUR"
+      },
+      {
+        "code": "HP4232",
+        "title": "DEVELOPMENT OF SELF-REGULATION"
+      },
+      {
+        "code": "CS8060",
+        "title": "INTRODUCTION TO ADVERTISING"
+      },
+      {
+        "code": "BU9201",
+        "title": "INVESTMENTS"
+      },
+      {
+        "code": "DD8002",
+        "title": "WAYS OF SEEING: EXPLORING VISUAL CULTURE"
+      },
+      {
+        "code": "AB9101",
+        "title": "BUSINESS VALUATION: FROM THEORY TO PRACTICE"
+      },
+      {
+        "code": "BS1002",
+        "title": "BIOPHYSICAL CHEMISTRY"
+      },
+      {
+        "code": "HZ9201",
+        "title": "CREATIVE WRITING:POETRY"
+      },
+      {
+        "code": "HC4055",
+        "title": "CHINESE LANGUAGE ACQUISITION"
+      },
+      {
+        "code": "IM4152",
+        "title": "DIGITAL COMMUNICATIONS"
+      },
+      {
+        "code": "CY0001",
+        "title": "WRITING & REASONING"
+      },
+      {
+        "code": "AAI38G",
+        "title": "VOICE"
+      },
+      {
+        "code": "HY3010",
+        "title": "PHILOSOPHY OF SCIENCE"
+      },
+      {
+        "code": "MS2081",
+        "title": "LABORATORY IIA"
+      },
+      {
+        "code": "MA3006",
+        "title": "FLUID MECHANICS"
+      },
+      {
+        "code": "MH2811",
+        "title": "MATHEMATICS II"
+      },
+      {
+        "code": "RE0003",
+        "title": "COMMUNICATING AS A 21ST CENTURY ENGINEER"
+      },
+      {
+        "code": "LM9003",
+        "title": "MALAY LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "MS1013",
+        "title": "MATERIALS CHEMISTRY I"
+      },
+      {
+        "code": "LK9004",
+        "title": "KOREAN LANGUAGE LEVEL 4"
+      },
+      {
+        "code": "EN4105",
+        "title": "INTEGRATED ENVIRONMENTAL MANAGEMENT"
+      },
+      {
+        "code": "AAI182",
+        "title": "FOUNDATIONS IN MUSICAL STUDIES I"
+      },
+      {
+        "code": "HG2020",
+        "title": "LANGUAGE IN SOCIETY"
+      },
+      {
+        "code": "HC4016",
+        "title": "COMPARATIVE LITERATURE STUDIES: THEORY & PRACTICE"
+      },
+      {
+        "code": "BU8401",
+        "title": "MANAGEMENT DECISION TOOLS"
+      },
+      {
+        "code": "BU8542",
+        "title": "SOCIAL MARKETING - MAKING THE WORLD A BETTER PLACE"
+      },
+      {
+        "code": "PH3405",
+        "title": "SUPERCONDUCTIVITY,SUPERFLUIDITY & BOSE-EINSTEIN CONDENSATES"
+      },
+      {
+        "code": "HS4015",
+        "title": "SOCIOLOGY OF REPRODUCTION"
+      },
+      {
+        "code": "HS4901",
+        "title": "RESEARCH PRACTICUM I: QUALITATIVE SOCIAL RESEARCH"
+      },
+      {
+        "code": "LA9001",
+        "title": "ARABIC LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HY3001",
+        "title": "EXISTENTIALISM: FREEDOM, BEING, DEATH"
+      },
+      {
+        "code": "MH8300",
+        "title": "IT'S DISCREETLY DISCRETE WLD:MATHS IN REAL-LIFE APPLICATIONS"
+      },
+      {
+        "code": "HT9102",
+        "title": "LANGUAGE FOUNDATION FOR TRANSLATION"
+      },
+      {
+        "code": "BH3603",
+        "title": "CULTURAL INTELLIGENCE AT WORK"
+      },
+      {
+        "code": "BF3201",
+        "title": "CORPORATE FINANCE & STRATEGY"
+      },
+      {
+        "code": "BS4011",
+        "title": "BIOLOGY OF SOCIAL BEHAVIOR"
+      },
+      {
+        "code": "HL2001",
+        "title": "MEDIEVAL LITERATURE"
+      },
+      {
+        "code": "DM2008",
+        "title": "PROGRAMMING FOR INTERACTION"
+      },
+      {
+        "code": "PH1011",
+        "title": "PHYSICS"
+      },
+      {
+        "code": "MA4814",
+        "title": "COMPUTATIONAL FLUID DYNAMICS"
+      },
+      {
+        "code": "CZ4062",
+        "title": "COMPUTER SECURITY (SYSTEM SECURITY)"
+      },
+      {
+        "code": "BS8101",
+        "title": "EXPLORING THE SCIENCE OF GOOD EATING EXPERIENCE"
+      },
+      {
+        "code": "AAC18A",
+        "title": "CHINESE CALLIGRAPHY"
+      },
+      {
+        "code": "LC9003",
+        "title": "CHINESE LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "HS1002",
+        "title": "SINGAPORE SOCIETY IN TRANSITION"
+      },
+      {
+        "code": "CM3011",
+        "title": "CHEMICAL SPECTROSCOPY & APPLICATIONS"
+      },
+      {
+        "code": "CY0006",
+        "title": "ENTERPRISE, INNOVATION & LEADERSHIP"
+      },
+      {
+        "code": "HG2017",
+        "title": "FATHER-&-MOTHER-TONGUES: LANGUAGES OF SE ASIA"
+      },
+      {
+        "code": "BS1101",
+        "title": "BASICS OF TCM"
+      },
+      {
+        "code": "MS2016",
+        "title": "PHASE TRANSFORMATION & KINETICS"
+      },
+      {
+        "code": "CS2021",
+        "title": "NEWS REPORTING & WRITING"
+      },
+      {
+        "code": "CE1006",
+        "title": "COMPUTER ORGANISATION & ARCHITECTURE"
+      },
+      {
+        "code": "BS3004",
+        "title": "CANCER BIOLOGY & THERAPY"
+      },
+      {
+        "code": "HH3024",
+        "title": "DECOLONISATION & DEMOCRACY: BRITAIN SINCE 1945"
+      },
+      {
+        "code": "HG3015",
+        "title": "PSYCHOLINGUISTICS"
+      },
+      {
+        "code": "HP4107",
+        "title": "INDUSTRIAL-ORGANISATIONAL PSYCHOLOGY IN PRACTICE"
+      },
+      {
+        "code": "MA3071",
+        "title": "ENGINEERING EXPERIMENTS (ME)"
+      },
+      {
+        "code": "HE3007",
+        "title": "FINANCIAL ECONOMICS"
+      },
+      {
+        "code": "ML0001",
+        "title": "ABSOLUTE BASICS FOR CAREER"
+      },
+      {
+        "code": "CS2066",
+        "title": "FILM FESTIVAL PRACTICUM"
+      },
+      {
+        "code": "CM9081",
+        "title": "MEDICINAL CHEMISTRY"
+      },
+      {
+        "code": "DF3005",
+        "title": "AUDIO POST-PRODUCTION FOR FILM"
+      },
+      {
+        "code": "HP4104",
+        "title": "EVIDENCE-BASED PRACTICE IN CLINICAL PSYCHOLOGY"
+      },
+      {
+        "code": "HS4021",
+        "title": "POSTCOLONIAL SEXUALITY"
+      },
+      {
+        "code": "EE4303",
+        "title": "MIXED-SIGNAL IC DESIGN"
+      },
+      {
+        "code": "CS4031",
+        "title": "MEDIA PLANNING & STRATEGIES"
+      },
+      {
+        "code": "CM1031",
+        "title": "BASIC ORGANIC CHEMISTRY WITH LABORATORY"
+      },
+      {
+        "code": "CS2025",
+        "title": "IMAGE & SOUND PRODUCTION"
+      },
+      {
+        "code": "DV3002",
+        "title": "EDITORIAL DESIGN"
+      },
+      {
+        "code": "MH4311",
+        "title": "CRYPTOGRAPHY"
+      },
+      {
+        "code": "AAI48D",
+        "title": "CHOIR III"
+      },
+      {
+        "code": "DA2001",
+        "title": "PAINTING"
+      },
+      {
+        "code": "SS3611",
+        "title": "EVENT & FACILITIES MANAGEMENT"
+      },
+      {
+        "code": "DV3005",
+        "title": "BRAND DESIGN"
+      },
+      {
+        "code": "CZ3002",
+        "title": "ADVANCED SOFTWARE ENGINEERING"
+      },
+      {
+        "code": "DD8008",
+        "title": "FAITH & ART"
+      },
+      {
+        "code": "HS3054",
+        "title": "SOCIAL PSYCHOLOGY"
+      },
+      {
+        "code": "HE3002",
+        "title": "GAME THEORY & APPLICATIONS TO SOCIAL SCIENCES"
+      },
+      {
+        "code": "HG4022",
+        "title": "FORENSIC LINGUISTICS"
+      },
+      {
+        "code": "PH1105",
+        "title": "OPTICS, VIBRATIONS & WAVES"
+      },
+      {
+        "code": "BL9314",
+        "title": "NEGOTIATION & DISPUTE RESOLUTION"
+      },
+      {
+        "code": "MS8205",
+        "title": "MATERIALS FOR ENERGY CONVERSION"
+      },
+      {
+        "code": "CH4106",
+        "title": "FORMULATION OF ACTIVE PHARMACEUTICAL INGREDIENTS DOSAGE FORM"
+      },
+      {
+        "code": "IM3080",
+        "title": "DESIGN & INNOVATION PROJECT"
+      },
+      {
+        "code": "BS4004",
+        "title": "CURRENT TOPICS IN IMMUNOLOGY"
+      },
+      {
+        "code": "MA3702",
+        "title": "AIRCRAFT PROPULSION"
+      },
+      {
+        "code": "HP8005",
+        "title": "INTRODUCTION TO HUMAN RESOURCE MANAGEMENT"
+      },
+      {
+        "code": "EE1002",
+        "title": "PHYSICS FOUNDATION FOR ELECTRICAL & ELECTRONIC ENGINEERING"
+      },
+      {
+        "code": "MS4613",
+        "title": "WEARABLE SENSORS FOR HEALTHCARE"
+      },
+      {
+        "code": "E2003L",
+        "title": "SEMICONDUCTOR FUNDAMENTALS"
+      },
+      {
+        "code": "MA3005",
+        "title": "CONTROL THEORY"
+      },
+      {
+        "code": "HH4092",
+        "title": "SPECIAL TOPICS IN HISTORY- WORLD HISTORY"
+      },
+      {
+        "code": "MH1812",
+        "title": "DISCRETE MATHEMATICS"
+      },
+      {
+        "code": "HS4002",
+        "title": "RESEARCH PRACTICUM II: QUANTITATIVE SOCIAL RESEARCH"
+      },
+      {
+        "code": "DF3008",
+        "title": "SOUND FOR FILM"
+      },
+      {
+        "code": "CE3006",
+        "title": "DIGITAL COMMUNICATIONS"
+      },
+      {
+        "code": "CV3011",
+        "title": "REINFORCED CONCRETE DESIGN"
+      },
+      {
+        "code": "SS9206",
+        "title": "TCHOUKBALL"
+      },
+      {
+        "code": "LJ9001",
+        "title": "JAPANESE LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HH3002",
+        "title": "SCIENCE, TECHNOLOGY & MEDICINE IN MODERN EAST ASIA"
+      },
+      {
+        "code": "SS3411",
+        "title": "MOTOR CONTROL & LEARNING: THEORY TO PRACTICE"
+      },
+      {
+        "code": "BU8641",
+        "title": "CULTURAL INTELLIGENCE: HOW TO BE AN EXPLORER OF THE WORLD"
+      },
+      {
+        "code": "LG9001",
+        "title": "GERMAN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "BT2403",
+        "title": "SERVICES OPERATIONS MANAGEMENT"
+      },
+      {
+        "code": "HL1001",
+        "title": "INTRODUCTION TO THE STUDY OF LITERATURE"
+      },
+      {
+        "code": "HS3007",
+        "title": "RELIGION & SOCIETY"
+      },
+      {
+        "code": "HY8002",
+        "title": "LOGIC AND CRITICAL THINKING"
+      },
+      {
+        "code": "AB0502",
+        "title": "MANAGING SUSTAINABILITY"
+      },
+      {
+        "code": "PH4604",
+        "title": "TOPICS IN APPLIED PHYSICS"
+      },
+      {
+        "code": "EE4413",
+        "title": "DSP SYSTEM DESIGN"
+      },
+      {
+        "code": "IM4475",
+        "title": "AUDIO SIGNAL PROCESSING"
+      },
+      {
+        "code": "HC0201",
+        "title": "CHINESE LITERATURE IN SINGAPORE"
+      },
+      {
+        "code": "PH1198",
+        "title": "PHYSICS LABORATORY IA"
+      },
+      {
+        "code": "HY1002",
+        "title": "LOGIC & PARADOXES"
+      },
+      {
+        "code": "DT2000",
+        "title": "BASIC PRINCIPLES OF MOTION"
+      },
+      {
+        "code": "HL2021",
+        "title": "LITERATURE OF EMPIRE"
+      },
+      {
+        "code": "CZ2006",
+        "title": "SOFTWARE ENGINEERING"
+      },
+      {
+        "code": "CS4043",
+        "title": "SPECIALISED JOURNALISM:SCIENCE & HEALTH  REPORTING"
+      },
+      {
+        "code": "PH4403",
+        "title": "SURFACES & INTERFACES"
+      },
+      {
+        "code": "EN2001",
+        "title": "ENVIRONMENTAL ISSUES IN A CHANGING WORLD"
+      },
+      {
+        "code": "HF9101",
+        "title": "INTRODUCTION TO CHINESE CREATIVE WRITING"
+      },
+      {
+        "code": "CS2024",
+        "title": "WEB DESIGN & TECHNOLOGIES"
+      },
+      {
+        "code": "BU8301",
+        "title": "FUNDAMENTALS OF BUSINESS LAW"
+      },
+      {
+        "code": "HL2006",
+        "title": "MODERNISM"
+      },
+      {
+        "code": "HY0001",
+        "title": "ETHICS & MORAL REASONING"
+      },
+      {
+        "code": "DM3002",
+        "title": "ROBOTIC & KINETIC MEDIA"
+      },
+      {
+        "code": "HE4020",
+        "title": "ECONOMETRIC TIME SERIES ANALYSIS"
+      },
+      {
+        "code": "HF9201",
+        "title": "CREATIVE WRITING: CHINESE PROSE"
+      },
+      {
+        "code": "AB1301",
+        "title": "BUSINESS LAW"
+      },
+      {
+        "code": "HA1002",
+        "title": "INTRODUCTION TO POLITICAL THEORY"
+      },
+      {
+        "code": "DM3005",
+        "title": "INTERACTIVE DEVICES"
+      },
+      {
+        "code": "CM8002",
+        "title": "FORENSIC SCIENCE"
+      },
+      {
+        "code": "DT2012",
+        "title": "DIGITAL PAINTING"
+      },
+      {
+        "code": "CZ3004",
+        "title": "MULTIDISCIPLINARY DESIGN PROJECT"
+      },
+      {
+        "code": "CV4112",
+        "title": "TRAFFIC ENGINEERING"
+      },
+      {
+        "code": "DF2005",
+        "title": "WRITING FOR FILM"
+      },
+      {
+        "code": "AAI38B",
+        "title": "STUDIES IN JAPANESE MUSIC"
+      },
+      {
+        "code": "MA1701",
+        "title": "INTRODUCTION TO AEROSPACE ENGINEERING"
+      },
+      {
+        "code": "HH2027",
+        "title": "BLOOD, GERMS, & SICK BODIES: BIOMEDICINE IN HISTORY"
+      },
+      {
+        "code": "ADP26D",
+        "title": "THEATRE & TECHNOLOGY"
+      },
+      {
+        "code": "CE1003",
+        "title": "INTRODUCTION TO COMPUTATIONAL THINKING"
+      },
+      {
+        "code": "CH9203",
+        "title": "FOOD PROCESS ENGINEERING"
+      },
+      {
+        "code": "AC1102",
+        "title": "ACCOUNTING II"
+      },
+      {
+        "code": "HU1001",
+        "title": "INTRODUCTION TO GEOGRAPHY & URBAN PLANNING"
+      },
+      {
+        "code": "MA3701",
+        "title": "AERODYNAMICS"
+      },
+      {
+        "code": "HW0228",
+        "title": "SCIENTIFIC COMMUNICATION II"
+      },
+      {
+        "code": "MH2500",
+        "title": "PROBABILITY & INTRODUCTION TO STATISTICS"
+      },
+      {
+        "code": "BS2001",
+        "title": "PHYSIOLOGY"
+      },
+      {
+        "code": "DV3000",
+        "title": "VISUAL COMMUNICATION III"
+      },
+      {
+        "code": "E2004L",
+        "title": "DIGITAL ELECTRONICS"
+      },
+      {
+        "code": "HA4026",
+        "title": "SELECTED TOPICS IN HEALTH CARE & AGEING"
+      },
+      {
+        "code": "PH3404",
+        "title": "PHYSICS OF CLASSICAL & QUANTUM INFORMATION"
+      },
+      {
+        "code": "HP3101",
+        "title": "APPLIED STATISTICAL METHODS FOR PSYCHOLOGICAL RESEARCH"
+      },
+      {
+        "code": "PH3403",
+        "title": "COSMOLOGY"
+      },
+      {
+        "code": "HS0201",
+        "title": "CONTEMPORARY SINGAPORE SOCIETY"
+      },
+      {
+        "code": "CZ4042",
+        "title": "NEURAL NETWORK & DEEP LEARNING"
+      },
+      {
+        "code": "HS1001",
+        "title": "PERSON & SOCIETY"
+      },
+      {
+        "code": "AB0603",
+        "title": "BUSINESS GONE GREEN:  MANAGERIAL ISSUES"
+      },
+      {
+        "code": "AGQ28B",
+        "title": "EVERYDAY SCIENCE IN FOODS"
+      },
+      {
+        "code": "SS9003",
+        "title": "INTRODUCTION TO PILATES MATWORK & HATHA YOGA"
+      },
+      {
+        "code": "BG1103",
+        "title": "CHEMISTRY FOR ENGINEERS"
+      },
+      {
+        "code": "EE3001",
+        "title": "ENGINEERING ELECTROMAGNETICS"
+      },
+      {
+        "code": "ES4303",
+        "title": "MARINE & AQUATIC ECOLOGY"
+      },
+      {
+        "code": "AB1202",
+        "title": "STATISTICS & ANALYSIS"
+      },
+      {
+        "code": "HP3201",
+        "title": "EVOLUTIONARY PSYCHOLOGY"
+      },
+      {
+        "code": "MH3600",
+        "title": "KNOTS & SURFACES:INTRODUCTION TO TOPOLOGY"
+      },
+      {
+        "code": "HE4005",
+        "title": "GROWTH THEORY & EMPIRICS"
+      },
+      {
+        "code": "LS9003",
+        "title": "SPANISH LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "CH3141",
+        "title": "ADVANCED UNIT OPERATIONS"
+      },
+      {
+        "code": "DR2001",
+        "title": "PRODUCT DESIGN I"
+      },
+      {
+        "code": "DT2013",
+        "title": "FUNDAMENTALS OF IMMERSIVE 360 DEGREES & VR EXPERIENCES"
+      },
+      {
+        "code": "RE8013",
+        "title": "FINANCIAL MANAGEMENT"
+      },
+      {
+        "code": "BU8201",
+        "title": "BUSINESS FINANCE"
+      },
+      {
+        "code": "HC4014",
+        "title": "SPECIAL TOPICS IN CHINESE LITERARY & CULTURAL STUDIES"
+      },
+      {
+        "code": "HF9601",
+        "title": "CREATIVE WRITING: CHINESE CROSSMEDIA WRITING"
+      },
+      {
+        "code": "MS3012",
+        "title": "MICRO\/NANOELECTRONIC MATERIALS PROCESSING"
+      },
+      {
+        "code": "CH2801",
+        "title": "CHEMICAL & BIOMOLECULAR ENGINEERING LABORATORY 2A"
+      },
+      {
+        "code": "IM4188",
+        "title": "WIRELESS COMMUNICATIONS"
+      },
+      {
+        "code": "AB1501",
+        "title": "MARKETING"
+      },
+      {
+        "code": "HS4080",
+        "title": "HONOURS SEMINAR IN APPLIED SOCIOLOGY"
+      },
+      {
+        "code": "CE2006",
+        "title": "SOFTWARE ENGINEERING"
+      },
+      {
+        "code": "BS4002",
+        "title": "CURRENT TOPICS IN CELL BIOLOGY"
+      },
+      {
+        "code": "MT4001",
+        "title": "SHIPPING LOGISTICS"
+      },
+      {
+        "code": "MH1802",
+        "title": "CALCULUS FOR THE SCIENCES"
+      },
+      {
+        "code": "AAI28C",
+        "title": "PERCUSSION"
+      },
+      {
+        "code": "SS2103",
+        "title": "SPORT COACHING: FOUNDATIONS OF COACHING"
+      },
+      {
+        "code": "LF9004",
+        "title": "FRENCH LANGUAGE LEVEL 4"
+      },
+      {
+        "code": "CZ4045",
+        "title": "NATURAL LANGUAGE PROCESSING"
+      },
+      {
+        "code": "DR3000",
+        "title": "PRODUCT DESIGN III"
+      },
+      {
+        "code": "DA2000",
+        "title": "APPLIED DRAWING"
+      },
+      {
+        "code": "DR2002",
+        "title": "ISSUES IN PRODUCT DESIGN PRACTICE"
+      },
+      {
+        "code": "CV3013",
+        "title": "FOUNDATION ENGINEERING"
+      },
+      {
+        "code": "CE4023",
+        "title": "ADVANCED COMPUTER NETWORKS"
+      },
+      {
+        "code": "MA4842",
+        "title": "ENGINEERING METROLOGY"
+      },
+      {
+        "code": "EE4110",
+        "title": "OPTICAL COMMUNICATION SYSTEM DESIGN"
+      },
+      {
+        "code": "HW0128",
+        "title": "SCIENTIFIC COMMUNICATION I"
+      },
+      {
+        "code": "RE2011",
+        "title": "RENAISSANCE DESIGN I"
+      },
+      {
+        "code": "CY1500",
+        "title": "INTRODUCTORY RESEARCH METHODOLOGY"
+      },
+      {
+        "code": "MS2082",
+        "title": "LABORATORY IIB"
+      },
+      {
+        "code": "DV2011",
+        "title": "PATTERN, ART, DESIGN & ARCHITECTURE"
+      },
+      {
+        "code": "EE4761",
+        "title": "COMPUTER NETWORKING"
+      },
+      {
+        "code": "IM2001",
+        "title": "SOFTWARE ENGINEERING"
+      },
+      {
+        "code": "BU8101",
+        "title": "ACCOUNTING: A USER PERSPECTIVE"
+      },
+      {
+        "code": "IM3003",
+        "title": "INFORMATION SECURITY"
+      },
+      {
+        "code": "CZ4022",
+        "title": "PERSONAL MOBILE NETWORKS"
+      },
+      {
+        "code": "BS2102",
+        "title": "CHINESE MATERIA MEDICA"
+      },
+      {
+        "code": "DP3000",
+        "title": "PROFESSIONAL DIRECTIONS IN PHOTOGRAPHY"
+      },
+      {
+        "code": "SS1104",
+        "title": "INTRODUCTION TO HEALTH & WELLNESS"
+      },
+      {
+        "code": "MH4701",
+        "title": "MATHEMATICAL PROGRAMMING"
+      },
+      {
+        "code": "HL1007",
+        "title": "CLASSICAL LITERATURE"
+      },
+      {
+        "code": "MA1001",
+        "title": "DYNAMICS"
+      },
+      {
+        "code": "MT4104",
+        "title": "INFORMATION TECHNOLOGY MANAGEMENT"
+      },
+      {
+        "code": "AB9102",
+        "title": "FORENSIC ACCOUNTING & FRAUD INVESTIGATION"
+      },
+      {
+        "code": "EE4476",
+        "title": "IMAGE PROCESSING"
+      },
+      {
+        "code": "PH4408",
+        "title": "NUCLEAR PHYSICS"
+      },
+      {
+        "code": "DP3010",
+        "title": "MOVING IMAGE FOR STILL PHOTOGRAPHERS"
+      },
+      {
+        "code": "CS4004",
+        "title": "FINAL YEAR PROJECT"
+      },
+      {
+        "code": "BS3345",
+        "title": "UAEB II - MICROBIAL BIOTECHNOLOGY & SYSTEMS BIOLOGY"
+      },
+      {
+        "code": "CZ1006",
+        "title": "COMPUTER ORGANISATION & ARCHITECTURE"
+      },
+      {
+        "code": "BS3342",
+        "title": "UAEB II -ROLE OF ACTIN CYTOSKELETON REGULATORS IN METASTASIS"
+      },
+      {
+        "code": "IM4761",
+        "title": "COMPUTER NETWORKING"
+      },
+      {
+        "code": "SS9202",
+        "title": "SOCCER"
+      },
+      {
+        "code": "HZ9204",
+        "title": "CREATIVE WRITING: PLAYWRITING"
+      },
+      {
+        "code": "HP8002",
+        "title": "WORKING IN THE 21ST CENTURY"
+      },
+      {
+        "code": "MH1800",
+        "title": "CALCULUS FOR THE SCIENCES I"
+      },
+      {
+        "code": "PH1012",
+        "title": "PHYSICS A"
+      },
+      {
+        "code": "DT2003",
+        "title": "DIGITAL SCULPTING"
+      },
+      {
+        "code": "AAA28S",
+        "title": "CERAMICS II"
+      },
+      {
+        "code": "HP3603",
+        "title": "SENSATION & PERCEPTION"
+      },
+      {
+        "code": "BS3033",
+        "title": "DATA SCIENCE FOR BIOLOGISTS"
+      },
+      {
+        "code": "MA4803",
+        "title": "NOISE & VIBRATION CONTROL"
+      },
+      {
+        "code": "CS4053",
+        "title": "POPULAR CINEMA"
+      },
+      {
+        "code": "CY1601",
+        "title": "MATHEMATICS I"
+      },
+      {
+        "code": "HS2028",
+        "title": "GRAYING SOCIETY: ISSUES & CHALLENGES"
+      },
+      {
+        "code": "EE2073",
+        "title": "INTRODUCTION TO EEE DESIGN & PROJECT"
+      },
+      {
+        "code": "MH4702",
+        "title": "PROBABILISTIC METHODS IN OR"
+      },
+      {
+        "code": "BE2501",
+        "title": "INTERNATIONAL BUSINESS ENVIRONMENT"
+      },
+      {
+        "code": "HG4049",
+        "title": "SEMANTIC ANALYSIS"
+      },
+      {
+        "code": "HL3037",
+        "title": "APPROACHES TO THE ENVIRONMENTAL HUMANITIES"
+      },
+      {
+        "code": "CH2103",
+        "title": "FLUID SYSTEMS"
+      },
+      {
+        "code": "LS9004",
+        "title": "SPANISH LANGUAGE LEVEL 4"
+      },
+      {
+        "code": "AC2105",
+        "title": "ACCOUNTING FOR DECISION MAKING & CONTROL"
+      },
+      {
+        "code": "EE1005",
+        "title": "FROM COMPUTATIONAL THINKING TO PROGRAMMING"
+      },
+      {
+        "code": "EE4001",
+        "title": "SOFTWARE ENGINEERING"
+      },
+      {
+        "code": "CV1011",
+        "title": "MECHANICS OF MATERIALS"
+      },
+      {
+        "code": "ES2003",
+        "title": "E2S2 BIOSPHERE"
+      },
+      {
+        "code": "CZ3003",
+        "title": "SOFTWARE SYSTEMS ANALYSIS & DESIGN"
+      },
+      {
+        "code": "CS4026",
+        "title": "DOCUMENTARY FILM & TV:CONCEPTS & APPLICATIONS"
+      },
+      {
+        "code": "BM3502",
+        "title": "GLOBAL BUSINESS STRATEGY"
+      },
+      {
+        "code": "MA4701",
+        "title": "AIRCRAFT DESIGN"
+      },
+      {
+        "code": "EE3080",
+        "title": "DESIGN & INNOVATION PROJECT"
+      },
+      {
+        "code": "LM9002",
+        "title": "MALAY LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "AB8401",
+        "title": "DECISION MAKING WITH PROGRAMMING & ANALYTICS"
+      },
+      {
+        "code": "HZ9203",
+        "title": "CREATIVE WRITING: NON FICTION PROSE"
+      },
+      {
+        "code": "CE4032",
+        "title": "DATA ANALYTICS & MINING"
+      },
+      {
+        "code": "HP4102",
+        "title": "TRAUMA PSYCHOLOGY & CRISIS MANAGEMENT"
+      },
+      {
+        "code": "SS3621",
+        "title": "SPORT TECHNOLOGY, INNOVATION & ENTREPRENEURSHIP"
+      },
+      {
+        "code": "EE2007",
+        "title": "ENGINEERING MATHEMATICS II"
+      },
+      {
+        "code": "MS4650",
+        "title": "FUNCTIONAL NANOSTRUCTURE MATERIALS"
+      },
+      {
+        "code": "HP3802",
+        "title": "PERSONNEL PSYCHOLOGY"
+      },
+      {
+        "code": "AAA08B",
+        "title": "FASHION & DESIGN: WEARABLE ART AS A SECOND SKIN"
+      },
+      {
+        "code": "PH3399",
+        "title": "PHYSICS LAB IIIB"
+      },
+      {
+        "code": "HG4070",
+        "title": "EXPERIMENTAL PHONETICS"
+      },
+      {
+        "code": "AAI180",
+        "title": "MUSICAL PRACTICES I (BAROQUE & CLASSICAL)"
+      },
+      {
+        "code": "HC3014",
+        "title": "CULTURAL STUDIES OF CHINESE CINEMAS"
+      },
+      {
+        "code": "HH4022",
+        "title": "COLONIAL MEDICAL PRACTICES IN SINGAPORE"
+      },
+      {
+        "code": "BF3203",
+        "title": "EQUITY SECURITIES"
+      },
+      {
+        "code": "BU8644",
+        "title": "SMARTER BRAIN? THE SCIENCE OF DECISION MAKING"
+      },
+      {
+        "code": "PH3199",
+        "title": "PHYSICS LAB IIIA"
+      },
+      {
+        "code": "PH4607",
+        "title": "BIOMEDICAL IMAGING & SENSING"
+      },
+      {
+        "code": "MS2015",
+        "title": "MECHANICAL BEHAVIOUR OF MATERIALS"
+      },
+      {
+        "code": "MT1002",
+        "title": "INTRODUCTION TO MARITIME INDUSTRY"
+      },
+      {
+        "code": "CS2168",
+        "title": "ONLINE MAGAZINE PRACTICUM"
+      },
+      {
+        "code": "IM2006",
+        "title": "ENGINEERING MATHEMATICS I"
+      },
+      {
+        "code": "LF9002",
+        "title": "FRENCH LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "ES3302",
+        "title": "TROPICAL ECOLOGY"
+      },
+      {
+        "code": "MS3081",
+        "title": "LABORATORY III"
+      },
+      {
+        "code": "HS3002",
+        "title": "UNDERSTANDING SOCIAL STATISTICS"
+      },
+      {
+        "code": "HP4002",
+        "title": "QUALITATIVE METHODS IN PSYCHOLOGY"
+      },
+      {
+        "code": "CS2033",
+        "title": "CORPORATE COMMUNICATIONS MANAGEMENT"
+      },
+      {
+        "code": "MS3013",
+        "title": "ENVIRONMENTAL EFFECTS ON MATERIALS"
+      },
+      {
+        "code": "CM3031",
+        "title": "ORGANIC REACTION MECHANISMS & SYNTHESIS"
+      },
+      {
+        "code": "EE4613",
+        "title": "CMOS PROCESS & DEVICE SIMULATION"
+      },
+      {
+        "code": "MA4002",
+        "title": "FLUID DYNAMICS"
+      },
+      {
+        "code": "DF2008",
+        "title": "ISSUES IN FILM PRACTICE"
+      },
+      {
+        "code": "HH3001",
+        "title": "HISTORIOGRAPHY: THEORY & METHODS"
+      },
+      {
+        "code": "MH4510",
+        "title": "STATISTICAL LEARNING & DATA MINING"
+      },
+      {
+        "code": "SS3612",
+        "title": "HUMAN RESOURCE MANAGEMENT IN SPORT"
+      },
+      {
+        "code": "MH4513",
+        "title": "SURVIVAL ANALYSIS"
+      },
+      {
+        "code": "BU8544",
+        "title": "MARKETING HEALTH: CONSUMERS' PURSUIT OF WELLNESS"
+      },
+      {
+        "code": "CZ1011",
+        "title": "ENGINEERING MATHEMATICS I"
+      },
+      {
+        "code": "HC2032",
+        "title": "DIVISION & INTEGRATION: FROM CHUNQIU TO WUDAI"
+      },
+      {
+        "code": "HE2007",
+        "title": "MONEY & BANKING"
+      },
+      {
+        "code": "SS3311",
+        "title": "ADVANCED TOPICS IN EXERCISE & SPORT PSYCHOLOGY"
+      },
+      {
+        "code": "DV2009",
+        "title": "DESIGN IN MOTION"
+      },
+      {
+        "code": "EE4503",
+        "title": "POWER ENGINEERING DESIGN"
+      },
+      {
+        "code": "CE1007",
+        "title": "DATA STRUCTURES"
+      },
+      {
+        "code": "IM4717",
+        "title": "WEB APPLICATION DESIGN"
+      },
+      {
+        "code": "DA9009",
+        "title": "EXHIBITION DESIGN"
+      },
+      {
+        "code": "DA9012",
+        "title": "MEDIA ART NEXUS"
+      },
+      {
+        "code": "AB1000",
+        "title": "CAREER FOUNDATIONS I"
+      },
+      {
+        "code": "HW0105",
+        "title": "ACADEMIC COMMUNICATION IN THE ARTS, HUMANITIES & SOCIAL SCI"
+      },
+      {
+        "code": "MA2071",
+        "title": "LABORATORY EXPERIMENTS (ME)"
+      },
+      {
+        "code": "BF2207",
+        "title": "INTERNATIONAL FINANCE"
+      },
+      {
+        "code": "E3017L",
+        "title": "COMPUTER COMMUNICATIONS"
+      },
+      {
+        "code": "BG3102",
+        "title": "CONTROL IN BIOSYSTEMS"
+      },
+      {
+        "code": "LK9005",
+        "title": "KOREAN LANGUAGE LEVEL 5"
+      },
+      {
+        "code": "DR2008",
+        "title": "USER EXPERIENCE IN DESIGN"
+      },
+      {
+        "code": "DD8012",
+        "title": "CONTEMPORARY CURATING"
+      },
+      {
+        "code": "DV2008",
+        "title": "INTERFACE DESIGN"
+      },
+      {
+        "code": "HC2030",
+        "title": "PRE-QIN THOUGHT"
+      },
+      {
+        "code": "HW0288",
+        "title": "ENGINEERING COMMUNICATION II"
+      },
+      {
+        "code": "EE3011",
+        "title": "MODELLING & CONTROL"
+      },
+      {
+        "code": "EE4152",
+        "title": "DIGITAL COMMUNICATIONS"
+      },
+      {
+        "code": "HA2009",
+        "title": "THE MAKING OF E-GOVERNMENT"
+      },
+      {
+        "code": "MT1001",
+        "title": "MATHEMATICS I FOR MARITIME STUDIES"
+      },
+      {
+        "code": "HH4021",
+        "title": "PUBLIC & APPLIED HISTORY"
+      },
+      {
+        "code": "CS2166",
+        "title": "FILM FESTIVAL PRACTICUM"
+      },
+      {
+        "code": "MH1810",
+        "title": "MATHEMATICS 1"
+      },
+      {
+        "code": "CH1102",
+        "title": "INTRODUCTION TO CHEMICAL ENGINEERING IN NEW ERA"
+      },
+      {
+        "code": "CZ2005",
+        "title": "OPERATING SYSTEMS"
+      },
+      {
+        "code": "BS3014",
+        "title": "BIOLOGICAL FOUNDATIONS OF BEHAVIOR"
+      },
+      {
+        "code": "CE1011",
+        "title": "ENGINEERING MATHEMATICS I"
+      },
+      {
+        "code": "HL3011",
+        "title": "SCIENCE FICTION:ORIGINS TO PARODY"
+      },
+      {
+        "code": "EE8095",
+        "title": "INNOVATION & COMMERCIALIZATION"
+      },
+      {
+        "code": "CS0204",
+        "title": "BASIC MEDIA WRITING"
+      },
+      {
+        "code": "ADP26B",
+        "title": "THEATRE FOR YOUNG PEOPLE: METHODS & PRACTICES"
+      },
+      {
+        "code": "ACL18A",
+        "title": "TEACHING SOCIAL STUDIES TO SECONDARY STUDENTS"
+      },
+      {
+        "code": "BH2601",
+        "title": "STRATEGIC HR MANAGEMENT & CONSULTING"
+      },
+      {
+        "code": "MH9100",
+        "title": "ADVANCED INVESTIGATIONS IN CALCULUS I"
+      },
+      {
+        "code": "SS9304",
+        "title": "INTRODUCTION TO MODERN JAZZ DANCE"
+      },
+      {
+        "code": "CS4193",
+        "title": "OVERSEAS FILM FESTIVALS PRACTICUM"
+      },
+      {
+        "code": "DR2014",
+        "title": "WEARABLE TECHNOLOGY, FASHION & DESIGN"
+      },
+      {
+        "code": "EE4188",
+        "title": "WIRELESS COMMUNICATIONS"
+      },
+      {
+        "code": "CE4042",
+        "title": "NEURAL NETWORK & DEEP LEARNING"
+      },
+      {
+        "code": "DD2003",
+        "title": "ISSUES IN ART HISTORY & THEORY"
+      },
+      {
+        "code": "HE1003",
+        "title": "BASIC MATHEMATICS FOR ECONOMISTS"
+      },
+      {
+        "code": "MH3101",
+        "title": "COMPLEX ANALYSIS"
+      },
+      {
+        "code": "AAA28R",
+        "title": "CERAMICS I"
+      },
+      {
+        "code": "LF9001",
+        "title": "FRENCH LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "MS4660",
+        "title": "FUNDAMENTALS OF INTELLECTUAL PROPERTY IN MATLS SCI & ENG"
+      },
+      {
+        "code": "DT3004",
+        "title": "RIGGING FOR ANIMATION"
+      },
+      {
+        "code": "MT4003",
+        "title": "MARITIME STRATEGY"
+      },
+      {
+        "code": "CS2101",
+        "title": "PUBLIC RELATIONS WRITING"
+      },
+      {
+        "code": "MS2012",
+        "title": "INTRODUCTION TO MANUFACTURING PROCESSES"
+      },
+      {
+        "code": "HA2020",
+        "title": "SOCIO-POLITICAL ANALYSIS IN PUBLIC POLICY"
+      },
+      {
+        "code": "CH3101",
+        "title": "PROCESS CONTROL & DYNAMICS"
+      },
+      {
+        "code": "E2010L",
+        "title": "SIGNALS & SYSTEMS"
+      },
+      {
+        "code": "EE2003",
+        "title": "SEMICONDUCTOR FUNDAMENTALS"
+      },
+      {
+        "code": "CS2173",
+        "title": "OVERSEAS FILM FESTIVAL PRACTICUM"
+      },
+      {
+        "code": "CY2001",
+        "title": "RESEARCH ATTACHMENT 1"
+      },
+      {
+        "code": "BS2020",
+        "title": "MATHS, PHYS & BASIC PROGRAMMING FOR THE STRUCTURAL BIOLOGIST"
+      },
+      {
+        "code": "AAI48A",
+        "title": "STUDIES IN CHINESE MUSIC"
+      },
+      {
+        "code": "CS4087",
+        "title": "ONLINE MAGAZINE PRACTICUM"
+      },
+      {
+        "code": "RE1011",
+        "title": "MATHEMATICS I"
+      },
+      {
+        "code": "HS4090",
+        "title": "HONOURS SEMINAR IN CURRENT SOCIOLOGY"
+      },
+      {
+        "code": "HP1000",
+        "title": "INTRODUCTION TO PSYCHOLOGY"
+      },
+      {
+        "code": "HP3703",
+        "title": "HEALTH PSYCHOLOGY"
+      },
+      {
+        "code": "AC2104",
+        "title": "ASSURANCE & AUDITING"
+      },
+      {
+        "code": "CM412S",
+        "title": "STRUCTURAL DETERMINATION"
+      },
+      {
+        "code": "PH2104",
+        "title": "ANALYTICAL MECHANICS"
+      },
+      {
+        "code": "AGQ28C",
+        "title": "FOOD & SOCIETY"
+      },
+      {
+        "code": "HH3031",
+        "title": "THE US & THE MODERN MIDDLE EAST"
+      },
+      {
+        "code": "EN3001",
+        "title": "SOLID & HAZARDOUS WASTE MANAGEMENT"
+      },
+      {
+        "code": "MA3179",
+        "title": "PRODUCT DEVELOPMENT CHALLENGE"
+      },
+      {
+        "code": "CZ4003",
+        "title": "COMPUTER VISION"
+      },
+      {
+        "code": "HL8001",
+        "title": "MADNESS IN LITERATURE & FILM"
+      },
+      {
+        "code": "RE8011",
+        "title": "FUNDAMENTALS OF MANAGEMENT"
+      },
+      {
+        "code": "HY3910",
+        "title": "PHILOSOPHY OF SCIENCE"
+      },
+      {
+        "code": "EE4475",
+        "title": "AUDIO SIGNAL PROCESSING"
+      },
+      {
+        "code": "SS9104",
+        "title": "BASKETBALL"
+      },
+      {
+        "code": "AAA18M",
+        "title": "BATIK"
+      },
+      {
+        "code": "BR3208",
+        "title": "OPERATIONAL RISK MANAGEMENT"
+      },
+      {
+        "code": "AB1401",
+        "title": "TECHNOLOGICAL INNOVATIONS & DEVELOPMENTS"
+      },
+      {
+        "code": "LI9001",
+        "title": "ITALIAN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "HH3019",
+        "title": "HISTORY OF THE BODY"
+      },
+      {
+        "code": "ES1001",
+        "title": "E2S2: ENVIRONMENT & SOCIETY"
+      },
+      {
+        "code": "HP4061",
+        "title": "LABORATORY IN COGNITIVE PSYCHOLOGY"
+      },
+      {
+        "code": "CE2003",
+        "title": "DIGITAL SYSTEMS DESIGN"
+      },
+      {
+        "code": "LG9004",
+        "title": "GERMAN LANGUAGE LEVEL 4"
+      },
+      {
+        "code": "CV4102",
+        "title": "ADVANCED STEEL DESIGN"
+      },
+      {
+        "code": "HH4006",
+        "title": "THE GREEN EARTH: ISSUES IN ENVIRONMENTAL HISTORY"
+      },
+      {
+        "code": "DA2002",
+        "title": "THINKING & COMMUNICATING VISUALLY II"
+      },
+      {
+        "code": "HG3022",
+        "title": "SOCIOLINGUISTICS OF A REGION"
+      },
+      {
+        "code": "AAA18E",
+        "title": "DRAWING"
+      },
+      {
+        "code": "AB1201",
+        "title": "FINANCIAL MANAGEMENT"
+      },
+      {
+        "code": "AC2302",
+        "title": "COMPANY LAW & CORPORATE GOVERNANCE"
+      },
+      {
+        "code": "LC9001",
+        "title": "CHINESE LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "BF2201",
+        "title": "INVESTMENTS"
+      },
+      {
+        "code": "ES3101",
+        "title": "PETROLEUM GEOLOGY"
+      },
+      {
+        "code": "BM3506",
+        "title": "STRATEGIC BRAND MANAGEMENT"
+      },
+      {
+        "code": "HC4040",
+        "title": "CROSS-TAIWAN STRAITS RELATIONS"
+      },
+      {
+        "code": "IM0040",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "BS2002",
+        "title": "MICROBIOLOGY"
+      },
+      {
+        "code": "HP4274",
+        "title": "THE LAST DANCE: PERSPECTIVES OF DEATH, DYING & BEREAVEMENT"
+      },
+      {
+        "code": "HS2026",
+        "title": "DEVIANCE & SOCIETY"
+      },
+      {
+        "code": "LA9003",
+        "title": "ARABIC LANGUAGE LEVEL 3"
+      },
+      {
+        "code": "MH2100",
+        "title": "CALCULUS III"
+      },
+      {
+        "code": "HC3040",
+        "title": "CHINA'S REFORM & ECONOMIC DEVELOPMENT"
+      },
+      {
+        "code": "DT2001",
+        "title": "3D PRODUCTION"
+      },
+      {
+        "code": "IM2002",
+        "title": "MICROPROCESSORS"
+      },
+      {
+        "code": "HE2009",
+        "title": "INDUSTRIAL ORGANISATION"
+      },
+      {
+        "code": "MH3512",
+        "title": "STOCHASTIC PROCESSES"
+      },
+      {
+        "code": "ADP26C",
+        "title": "ACTING: THE ACTOR'S VOICE &  BODY"
+      },
+      {
+        "code": "SS2104",
+        "title": "SPORT MARKETING & SPONSORSHIP"
+      },
+      {
+        "code": "CE3002",
+        "title": "SENSORS, INTERFACING & CONTROL"
+      },
+      {
+        "code": "EE2004",
+        "title": "DIGITAL ELECTRONICS"
+      },
+      {
+        "code": "LI9002",
+        "title": "ITALIAN LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "BL9301",
+        "title": "LAW OF COMMERCIAL TRANSACTIONS"
+      },
+      {
+        "code": "BC3405",
+        "title": "LEAN OPERATIONS & ANALYTICS"
+      },
+      {
+        "code": "LK9002",
+        "title": "KOREAN LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "HA3015",
+        "title": "MEDIA & POLITICS"
+      },
+      {
+        "code": "HP3801",
+        "title": "PSYCHOLOGY IN THE WORKPLACE"
+      },
+      {
+        "code": "PS0001",
+        "title": "INTRODUCTION TO COMPUTATIONAL THINKING"
+      },
+      {
+        "code": "MH3510",
+        "title": "REGRESSION ANALYSIS"
+      },
+      {
+        "code": "IM2004",
+        "title": "SIGNALS & SYSTEMS"
+      },
+      {
+        "code": "CZ1003",
+        "title": "INTRODUCTION TO COMPUTATIONAL THINKING"
+      },
+      {
+        "code": "PH4507",
+        "title": "TOPICS IN PHYSICS"
+      },
+      {
+        "code": "BG0491",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "LN9002",
+        "title": "SWEDISH LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "CE4064",
+        "title": "SECURITY MANAGEMENT"
+      },
+      {
+        "code": "BG2801",
+        "title": "BIOENGINEERING LAB 2A"
+      },
+      {
+        "code": "BA2203",
+        "title": "STATISTICAL MODELLING"
+      },
+      {
+        "code": "DR3001",
+        "title": "STUDIES IN FORM"
+      },
+      {
+        "code": "MA3700",
+        "title": "AIRCRAFT STRUCTURES I"
+      },
+      {
+        "code": "SU3001",
+        "title": "INTEGRATED URBAN MANAGEMENT"
+      },
+      {
+        "code": "CS0209",
+        "title": "MEDIA LAW, ETHICS & POLICY"
+      },
+      {
+        "code": "CV4110",
+        "title": "EXCAVATION & RETAINING WALLS"
+      },
+      {
+        "code": "DF8000",
+        "title": "SURVEY OF EXPERIMENTAL FILM"
+      },
+      {
+        "code": "EE4647",
+        "title": "MICROELECTRONIC DEVICES"
+      },
+      {
+        "code": "FE1073",
+        "title": "AN INTRODUCTION TO ENGINEERING & PRACTICES"
+      },
+      {
+        "code": "BS3332",
+        "title": "UAEB WORKSHOP (SERIES I) - METHODS IN HISTOLOGY"
+      },
+      {
+        "code": "MS1016",
+        "title": "THERMODYNAMICS OF MATERIALS"
+      },
+      {
+        "code": "HP3807",
+        "title": "OCCUPATIONAL HEALTH PSYCHOLOGY"
+      },
+      {
+        "code": "DA1000",
+        "title": "THINKING & COMMUNICATING VISUALLY I"
+      },
+      {
+        "code": "CS4093",
+        "title": "OVERSEAS FILM FESTIVALS PRACTICUM"
+      },
+      {
+        "code": "BM2506",
+        "title": "DIGITAL MARKETING:CONNECTING WITH CUSTOMERS IN TODAY'S WORLD"
+      },
+      {
+        "code": "BM2505",
+        "title": "MARKETING CHANNELS"
+      },
+      {
+        "code": "HW0188",
+        "title": "ENGINEERING COMMUNICATION I"
+      },
+      {
+        "code": "AD2101",
+        "title": "MANAGEMENT ACCOUNTING"
+      },
+      {
+        "code": "CS4024",
+        "title": "WRITING FOR CINEMA & TV"
+      },
+      {
+        "code": "HE3003",
+        "title": "THE CHINESE ECONOMY"
+      },
+      {
+        "code": "HC2001",
+        "title": "DIRECTED READINGS OF LITERARY WORKS: PRE-QIN,HAN,WEI & JIN"
+      },
+      {
+        "code": "HY4013",
+        "title": "LANGUAGE AND BEING"
+      },
+      {
+        "code": "PH2198",
+        "title": "PHYSICS LABORATORY IIA"
+      },
+      {
+        "code": "PH1801",
+        "title": "FOUNDATIONS OF PHYSICS I"
+      },
+      {
+        "code": "BS4015",
+        "title": "PLANT BIOTECHNOLOGY"
+      },
+      {
+        "code": "BC3407",
+        "title": "R & PYTHON FOR BUSINESS ANALYTICS"
+      },
+      {
+        "code": "LH9001",
+        "title": "HINDI LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "SS9107",
+        "title": "TABLE TENNIS"
+      },
+      {
+        "code": "CS4083",
+        "title": "TELEVISION PRACTICUM"
+      },
+      {
+        "code": "MA4849",
+        "title": "OPERATIONS RESEARCH"
+      },
+      {
+        "code": "CS4191",
+        "title": "NEWS PRACTICUM"
+      },
+      {
+        "code": "CZ2002",
+        "title": "OBJECT ORIENTED DESIGN & PROGRAMMING"
+      },
+      {
+        "code": "LX9001",
+        "title": "LATIN LANGUAGE LEVEL 1"
+      },
+      {
+        "code": "CZ4041",
+        "title": "MACHINE LEARNING"
+      },
+      {
+        "code": "AED38A",
+        "title": "MOTIVATING PUPILS TO LEARN"
+      },
+      {
+        "code": "CS2030",
+        "title": "AUDIO IN MEDIA"
+      },
+      {
+        "code": "AC2101",
+        "title": "ACCOUNTING RECOGNITION & MEASUREMENT"
+      },
+      {
+        "code": "CM9001",
+        "title": "CONCEPTUAL CHEMISTRY WITH LABORATORY"
+      },
+      {
+        "code": "LG9002",
+        "title": "GERMAN LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "HC2040",
+        "title": "UNDERSTANDING CHINA"
+      },
+      {
+        "code": "EE4268",
+        "title": "ROBOTICS & AUTOMATION"
+      },
+      {
+        "code": "MA1008",
+        "title": "INTRODUCTION TO COMPUTATIONAL THINKING"
+      },
+      {
+        "code": "HL2007",
+        "title": "CONTEMPORARY LITERATURE & CULTURE"
+      },
+      {
+        "code": "HC4031",
+        "title": "INTERCULTURALISM IN CHINESE HISTORY"
+      },
+      {
+        "code": "DV2001",
+        "title": "VISUAL COMMUNICATION I"
+      },
+      {
+        "code": "PH3601",
+        "title": "FABRICATION OF MICRO-& NANOELECTRONIC DEVICES"
+      },
+      {
+        "code": "EE4265",
+        "title": "PROCESS CONTROL SYSTEMS"
+      },
+      {
+        "code": "AAA18J",
+        "title": "PAINTING WITH WATERCOLOUR"
+      },
+      {
+        "code": "MA4845",
+        "title": "MANUFACTURING AUTOMATION"
+      },
+      {
+        "code": "IM3001",
+        "title": "DIGITAL SIGNAL PROCESSING"
+      },
+      {
+        "code": "BU8502",
+        "title": "MARKETING COMMUNICATIONS: AN INTEGRATED APPROACH"
+      },
+      {
+        "code": "MS2013",
+        "title": "POLYMERS & COMPOSITES"
+      },
+      {
+        "code": "HS4902",
+        "title": "RESEARCH PRACTICUM II: QUANTITATIVE SOCIAL RESEARCH"
+      },
+      {
+        "code": "DD3012",
+        "title": "RESEARCH METHODS IN ART & DESIGN"
+      },
+      {
+        "code": "AAH18C",
+        "title": "TOPICS IN MILITARY HISTORY"
+      },
+      {
+        "code": "BU8601",
+        "title": "FUNDAMENTALS OF MANAGEMENT"
+      },
+      {
+        "code": "DV3001",
+        "title": "TYPOGRAPHY III"
+      },
+      {
+        "code": "HP2500",
+        "title": "PERSONALITY & INDIVIDUAL DIFFERENCES"
+      },
+      {
+        "code": "BA3201",
+        "title": "LIFE CONTINGENCIES & DEMOGRAPHY"
+      },
+      {
+        "code": "EE4645",
+        "title": "MICROFABRICATION ENGINEERING"
+      },
+      {
+        "code": "MA3001",
+        "title": "MACHINE ELEMENT DESIGN"
+      },
+      {
+        "code": "HE4017",
+        "title": "MONETARY ECONOMICS"
+      },
+      {
+        "code": "EE4483",
+        "title": "ARTIFICIAL INTELLIGENCE & DATA MINING"
+      },
+      {
+        "code": "EE3010",
+        "title": "ELECTRICAL DEVICES & MACHINES"
+      },
+      {
+        "code": "DV2000",
+        "title": "TYPOGRAPHY I"
+      },
+      {
+        "code": "HL2004",
+        "title": "SENSIBILITY & ROMANTICISM"
+      },
+      {
+        "code": "CM2061",
+        "title": "CHEMISTRY & BIOLOGICAL CHEMISTRY LABORATORY 1"
+      },
+      {
+        "code": "E3002L",
+        "title": "MICROPROCESSORS"
+      },
+      {
+        "code": "CS8300",
+        "title": "SCIENCE FICTION FILM"
+      },
+      {
+        "code": "SS2105",
+        "title": "SEMINARS IN CURRENT ISSUES OF SPORT"
+      },
+      {
+        "code": "CS2008",
+        "title": "FUNDAMENTALS OF RESEARCH"
+      },
+      {
+        "code": "MA4001",
+        "title": "ENGINEERING DESIGN"
+      },
+      {
+        "code": "MA3010",
+        "title": "THERMODYNAMICS & HEAT TRANSFER"
+      },
+      {
+        "code": "ES3306",
+        "title": "GLOBAL CHANGE ECOLOGY"
+      },
+      {
+        "code": "CZ4016",
+        "title": "ADVANCED TOPICS IN ALGORITHMS"
+      },
+      {
+        "code": "HC1001",
+        "title": "INTRODUCTION TO THE STUDY OF LITERATURE & CULTURE"
+      },
+      {
+        "code": "HP0201",
+        "title": "EMPLOYMENT RELATIONS FOR WORK & CAREERS IN SINGAPORE"
+      },
+      {
+        "code": "ST9001",
+        "title": "INTRODUCTION TO SCIENCE, TECHNOLOGY, & SOCIETY"
+      },
+      {
+        "code": "AED16B",
+        "title": "CURRICULUM & ASSESSMENT IN EARLY CHILDHOOD EDUCATION"
+      },
+      {
+        "code": "CE4031",
+        "title": "DATABASE SYSTEM PRINCIPLES"
+      },
+      {
+        "code": "E2002L",
+        "title": "ANALOG ELECTRONICS"
+      },
+      {
+        "code": "MA0101",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "MA3703",
+        "title": "FLIGHT DYNAMICS"
+      },
+      {
+        "code": "ES2802",
+        "title": "GIS & THE EARTH SYSTEM"
+      },
+      {
+        "code": "LA9002",
+        "title": "ARABIC LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "MA4858",
+        "title": "PRODUCT DESIGN"
+      },
+      {
+        "code": "PH4402",
+        "title": "CONDENSED MATTER PHYSICS II"
+      },
+      {
+        "code": "HH3009",
+        "title": "COMPARATIVE HISTORY OF GLOBAL MIGRATION"
+      },
+      {
+        "code": "CS4050",
+        "title": "BAYESIAN DATA ANALYSIS & ITS APPLICATIONS"
+      },
+      {
+        "code": "BS4013",
+        "title": "PHYSIOLOGICAL SYSTEMS: ANIMAL MODELS FOR DRUG DEVELOPMENT"
+      },
+      {
+        "code": "EE4901",
+        "title": "BIOMEDICAL CONTROL SYSTEM DESIGN"
+      },
+      {
+        "code": "HL2042",
+        "title": "CHILDREN'S LITERATURE"
+      },
+      {
+        "code": "BS2103",
+        "title": "TCM DIAGNOSTICS"
+      },
+      {
+        "code": "CM3041",
+        "title": "PHYSICAL & BIOPHYSICAL CHEMISTRY 2"
+      },
+      {
+        "code": "PH4411",
+        "title": "INTRODUCTION TO EXPERIMENTAL PARTICLE PHYSICS"
+      },
+      {
+        "code": "BF2209",
+        "title": "DERIVATIVE SECURITIES"
+      },
+      {
+        "code": "LS9002",
+        "title": "SPANISH LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "MH1811",
+        "title": "MATHEMATICS 2"
+      },
+      {
+        "code": "SS9101",
+        "title": "BADMINTON"
+      },
+      {
+        "code": "HT9201",
+        "title": "TRANSLATION: TECHNIQUES & PRACTICES"
+      },
+      {
+        "code": "HE1002",
+        "title": "MACROECONOMIC PRINCIPLES"
+      },
+      {
+        "code": "CM9092",
+        "title": "POLYMER CHEMISTRY"
+      },
+      {
+        "code": "DF2000",
+        "title": "DIGITAL FILM PRODUCTION I"
+      },
+      {
+        "code": "EE2008",
+        "title": "DATA STRUCTURES & ALGORITHMS"
+      },
+      {
+        "code": "HE2004",
+        "title": "INTRODUCTORY ECONOMETRICS"
+      },
+      {
+        "code": "SS1101",
+        "title": "HUMAN ANATOMY & PHYSIOLOGY"
+      },
+      {
+        "code": "BG3801",
+        "title": "BIOENGINEERING LAB 3"
+      },
+      {
+        "code": "EE4903",
+        "title": "PHYSIOLOGICAL SYSTEMS ANALYSIS"
+      },
+      {
+        "code": "HZ9202",
+        "title": "CREATIVE WRITING:FICTION"
+      },
+      {
+        "code": "MS4620",
+        "title": "POLYMER TECHNOLOGY"
+      },
+      {
+        "code": "MH9200",
+        "title": "ADVANCED INVESTIGATIONS IN LINEAR ALGEBRA I"
+      },
+      {
+        "code": "CS4061",
+        "title": "GLOBAL MEDIA ISSUES &  POLICY"
+      },
+      {
+        "code": "LT9002",
+        "title": "THAI LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "MA2002",
+        "title": "THEORY OF MECHANISM"
+      },
+      {
+        "code": "CH3103",
+        "title": "CHEMICAL THERMODYNAMICS"
+      },
+      {
+        "code": "EE4340",
+        "title": "VLSI SYSTEMS"
+      },
+      {
+        "code": "MA2701",
+        "title": "FLIGHT PERFORMANCE"
+      },
+      {
+        "code": "CH4101",
+        "title": "CHEMICAL, BIOLOGICAL & PLANT SAFETY"
+      },
+      {
+        "code": "MA3002",
+        "title": "SOLID MECHANICS & VIBRATION"
+      },
+      {
+        "code": "MA4850",
+        "title": "SUPPLY CHAIN & LOGISTICS MANAGEMENT"
+      },
+      {
+        "code": "HA3007",
+        "title": "PUBLIC BUDGETING & FINANCIAL MANAGEMENT"
+      },
+      {
+        "code": "CZ4068",
+        "title": "APPLICATION SECURITY"
+      },
+      {
+        "code": "DP2006",
+        "title": "PRINCIPLES OF LIGHTING"
+      },
+      {
+        "code": "AB9602",
+        "title": "LEADERSHIP IN ORGANISATIONS"
+      },
+      {
+        "code": "HG3005",
+        "title": "RESEARCH METHODS IN LINGUISTICS II - STATISTICAL ANALYSIS"
+      },
+      {
+        "code": "HS4023",
+        "title": "SOCIOLOGY OF RISK & CRISIS"
+      },
+      {
+        "code": "MA1002",
+        "title": "FUNDAMENTAL ENGINEERING MATERIALS"
+      },
+      {
+        "code": "CZ2001",
+        "title": "ALGORITHMS"
+      },
+      {
+        "code": "AAA18Q",
+        "title": "PRINTMAKING"
+      },
+      {
+        "code": "EE4305",
+        "title": "DIGITAL DESIGN WITH HDL"
+      },
+      {
+        "code": "CZ4032",
+        "title": "DATA ANALYTICS & MINING"
+      },
+      {
+        "code": "HS8019",
+        "title": "LIVING IN CONTEMPORARY CITIES"
+      },
+      {
+        "code": "CZ2007",
+        "title": "INTRODUCTION TO DATABASES"
+      },
+      {
+        "code": "BS8004",
+        "title": "TRADITIONAL CHINESE MEDICINE: A PRIMER COURSE"
+      },
+      {
+        "code": "CE2004",
+        "title": "CIRCUITS & SIGNAL ANALYSIS"
+      },
+      {
+        "code": "PH2103",
+        "title": "THERMAL PHYSICS"
+      },
+      {
+        "code": "EE4207",
+        "title": "CONTROL ENGINEERING DESIGN"
+      },
+      {
+        "code": "CM3021",
+        "title": "ORGANOMETALLIC CHEMISTRY"
+      },
+      {
+        "code": "MA4832",
+        "title": "MICROPROCESSOR SYSTEMS"
+      },
+      {
+        "code": "SS1102",
+        "title": "INTRODUCTION TO SPORT MANAGEMENT"
+      },
+      {
+        "code": "DT3000",
+        "title": "ADVANCED DRAWN ANIMATION"
+      },
+      {
+        "code": "BA2202",
+        "title": "MATHEMATICS OF FINANCE"
+      },
+      {
+        "code": "CS2073",
+        "title": "OVERSEAS FILM FESTIVAL PRACTICUM"
+      },
+      {
+        "code": "HE4023",
+        "title": "ECONOMICS OF ORGANIZATIONS & CORPORATE MANAGEMENT"
+      },
+      {
+        "code": "SS9106",
+        "title": "NETBALL"
+      },
+      {
+        "code": "BG1801",
+        "title": "BIOENGINEERING LAB 1A"
+      },
+      {
+        "code": "CS4018",
+        "title": "SPECIALISED JOURNALISM:BUSINESS & ECONOMICS"
+      },
+      {
+        "code": "CZ4064",
+        "title": "SECURITY MANAGEMENT"
+      },
+      {
+        "code": "CS4311",
+        "title": "PROMOTING SUSTAINABILITY"
+      },
+      {
+        "code": "HG4047",
+        "title": "PRAGMATIC THEORY"
+      },
+      {
+        "code": "PH3102",
+        "title": "CONDENSED MATTER PHYSICS I"
+      },
+      {
+        "code": "CM9083",
+        "title": "HETEROCYCLIC CHEMISTRY"
+      },
+      {
+        "code": "AC1101",
+        "title": "ACCOUNTING I"
+      },
+      {
+        "code": "BG1131",
+        "title": "MOLECULAR CELL BIOLOGY FOR BIOMEDICAL ENGINEERS"
+      },
+      {
+        "code": "MS0002",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "BS1001",
+        "title": "INTRODUCTORY BIOLOGY"
+      },
+      {
+        "code": "AAI48J",
+        "title": "BAND III"
+      },
+      {
+        "code": "AAA18H",
+        "title": "PAINTING WITH OIL & ACRYLIC"
+      },
+      {
+        "code": "HA1001",
+        "title": "INTRODUCTION TO INTERNATIONAL RELATIONS & FOREIGN POLICY"
+      },
+      {
+        "code": "EE3015",
+        "title": "POWER SYSTEMS & PROTECTION"
+      },
+      {
+        "code": "MA4705",
+        "title": "AIRCRAFT NAVIGATION & FLIGHT COMPUTERS"
+      },
+      {
+        "code": "IM1001",
+        "title": "DATA STRUCTURES & ALGORITHMS"
+      },
+      {
+        "code": "CH4223",
+        "title": "PETROLEUM REFINING"
+      },
+      {
+        "code": "EE3012",
+        "title": "COMMUNICATION PRINCIPLES"
+      },
+      {
+        "code": "AB1601",
+        "title": "ORGANISATIONAL BEHAVIOUR & DESIGN"
+      },
+      {
+        "code": "EE3002",
+        "title": "MICROPROCESSORS"
+      },
+      {
+        "code": "AED23C",
+        "title": "CRITICAL REASONING SKILLS FOR EFFECTIVE TEACHING"
+      },
+      {
+        "code": "DF3003",
+        "title": "FILM PRODUCING"
+      },
+      {
+        "code": "BG3104",
+        "title": "BIOMEDICAL IMAGING"
+      },
+      {
+        "code": "MS3011",
+        "title": "METALLIC & CERAMIC MATERIALS"
+      },
+      {
+        "code": "AAU28C",
+        "title": "TWENTY-FIRST CENTURY LEARNING THROUGH THEATRE & DRAMA"
+      },
+      {
+        "code": "LJ9002",
+        "title": "JAPANESE LANGUAGE LEVEL 2"
+      },
+      {
+        "code": "AB1402",
+        "title": "FOUNDATIONAL EXCEL"
+      },
+      {
+        "code": "HE3013",
+        "title": "URBAN ECONOMICS"
+      },
+      {
+        "code": "HH2021",
+        "title": "RACE, GENDER, CLASS AND COLONIAL POWER"
+      },
+      {
+        "code": "BG2131",
+        "title": "BIOMATERIALS"
+      },
+      {
+        "code": "E3018L",
+        "title": "INTRODUCTION TO PHOTONICS"
+      },
+      {
+        "code": "CS2400",
+        "title": "FOUNDATION OF INFORMATION ANALYTICS"
+      },
+      {
+        "code": "DD3006",
+        "title": "ART IN THE AGE OF COLONIALISM"
+      },
+      {
+        "code": "EE4190",
+        "title": "INTRODUCTION TO MODERN RADAR"
+      },
+      {
+        "code": "HT9302",
+        "title": "LITERARY TRANSLATION INTO CHINESE CONTEXT"
+      },
+      {
+        "code": "AAI38C",
+        "title": "CLASSICAL GUITAR I"
+      },
+      {
+        "code": "BS3024",
+        "title": "EVOLUTION IN HEALTH & DISEASE"
+      },
+      {
+        "code": "HY2002",
+        "title": "MORAL PHILOSOPHY"
+      },
+      {
+        "code": "EE0040",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "MH4511",
+        "title": "SAMPLING & SURVEY"
+      },
+      {
+        "code": "MA2007",
+        "title": "THERMODYNAMICS"
+      },
+      {
+        "code": "CV3014",
+        "title": "TRANSPORTATION ENGINEERING"
+      },
+      {
+        "code": "CH0491",
+        "title": "ENGINEERS & SOCIETY"
+      },
+      {
+        "code": "HE4010",
+        "title": "SINGAPORE ECONOMY IN A GLOBALIZED WORLD"
+      },
+      {
+        "code": "MA8005",
+        "title": "AIRCRAFT ELECTRICAL & ELECTRONICS CIRCUITS"
+      },
+      {
+        "code": "CV4120",
+        "title": "ADVANCED REINFORCED CONCRETE DESIGN"
+      },
+      {
+        "code": "HY2015",
+        "title": "HAPPINESS"
+      },
+      {
+        "code": "HL2022",
+        "title": "SOUTH ASIAN LITERATURE"
+      },
+      {
+        "code": "HL3016",
+        "title": "GENDER & SEXUALITY STUDIES"
+      },
+      {
+        "code": "HH3025",
+        "title": "THE CULTURAL, SOCIAL & ECONOMIC HISTORY OF FOOTBALL"
+      },
+      {
+        "code": "MA4811",
+        "title": "PSYCHROMETRY & AIR CONDITIONING"
+      },
+      {
+        "code": "CZ1012",
+        "title": "ENGINEERING MATHEMATICS II"
+      },
+      {
+        "code": "DP2002",
+        "title": "HISTORY OF PHOTOGRAPHY"
+      },
+      {
+        "code": "HL4010",
+        "title": "FEMINIST STUDIES"
+      },
+      {
+        "code": "BS2101",
+        "title": "ANATOMY"
+      },
+      {
+        "code": "DF3002",
+        "title": "DOCUMENTARY FILMMAKING"
+      },
+      {
+        "code": "HA2023",
+        "title": "RESEARCH METHODOLOGY IN SOCIAL SCIENCES"
+      },
+      {
+        "code": "AAA08A",
+        "title": "ART AS COMMODITY"
+      },
+      {
+        "code": "EE3014",
+        "title": "DIGITAL SIGNAL PROCESSING"
+      },
+      {
+        "code": "HP4103",
+        "title": "THE FORENSIC PSYCHOLOGY OF CRIME, TERRORISM & DISASTERS"
+      },
+      {
+        "code": "HS4028",
+        "title": "MIGRATION & DEVELOPMENT IN A GLOBALIZING WORLD"
+      },
+      {
+        "code": "MA4857",
+        "title": "HUMAN FACTORS FOR DESIGN"
+      },
+      {
+        "code": "MS1015",
+        "title": "MATERIALS SCIENCE"
+      },
+      {
+        "code": "BE1401",
+        "title": "BUSINESS OPERATIONS & PROCESS"
+      },
+      {
+        "code": "AAI38D",
+        "title": "CHOIR I"
+      },
+      {
+        "code": "CS2405",
+        "title": "DATA MINING"
+      },
+      {
+        "code": "DM3012",
+        "title": "OPEN SOURCE STUDIO: INTERNET ART & CULTURE"
+      },
+      {
+        "code": "MA3003",
+        "title": "HEAT TRANSFER"
+      },
+      {
+        "code": "MS4610",
+        "title": "ADVANCED BIOMATERIALS"
+      },
+      {
+        "code": "CY1101",
+        "title": "PRINCIPLES OF MODERN CHEMISTRY"
+      },
+      {
+        "code": "BS3032",
+        "title": "ENVIRONMENTAL MICROBIOLOGY"
+      },
+      {
+        "code": "HC1050",
+        "title": "THE SCIENCE OF CHINESE CHARACTERS"
+      },
+      {
+        "code": "AAI181",
+        "title": "MUSICAL PRACTICES III (ROMANTIC & 20TH CENTURY)"
+      },
+      {
+        "code": "BS4010",
+        "title": "SYNTHETIC BIOLOGY"
+      },
+      {
+        "code": "HE2010",
+        "title": "DEVELOPMENT ECONOMICS"
+      },
+      {
+        "code": "AAI38J",
+        "title": "BAND I"
+      },
+      {
+        "code": "CS2064",
+        "title": "TELEVISION PRACTICUM"
+      },
+      {
+        "code": "CE4022",
+        "title": "PERSONAL MOBILE NETWORKS"
+      },
+      {
+        "code": "DD0000",
+        "title": "WRITING NARRATIVES FOR CREATIVE MEDIA"
+      },
+      {
+        "code": "CS4011",
+        "title": "NEWS COPY EDITING"
+      },
+      {
+        "code": "HC2053",
+        "title": "VARIETIES OF CHINESE"
+      },
+      {
+        "code": "MH2401",
+        "title": "ALGORITHMS & COMPUTING III"
+      },
+      {
+        "code": "SS9204",
+        "title": "FLOORBALL"
+      },
+      {
+        "code": "SS3113",
+        "title": "APPLIED SPORT INJURIES"
+      },
+      {
+        "code": "AAU28D",
+        "title": "VOICE STUDIES & PRODUCTION"
+      },
+      {
+        "code": "CZ2004",
+        "title": "HUMAN COMPUTER INTERACTION"
+      },
+      {
+        "code": "HS4030",
+        "title": "SOCIAL SCIENCE FICTION"
+      },
+      {
+        "code": "EE2001",
+        "title": "CIRCUIT ANALYSIS"
+      }
+    ]
+  },
+  "get_exam_schedule": [{
+    "id": "CZ2007",
+    "data": {
+      "start_time": 1543568400,
+      "end_time": 1543575600
+    }
+  }],
+  "get_course_rating": [{
+    "id": "CZ2007",
+    "data": {
+      "number_of_rating": 136,
+      "overall": 88,
+      "useful": 96,
+      "easy": 32
+    }
+  }],
+  "get_course_schedule": [{
+    "id": "CZ2007",
+    "data": {
+      "10220": [{
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  4,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  1,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "TUT",
+        "group": "SS1",
+        "day":  1,
+        "start_time": 1533094149,
+        "end_time": 1532029149,
+        "venue": "TR+37",
+        "remark": [2,3,4,5,6,7,8,9,10,11,12,13]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554094149,
+        "end_time": 1532239149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554899149,
+        "end_time": 1532359149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }],
+      "10221": [{
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  4,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "LEC/STUDIO",
+        "group": "CS2",
+        "day":  1,
+        "start_time": 1533034149,
+        "end_time": 1534029149,
+        "venue": "TCT-LT",
+        "remark": []
+      }, {
+        "type": "TUT",
+        "group": "SS1",
+        "day":  1,
+        "start_time": 1533094149,
+        "end_time": 1532029149,
+        "venue": "TR+37",
+        "remark": [2,3,4,5,6,7,8,9,10,11,12,13]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554094149,
+        "end_time": 1532239149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }, {
+        "type": "LAB",
+        "group": "SS1",
+        "day":  2,
+        "start_time": 1554899149,
+        "end_time": 1532359149,
+        "venue": "SWLAB2",
+        "remark": [2,4,6,8,10,12]
+      }]
+    }
+  }],
+  "get_course_comments": [{
+      "id": "CZ2007",
+      "data": [
+        { 
+          "userid": 123456,
+          "username": "Some dude",
+          "major": "Government",
+          "easy": 0,
+          "useful": 2,
+          "like": 2,
+          "comment_date": 1532663580,
+          "comment_content": "I am so fucked by this course but I like it at the same time."
+      },
+      {
+        "userid": 24213,
+        "username": "Some gurl",
+        "major": "Lingustic & Music",
+        "easy": 2,
+        "useful": 2,
+        "like": 0,
+        "comment_date": 1532663580,
+        "comment_content": "This course is easier than my secondary mathematics.\n What's the point?"
+      },
+      {
+        "id": "CZ2007",
+        "userid": 26532,
+        "username": "Passenger",
+        "major": "Law",
+        "easy": 2,
+        "useful": 0,
+        "like": 1,
+        "comment_date": 1532663581,
+        "comment_content": "No\nNo way\nIt can't be true!"
+      },
+      {
+        "id": "CZ2007",
+        "userid": 13295,
+        "username": "Jordan Peterson",
+        "major": "Clinical Psychology",
+        "easy": 1,
+        "useful": 1,
+        "like": 1,
+        "comment_date": 1532663591,
+        "comment_content": null
+      }
+      ]
+  }]
+}

@@ -4,7 +4,8 @@ import * as actionTypes from "./action_types";
 
 // import type { Action } from "src/FlowType/acitons";
 
-const BASE_URL = "http://178.128.214.242/api";
+// const BASE_URL = "http://178.128.214.242/api";
+const BASE_URL = "http://localhost:3000/api";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
@@ -22,7 +23,7 @@ export function fetchCourseDetail(courseCode: string) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_FAILURE,
-          payload: null
+          payload: {}
         })
       );
   };
@@ -44,7 +45,7 @@ export function fetchCourseRating(courseCode: string) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_FAILURE,
-          payload: null
+          payload: {}
         })
       );
   };
@@ -66,7 +67,51 @@ export function fetchCourseList() {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_FAILURE,
-          payload: null
+          payload: {}
+        })
+      );
+  };
+}
+
+export function fetchCourseSchedule(courseCode: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_COURSE_SCHEDULE_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/courses/get_course_schedule?code=${courseCode}`)
+      .then(response =>
+        dispatch({
+          type: actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_COURSE_SCHEDULE_FAILURE,
+          payload: {}
+        })
+      );
+  };
+}
+
+export function fetchExamSchedule(courseCode: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_EXAM_SCHEDULE_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/courses/get_exam_schedule?code=${courseCode}`)
+      .then(response =>
+        dispatch({
+          type: actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_EXAM_SCHEDULE_FAILURE,
+          payload: {}
         })
       );
   };
