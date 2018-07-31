@@ -3,7 +3,7 @@
   "/api/courses/get_course_rating\\?code=:code": "/get_course_rating/:code",
   "/api/courses/get_course_comments\\?code=:code": "/get_course_comments/:code",
   "/api/courses/get_exam_schedule\\?code=:code": "/get_exam_schedule/:code",
-  "/api/courses/get_course_schedule\\?code=:code": "/get_course_schedule/:code",
+  "/api/courses/get_class_schedule\\?code=:code": "/get_course_schedule/:code",
   "/api/courses/get_course_list": "/get_course_list"
 
 }

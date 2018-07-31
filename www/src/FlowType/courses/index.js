@@ -45,7 +45,7 @@ export type CourseSchedule = {
     start_time: number,
     end_time: number,
     venue: string,
-    remark: number[]
+    weeks: number[]
   }>
 };
 

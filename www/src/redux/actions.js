@@ -4,8 +4,8 @@ import * as actionTypes from "./action_types";
 
 // import type { Action } from "src/FlowType/acitons";
 
-// const BASE_URL = "http://178.128.214.242/api";
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "http://178.128.214.242/api";
+// const BASE_URL = "http://localhost:3000/api";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
@@ -79,7 +79,7 @@ export function fetchCourseSchedule(courseCode: string) {
       type: actionTypes.FETCH_COURSE_SCHEDULE_REQUESTED
     });
     axios
-      .get(`${BASE_URL}/courses/get_course_schedule?code=${courseCode}`)
+      .get(`${BASE_URL}/courses/get_class_schedule?code=${courseCode}`)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS,

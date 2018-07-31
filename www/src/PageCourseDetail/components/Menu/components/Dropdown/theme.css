@@ -32,6 +32,7 @@
   line-height: 2.5rem;
   width: 50%; /* width must be the same with outer search container*/
   position: absolute;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
 }
 
 .suggestionsContainerOpen ul {

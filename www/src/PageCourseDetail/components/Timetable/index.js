@@ -1,7 +1,6 @@
 // @flow
 import * as React from "react";
 
-import { timestampToTime } from "src/utils";
 import type { CourseSchedule } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
@@ -10,36 +9,43 @@ type Props = {
   data: CourseSchedule
 };
 
+const dayLookup = {
+  "1": "Mon",
+  "2": "Tue",
+  "3": "Wed",
+  "4": "Thu",
+  "5": "Fri",
+  "6": "Sat"
+};
+
 const parseDataToTable = (data: CourseSchedule) => {
   const indexList = Object.keys(data);
   let generatedTable = [];
   indexList.forEach((index, indexA) => {
     const scheduleList = data[index];
+    if (!scheduleList) return;
     const scheduleCount = scheduleList.length.toString();
     scheduleList.forEach((schedule, indexB) => {
-      const {
-        type,
-        group,
-        day,
-        start_time,
-        end_time,
-        venue,
-        remark
-      } = schedule;
+      const { type, group, day, start_time, end_time, venue, weeks } = schedule;
       const rowDOM = (
         <tr key={indexA * 100 + indexB}>
-          {indexB === 0 && <td rowSpan={scheduleCount}>{index}</td>}
+          {indexB === 0 && (
+            <td className={styles.index} rowSpan={scheduleCount}>
+              {index}
+            </td>
+          )}
           <td>{type}</td>
           <td>{group}</td>
-          <td>{day}</td>
-          <td>{timestampToTime(start_time)}</td>
-          <td>{timestampToTime(end_time)}</td>
-          <td>{venue}</td>
+          <td>{dayLookup[day]}</td>
+          <td>{start_time}</td>
+          <td>{end_time}</td>
+          <td>{venue || "Not Applicable"}</td>
           <td>
-            {remark.length > 0 &&
-              (remark.includes(-1)
+            {weeks &&
+              weeks.length > 0 &&
+              (weeks.includes(-1)
                 ? "Online Course"
-                : "Week ".concat(remark.join(", ")))}
+                : "Week ".concat(weeks.join(", ")))}
           </td>
         </tr>
       );

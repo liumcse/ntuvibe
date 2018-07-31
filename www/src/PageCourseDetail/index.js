@@ -189,11 +189,12 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
             </div>
           </div>
-          {courseSchedule && (
-            <div className={styles.table}>
-              <Timetable data={courseSchedule} />
-            </div>
-          )}
+          {courseSchedule &&
+            Object.keys(courseSchedule).length > 0 && (
+              <div className={styles.table}>
+                <Timetable data={courseSchedule} />
+              </div>
+            )}
           {start_time &&
             end_time && (
               <div className={styles.table}>

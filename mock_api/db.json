@@ -4714,7 +4714,7 @@
       "easy": 32
     }
   }],
-  "get_course_schedule": [{
+  "get_class_schedule": [{
     "id": "CZ2007",
     "data": {
       "10220": [{
