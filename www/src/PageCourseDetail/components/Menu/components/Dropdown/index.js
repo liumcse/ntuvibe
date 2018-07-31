@@ -25,62 +25,41 @@ type Props = {
 
 type States = {
   value: string,
-  suggestions: Array<CourseListSnippet>,
-  isLoading: boolean
+  suggestions: Array<CourseListSnippet>
 };
 
 class Dropdown extends React.Component<Props, States> {
   constructor() {
     super();
-    // Autosuggest is a controlled component.
-    // This means that you need to provide an input value
-    // and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest,
-    // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: "",
-      suggestions: [],
-      isLoading: false
+      suggestions: []
     };
-    this.lastRequestId = null;
   }
 
-  loadSuggestions = (value: string) => {
-    if (this.lastRequestId !== null) {
-      clearTimeout(this.lastRequestId);
-    }
-
-    this.setState({
-      isLoading: true
-    });
-
-    this.lastRequestId = setTimeout(() => {
-      this.setState({
-        isLoading: false,
-        suggestions: this.getSuggestions(value)
-      });
-    }, 500);
+  goToCourse = (code: string) => {
+    const { history } = this.props;
+    history.push("/courses/" + code.toLowerCase());
   };
 
-  // When suggestion is clicked, Autosuggest needs to populate the input
-  // based on the clicked suggestion. Teach Autosuggest how to calculate the
-  // input value for every given suggestion.
   getSuggestionValue = suggestion => {
-    const { history } = this.props;
-    // suggestion.code.concat(" - ").concat(suggestion.title);
-    history.push("/courses/" + suggestion.code.toLowerCase());
-    // history.replace("/courses/" + suggestion.code.toLowerCase());
     return suggestion.code.toUpperCase(); // necessary to prevent error
   };
 
   // Use your imagination to render suggestions.
-  renderSuggestion = suggestion => (
-    <div className={styles.suggestion_title}>
-      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
-    </div>
-  );
+  renderSuggestion = suggestion => {
+    return (
+      <div
+        onClick={() => this.goToCourse(suggestion.code)}
+        className={styles.suggestion_title}
+      >
+        {suggestion.code
+          .concat(" - ")
+          .concat(cap_first_letter(suggestion.title))}
+      </div>
+    );
+  };
 
-  // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
     if (!value || value === undefined) return [];
     const { courseList } = this.props;
@@ -103,19 +82,15 @@ class Dropdown extends React.Component<Props, States> {
   };
 
   componentDidMount() {
-    this.props.fetchCourseList();
+    if (!this.props.courseList) this.props.fetchCourseList();
   }
 
-  // Autosuggest will call this function every time you need to update suggestions.
-  // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    // this.setState({
-    //   suggestions: this.getSuggestions(value)
-    // });
-    this.loadSuggestions(value);
+    this.setState({
+      suggestions: this.getSuggestions(value)
+    });
   };
 
-  // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []
@@ -125,7 +100,6 @@ class Dropdown extends React.Component<Props, States> {
   render() {
     const { value, suggestions } = this.state;
 
-    // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder:
         "Type the code or title of a course (e.g. CZ3003 | Algorithms)",

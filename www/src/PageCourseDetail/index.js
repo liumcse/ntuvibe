@@ -59,7 +59,7 @@ type HeadingProps = {
 const Heading = (props: HeadingProps) => (
   <div className={styles.heading}>
     <div className={styles.heading_row}>
-      <div className={styles.course_code}>{props.code}</div>
+      <div className={styles.course_code}>{props.code.toUpperCase()}</div>
       <div className={styles.rating_overall}>{props.rating}</div>
     </div>
     <div className={styles.heading_course_title}>{props.title}</div>

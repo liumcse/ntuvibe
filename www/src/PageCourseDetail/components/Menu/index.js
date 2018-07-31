@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { popupTrigger } from "src/redux/actions";
 
-import Dropdown from "src/PageHome/components/Dropdown";
+import Dropdown from "./components/Dropdown";
 
 import * as styles from "./style.scss";
 

@@ -64,7 +64,7 @@ export function timestampToDay(timestamp: number): string {
 }
 
 export function timestampToTime(timestamp: number): string {
-  return moment(timestamp, "X").format("hh:mm a");
+  return moment(timestamp, "X").format("hh:mm A");
 }
 
 export function timestampToDuration(
