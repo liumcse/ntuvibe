@@ -2,8 +2,8 @@ import time
 from bs4 import BeautifulSoup
 from collections import deque
 from scrapers import request_manager
-from scrapers.constants import COURSE_CONTENT_DETAIL_TYPE
-from scrapers.utils import write_json_file
+from scrapers.constants import CourseContentDetailType
+from scrapers.utils import write_json_file, get_date_time
 
 
 def parse_latest_semester(main_site_html):
@@ -25,22 +25,41 @@ def parse_category_list(semester_html):
         if option["value"]:
             category_list.append(option["value"])
 
-    print(category_list)
     return category_list
+
+
+def get_tables_in_special_case(soup):
+    tables = []
+    for tr in soup.find_all("tr")[1:]:
+        tds = tr.find_all("td")
+        if len(tds) == 4:
+            tds[-1].extract()
+            tr.wrap(soup.new_tag("table"))
+            current_table = tr.parent
+            tables.append(current_table)
+        else:
+            current_table.append(tr)
+    for table in tables:
+        table.find_all("tr")[-1].extract()
+    return tables
 
 
 def parse_course_details(detail_html):
     soup = BeautifulSoup(detail_html, "html.parser")
 
+    tables = soup.find_all("table")
+    if len(tables) == 1 and soup.find_all(text="PROGRAMME/(DEPT MAINTAIN*)"):
+        tables = get_tables_in_special_case(soup=soup)
+
     global all_course_details
-    for table in soup.find_all("table"):  # each table contains info of a course
+    for table in tables:  # each table contains info of a course
         course_detail = dict()
 
         # extract prerequisite info (in pink color)
         course_detail["prerequisite"] = []
         pink_fonts = table.find_all("font", attrs={"color": "#FF00FF"})
         for font in pink_fonts:
-            if font.text and font.text != COURSE_CONTENT_DETAIL_TYPE.prerequisite:
+            if font.text and font.text != CourseContentDetailType.prerequisite:
                 course_detail["prerequisite"].append(font.text)
             font.extract()
 
@@ -57,7 +76,7 @@ def parse_course_details(detail_html):
             detail_type = texts.popleft()
             if not detail_type:
                 continue
-            detail_type = COURSE_CONTENT_DETAIL_TYPE.VALUE_TO_NAME[detail_type]
+            detail_type = CourseContentDetailType.VALUE_TO_NAME[detail_type]
             detail_info = texts.popleft()
             course_detail[detail_type] = detail_info
 
@@ -68,6 +87,7 @@ def parse_course_details(detail_html):
 
 
 def crawl():
+    print(get_date_time())
     main_site_html = request_manager.get_course_content_main_html()
     latest_semester = parse_latest_semester(main_site_html)
 

@@ -1,0 +1,75 @@
+@import 'typography';
+@import 'colors';
+@import 'functions';
+
+:local {
+  .header {
+    @include raleway-medium;
+    font-variant: all-petite-caps;
+    font-size: 2rem;
+    margin: 2rem 0;
+    margin-bottom: 1.5rem;
+    color: $primary;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .email_container {
+    margin-bottom: 1.5rem;
+  }
+
+  .email {
+    background-image: url('../assets/email.svg');
+  }
+
+  .password {
+    background-image: url('../assets/password.svg');
+  }
+
+  input {
+    width: 75%;
+    height: 3rem;
+    padding: 12px 3rem;
+    /* margin: 8px 0; */
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    /* background: blue; */
+    opacity: 0.8;
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 0.8rem 0.6rem;
+    @include medium-shadow;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .description {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    div {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .signUp {
+    cursor: pointer;
+    color: $complement;
+  }
+
+  .action {
+    margin-bottom: 2rem;
+    button {
+      margin-right: 3rem;
+    }
+  }
+}

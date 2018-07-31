@@ -1,0 +1,40 @@
+@import "typography";
+@import "colors";
+@import "functions";
+
+:local {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    @include raleway-medium;
+    color: $secondary;
+    font-size: 1.2rem;
+  }
+
+  .table_container {
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    table {
+      width: 100%;
+      @include medium-shadow;
+    }
+  
+    td, th {
+      padding: 8px;
+    }
+    tr {
+      background-color: #f5f4f490;
+    }
+  
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: white;
+      color: black;
+    }
+  }
+}

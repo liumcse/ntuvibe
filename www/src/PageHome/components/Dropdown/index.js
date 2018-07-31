@@ -1,14 +1,31 @@
+// @flow
+
 import React from "react";
 import Autosuggest from "react-autosuggest";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import PropTypes from "prop-types";
 
 import { fetchCourseList } from "src/redux/actions";
 
+import * as styles from "./style.scss";
 import theme from "./theme.css";
 
-class Dropdown extends React.Component {
+type Props = {
+  // from redux
+  courseList: any,
+  fetchCourseList: () => void,
+  // from router
+  match: Object,
+  location: Object,
+  history: Object
+};
+
+type States = {
+  value: string,
+  suggestions: Array<any>
+};
+
+class Dropdown extends React.Component<Props, States> {
   constructor() {
     super();
     // Autosuggest is a controlled component.
@@ -33,7 +50,9 @@ class Dropdown extends React.Component {
 
   // Use your imagination to render suggestions.
   renderSuggestion = suggestion => (
-    <div>{suggestion.code.concat(" - ").concat(suggestion.title)}</div>
+    <div className={styles.suggestion_title}>
+      {suggestion.code.concat(" - ").concat(suggestion.title)}
+    </div>
   );
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -48,7 +67,7 @@ class Dropdown extends React.Component {
     if (inputLength === 0) return [];
     else {
       console.log("Trigger");
-      (async () => await this.props.fetchCourseList(inputValue))(); // does it work?
+      this.props.fetchCourseList(); // does it work?
       console.log("Finished");
       const { courseList } = this.props;
       return courseList || [];
@@ -60,6 +79,15 @@ class Dropdown extends React.Component {
       value: newValue
     });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.courseList !== this.props.courseList) {
+      console.log("Did update");
+      this.setState({
+        suggestions: this.props.courseList
+      });
+    }
+  }
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
@@ -102,22 +130,15 @@ class Dropdown extends React.Component {
   }
 }
 
-Dropdown.propTypes = {
-  // from redux
-  courseList: PropTypes.array,
-  fetchCourseList: PropTypes.func.isRequired,
-  // from router
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+const mapStateToProps = state => {
+  const { course } = state;
+  return {
+    courseList: course && course.courseList
+  };
 };
 
-const mapStateToProps = state => ({
-  courseList: state && state.courseList
-});
-
 const mapDispatchToProps = dispatch => ({
-  fetchCourseList: input => dispatch(fetchCourseList(input))
+  fetchCourseList: () => dispatch(fetchCourseList())
 });
 
 export default withRouter(

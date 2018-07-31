@@ -1,3 +1,5 @@
+// @flow
+// ======================================================== COURSE
 // FETCH_COURSE_DETAIL
 export const FETCH_COURSE_DETAIL_REQUESTED = "FETCH_COURSE_DETAIL_REQUESTED";
 export const FETCH_COURSE_DETAIL_SUCCESS = "FETCH_COURSE_DETAIL_SUCCESS";
@@ -15,3 +17,6 @@ export const FETCH_COURSE_COMMENTS_REQUESTED =
   "FETCH_COURSE_COMMENTS_REQUESTED";
 export const FETCH_COURSE_COMMENTS_SUCCESS = "FETCH_COURSE_COMMENTS_SUCCESS";
 export const FETCH_COURSE_COMMENTS_FAILURE = "FETCH_COURSE_COMMENTS_FAILURE";
+
+// ======================================================== POPUP
+export const POPUP_TRIGGER = "POPUP_TRIGGER";

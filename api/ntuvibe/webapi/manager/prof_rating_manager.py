@@ -7,22 +7,23 @@ from webapi.models import (
 	ClassScheduleTab
 )
 
+
 def get_prof_rating_by_id(id):
 	return ProfessorRatingTab.objects.filter(id=id).first()
 
 
-def get_prof_rating_by_profid(profid):
-	return ProfessorRatingTab.objects.filter(profid=profid)
+def get_prof_rating_by_prof_id(prof_id):
+	return ProfessorRatingTab.objects.filter(prof_id=prof_id)
 
 
-def get_prof_rating_by_userid(userid):
-	return ProfessorRatingTab.objects.filter(userid=userid)
+def get_prof_rating_by_user_id(user_id):
+	return ProfessorRatingTab.objects.filter(user_id=user_id)
 
 
-def add_prof_rating(userid, profid, clarity, enthusiasm, helpful, comment=None):
+def add_prof_rating(user_id, prof_id, clarity, enthusiasm, helpful, comment=None):
 	rating = ProfessorRatingTab(
-		userid=userid,
-		profid=profid,
+		user_id=user_id,
+		prof_id=prof_id,
 		clarity=clarity,
 		enthusiasm=enthusiasm,
 		helpful=helpful,

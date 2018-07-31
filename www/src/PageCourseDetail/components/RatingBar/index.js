@@ -1,9 +1,15 @@
+// @flow
+
 import React from "react";
-import PropTypes from "prop-types";
 
 import * as styles from "./style.scss";
 
-const RatingBar = props => {
+type Props = {
+  label: string,
+  value: string
+};
+
+const RatingBar = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.label}>{props.label}</div>
@@ -13,11 +19,6 @@ const RatingBar = props => {
       </div>
     </div>
   );
-};
-
-RatingBar.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
 };
 
 export default RatingBar;

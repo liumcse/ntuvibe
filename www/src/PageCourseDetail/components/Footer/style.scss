@@ -9,7 +9,7 @@
     width: 100%;
     background-color: $primary;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
 
   .container {
@@ -24,7 +24,7 @@
 
   .header {
     @include raleway-medium;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
 
@@ -38,6 +38,7 @@
   .first_row {
     margin-bottom: 2.5rem;
     @include raleway-regular;
+    line-height: 1.05rem;
   }
 
   .second_row {
