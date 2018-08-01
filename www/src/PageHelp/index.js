@@ -32,7 +32,7 @@ const PageHelp = () => {
           <Card number={"1"}>
             <div className={styles.card_heading}>Go to Vibe</div>
             <div className={styles.card_content}>
-              The first step of using Vibe is opening the website.
+              The first step of using Vibe is to open your favorite browser and go to Vibe.
             </div>
           </Card>
         </div>
@@ -55,9 +55,9 @@ const PageHelp = () => {
             </div>
           </Card>
         </div>
-        <div className={styles.heading_4}>More features!</div>
+        <div className={styles.heading_4}>There&#39;s More!</div>
         <div className={styles.card}>
-          <Card number={"4"}>
+          <Card>
             <div className={styles.card_heading}>Rate a Course</div>
             <div className={styles.card_content}>
               Does the course meet your expectation? Do you find it useful?
@@ -71,7 +71,7 @@ const PageHelp = () => {
         </div>
         <div className={styles.heading_4}>Your Voice Matters</div>
         <div className={styles.card}>
-          <Card number={"5"}>
+          <Card>
             <div className={styles.card_heading}>Our Pledge</div>
             <div className={styles.card_content}>
               At Vibe, we believe that everyone has the right to be heard.
@@ -87,7 +87,7 @@ const PageHelp = () => {
               political beliefs, profession, race, religion, sexual orientation,
               socioeconomic status, and technical ability.
               <br />
-              2. involes violent threats or language directed against another
+              2. involves violent threats or language directed against another
               person; sexually explicit or violent material; posting (or
               threatening to post) other people’s personally identifying
               information; personal insults, especially those using racist or
@@ -100,7 +100,7 @@ const PageHelp = () => {
         </div>
         <div className={styles.heading_4}>Contribute</div>
         <div className={styles.card}>
-          <Card number={"6"}>
+          <Card>
             <div className={styles.card_heading}>Make Vibe better</div>
             <div className={styles.card_content}>
               Vibe is an open source project initiated by 4 students from School

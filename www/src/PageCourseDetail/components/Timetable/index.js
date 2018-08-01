@@ -39,7 +39,7 @@ const parseDataToTable = (data: CourseSchedule) => {
           <td>{dayLookup[day]}</td>
           <td>{start_time}</td>
           <td>{end_time}</td>
-          <td>{venue || "Not Applicable"}</td>
+          <td>{venue || "N.A."}</td>
           <td>
             {weeks &&
               weeks.length > 0 &&

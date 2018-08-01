@@ -50,6 +50,10 @@
       @include raleway-bold;
       margin-top: 2rem;
     }
+    .number_of_rating {
+      color: $grey;
+      font-size: 0.85rem;
+    }
   }
 
 
@@ -143,5 +147,11 @@
 
   .comment_list {
     margin-top: 2rem;
+  }
+
+  .placeholder {
+    color: $grey;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
