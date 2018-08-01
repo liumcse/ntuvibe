@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Link } from "react-router-dom";
 // import pic_1 from "./assets/pic_1.jpg";
 import Footer from "src/PageCourseDetail/components/Footer";
 import * as styles from "./style.scss";
@@ -9,6 +10,9 @@ import Card from "./components/Card";
 const PageHelp = () => {
   return (
     <div className={styles.container}>
+      <div className={styles.goBack}>
+        <Link to="/">Home</Link>
+      </div>
       <div className={styles.dark}>
         <div className={styles.heading_1}>
           <span className={styles.ntu}>NTU</span>Vibe
@@ -17,8 +21,8 @@ const PageHelp = () => {
           Be smart about what you are taking.
         </div>
         <div className={styles.heading_3}>
-          At Vibe, you can view all courses available at NTU and see how your
-          others like them.
+          At Vibe, you can view all courses available at NTU and see what people
+          think about them.
         </div>
         {/* <img className={styles.pic_1} src={pic_1} width="80%" height="auto" /> */}
       </div>
@@ -104,14 +108,19 @@ const PageHelp = () => {
               <a href="https://en.wikipedia.org/wiki/MIT_License">
                 MIT license
               </a>{" "}
-              - the project is owned by all contributors, not just the
-              initiators. You can be a part of it too! How about start by{" "}
+              - the software is owned by all contributors, not just the
+              initiators. You can be a part of it too! How about start with{" "}
               <a href="#">editing this page</a>?
             </div>
           </Card>
         </div>
       </div>
-      <div><Footer /></div>
+      <div className={styles.white}>
+        <div className={styles.heading_4}>Follow Vibe on Social Media</div>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
