@@ -64,8 +64,11 @@
     margin-bottom: 2rem;
     button {
       margin-right: 3rem;
-      background-color: $primary;
-      color: white;
     }
+  }
+
+  .highlight {
+    background-color: $primary;
+    color: white;
   }
 }
