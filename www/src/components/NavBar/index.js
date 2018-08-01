@@ -47,7 +47,7 @@ class NavBar extends React.PureComponent {
               <Link to="#">BLOG</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="#">HELP</Link>
+              <Link to="/help">HELP</Link>
             </div>
             <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
               {rightButton}

@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'functions';
+@import 'typography';
+
+:local {
+  .container {
+    padding: 1.5rem 3rem;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    position: relative;
+    background-color: white;
+  }
+  .numberContainer {
+    @include medium-shadow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    background-color: $primary;
+    opacity: 0.8;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    color: white;
+  }
+}

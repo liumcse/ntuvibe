@@ -62,6 +62,7 @@
         padding-bottom: calc(1.5rem - 3px);
       }
       a {
+        padding-bottom: 100%; // clickable at a larger area
         color: white;
       }
       a:hover {
