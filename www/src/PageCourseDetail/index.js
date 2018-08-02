@@ -36,6 +36,8 @@ import yes from "./assets/yes.svg";
 const NO_DESCRIPTION =
   "This course has no description. I don't know why this would happen either...";
 
+const RATING_THRESHOLD = 3;
+
 type Props = {
   // from redux
   fetchCourseDetail: string => void,
@@ -57,7 +59,8 @@ type Props = {
 type HeadingProps = {
   code: string,
   rating: string,
-  title: string
+  title: string,
+  numberOfRating: number
 };
 
 const Heading = (props: HeadingProps) => (
@@ -66,7 +69,14 @@ const Heading = (props: HeadingProps) => (
       <div className={styles.course_code}>{props.code.toUpperCase()}</div>
       <div className={styles.rating_overall}>{props.rating}</div>
     </div>
-    <div className={styles.heading_course_title}>{props.title}</div>
+    <div className={styles.heading_row}>
+      <div className={styles.heading_course_title}>{props.title}</div>
+      <div className={styles.number_of_rating}>
+        {!props.numberOfRating || props.numberOfRating < RATING_THRESHOLD
+          ? "Unavailable due to insufficient submission"
+          : props.numberOfRating.toString().concat(" ratings")}
+      </div>
+    </div>
   </div>
 );
 
@@ -180,20 +190,22 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
               <div className={styles.availability}>
                 <div>
-                  <img src={as_ue ? yes : no} />Read as Unrestricted Elective
+                  <img src={typeof as_ue === "boolean" && (as_ue ? yes : no)} />Read
+                  as Unrestricted Elective
                 </div>
                 <div>
-                  <img src={as_pe ? yes : no} />Read as General Education
-                  Prescribed Elective
+                  <img src={typeof as_pe === "boolean" && (as_pe ? yes : no)} />Read
+                  as General Education Prescribed Elective
                 </div>
               </div>
             </div>
           </div>
-          {courseSchedule && (
-            <div className={styles.table}>
-              <Timetable data={courseSchedule} />
-            </div>
-          )}
+          {courseSchedule &&
+            Object.keys(courseSchedule).length > 0 && (
+              <div className={styles.table}>
+                <Timetable data={courseSchedule} />
+              </div>
+            )}
           {start_time &&
             end_time && (
               <div className={styles.table}>
@@ -201,9 +213,15 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
             )}
           <div className={styles.header}>Course Comments</div>
-          <div className={styles.comment_list}>
-            <CommentList comments={courseComments || []} />
-          </div>
+          {courseComments && courseComments.length > 0 ? (
+            <div className={styles.comment_list}>
+              <CommentList comments={courseComments || []} />
+            </div>
+          ) : (
+            <div className={styles.placeholder}>
+              Nobody has published their comments. But you can be the first one!
+            </div>
+          )}
         </div>
         <Footer />
       </div>

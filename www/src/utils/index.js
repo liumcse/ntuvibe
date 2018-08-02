@@ -56,15 +56,16 @@ export function remove_trailing_newline(input: string): string {
 }
 
 export function timestampToDate(timestamp: number): string {
-  return moment(timestamp, "X").format("MMMM Do, YYYY");
+  // subtract 28800 to adjust time zone
+  return moment(timestamp - 28800, "X").format("MMMM Do, YYYY");
 }
 
 export function timestampToDay(timestamp: number): string {
-  return moment(timestamp, "X").format("dddd");
+  return moment(timestamp - 28800, "X").format("dddd");
 }
 
 export function timestampToTime(timestamp: number): string {
-  return moment(timestamp, "X").format("hh:mm A");
+  return moment(timestamp - 28800, "X").format("hh:mm A");
 }
 
 export function timestampToDuration(

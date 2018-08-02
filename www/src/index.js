@@ -8,6 +8,7 @@ import * as styles from "./style.scss";
 import Popups from "./components/Popups";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
+import PageHelp from "./PageHelp";
 import store from "./redux/store";
 
 import "react-select/dist/react-select.css";
@@ -27,6 +28,7 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_COURSE_PAGE}
                 component={PageCourseDetail}
               />
+              <Route exact path={ROUTES.ROUTE_HELP} component={PageHelp} />
             </Switch>
             <Popups />
           </div>
