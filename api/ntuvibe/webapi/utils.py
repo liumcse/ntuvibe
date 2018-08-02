@@ -61,4 +61,4 @@ def send_activate_account_email(username, useremail):
 	from_email = 'ntuvibe_adminteam@gmail.com'
 
 	message = render_to_string('static/template/activate_account.html', {'username':username})
-	send_mail(subject, message, from_email, to, html_message=msg)
+	send_mail(subject, message, from_email, to, html_message=message)
