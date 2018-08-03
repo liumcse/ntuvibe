@@ -1,5 +1,6 @@
 @import "typography";
 @import "colors";
+@import "functions";
 
 :local {
   .container {
@@ -14,31 +15,31 @@
   }
 
   .table_container {
-    margin-top: 1.5rem;
-    border-collapse: collapse;
+    margin-top: 2rem;
     table {
       width: 100%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      @include medium-shadow;
+      border-collapse: collapse;
     }
   
     td, th {
-      border: 1px solid #ddd;
-      padding: 8px;
+      // border: 1px solid #ddd;
+      padding: 0.5rem 1rem;
     }
     tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  
-    tr:hover {
-      background-color: #ddd;
+      background-color: #f5f4f490;
+      .index {
+        background-color: $primary;
+        color: white;
+      }
     }
   
     th {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: $complement;
-      color: white;
+      background-color: white;
+      color: black;
     }
   }
 }

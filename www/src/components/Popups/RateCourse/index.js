@@ -47,7 +47,7 @@ const RateCourse = props => (
       <div className={styles.action}>
         <div className={styles.row}>
           <div>
-            <button>Submit</button>
+            <button className={styles.highlight}>Submit</button>
           </div>
           <div>
             <button onClick={props.closePopup}>Cancel</button>

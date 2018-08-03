@@ -4,24 +4,34 @@
 :local {
   .menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: center;
     position: sticky;
     top: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.1)), $primary;
+    background: linear-gradient(rgba(255, 255, 255, 0.3)), $primary;
     background-blend-mode: overlay;
     z-index: 1;
     color: white;
     font-variant: all-petite-caps;
     @include disable-select;
-    .item {
-      padding: 1.5rem 2rem;      
+    .search {
+      width: 50%;
+      margin: 0 6rem
     }
-    .item:hover {
-      cursor: pointer;
-      background: linear-gradient(rgba(255, 255, 255, 0.1)), $primary;
+
+    .actions {
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
+  
     .action {
+      padding: 1.5rem 2rem;
       background: linear-gradient(rgba(255, 255, 255, 0.1));
+    }
+    .action:hover {
+      cursor: pointer;
+      background: linear-gradient(rgba(255, 255, 255, 0.15));
     }
   }
 }

@@ -72,3 +72,4 @@ def prepare_course_detail_dict(course):
 		}
 	}
 
+

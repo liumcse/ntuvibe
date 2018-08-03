@@ -1,13 +1,17 @@
+// @flow
 import { combineReducers } from "redux";
 import * as actionTypes from "./action_types";
+import type { CourseState, PopupState, State } from "src/FlowType/states";
+import type { Action } from "src/FlowType/actions";
 
-const initialState = {
+const initialState: State = {
   course: {
     courseList: null,
     courseDetail: null,
     courseRating: null,
     courseSchedule: null,
-    courseComments: null
+    courseComments: null,
+    examSchedule: null
   },
   popup: {
     loginOpen: false,
@@ -16,13 +20,13 @@ const initialState = {
   }
 };
 
-const course = (state = initialState.course, action) => {
+const course = (state = initialState.course, action: Action): CourseState => {
   const { type, payload } = action;
   switch (type) {
     case actionTypes.FETCH_COURSE_DETAIL_SUCCESS:
       return {
         ...state,
-        courseDetail: payload
+        courseDetail: payload.data
       };
     case actionTypes.FETCH_COURSE_DETAIL_FAILURE:
       return {
@@ -32,7 +36,7 @@ const course = (state = initialState.course, action) => {
     case actionTypes.FETCH_COURSE_RATING_SUCCESS:
       return {
         ...state,
-        courseRating: payload
+        courseRating: payload.data
       };
     case actionTypes.FETCH_COURSE_RATING_FAILURE:
       return {
@@ -42,17 +46,37 @@ const course = (state = initialState.course, action) => {
     case actionTypes.FETCH_COURSE_LIST_SUCCESS:
       return {
         ...state,
-        courseList: payload
+        courseList: payload.data
       };
     case actionTypes.FETCH_COURSE_LIST_FAILURE:
       return {
         ...state,
         courseList: payload
       };
+    case actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        examSchedule: payload.data
+      };
+    case actionTypes.FETCH_EXAM_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        examSchedule: payload
+      };
+    case actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        courseSchedule: payload.data
+      };
+    case actionTypes.FETCH_COURSE_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        courseSchedule: payload
+      };
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
         ...state,
-        courseComments: payload
+        courseComments: payload.data
       };
     case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
       return {
@@ -65,7 +89,7 @@ const course = (state = initialState.course, action) => {
   }
 };
 
-const popup = (state = initialState.popup, action) => {
+const popup = (state = initialState.popup, action: Action): PopupState => {
   const { type, payload } = action;
   if (type === actionTypes.POPUP_TRIGGER) {
     switch (payload) {

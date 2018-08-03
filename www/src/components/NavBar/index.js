@@ -31,23 +31,23 @@ class NavBar extends React.PureComponent {
       <div className={styles.navbar_container}>
         <div className={styles.navbar_elements}>
           <div className={styles.navbar_elements_left}>
-            <Link to="/">
+            <Link className={styles.brandLink} to="/">
               {logo}
-              {/* <div className={styles.brand}>Vibe</div> */}
+              <div className={styles.brand}>Vibe</div>
             </Link>
           </div>
           <div className={styles.navbar_elements_right}>
             <div className={styles.navbar_elements_right_text}>
               <Link to="/">HOME</Link>
             </div>
-            <div className={styles.navbar_elements_right_text}>
+            {/* <div className={styles.navbar_elements_right_text}>
               <Link to="#">EXPLORE</Link>
+            </div> */}
+            <div className={styles.navbar_elements_right_text}>
+              <Link to="#">BLOG</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="#">PLAN</Link>
-            </div>
-            <div className={styles.navbar_elements_right_text}>
-              <Link to="#">HELP</Link>
+              <Link to="/help">HELP</Link>
             </div>
             <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
               {rightButton}

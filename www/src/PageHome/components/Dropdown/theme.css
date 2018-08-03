@@ -25,7 +25,7 @@
 .suggestionsContainerOpen {
   margin-top: 1rem;
   background: white;
-  overflow: scroll;
+  overflow-y: auto;
   min-height: 3.5rem;
   max-height: 35vh;
   border-radius: 5px;
@@ -44,7 +44,6 @@
 
 .suggestion {
   padding: 0.5rem 2rem;
-  /* border-radius: 10px; */
   height: 2.5rem;
   color: black;
   cursor: pointer;
