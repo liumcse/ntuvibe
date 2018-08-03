@@ -1,15 +1,14 @@
 from django.http import JsonResponse
 from webapi.constants import VALID_EMAIL_DOMAIN
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from webapi.manager import (
+	user_manager,
 	course_manager,
 	course_rating_manager,
 	prof_manager,
 	prof_rating_manager,
 )
-from .constants import DEFAULT_COURSE_LIST_OFFSET, DEFAULT_COURSE_LIST_LIMIT
-
 
 
 def sign_up(request):
@@ -26,9 +25,21 @@ def sign_up(request):
 		result['error'] = 'not ntu email'
 		return JsonResponse(result)
 
-	try:
-		user = User.objects.create_user(username, email, password)
-	except Exception as e:
-		result['error'] = str(e)
-		return JsonResponse(result)
+	result = user_manager.register_user(username, email, password)
+
+	return JsonResponse(result)
+
+
+def login(request):
+	param = request.POST
+	username = param.get('username', None)
+	password = param.get('password', None)
+	if any(username, password) is None:
+		return JsonResponse({'success': False, 'error': 'invalid param'})
+
+	user = authenticate(request, username, password)
+	if user is None:
+		return JsonResponse({'success': False, 'error': 'not registered'})
+
+	login(request, user)
 

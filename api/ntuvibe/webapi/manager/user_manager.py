@@ -6,6 +6,8 @@ from webapi.models import (
 	ProfessorRatingTab,
 	ClassScheduleTab
 )
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 import hashlib
 
 
@@ -22,17 +24,15 @@ def get_user_by_email(email):
 
 
 def register_user(username, password, email):
-	salt = uuid4()
-	sha = hashlib.sha512()
-	sha.update(password)
-	sha.update(salt)
-	user = UserTab(
-		username=username,
-		salt=salt,
-		hashed_password=sha.hexdigest(),
-		email=email,
-	)
-	user.create()
+	result = {'success': False}
+	try:
+		User.objects.create_user(username, email, password)
+	except Exception as e:
+		result['error'] = str(e)
+		return result
+
+	result['success'] = True
+	return result
 
 
 def login_verification(password, user_id=None, email=None):
