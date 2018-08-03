@@ -219,7 +219,7 @@ class PageCourseDetail extends React.Component<Props> {
             </div>
           ) : (
             <div className={styles.placeholder}>
-              Nobody has published their comments. But you can be the first one!
+              Nobody has published their comments - so you can be the first one!
             </div>
           )}
         </div>
