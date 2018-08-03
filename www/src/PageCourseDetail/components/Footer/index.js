@@ -32,7 +32,7 @@ const Footer = () => (
       <div className={styles.second_row}>
         <div className={styles.brand}>Vibe</div>
         <div className={styles.right}>
-          &copy; 2018 NTUVibe &#183; We&#39; not affiliated with Nanyang
+          &copy; 2018 NTUVibe &#183; We&#39;re not affiliated with Nanyang
           Technological University.
         </div>
       </div>

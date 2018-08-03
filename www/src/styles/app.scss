@@ -55,4 +55,20 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  @media (min-width: 0) {
+    #app {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 360px) {
+    // empty rule
+  }
+
+  @media (min-width: 768px) {
+    #app {
+      font-size: 18px;
+    }
+  }
 }

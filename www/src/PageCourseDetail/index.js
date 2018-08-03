@@ -73,7 +73,7 @@ const Heading = (props: HeadingProps) => (
       <div className={styles.heading_course_title}>{props.title}</div>
       <div className={styles.number_of_rating}>
         {!props.numberOfRating || props.numberOfRating < RATING_THRESHOLD
-          ? "Unavailable due to insufficient submission"
+          ? "Hide rating due to insufficient submission"
           : props.numberOfRating.toString().concat(" ratings")}
       </div>
     </div>

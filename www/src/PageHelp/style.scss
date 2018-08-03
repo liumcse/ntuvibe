@@ -91,4 +91,40 @@
       }
     }
   }
+
+  @media (min-width: 0) {
+    .goBack {
+      display: none;
+    }
+    .card {
+      width: 100%;
+    }
+    .dark, .light, .white {
+      padding: 2rem 3rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .goBack {
+      display: inline;
+    }
+    .card {
+      width: 80%;
+    }
+    .dark, .light, .white {
+      padding: 2rem 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .goBack {
+      display: inline;
+    }
+    .card {
+      width: 60%;
+    }
+    .dark, .light, .white {
+      padding: 4rem 6rem;
+    }
+  }
 }

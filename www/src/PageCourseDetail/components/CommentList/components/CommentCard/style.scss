@@ -7,6 +7,7 @@
     display: flex;
     width: 75%;
     margin-bottom: 3rem;
+    line-height: 1.05rem;
     .profile {
       // flex: 1;
       // text-align: right;
@@ -66,7 +67,7 @@
   .badge {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.5rem;
     color: white;
     border-radius: 3px;
     @include disable-select;
@@ -78,6 +79,22 @@
     }
     &_moderate {
       background-color: $neutral;
+    }
+  }
+
+  @media (min-width: 0) {
+    .container {
+      width: 100%;
+    }
+
+    .profile {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .profile {
+      display: inline;
     }
   }
 }
