@@ -41,5 +41,21 @@ def login(request):
 	if user is None:
 		return JsonResponse({'success': False, 'error': 'not registered'})
 
+	if not user.is_active:
+		return JsonResponse({"success": False, 'error': 'user has not verified email'})
+
 	login(request, user)
 
+
+def logout(request):
+	if request.user and request.user.is_authenticated:
+		logout(request)
+		return JsonResponse({'success': True})
+	return ({'success': False, 'error': 'user not logged in'})
+
+
+def activate_email(request, username):
+	user = user_manager.get_user_by_username(username)
+	user.is_active = True
+	user.save()
+	pass

@@ -26,7 +26,9 @@ def get_user_by_email(email):
 def register_user(username, password, email):
 	result = {'success': False}
 	try:
-		User.objects.create_user(username, email, password)
+		user = User.objects.create_user(username, email, password)
+		user.is_active = False
+		user.save()
 	except Exception as e:
 		result['error'] = str(e)
 		return result
