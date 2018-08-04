@@ -20,4 +20,5 @@ class_schedule.json*
 exam_schedule.json*
 
 # deploy
-.retry
+*.retry
+*.zip

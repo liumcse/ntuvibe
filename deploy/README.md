@@ -14,6 +14,7 @@ pip3 install ansible
 
 df -h
 (check storage)
+du -sh .
 
 pip3 install uwsgi
 pkill -f uwsgi -9
