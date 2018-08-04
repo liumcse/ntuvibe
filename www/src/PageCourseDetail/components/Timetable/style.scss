@@ -29,8 +29,9 @@
     tr:nth-child(even) {
       background-color: #f5f4f490;
       .index {
-        background-color: $primary;
-        color: white;
+        // background-color: $primary;
+        // color: white;
+        border-left: 5px solid black;
       }
     }
   

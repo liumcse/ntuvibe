@@ -46,7 +46,7 @@
     @include open-sans-medium;
     font-size: 1.2rem;
     &_left {
-      display: none;
+      display: flex;
       height: 100%;
       align-items: center;
       margin-left: 6rem;
@@ -80,13 +80,19 @@
     padding-bottom: 1.5rem;
   }
 
-  @media (min-width: 360px) {
-    // empty rule
-  }
+  // @media (min-width: 0) {
+  //   .navbar_elements_left {
+  //     display: none;
+  //   }
+  // }
 
-  @media (min-width: 768px) {
-    .navbar_elements_left {
-      display: flex;
-    }
-  }
+  // @media (min-width: 360px) {
+  //   // empty rule
+  // }
+
+  // @media (min-width: 768px) {
+  //   .navbar_elements_left {
+  //     display: flex;
+  //   }
+  // }
 }

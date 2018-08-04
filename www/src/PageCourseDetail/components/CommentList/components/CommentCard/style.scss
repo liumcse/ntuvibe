@@ -5,7 +5,7 @@
 :local {
   .container {
     display: flex;
-    width: 75%;
+    width: 100%;
     margin-bottom: 3rem;
     line-height: 1.05rem;
     .profile {
@@ -82,19 +82,19 @@
     }
   }
 
-  @media (min-width: 0) {
-    .container {
-      width: 100%;
-    }
+  // @media (min-width: 0) {
+  //   .container {
+  //     width: 100%;
+  //   }
 
-    .profile {
-      display: none;
-    }
-  }
+  //   .profile {
+  //     display: none;
+  //   }
+  // }
 
-  @media (min-width: 768px) {
-    .profile {
-      display: inline;
-    }
-  }
+  // @media (min-width: 768px) {
+  //   .profile {
+  //     display: inline;
+  //   }
+  // }
 }

@@ -35,31 +35,31 @@
     }
   }
 
-  @media (min-width: 0) {
-    .menu {
-      display: none;
-    }
-    .search {
-      display: none;
-    }
-  }
+  // @media (min-width: 0) {
+  //   .menu {
+  //     display: none;
+  //   }
+  //   .search {
+  //     display: none;
+  //   }
+  // }
 
-  @media (min-width: 360px) {
-    // empty rule
-  }
+  // @media (min-width: 360px) {
+  //   // empty rule
+  // }
 
-  @media (min-width: 768px) {
-    .menu {
-      display: flex;
-    }
-    .search {
-      display: inline;
-    }
-  }
+  // @media (min-width: 768px) {
+  //   .menu {
+  //     display: flex;
+  //   }
+  //   .search {
+  //     display: inline;
+  //   }
+  // }
 
-  @media (min-width: 1024) {
-    .menu {
-      display: flex;
-    }
-  }
+  // @media (min-width: 1024) {
+  //   .menu {
+  //     display: flex;
+  //   }
+  // }
 }

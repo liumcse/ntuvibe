@@ -35,6 +35,7 @@ import yes from "./assets/yes.svg";
 
 const NO_DESCRIPTION =
   "This course has no description. I don't know why this would happen either...";
+const NO_RATING = "Hide rating due to insufficient submission";
 
 const RATING_THRESHOLD = 3;
 
@@ -60,7 +61,7 @@ type HeadingProps = {
   code: string,
   rating: string,
   title: string,
-  numberOfRating: number
+  count: number
 };
 
 const Heading = (props: HeadingProps) => (
@@ -72,9 +73,9 @@ const Heading = (props: HeadingProps) => (
     <div className={styles.heading_row}>
       <div className={styles.heading_course_title}>{props.title}</div>
       <div className={styles.number_of_rating}>
-        {!props.numberOfRating || props.numberOfRating < RATING_THRESHOLD
-          ? "Hide rating due to insufficient submission"
-          : props.numberOfRating.toString().concat(" ratings")}
+        {!props.count || props.count < RATING_THRESHOLD
+          ? NO_RATING
+          : props.count.toString().concat(" ratings")}
       </div>
     </div>
   </div>
@@ -131,7 +132,7 @@ class PageCourseDetail extends React.Component<Props> {
 
     const { courseCode } = this.props.match.params;
     const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
-    const { number_of_rating, overall, useful, easy } = courseRating; // for courseRating
+    const { count, like, useful, easy } = courseRating; // for courseRating
     const { start_time, end_time } = examSchedule; // for examSchedule
 
     return (
@@ -139,89 +140,98 @@ class PageCourseDetail extends React.Component<Props> {
         <NavBar />
         <Menu />
         <div className={styles.content}>
-          <Heading
-            code={courseCode}
-            rating={(overall && overall.toString().concat(" %")) || "- %"}
-            title={title || ""}
-          />
-          <div className={styles.row_box}>
-            <div className={styles.course_info}>
-              <div className={styles.course_description}>
-                {(description && remove_trailing_newline(description)) ||
-                  NO_DESCRIPTION}
-              </div>
-              {constraint &&
-                constraint.prerequisite &&
-                constraint.prerequisite.length > 0 && (
-                  <div className={styles.requirement}>
-                    <div className={styles.label}>Prerequisites </div>
-                    <div className={styles.requirement_content}>
-                      {constraint.prerequisite.join("\n")}
-                    </div>
-                  </div>
-                )}
-              {constraint &&
-                constraint.mutex &&
-                constraint.mutex.length > 0 && (
-                  <div className={styles.requirement}>
-                    <div className={styles.label}>Antirequisites</div>
-                    <div className={styles.requirement_content}>
-                      {constraint.mutex}
-                    </div>
-                  </div>
-                )}
-            </div>
-            <div className={styles.middle_placeholder} />
-            <div className={styles.course_info_right}>
-              <div className={styles.rating_useful}>
-                <RatingBar
-                  label={"Useful"}
-                  value={(useful && useful.toString().concat("%")) || "0%"}
-                />
-              </div>
-              <div className={styles.rating_easy}>
-                <RatingBar
-                  label={"Easy"}
-                  value={(easy && easy.toString().concat("%")) || "0%"}
-                />
-              </div>
-              <div className={styles.au}>
-                {(au && au.concat(" ").concat("AU")) || "-"}
-              </div>
-              <div className={styles.availability}>
-                <div>
-                  <img src={typeof as_ue === "boolean" && (as_ue ? yes : no)} />Read
-                  as Unrestricted Elective
+          <div className={styles.section_a}>
+            <Heading
+              count={count}
+              code={courseCode}
+              rating={(like && like.toString().concat(" %")) || "- %"}
+              title={title || ""}
+            />
+            <div className={styles.row_box}>
+              <div className={styles.course_info}>
+                <div className={styles.course_description}>
+                  {(description && remove_trailing_newline(description)) ||
+                    NO_DESCRIPTION}
                 </div>
-                <div>
-                  <img src={typeof as_pe === "boolean" && (as_pe ? yes : no)} />Read
-                  as General Education Prescribed Elective
+                {constraint &&
+                  constraint.prerequisite &&
+                  constraint.prerequisite.length > 0 && (
+                    <div className={styles.requirement}>
+                      <div className={styles.label}>Prerequisites </div>
+                      <div className={styles.requirement_content}>
+                        {constraint.prerequisite.join("\n")}
+                      </div>
+                    </div>
+                  )}
+                {constraint &&
+                  constraint.mutex &&
+                  constraint.mutex.length > 0 && (
+                    <div className={styles.requirement}>
+                      <div className={styles.label}>Antirequisites</div>
+                      <div className={styles.requirement_content}>
+                        {constraint.mutex}
+                      </div>
+                    </div>
+                  )}
+              </div>
+              <div className={styles.middle_placeholder} />
+              <div className={styles.course_info_right}>
+                <div className={styles.rating_useful}>
+                  <RatingBar
+                    label={"Useful"}
+                    value={(useful && useful.toString().concat("%")) || "0%"}
+                  />
+                </div>
+                <div className={styles.rating_easy}>
+                  <RatingBar
+                    label={"Easy"}
+                    value={(easy && easy.toString().concat("%")) || "0%"}
+                  />
+                </div>
+                <div className={styles.au}>
+                  {(au && au.concat(" ").concat("AU")) || "-"}
+                </div>
+                <div className={styles.availability}>
+                  <div>
+                    <img
+                      src={typeof as_ue === "boolean" && (as_ue ? yes : no)}
+                    />Read as Unrestricted Elective
+                  </div>
+                  <div>
+                    <img
+                      src={typeof as_pe === "boolean" && (as_pe ? yes : no)}
+                    />Read as General Education Prescribed Elective
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          {courseSchedule &&
-            Object.keys(courseSchedule).length > 0 && (
-              <div className={styles.table}>
-                <Timetable data={courseSchedule} />
+          <div className={styles.section_b}>
+            {courseSchedule &&
+              Object.keys(courseSchedule).length > 0 && (
+                <div className={styles.table}>
+                  <Timetable data={courseSchedule} />
+                </div>
+              )}
+            {start_time &&
+              end_time && (
+                <div className={styles.table}>
+                  <ExamSchedule startTime={start_time} endTime={end_time} />
+                </div>
+              )}
+          </div>
+          <div className={styles.section_c}>
+            <div className={styles.header}>Course Comments</div>
+            {courseComments && courseComments.length > 0 ? (
+              <div className={styles.comment_list}>
+                <CommentList comments={courseComments || []} />
+              </div>
+            ) : (
+              <div className={styles.placeholder}>
+                Nobody has published their comments - so you can be the first one!
               </div>
             )}
-          {start_time &&
-            end_time && (
-              <div className={styles.table}>
-                <ExamSchedule startTime={start_time} endTime={end_time} />
-              </div>
-            )}
-          <div className={styles.header}>Course Comments</div>
-          {courseComments && courseComments.length > 0 ? (
-            <div className={styles.comment_list}>
-              <CommentList comments={courseComments || []} />
-            </div>
-          ) : (
-            <div className={styles.placeholder}>
-              Nobody has published their comments - so you can be the first one!
-            </div>
-          )}
+          </div>
         </div>
         <Footer />
       </div>

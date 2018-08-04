@@ -18,6 +18,13 @@ const dayLookup = {
   "6": "Sat"
 };
 
+const parseRemark = (remark: number[]) => {
+  if (remark.includes(-1)) return "Online Course";
+  const week = remark.join(", ");
+  if (week === "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13") return null;
+  else return "Week ".concat(week);
+};
+
 const parseDataToTable = (data: CourseSchedule) => {
   const indexList = Object.keys(data);
   let generatedTable = [];
@@ -40,13 +47,7 @@ const parseDataToTable = (data: CourseSchedule) => {
           <td>{start_time}</td>
           <td>{end_time}</td>
           <td>{venue || "N.A."}</td>
-          <td>
-            {weeks &&
-              weeks.length > 0 &&
-              (weeks.includes(-1)
-                ? "Online Course"
-                : "Week ".concat(weeks.join(", ")))}
-          </td>
+          <td>{parseRemark(weeks)}</td>
         </tr>
       );
       generatedTable.push(rowDOM);
@@ -73,51 +74,6 @@ const Timetable = (props: Props) => {
               <th>Remark</th>
             </tr>
             {parseDataToTable(props.data)}
-            {/* <tr>
-              <td>10220</td>
-              <td>Lec/Studio</td>
-              <td>CS2</td>
-              <td>Thu</td>
-              <td>1230-1330</td>
-              <td>TCT-LT</td>
-              <td />
-            </tr>
-            <tr>
-              <td>10220</td>
-              <td>Lec/Studio</td>
-              <td>CS2</td>
-              <td>Mon</td>
-              <td>1330-1430</td>
-              <td>TCT-LT</td>
-              <td />
-            </tr>
-            <tr>
-              <td>10220</td>
-              <td>TUT</td>
-              <td>SS1</td>
-              <td>Mon</td>
-              <td>1430-1530</td>
-              <td>TR+37</td>
-              <td>Week 2-13</td>
-            </tr>
-            <tr>
-              <td>10220</td>
-              <td>LAB</td>
-              <td>SS1</td>
-              <td>Tue</td>
-              <td>1230-1330</td>
-              <td>SWLAB2</td>
-              <td>Week 2,4,6,8,10,12</td>
-            </tr>
-            <tr>
-              <td>10220</td>
-              <td>LAB</td>
-              <td>SS1</td>
-              <td>Tue</td>
-              <td>1330-1430</td>
-              <td>SWLAB2</td>
-              <td>Week 2,4,6,8,10,12</td>
-            </tr> */}
           </tbody>
         </table>
       </div>

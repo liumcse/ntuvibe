@@ -59,7 +59,7 @@ class Dropdown extends React.Component<Props, States> {
         isLoading: false,
         suggestions: this.getSuggestions(value)
       });
-    }, 500);
+    }, 200);
   };
 
   // When suggestion is clicked, Autosuggest needs to populate the input
