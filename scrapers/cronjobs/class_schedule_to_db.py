@@ -13,11 +13,11 @@ import datetime
 import re
 
 
-def get_courseid_by_course_code(course_code):
+def get_course_id_by_course_code(course_code):
 	try:
 		return CourseTab.objects.filter(course_code=course_code).first().id
 	except AttributeError:
-		print("courseid not found for course_code: %s" % course_code)
+		print("course_id not found for course_code: %s" % course_code)
 		return None
 
 
@@ -42,12 +42,12 @@ def get_weeks_string_from_remark(remark):
 
 
 def record_class_schedule(course_code, class_schedule):
-	courseid = get_courseid_by_course_code(course_code)
-	if not courseid:
+	course_id = get_course_id_by_course_code(course_code)
+	if not course_id:
 		return
 
 	# Clear original class schedules from db
-	ClassScheduleTab.objects.filter(courseid=courseid).delete()
+	ClassScheduleTab.objects.filter(course_id=course_id).delete()
 
 	# Record new class schedules to db
 	new_indices = class_schedule["indices"]
@@ -67,7 +67,7 @@ def record_class_schedule(course_code, class_schedule):
 			end_time = datetime.time(hour=int(end_time_str[0:2]), minute=int(end_time_str[2:4]))
 
 			ClassScheduleTab.objects.create(
-				courseid=courseid,
+				course_id=course_id,
 				index=index,
 				start_time=start_time,
 				end_time=end_time,
@@ -82,7 +82,7 @@ def record_class_schedule(course_code, class_schedule):
 	last_characters = class_schedule["title"][-3:]
 	as_ue = "*" in last_characters
 	as_pe = "#" in last_characters
-	CourseTab.objects.filter(id=courseid).update(as_pe=as_pe, as_ue=as_ue)
+	CourseTab.objects.filter(id=course_id).update(as_pe=as_pe, as_ue=as_ue)
 
 
 if __name__ == "__main__":

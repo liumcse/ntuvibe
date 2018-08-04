@@ -63,7 +63,7 @@ def get_course_comments(request):
 def submit_course_rating(request):
 	try:
 		user_id = 1  # TO DO: adding in after adding in login system
-		params = request.GET
+		params = request.POST
 		easy = params.get("easy", None)
 		useful = params.get("useful", None)
 		like = params.get("like", None)

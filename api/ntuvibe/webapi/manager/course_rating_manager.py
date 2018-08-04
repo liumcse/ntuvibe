@@ -39,17 +39,22 @@ def delete_rating_record_by_id(id):
 
 def prepare_total_rating_dict(course_id):
 	score_list = get_rating_scores_by_course_id(course_id)
-	easy = useful = like = count = 0
+	count = len(score_list)
+	easy = useful = like = 0
 	for score in score_list:
 		easy += score["easy"]
 		useful += score["useful"]
 		like += score["like"]
+	if count != 0:
+		easy = int(easy/count)
+		useful = int(useful/count)
+		like = int(like/count)
 	return {
 		"data": {
 			"easy": easy,
 			"useful": useful,
 			"like": like,
-			"count": len(score_list)
+			"count": count
 		}
 	}
 
