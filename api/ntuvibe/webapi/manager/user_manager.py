@@ -1,24 +1,17 @@
-from webapi.models import (
-	CourseTab,
-	UserTab,
-	CourseRatingTab,
-	ProfessorTab,
-	ProfessorRatingTab,
-	ClassScheduleTab
-)
+from django.contrib.auth.models import User
 import hashlib
 
 
 def get_users(**kwargs):
-	return UserTab.objects.filter(**kwargs)
+	return User.objects.filter(**kwargs)
 
 
 def get_user_by_user_id(user_id):
-	return UserTab.objects.filter(id=user_id).first()
+	return User.objects.filter(id=user_id).first()
 
 
 def get_user_by_email(email):
-	return UserTab.objects.filter(email=email).first()
+	return User.objects.filter(email=email).first()
 
 
 def register_user(username, password, email):

@@ -39,6 +39,7 @@ class CourseRatingTab(models.Model):
 	easy = models.IntegerField()
 	like = models.IntegerField()
 	comment = models.TextField(default="")
+	create_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_course_rating_tab"
@@ -96,3 +97,14 @@ class ExamScheduleTab(models.Model):
 
 	class Meta:
 		db_table = u"webapi_exam_schedule_tab"
+
+
+class ConfigTab(models.Model):
+	id = models.BigAutoField(primary_key=True)
+	key = PositiveBigIntegerField(db_index=True)  # to be specified in constants.py later on
+	value = models.CharField(max_length=128)
+	notes = models.CharField(max_length=256)
+
+	class Meta:
+		db_table = u"webapi_config_tab"
+
