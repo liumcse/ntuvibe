@@ -32,11 +32,6 @@ type States = {
 class Dropdown extends React.Component<Props, States> {
   constructor() {
     super();
-    // Autosuggest is a controlled component.
-    // This means that you need to provide an input value
-    // and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest,
-    // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: "",
       suggestions: [],
@@ -62,15 +57,10 @@ class Dropdown extends React.Component<Props, States> {
     }, 200);
   };
 
-  // When suggestion is clicked, Autosuggest needs to populate the input
-  // based on the clicked suggestion. Teach Autosuggest how to calculate the
-  // input value for every given suggestion.
   getSuggestionValue = suggestion => {
     const { history } = this.props;
-    // suggestion.code.concat(" - ").concat(suggestion.title);
     history.push("/courses/" + suggestion.code.toLowerCase());
-    // history.replace("/courses/" + suggestion.code.toLowerCase());
-    return suggestion.code.toUpperCase(); // necessary to prevent error
+    return suggestion.code.toUpperCase();
   };
 
   // Use your imagination to render suggestions.

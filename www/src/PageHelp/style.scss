@@ -47,16 +47,16 @@
   .heading_1 {
     // @include american-typewriter;
     @include modern-antiqua;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
   .heading_2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-bottom: 1.5rem;
   }
   .heading_3 {
     @include lato-regular;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 3rem;
     color: #f5f5f5;
   }
@@ -67,17 +67,18 @@
   .heading_4 {
     // @include lato-medium;
     @include open-sans-regular;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 3rem;
   }
   .card {
     width: 75%;
     margin-bottom: 3rem;
+    font-size: 1rem;
     &_heading {
       color: $primary;
       @include lato-medium;
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
     &_content {
       line-height: 1.5;
