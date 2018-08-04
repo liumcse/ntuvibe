@@ -94,6 +94,15 @@ const course = (state = initialState.course, action: Action): CourseState => {
         ...state,
         courseRatingSubmission: payload
       };
+    case actionTypes.CLEAR_COURSE_INFORMATION:
+      return {
+        ...state,
+        courseDetail: null,
+        courseRating: null,
+        courseSchedule: null,
+        courseComments: null,
+        examSchedule: null
+      };
     default:
       // likely to be an error
       return state;

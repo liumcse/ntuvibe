@@ -162,6 +162,12 @@ export function submitCourseRating(courseRatingForm: any) {
   };
 }
 
+export function clearCourseInformation() {
+  return {
+    type: actionTypes.CLEAR_COURSE_INFORMATION
+  };
+}
+
 export function popupTrigger(popup: 0 | 1 | 2 | 3) {
   switch (popup) {
     case 1:

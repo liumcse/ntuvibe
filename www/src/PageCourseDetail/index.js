@@ -23,6 +23,7 @@ import * as styles from "./style.scss";
 import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
 import {
+  clearCourseInformation,
   fetchCourseDetail,
   fetchCourseRating,
   fetchCourseComments,
@@ -121,6 +122,7 @@ const HeadingSkeleton = () => (
 const skeleton = (
   <div className={styles.page_course_detail}>
     <NavBar />
+    <Menu />
     <div className={styles.content}>
       <div className={styles.section_a}>
         <HeadingSkeleton />
@@ -218,7 +220,7 @@ class PageCourseDetail extends React.Component<Props> {
       }
     } = this.props;
     const code = courseCode.toUpperCase(); // do we really put the upper case here?
-
+    this.props.clearCourseInformation();
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
@@ -377,6 +379,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  clearCourseInformation: () => dispatch(clearCourseInformation()),
   fetchCourseDetail: courseCode => dispatch(fetchCourseDetail(courseCode)),
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
