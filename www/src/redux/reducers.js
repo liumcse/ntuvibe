@@ -83,6 +83,12 @@ const course = (state = initialState.course, action: Action): CourseState => {
         ...state,
         courseComments: payload
       };
+    case actionTypes.SUBMIT_COURSE_RATING_SUCCESS:
+      console.log("Success");
+      return state;
+    case actionTypes.SUBMIT_COURSE_RATING_FAILURE:
+      console.log("Failure");
+      return state;
     default:
       // likely to be an error
       return state;

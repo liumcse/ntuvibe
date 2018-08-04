@@ -8,11 +8,11 @@ const Badge = props => {
   const value = props.value;
   const label = props.label;
   switch (value) {
-    case 1:
+    case 0:
       return (
         <div className={styles.badge + " " + styles.badge_bad}>{label}</div>
       );
-    case 2:
+    case 50:
       return (
         <div className={styles.badge + " " + styles.badge_moderate}>
           {label}

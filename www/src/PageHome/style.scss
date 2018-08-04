@@ -8,7 +8,7 @@
     background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.jpg') no-repeat;
     background-blend-mode: overlay;
     background-size: cover;
-    filter: blur(8px);
+    filter: blur(10px);
     transform: scale(1.1); // scale the image larger to hide white border
   }
   

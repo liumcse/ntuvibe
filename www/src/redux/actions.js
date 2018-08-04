@@ -4,7 +4,7 @@ import * as actionTypes from "./action_types";
 
 // import type { Action } from "src/FlowType/acitons";
 
-const BASE_URL = "https://api.ntuvibe.com/api";
+const BASE_URL = "https://api.ntuvibe.com";
 // const BASE_URL = "http://localhost:3001/api";
 
 export function fetchCourseDetail(courseCode: string) {
@@ -133,6 +133,29 @@ export function fetchCourseComments(courseCode: string) {
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
+          payload: []
+        })
+      );
+  };
+}
+
+export function submitCourseRating(courseRatingForm: any) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
+    });
+    axios
+      .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm)
+      .then(response => {
+        console.log(response);
+        return dispatch({
+          type: actionTypes.SUBMIT_COURSE_RATING_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.SUBMIT_COURSE_RATING_FAILURE,
           payload: []
         })
       );
