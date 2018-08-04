@@ -16,8 +16,8 @@ class PageHome extends React.PureComponent {
           </div>
         </div>
         <div className={styles.footer}>
-          &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39; not affiliated with
-          Nanyang Technological University.
+          &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39;re not affiliated
+          with Nanyang Technological University.
         </div>
       </div>
     );

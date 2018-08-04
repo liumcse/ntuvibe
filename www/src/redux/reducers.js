@@ -6,6 +6,7 @@ import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
   course: {
+    courseRatingSubmission: null,
     courseList: null,
     courseDetail: null,
     courseRating: null,
@@ -82,6 +83,16 @@ const course = (state = initialState.course, action: Action): CourseState => {
       return {
         ...state,
         courseComments: payload
+      };
+    case actionTypes.SUBMIT_COURSE_RATING_SUCCESS:
+      return {
+        ...state,
+        courseRatingSubmission: payload.data
+      };
+    case actionTypes.SUBMIT_COURSE_RATING_FAILURE:
+      return {
+        ...state,
+        courseRatingSubmission: payload
       };
     default:
       // likely to be an error

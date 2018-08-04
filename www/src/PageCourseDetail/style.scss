@@ -10,6 +10,12 @@
     position: relative;
   }
 
+  .loading_placeholder {
+    @include medium-shadow;
+    color: rgb(235, 235, 235) !important;
+    background-color: rgb(235, 235, 235) !important;
+  }
+
   .content {
     // flex: 4;
     display: flex;

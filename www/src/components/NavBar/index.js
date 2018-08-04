@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { popupTrigger } from "src/redux/actions";
-import login from "./assets/facebook.svg";
+import login from "./assets/login.svg";
 
 import * as styles from "./style.scss";
 
@@ -21,7 +21,7 @@ const logo = (
 );
 
 const rightButton = (
-  <img src={login} style={{ height: "3rem", width: "auto" }} />
+  <img src={login} style={{ height: "1.5rem", width: "auto" }} />
 );
 
 class NavBar extends React.PureComponent {

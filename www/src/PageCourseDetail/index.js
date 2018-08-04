@@ -35,9 +35,9 @@ import yes from "./assets/yes.svg";
 
 const NO_DESCRIPTION =
   "This course has no description. I don't know why this would happen either...";
-const NO_RATING = "Hide rating due to insufficient submission";
+const NO_RATING = "No rating yet";
 
-const RATING_THRESHOLD = 3;
+const RATING_THRESHOLD = 0; // we don't set threshold - yet
 
 type Props = {
   // from redux
@@ -78,6 +78,131 @@ const Heading = (props: HeadingProps) => (
           : props.count.toString().concat(" ratings")}
       </div>
     </div>
+  </div>
+);
+
+const HeadingSkeleton = () => (
+  <div className={styles.heading}>
+    <div className={styles.heading_row}>
+      <div
+        className={styles.course_code
+          .concat(" ")
+          .concat(styles.loading_placeholder)}
+      >
+        CZ9999
+      </div>
+      <div
+        className={styles.rating_overall
+          .concat(" ")
+          .concat(styles.loading_placeholder)}
+      >
+        - %
+      </div>
+    </div>
+    <div className={styles.heading_row}>
+      <div
+        className={styles.heading_course_title
+          .concat(" ")
+          .concat(styles.loading_placeholder)}
+      >
+        SOME COURSE
+      </div>
+      <div
+        className={styles.number_of_rating
+          .concat(" ")
+          .concat(styles.loading_placeholder)}
+      >
+        99 ratings
+      </div>
+    </div>
+  </div>
+);
+
+const skeleton = (
+  <div className={styles.page_course_detail}>
+    <NavBar />
+    <div className={styles.content}>
+      <div className={styles.section_a}>
+        <HeadingSkeleton />
+        <div className={styles.row_box}>
+          <div className={styles.course_info}>
+            <div
+              className={styles.course_description
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              {NO_DESCRIPTION}
+            </div>
+            <div className={styles.requirement}>
+              <div
+                className={styles.label
+                  .concat(" ")
+                  .concat(styles.loading_placeholder)}
+              >
+                Prerequisites{" "}
+              </div>
+              <div
+                className={styles.requirement_content
+                  .concat(" ")
+                  .concat(styles.loading_placeholder)}
+              >
+                xxxxxxxxxxxxxxxxxxxxxx
+              </div>
+            </div>
+
+            <div className={styles.requirement}>
+              <div
+                className={styles.label
+                  .concat(" ")
+                  .concat(styles.loading_placeholder)}
+              >
+                Antirequisites
+              </div>
+              <div
+                className={styles.requirement_content
+                  .concat(" ")
+                  .concat(styles.loading_placeholder)}
+              >
+                xxxxxxxxxxxxxxxxxxxxxx
+              </div>
+            </div>
+          </div>
+          <div className={styles.middle_placeholder} />
+          <div className={styles.course_info_right}>
+            <div
+              className={styles.rating_useful
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              <RatingBar label={"Useful"} value={null} />
+            </div>
+            <div
+              className={styles.rating_easy
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              <RatingBar label={"Easy"} value={null} />
+            </div>
+            <div
+              className={styles.au
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              {"-".concat(" AU")}
+            </div>
+            <div className={styles.availability}>
+              <div className={styles.loading_placeholder}>
+                Read as Unrestricted Elective
+              </div>
+              <div className={styles.loading_placeholder}>
+                Read as General Education Prescribed Elective
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Footer />
   </div>
 );
 
@@ -127,7 +252,7 @@ class PageCourseDetail extends React.Component<Props> {
       !examSchedule ||
       !courseSchedule
     ) {
-      return "Waiting for response...";
+      return skeleton;
     }
 
     const { courseCode } = this.props.match.params;
@@ -189,7 +314,7 @@ class PageCourseDetail extends React.Component<Props> {
                   />
                 </div>
                 <div className={styles.au}>
-                  {(au && au.concat(" ").concat("AU")) || "-"}
+                  {(au && au.concat(" AU")) || "-".concat(" AU")}
                 </div>
                 <div className={styles.availability}>
                   <div>
@@ -228,7 +353,8 @@ class PageCourseDetail extends React.Component<Props> {
               </div>
             ) : (
               <div className={styles.placeholder}>
-                Nobody has published their comments - so you can be the first one!
+                Nobody has published their comments - so you can be the first
+                one!
               </div>
             )}
           </div>
