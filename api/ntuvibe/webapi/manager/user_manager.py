@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from webapi.utils import send_activate_account_email
+from django.contrib.auth import authenticate
 import hashlib
 
 
@@ -13,19 +15,24 @@ def get_user_by_user_id(user_id):
 def get_user_by_email(email):
 	return User.objects.filter(email=email).first()
 
+def get_django_user_by_username(username):
+	return User.objects.filter(username=username).first()
+
 
 def register_user(username, password, email):
-	salt = uuid4()
-	sha = hashlib.sha512()
-	sha.update(password)
-	sha.update(salt)
-	user = UserTab(
-		username=username,
-		salt=salt,
-		hashed_password=sha.hexdigest(),
-		email=email,
-	)
-	user.create()
+	result = {'success': False}
+	try:
+		user = User.objects.create_user(username, email, password)
+		user.is_active = False
+		user.save()
+	except Exception as e:
+		result['error'] = str(e)
+		return result
+
+	send_activate_account_email(user)
+
+	result['success'] = True
+	return result
 
 
 def login_verification(password, user_id=None, email=None):
