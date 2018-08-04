@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from webapi.constants import VALID_EMAIL_DOMAIN
+from webapi import utils
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from webapi.manager import (
@@ -51,11 +52,15 @@ def logout(request):
 	if request.user and request.user.is_authenticated:
 		logout(request)
 		return JsonResponse({'success': True})
-	return ({'success': False, 'error': 'user not logged in'})
+	return JsonResponse({'success': False, 'error': 'user not logged in'})
 
 
-def activate_email(request, username):
-	user = user_manager.get_user_by_username(username)
-	user.is_active = True
-	user.save()
-	pass
+def activate_email(request, username, token):
+	user = user_manager.get_django_user_by_username(username)
+	if not user:
+		return JsonResponse({'success': False, 'error': 'not registered'})
+	if utils.validate_email_activation_token(user, token):
+		user.is_active = True
+		user.save()
+		return JsonResponse({'success': True})
+	return JsonResponse({'success': False, 'error': 'not validated'})

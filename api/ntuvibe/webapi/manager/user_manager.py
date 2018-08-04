@@ -7,6 +7,7 @@ from webapi.models import (
 	ClassScheduleTab
 )
 from django.contrib.auth.models import User
+from webapi.utils import send_activate_account_email
 from django.contrib.auth import authenticate
 import hashlib
 
@@ -22,6 +23,9 @@ def get_user_by_user_id(user_id):
 def get_user_by_email(email):
 	return UserTab.objects.filter(email=email).first()
 
+def get_django_user_by_username(username):
+	return User.objects.filter(username=username).first()
+
 
 def register_user(username, password, email):
 	result = {'success': False}
@@ -32,6 +36,8 @@ def register_user(username, password, email):
 	except Exception as e:
 		result['error'] = str(e)
 		return result
+
+	send_activate_account_email(user)
 
 	result['success'] = True
 	return result
