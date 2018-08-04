@@ -20,8 +20,8 @@ export type CourseDetail = {
 };
 
 export type CourseRating = {
-  number_of_rating: number,
-  overall: string,
+  count: number,
+  like: string,
   useful: string,
   easy: string
 };

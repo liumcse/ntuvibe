@@ -4,8 +4,8 @@ import * as actionTypes from "./action_types";
 
 // import type { Action } from "src/FlowType/acitons";
 
-const BASE_URL = "http://178.128.214.242/api";
-// const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "https://api.ntuvibe.com/api";
+// const BASE_URL = "http://localhost:3001/api";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
