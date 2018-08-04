@@ -144,7 +144,7 @@ export function submitCourseRating(courseRatingForm: any) {
     dispatch({
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
     });
-    axios
+    await axios
       .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm)
       .then(response => {
         console.log(response);

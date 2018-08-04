@@ -1,5 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -11,6 +12,8 @@ class RateCourse extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      submitting: false,
+      succeed: false,
       easy: null,
       useful: null,
       like: null,
@@ -20,21 +23,38 @@ class RateCourse extends React.Component {
 
   submitRating = () => {
     const { easy, useful, like, comment } = this.state;
+    console.log(this.props);
+    const courseCode = this.props.location.pathname.replace("/courses/", "");
+    const notificationDOM = document.querySelector("#notification");
     if (easy === null || useful === null || like === null) {
-      alert("No");
+      notificationDOM.innerHTML = "One or more field is empty...";
+      notificationDOM.style.display = "block";
     } else {
+      this.setState({ submitting: true });
       const courseRatingForm = new FormData();
-      courseRatingForm.append("code", "CZ2007");
+      courseRatingForm.append("code", courseCode);
       courseRatingForm.append("easy", easy.toString());
       courseRatingForm.append("like", like.toString());
       courseRatingForm.append("useful", useful.toString());
       courseRatingForm.append("comment", comment);
-      console.log(courseRatingForm.entries());
-      for (let pair of courseRatingForm.entries()) {
-        console.log(pair);
-      }
-      console.log("Submitting...");
-      this.props.submitCourseRating(courseRatingForm);
+      this.props.submitCourseRating(courseRatingForm).then(() => {
+        const response = this.props.courseRatingSubmission;
+        if (!response) {
+          notificationDOM.innerHTML =
+            "Something went wrong... Is your Internet alright?";
+          notificationDOM.style.display = "block";
+        } else if (response.success && response.success === true) {
+          notificationDOM.innerHTML = "Submitted successfully!";
+          notificationDOM.style.color = "$primary";
+          notificationDOM.style.display = "block";
+          this.setState({ succeed: true });
+        } else {
+          notificationDOM.innerHTML =
+            "Server error... It's not your fault, we will fix it.";
+          notificationDOM.style.display = "block";
+        }
+        this.setState({ submitting: false });
+      });
     }
   };
 
@@ -86,7 +106,7 @@ class RateCourse extends React.Component {
   };
 
   render() {
-    const { easy, useful, like } = this.state;
+    const { easy, useful, like, succeed } = this.state;
     return (
       <Popup
         modal
@@ -208,21 +228,31 @@ class RateCourse extends React.Component {
             </div>
             <textarea
               onChange={this.handleInput}
-              placeholder="Type your comment here..."
+              placeholder="Type your comment here... (optional)"
             />
           </div>
+          <div
+            id="notification"
+            className={styles.section}
+            style={{ color: "crimson", display: "none" }}
+          />
           <div className={styles.action}>
             <div className={styles.row}>
-              <div>
+              <div style={{ display: succeed ? "none" : "inline" }}>
                 <button
+                  id="submit"
+                  disabled={this.state.submitting}
                   onClick={this.submitRating}
                   className={styles.highlight}
+                  style={{
+                    marginRight: "3rem"
+                  }}
                 >
-                  Submit
+                  {this.state.submitting ? "Submitting.." : "Submit"}
                 </button>
               </div>
               <div>
-                <button onClick={this.props.closePopup}>Cancel</button>
+                <button onClick={this.props.closePopup}>Close</button>
               </div>
             </div>
           </div>
@@ -233,9 +263,21 @@ class RateCourse extends React.Component {
 }
 
 RateCourse.propTypes = {
-  // courseCode: PropTypes.string,isRequired,
+  submitCourseRating: PropTypes.func.isRequired,
+  courseRatingSubmission: PropTypes.object,
   open: PropTypes.bool.isRequired,
-  closePopup: PropTypes.func.isRequired
+  closePopup: PropTypes.func.isRequired,
+  // from router
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => {
+  const { course } = state;
+  return {
+    courseRatingSubmission: course && course.courseRatingSubmission
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -243,7 +285,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(submitCourseRating(courseRatingForm))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RateCourse);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RateCourse)
+);
