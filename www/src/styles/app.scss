@@ -8,6 +8,10 @@
     font-size: 18px;
   }
 
+  body {
+    min-width: 1024px; // TODO: this disables responsive design
+  }
+
   textarea, select, input, button {
     outline: none;
   }
