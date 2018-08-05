@@ -1,5 +1,6 @@
 import time
 import hashlib
+import random
 from django.core.mail import send_mail
 from django.template import Context
 from django.template.loader import render_to_string, get_template
@@ -10,7 +11,8 @@ from django.utils.translation import gettext as _
 from django.db.models.fields import PositiveIntegerRelDbTypeMixin, BigIntegerField
 
 from django.db.models.fields import BigIntegerField
-from django.core.cache import cache
+from django.core.cache import caches
+from ntuvibe.secret_key import SECRET_KEY
 PositiveBigIntegerField = BigIntegerField
 
 # class PositiveBigIntergerRelDbTypeMixin(PositiveIntegerRelDbTypeMixin):
@@ -58,28 +60,28 @@ def get_timestamp():
 	return int(time.time())
 
 
-def generate_activate_account_token(user, timestamp=None):
+def generate_activation_token(email, timestamp=None):
 	hash = hashlib.sha256()
 	if not timestamp:
 		timestamp = get_timestamp()
-	hash.update(user.username)
 	hash.update(timestamp)
-	hash.update(user.is_active)
+	hash.update(random.randint(2**30, 2**31-1))
+	hash.update(SECRET_KEY)
 
-	cache.set(user.username, timestamp, timeout=60*60*60*24)
+	token = hash.hexdigest()
+	cache = caches["activation_token"]
+	cache.set(email, token, timeout=60*60*24)
+	return token
 
-	return hash.hexdigest()
 
-
-
-def send_activate_account_email(user):
+def send_activate_account_email(email):
 	try:
 		subject = "Welcome to ntuvibe"
-		to = [user.email]
+		to = [email]
 		from_email = 'ntuvibe_adminteam@gmail.com'
-		token = generate_activate_account_token(user)
+		token = generate_activation_token(email=email)
 
-		message = render_to_string('static/template/activate_account.html', {'username':user.username, 'token': token})
+		message = render_to_string('static/template/activate_account.html', {"email": email, 'token': token})
 		send_mail(subject, message, from_email, to, html_message=message)
 
 		return {'success': True}
@@ -87,12 +89,13 @@ def send_activate_account_email(user):
 		return {'success': False, 'error': str(e)}
 
 
-def validate_email_activation_token(user, token):
-	original_timestamp = cache.get(user.username)
-	if not original_timestamp:
-		send_activate_account_email(user)
-		return({'success': False, 'error': 'previous token does not exist or expired'})
-	original_token = generate_activate_account_token(user, original_timestamp)
-	if original_token == token:
-		return {"success": True}
-	return {'success': False, 'error': 'not validated'}
+def validate_email_activation_token(email, token):
+	cache = caches["activation_token"]
+
+	correct_token = cache.get(email)
+	if not correct_token:
+		send_activate_account_email(email)
+		raise Exception("previous token does not exist or expired")
+
+	if correct_token and token == correct_token:
+		return True

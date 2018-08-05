@@ -3,26 +3,28 @@ from webapi.constants import VALID_EMAIL_DOMAIN
 from webapi import utils
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from webapi.manager import (
 	user_manager,
-	course_manager,
-	course_rating_manager,
-	prof_manager,
-	prof_rating_manager,
 )
+import re
 
 
-def sign_up(request):
+def user_signup(request):
 	result = {'success': False}
-	param = request.POST
+	param = request.GET
 	username = param.get("username", None)
 	email = param.get("email", None)
 	password = param.get('password', None)
-	if any(username, email, password) is None:
+	if any((username, email, password)) is None:
 		result['error'] = 'param error'
 		return JsonResponse(result)
 
-	if email.split('@')[1] not in VALID_EMAIL_DOMAIN:
+	email_pattern = re.compile(".+@.+")
+	if not email_pattern.match(email):
+		result['error'] = 'invalid email format'
+		return JsonResponse(result)
+	if email.split('@')[-1] not in VALID_EMAIL_DOMAIN:
 		result['error'] = 'not ntu email'
 		return JsonResponse(result)
 
@@ -31,36 +33,48 @@ def sign_up(request):
 	return JsonResponse(result)
 
 
-def login(request):
-	param = request.POST
-	username = param.get('username', None)
+def user_login(request):
+	param = request.GET
+	email = param.get('email', None)
 	password = param.get('password', None)
-	if any(username, password) is None:
+	if any((email, password)) is None:
 		return JsonResponse({'success': False, 'error': 'invalid param'})
 
-	user = authenticate(request, username, password)
-	if user is None:
-		return JsonResponse({'success': False, 'error': 'not registered'})
+	username = user_manager.get_username_by_email(email)
+	if not username:
+		return JsonResponse({'success': False, 'error': 'invalid email or password'})
 
+	user = authenticate(request, username=username, password=password)
+	if user is None:
+		return JsonResponse({'success': False, 'error': 'invalid email or password'})
 	if not user.is_active:
-		return JsonResponse({"success": False, 'error': 'user has not verified email'})
+		return JsonResponse({"success": False, 'error': 'user not activated'})
 
 	login(request, user)
+	return JsonResponse({"success": True})
 
 
-def logout(request):
+def user_logout(request):
 	if request.user and request.user.is_authenticated:
 		logout(request)
 		return JsonResponse({'success': True})
 	return JsonResponse({'success': False, 'error': 'user not logged in'})
 
 
-def activate_email(request, username, token):
-	user = user_manager.get_django_user_by_username(username)
+def user_activate(request):
+	param = request.GET
+	email = param.get('email', None)
+	token = param.get('token', None)
+	if any((email, token)) is None:
+		return JsonResponse({'success': False, 'error': 'invalid param'})
+
+	user = user_manager.get_user_by_username(email)
 	if not user:
-		return JsonResponse({'success': False, 'error': 'not registered'})
-	if utils.validate_email_activation_token(user, token):
+		return JsonResponse({'success': False, 'error': 'not signed up'})
+
+	if utils.validate_email_activation_token(email, token):
 		user.is_active = True
 		user.save()
+		login(request, user)
 		return JsonResponse({'success': True})
 	return JsonResponse({'success': False, 'error': 'not validated'})

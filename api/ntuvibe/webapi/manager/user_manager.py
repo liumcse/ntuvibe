@@ -15,39 +15,42 @@ def get_user_by_user_id(user_id):
 def get_user_by_email(email):
 	return User.objects.filter(email=email).first()
 
-def get_django_user_by_username(username):
+
+def get_user_by_username(username):
 	return User.objects.filter(username=username).first()
+
+
+def get_username_by_email(email):
+	user = get_user_by_email(email=email)
+	if user:
+		return user.username
+	return None
 
 
 def register_user(username, password, email):
 	result = {'success': False}
+
+	user_with_same_email = get_user_by_email(email)
+	if user_with_same_email and user_with_same_email.is_active:
+		raise Exception("same email already activated")
+
+	user_with_same_username = get_user_by_username(username)
+	if user_with_same_username and user_with_same_username.email != email:
+		raise Exception("same username already activated")
+
 	try:
-		user = User.objects.create_user(username, email, password)
-		user.is_active = False
-		user.save()
+		if user_with_same_email:  # is_active == False
+			user_with_same_email.username = username
+			user_with_same_email.set_password(password)
+			user_with_same_email.save()
+		else:
+			user = User.objects.create_user(username, email, password)
+			user.is_active = False
+			user.save()
 	except Exception as e:
 		result['error'] = str(e)
 		return result
 
-	send_activate_account_email(user)
-
+	send_activate_account_email(email=email)
 	result['success'] = True
 	return result
-
-
-def login_verification(password, user_id=None, email=None):
-	if user_id:
-		user = get_user_by_user_id(user_id)
-	elif email:
-		user = get_user_by_email(email)
-	else:
-		return False
-
-	sha = hashlib.sha512()
-	sha.update(password)
-	sha.update(user.salt)
-
-	if sha.hexdigest() == user.hashed_password:
-		return True
-
-	return False
