@@ -14,10 +14,14 @@ class PageHome extends React.PureComponent {
           <div className={styles.course_search}>
             <Dropdown />
           </div>
-        </div>
-        <div className={styles.footer}>
-          &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39;re not affiliated
-          with Nanyang Technological University.
+          <div className={styles.button_container}>
+            <span className={styles.badge}>PRO TIP</span> Use ALT keys to
+            navigate and press ENTER to select 🚀
+          </div>
+          <div className={styles.footer}>
+            &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39;re not affiliated
+            with Nanyang Technological University.
+          </div>
         </div>
       </div>
     );

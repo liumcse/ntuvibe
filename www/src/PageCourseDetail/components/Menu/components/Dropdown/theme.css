@@ -45,8 +45,8 @@
 }
 
 .suggestion {
-  padding: 0.5rem 2rem;
-  height: 2.5rem;
+  /* padding: 0.5rem 2rem; */
+  height: 3.5rem;
   color: black;
   cursor: pointer;
 }

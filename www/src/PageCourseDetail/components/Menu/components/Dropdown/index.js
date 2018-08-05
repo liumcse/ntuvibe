@@ -50,7 +50,6 @@ class Dropdown extends React.Component<Props, States> {
   }
 
   keydownEvent = event => {
-    console.log("keydown, is enter?", event.key);
     if (event.key === "Enter") {
       const { courseList } = this.props;
       const { value } = this.state;

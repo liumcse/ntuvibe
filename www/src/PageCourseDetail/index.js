@@ -47,6 +47,7 @@ type Props = {
   fetchCourseComments: string => void,
   fetchCourseSchedule: string => void,
   fetchExamSchedule: string => void,
+  clearCourseInformation: () => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
   courseComments: CourseComments,
@@ -172,18 +173,20 @@ const skeleton = (
           <div className={styles.middle_placeholder} />
           <div className={styles.course_info_right}>
             <div
+              style={{ width: "100%" }}
               className={styles.rating_useful
                 .concat(" ")
                 .concat(styles.loading_placeholder)}
             >
-              <RatingBar label={"Useful"} value={null} />
+              xxoo
             </div>
             <div
+              style={{ width: "100%" }}
               className={styles.rating_easy
                 .concat(" ")
                 .concat(styles.loading_placeholder)}
             >
-              <RatingBar label={"Easy"} value={null} />
+              xxoo
             </div>
             <div
               className={styles.au
@@ -354,7 +357,7 @@ class PageCourseDetail extends React.Component<Props> {
                 <CommentList comments={courseComments || []} />
               </div>
             ) : (
-              <div className={styles.placeholder}>
+              <div className={styles.no_comment}>
                 Nobody has published their comments - so you can be the first
                 one!
               </div>
