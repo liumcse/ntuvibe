@@ -3,11 +3,9 @@ import re
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from webapi.manager import user_manager
 from webapi.constants import VALID_EMAIL_DOMAIN
 from webapi import utils
-
 
 
 def user_signup(request):

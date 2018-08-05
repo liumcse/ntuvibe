@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from webapi.manager import (
 	course_manager,
@@ -58,11 +58,10 @@ def get_course_comments(request):
 	return JsonResponse(response_dict)
 
 
-# login required
-@csrf_exempt
+@login_required
 def submit_course_rating(request):
 	try:
-		user_id = 1  # TO DO: adding in after adding in login system
+		user_id = request.user.pk
 		params = request.POST
 		easy = params.get("easy", None)
 		useful = params.get("useful", None)

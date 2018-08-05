@@ -12,7 +12,7 @@ from django.db.models.fields import PositiveIntegerRelDbTypeMixin, BigIntegerFie
 
 from django.db.models.fields import BigIntegerField
 from django.core.cache import caches
-from ntuvibe.secret_key import SECRET_KEY
+from ntuvibe.secret_settings import SECRET_KEY
 PositiveBigIntegerField = BigIntegerField
 
 # class PositiveBigIntergerRelDbTypeMixin(PositiveIntegerRelDbTypeMixin):
@@ -83,7 +83,7 @@ def send_activate_account_email(email, token):
 	try:
 		subject = "Welcome to NTUVibe (Account Activation)"
 		to = [email]
-		from_email = 'ntuvibe_adminteam@gmail.com'
+		from_email = 'ntuvibe@gmail.com'
 
 		message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
 		send_mail(subject, message, from_email, to, html_message=message)
