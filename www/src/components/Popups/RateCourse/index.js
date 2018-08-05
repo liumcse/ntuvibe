@@ -23,7 +23,6 @@ class RateCourse extends React.Component {
 
   submitRating = () => {
     const { easy, useful, like, comment } = this.state;
-    console.log(this.props);
     const courseCode = this.props.location.pathname.replace("/courses/", "");
     const notificationDOM = document.querySelector("#notification");
     if (easy === null || useful === null || like === null) {
@@ -44,10 +43,12 @@ class RateCourse extends React.Component {
             "Something went wrong... Is your Internet alright?";
           notificationDOM.style.display = "block";
         } else if (response.success && response.success === true) {
-          notificationDOM.innerHTML = "Submitted successfully!";
+          notificationDOM.innerHTML =
+            "Submitted successfully! Reloading page...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
           this.setState({ succeed: true });
+          setTimeout(() => location.reload(), 1000);
         } else {
           notificationDOM.innerHTML =
             "Server error... It's not your fault, we will fix it.";
