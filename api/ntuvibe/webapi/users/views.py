@@ -12,11 +12,9 @@ import re
 
 def user_signup(request):
 	result = {'success': False}
-	param = request.GET
-	username = param.get("username", None)
+	param = request.POST
 	email = param.get("email", None)
-	password = param.get('password', None)
-	if any((username, email, password)) is None:
+	if email is None:
 		result['error'] = 'param error'
 		return JsonResponse(result)
 
@@ -28,13 +26,49 @@ def user_signup(request):
 		result['error'] = 'not ntu email'
 		return JsonResponse(result)
 
-	result = user_manager.register_user(username, email, password)
+	result = user_manager.register_email_to_cache(email)
 
 	return JsonResponse(result)
 
 
+def user_check_activation_link(request):
+	params = request.GET
+	email = params.get('email', None)
+	token = params.get('token', None)
+	if any((email, token)) is None:
+		return JsonResponse({'success': False, 'error': 'invalid param'})
+
+	if utils.validate_email_activation_token(email, token):
+		return JsonResponse({'success': True})
+	else:
+		return JsonResponse({'success': False, 'error': 'token invalid or expired'})
+
+
+def user_activate(request):
+	param = request.POST
+	email = param.get('email', None)
+	token = param.get('token', None)
+	username = param.get('username', None)
+	password = param.get('password', None)
+	major = param.get('major', None)
+
+	if any((email, token, username, password)) is None:
+		return JsonResponse({'success': False, 'error': 'invalid param'})
+
+	if not utils.validate_email_activation_token(email, token):
+		return JsonResponse({'success': False, 'error': 'invalid token'})
+
+	user_with_same_username = user_manager.get_user_by_username(username)
+	if user_with_same_username:
+		return JsonResponse({'success': False, 'error': 'same username already exists'})
+
+	user = user_manager.create_or_update_user_by_email(email=email, username=username, password=password, is_active=True)
+	login(request, user)
+	return JsonResponse({'success': True})
+
+
 def user_login(request):
-	param = request.GET
+	param = request.POST
 	email = param.get('email', None)
 	password = param.get('password', None)
 	if any((email, password)) is None:
@@ -61,20 +95,4 @@ def user_logout(request):
 	return JsonResponse({'success': False, 'error': 'user not logged in'})
 
 
-def user_activate(request):
-	param = request.GET
-	email = param.get('email', None)
-	token = param.get('token', None)
-	if any((email, token)) is None:
-		return JsonResponse({'success': False, 'error': 'invalid param'})
 
-	user = user_manager.get_user_by_username(email)
-	if not user:
-		return JsonResponse({'success': False, 'error': 'not signed up'})
-
-	if utils.validate_email_activation_token(email, token):
-		user.is_active = True
-		user.save()
-		login(request, user)
-		return JsonResponse({'success': True})
-	return JsonResponse({'success': False, 'error': 'not validated'})

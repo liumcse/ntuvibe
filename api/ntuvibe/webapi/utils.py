@@ -74,12 +74,11 @@ def generate_activation_token(email, timestamp=None):
 	return token
 
 
-def send_activate_account_email(email):
+def send_activate_account_email(email, token):
 	try:
 		subject = "Welcome to ntuvibe"
 		to = [email]
 		from_email = 'ntuvibe_adminteam@gmail.com'
-		token = generate_activation_token(email=email)
 
 		message = render_to_string('static/template/activate_account.html', {"email": email, 'token': token})
 		send_mail(subject, message, from_email, to, html_message=message)
