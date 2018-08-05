@@ -35,13 +35,21 @@ def create_or_update_user_by_email(email, username, password=None, is_active=Tru
 			user.set_password(password)
 		user.is_active = is_active
 		user.save()
+		return True
 	else:
 		user = User.objects.create_user(username, email, password)
 		user.is_active = is_active
 		user.save()
+		return user
 
 
-def register_email_to_cache(email):
+def update_user_profile(user, **kwargs):
+	for key, val in kwargs.items():
+		if val is not None:
+			setattr(user.profile, key, val)
+
+
+def register_email(email):
 	result = {'success': False}
 
 	user_with_same_email = get_user_by_email(email)
@@ -49,7 +57,18 @@ def register_email_to_cache(email):
 		result["error"] = "same email already exists"
 		return result
 
-	token = generate_activation_token(email=email)
-	send_activate_account_email(email=email, token=token)
+	send_activate_account_email(email=email, token=generate_activation_token(email=email))
 	result['success'] = True
 	return result
+
+
+def prepare_profile_dict(user):
+	return {
+		"data": {
+			"id": user.pk,
+			"username": user.username,
+			"email": user.email,
+			"major": user.profile.major,
+			"avatar": user.profile.avatar,
+		}
+	}

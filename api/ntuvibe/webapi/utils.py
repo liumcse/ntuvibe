@@ -64,9 +64,9 @@ def generate_activation_token(email, timestamp=None):
 	hash = hashlib.sha256()
 	if not timestamp:
 		timestamp = get_timestamp()
-	hash.update(timestamp)
-	hash.update(random.randint(2**30, 2**31-1))
-	hash.update(SECRET_KEY)
+	hash.update(str(timestamp).encode())
+	hash.update(str(random.randint(2**30, 2**31-1)).encode())
+	hash.update(SECRET_KEY.encode())
 
 	token = hash.hexdigest()
 	cache = caches["activation_token"]
@@ -74,13 +74,18 @@ def generate_activation_token(email, timestamp=None):
 	return token
 
 
+def remove_activation_token_from_cache(email):
+	cache = caches["activation_token"]
+	cache.delete(email)
+
+
 def send_activate_account_email(email, token):
 	try:
-		subject = "Welcome to ntuvibe"
+		subject = "Welcome to NTUVibe (Account Activation)"
 		to = [email]
 		from_email = 'ntuvibe_adminteam@gmail.com'
 
-		message = render_to_string('static/template/activate_account.html', {"email": email, 'token': token})
+		message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
 		send_mail(subject, message, from_email, to, html_message=message)
 
 		return {'success': True}
@@ -90,11 +95,5 @@ def send_activate_account_email(email, token):
 
 def validate_email_activation_token(email, token):
 	cache = caches["activation_token"]
-
 	correct_token = cache.get(email)
-	if not correct_token:
-		send_activate_account_email(email)
-		raise Exception("previous token does not exist or expired")
-
-	if correct_token and token == correct_token:
-		return True
+	return correct_token and token == correct_token

@@ -1,5 +1,31 @@
 from django.db import models
-from .utils import PositiveBigIntegerField
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .utils import PositiveBigIntegerField, get_timestamp
+
+
+class UserProfile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+	major = models.CharField(max_length=128)
+	avatar = models.CharField(max_length=512)
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
+
+	class Meta:
+		db_table = u"webapi_user_profile_tab"
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+	if created:
+		UserProfile.objects.create(user=instance, major="", avatar="", create_time=get_timestamp(), update_time=get_timestamp())
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+	instance.profile.update_time = get_timestamp()
+	instance.profile.save()
 
 
 class CourseTab(models.Model):
@@ -17,18 +43,6 @@ class CourseTab(models.Model):
 
 	class Meta:
 		db_table = u"webapi_course_tab"
-
-
-class UserTab(models.Model):
-	id = models.BigAutoField(primary_key=True)
-	username = models.CharField(max_length=32)
-	salt = models.CharField(max_length=64)
-	hashed_passwd = models.CharField(max_length=64)
-	email = models.CharField(max_length=32)
-	profile_photo = models.CharField(max_length=64, default="")
-
-	class Meta:
-		db_table = u"webapi_user_tab"
 
 
 class CourseRatingTab(models.Model):
@@ -107,4 +121,3 @@ class ConfigTab(models.Model):
 
 	class Meta:
 		db_table = u"webapi_config_tab"
-

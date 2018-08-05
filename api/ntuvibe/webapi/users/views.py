@@ -1,13 +1,13 @@
+import re
+
 from django.http import JsonResponse
-from webapi.constants import VALID_EMAIL_DOMAIN
-from webapi import utils
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from webapi.manager import (
-	user_manager,
-)
-import re
+from webapi.manager import user_manager
+from webapi.constants import VALID_EMAIL_DOMAIN
+from webapi import utils
+
 
 
 def user_signup(request):
@@ -26,12 +26,11 @@ def user_signup(request):
 		result['error'] = 'not ntu email'
 		return JsonResponse(result)
 
-	result = user_manager.register_email_to_cache(email)
-
+	result = user_manager.register_email(email)
 	return JsonResponse(result)
 
 
-def user_check_activation_link(request):
+def check_activation_link(request):
 	params = request.GET
 	email = params.get('email', None)
 	token = params.get('token', None)
@@ -55,14 +54,20 @@ def user_activate(request):
 	if any((email, token, username, password)) is None:
 		return JsonResponse({'success': False, 'error': 'invalid param'})
 
-	if not utils.validate_email_activation_token(email, token):
-		return JsonResponse({'success': False, 'error': 'invalid token'})
+	user_with_same_email = user_manager.get_user_by_email(email)
+	if user_with_same_email:
+		return JsonResponse({'success': False, 'error': 'same email already exists'})
 
 	user_with_same_username = user_manager.get_user_by_username(username)
 	if user_with_same_username:
 		return JsonResponse({'success': False, 'error': 'same username already exists'})
 
+	if not utils.validate_email_activation_token(email, token):
+		return JsonResponse({'success': False, 'error': 'invalid or expired token'})
+
+	utils.remove_activation_token_from_cache(email=email)
 	user = user_manager.create_or_update_user_by_email(email=email, username=username, password=password, is_active=True)
+	user_manager.update_user_profile(user, major=major)
 	login(request, user)
 	return JsonResponse({'success': True})
 
@@ -95,4 +100,9 @@ def user_logout(request):
 	return JsonResponse({'success': False, 'error': 'user not logged in'})
 
 
-
+def get_user_profile(request):
+	if request.user and request.user.is_authenticated:
+		response_dict = user_manager.prepare_profile_dict(request.user)
+		return JsonResponse(response_dict)
+	else:
+		return JsonResponse({'success': False, 'error': 'user not logged in', "data": None})
