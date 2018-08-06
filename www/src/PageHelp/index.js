@@ -5,7 +5,7 @@ import vibe from "src/brand/logo.png";
 import Footer from "src/PageCourseDetail/components/Footer";
 import * as styles from "./style.scss";
 
-import SiteMetaHelmet from "src/components/SitemetaHelmet";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Card from "./components/Card";
 
 const brand = (

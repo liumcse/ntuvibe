@@ -28,6 +28,7 @@ export function course_code_is_valid(
 }
 
 export function cap_first_letter(input: string): string {
+  if (input === "" || !input) return "";
   const splittedString = input.split(" ");
   if (!splittedString || splittedString === undefined) return "";
   const loweredString = splittedString.map((word: string) =>

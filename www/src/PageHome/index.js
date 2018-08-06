@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "src/components/NavBar";
-import SiteMetaHelmet from "src/components/SitemetaHelmet";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import Dropdown from "./components/Dropdown";
 import * as styles from "./style.scss";

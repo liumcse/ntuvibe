@@ -103,6 +103,10 @@ const course = (state = initialState.course, action: Action): CourseState => {
         courseComments: null,
         examSchedule: null
       };
+    case actionTypes.USER_LOGIN_SUCCESS:
+      return state;
+    case actionTypes.USER_LOGIN_FAILURE:
+      return state;
     default:
       // likely to be an error
       return state;

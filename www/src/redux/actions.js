@@ -139,7 +139,7 @@ export function fetchCourseComments(courseCode: string) {
   };
 }
 
-export function submitCourseRating(courseRatingForm: any) {
+export function submitCourseRating(courseRatingForm: FormData) {
   return async function(dispatch: any) {
     dispatch({
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
@@ -147,7 +147,6 @@ export function submitCourseRating(courseRatingForm: any) {
     await axios
       .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm)
       .then(response => {
-        console.log(response);
         return dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_SUCCESS,
           payload: response
@@ -156,6 +155,37 @@ export function submitCourseRating(courseRatingForm: any) {
       .catch(error =>
         dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_FAILURE,
+          payload: []
+        })
+      );
+  };
+}
+
+export function userLogin(authForm: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_LOGIN_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/login`, authForm, {
+        withCredentials: true,
+        headers: {
+          // "Access-Control-Allow-Origin": "https://api.ntuvibe.com",
+          "Access-Control-Allow-Headers":
+            "accept, accept-encoding, authorization, content-type, dnt, origin, user-agent, x-csrftoken, x-requested-with",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          "Access-Control-Allow-Credentials": true
+        },
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_LOGIN_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_LOGIN_FAILURE,
           payload: []
         })
       );
