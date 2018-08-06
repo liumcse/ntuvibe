@@ -1,24 +1,24 @@
-@font-face {
-  font-family: 'American Typewriter';
-  src: url('./fonts/american-typewriter.eot'),
-    // url('./fonts/american-typewriter.svg'),
-    url('./fonts/american-typewriter.ttf'),
-    url('./fonts/american-typewriter.woff'),
-    url('./fonts/american-typewriter.woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'American Typewriter';
+//   src: url('./fonts/american-typewriter.eot'),
+//     // url('./fonts/american-typewriter.svg'),
+//     url('./fonts/american-typewriter.ttf'),
+//     url('./fonts/american-typewriter.woff'),
+//     url('./fonts/american-typewriter.woff2');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: 'American Typewriter Bold';
-  src: url('./fonts/american-typewriter-bold.eot'),
-    // url('./fonts/american-typewriter-bold.svg'),
-    url('./fonts/american-typewriter-bold.ttf'),
-    url('./fonts/american-typewriter-bold.woff'),
-    url('./fonts/american-typewriter-bold.woff2');
-  font-weight: bold;
-  font-style: bold;
-}
+// @font-face {
+//   font-family: 'American Typewriter Bold';
+//   src: url('./fonts/american-typewriter-bold.eot'),
+//     // url('./fonts/american-typewriter-bold.svg'),
+//     url('./fonts/american-typewriter-bold.ttf'),
+//     url('./fonts/american-typewriter-bold.woff'),
+//     url('./fonts/american-typewriter-bold.woff2');
+//   font-weight: bold;
+//   font-style: bold;
+// }
 
 @mixin american-typewriter {
   font-family: 'American Typewriter';
@@ -73,6 +73,6 @@
   font-weight: 700;
 }
 
-@mixin modern-antiqua {
-  font-family: 'Modern Antiqua', cursive;
-}
+// @mixin modern-antiqua {
+//   font-family: 'Modern Antiqua', cursive;
+// }

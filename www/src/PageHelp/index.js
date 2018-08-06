@@ -1,22 +1,38 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-// import pic_1 from "./assets/pic_1.jpg";
+import vibe from "src/brand/logo.png";
 import Footer from "src/PageCourseDetail/components/Footer";
 import * as styles from "./style.scss";
 
+import SiteMetaHelmet from "src/components/SitemetaHelmet";
 import Card from "./components/Card";
+
+const brand = (
+  <div
+    style={{
+      display: "inline-block",
+      background: "url(".concat(vibe).concat(") no-repeat"),
+      backgroundSize: "contain",
+      height: "3rem",
+      width: "6rem"
+    }}
+  />
+);
 
 const PageHelp = () => {
   return (
     <div className={styles.container}>
+      <SiteMetaHelmet
+        title="Help - NTUVibe"
+        url="https://ntuvibe.com/help"
+        description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
+      />
       <div className={styles.goBack}>
         <Link to="/">Home</Link>
       </div>
       <div className={styles.dark}>
-        <div className={styles.heading_1}>
-          <span className={styles.ntu}>NTU</span>Vibe
-        </div>
+        <div className={styles.heading_1}>{brand}</div>
         <div className={styles.heading_2}>
           Be smart about what you are taking.
         </div>
@@ -32,7 +48,8 @@ const PageHelp = () => {
           <Card number={"1"}>
             <div className={styles.card_heading}>Go to Vibe</div>
             <div className={styles.card_content}>
-              The first step of using Vibe is to open your favorite browser and go to Vibe.
+              The first step of using Vibe is to open your favorite browser and
+              go to Vibe.
             </div>
           </Card>
         </div>

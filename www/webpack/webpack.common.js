@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -125,7 +126,8 @@ const config = {
       // both options are optional
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-    })
+    }),
+    new CopyWebpackPlugin([{ from: path.resolve(SRC_PATH, "brand/faviconit") }])
   ]
 };
 

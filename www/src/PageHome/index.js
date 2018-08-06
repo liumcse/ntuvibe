@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "src/components/NavBar";
+import SiteMetaHelmet from "src/components/SitemetaHelmet";
 
 import Dropdown from "./components/Dropdown";
 import * as styles from "./style.scss";
@@ -8,6 +9,11 @@ class PageHome extends React.PureComponent {
   render() {
     return (
       <div className={styles.home_page}>
+        <SiteMetaHelmet
+          title="NTUVibe - come join this vibrant online NTU community!"
+          url="https://ntuvibe.com"
+          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
+        />
         <div className={styles.background_image} />
         <div className={styles.container}>
           <NavBar />
