@@ -19,6 +19,10 @@ def get_rating_records_by_user_id(user_id):
 	return CourseRatingTab.objects.filter(user_id=user_id)
 
 
+def get_rating_record_by_course_id_user_id(course_id, user_id):
+	return CourseRatingTab.objects.filter(course_id=course_id).filter(user_id=user_id)
+
+
 def add_rating_record(user_id, course_id, easy, useful, like, comment=None):
 	rating = CourseRatingTab(
 		user_id=user_id,
