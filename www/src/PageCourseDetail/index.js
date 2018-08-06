@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
 import Timetable from "./components/Timetable";
 import ExamSchedule from "./components/ExamSchedule";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import { remove_trailing_newline } from "src/utils";
 import type {
@@ -267,6 +268,14 @@ class PageCourseDetail extends React.Component<Props> {
 
     return (
       <div className={styles.page_course_detail}>
+        <SiteMetaHelmet
+          title={`${courseCode.toUpperCase()} - ${title} - NTUVibe`}
+          url={`https://ntuvibe.com/courses/${courseCode}`}
+          description={
+            (description && remove_trailing_newline(description)) ||
+            NO_DESCRIPTION
+          }
+        />
         <NavBar />
         <Menu />
         <div className={styles.content}>

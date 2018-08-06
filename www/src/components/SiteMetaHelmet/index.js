@@ -9,7 +9,7 @@ const SiteMetaHelmet = props => (
     <meta property="og:title" content={props.title} />
     <meta property="og:description" content={props.description} />
     <link rel="canonical" href={props.url} />
-    <title>NTUVibe &middot; </title>
+    <title>{props.title}</title>
   </Helmet>
 );
 
