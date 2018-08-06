@@ -37,7 +37,7 @@ class PageSitemap extends React.Component {
             </div>
             {courseListDOM}
           </div>
-          <h6>&copy; NTUVibe</h6>
+          <h5>&copy; NTUVibe</h5>
         </div>
       );
     }
