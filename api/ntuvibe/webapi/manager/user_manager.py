@@ -1,7 +1,9 @@
-import hashlib
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from webapi.utils import send_activate_account_email, generate_activation_token
+
+from .cache_manager import generate_activation_token
+from webapi.constants import StatusCode
 
 
 def get_users(**kwargs):
@@ -49,26 +51,31 @@ def update_user_profile(user, **kwargs):
 			setattr(user.profile, key, val)
 
 
+# ========== logic related ==========
+
+def _send_activate_account_email(email, token):
+	subject = "Welcome to NTUVibe (Account Activation)"
+	to = [email]
+	from_email = 'ntuvibe@gmail.com'
+
+	message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
+	send_mail(subject, message, from_email, to, html_message=message)
+
+
 def register_email(email):
-	result = {'success': False}
 
 	user_with_same_email = get_user_by_email(email)
 	if user_with_same_email:
-		result["error"] = "same email already exists"
-		return result
+		raise Exception(StatusCode.DUPLICATE_EMAIL)
 
-	send_activate_account_email(email=email, token=generate_activation_token(email=email))
-	result['success'] = True
-	return result
+	_send_activate_account_email(email=email, token=generate_activation_token(email=email))
 
 
-def prepare_profile_dict(user):
+def prepare_profile_data(user):
 	return {
-		"data": {
-			"id": user.pk,
-			"username": user.username,
-			"email": user.email,
-			"major": user.profile.major,
-			"avatar": user.profile.avatar,
-		}
+		"id": user.pk,
+		"username": user.username,
+		"email": user.email,
+		"major": user.profile.major,
+		"avatar": user.profile.avatar,
 	}

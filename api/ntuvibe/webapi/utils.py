@@ -1,20 +1,14 @@
 import time
 import hashlib
 import random
-from django.core.mail import send_mail
-from django.template import Context
-from django.template.loader import render_to_string, get_template
-from django.contrib.auth.models import User
-
-# from django.db import models
-from django.utils.translation import gettext as _
-from django.db.models.fields import PositiveIntegerRelDbTypeMixin, BigIntegerField
+from django.core.cache import caches
+from django.http import JsonResponse
 
 from django.db.models.fields import BigIntegerField
-from django.core.cache import caches
-from ntuvibe.secret_settings import SECRET_KEY
-PositiveBigIntegerField = BigIntegerField
+from .constants import StatusCode
 
+
+PositiveBigIntegerField = BigIntegerField
 # class PositiveBigIntergerRelDbTypeMixin(PositiveIntegerRelDbTypeMixin):
 # #credit to github user pinfort
 # 	def rel_db_type(self, connection):
@@ -51,49 +45,35 @@ PositiveBigIntegerField = BigIntegerField
 # 		else:
 # 			# if db_vendor is unknown(BaseDatabaseWrapper), we should return None
 # 			return None
-#
-#
-#
 
 
 def get_timestamp():
 	return int(time.time())
 
 
-def generate_activation_token(email, timestamp=None):
-	hash = hashlib.sha256()
-	if not timestamp:
-		timestamp = get_timestamp()
-	hash.update(str(timestamp).encode())
-	hash.update(str(random.randint(2**30, 2**31-1)).encode())
-	hash.update(SECRET_KEY.encode())
+def api_response(login_required=False):
+	def _api_response(func):
+		def _func(request, *args, **kwargs):
 
-	token = hash.hexdigest()
-	cache = caches["activation_token"]
-	cache.set(email, token, timeout=60*60*24)
-	return token
+			try:
+				if login_required:
+					if not request.user or not request.user.is_authenticated:
+						raise Exception(StatusCode.NOT_LOGGED_IN)
+					if not request.user.is_active:
+						raise Exception(StatusCode.NOT_ACTIVATED)
+				data = func(request, *args, **kwargs)
+				return JsonResponse({"success": True, "data": data})
 
+			except Exception as ex:
+				try:
+					error_code, error_message = ex.args[0]
+					if not isinstance(error_code, int) or not isinstance(error_message, str):
+						raise Exception
+				except Exception:
+					error_code = StatusCode.BUG_GENERAL[0]
+					error_message = str(ex)
+				# log.error("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
+				return JsonResponse({"success": False, "error_message": error_message}, status=error_code)
+		return _func
+	return _api_response
 
-def remove_activation_token_from_cache(email):
-	cache = caches["activation_token"]
-	cache.delete(email)
-
-
-def send_activate_account_email(email, token):
-	try:
-		subject = "Welcome to NTUVibe (Account Activation)"
-		to = [email]
-		from_email = 'ntuvibe@gmail.com'
-
-		message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
-		send_mail(subject, message, from_email, to, html_message=message)
-
-		return {'success': True}
-	except Exception as e:
-		return {'success': False, 'error': str(e)}
-
-
-def validate_email_activation_token(email, token):
-	cache = caches["activation_token"]
-	correct_token = cache.get(email)
-	return correct_token and token == correct_token

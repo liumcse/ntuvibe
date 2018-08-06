@@ -162,3 +162,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = secret_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = secret_settings.EMAIL_HOST_PASSWORD
 EMAIL_PORT = 587
+
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_AGE = 7 * 24 * 60 * 60
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"

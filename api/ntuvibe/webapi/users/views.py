@@ -1,46 +1,40 @@
 import re
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
-from webapi.manager import user_manager
-from webapi.constants import VALID_EMAIL_DOMAIN
-from webapi import utils
+
+from webapi.manager import user_manager, cache_manager
+from webapi.constants import VALID_EMAIL_DOMAIN, StatusCode
+from webapi.utils import api_response
 
 
+@api_response()
 def user_signup(request):
-	result = {'success': False}
-	param = request.POST
-	email = param.get("email", None)
+	params = request.POST
+	email = params.get("email", None)
 	if email is None:
-		result['error'] = 'param error'
-		return JsonResponse(result)
+		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	email_pattern = re.compile(".+@.+")
 	if not email_pattern.match(email):
-		result['error'] = 'invalid email format'
-		return JsonResponse(result)
+		raise Exception(StatusCode.INVALID_NTU_EMAIL)
 	if email.split('@')[-1] not in VALID_EMAIL_DOMAIN:
-		result['error'] = 'not ntu email'
-		return JsonResponse(result)
+		raise Exception(StatusCode.INVALID_NTU_EMAIL)
 
-	result = user_manager.register_email(email)
-	return JsonResponse(result)
+	user_manager.register_email(email)
 
 
+@api_response()
 def check_activation_link(request):
 	params = request.GET
 	email = params.get('email', None)
 	token = params.get('token', None)
 	if any((email, token)) is None:
-		return JsonResponse({'success': False, 'error': 'invalid param'})
+		raise Exception(StatusCode.MISSING_PARAMETER)
 
-	if utils.validate_email_activation_token(email, token):
-		return JsonResponse({'success': True})
-	else:
-		return JsonResponse({'success': False, 'error': 'token invalid or expired'})
+	if not cache_manager.validate_email_activation_token(email, token):
+		raise Exception(StatusCode.INVALID_ACTIVATION_TOKEN)
 
 
+@api_response()
 def user_activate(request):
 	param = request.POST
 	email = param.get('email', None)
@@ -50,57 +44,51 @@ def user_activate(request):
 	major = param.get('major', None)
 
 	if any((email, token, username, password)) is None:
-		return JsonResponse({'success': False, 'error': 'invalid param'})
+		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	user_with_same_email = user_manager.get_user_by_email(email)
 	if user_with_same_email:
-		return JsonResponse({'success': False, 'error': 'same email already exists'})
+		raise Exception(StatusCode.DUPLICATE_EMAIL)
 
 	user_with_same_username = user_manager.get_user_by_username(username)
 	if user_with_same_username:
-		return JsonResponse({'success': False, 'error': 'same username already exists'})
+		raise Exception(StatusCode.DUPLICATE_USERNAME)
 
-	if not utils.validate_email_activation_token(email, token):
-		return JsonResponse({'success': False, 'error': 'invalid or expired token'})
+	if not cache_manager.validate_email_activation_token(email, token):
+		raise Exception(StatusCode.INVALID_ACTIVATION_TOKEN)
 
-	utils.remove_activation_token_from_cache(email=email)
+	cache_manager.remove_activation_token_from_cache(email=email)
 	user = user_manager.create_or_update_user_by_email(email=email, username=username, password=password, is_active=True)
 	user_manager.update_user_profile(user, major=major)
 	login(request, user)
-	return JsonResponse({'success': True})
 
 
+@api_response()
 def user_login(request):
 	param = request.POST
 	email = param.get('email', None)
 	password = param.get('password', None)
 	if any((email, password)) is None:
-		return JsonResponse({'success': False, 'error': 'invalid param'})
+		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	username = user_manager.get_username_by_email(email)
 	if not username:
-		return JsonResponse({'success': False, 'error': 'invalid email or password'})
+		raise Exception(StatusCode.INVALID_EMAIL_PASSWORD)
 
 	user = authenticate(request, username=username, password=password)
-	if user is None:
-		return JsonResponse({'success': False, 'error': 'invalid email or password'})
+	if not user:
+		raise Exception(StatusCode.INVALID_EMAIL_PASSWORD)
 	if not user.is_active:
-		return JsonResponse({"success": False, 'error': 'user not activated'})
+		raise Exception(StatusCode.NOT_ACTIVATED)
 
 	login(request, user)
-	return JsonResponse({"success": True})
 
 
+@api_response(login_required=True)
 def user_logout(request):
-	if request.user and request.user.is_authenticated:
-		logout(request)
-		return JsonResponse({'success': True})
-	return JsonResponse({'success': False, 'error': 'user not logged in'})
+	logout(request)
 
 
+@api_response(login_required=True)
 def get_user_profile(request):
-	if request.user and request.user.is_authenticated:
-		response_dict = user_manager.prepare_profile_dict(request.user)
-		return JsonResponse(response_dict)
-	else:
-		return JsonResponse({'success': False, 'error': 'user not logged in', "data": None})
+	return user_manager.prepare_profile_data(request.user)
