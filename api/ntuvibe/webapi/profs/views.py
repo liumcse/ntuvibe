@@ -16,7 +16,7 @@ def create_prof(request, course_id):
 	title = param.get('title', None)
 	photo = param.get('photo', None)
 	description = param.get('description', None)
-	if any(name, title, description) is None:
+	if not all([name, title, description]):
 		return JsonResponse({"success": False, "error": 'invalid course_id'})
 
 	try:
@@ -40,7 +40,7 @@ def add_prof_rating(request, prof_id):
 	enthusiasm = param.get("enthusiasm", None)
 	helpful = param.get('helpful', None)
 	comment = param.get("comment", None)
-	if any(clarity, enthusiasm, helpful) is None:
+	if not all([clarity, enthusiasm, helpful]):
 		result['error'] = "param error"
 		return JsonResponse(result)
 

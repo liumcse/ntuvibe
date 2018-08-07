@@ -1,7 +1,5 @@
 import time
-import hashlib
-import random
-from django.core.cache import caches
+import logging
 from django.http import JsonResponse
 
 from django.db.models.fields import BigIntegerField
@@ -47,6 +45,20 @@ PositiveBigIntegerField = BigIntegerField
 # 			return None
 
 
+def append_exc(func):
+	def _append_exc(*args, **kwargs):
+		if 'exc_info' not in kwargs:
+			kwargs['exc_info'] = True
+		return func(*args, **kwargs)
+	return _append_exc
+
+
+log = logging.getLogger('main')
+log.exception = append_exc(log.error)
+log.assertion = log.critical
+log.data = logging.getLogger('data').info
+
+
 def get_timestamp():
 	return int(time.time())
 
@@ -72,8 +84,7 @@ def api_response(login_required=False):
 				except Exception:
 					error_code = StatusCode.BUG_GENERAL[0]
 					error_message = str(ex)
-				# log.error("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
+				log.exception("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
 				return JsonResponse({"success": False, "error_message": error_message}, status=error_code)
 		return _func
 	return _api_response
-

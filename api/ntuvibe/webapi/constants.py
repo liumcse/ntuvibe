@@ -1,5 +1,3 @@
-DEFAULT_COURSE_LIST_OFFSET = 0
-DEFAULT_COURSE_LIST_LIMIT = 30
 VALID_EMAIL_DOMAIN = [
 	'e.ntu.edu.sg',
 	'ntu.edu.sg'
@@ -34,14 +32,3 @@ class StatusCode:  # (status_code:int, msg:str)
 	MSG_TO_CODE = dict((v, k) for k, v in CODE_TO_MSG.items())
 
 	SORTED_CODE_LIST = sorted(NAME_TO_CODE.values())
-
-
-try:
-	raise Exception(StatusCode.SUCCESS)
-except Exception as ex:
-	a, b = ex.args[0]
-	print(a)
-	print(type(a))
-	print(b)
-	print(type(b))
-

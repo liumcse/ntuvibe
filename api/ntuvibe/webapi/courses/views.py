@@ -1,4 +1,4 @@
-from webapi.utils import api_response
+from webapi.utils import api_response, log
 from webapi.constants import StatusCode
 
 from webapi.manager import (
@@ -72,7 +72,7 @@ def submit_course_rating(request):
 	if course_rating_manager.get_rating_record_by_course_id_user_id(course_id, user_id):
 		raise Exception(StatusCode.DUPLICATE_RATING)
 
-	if easy is None or useful is None or like is None:
+	if not all([easy, useful, like]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	if not course_manager.get_course_by_course_id(course_id):

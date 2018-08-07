@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from . import secret_settings
-import django_redis
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -165,4 +164,69 @@ EMAIL_PORT = 587
 
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_AGE = 7 * 24 * 60 * 60
+SESSION_COOKIE_NAME = "sessionid"
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+log_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "log"))
+if log_dir and not os.path.exists(log_dir):
+	os.mkdir(log_dir)
+LOGGING = {
+	'version': 1,
+	'disable_existing_loggers': True,
+	'formatters': {
+		'standard': {
+			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(process)d:%(thread)d|%(filename)s:%(lineno)d|%(module)s.%(funcName)s|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+		'short': {
+			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+		'data': {
+			'format': '%(asctime)s.%(msecs)03d|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+	},
+	'handlers': {
+		'file_fatal': {
+			'level': 'CRITICAL',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'fatal.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'standard',
+		},
+		'file_error': {
+			'level': 'ERROR',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'error.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'standard',
+		},
+		'file_info': {
+			'level': 'DEBUG',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'info.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'short',
+		},
+		'file_data': {
+			'level': 'DEBUG',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'data.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'data',
+		},
+	},
+	'loggers': {
+		'main': {
+			'handlers': ['file_fatal', 'file_error', 'file_info'],
+			'level': 'DEBUG',
+			'propagate': True,
+		},
+		'data': {
+			'handlers': ['file_data'],
+			'level': 'DEBUG',
+			'propagate': True,
+		},
+	}
+}

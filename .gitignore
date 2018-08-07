@@ -13,6 +13,7 @@ venv
 # Django
 api/ntuvibe/webapi/migrations
 secret_settings.py
+*.log
 
 # data
 course_content.json*

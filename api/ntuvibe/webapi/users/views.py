@@ -27,7 +27,7 @@ def check_activation_link(request):
 	params = request.GET
 	email = params.get('email', None)
 	token = params.get('token', None)
-	if any((email, token)) is None:
+	if not all([email, token]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	if not cache_manager.validate_email_activation_token(email, token):
@@ -43,7 +43,7 @@ def user_activate(request):
 	password = param.get('password', None)
 	major = param.get('major', None)
 
-	if any((email, token, username, password)) is None:
+	if not all([email, token, username, password]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	user_with_same_email = user_manager.get_user_by_email(email)
@@ -57,10 +57,11 @@ def user_activate(request):
 	if not cache_manager.validate_email_activation_token(email, token):
 		raise Exception(StatusCode.INVALID_ACTIVATION_TOKEN)
 
-	cache_manager.remove_activation_token_from_cache(email=email)
 	user = user_manager.create_or_update_user_by_email(email=email, username=username, password=password, is_active=True)
 	user_manager.update_user_profile(user, major=major)
 	login(request, user)
+
+	cache_manager.remove_activation_token_from_cache(email=email)
 
 
 @api_response()
@@ -68,7 +69,7 @@ def user_login(request):
 	param = request.POST
 	email = param.get('email', None)
 	password = param.get('password', None)
-	if any((email, password)) is None:
+	if not all([email, password]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
 	username = user_manager.get_username_by_email(email)
