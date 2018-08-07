@@ -1,4 +1,5 @@
 import React from "react";
+import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -26,10 +27,26 @@ const loginButton = (
 );
 
 const Avatar = props => (
-  <img
-    className={styles.avatarImg}
-    src={props.avatar || "https://csming.com/static/profile.jpg"}
-  />
+  <Popup
+    overlayStyle={{ opacity: "0", cursor: "default" }}
+    contentStyle={{
+      zIndex: "99999",
+      maxHeight: "100%",
+      width: "auto",
+    }}
+    trigger={open => (
+      <img
+        className={styles.avatarImg}
+        src={props.avatar || "https://csming.com/static/profile.jpg"}
+      />
+    )}
+    position="bottom right"
+    closeOnDocumentClick
+  >
+    <div className={styles.userMenu}>
+      <div>Logout</div>
+    </div>
+  </Popup>
 );
 
 class NavBar extends React.Component {
