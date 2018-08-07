@@ -9,7 +9,7 @@
     width: 100%;
     background-color: $primary;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
   }
 
   .container {
@@ -26,6 +26,10 @@
     @include raleway-medium;
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
+  }
+
+  .content {
+    // empty rule
   }
 
   .first_row, .second_row {
@@ -45,6 +49,7 @@
     // border-top: 1px solid rgba(255,255,255,0.5);
     // padding-top: 2.5rem;
     align-items: center;
+    line-height: 1.05rem;
   }
 
   .col {
@@ -55,6 +60,20 @@
 
   .brand {
     font-size: 2rem;
+    margin-right: 2rem;
     @include american-typewriter;
+    // @include modern-antiqua;
+  }
+
+  @media (min-width: 0) {
+    .first_row {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .first_row {
+      display: flex;
+    }
   }
 }

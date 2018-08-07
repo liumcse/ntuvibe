@@ -6,11 +6,13 @@ import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
   course: {
+    courseRatingSubmission: null,
     courseList: null,
     courseDetail: null,
     courseRating: null,
     courseSchedule: null,
-    courseComments: null
+    courseComments: null,
+    examSchedule: null
   },
   popup: {
     loginOpen: false,
@@ -25,7 +27,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_DETAIL_SUCCESS:
       return {
         ...state,
-        courseDetail: payload
+        courseDetail: payload.data
       };
     case actionTypes.FETCH_COURSE_DETAIL_FAILURE:
       return {
@@ -35,7 +37,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_RATING_SUCCESS:
       return {
         ...state,
-        courseRating: payload
+        courseRating: payload.data
       };
     case actionTypes.FETCH_COURSE_RATING_FAILURE:
       return {
@@ -45,22 +47,61 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_LIST_SUCCESS:
       return {
         ...state,
-        courseList: payload
+        courseList: payload.data
       };
     case actionTypes.FETCH_COURSE_LIST_FAILURE:
       return {
         ...state,
         courseList: payload
       };
+    case actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        examSchedule: payload.data
+      };
+    case actionTypes.FETCH_EXAM_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        examSchedule: payload
+      };
+    case actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        courseSchedule: payload.data
+      };
+    case actionTypes.FETCH_COURSE_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        courseSchedule: payload
+      };
     case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
       return {
         ...state,
-        courseComments: payload
+        courseComments: payload.data
       };
     case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
       return {
         ...state,
         courseComments: payload
+      };
+    case actionTypes.SUBMIT_COURSE_RATING_SUCCESS:
+      return {
+        ...state,
+        courseRatingSubmission: payload.data
+      };
+    case actionTypes.SUBMIT_COURSE_RATING_FAILURE:
+      return {
+        ...state,
+        courseRatingSubmission: payload
+      };
+    case actionTypes.CLEAR_COURSE_INFORMATION:
+      return {
+        ...state,
+        courseDetail: null,
+        courseRating: null,
+        courseSchedule: null,
+        courseComments: null,
+        examSchedule: null
       };
     default:
       // likely to be an error

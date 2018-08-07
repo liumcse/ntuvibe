@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { timestampToDate } from "src/utils";
 
 import * as styles from "./style.scss";
 
@@ -7,11 +8,11 @@ const Badge = props => {
   const value = props.value;
   const label = props.label;
   switch (value) {
-    case 1:
+    case 0:
       return (
         <div className={styles.badge + " " + styles.badge_bad}>{label}</div>
       );
-    case 2:
+    case 50:
       return (
         <div className={styles.badge + " " + styles.badge_moderate}>
           {label}
@@ -35,7 +36,8 @@ class CommentCard extends React.Component {
           <div className={styles.box_left}>
             <div className={styles.username}>{this.props.username}</div>
             <div className={styles.glance}>
-              A {this.props.major} student on {this.props.comment_date}
+              A {this.props.major} student on{" "}
+              {timestampToDate(this.props.comment_date)}
             </div>
             <div className={styles.content}>
               {this.props.comment_content && (

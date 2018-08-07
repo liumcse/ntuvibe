@@ -15,19 +15,24 @@
   }
 
   .table_container {
-    margin-top: 1.5rem;
-    border-collapse: collapse;
+    margin-top: 2rem;
     table {
       width: 100%;
       @include medium-shadow;
+      border-collapse: collapse;
     }
   
     td, th {
       // border: 1px solid #ddd;
-      padding: 8px;
+      padding: 0.5rem 1rem;
     }
     tr:nth-child(even) {
       background-color: #f5f4f490;
+      .index {
+        // background-color: $primary;
+        // color: white;
+        border-left: 5px solid black;
+      }
     }
   
     th {

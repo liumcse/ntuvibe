@@ -12,6 +12,7 @@ venv
 
 # Django
 *_initial.py
+secret_key.py
 
 # data
 course_content.json*
@@ -19,4 +20,5 @@ class_schedule.json*
 exam_schedule.json*
 
 # deploy
-.retry
+*.retry
+*.zip

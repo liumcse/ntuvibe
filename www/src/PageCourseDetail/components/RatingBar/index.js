@@ -17,6 +17,7 @@ const RatingBar = (props: Props) => {
         <div className={styles.back_bar} />
         <div className={styles.front_bar} style={{ width: props.value }} />
       </div>
+      <div className={styles.digit}>{props.value}</div>
     </div>
   );
 };

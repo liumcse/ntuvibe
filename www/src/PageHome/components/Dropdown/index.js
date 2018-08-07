@@ -6,13 +6,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import { fetchCourseList } from "src/redux/actions";
+import { search_course_by_code_or_title, cap_first_letter } from "src/utils";
+
+import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
 import theme from "./theme.css";
 
 type Props = {
   // from redux
-  courseList: any,
+  courseList: CourseList,
   fetchCourseList: () => void,
   // from router
   match: Object,
@@ -22,55 +25,64 @@ type Props = {
 
 type States = {
   value: string,
-  suggestions: Array<any>
+  suggestions: Array<CourseListSnippet>,
+  isLoading: boolean
 };
 
 class Dropdown extends React.Component<Props, States> {
   constructor() {
     super();
-    // Autosuggest is a controlled component.
-    // This means that you need to provide an input value
-    // and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest,
-    // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: "",
-      suggestions: []
+      suggestions: [],
+      isLoading: false
     };
+    this.lastRequestId = null;
   }
 
-  // When suggestion is clicked, Autosuggest needs to populate the input
-  // based on the clicked suggestion. Teach Autosuggest how to calculate the
-  // input value for every given suggestion.
+  loadSuggestions = (value: string) => {
+    if (this.lastRequestId !== null) {
+      clearTimeout(this.lastRequestId);
+    }
+
+    this.setState({
+      isLoading: true
+    });
+
+    this.lastRequestId = setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        suggestions: this.getSuggestions(value)
+      });
+    }, 200);
+  };
+
   getSuggestionValue = suggestion => {
     const { history } = this.props;
-    suggestion.code.concat(" - ").concat(suggestion.title);
     history.push("/courses/" + suggestion.code.toLowerCase());
+    return suggestion.code.toUpperCase();
   };
 
   // Use your imagination to render suggestions.
   renderSuggestion = suggestion => (
     <div className={styles.suggestion_title}>
-      {suggestion.code.concat(" - ").concat(suggestion.title)}
+      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
     </div>
   );
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
-    console.log("Value", value);
+    if (!value || value === undefined) return [];
+    const { courseList } = this.props;
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue === null ? 0 : inputValue.length;
-    console.log("inputValue", inputValue);
-    console.log("inputValue === null ?", inputValue === null);
-    console.log("inputLength", inputValue.length);
-
     if (inputLength === 0) return [];
     else {
-      console.log("Trigger");
-      this.props.fetchCourseList(); // does it work?
-      console.log("Finished");
-      const { courseList } = this.props;
-      return courseList || [];
+      const suggestions = search_course_by_code_or_title(
+        courseList,
+        inputValue
+      );
+      return suggestions;
     }
   };
 
@@ -80,21 +92,17 @@ class Dropdown extends React.Component<Props, States> {
     });
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.courseList !== this.props.courseList) {
-      console.log("Did update");
-      this.setState({
-        suggestions: this.props.courseList
-      });
-    }
+  componentDidMount() {
+    this.props.fetchCourseList();
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    });
+    // this.setState({
+    //   suggestions: this.getSuggestions(value)
+    // });
+    this.loadSuggestions(value);
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -118,6 +126,7 @@ class Dropdown extends React.Component<Props, States> {
     // Finally, render it!
     return (
       <Autosuggest
+        id={"pageHome"}
         theme={theme}
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

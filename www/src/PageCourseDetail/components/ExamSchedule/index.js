@@ -1,12 +1,24 @@
+// @flow
 import React from "react";
-import PropTypes from "prop-types";
+import {
+  timestampToDate,
+  timestampToDay,
+  timestampToTime,
+  timestampToDuration
+} from "src/utils";
 
 import * as styles from "./style.scss";
 
-const ExamSchedule = props => {
+type Props = {
+  startTime: number,
+  endTime: number
+};
+
+const ExamSchedule = (props: Props) => {
+  const { startTime, endTime } = props;
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{props.title}</div>
+      <div className={styles.title}>Final Exam</div>
       <div className={styles.table_container}>
         <table>
           <tbody>
@@ -17,20 +29,16 @@ const ExamSchedule = props => {
               <th>Duration</th>
             </tr>
             <tr>
-              <td>December 5, 2018</td>
-              <td>Wednesday</td>
-              <td>9:00 am</td>
-              <td>2.5 h</td>
+              <td>{timestampToDate(startTime)}</td>
+              <td>{timestampToDay(startTime)}</td>
+              <td>{timestampToTime(startTime)}</td>
+              <td>{timestampToDuration(startTime, endTime)}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   );
-};
-
-ExamSchedule.propTypes = {
-  title: PropTypes.string.isRequired
 };
 
 export default ExamSchedule;

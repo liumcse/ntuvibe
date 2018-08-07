@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'American Typewriter';
   src: url('./fonts/american-typewriter.eot'),
-    url('./fonts/american-typewriter.svg'),
+    // url('./fonts/american-typewriter.svg'),
     url('./fonts/american-typewriter.ttf'),
     url('./fonts/american-typewriter.woff'),
     url('./fonts/american-typewriter.woff2');
@@ -12,7 +12,7 @@
 @font-face {
   font-family: 'American Typewriter Bold';
   src: url('./fonts/american-typewriter-bold.eot'),
-    url('./fonts/american-typewriter-bold.svg'),
+    // url('./fonts/american-typewriter-bold.svg'),
     url('./fonts/american-typewriter-bold.ttf'),
     url('./fonts/american-typewriter-bold.woff'),
     url('./fonts/american-typewriter-bold.woff2');
@@ -73,6 +73,6 @@
   font-weight: 700;
 }
 
-@mixin karla {
-  font-family: 'Karla', sans-serif;
+@mixin modern-antiqua {
+  font-family: 'Modern Antiqua', cursive;
 }

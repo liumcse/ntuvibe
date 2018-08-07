@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { popupTrigger } from "src/redux/actions";
-import login from "./assets/facebook.svg";
+import login from "./assets/login.svg";
 
 import * as styles from "./style.scss";
 
@@ -21,7 +21,7 @@ const logo = (
 );
 
 const rightButton = (
-  <img src={login} style={{ height: "3rem", width: "auto" }} />
+  <img src={login} style={{ height: "1.5rem", width: "auto" }} />
 );
 
 class NavBar extends React.PureComponent {
@@ -31,9 +31,9 @@ class NavBar extends React.PureComponent {
       <div className={styles.navbar_container}>
         <div className={styles.navbar_elements}>
           <div className={styles.navbar_elements_left}>
-            <Link to="/">
+            <Link className={styles.brandLink} to="/">
               {logo}
-              {/* <div className={styles.brand}>Vibe</div> */}
+              <div className={styles.brand}>Vibe</div>
             </Link>
           </div>
           <div className={styles.navbar_elements_right}>
@@ -42,12 +42,12 @@ class NavBar extends React.PureComponent {
             </div>
             {/* <div className={styles.navbar_elements_right_text}>
               <Link to="#">EXPLORE</Link>
-            </div>
-            <div className={styles.navbar_elements_right_text}>
-              <Link to="#">PLAN</Link>
             </div> */}
             <div className={styles.navbar_elements_right_text}>
-              <Link to="#">HELP</Link>
+              <Link to="#">BLOG</Link>
+            </div>
+            <div className={styles.navbar_elements_right_text}>
+              <Link to="/help">HELP</Link>
             </div>
             <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
               {rightButton}

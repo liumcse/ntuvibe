@@ -30,7 +30,7 @@ const Login = props => (
       </span>.
     </div>
     <div className={styles.action}>
-      <button>Login</button>
+      <button className={styles.highlight}>Login</button>
       <button onClick={props.closePopup}>Close</button>
     </div>
   </Popup>

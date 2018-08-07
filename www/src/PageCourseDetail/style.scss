@@ -10,18 +10,40 @@
     position: relative;
   }
 
+  .loading_placeholder {
+    @include medium-shadow;
+    color: rgb(235, 235, 235) !important;
+    background-color: rgb(235, 235, 235) !important;
+  }
+
   .content {
     // flex: 4;
     display: flex;
     flex-direction: column;
-    padding: 3rem 6rem;
+    // padding: 3rem 6rem;
     padding-bottom: 0;
     margin-bottom: 2rem;
     background: white;
   }
 
+  .section_a {
+    padding: 3rem 6rem;
+    background-color: #f5f5f543;
+  }
+
+  .section_b {
+    padding: 0 6rem;
+    // padding-bottom: 3rem;
+  }
+
+  .section_c {
+    padding: 0 6rem;
+    // background-color: #f5f5f543;
+  }
+
   .row_box {
     display: flex;
+    flex-direction: row;
   }
 
   .column_box {
@@ -36,9 +58,13 @@
     &_row {
       display: flex;
       justify-content: space-between;
+      flex-direction: row;
       .course_code, .rating_overall {
-        font-size: 3rem;
+        font-size: 2rem;
         @include raleway-bold;
+      }
+      .course_code {
+        margin-right: 1rem;
       }
       .rating_overall {
         color: $indicator;
@@ -46,9 +72,16 @@
       }
     }
     &_course_title {
-      font-size: 2rem;
+      font-size: 1.5rem;
       @include raleway-bold;
-      margin-top: 2rem;
+      margin-top: 1rem;
+      margin-right: 1rem;
+    }
+    .number_of_rating {
+      color: $grey;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      text-align: right;
     }
   }
 
@@ -58,6 +91,7 @@
     display: flex;
     flex-direction: column;
     .course_description {
+      white-space: pre-line;
       @include lato-regular;
       margin-top: 2rem;
       text-align: justify;
@@ -106,15 +140,14 @@
   .requirement {
     display: flex;
     margin-top: 2rem;
+    justify-content: flex-start;
     .label {
       @include open-sans-medium;
       color: $complement;
-      margin-right: 1rem;
-      text-align: right;
-      flex: 1;
+      margin-right: 2rem;
     }
     .requirement_content {
-      flex: 3;
+      white-space: pre-line;
       font-size: 0.85rem;
       line-height: 1.5rem;
     }
@@ -122,13 +155,17 @@
 
   .table {
     margin-top: 3rem;
-    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 
   .availability {
     text-overflow: ellipsis;
     overflow-wrap: break-word;
     line-height: 1.5rem;
+    font-size: 0.9rem;
   }
 
   .header {
@@ -141,4 +178,57 @@
   .comment_list {
     margin-top: 2rem;
   }
+
+  .placeholder {
+    color: $grey;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  // @media (min-width: 0px) {
+  //   .content {
+  //     padding: 1.5rem;
+  //   }
+  //   .heading {
+  //     &_row {
+  //       flex-direction: column;
+  //       .course_code {
+  //         margin-bottom: 1rem;
+  //       }
+  //     }
+  //     &_course_title {
+  //       margin-top: 1rem;
+  //     }
+  //   }
+  //   .row_box {
+  //     flex-direction: column;
+  //   }
+  //   .number_of_rating {
+  //     display: inline;
+  //   }
+  // }
+
+  // @media (min-width: 360px) {
+  //   // empty rule
+  // }
+
+  // @media (min-width: 768px) {
+  //   .content {
+  //     padding: 2rem 4rem;
+  //   }
+  //   .heading {
+  //     &_row {
+  //       flex-direction: row;
+  //     }
+  //   }
+  //   .row_box {
+  //     flex-direction: row;
+  //   }
+  // }
+
+  // @media (min-width: 1024px) {
+  //   .content {
+  //     padding: 3rem 6rem;
+  //   }
+  // }
 }

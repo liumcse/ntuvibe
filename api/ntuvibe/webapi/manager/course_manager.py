@@ -10,6 +10,14 @@ def get_course_by_course_code(course_code):
 	return CourseTab.objects.filter(course_code=course_code).first()
 
 
+def get_course_id_by_course_code(course_code):
+	course = CourseTab.objects.filter(course_code=course_code).first()
+	if course:
+		return course.id
+	else:
+		return None
+
+
 def get_courses_by_course_title(course_title):
 	return CourseTab.objects.filter(title=course_title)
 

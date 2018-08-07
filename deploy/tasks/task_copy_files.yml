@@ -17,14 +17,15 @@
   become: true
 
 
-- name: copy files from local api dir to remote
-  copy: src=../../api dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} mode=775
-  become: true
+- name: compress files local django files to local zip file
+  local_action: shell zip -r ../files/{{ app_name }}.zip ../../api ../../scrapers
 
 
-- name: copy files from local scrapers dir to remote
-  copy: src=../../scrapers dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} mode=775
+- name: unzip files to remote side
+  unarchive: src=../files/{{ app_name }}.zip dest={{ remote_root_dir }}/{{ remote_backup_dir }}/{{ app_name }}/{{ release_datetime.stdout }} remote_src=no mode=775
   become: true
+  ignore_errors: yes
+  no_log: true
 
 
 - name: create symbolic link from remote backup dir to remote app dir

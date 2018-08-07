@@ -1,13 +1,21 @@
 // @flow
 
-import type { CourseDetail, CourseRating, CourseComments } from "./courses";
+import type {
+  CourseDetail,
+  CourseRating,
+  CourseComments,
+  CourseList,
+  CourseSchedule,
+  ExamSchedule
+} from "./courses";
 
 export type CourseState = {
-  courseList: any,
+  courseList: CourseList,
   courseDetail: ?CourseDetail,
   courseRating: ?CourseRating,
-  courseSchedule: any,
-  courseComments: ?CourseComments
+  courseSchedule: ?CourseSchedule,
+  courseComments: ?CourseComments,
+  examSchedule: ?ExamSchedule
 };
 
 export type PopupState = {

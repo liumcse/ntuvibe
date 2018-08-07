@@ -15,7 +15,10 @@ class PageHome extends React.PureComponent {
             <Dropdown />
           </div>
         </div>
-        <div className={styles.footer}>&copy; 2018 NTUVibe. You are cute</div>
+        <div className={styles.footer}>
+          &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39;re not affiliated
+          with Nanyang Technological University.
+        </div>
       </div>
     );
   }
