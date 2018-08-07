@@ -25,6 +25,7 @@ const initialState: State = {
     rateCourseOpen: false
   },
   user: {
+    profile: null,
     loginRequest: null,
     signUpRequest: null
   }
@@ -125,6 +126,16 @@ const course = (state = initialState.course, action: Action): CourseState => {
 const user = (state = initialState.user, action: Action): UserState => {
   const { type, payload } = action;
   switch (type) {
+    case actionTypes.FETCH_PROFILE_SUCCESS:
+      return {
+        ...state,
+        profile: payload.data
+      };
+    case actionTypes.FETCH_PROFILE_FAILURE:
+      return {
+        ...state,
+        profile: payload.data
+      };
     case actionTypes.USER_LOGIN_SUCCESS:
       return {
         ...state,
@@ -139,12 +150,12 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         signUpRequest: payload.data
-      }
+      };
     case actionTypes.USER_SIGNUP_FAILURE:
       return {
         ...state,
         signUpRequest: payload.data
-      }
+      };
     default:
       return state;
   }

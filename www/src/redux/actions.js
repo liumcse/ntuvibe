@@ -211,6 +211,30 @@ export function userSignUp(authForm: FormData) {
   };
 }
 
+export function fetchProfile() {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_PROFILE_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/users/get_user_profile`, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.FETCH_PROFILE_SUCCESS,
+          payload: response.data
+        });;
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_PROFILE_FAILURE,
+          payload: {}
+        })
+      );;
+  };;
+}
+
 export function clearCourseInformation() {
   return {
     type: actionTypes.CLEAR_COURSE_INFORMATION
