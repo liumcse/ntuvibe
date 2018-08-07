@@ -1,0 +1,15 @@
+---
+
+- name: ensure remote root dir exists
+  file: path={{ remote_root_dir }} state=directory
+  become: true
+
+
+- name: ensure remote log dir exists
+  file: path={{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }} state=directory
+  become: true
+
+
+- name: create symbolic link from remote log dir to remote app log dir
+  file: path={{ remote_root_dir }}/{{ app_name }}/api/{{ app_name }}/{{ app_name }}/{{ remote_app_log_dir }} src={{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }} state=link
+  become: true

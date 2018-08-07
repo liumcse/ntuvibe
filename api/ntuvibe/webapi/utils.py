@@ -81,10 +81,11 @@ def api_response(login_required=False):
 					error_code, error_message = ex.args[0]
 					if not isinstance(error_code, int) or not isinstance(error_message, str):
 						raise Exception
+					log.error("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
 				except Exception:
 					error_code = StatusCode.BUG_GENERAL[0]
 					error_message = str(ex)
-				log.exception("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
+					log.exception("api_response_decorator|error_code=%s, error_message=%s", error_code, error_message)
 				return JsonResponse({"success": False, "error_message": error_message}, status=error_code)
 		return _func
 	return _api_response
