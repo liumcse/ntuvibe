@@ -64,7 +64,8 @@ def get_user_course_comment(request):
 	course_code = params.get('code', None)
 	course_id = course_manager.get_course_by_course_code(course_code)
 	user_id = request.user.pk
-	return course_rating_manager.get_rating_record_by_course_id_user_id(course_id, user_id)
+	rating_records = course_rating_manager.get_rating_record_by_course_id_user_id(course_id, user_id)
+	return course_rating_manager.prepare_comments_data(rating_records)
 
 
 @api_response(login_required=True)
