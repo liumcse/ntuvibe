@@ -59,6 +59,15 @@ def get_course_comments(request):
 
 
 @api_response(login_required=True)
+def get_user_course_comment(request):
+	params = request.POST
+	course_code = params.get('code', None)
+	course_id = course_manager.get_course_by_course_code(course_code)
+	user_id = request.user.pk
+	return course_rating_manager.get_rating_record_by_course_id_user_id(course_id, user_id)
+
+
+@api_response(login_required=True)
 def submit_course_rating(request):
 	user_id = request.user.pk
 	params = request.POST
@@ -68,9 +77,6 @@ def submit_course_rating(request):
 	comment = params.get("comment", None)
 	course_code = params.get("code", None)
 	course_id = course_manager.get_course_id_by_course_code(course_code)
-
-	if course_rating_manager.get_rating_record_by_course_id_user_id(course_id, user_id):
-		raise Exception(StatusCode.DUPLICATE_RATING)
 
 	if not all([easy, useful, like]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
