@@ -10,6 +10,11 @@
   become: true
 
 
+- name: remove app log dir copied from local machine
+  file: path={{ remote_root_dir }}/{{ app_name }}/api/{{ app_name }}/{{ app_name }}/{{ remote_app_log_dir }} state=absent
+  become: true
+
+
 - name: create symbolic link from remote log dir to remote app log dir
   file: path={{ remote_root_dir }}/{{ app_name }}/api/{{ app_name }}/{{ app_name }}/{{ remote_app_log_dir }} src={{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }} state=link
   become: true
