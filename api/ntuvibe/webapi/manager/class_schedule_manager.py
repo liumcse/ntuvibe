@@ -9,7 +9,7 @@ def get_class_schedules(**kwargs):
 	return ClassScheduleTab.objects.filter(**kwargs)
 
 
-def prepare_class_schedule_dict(class_schedules):
+def prepare_class_schedule_data(class_schedules):
 	index_to_slots = dict()
 	for class_schedule in class_schedules:
 		index = class_schedule.index
@@ -27,6 +27,4 @@ def prepare_class_schedule_dict(class_schedules):
 			"weeks": eval(class_schedule.weeks)
 		})
 
-	return {
-		"data": index_to_slots
-	}
+	return index_to_slots

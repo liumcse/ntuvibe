@@ -19,6 +19,10 @@ def get_rating_records_by_user_id(user_id):
 	return CourseRatingTab.objects.filter(user_id=user_id)
 
 
+def get_rating_record_by_course_id_user_id(course_id, user_id):
+	return CourseRatingTab.objects.filter(course_id=course_id).filter(user_id=user_id)
+
+
 def add_rating_record(user_id, course_id, easy, useful, like, comment=None):
 	rating = CourseRatingTab(
 		user_id=user_id,
@@ -37,7 +41,7 @@ def delete_rating_record_by_id(id):
 	rating.delete()
 
 
-def prepare_total_rating_dict(course_id):
+def prepare_total_rating_data(course_id):
 	score_list = get_rating_scores_by_course_id(course_id)
 	count = len(score_list)
 	easy = useful = like = 0
@@ -50,16 +54,14 @@ def prepare_total_rating_dict(course_id):
 		useful = int(useful/count)
 		like = int(like/count)
 	return {
-		"data": {
-			"easy": easy,
-			"useful": useful,
-			"like": like,
-			"count": count
-		}
+		"easy": easy,
+		"useful": useful,
+		"like": like,
+		"count": count
 	}
 
 
-def prepare_comments_dict(rating_records):
+def prepare_comments_data(rating_records):
 	comment_list = []
 	for rating in rating_records:
 		if rating.comment:
@@ -77,6 +79,6 @@ def prepare_comments_dict(rating_records):
 				"comment_date": rating.create_time,
 			}
 			comment_list.append(comment_dict)
-	return {"data": comment_list}
+	return comment_list
 
 

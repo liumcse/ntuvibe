@@ -1,0 +1,5 @@
+SECRET_KEY = "xgp$0czpj3u7bz7#9+c0&nr9cn3r(dr+bnss0=mzu@t=7h)x^a"
+DATABASE_USER_DEFAULT = "ntubitsadmin"
+DATABASE_PASSWORD_DEFAULT = "ntubitsadmin123"
+EMAIL_HOST_USER = "ntuvibe@gmail.com"
+EMAIL_HOST_PASSWORD = "3bad701d834fd9e837aaf5aa8894dc9bd7ac0853f993c0b5f82020a0cdc013fb"

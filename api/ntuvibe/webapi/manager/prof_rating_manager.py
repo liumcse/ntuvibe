@@ -1,6 +1,5 @@
 from webapi.models import (
 	CourseTab,
-	UserTab,
 	CourseRatingTab,
 	ProfessorTab,
 	ProfessorRatingTab,

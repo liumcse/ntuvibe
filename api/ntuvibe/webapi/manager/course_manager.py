@@ -52,32 +52,22 @@ def add_course(course_code, course_title, au, constraint, grade_type, as_pe=Fals
 	)
 
 
-def prepare_course_list_dict(courses):
-	data = [
-		{
-			"code": course.course_code,
-			"title": course.course_title,
-		}
-		for course in courses
-	]
-	response_dict = {'data': data}
-	return response_dict
+def prepare_course_list_data(courses):
+	return [{"code": course.course_code, "title": course.course_title} for course in courses]
 
 
-def prepare_course_detail_dict(course):
+def prepare_course_detail_data(course):
 	constraint = eval(course.constraint)
 	return {
-		"data": {
-			"title": course.course_title,
-			"au": str(int(course.au)),
-			"description": course.description,
-			"constraint": {
-				"prerequisite": constraint["prerequisite"],
-				"mutex": constraint["mutex"],
-			},
-			"as_pe": course.as_pe,
-			"as_ue": course.as_ue,
-		}
+		"title": course.course_title,
+		"au": str(int(course.au)),
+		"description": course.description,
+		"constraint": {
+			"prerequisite": constraint["prerequisite"],
+			"mutex": constraint["mutex"],
+		},
+		"as_pe": course.as_pe,
+		"as_ue": course.as_ue,
 	}
 
 

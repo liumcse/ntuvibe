@@ -1,5 +1,9 @@
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib.auth.models import User
-import hashlib
+
+from .cache_manager import generate_activation_token
+from webapi.constants import StatusCode
 
 
 def get_users(**kwargs):
@@ -14,33 +18,64 @@ def get_user_by_email(email):
 	return User.objects.filter(email=email).first()
 
 
-def register_user(username, password, email):
-	salt = uuid4()
-	sha = hashlib.sha512()
-	sha.update(password)
-	sha.update(salt)
-	user = UserTab(
-		username=username,
-		salt=salt,
-		hashed_password=sha.hexdigest(),
-		email=email,
-	)
-	user.create()
+def get_user_by_username(username):
+	return User.objects.filter(username=username).first()
 
 
-def login_verification(password, user_id=None, email=None):
-	if user_id:
-		user = get_user_by_user_id(user_id)
-	elif email:
-		user = get_user_by_email(email)
-	else:
-		return False
+def get_username_by_email(email):
+	user = get_user_by_email(email=email)
+	if user:
+		return user.username
+	return None
 
-	sha = hashlib.sha512()
-	sha.update(password)
-	sha.update(user.salt)
 
-	if sha.hexdigest() == user.hashed_password:
+def create_or_update_user_by_email(email, username, password=None, is_active=True):
+	user = get_user_by_email(email=email)
+	if user:
+		user.username = username
+		if password:
+			user.set_password(password)
+		user.is_active = is_active
+		user.save()
 		return True
+	else:
+		user = User.objects.create_user(username, email, password)
+		user.is_active = is_active
+		user.save()
+		return user
 
-	return False
+
+def update_user_profile(user, **kwargs):
+	for key, val in kwargs.items():
+		if val is not None:
+			setattr(user.profile, key, val)
+
+
+# ========== logic related ==========
+
+def _send_activate_account_email(email, token):
+	subject = "Welcome to NTUVibe (Account Activation)"
+	to = [email]
+	from_email = 'ntuvibe@gmail.com'
+
+	message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
+	send_mail(subject, message, from_email, to, html_message=message)
+
+
+def register_email(email):
+
+	user_with_same_email = get_user_by_email(email)
+	if user_with_same_email:
+		raise Exception(StatusCode.DUPLICATE_EMAIL)
+
+	_send_activate_account_email(email=email, token=generate_activation_token(email=email))
+
+
+def prepare_profile_data(user):
+	return {
+		"id": user.pk,
+		"username": user.username,
+		"email": user.email,
+		"major": user.profile.major,
+		"avatar": user.profile.avatar,
+	}

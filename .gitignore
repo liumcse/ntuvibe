@@ -11,8 +11,9 @@ venv
 *.pyc
 
 # Django
-*_initial.py
-secret_key.py
+api/ntuvibe/webapi/migrations
+secret_settings.py
+*.log
 
 # data
 course_content.json*

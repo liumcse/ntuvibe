@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from . import secret_key
+from . import secret_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-SECRET_KEY = secret_key.SECRET_KEY
+SECRET_KEY = secret_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,7 +46,7 @@ MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
 	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
+	# 'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -57,7 +57,9 @@ ROOT_URLCONF = 'ntuvibe.urls'
 TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [],
+		'DIRS': [
+			os.path.join(BASE_DIR, 'templates'),
+		],
 		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
@@ -80,10 +82,29 @@ DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
 		'NAME': 'ntubits_db',
-		'USER': 'ntubitsadmin',
-		'PASSWORD': 'ntubitsadmin123',
+		'USER': secret_settings.DATABASE_USER_DEFAULT,
+		'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
 		'HOST': 'localhost',
 		'PORT': '3306',
+	}
+}
+
+
+CACHES = {
+	"default": {
+		"BACKEND": "django_redis.cache.RedisCache",
+		"LOCATION": "redis://127.0.0.1:6379/0",
+		"OPTIONS": {
+			"CLIENT_CLASS": "django_redis.client.DefaultClient",
+		}
+	},
+	"activation_token": {
+		"BACKEND": "django_redis.cache.RedisCache",
+		"LOCATION": "redis://127.0.0.1:6379/1",
+		"OPTIONS": {
+			"CLIENT_CLASS": "django_redis.client.DefaultClient",
+		},
+		"KEY_PREFIX": "activation_token"
 	}
 }
 
@@ -110,14 +131,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'en'
+TIME_ZONE = 'Asia/Singapore'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -130,5 +147,82 @@ STATICFILES_DIRS = (
 	os.path.realpath(os.path.dirname(__file__)) + '/../static',
 )
 
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = ("localhost:8080", "127.0.0.1:8000", "127.0.0.1:8080", "ntuvibe.com", "api.ntuvibe.com")
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = secret_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret_settings.EMAIL_HOST_PASSWORD
+EMAIL_PORT = 587
+
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_AGE = 7 * 24 * 60 * 60
+SESSION_COOKIE_NAME = "sessionid"
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+log_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "log"))
+if log_dir and not os.path.exists(log_dir):
+	os.mkdir(log_dir)
+LOGGING = {
+	'version': 1,
+	'disable_existing_loggers': True,
+	'formatters': {
+		'standard': {
+			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(process)d:%(thread)d|%(filename)s:%(lineno)d|%(module)s.%(funcName)s|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+		'short': {
+			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+		'data': {
+			'format': '%(asctime)s.%(msecs)03d|%(message)s',
+			'datefmt': '%Y-%m-%d %H:%M:%S',
+		},
+	},
+	'handlers': {
+		'file_fatal': {
+			'level': 'CRITICAL',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'fatal.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'standard',
+		},
+		'file_error': {
+			'level': 'ERROR',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'error.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'standard',
+		},
+		'file_info': {
+			'level': 'DEBUG',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'info.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'short',
+		},
+		'file_data': {
+			'level': 'DEBUG',
+			'class': 'logging.handlers.TimedRotatingFileHandler',
+			'filename': os.path.join(log_dir, 'data.log').replace('\\', '/'),
+			'when': 'MIDNIGHT',
+			'formatter': 'data',
+		},
+	},
+	'loggers': {
+		'main': {
+			'handlers': ['file_fatal', 'file_error', 'file_info'],
+			'level': 'DEBUG',
+			'propagate': True,
+		},
+		'data': {
+			'handlers': ['file_data'],
+			'level': 'DEBUG',
+			'propagate': True,
+		},
+	}
+}
