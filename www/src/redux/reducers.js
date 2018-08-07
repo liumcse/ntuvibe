@@ -25,7 +25,8 @@ const initialState: State = {
     rateCourseOpen: false
   },
   user: {
-    loginRequest: null
+    loginRequest: null,
+    signUpRequest: null
   }
 };
 
@@ -134,6 +135,16 @@ const user = (state = initialState.user, action: Action): UserState => {
         ...state,
         loginRequest: payload.data
       };
+    case actionTypes.USER_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signUpRequest: payload.data
+      }
+    case actionTypes.USER_SIGNUP_FAILURE:
+      return {
+        ...state,
+        signUpRequest: payload.data
+      }
     default:
       return state;
   }

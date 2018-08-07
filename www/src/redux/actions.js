@@ -187,6 +187,30 @@ export function userLogin(authForm: FormData) {
   };
 }
 
+export function userSignUp(authForm: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_SIGNUP_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/signup`, authForm, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_SIGNUP_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_SIGNUP_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function clearCourseInformation() {
   return {
     type: actionTypes.CLEAR_COURSE_INFORMATION

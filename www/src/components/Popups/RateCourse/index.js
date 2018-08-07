@@ -113,7 +113,7 @@ class RateCourse extends React.Component {
   };
 
   render() {
-    const { easy, useful, like, succeed } = this.state;
+    const { easy, useful, like } = this.state;
     return (
       <Popup
         modal
