@@ -23,14 +23,17 @@
 }
 
 .suggestionsContainerOpen {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  width: 50%; /* width must be the same with outer search container*/
   background: white;
   overflow-y: auto;
   min-height: 3.5rem;
   max-height: 35vh;
   border-radius: 5px;
   line-height: 2.5rem;
-  opacity: 0.95;
+  /* opacity: 0.95; */
+  z-index: 1000;
 }
 
 .suggestionsContainerOpen ul {
@@ -43,8 +46,7 @@
 }
 
 .suggestion {
-  padding: 0.5rem 2rem;
-  height: 2.5rem;
+  height: 3.5rem;
   color: black;
   cursor: pointer;
 }

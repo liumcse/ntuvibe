@@ -12,16 +12,19 @@
     opacity: 1;
     z-index: 1;
     @include disable-select;
-    // box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
   }
 
   .brand {
     @include american-typewriter;
     display: inline;
     color: white;
-    font-size: 2rem;
+    // font-size: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .brandLink {

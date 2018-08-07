@@ -22,6 +22,8 @@ const parseRemark = (remark: number[]) => {
   if (remark.includes(-1)) return "Online Course";
   const week = remark.join(", ");
   if (week === "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13") return null;
+  else if (week === "2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13")
+    return "Week 2 - 13";
   else return "Week ".concat(week);
 };
 

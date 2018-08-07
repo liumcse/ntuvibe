@@ -16,7 +16,7 @@ class Menu extends React.PureComponent {
         <div className={styles.item}>Schedule</div>
         <div className={styles.item}>Course Comments</div> */}
         <div className={styles.search}>
-            <Dropdown />
+          <Dropdown />
         </div>
         <div className={styles.actions}>
           <div className={styles.action} onClick={() => popupTrigger(3)}>

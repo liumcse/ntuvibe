@@ -16,7 +16,19 @@ export function search_course_by_code_or_title(
   return result;
 }
 
+export function course_code_is_valid(
+  courseList: CourseList,
+  code: string
+): boolean {
+  return (
+    courseList.filter(
+      (snippet: CourseListSnippet) => snippet.code.toLowerCase() === code
+    ).length > 0
+  );
+}
+
 export function cap_first_letter(input: string): string {
+  if (input === "" || !input) return "";
   const splittedString = input.split(" ");
   if (!splittedString || splittedString === undefined) return "";
   const loweredString = splittedString.map((word: string) =>

@@ -5,17 +5,18 @@ import PropTypes from "prop-types";
 
 import { popupTrigger } from "src/redux/actions";
 import login from "./assets/login.svg";
+import vibe from "src/brand/logo.png";
 
 import * as styles from "./style.scss";
 
-const logo = (
+const brand = (
   <div
     style={{
       display: "inline-block",
-      backgroundColor: "white",
+      background: "url(".concat(vibe).concat(") no-repeat"),
+      backgroundSize: "contain",
       height: "3rem",
-      width: "3rem",
-      borderRadius: "10px"
+      width: "6rem"
     }}
   />
 );
@@ -32,8 +33,7 @@ class NavBar extends React.PureComponent {
         <div className={styles.navbar_elements}>
           <div className={styles.navbar_elements_left}>
             <Link className={styles.brandLink} to="/">
-              {logo}
-              <div className={styles.brand}>Vibe</div>
+              <div className={styles.brand}>{brand}</div>
             </Link>
           </div>
           <div className={styles.navbar_elements_right}>
