@@ -145,7 +145,9 @@ export function submitCourseRating(courseRatingForm: FormData) {
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
     });
     await axios
-      .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm)
+      .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm, {
+        withCredentials: true
+      })
       .then(response => {
         return dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_SUCCESS,
@@ -168,14 +170,7 @@ export function userLogin(authForm: FormData) {
     });
     await axios
       .post(`${BASE_URL}/users/login`, authForm, {
-        withCredentials: true,
-        headers: {
-          // "Access-Control-Allow-Origin": "https://api.ntuvibe.com",
-          "Access-Control-Allow-Headers":
-            "accept, accept-encoding, authorization, content-type, dnt, origin, user-agent, x-csrftoken, x-requested-with",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-          "Access-Control-Allow-Credentials": true
-        },
+        withCredentials: true
       })
       .then(response => {
         return dispatch({

@@ -21,7 +21,7 @@ class PageHome extends React.PureComponent {
             <Dropdown />
           </div>
           <div className={styles.button_container}>
-            <span className={styles.badge}>PRO TIP</span> Use ALT keys to
+            <span className={styles.badge}>PRO TIP</span> Use ARROW keys to
             navigate and press ENTER to go to that page 🚀
           </div>
           <div className={styles.footer}>
