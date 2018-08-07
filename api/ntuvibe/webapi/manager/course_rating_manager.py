@@ -24,16 +24,24 @@ def get_rating_record_by_course_id_user_id(course_id, user_id):
 
 
 def add_rating_record(user_id, course_id, easy, useful, like, comment=None):
-	rating = CourseRatingTab(
-		user_id=user_id,
-		course_id=course_id,
-		easy=easy,
-		useful=useful,
-		like=like,
-		comment=comment if comment else "",
-		create_time=get_timestamp()
-	)
-	rating.save()
+	rating = get_rating_record_by_course_id_user_id(course_id, user_id)
+	if rating:
+		rating.easy = easy
+		rating.useful = useful
+		rating.like = like
+		rating.comment = comment if comment else ""
+		rating.save()
+	else:
+		rating = CourseRatingTab(
+			user_id=user_id,
+			course_id=course_id,
+			easy=easy,
+			useful=useful,
+			like=like,
+			comment=comment if comment else "",
+			create_time=get_timestamp()
+		)
+		rating.save()
 
 
 def delete_rating_record_by_id(id):
