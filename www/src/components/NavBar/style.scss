@@ -83,6 +83,14 @@
     padding-bottom: 1.5rem;
   }
 
+  .avatarImg {
+    width: 3rem;
+    height: auto;
+    border-radius: 3rem;
+    margin-bottom: -0.5rem;
+    @include medium-shadow;
+  }
+
   // @media (min-width: 0) {
   //   .navbar_elements_left {
   //     display: none;

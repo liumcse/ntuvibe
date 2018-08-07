@@ -29,8 +29,7 @@ import {
   fetchCourseRating,
   fetchCourseComments,
   fetchCourseSchedule,
-  fetchExamSchedule,
-  fetchProfile
+  fetchExamSchedule
 } from "../redux/actions";
 
 import no from "./assets/no.svg";
@@ -226,7 +225,6 @@ class PageCourseDetail extends React.Component<Props> {
       }
     } = this.props;
     const code = courseCode.toUpperCase(); // do we really put the upper case here?
-    this.props.fetchProfile();
     this.props.clearCourseInformation();
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
@@ -288,7 +286,9 @@ class PageCourseDetail extends React.Component<Props> {
             <Heading
               count={count}
               code={courseCode}
-              rating={(like && like.toString().concat(" %")) || "- %"}
+              rating={
+                ((like || like === 0) && like.toString().concat(" %")) || "- %"
+              }
               title={title || ""}
             />
             <div className={styles.row_box}>
@@ -401,8 +401,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
   fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
-  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
-  fetchProfile: () => dispatch(fetchProfile())
+  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode))
 });
 
 export default withRouter(

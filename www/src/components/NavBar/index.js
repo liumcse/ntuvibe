@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { popupTrigger } from "src/redux/actions";
+import { popupTrigger, fetchProfile } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo.png";
 
@@ -21,13 +21,25 @@ const brand = (
   />
 );
 
-const rightButton = (
-  <img src={login} style={{ height: "1.5rem", width: "auto" }} />
+const loginButton = (
+  <img url={login} style={{ height: "1.5rem", width: "auto" }} />
 );
 
-class NavBar extends React.PureComponent {
+const Avatar = props => (
+  <img
+    className={styles.avatarImg}
+    src={props.avatar || "https://csming.com/static/profile.jpg"}
+  />
+);
+
+class NavBar extends React.Component {
+  componentDidMount() {
+    this.props.fetchProfile();
+  }
+
   render() {
     const { popupTrigger } = this.props;
+    const { profile } = this.props;
     return (
       <div className={styles.navbar_container}>
         <div className={styles.navbar_elements}>
@@ -49,9 +61,18 @@ class NavBar extends React.PureComponent {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/help">HELP</Link>
             </div>
-            <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
-              {rightButton}
-            </div>
+            {!profile ? (
+              <div
+                className={styles.rightButton}
+                onClick={() => popupTrigger(1)}
+              >
+                {loginButton}
+              </div>
+            ) : (
+              <div className={styles.rightButton}>
+                <Avatar url={profile.avatar} />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -60,14 +81,24 @@ class NavBar extends React.PureComponent {
 }
 
 NavBar.propTypes = {
-  popupTrigger: PropTypes.func.isRequired
+  profile: PropTypes.object,
+  popupTrigger: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    profile: user && user.profile
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
-  popupTrigger: option => dispatch(popupTrigger(option))
+  popupTrigger: option => dispatch(popupTrigger(option)),
+  fetchProfile: () => dispatch(fetchProfile())
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NavBar);
