@@ -157,7 +157,7 @@ export function submitCourseRating(courseRatingForm: FormData) {
       .catch(error =>
         dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_FAILURE,
-          payload: []
+          payload: error.response
         })
       );
   };
@@ -181,7 +181,7 @@ export function userLogin(authForm: FormData) {
       .catch(error =>
         dispatch({
           type: actionTypes.USER_LOGIN_FAILURE,
-          payload: []
+          payload: error.response
         })
       );
   };

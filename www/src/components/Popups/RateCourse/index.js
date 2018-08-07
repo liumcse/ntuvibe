@@ -43,15 +43,21 @@ class RateCourse extends React.Component {
             "Something went wrong... Is your Internet alright?";
           notificationDOM.style.display = "block";
         } else if (response.success && response.success === true) {
-          notificationDOM.innerHTML =
-            "Submitted successfully! Reloading page...";
+          notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          this.setState({ succeed: true });
-          setTimeout(() => location.reload(), 1000);
+          this.setState({
+            succeed: true,
+            easy: null,
+            useful: null,
+            like: null,
+            comment: ""
+          });
+          setTimeout(() => location.reload(), 1500);
         } else {
           notificationDOM.innerHTML =
-            "Server error... It's not your fault, we will fix it.";
+            (response && response.error_message) ||
+            "Server error... It's not your problem, we will fix it.";
           notificationDOM.style.display = "block";
         }
         this.setState({ submitting: false });
@@ -239,7 +245,7 @@ class RateCourse extends React.Component {
           />
           <div className={styles.action}>
             <div className={styles.row}>
-              <div style={{ display: succeed ? "none" : "inline" }}>
+              <div>
                 <button
                   id="submit"
                   disabled={this.state.submitting}

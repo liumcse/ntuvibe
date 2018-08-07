@@ -11,6 +11,9 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      notification: "",
+      verificationRequested: false,
+      succeed: false,
       email: "",
       password: ""
     };
@@ -26,10 +29,39 @@ class Login extends React.Component {
 
   handleSubmit = () => {
     const { email, password } = this.state;
+    if (!email || !password) {
+      this.setState({ notification: "Don't leave any blank :p" });
+      return;
+    } else {
+      this.setState({ verificationRequested: true, notification: "" });
+    }
     const authForm = new FormData();
     authForm.append("email", email);
     authForm.append("password", password);
-    this.props.userLogin(authForm);
+    this.props.userLogin(authForm).then(() => {
+      const { loginRequest } = this.props;
+      if (!loginRequest) {
+        this.setState({
+          verificationRequested: false,
+          notification: "Something went wrong... Please try again later"
+        });
+      } else {
+        const { success, error_message } = loginRequest;
+        if (!success) {
+          this.setState({
+            verificationRequested: false,
+            notification: error_message
+          });
+        } else {
+          this.setState({
+            verificationRequested: false,
+            succeed: true,
+            notification: "Login sucessful! Redirecting..."
+          });
+          setTimeout(() => location.reload(), 1500);
+        }
+      }
+    });
   };
 
   render() {
@@ -37,7 +69,7 @@ class Login extends React.Component {
       <Popup modal closeOnDocumentClick={false} open={this.props.open}>
         <div className={styles.header}>Login</div>
         <div className={styles.description}>
-          <div>Login to unlock all features such as rating a course!</div>
+          <div>Login to unlock all features such as giving your rating.</div>
           <div>More features are on the way!</div>
         </div>
         <div className={styles.section}>
@@ -57,7 +89,7 @@ class Login extends React.Component {
             />
           </div>
         </div>
-        <div className={styles.section}>
+        <div className={styles.noAccount}>
           No account?{" "}
           <span
             className={styles.signUp}
@@ -66,9 +98,16 @@ class Login extends React.Component {
             Create one
           </span>.
         </div>
+        {this.state.notification ? (
+          <div className={styles.notification}>{this.state.notification}</div>
+        ) : null}
         <div className={styles.action}>
-          <button onClick={this.handleSubmit} className={styles.highlight}>
-            Login
+          <button
+            onClick={this.handleSubmit}
+            className={styles.highlight}
+            disabled={this.state.verificationRequested}
+          >
+            {this.state.verificationRequested ? "Verifying..." : "Login"}
           </button>
           <button onClick={this.props.closePopup}>Close</button>
         </div>
@@ -80,7 +119,15 @@ Login.propTypes = {
   open: PropTypes.bool.isRequired,
   openSignUp: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired,
-  userLogin: PropTypes.func.isRequired
+  userLogin: PropTypes.func.isRequired,
+  loginRequest: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    loginRequest: user && user.loginRequest
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -88,6 +135,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);

@@ -1,7 +1,12 @@
 // @flow
 import { combineReducers } from "redux";
 import * as actionTypes from "./action_types";
-import type { CourseState, PopupState, State } from "src/FlowType/states";
+import type {
+  CourseState,
+  PopupState,
+  UserState,
+  State
+} from "src/FlowType/states";
 import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
@@ -18,6 +23,9 @@ const initialState: State = {
     loginOpen: false,
     signUpOpen: false,
     rateCourseOpen: false
+  },
+  user: {
+    loginRequest: null
   }
 };
 
@@ -92,7 +100,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.SUBMIT_COURSE_RATING_FAILURE:
       return {
         ...state,
-        courseRatingSubmission: payload
+        courseRatingSubmission: payload.data
       };
     case actionTypes.CLEAR_COURSE_INFORMATION:
       return {
@@ -109,6 +117,24 @@ const course = (state = initialState.course, action: Action): CourseState => {
       return state;
     default:
       // likely to be an error
+      return state;
+  }
+};
+
+const user = (state = initialState.user, action: Action): UserState => {
+  const { type, payload } = action;
+  switch (type) {
+    case actionTypes.USER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        loginRequest: payload.data
+      };
+    case actionTypes.USER_LOGIN_FAILURE:
+      return {
+        ...state,
+        loginRequest: payload.data
+      };
+    default:
       return state;
   }
 };
@@ -144,6 +170,6 @@ const popup = (state = initialState.popup, action: Action): PopupState => {
   }
 };
 
-const rootReducer = combineReducers({ course, popup });
+const rootReducer = combineReducers({ course, popup, user });
 
 export default rootReducer;

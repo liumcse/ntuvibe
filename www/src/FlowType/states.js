@@ -10,12 +10,17 @@ import type {
 } from "./courses";
 
 export type CourseState = {
-  courseList: CourseList,
+  courseList: ?CourseList,
   courseDetail: ?CourseDetail,
   courseRating: ?CourseRating,
   courseSchedule: ?CourseSchedule,
   courseComments: ?CourseComments,
+  courseRatingSubmission: any, // todo
   examSchedule: ?ExamSchedule
+};
+
+export type UserState = {
+  loginRequest: any // todo
 };
 
 export type PopupState = {
