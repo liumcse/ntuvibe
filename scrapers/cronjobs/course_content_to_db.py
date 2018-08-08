@@ -26,12 +26,11 @@ def record_course_content(course_code, course_content):
 		"grade_type": GradeType.READABLE_TO_ID[course_content.get("grade_type", "Default")],
 		"as_pe": False,
 		"as_ue": False,
-		"update_time": get_timestamp(),
 	}
 
 	result = CourseTab.objects.filter(course_code=course_code).update(**kwargs)
 	if not result:
-		CourseTab.objects.create(course_code=course_code, create_time=get_timestamp(), **kwargs)
+		CourseTab.objects.create(course_code=course_code, **kwargs)
 
 
 if __name__ == "__main__":

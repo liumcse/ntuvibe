@@ -1,6 +1,5 @@
 from webapi.models import CourseRatingTab
 from webapi.manager import user_manager
-from webapi.utils import get_timestamp
 
 
 def get_rating_record_by_id(rating_id):
@@ -19,18 +18,15 @@ def get_rating_records_by_user_id(user_id):
 	return CourseRatingTab.objects.filter(user_id=user_id)
 
 
-def get_rating_record_by_course_id_user_id(course_id, user_id):
+def get_rating_records_by_course_id_user_id(course_id, user_id):
+	# returns [] or [<CourseRatingTab object>]
 	return CourseRatingTab.objects.filter(course_id=course_id).filter(user_id=user_id)
 
 
-def add_rating_record(user_id, course_id, easy, useful, like, comment=None):
-	rating = get_rating_record_by_course_id_user_id(course_id, user_id)
+def add_or_update_rating_record(user_id, course_id, easy, useful, like, comment=None):
+	rating = get_rating_records_by_course_id_user_id(course_id, user_id)
 	if rating:
-		rating.easy = easy
-		rating.useful = useful
-		rating.like = like
-		rating.comment = comment if comment else ""
-		rating.save()
+		rating.update(easy=easy, useful=useful, like=like, comment=(comment if comment else ""))
 	else:
 		rating = CourseRatingTab(
 			user_id=user_id,
@@ -39,7 +35,6 @@ def add_rating_record(user_id, course_id, easy, useful, like, comment=None):
 			useful=useful,
 			like=like,
 			comment=comment if comment else "",
-			create_time=get_timestamp()
 		)
 		rating.save()
 
@@ -84,7 +79,7 @@ def prepare_comments_data(rating_records):
 				"useful": rating.useful,
 				"like": rating.like,
 				"comment_content": rating.comment,
-				"comment_date": rating.create_time,
+				"comment_date": rating.update_time,
 			}
 			comment_list.append(comment_dict)
 	return comment_list
