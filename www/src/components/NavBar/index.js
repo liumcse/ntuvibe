@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { popupTrigger, fetchProfile } from "src/redux/actions";
+import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo.png";
 
@@ -23,7 +23,10 @@ const brand = (
 );
 
 const loginButton = (
-  <img url={login} style={{ height: "1.5rem", width: "auto" }} />
+  <img
+    url={login}
+    style={{ height: "1.5rem", width: "auto", cursor: "pointer" }}
+  />
 );
 
 const Avatar = props => (
@@ -32,7 +35,7 @@ const Avatar = props => (
     contentStyle={{
       zIndex: "99999",
       maxHeight: "100%",
-      width: "auto",
+      width: "auto"
     }}
     trigger={open => (
       <img
@@ -44,7 +47,7 @@ const Avatar = props => (
     closeOnDocumentClick
   >
     <div className={styles.userMenu}>
-      <div>Logout</div>
+      <div onClick={props.logout}>Logout</div>
     </div>
   </Popup>
 );
@@ -53,6 +56,10 @@ class NavBar extends React.Component {
   componentDidMount() {
     this.props.fetchProfile();
   }
+
+  handleLogout = () => {
+    this.props.userLogout();
+  };
 
   render() {
     const { popupTrigger } = this.props;
@@ -87,7 +94,7 @@ class NavBar extends React.Component {
               </div>
             ) : (
               <div className={styles.rightButton}>
-                <Avatar url={profile.avatar} />
+                <Avatar url={profile.avatar} logout={this.handleLogout} />
               </div>
             )}
           </div>
@@ -100,7 +107,8 @@ class NavBar extends React.Component {
 NavBar.propTypes = {
   profile: PropTypes.object,
   popupTrigger: PropTypes.func.isRequired,
-  fetchProfile: PropTypes.func.isRequired
+  fetchProfile: PropTypes.func.isRequired,
+  userLogout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -112,7 +120,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   popupTrigger: option => dispatch(popupTrigger(option)),
-  fetchProfile: () => dispatch(fetchProfile())
+  fetchProfile: () => dispatch(fetchProfile()),
+  userLogout: () => dispatch(userLogout())
 });
 
 export default connect(

@@ -20,6 +20,7 @@
     flex-direction: column;
     div {
       margin: 1rem 0;
+      cursor: pointer;
     }
   }
 
@@ -38,10 +39,6 @@
   .brandLink {
     display: flex;
     align-items: flex-end;
-  }
-
-  .right_button:hover {
-    cursor: pointer;
   }
 
   .navbar_elements {
@@ -96,6 +93,7 @@
     height: auto;
     border-radius: 3rem;
     margin-bottom: -0.5rem;
+    cursor: pointer;
     @include medium-shadow;
   }
 

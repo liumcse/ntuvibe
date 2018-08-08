@@ -187,6 +187,17 @@ export function userLogin(authForm: FormData) {
   };
 }
 
+export function userLogout() {
+  return async function(dispatch: any) {
+    await axios
+      .post(`${BASE_URL}/users/logout`, { withCredentials: true })
+      .then(response => {
+        return dispatch({ type: actionTypes.USER_LOGOUT });
+      })
+      .catch(() => console.log("Logout error..."));
+  };
+}
+
 export function userSignUp(authForm: FormData) {
   return async function(dispatch: any) {
     dispatch({
@@ -224,15 +235,15 @@ export function fetchProfile() {
         return dispatch({
           type: actionTypes.FETCH_PROFILE_SUCCESS,
           payload: response.data
-        });;
+        });
       })
       .catch(error =>
         dispatch({
           type: actionTypes.FETCH_PROFILE_FAILURE,
           payload: {}
         })
-      );;
-  };;
+      );
+  };
 }
 
 export function clearCourseInformation() {
