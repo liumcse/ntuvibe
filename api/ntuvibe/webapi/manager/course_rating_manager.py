@@ -23,20 +23,14 @@ def get_rating_records_by_course_id_user_id(course_id, user_id):
 	return CourseRatingTab.objects.filter(course_id=course_id).filter(user_id=user_id)
 
 
-def add_or_update_rating_record(user_id, course_id, easy, useful, like, comment=None):
+def add_or_update_rating_record(user_id, course_id, easy, useful, like, comment=""):
+	if comment is None:
+		comment = ""
 	rating = get_rating_records_by_course_id_user_id(course_id, user_id)
 	if rating:
-		rating.update(easy=easy, useful=useful, like=like, comment=(comment if comment else ""))
+		rating.update(easy=easy, useful=useful, like=like, comment=comment)
 	else:
-		rating = CourseRatingTab(
-			user_id=user_id,
-			course_id=course_id,
-			easy=easy,
-			useful=useful,
-			like=like,
-			comment=comment if comment else "",
-		)
-		rating.save()
+		CourseRatingTab.objects.create(user_id=user_id, course_id=course_id, easy=easy, useful=useful, like=like, comment=comment)
 
 
 def delete_rating_record_by_id(id):

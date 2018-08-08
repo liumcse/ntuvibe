@@ -46,12 +46,11 @@ class UserProfile(AutoSaveModel):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
-		UserProfile.objects.create(user=instance, major="", avatar="", create_time=get_timestamp(), update_time=get_timestamp())
+		UserProfile.objects.create(user=instance, major="", avatar="")
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-	instance.profile.update_time = get_timestamp()
 	instance.profile.save()
 
 
