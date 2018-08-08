@@ -246,6 +246,30 @@ export function fetchProfile() {
   };
 }
 
+export function fetchUserCourseComment(courseCode: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_USER_COURSE_COMMENT_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/courses/get_user_course_comment?code=${courseCode}`, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.FETCH_USER_COURSE_COMMENT_SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_USER_COURSE_COMMENT_FAILURE,
+          payload: {}
+        })
+      );
+  };
+}
+
 export function clearCourseInformation() {
   return {
     type: actionTypes.CLEAR_COURSE_INFORMATION

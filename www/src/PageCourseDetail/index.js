@@ -29,6 +29,7 @@ import {
   fetchCourseRating,
   fetchCourseComments,
   fetchCourseSchedule,
+  fetchUserCourseComment,
   fetchExamSchedule
 } from "../redux/actions";
 
@@ -49,6 +50,7 @@ type Props = {
   fetchCourseSchedule: string => void,
   fetchExamSchedule: string => void,
   fetchProfile: () => void,
+  fetchUserCourseComment: string => void,
   clearCourseInformation: () => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
@@ -226,6 +228,7 @@ class PageCourseDetail extends React.Component<Props> {
     } = this.props;
     const code = courseCode.toUpperCase(); // do we really put the upper case here?
     this.props.clearCourseInformation();
+    this.props.fetchUserCourseComment(code);
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
@@ -401,7 +404,9 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
   fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
-  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode))
+  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
+  fetchUserCourseComment: courseCode =>
+    dispatch(fetchUserCourseComment(courseCode))
 });
 
 export default withRouter(

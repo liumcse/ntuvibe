@@ -26,6 +26,7 @@ const initialState: State = {
   },
   user: {
     profile: null,
+    courseComment: null,
     loginRequest: null,
     signUpRequest: null
   }
@@ -130,6 +131,16 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         profile: payload.data
+      };
+    case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        courseComment: payload.data
+      };
+    case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
+      return {
+        ...state,
+        courseComment: payload
       };
     case actionTypes.FETCH_PROFILE_FAILURE:
       return {

@@ -22,10 +22,10 @@ const brand = (
   />
 );
 
-const loginButton = (
+const LoginButton = () => (
   <img
     url={login}
-    style={{ height: "1.5rem", width: "auto", cursor: "pointer" }}
+    style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
   />
 );
 
@@ -76,9 +76,6 @@ class NavBar extends React.Component {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/">HOME</Link>
             </div>
-            {/* <div className={styles.navbar_elements_right_text}>
-              <Link to="#">EXPLORE</Link>
-            </div> */}
             <div className={styles.navbar_elements_right_text}>
               <Link to="#">BLOG</Link>
             </div>
@@ -90,7 +87,7 @@ class NavBar extends React.Component {
                 className={styles.rightButton}
                 onClick={() => popupTrigger(1)}
               >
-                {loginButton}
+                <LoginButton />
               </div>
             ) : (
               <div className={styles.rightButton}>

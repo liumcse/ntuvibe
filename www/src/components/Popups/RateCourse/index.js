@@ -112,6 +112,19 @@ class RateCourse extends React.Component {
     }
   };
 
+  rehydrate = () => {
+    const { courseComment } = this.props;
+    if (courseComment) {
+      const { easy, useful, like, comment } = courseComment;
+      this.setState({
+        easy: easy,
+        useful: useful,
+        like: like,
+        comment: comment
+      });
+    }
+  }
+
   render() {
     const { easy, useful, like } = this.state;
     return (
@@ -272,6 +285,7 @@ class RateCourse extends React.Component {
 RateCourse.propTypes = {
   submitCourseRating: PropTypes.func.isRequired,
   courseRatingSubmission: PropTypes.object,
+  courseComment: PropTypes.object,
   open: PropTypes.bool.isRequired,
   closePopup: PropTypes.func.isRequired,
   // from router
@@ -281,15 +295,16 @@ RateCourse.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { course } = state;
+  const { course, user } = state;
   return {
-    courseRatingSubmission: course && course.courseRatingSubmission
+    courseRatingSubmission: course && course.courseRatingSubmission,
+    courseComment: user && user.courseComment
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   submitCourseRating: courseRatingForm =>
-    dispatch(submitCourseRating(courseRatingForm))
+    dispatch(submitCourseRating(courseRatingForm)),
 });
 
 export default withRouter(
