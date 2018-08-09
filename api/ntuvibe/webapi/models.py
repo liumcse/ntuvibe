@@ -64,6 +64,7 @@ class CourseTab(AutoSaveModel):
 	grade_type = models.IntegerField()
 	as_pe = models.BooleanField()
 	as_ue = models.BooleanField()
+	semesters = models.TextField()  # ["2017_2", "2018_1"]
 	create_time = models.PositiveIntegerField()
 	update_time = models.PositiveIntegerField()
 

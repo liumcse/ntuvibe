@@ -34,3 +34,4 @@
 
 - name: start new uwsgi
   shell: uwsgi {{ remote_root_dir }}/uwsgi/{{ app_name }}_uwsgi.ini
+  become: true

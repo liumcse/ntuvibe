@@ -8,6 +8,8 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os
+import sys  # cannot remove this line
+
 
 from django.core.wsgi import get_wsgi_application
 

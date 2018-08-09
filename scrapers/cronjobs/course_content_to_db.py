@@ -13,11 +13,15 @@ from scrapers.scraper_course_content import crawl_course_content
 
 
 def get_constraint_string(course_content):
-	constraint = dict([(key, course_content.get(key, None)) for key in CONSTRING_KEYS])
-	return str(constraint)
+	constraint_pairs = []
+	for key in CONSTRING_KEYS:
+		if course_content.get(key):
+			constraint_pairs.append((key, course_content[key]))
+	constraints = dict(constraint_pairs)
+	return str(constraints)
 
 
-def record_course_content(course_code, course_content):
+def record_course_content(semester, course_code, course_content):
 	kwargs = {
 		"course_title": course_content["title"],
 		"au": float(course_content["au"]),
@@ -28,12 +32,26 @@ def record_course_content(course_code, course_content):
 		"as_ue": False,
 	}
 
-	result = CourseTab.objects.filter(course_code=course_code).update(**kwargs)
-	if not result:
+	course = CourseTab.objects.filter(course_code=course_code).first()
+	if course:
+		semesters = eval(course.semesters)
+		semesters.append(semester)
+		kwargs.update({"semesters": str(sorted(semesters))})
+		CourseTab.objects.filter(course_code=course_code).update(**kwargs)
+	else:
+		kwargs.update({"semesters": str([semester])})
 		CourseTab.objects.create(course_code=course_code, **kwargs)
 
 
 if __name__ == "__main__":
-	course_contents = crawl_course_content.crawl()
+	if len(sys.argv) == 1:
+		semester = crawl_course_content.get_latest_semester()
+	elif len(sys.argv) == 2:
+		semester = sys.argv[1]
+
+	else:
+		raise Exception("Invalid sys.argv length!")
+
+	course_contents = crawl_course_content.crawl(semester=semester)
 	for course_code, course_content in course_contents.items():
-		record_course_content(course_code, course_content)
+		record_course_content(semester, course_code, course_content)
