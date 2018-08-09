@@ -6,6 +6,7 @@ apt install python3-pip
 
 apt-get install mysql-server
 apt-get install libmysqlclient-dev
+export LC_ALL=C (for locale settings)
 pip3 install mysqlclient==1.3.13
 
 apt-get install python

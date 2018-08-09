@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ntuvibe.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'ntubits_db',
+		'NAME': 'ntuvibe_db',
 		'USER': secret_settings.DATABASE_USER_DEFAULT,
 		'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
 		'HOST': 'localhost',
