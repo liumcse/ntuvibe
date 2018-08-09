@@ -61,8 +61,8 @@ def prepare_course_detail_data(course):
 		"au": str(int(course.au)),
 		"description": course.description,
 		"constraint": {
-			"prerequisite": constraint["prerequisite"],
-			"mutex": constraint["mutex"],
+			"prerequisite": constraint.get("prerequisite", ""),
+			"mutex": constraint.get("mutex", ""),
 		},
 		"as_pe": course.as_pe,
 		"as_ue": course.as_ue,

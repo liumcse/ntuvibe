@@ -46,8 +46,8 @@ cd /opt/letsencrypt/
 ./letsencrypt-auto certonly -a webroot --renew-by-default --config /usr/local/etc/le-renew-webroot.ini
 curl -L -o /usr/local/sbin/le-renew-webroot http://do.co/le-nginx-renew
 chmod +x /usr/local/sbin/le-renew-webroot
-crontab -e (add `30 2 * * 1 /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log`)
-le-renew-webroot (for manual renewal)
+crontab -e (add `30 2 * * 1 sudo /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log`)
+sudo /usr/local/sbin/le-renew-webroot (for manual renewal)
 
 
 

@@ -36,7 +36,8 @@ def record_course_content(semester, course_code, course_content):
 	if course:
 		semesters = eval(course.semesters)
 		semesters.append(semester)
-		kwargs.update({"semesters": str(sorted(semesters))})
+		semesters = sorted(list(set(semesters)))
+		kwargs.update({"semesters": str(semesters)})
 		CourseTab.objects.filter(course_code=course_code).update(**kwargs)
 	else:
 		kwargs.update({"semesters": str([semester])})
