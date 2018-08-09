@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
@@ -25,8 +26,12 @@ class PageHome extends React.PureComponent {
             navigate and press ENTER to go to that page 🚀
           </div>
           <div className={styles.footer}>
-            &copy; 2018 NTUVibe &#183; Stay cute<br />We&#39;re not affiliated
-            with Nanyang Technological University.
+            <a style={{ visibility: "hidden" }} href="/sitemap">
+              Sitemap
+            </a>
+            &copy; 2018 NTUVibe &#183; Stay cute
+            <br />We&#39;re not affiliated with Nanyang Technological
+            University.
           </div>
         </div>
       </div>

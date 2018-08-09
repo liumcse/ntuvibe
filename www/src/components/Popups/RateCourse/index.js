@@ -123,7 +123,7 @@ class RateCourse extends React.Component {
         comment: comment
       });
     }
-  }
+  };
 
   render() {
     const { easy, useful, like } = this.state;
@@ -304,7 +304,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   submitCourseRating: courseRatingForm =>
-    dispatch(submitCourseRating(courseRatingForm)),
+    dispatch(submitCourseRating(courseRatingForm))
 });
 
 export default withRouter(

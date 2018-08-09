@@ -1,6 +1,8 @@
 // @flow
 import React from "react";
 import Popup from "reactjs-popup";
+import { connect } from "react-redux";
+import { userSignUp } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -18,6 +20,7 @@ class SignUp extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      email: "",
       verificationRequested: false,
       emailSent: false
     };
@@ -36,11 +39,21 @@ class SignUp extends React.Component<Props, State> {
     this.setState({
       verificationRequested: true
     });
+    const form = new FormData();
+    const { email } = this.state;
+    form.append("email", email);
+    this.props.userSignUp(form).then(() => {
+      console.log("Success");
+    });
     // TODO: write send email logic
     setTimeout(() => {
       console.log("set");
       this.setState({ verificationRequested: false, emailSent: true });
     }, 3000);
+  };
+
+  handleInput = event => {
+    this.setState({ email: event.target.value });;
   };
 
   render() {
@@ -64,7 +77,11 @@ class SignUp extends React.Component<Props, State> {
             </div>
           ) : (
             <div className={styles.email_container}>
-              <input className={styles.email} placeholder="Email" />
+              <input
+                className={styles.email}
+                onChange={this.handleInput}
+                placeholder="Email"
+              />
             </div>
           )}
         </div>
@@ -94,4 +111,11 @@ class SignUp extends React.Component<Props, State> {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  userSignUp: form => dispatch(userSignUp(form))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignUp);

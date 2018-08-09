@@ -127,7 +127,12 @@ const config = {
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     }),
-    new CopyWebpackPlugin([{ from: path.resolve(SRC_PATH, "brand/faviconit") }])
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(SRC_PATH, "brand/faviconit")
+      },
+      { from: path.resolve(SRC_PATH, "brand/seo") }
+    ])
   ]
 };
 

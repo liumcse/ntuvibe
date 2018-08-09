@@ -13,6 +13,13 @@ export function search_course_by_code_or_title(
       snippet.title.toLowerCase().includes(input)
     );
   });
+  // // sort
+  // if (result.length > 0) {
+  //   return result.sort((a, b) => {
+  //     console.log("sorting attempted");
+  //     return a.code.toLowerCase().localeCompare(b.code.toLowerCase());
+  //   });
+  // }
   return result;
 }
 

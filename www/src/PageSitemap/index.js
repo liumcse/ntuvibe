@@ -1,9 +1,10 @@
 import React from "react";
 import * as styles from "./style.scss";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { fetchCourseList } from "src/redux/actions";
+
+const BASE_URL = "https://ntuvibe.com";
 
 class PageSitemap extends React.Component {
   componentDidMount() {
@@ -17,24 +18,21 @@ class PageSitemap extends React.Component {
       let courseListDOM = [];
       courseList.forEach((snippet, index) => {
         const snippetDOM = (
-          <div key={index}>
-            <Link to={`/courses/${snippet.code.toLowerCase()}`}>
-              {snippet.title}
-            </Link>
-          </div>
+          <a
+            key={index}
+            href={`${BASE_URL}/courses/${snippet.code.toLowerCase()}`}
+          >
+            {snippet.title}
+          </a>
         );
         courseListDOM.push(snippetDOM);
       });
       return (
         <div className={styles.sitemap}>
           <h1>Sitemap</h1>
-          <div className={styles.container}>
-            <div>
-              <Link to="/">HOME</Link>
-            </div>
-            <div>
-              <Link to="/help">HELP</Link>
-            </div>
+          <div className={styles.container} id="links">
+            <a href={BASE_URL}>HOME</a>
+            <a href={`${BASE_URL}/help`}>HELP</a>
             {courseListDOM}
           </div>
           <h5>&copy; NTUVibe</h5>

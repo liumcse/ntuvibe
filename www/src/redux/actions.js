@@ -5,6 +5,7 @@ import * as actionTypes from "./action_types";
 // import type { Action } from "src/FlowType/acitons";
 
 const BASE_URL = "https://api.ntuvibe.com";
+// const BASE_URL = "http://13.250.11.130";
 // const BASE_URL = "http://localhost:3001/api";
 
 export function fetchCourseDetail(courseCode: string) {
@@ -189,8 +190,14 @@ export function userLogin(authForm: FormData) {
 
 export function userLogout() {
   return async function(dispatch: any) {
+    console.log("Requested logout");
     await axios
-      .post(`${BASE_URL}/users/logout`, { withCredentials: true })
+      .post(`${BASE_URL}/users/logout`, {
+        withCredentials: true,
+        headers: {
+          "content-type": "application/x-www-form-urlencoded"
+        }
+      })
       .then(response => {
         return dispatch({ type: actionTypes.USER_LOGOUT });
       })
@@ -204,9 +211,7 @@ export function userSignUp(authForm: FormData) {
       type: actionTypes.USER_SIGNUP_REQUESTED
     });
     await axios
-      .post(`${BASE_URL}/users/signup`, authForm, {
-        withCredentials: true
-      })
+      .post(`${BASE_URL}/users/signup`, authForm)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_SIGNUP_SUCCESS,
