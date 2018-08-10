@@ -37,7 +37,7 @@ import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
 
 const NO_DESCRIPTION =
-  "This course has no description. I don't know why this would happen either...";
+  "This course has no description. Sad to see this happened...";
 const NO_RATING = "No rating yet";
 
 const RATING_THRESHOLD = 0; // we don't set threshold - yet
