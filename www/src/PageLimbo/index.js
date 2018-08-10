@@ -31,13 +31,15 @@ class PageLimbo extends React.Component<Props> {
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           <h1 className={styles.header}>Final Step</h1>
-          <p>Your token is {token}</p>
-          <p>Your Email is {emailParsed}</p>
+          <p>
+            Unfortunately this page is still under development. Check it out
+            later, and we are sorry for this..
+          </p>
           <p>
             We would like you to fill in some information to complete your
             registration.
           </p>
-          <p>Your information will not be used by 3rd party.</p>
+          <p>Your information will not be shared with 3rd party.</p>
           <div className={styles.inputs}>
             <input placeholder="Email" />
             <input placeholder="Password" type="password" />

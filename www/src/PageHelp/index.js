@@ -7,6 +7,9 @@ import * as styles from "./style.scss";
 
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Card from "./components/Card";
+import Bubble from "./components/Bubble";
+
+import fb from "./assets/facebook.svg";
 
 const brand = (
   <div
@@ -49,7 +52,7 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Go to Vibe</div>
             <div className={styles.card_content}>
               The first step of using Vibe is to open your favorite browser and
-              go to Vibe.
+              go to ntuvibe.com. It's deadly simple but you can&#39;t avoid it.
             </div>
           </Card>
         </div>
@@ -57,8 +60,8 @@ const PageHelp = () => {
           <Card number={"2"}>
             <div className={styles.card_heading}>Make a Search</div>
             <div className={styles.card_content}>
-              Be it a course code, course title or random letter - we support
-              partial match.
+              Be it a course code, course title or just random word - we support
+              partial match.<br/> Use ARROW keys to navigate and press ENTER to go to that course - or you can just click.
             </div>
           </Card>
         </div>
@@ -67,8 +70,8 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Start Browsing</div>
             <div className={styles.card_content}>
               Now you&#39;ve come to the course information page. Take a look at
-              the course description and what people say about it. Like it?
-              Consider adding it to your STARS 🙊.
+              the course description and what people say about it. Looking good?
+              How about adding it to your STARS 🙊.
             </div>
           </Card>
         </div>
@@ -134,6 +137,9 @@ const PageHelp = () => {
       </div>
       <div className={styles.white}>
         <div className={styles.heading_4}>Follow Vibe on Social Media</div>
+        <div className={styles.social_media}>
+          <Bubble alt="Facebook" img={fb} link="https://facebook.com/ntuvibe" />
+        </div>
       </div>
       <div>
         <Footer />

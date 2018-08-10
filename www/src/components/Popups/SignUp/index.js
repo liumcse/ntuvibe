@@ -8,7 +8,8 @@ import * as styles from "./style.scss";
 
 type Props = {
   open: boolean,
-  closePopup: () => void
+  closePopup: () => void,
+  userSignUp: any => void
 };
 
 type State = {
@@ -42,18 +43,17 @@ class SignUp extends React.Component<Props, State> {
     const form = new FormData();
     const { email } = this.state;
     form.append("email", email);
-    this.props.userSignUp(form).then(() => {
-      console.log("Success");
-    });
-    // TODO: write send email logic
-    setTimeout(() => {
-      console.log("set");
-      this.setState({ verificationRequested: false, emailSent: true });
-    }, 3000);
+    this.props
+      .userSignUp(form)
+      .then(() => {
+        this.setState({ verificationRequested: false, emailSent: true });
+      })
+      .catch();
+    // TODO: handle exception
   };
 
   handleInput = event => {
-    this.setState({ email: event.target.value });;
+    this.setState({ email: event.target.value });
   };
 
   render() {
