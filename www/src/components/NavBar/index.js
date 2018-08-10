@@ -59,6 +59,9 @@ class NavBar extends React.Component {
 
   handleLogout = () => {
     this.props.userLogout();
+    setTimeout(() => {
+      location.reload();
+    }, 500);
   };
 
   render() {

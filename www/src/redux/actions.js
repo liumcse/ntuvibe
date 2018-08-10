@@ -190,13 +190,9 @@ export function userLogin(authForm: FormData) {
 
 export function userLogout() {
   return async function(dispatch: any) {
-    console.log("Requested logout");
-    await axios
-      .post(`${BASE_URL}/users/logout`, {
-        withCredentials: true,
-        headers: {
-          "content-type": "application/x-www-form-urlencoded"
-        }
+    axios
+      .post(`${BASE_URL}/users/logout`, null, {
+        withCredentials: true
       })
       .then(response => {
         return dispatch({ type: actionTypes.USER_LOGOUT });
