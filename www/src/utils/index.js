@@ -2,18 +2,19 @@
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 import moment from "moment";
 
+// TODO: the current search has severe performance issue. Write a better one
 export function search_course_by_code_or_title(
   courseList: CourseList,
   input: string
 ): CourseList {
   const result = courseList.filter((snippet: CourseListSnippet) => {
     return (
-      // TODO: here's a sever performance issue
+      // TODO: here's a performance issue
       snippet.code.toLowerCase().includes(input) ||
       snippet.title.toLowerCase().includes(input)
     );
   });
-  // // sort
+  // // sort, but too slow
   // if (result.length > 0) {
   //   return result.sort((a, b) => {
   //     console.log("sorting attempted");

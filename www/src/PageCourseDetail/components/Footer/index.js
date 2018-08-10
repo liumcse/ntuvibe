@@ -19,7 +19,7 @@ const Footer = () => (
 
   <div className={styles.footer}>
     <div className={styles.container}>
-      <div className={styles.first_row}>
+      {/* <div className={styles.first_row}>
         <div className={styles.col}>
           <div className={styles.header}>Make it Better</div>
           <div className={styles.content}>
@@ -41,7 +41,7 @@ const Footer = () => (
             Every day it costs to run, and $1 can make a difference.
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.second_row}>
         <div className={styles.brand}>{brand}</div>
         <div className={styles.right}>
