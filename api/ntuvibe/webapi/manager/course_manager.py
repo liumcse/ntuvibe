@@ -1,5 +1,4 @@
 from webapi.models import CourseTab
-from webapi.utils import get_timestamp
 
 
 def get_course_by_course_id(course_id):
