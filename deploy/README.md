@@ -6,11 +6,13 @@ apt install python3-pip
 
 apt-get install mysql-server
 apt-get install libmysqlclient-dev
+export LC_ALL=C (for locale settings)
 pip3 install mysqlclient==1.3.13
 
 apt-get install python
 (ansible must have a python2 on server side)
 pip3 install ansible
+apt-get install zip unzip
 
 df -h
 (check storage)
@@ -44,5 +46,11 @@ cd /opt/letsencrypt/
 ./letsencrypt-auto certonly -a webroot --renew-by-default --config /usr/local/etc/le-renew-webroot.ini
 curl -L -o /usr/local/sbin/le-renew-webroot http://do.co/le-nginx-renew
 chmod +x /usr/local/sbin/le-renew-webroot
-crontab -e (add `30 2 * * 1 /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log`)
-le-renew-webroot (for manual renewal)
+crontab -e (add `30 2 * * 1 sudo /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log`)
+sudo /usr/local/sbin/le-renew-webroot (for manual renewal)
+
+
+
+useful tutorials:
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04

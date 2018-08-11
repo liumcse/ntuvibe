@@ -8,6 +8,8 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os
+import sys
+sys.path.append("/home/ubuntu/.local/lib/python3.5/site-packages")
 
 from django.core.wsgi import get_wsgi_application
 

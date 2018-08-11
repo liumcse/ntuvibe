@@ -1,11 +1,38 @@
 from django.db import models
+from django.db.models import query
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .utils import PositiveBigIntegerField, get_timestamp
 
 
-class UserProfile(models.Model):
+class AutoSaveQuerySet(query.QuerySet):
+	def create(self, **kwargs):
+		now = get_timestamp()
+		kwargs.update({"create_time": now})
+		kwargs.update({"update_time": now})
+		super(AutoSaveQuerySet, self).create(**kwargs)
+
+	def update(self, **kwargs):
+		kwargs.update({"update_time": get_timestamp()})
+		super(AutoSaveQuerySet, self).update(**kwargs)
+
+
+class AutoSaveModel(models.Model):
+	objects = AutoSaveQuerySet.as_manager()
+
+	class Meta:
+		abstract = True
+
+	def save(self, *args, **kwargs):
+		now = get_timestamp()
+		if self.create_time is None:
+			self.create_time = now
+		self.update_time = now
+		super(AutoSaveModel, self).save(*args, **kwargs)
+
+
+class UserProfile(AutoSaveModel):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
 	major = models.CharField(max_length=128)
 	avatar = models.CharField(max_length=512)
@@ -19,16 +46,15 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
-		UserProfile.objects.create(user=instance, major="", avatar="", create_time=get_timestamp(), update_time=get_timestamp())
+		UserProfile.objects.create(user=instance, major="", avatar="")
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-	instance.profile.update_time = get_timestamp()
 	instance.profile.save()
 
 
-class CourseTab(models.Model):
+class CourseTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	course_code = models.CharField(max_length=8, db_index=True)
 	course_title = models.CharField(max_length=128, db_index=True)
@@ -38,6 +64,7 @@ class CourseTab(models.Model):
 	grade_type = models.IntegerField()
 	as_pe = models.BooleanField()
 	as_ue = models.BooleanField()
+	semesters = models.TextField()  # ["2017_2", "2018_1"]
 	create_time = models.PositiveIntegerField()
 	update_time = models.PositiveIntegerField()
 
@@ -45,7 +72,7 @@ class CourseTab(models.Model):
 		db_table = u"webapi_course_tab"
 
 
-class CourseRatingTab(models.Model):
+class CourseRatingTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	user_id = PositiveBigIntegerField(db_index=True)
 	course_id = PositiveBigIntegerField(db_index=True)
@@ -54,24 +81,27 @@ class CourseRatingTab(models.Model):
 	like = models.IntegerField()
 	comment = models.TextField(default="")
 	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_course_rating_tab"
 
 
-class ProfessorTab(models.Model):
+class ProfessorTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	course_id = PositiveBigIntegerField(db_index=True)
 	name = models.CharField(max_length=32)
 	title = models.CharField(max_length=16)
 	photo = models.CharField(max_length=64, default="")
 	description = models.TextField()
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_professor_tab"
 
 
-class ProfessorRatingTab(models.Model):
+class ProfessorRatingTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	user_id = PositiveBigIntegerField(db_index=True)
 	prof_id = PositiveBigIntegerField(db_index=True)
@@ -79,12 +109,14 @@ class ProfessorRatingTab(models.Model):
 	enthusiasm = models.IntegerField()
 	helpful = models.IntegerField()
 	comment = models.TextField(default="")
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_professor_rating_tab"
 
 
-class ClassScheduleTab(models.Model):
+class ClassScheduleTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	course_id = PositiveBigIntegerField()
 	index = models.IntegerField()
@@ -95,6 +127,8 @@ class ClassScheduleTab(models.Model):
 	venue = models.CharField(max_length=16)
 	group = models.CharField(max_length=16)
 	weeks = models.CharField(max_length=128)  # which teaching weeks does it take place
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_class_schedule_tab"
@@ -103,21 +137,25 @@ class ClassScheduleTab(models.Model):
 		]
 
 
-class ExamScheduleTab(models.Model):
+class ExamScheduleTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	course_id = PositiveBigIntegerField(db_index=True)
 	start_time = PositiveBigIntegerField(db_index=True)
 	end_time = PositiveBigIntegerField(db_index=True)
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_exam_schedule_tab"
 
 
-class ConfigTab(models.Model):
+class ConfigTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	key = PositiveBigIntegerField(db_index=True)  # to be specified in constants.py later on
 	value = models.CharField(max_length=128)
 	notes = models.CharField(max_length=256)
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
 
 	class Meta:
 		db_table = u"webapi_config_tab"
