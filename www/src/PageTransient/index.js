@@ -15,7 +15,7 @@ type Props = {
   history: Object
 };
 
-class PageLimbo extends React.Component<Props> {
+class PageTransient extends React.Component<Props> {
   constructor(props) {
     super(props);
     const {
@@ -141,5 +141,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(PageLimbo)
+  )(PageTransient)
 );
