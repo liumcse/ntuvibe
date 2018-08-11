@@ -30,7 +30,14 @@ class CommentCard extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.profile}>
-          <div className={styles.profile_avatar} />
+          <div
+            className={styles.profile_avatar}
+            style={{
+              background: `url(${this.props.avatar ||
+                "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"})`,
+              backgroundSize: "cover"
+            }}
+          />
         </div>
         <div className={styles.box}>
           <div className={styles.box_left}>

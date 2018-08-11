@@ -97,10 +97,6 @@ class PageTransient extends React.Component<Props> {
         <div className={styles.innerContainer}>
           <h1 className={styles.header}>Final Step</h1>
           <p>
-            Unfortunately this page is still under development. Check it out
-            later, and we are sorry for this..
-          </p>
-          <p>
             We would like you to fill in some information to complete your
             registration.
           </p>
@@ -109,13 +105,15 @@ class PageTransient extends React.Component<Props> {
             <input readOnly value={this.email} />
             <input
               onChange={this.handlePassword}
-              placeholder="Password"
+              placeholder="Password (avoid using your NTU password)"
               type="password"
             />
             <input onChange={this.handleUsername} placeholder="Display name" />
             <input onChange={this.handleMajor} placeholder="Major" />
           </div>
-          <button onClick={this.handleSubmit} className={styles.activate}>Activate</button>
+          <button onClick={this.handleSubmit} className={styles.activate}>
+            Activate
+          </button>
         </div>
       </div>
     );

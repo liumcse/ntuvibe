@@ -125,6 +125,10 @@ class RateCourse extends React.Component {
     }
   };
 
+  componentDidMount() {
+    this.rehydrate();
+  }
+
   render() {
     const { easy, useful, like } = this.state;
     return (
