@@ -40,7 +40,10 @@ const Avatar = props => (
     trigger={open => (
       <img
         className={styles.avatarImg}
-        src={props.avatar || "https://csming.com/static/profile.jpg"}
+        src={
+          props.avatar ||
+          "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
+        }
       />
     )}
     position="bottom right"
