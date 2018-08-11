@@ -1,6 +1,10 @@
 // @flow
 import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
+
+import { validateActivation, userActivate, userLogin } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -14,19 +18,80 @@ type Props = {
 class PageLimbo extends React.Component<Props> {
   constructor(props) {
     super(props);
-  }
-
-  render() {
     const {
       match: {
         params: { token, email }
       }
     } = this.props;
-    const emailParsed = email
+    this.token = token;
+    this.email = email
       .replace("&", "@")
       .split("!")
       .join(".");
+    this.state = {
+      token: this.token,
+      email: this.email,
+      username: "",
+      password: "",
+      major: "",
+      redirect: false
+    };
+  }
 
+  componentDidMount() {
+    this.props.validateActivation(this.token, this.email).then(() => {
+      const { validation } = this.props;
+      if (!validation || !validation.success) {
+        this.setState({ redirect: true });
+      }
+    });
+  }
+
+  handleUsername = event => {
+    this.setState({ username: event.target.value });
+  };
+
+  handlePassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleMajor = event => {
+    this.setState({ major: event.target.value });
+  };
+
+  handleSubmit = () => {
+    const { token, email, username, password, major } = this.state;
+    if (!username || !password || !major) {
+      alert("Please fill in all areas!");
+    } else {
+      const form = new FormData();
+      form.append("token", token);
+      form.append("email", email);
+      form.append("username", username);
+      form.append("password", password);
+      form.append("major", major);
+      this.props
+        .userActivate(form)
+        .then(() => {
+          const loginForm = new FormData();
+          loginForm.append("email", email);
+          loginForm.append("password", password);
+          this.props.userLogin(loginForm).then(() => {
+            this.setState({ redirect: true });
+          });
+        })
+        .catch(() => {
+          this.setState({ redirect: true });
+        });
+      // TODO: handle exception
+    }
+  };
+
+  render() {
+    if (this.state.redirect) {
+      // invalid token or Email, redirect
+      return <Redirect to="/" />;
+    }
     return (
       <div className={styles.container}>
         <div className={styles.innerContainer}>
@@ -41,10 +106,14 @@ class PageLimbo extends React.Component<Props> {
           </p>
           <p>Your information will not be shared with 3rd party.</p>
           <div className={styles.inputs}>
-            <input placeholder="Email" />
-            <input placeholder="Password" type="password" />
-            <input placeholder="Display name" />
-            <input placeholder="Major" />
+            <input readOnly value={this.email} />
+            <input
+              onChange={this.handlePassword}
+              placeholder="Password"
+              type="password"
+            />
+            <input onChange={this.handleUsername} placeholder="Display name" />
+            <input onChange={this.handleMajor} placeholder="Major" />
           </div>
           <button className={styles.activate}>Activate</button>
         </div>
@@ -53,4 +122,24 @@ class PageLimbo extends React.Component<Props> {
   }
 }
 
-export default withRouter(PageLimbo);
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    validation: user && user.validation,
+    activation: user && user.activation
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  validateActivation: (token, email) =>
+    dispatch(validateActivation(token, email)),
+  userActivate: form => dispatch(userActivate(form)),
+  userLogin: form => dispatch(userLogin(form))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PageLimbo)
+);

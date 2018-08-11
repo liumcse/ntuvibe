@@ -28,7 +28,9 @@ const initialState: State = {
     profile: null,
     courseComment: null,
     loginRequest: null,
-    signUpRequest: null
+    signUpRequest: null,
+    validation: null,
+    activation: null
   }
 };
 
@@ -166,6 +168,26 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         signUpRequest: payload.data
+      };
+    case actionTypes.VALIDATE_ACTIVATION_SUCCESS:
+      return {
+        ...state,
+        validation: payload
+      };
+    case actionTypes.VALIDATE_ACTIVATION_FAILURE:
+      return {
+        ...state,
+        validation: payload.data
+      };
+    case actionTypes.USER_ACTIVATE_SUCCESS:
+      return {
+        ...state,
+        activation: payload.data
+      };
+    case actionTypes.USER_ACTIVATE_FAILURE:
+      return {
+        ...state,
+        activation: payload.data
       };
     default:
       return state;

@@ -52,7 +52,8 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Go to Vibe</div>
             <div className={styles.card_content}>
               The first step of using Vibe is to open your favorite browser and
-              go to ntuvibe.com. It's deadly simple but you can&#39;t avoid it.
+              go to ntuvibe.com. It&#39;ts deadly simple but you can&#39;t avoid
+              it.
             </div>
           </Card>
         </div>
@@ -61,7 +62,8 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Make a Search</div>
             <div className={styles.card_content}>
               Be it a course code, course title or just random word - we support
-              partial match.<br/> Use ARROW keys to navigate and press ENTER to go to that course - or you can just click.
+              partial match.<br /> Use ARROW keys to navigate and press ENTER to
+              go to that course - or you can just click.
             </div>
           </Card>
         </div>

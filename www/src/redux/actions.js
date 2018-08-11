@@ -164,6 +164,52 @@ export function submitCourseRating(courseRatingForm: FormData) {
   };
 }
 
+export function validateActivation(token: string, email: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.VALIDATE_ACTIVATION_REQUESTED
+    });
+    await axios
+      .get(
+        `${BASE_URL}/users/check_activation_link?token=${token}&email=${email}`
+      )
+      .then(response =>
+        dispatch({
+          type: actionTypes.VALIDATE_ACTIVATION_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.VALIDATE_ACTIVATION_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
+export function userActivate(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_ACTIVATE_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/activate`, form)
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_ACTIVATE_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_ACTIVATE_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function userLogin(authForm: FormData) {
   return async function(dispatch: any) {
     dispatch({
