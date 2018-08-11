@@ -115,7 +115,7 @@ class PageLimbo extends React.Component<Props> {
             <input onChange={this.handleUsername} placeholder="Display name" />
             <input onChange={this.handleMajor} placeholder="Major" />
           </div>
-          <button className={styles.activate}>Activate</button>
+          <button onClick={this.handleSubmit} className={styles.activate}>Activate</button>
         </div>
       </div>
     );
