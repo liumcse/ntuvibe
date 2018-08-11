@@ -9,7 +9,7 @@ import Popups from "./components/Popups";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
-import PageLimbo from "./PageLimbo";
+import PageTransient from "./PageTransient";
 import PageSitemap from "./PageSitemap";
 import store from "./redux/store";
 
@@ -34,7 +34,7 @@ class App extends React.PureComponent {
               <Route
                 exact
                 path={ROUTES.ROUTE_CREATE_ACCOUNT}
-                component={PageLimbo}
+                component={PageTransient}
               />
               <Route
                 exact

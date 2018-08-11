@@ -1,9 +1,10 @@
 import React from "react";
+import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { popupTrigger } from "src/redux/actions";
+import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo.png";
 
@@ -21,13 +22,54 @@ const brand = (
   />
 );
 
-const rightButton = (
-  <img src={login} style={{ height: "1.5rem", width: "auto" }} />
+const LoginButton = () => (
+  <img
+    src={login}
+    style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+  />
 );
 
-class NavBar extends React.PureComponent {
+const Avatar = props => (
+  <Popup
+    overlayStyle={{ opacity: "0", cursor: "default" }}
+    contentStyle={{
+      zIndex: "99999",
+      maxHeight: "100%",
+      width: "auto"
+    }}
+    trigger={open => (
+      <img
+        className={styles.avatarImg}
+        src={
+          props.avatar ||
+          "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
+        }
+      />
+    )}
+    position="bottom right"
+    closeOnDocumentClick
+  >
+    <div className={styles.userMenu}>
+      <div onClick={props.logout}>Logout</div>
+    </div>
+  </Popup>
+);
+
+class NavBar extends React.Component {
+  componentDidMount() {
+    this.props.fetchProfile();
+  }
+
+  handleLogout = () => {
+    this.props.userLogout();
+    setTimeout(() => {
+      location.reload();
+    }, 500);
+  };
+
   render() {
     const { popupTrigger } = this.props;
+    const { profile } = this.props;
     return (
       <div className={styles.navbar_container}>
         <div className={styles.navbar_elements}>
@@ -40,18 +82,24 @@ class NavBar extends React.PureComponent {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/">HOME</Link>
             </div>
-            {/* <div className={styles.navbar_elements_right_text}>
-              <Link to="#">EXPLORE</Link>
-            </div> */}
             <div className={styles.navbar_elements_right_text}>
-              <Link to="#">BLOG</Link>
+              <a href="https://medium.com/@ntuvibe">BLOG</a>
             </div>
             <div className={styles.navbar_elements_right_text}>
               <Link to="/help">HELP</Link>
             </div>
-            <div className={styles.rightButton} onClick={() => popupTrigger(1)}>
-              {rightButton}
-            </div>
+            {!profile ? (
+              <div
+                className={styles.rightButton}
+                onClick={() => popupTrigger(1)}
+              >
+                <LoginButton />
+              </div>
+            ) : (
+              <div className={styles.rightButton}>
+                <Avatar url={profile.avatar} logout={this.handleLogout} />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -60,14 +108,26 @@ class NavBar extends React.PureComponent {
 }
 
 NavBar.propTypes = {
-  popupTrigger: PropTypes.func.isRequired
+  profile: PropTypes.object,
+  popupTrigger: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
+  userLogout: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    profile: user && user.profile
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
-  popupTrigger: option => dispatch(popupTrigger(option))
+  popupTrigger: option => dispatch(popupTrigger(option)),
+  fetchProfile: () => dispatch(fetchProfile()),
+  userLogout: () => dispatch(userLogout())
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NavBar);

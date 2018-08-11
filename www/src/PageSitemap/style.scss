@@ -4,18 +4,14 @@
   }
 
   .container {
-    margin: 1rem 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    div {
-      width: calc(33%-3rem);
+    a {
       font-size: 0.85rem;
-      padding: 0.3rem 0;
-      margin-right: 3rem;
-      a {
-        color: blue;
-      }
+      width: 100%;
+      color: blue;
+      padding: 0.5rem 0;
     }
   }
 }

@@ -29,6 +29,7 @@ import {
   fetchCourseRating,
   fetchCourseComments,
   fetchCourseSchedule,
+  fetchUserCourseComment,
   fetchExamSchedule
 } from "../redux/actions";
 
@@ -36,7 +37,7 @@ import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
 
 const NO_DESCRIPTION =
-  "This course has no description. I don't know why this would happen either...";
+  "This course has no description. Sad to see this happened...";
 const NO_RATING = "No rating yet";
 
 const RATING_THRESHOLD = 0; // we don't set threshold - yet
@@ -48,6 +49,8 @@ type Props = {
   fetchCourseComments: string => void,
   fetchCourseSchedule: string => void,
   fetchExamSchedule: string => void,
+  fetchProfile: () => void,
+  fetchUserCourseComment: string => void,
   clearCourseInformation: () => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
@@ -225,6 +228,7 @@ class PageCourseDetail extends React.Component<Props> {
     } = this.props;
     const code = courseCode.toUpperCase(); // do we really put the upper case here?
     this.props.clearCourseInformation();
+    this.props.fetchUserCourseComment(code);
     this.props.fetchCourseDetail(code);
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
@@ -285,7 +289,9 @@ class PageCourseDetail extends React.Component<Props> {
             <Heading
               count={count}
               code={courseCode}
-              rating={(like && like.toString().concat(" %")) || "- %"}
+              rating={
+                ((like || like === 0) && like.toString().concat(" %")) || "- %"
+              }
               title={title || ""}
             />
             <div className={styles.row_box}>
@@ -398,7 +404,9 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
   fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
-  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode))
+  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
+  fetchUserCourseComment: courseCode =>
+    dispatch(fetchUserCourseComment(courseCode))
 });
 
 export default withRouter(

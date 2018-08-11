@@ -5,6 +5,7 @@ import * as actionTypes from "./action_types";
 // import type { Action } from "src/FlowType/acitons";
 
 const BASE_URL = "https://api.ntuvibe.com";
+// const BASE_URL = "http://13.250.11.130";
 // const BASE_URL = "http://localhost:3001/api";
 
 export function fetchCourseDetail(courseCode: string) {
@@ -163,6 +164,52 @@ export function submitCourseRating(courseRatingForm: FormData) {
   };
 }
 
+export function validateActivation(token: string, email: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.VALIDATE_ACTIVATION_REQUESTED
+    });
+    await axios
+      .get(
+        `${BASE_URL}/users/check_activation_link?token=${token}&email=${email}`
+      )
+      .then(response =>
+        dispatch({
+          type: actionTypes.VALIDATE_ACTIVATION_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.VALIDATE_ACTIVATION_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
+export function userActivate(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_ACTIVATE_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/activate`, form)
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_ACTIVATE_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_ACTIVATE_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function userLogin(authForm: FormData) {
   return async function(dispatch: any) {
     dispatch({
@@ -182,6 +229,89 @@ export function userLogin(authForm: FormData) {
         dispatch({
           type: actionTypes.USER_LOGIN_FAILURE,
           payload: error.response
+        })
+      );
+  };
+}
+
+export function userLogout() {
+  return async function(dispatch: any) {
+    axios
+      .post(`${BASE_URL}/users/logout`, null, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({ type: actionTypes.USER_LOGOUT });
+      })
+      .catch(() => console.log("Logout error..."));
+  };
+}
+
+export function userSignUp(authForm: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_SIGNUP_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/signup`, authForm)
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_SIGNUP_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_SIGNUP_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
+export function fetchProfile() {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_PROFILE_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/users/get_user_profile`, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.FETCH_PROFILE_SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_PROFILE_FAILURE,
+          payload: {}
+        })
+      );
+  };
+}
+
+export function fetchUserCourseComment(courseCode: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_USER_COURSE_COMMENT_REQUESTED
+    });
+    axios
+      .get(`${BASE_URL}/courses/get_user_course_comment?code=${courseCode}`, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.FETCH_USER_COURSE_COMMENT_SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_USER_COURSE_COMMENT_FAILURE,
+          payload: {}
         })
       );
   };

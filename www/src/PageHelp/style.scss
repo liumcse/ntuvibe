@@ -91,11 +91,16 @@
       white-space: pre-line;
       .quote {
         margin: 1rem 0;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         display: block;
         text-align: center;
       }
     }
+  }
+  .social_media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   @media (min-width: 0) {

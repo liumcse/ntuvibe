@@ -7,6 +7,7 @@ const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -116,7 +117,25 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: PROJECT_ROOT + "/index.html"
+      template: PROJECT_ROOT + "/index.html",
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+        minifyURLs: false,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeOptionalTags: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributese: true,
+        useShortDoctype: true
+      }
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: "async"
     }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
@@ -127,7 +146,12 @@ const config = {
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     }),
-    new CopyWebpackPlugin([{ from: path.resolve(SRC_PATH, "brand/faviconit") }])
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(SRC_PATH, "brand/faviconit")
+      },
+      { from: path.resolve(SRC_PATH, "brand/seo") }
+    ])
   ]
 };
 

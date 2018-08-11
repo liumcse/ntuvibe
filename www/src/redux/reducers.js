@@ -25,7 +25,12 @@ const initialState: State = {
     rateCourseOpen: false
   },
   user: {
-    loginRequest: null
+    profile: null,
+    courseComment: null,
+    loginRequest: null,
+    signUpRequest: null,
+    validation: null,
+    activation: null
   }
 };
 
@@ -124,6 +129,26 @@ const course = (state = initialState.course, action: Action): CourseState => {
 const user = (state = initialState.user, action: Action): UserState => {
   const { type, payload } = action;
   switch (type) {
+    case actionTypes.FETCH_PROFILE_SUCCESS:
+      return {
+        ...state,
+        profile: payload.data
+      };
+    case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        courseComment: payload.data
+      };
+    case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
+      return {
+        ...state,
+        courseComment: payload
+      };
+    case actionTypes.FETCH_PROFILE_FAILURE:
+      return {
+        ...state,
+        profile: payload.data
+      };
     case actionTypes.USER_LOGIN_SUCCESS:
       return {
         ...state,
@@ -133,6 +158,36 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         loginRequest: payload.data
+      };
+    case actionTypes.USER_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signUpRequest: payload.data
+      };
+    case actionTypes.USER_SIGNUP_FAILURE:
+      return {
+        ...state,
+        signUpRequest: payload.data
+      };
+    case actionTypes.VALIDATE_ACTIVATION_SUCCESS:
+      return {
+        ...state,
+        validation: payload
+      };
+    case actionTypes.VALIDATE_ACTIVATION_FAILURE:
+      return {
+        ...state,
+        validation: payload.data
+      };
+    case actionTypes.USER_ACTIVATE_SUCCESS:
+      return {
+        ...state,
+        activation: payload.data
+      };
+    case actionTypes.USER_ACTIVATE_FAILURE:
+      return {
+        ...state,
+        activation: payload.data
       };
     default:
       return state;
