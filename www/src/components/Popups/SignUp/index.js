@@ -37,11 +37,21 @@ class SignUp extends React.Component<Props, State> {
   };
 
   requestVerification = () => {
+    const { email } = this.state;
+    if (
+      !email.split("@") ||
+      !(
+        email.split("@").includes("ntu.edu.sg") ||
+        email.split("@").includes("e.ntu.edu.sg")
+      )
+    ) {
+      alert("Please enter a valid NTU Email");
+      return;
+    }
     this.setState({
       verificationRequested: true
     });
     const form = new FormData();
-    const { email } = this.state;
     form.append("email", email);
     this.props
       .userSignUp(form)

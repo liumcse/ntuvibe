@@ -10,6 +10,7 @@ import Card from "./components/Card";
 import Bubble from "./components/Bubble";
 
 import fb from "./assets/facebook.svg";
+import md from "./assets/medium.svg";
 
 const brand = (
   <div
@@ -52,7 +53,7 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Go to Vibe</div>
             <div className={styles.card_content}>
               The first step of using Vibe is to open your favorite browser and
-              go to ntuvibe.com. It&#39;ts deadly simple but you can&#39;t avoid
+              go to ntuvibe.com. It&#39;s deadly simple but you can&#39;t avoid
               it.
             </div>
           </Card>
@@ -88,6 +89,7 @@ const PageHelp = () => {
                 Your opinion is invaluable and can benefit thousands of future
                 students!
               </span>
+              More features are on the way!
             </div>
           </Card>
         </div>
@@ -115,12 +117,11 @@ const PageHelp = () => {
               information; personal insults, especially those using racist or
               sexist terms.
               <br />
-              <br />
-              This section is incomplete and I may just be ranting.
+              3. is deemed offensive or illegal.
             </div>
           </Card>
         </div>
-        <div className={styles.heading_4}>Contribute</div>
+        {/* <div className={styles.heading_4}>Contribute</div>
         <div className={styles.card}>
           <Card>
             <div className={styles.card_heading}>Make Vibe better</div>
@@ -135,12 +136,13 @@ const PageHelp = () => {
               <a href="#">editing this page</a>?
             </div>
           </Card>
-        </div>
+        </div> */}
       </div>
       <div className={styles.white}>
         <div className={styles.heading_4}>Follow Vibe on Social Media</div>
         <div className={styles.social_media}>
           <Bubble alt="Facebook" img={fb} link="https://facebook.com/ntuvibe" />
+          <Bubble alt="Medium" img={md} link="https://medium.com/@ntuvibe" />
         </div>
       </div>
       <div>

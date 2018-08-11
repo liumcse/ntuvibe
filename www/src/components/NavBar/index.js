@@ -80,7 +80,7 @@ class NavBar extends React.Component {
               <Link to="/">HOME</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="#">BLOG</Link>
+              <a href="https://medium.com/@ntuvibe">BLOG</a>
             </div>
             <div className={styles.navbar_elements_right_text}>
               <Link to="/help">HELP</Link>
