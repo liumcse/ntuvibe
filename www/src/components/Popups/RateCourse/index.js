@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { submitCourseRating } from "src/redux/actions";
+import { submitCourseRating, fetchUserCourseComment } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -126,7 +126,7 @@ class RateCourse extends React.Component {
   };
 
   componentDidMount() {
-    this.rehydrate();
+    this.props.fetchUserCourseComment().then(() => this.rehydrate());
   }
 
   render() {
@@ -288,6 +288,7 @@ class RateCourse extends React.Component {
 
 RateCourse.propTypes = {
   submitCourseRating: PropTypes.func.isRequired,
+  fetchUserCourseComment: PropTypes.func.isRequired,
   courseRatingSubmission: PropTypes.object,
   courseComment: PropTypes.object,
   open: PropTypes.bool.isRequired,
@@ -308,7 +309,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   submitCourseRating: courseRatingForm =>
-    dispatch(submitCourseRating(courseRatingForm))
+    dispatch(submitCourseRating(courseRatingForm)),
+  fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
 });
 
 export default withRouter(

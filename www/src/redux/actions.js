@@ -298,7 +298,7 @@ export function fetchUserCourseComment(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_USER_COURSE_COMMENT_REQUESTED
     });
-    axios
+    await axios
       .get(`${BASE_URL}/courses/get_user_course_comment?code=${courseCode}`, {
         withCredentials: true
       })
