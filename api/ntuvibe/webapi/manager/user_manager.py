@@ -54,7 +54,7 @@ def update_user_profile(user, **kwargs):
 # ========== logic related ==========
 
 def _send_activate_account_email(email, token):
-	subject = "Welcome to NTUVibe (Account Activation)"
+	subject = "Welcome to NTUVibe - Account Activation"
 	to = [email]
 	from_email = 'ntuvibe@gmail.com'
 

@@ -35,7 +35,8 @@
     flex-direction: column;
   }
   .dark {
-    background-color: $primary;
+    // background-color: $primary;
+    background: linear-gradient(140deg,#193b84 15%,#037bc1);
     color: white;
   }
   .light {
