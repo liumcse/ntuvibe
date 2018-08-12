@@ -97,19 +97,28 @@ class PageTransient extends React.Component<Props> {
         <div className={styles.innerContainer}>
           <h1 className={styles.header}>Final Step</h1>
           <p>
-            We would like you to fill in some information to complete your
+            Congratulations! You are just one step away from creating your
+            account!
+          </p>
+          <p>
+            We&#39;d like you to fill in some information to complete your
             registration.
           </p>
-          <p>Your information will not be shared with 3rd party.</p>
+          <p>Your information will not be shared with the 3rd party 💪.</p>
           <div className={styles.inputs}>
-            <input readOnly value={this.email} />
+            <input className={styles.email} readOnly value={this.email} />
             <input
+            className={styles.password}
               onChange={this.handlePassword}
               placeholder="Password (avoid using your NTU password)"
               type="password"
             />
-            <input onChange={this.handleUsername} placeholder="Display name" />
-            <input onChange={this.handleMajor} placeholder="Major" />
+            <input
+            className={styles.username}
+              onChange={this.handleUsername}
+              placeholder="Display name (must be unique!)"
+            />
+            <input className={styles.major} onChange={this.handleMajor} placeholder="Major (optional)" />
           </div>
           <button onClick={this.handleSubmit} className={styles.activate}>
             Activate

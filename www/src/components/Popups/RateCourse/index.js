@@ -115,18 +115,35 @@ class RateCourse extends React.Component {
   rehydrate = () => {
     const { courseComment } = this.props;
     if (courseComment) {
-      const { easy, useful, like, comment } = courseComment;
+      const { easy, useful, like, comment_content } = courseComment;
       this.setState({
         easy: easy,
         useful: useful,
         like: like,
-        comment: comment
+        comment: comment_content
       });
     }
   };
 
   componentDidMount() {
-    this.props.fetchUserCourseComment().then(() => this.rehydrate());
+    this.rehydrate();
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevCourseCode =
+      prevProps &&
+      prevProps.location &&
+      prevProps.location.pathname.replace("/courses/", "");
+    const thisCourseCode = this.props.location.pathname.replace(
+      "/courses/",
+      ""
+    );
+    if (
+      prevCourseCode !== thisCourseCode ||
+      prevProps.open !== this.props.open
+    ) {
+      this.rehydrate();
+    }
   }
 
   render() {
@@ -253,6 +270,7 @@ class RateCourse extends React.Component {
             <textarea
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
+              defaultValue={this.state.comment || null}
             />
           </div>
           <div

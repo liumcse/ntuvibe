@@ -29,15 +29,18 @@
   .section_a {
     padding: 3rem 6rem;
     background-color: #f5f5f543;
+    border-bottom: 10px solid #f5f5f5c0;
   }
 
   .section_b {
     padding: 0 6rem;
     // padding-bottom: 3rem;
+    margin-bottom: -2rem;
   }
 
   .section_c {
     padding: 0 6rem;
+    margin-bottom: 1.5rem;
     // background-color: #f5f5f543;
   }
 
@@ -184,6 +187,12 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 80%;
+  }
+
+  .beTheFirst {
+    cursor: pointer;
+    color: $primary;
+    border-bottom: 1px dashed $primary;
   }
 
   // @media (min-width: 0px) {

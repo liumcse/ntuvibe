@@ -22,6 +22,21 @@
     input {
       width: 100%;
       margin-bottom: 1.5rem;
+      background-size: 1.5rem 1.5rem;
+      background-repeat: no-repeat;
+      background-position: 0.75rem 0.75rem; 
+    }
+    .email {
+      background-image: url('./assets/email.svg');
+    }
+    .password {
+      background-image: url('./assets/password.svg');
+    }
+    .username {
+      background-image: url('./assets/user.svg');
+    }
+    .major {
+      background-image: url('./assets/major.svg');
     }
   }
   .activate {
