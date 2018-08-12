@@ -58,11 +58,23 @@ const parseDataToTable = (data: CourseSchedule) => {
   return generatedTable;
 };
 
+const viewAll = event => {
+  const viewAllDOM = event.target;
+  const tableDOM = document.querySelector("#timetable");
+  const fadeDOM = document.querySelector("#timetable-fade");
+  viewAllDOM.style.display = "none";
+  fadeDOM.style.display = "none";
+  tableDOM.style.maxHeight = "none";
+  // console.log(viewAllDOM.style);
+}
+
 const Timetable = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Schedule (Current Semester)</div>
-      <div className={styles.table_container}>
+      <div id="timetable" className={styles.table_container}>
+        <div id="timetable-fade" />
+        <div className={styles.expand} onClick={viewAll}>View all</div>
         <table>
           <tbody>
             <tr>
