@@ -138,9 +138,14 @@ class RateCourse extends React.Component {
       "/courses/",
       ""
     );
+    const { profile, open } = this.props;
+    if (open && !profile) {
+      // not logged in
+      this.props.openLogin();
+    }
     if (
       prevCourseCode !== thisCourseCode ||
-      prevProps.open !== this.props.open
+      prevProps.open !== open
     ) {
       this.rehydrate();
     }
@@ -148,6 +153,7 @@ class RateCourse extends React.Component {
 
   render() {
     const { easy, useful, like } = this.state;
+    const { profile } = this.props;
     return (
       <Popup
         modal
@@ -308,8 +314,10 @@ RateCourse.propTypes = {
   submitCourseRating: PropTypes.func.isRequired,
   fetchUserCourseComment: PropTypes.func.isRequired,
   courseRatingSubmission: PropTypes.object,
+  profile: PropTypes.object,
   courseComment: PropTypes.object,
   open: PropTypes.bool.isRequired,
+  openLogin: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired,
   // from router
   match: PropTypes.object.isRequired,
@@ -321,7 +329,8 @@ const mapStateToProps = state => {
   const { course, user } = state;
   return {
     courseRatingSubmission: course && course.courseRatingSubmission,
-    courseComment: user && user.courseComment
+    courseComment: user && user.courseComment,
+    profile: user && user.profile
   };
 };
 

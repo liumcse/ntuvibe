@@ -83,7 +83,7 @@
     margin-bottom: 1rem;
     font-size: 1rem;
     border-radius: 10px;
-    background-color: $complement;
+    background: linear-gradient(140deg,#193b84 15%,#037bc1);
     color: white;
     @include medium-shadow;
     @include lato-regular;
