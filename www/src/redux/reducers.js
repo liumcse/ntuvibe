@@ -134,12 +134,12 @@ const user = (state = initialState.user, action: Action): UserState => {
         ...state,
         profile: payload.data
       };
-    case actionTypes.FETCH_COURSE_COMMENTS_SUCCESS:
+    case actionTypes.FETCH_USER_COURSE_COMMENT_SUCCESS:
       return {
         ...state,
-        courseComment: payload.data
+        courseComment: payload.data[0]
       };
-    case actionTypes.FETCH_COURSE_COMMENTS_FAILURE:
+    case actionTypes.FETCH_USER_COURSE_COMMENT_FAILURE:
       return {
         ...state,
         courseComment: payload

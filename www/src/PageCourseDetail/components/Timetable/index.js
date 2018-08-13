@@ -40,7 +40,7 @@ const parseDataToTable = (data: CourseSchedule) => {
         <tr key={indexA * 100 + indexB}>
           {indexB === 0 && (
             <td className={styles.index} rowSpan={scheduleCount}>
-              {index}
+              {index.padStart(5, "0")}
             </td>
           )}
           <td>{type}</td>
@@ -58,11 +58,22 @@ const parseDataToTable = (data: CourseSchedule) => {
   return generatedTable;
 };
 
+const viewAll = event => {
+  const viewAllDOM = document.querySelector("#click-to-view-all");
+  const tableDOM = document.querySelector("#timetable");
+  const fadeDOM = document.querySelector("#timetable-fade");
+  viewAllDOM.style.display = "none";
+  fadeDOM.style.display = "none";
+  tableDOM.style.maxHeight = "none";
+}
+
 const Timetable = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Schedule (Current Semester)</div>
-      <div className={styles.table_container}>
+      <div id="timetable" className={styles.table_container}>
+        <div id="timetable-fade" onClick={viewAll}/>
+        <div id="click-to-view-all" className={styles.expand} onClick={viewAll}>Click to view all</div>
         <table>
           <tbody>
             <tr>

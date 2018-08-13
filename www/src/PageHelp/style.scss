@@ -35,7 +35,8 @@
     flex-direction: column;
   }
   .dark {
-    background-color: $primary;
+    // background-color: $primary;
+    background: linear-gradient(140deg,#193b84 15%,#037bc1);
     color: white;
   }
   .light {
@@ -101,6 +102,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    div {
+      margin: 0 2rem;
+    }
   }
 
   @media (min-width: 0) {

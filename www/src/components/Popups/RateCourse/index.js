@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { submitCourseRating } from "src/redux/actions";
+import { submitCourseRating, fetchUserCourseComment } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -46,14 +46,16 @@ class RateCourse extends React.Component {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          this.setState({
-            succeed: true,
-            easy: null,
-            useful: null,
-            like: null,
-            comment: ""
-          });
-          setTimeout(() => location.reload(), 1500);
+          setTimeout(() => {
+            this.setState({
+              succeed: true,
+              easy: null,
+              useful: null,
+              like: null,
+              comment: ""
+            });
+            location.reload();
+          }, 500);
         } else {
           notificationDOM.innerHTML =
             (response && response.error_message) ||
@@ -115,15 +117,38 @@ class RateCourse extends React.Component {
   rehydrate = () => {
     const { courseComment } = this.props;
     if (courseComment) {
-      const { easy, useful, like, comment } = courseComment;
+      const { easy, useful, like, comment_content } = courseComment;
       this.setState({
         easy: easy,
         useful: useful,
         like: like,
-        comment: comment
+        comment: comment_content
       });
     }
   };
+
+  componentDidMount() {
+    this.rehydrate();
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevCourseCode =
+      prevProps &&
+      prevProps.location &&
+      prevProps.location.pathname.replace("/courses/", "");
+    const thisCourseCode = this.props.location.pathname.replace(
+      "/courses/",
+      ""
+    );
+    const { profile, open } = this.props;
+    if (open && !profile) {
+      // not logged in
+      this.props.openLogin();
+    }
+    if (prevCourseCode !== thisCourseCode || prevProps.open !== open) {
+      this.rehydrate();
+    }
+  }
 
   render() {
     const { easy, useful, like } = this.state;
@@ -249,7 +274,9 @@ class RateCourse extends React.Component {
             <textarea
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
-            />
+            >
+              {this.state.comment || null}
+            </textarea>
           </div>
           <div
             id="notification"
@@ -284,9 +311,12 @@ class RateCourse extends React.Component {
 
 RateCourse.propTypes = {
   submitCourseRating: PropTypes.func.isRequired,
+  fetchUserCourseComment: PropTypes.func.isRequired,
   courseRatingSubmission: PropTypes.object,
+  profile: PropTypes.object,
   courseComment: PropTypes.object,
   open: PropTypes.bool.isRequired,
+  openLogin: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired,
   // from router
   match: PropTypes.object.isRequired,
@@ -298,13 +328,15 @@ const mapStateToProps = state => {
   const { course, user } = state;
   return {
     courseRatingSubmission: course && course.courseRatingSubmission,
-    courseComment: user && user.courseComment
+    courseComment: user && user.courseComment,
+    profile: user && user.profile
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   submitCourseRating: courseRatingForm =>
-    dispatch(submitCourseRating(courseRatingForm))
+    dispatch(submitCourseRating(courseRatingForm)),
+  fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
 });
 
 export default withRouter(

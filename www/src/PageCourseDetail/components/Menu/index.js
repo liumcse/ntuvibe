@@ -20,7 +20,7 @@ class Menu extends React.PureComponent {
         </div>
         <div className={styles.actions}>
           <div className={styles.action} onClick={() => popupTrigger(3)}>
-            Rate the Course
+            <button className={styles.rateCourse}>Rate the Course</button>
           </div>
         </div>
         {/* <div className={styles.action + " " + styles.item}>
