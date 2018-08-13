@@ -37,12 +37,10 @@ const PageHelp = () => {
       </div>
       <div className={styles.dark}>
         <div className={styles.heading_1}>{brand}</div>
-        <div className={styles.heading_2}>
-          Be smart about what you are taking.
-        </div>
+        <div className={styles.heading_2}>Take the right course.</div>
         <div className={styles.heading_3}>
-          At Vibe, you can view all courses available at NTU and see what people
-          think about them.
+          At Vibe, you can view all courses available at Nanyang Technological
+          University and see what people think about them.
         </div>
         {/* <img className={styles.pic_1} src={pic_1} width="80%" height="auto" /> */}
       </div>
@@ -103,21 +101,27 @@ const PageHelp = () => {
               Therefore, we promise that Vibe will never filter or delete any
               content made by our users.
               <br />
-              However, we will take actions if your content:
+              However, we will take actions if your content shows or involves
+              any of the following:
               <br />
               <br />
-              1. shows discrimination against age, gender, gender identity or
+              1). discrimination against age, gender, gender identity or
               expression, culture, ethnicity, language, national origin,
               political beliefs, profession, race, religion, sexual orientation,
               socioeconomic status, and technical ability.
               <br />
-              2. involves violent threats or language directed against another
-              person; sexually explicit or violent material; posting (or
-              threatening to post) other people’s personally identifying
-              information; personal insults, especially those using racist or
-              sexist terms.
+              2). violent threats or language directed against another person;
+              sexually explicit or violent material; posting (or threatening to
+              post) other people’s personally identifying information; personal
+              insults, especially those using racist or sexist terms.
               <br />
-              3. is deemed offensive or illegal.
+              3). anything offensive to certain groups or illegal.
+              <br />
+              <br />
+              Note: above content is adopted from{" "}
+              <a href="https://code.fb.com/codeofconduct/">
+                Open Source Code of Conduct - Facebook Code
+              </a>.
             </div>
           </Card>
         </div>

@@ -46,14 +46,16 @@ class RateCourse extends React.Component {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          this.setState({
-            succeed: true,
-            easy: null,
-            useful: null,
-            like: null,
-            comment: ""
-          });
-          setTimeout(() => location.reload(), 1500);
+          setTimeout(() => {
+            this.setState({
+              succeed: true,
+              easy: null,
+              useful: null,
+              like: null,
+              comment: ""
+            });
+            location.reload();
+          }, 500);
         } else {
           notificationDOM.innerHTML =
             (response && response.error_message) ||
@@ -143,17 +145,13 @@ class RateCourse extends React.Component {
       // not logged in
       this.props.openLogin();
     }
-    if (
-      prevCourseCode !== thisCourseCode ||
-      prevProps.open !== open
-    ) {
+    if (prevCourseCode !== thisCourseCode || prevProps.open !== open) {
       this.rehydrate();
     }
   }
 
   render() {
     const { easy, useful, like } = this.state;
-    const { profile } = this.props;
     return (
       <Popup
         modal
@@ -276,8 +274,9 @@ class RateCourse extends React.Component {
             <textarea
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
-              defaultValue={this.state.comment || null}
-            />
+            >
+              {this.state.comment || null}
+            </textarea>
           </div>
           <div
             id="notification"

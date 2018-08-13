@@ -102,6 +102,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    div {
+      margin: 0 2rem;
+    }
   }
 
   @media (min-width: 0) {
