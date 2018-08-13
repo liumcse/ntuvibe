@@ -10,7 +10,6 @@
     right: 0;
     z-index: 0;
     background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.jpg') no-repeat;
-    // background: rgba(0, 0, 0, 0.241) url('./assets/ss.png') no-repeat;
     background-blend-mode: overlay;
     background-size: cover;
     filter: blur(12px);
@@ -40,10 +39,19 @@
     margin-top: 15%;
   }
 
-  .button_container {
+  .tip {
     color: white;
     margin-top: 2rem;
     font-size: 0.85rem;
+  }
+
+  .tipM {
+    display: none;
+    width: 90%;
+    color: black;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    line-height: 2;
   }
 
   .badge {
@@ -53,6 +61,10 @@
     padding: 0.15rem 0.5rem;
     border-radius: 5px;
     margin-right: 0.5rem;
+  }
+
+  .sitemap {
+    visibility: hidden;
   }
 
   .footer {
@@ -91,6 +103,39 @@
     a {
       color: white;
       text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .background_image {
+      display: none;
+    }
+
+    .credit {
+      display: none;
+      margin-bottom: 5rem;
+    }
+
+    .sitemap {
+      display: none;
+    }
+
+    .footer {
+      font-size: 0.65rem;
+      color: black;
+    }
+
+    .course_search {
+      width: 90%;
+      margin-top: 2rem;
+    }
+
+    .tip {
+      display: none;
+    }
+
+    .tipM {
+      display: inline;
     }
   }
 }

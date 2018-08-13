@@ -59,3 +59,17 @@
   background: #0C63AA !important;
   color: white !important;
 }
+
+@media (max-width: 768px) {
+  .input {
+    /* height: 3rem; */
+  }
+  .suggestionsContainerOpen {
+    width: 90%;
+    min-height: 3rem;
+    max-height: 70vh;
+  }
+  .suggestion {
+    height: 3rem;
+  }
+}

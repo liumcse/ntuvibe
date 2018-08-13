@@ -82,8 +82,8 @@ class SignUp extends React.Component<Props, State> {
         <div className={styles.section}>
           {emailSent ? (
             <div>
-              ☄️ We have sent you an Email. Check your inbox and complete your
-              registration!
+              ☄️ We have sent you an Email. Check your inbox (or spam folder...
+              😢) and complete your registration!
             </div>
           ) : (
             <div className={styles.email_container}>

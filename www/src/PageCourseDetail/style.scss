@@ -8,6 +8,7 @@
     flex-direction: column; // experiement
     min-height: 100vh;
     position: relative;
+    min-width: 1024px; // TODO: delete this to enable responsive design
   }
 
   .loading_placeholder {
