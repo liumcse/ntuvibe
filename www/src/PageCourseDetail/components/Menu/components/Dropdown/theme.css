@@ -49,6 +49,8 @@
   -webkit-margin-after: 0;
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
+  padding: 0; /* for FireFox */
+  margin: 0;  /* for FireFox */
   list-style: none;
 }
 

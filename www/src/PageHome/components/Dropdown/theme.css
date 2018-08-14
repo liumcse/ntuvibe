@@ -43,6 +43,8 @@
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
   list-style: none;
+  padding: 0; /* for FireFox */
+  margin: 0;  /* for FireFox */
 }
 
 .suggestion {
