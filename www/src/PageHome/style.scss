@@ -63,6 +63,10 @@
     margin-right: 0.5rem;
   }
 
+  .emphasize {
+    @include lato-medium;
+  }
+
   .sitemap {
     visibility: hidden;
   }

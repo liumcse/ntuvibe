@@ -25,12 +25,15 @@ class PageHome extends React.PureComponent {
             <Dropdown />
           </div>
           <div className={styles.tip}>
-            <span className={styles.badge}>PRO TIP</span> Use ARROW keys to
-            navigate and press ENTER to go to that page 🚀
+            <span className={styles.badge}>PRO TIP</span> Use{" "}
+            <span className={styles.emphasize}>ARROW</span> keys to navigate and
+            press <span className={styles.emphasize}>ENTER</span> to go to that
+            page 🚀
           </div>
           <div className={styles.tipM}>
-            <span className={styles.badge}>KICKSTART</span> Enter HE9091 and see
-            what would happen 🚀
+            <span className={styles.badge}>KICKSTART</span> Enter{" "}
+            <span className={styles.emphasize}>HE9091</span> and see what would
+            happen 🚀
           </div>
           <div className={styles.footer}>
             <a className={styles.sitemap} href="/sitemap">
