@@ -33,6 +33,10 @@ class PageHome extends React.PureComponent {
             <br />We&#39;re not affiliated with Nanyang Technological
             University.
           </div>
+          <div className={styles.credit}>
+            Photo by{" "}
+            <a href="https://www.instagram.com/david_lequn_chen/">Chen Lequn</a>
+          </div>
         </div>
       </div>
     );

@@ -30,7 +30,8 @@ import {
   fetchCourseComments,
   fetchCourseSchedule,
   fetchUserCourseComment,
-  fetchExamSchedule
+  fetchExamSchedule,
+  popupTrigger
 } from "../redux/actions";
 
 import no from "./assets/no.svg";
@@ -52,6 +53,7 @@ type Props = {
   fetchProfile: () => void,
   fetchUserCourseComment: string => void,
   clearCourseInformation: () => void,
+  popupTrigger: number => void,
   courseDetail: CourseDetail,
   courseRating: CourseRating,
   courseComments: CourseComments,
@@ -354,6 +356,24 @@ class PageCourseDetail extends React.Component<Props> {
             </div>
           </div>
           <div className={styles.section_b}>
+            <div className={styles.header}>Course Comments</div>
+            {courseComments && courseComments.length > 0 ? (
+              <div className={styles.comment_list}>
+                <CommentList comments={courseComments || []} />
+              </div>
+            ) : (
+              <div className={styles.no_comment}>
+                Nobody has published their comments - so you can{" "}
+                <span
+                  className={styles.beTheFirst}
+                  onClick={() => this.props.popupTrigger(3)}
+                >
+                  be the first one!
+                </span>
+              </div>
+            )}
+          </div>
+          <div className={styles.section_c}>
             {courseSchedule &&
               Object.keys(courseSchedule).length > 0 && (
                 <div className={styles.table}>
@@ -366,19 +386,6 @@ class PageCourseDetail extends React.Component<Props> {
                   <ExamSchedule startTime={start_time} endTime={end_time} />
                 </div>
               )}
-          </div>
-          <div className={styles.section_c}>
-            <div className={styles.header}>Course Comments</div>
-            {courseComments && courseComments.length > 0 ? (
-              <div className={styles.comment_list}>
-                <CommentList comments={courseComments || []} />
-              </div>
-            ) : (
-              <div className={styles.no_comment}>
-                Nobody has published their comments - so you can be the first
-                one!
-              </div>
-            )}
           </div>
         </div>
         <Footer />
@@ -406,7 +413,8 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
   fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
   fetchUserCourseComment: courseCode =>
-    dispatch(fetchUserCourseComment(courseCode))
+    dispatch(fetchUserCourseComment(courseCode)),
+  popupTrigger: option => dispatch(popupTrigger(option))
 });
 
 export default withRouter(

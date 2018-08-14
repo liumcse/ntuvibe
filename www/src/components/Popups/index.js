@@ -14,13 +14,14 @@ class Popups extends React.Component {
       signUpOpen,
       rateCourseOpen,
       close,
-      openSignUp
+      openSignUp,
+      openLogin
     } = this.props;
     return (
       <React.Fragment>
         <Login open={loginOpen} closePopup={close} openSignUp={openSignUp} />
         <SignUp open={signUpOpen} closePopup={close} />
-        <RateCourse open={rateCourseOpen} closePopup={close} />
+        <RateCourse open={rateCourseOpen} closePopup={close} openLogin={openLogin} />
       </React.Fragment>
     );
   }
@@ -45,7 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   close: () => dispatch(popupTrigger(0)),
-  openSignUp: () => dispatch(popupTrigger(2))
+  openSignUp: () => dispatch(popupTrigger(2)),
+  openLogin: () => dispatch(popupTrigger(1))
 });
 
 export default connect(
