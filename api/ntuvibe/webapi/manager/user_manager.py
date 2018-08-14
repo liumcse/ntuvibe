@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 
 from .cache_manager import generate_activation_token
+from .system_manager import get_all_reserved_words, get_all_censored_words
 from webapi.constants import StatusCode
 
 
@@ -80,3 +81,18 @@ def prepare_profile_data(user):
 		"major": user.profile.major,
 		"avatar": user.profile.avatar,
 	}
+
+
+def check_username_contains_reserved_or_bad_words(username):
+	reserved_words = get_all_reserved_words()
+	bad_words = get_all_censored_words()
+
+	for word in reserved_words:
+		if word.value in username:
+			return True
+
+	for word in bad_words:
+		if word.value in username:
+			return True
+
+	return False

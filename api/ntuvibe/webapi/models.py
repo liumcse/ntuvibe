@@ -159,3 +159,20 @@ class ConfigTab(AutoSaveModel):
 
 	class Meta:
 		db_table = u"webapi_config_tab"
+
+
+class ReservedWordTab(AutoSaveModel):
+	id = models.BigAutoField(primary_key=True)
+	value = models.CharField(max_length=64, db_index=True)
+	create_time = models.PositiveIntegerField()
+
+	class Meta:
+		db_table = u"webapi_reserved_word_tab"
+
+class CensoredWordTab(AutoSaveModel):
+	id = models.BigAutoField(primary_key=True)
+	value = models.CharField(max_length=64, db_index=True)
+	create_time = models.PositiveIntegerField()
+
+	class Meta:
+		db_table = u"webapi_censored_word_tab"
