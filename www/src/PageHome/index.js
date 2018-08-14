@@ -36,12 +36,30 @@ class PageHome extends React.PureComponent {
             happen 🚀
           </div>
           <div className={styles.footer}>
-            <a className={styles.sitemap} href="/sitemap">
-              Sitemap
-            </a>
-            &copy; 2018 NTUVibe &#183; Stay cute
-            <br />We&#39;re not affiliated with Nanyang Technological
-            University.
+            <div className={styles.line}>
+              &copy; 2018 NTUVibe &#183; Stay cute
+            </div>
+            <div className={styles.line}>
+              We&#39;re not affiliated with Nanyang Technological University.
+            </div>
+            <div className={styles.links}>
+              <Link to="/sitemap">Sitemap</Link>
+              {/* <Link to="/about">About</Link> */}
+              <a href="https://medium.com/@NTUVibe">Blog</a>
+              <Link to="/help">Help</Link>
+              <a href="https://facebook.com/NTUVibe">Facebook</a>
+            </div>
+          </div>
+          <div className={styles.fbLike}>
+            <div
+              className="fb-like"
+              data-href="https://ntuvibe.com"
+              data-layout="button_count"
+              data-action="like"
+              data-size="large"
+              data-show-faces="true"
+              data-share="false"
+            />
           </div>
           <div className={styles.credit}>
             Photo by{" "}

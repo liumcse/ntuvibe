@@ -1,0 +1,28 @@
+@import "colors";
+
+:local {
+  .container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+
+  .content {
+    margin: 1.5rem 8rem;
+    p {
+      line-height: 1.35;
+    }
+  }
+
+  h1 {
+    color: $primary;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      margin: 1rem 2rem;
+    }
+  }
+}

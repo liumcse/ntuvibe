@@ -67,16 +67,12 @@
     @include lato-medium;
   }
 
-  .sitemap {
-    visibility: hidden;
-  }
-
   .footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
     justify-content: center;
-    height: 3rem;
+    // height: 5rem;
     position: absolute;
     padding: 1rem 0;
     bottom: 0;
@@ -85,9 +81,23 @@
     text-align: center;
     width: 100%;
     z-index: 1;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     line-height: 1.5;
     white-space: pre-line;
+    .links {
+      display: block;
+      a {
+        margin: 0 1rem;
+        color: white;
+        font-size: 0.65rem;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .fbLike {
+    // position: absolute;
+    margin-top: 2rem;
   }
 
   .credit {
@@ -120,13 +130,12 @@
       margin-bottom: 5rem;
     }
 
-    .sitemap {
-      display: none;
-    }
-
     .footer {
       font-size: 0.65rem;
       color: black;
+      .links {
+        display: none;
+      }
     }
 
     .course_search {

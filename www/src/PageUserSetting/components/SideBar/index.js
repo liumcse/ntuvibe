@@ -1,7 +1,16 @@
+// @flow
 import React from "react";
 import * as styles from "./style.scss";
 
-const Avatar = props => (
+type AvatarProps = {
+  avatar: string
+};
+
+type Props = {
+  avatar: string
+};
+
+const Avatar = (props: AvatarProps) => (
   <img
     className={styles.avatarImg}
     src={
@@ -11,11 +20,13 @@ const Avatar = props => (
   />
 );
 
-class SideBar extends React.PureComponent {
+class SideBar extends React.PureComponent<Props> {
   render() {
     return (
       <div className={styles.container}>
-        <div><Avatar avatar={null}/></div>
+        <div>
+          <Avatar avatar={this.props.avatar} />
+        </div>
         <div className={styles.item}>Profile</div>
         <div className={styles.item}>Account</div>
       </div>
