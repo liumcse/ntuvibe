@@ -10,6 +10,7 @@ import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
 import PageTransient from "./PageTransient";
+import PageUserSetting from "./PageUserSetting";
 import PageSitemap from "./PageSitemap";
 import store from "./redux/store";
 
@@ -35,6 +36,11 @@ class App extends React.PureComponent {
                 exact
                 path={ROUTES.ROUTE_CREATE_ACCOUNT}
                 component={PageTransient}
+              />
+              <Route
+                exact
+                path={ROUTES.ROUTE_USER_SETTING}
+                component={PageUserSetting}
               />
               <Route
                 exact

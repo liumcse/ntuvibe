@@ -1,0 +1,31 @@
+@import 'functions';
+
+:local {
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 7rem;
+	}
+
+	.item {
+		padding: 8px 10px;
+		text-align: center;
+		border-left: 3px solid black;
+		margin-bottom: 0.5rem;
+		cursor: pointer;
+	}
+
+	.item:hover {
+		background-color: aliceblue;
+	}
+
+	.avatarImg {
+    width: 7rem;
+    height: auto;
+    border-radius: 7rem;
+    cursor: pointer;
+		@include medium-shadow;
+		margin-bottom: 1rem;
+  }
+}
