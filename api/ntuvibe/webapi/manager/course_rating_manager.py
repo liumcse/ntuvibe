@@ -68,7 +68,7 @@ def prepare_comments_data(rating_records):
 			comment_dict = {
 				"userid": user.pk,
 				"username": user.username,
-				"major": "",
+				"major": user.profile.major,
 				"easy": rating.easy,
 				"useful": rating.useful,
 				"like": rating.like,
