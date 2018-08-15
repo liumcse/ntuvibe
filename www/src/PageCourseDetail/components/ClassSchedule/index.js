@@ -29,11 +29,41 @@ const Weekday = (props: WeekdayProps) => {
 
 const parseRemark = (remark: number[]) => {
   if (remark.includes(-1)) return "Online Course";
-  const week = remark.join(", ");
-  if (week === "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13") return null;
-  else if (week === "2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13")
-    return "Week 2 - 13";
-  else return "Week ".concat(week);
+  let weeks = [];
+  let start = remark[0];
+  for (let i = 1; i < remark.length; i++) {
+    if (i === remark.length - 1) {
+      // reach the end
+      if (start === remark[i - 1]) {
+        weeks.push(remark[i - 1]);
+        weeks.push(remark[i]);
+      } else {
+        weeks.push(
+          start
+            .toString()
+            .concat(" - ")
+            .concat(remark[i])
+        );
+      }
+    } else if (remark[i] !== remark[i - 1] + 1) {
+      // detect a gap, insert dash and reassign start
+      weeks.push(
+        start === remark[i - 1]
+          ? start
+          : start
+              .toString()
+              .concat(" - ")
+              .concat(remark[i - 1])
+      );
+      start = remark[i];
+    } else {
+      // do nothing, keep the start
+    }
+  }
+
+  const weekOutput = weeks.join(", ");
+  if (!weekOutput || weekOutput === "1 - 13") return null;
+  else return "Week ".concat(weekOutput);
 };
 
 const compareWeeks = (weekA, weekB) => {
