@@ -82,3 +82,19 @@ def prepare_comments_data(rating_records):
 	return comment_list
 
 
+def prepare_user_course_comment_data(user, rating_records):
+	comment_list = []  # currently, should be of length 1 at most
+	for rating in rating_records:
+		comment_dict = {
+			"userid": user.pk,
+			"username": user.username,
+			"major": user.profile.major,
+			"avatar": user.profile.avatar,
+			"easy": rating.easy,
+			"useful": rating.useful,
+			"like": rating.like,
+			"comment_content": rating.comment,
+			"comment_date": rating.update_time,
+		}
+		comment_list.append(comment_dict)
+	return comment_list
