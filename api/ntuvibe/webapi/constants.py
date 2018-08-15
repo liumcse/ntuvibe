@@ -3,7 +3,7 @@ VALID_EMAIL_DOMAIN = [
 	'ntu.edu.sg'
 ]
 
-PROFANITY_REPLACEMENT = "!@#$%"
+PROFANITY_REPLACEMENT = "***"
 
 
 class StatusCode:  # (status_code:int, msg:str)

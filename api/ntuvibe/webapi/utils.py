@@ -1,5 +1,6 @@
 import time
 import logging
+from datetime import datetime
 from django.http import JsonResponse
 
 from django.db.models.fields import BigIntegerField
@@ -61,6 +62,10 @@ log.data = logging.getLogger('data').info
 
 def get_timestamp():
 	return int(time.time())
+
+
+def get_formatted_datetime_from_timestamp(timestamp=get_timestamp()):
+	return datetime.fromtimestamp(timestamp).strftime("%d %b, %Y / %H:%M:%S")
 
 
 def api_response(login_required=False):

@@ -83,16 +83,16 @@ def prepare_profile_data(user):
 	}
 
 
-def check_username_contains_reserved_or_bad_words(username):
+def check_username_contains_reserved_or_censored_words(username):
 	reserved_words = get_all_reserved_words()
-	bad_words = get_all_censored_words()
+	censored_words = get_all_censored_words()
 
 	for word in reserved_words:
-		if word.value in username:
+		if word.value.lower() in username.lower():
 			return True
 
-	for word in bad_words:
-		if word.value in username:
+	for word in censored_words:
+		if word.value.lower() in username.lower():
 			return True
 
 	return False
