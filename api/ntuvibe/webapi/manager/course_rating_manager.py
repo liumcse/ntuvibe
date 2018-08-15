@@ -1,5 +1,5 @@
 from webapi.models import CourseRatingTab
-from webapi.manager import user_manager
+from webapi.manager import user_manager, system_manager
 
 
 def get_rating_record_by_id(rating_id):
@@ -26,6 +26,8 @@ def get_rating_records_by_course_id_user_id(course_id, user_id):
 def add_or_update_rating_record(user_id, course_id, easy, useful, like, comment=""):
 	if comment is None:
 		comment = ""
+	else:
+		comment = system_manager.big_brother_watching(comment)
 	rating = get_rating_records_by_course_id_user_id(course_id, user_id)
 	if rating:
 		rating.update(easy=easy, useful=useful, like=like, comment=comment)

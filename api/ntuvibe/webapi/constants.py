@@ -3,6 +3,8 @@ VALID_EMAIL_DOMAIN = [
 	'ntu.edu.sg'
 ]
 
+PROFANITY_REPLACEMENT = "***"
+
 
 class StatusCode:  # (status_code:int, msg:str)
 	SUCCESS = (200, "Success!")
@@ -10,6 +12,7 @@ class StatusCode:  # (status_code:int, msg:str)
 	DUPLICATE_EMAIL = (451, "This Email has been registered.")
 	DUPLICATE_USERNAME = (452, "This username has been registered.")
 	DUPLICATE_RATING = (453, "You cannot rate twice on the same course.")
+	BAD_USERNAME = (454, "You cannot use reserved or bad words in your username")
 
 	NOT_LOGGED_IN = (460, "You have not logged in.")
 	NOT_ACTIVATED = (461, "The account has not been activated.")

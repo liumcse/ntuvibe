@@ -54,6 +54,9 @@ def user_activate(request):
 	if user_with_same_username:
 		raise Exception(StatusCode.DUPLICATE_USERNAME)
 
+	if user_manager.check_username_contains_reserved_or_censored_words(username):
+		raise Exception(StatusCode.BAD_USERNAME)
+
 	if not cache_manager.validate_email_activation_token(email, token):
 		raise Exception(StatusCode.INVALID_ACTIVATION_TOKEN)
 
