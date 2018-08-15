@@ -14,6 +14,7 @@ class CommentList extends React.Component {
         const {
           userid,
           username,
+          avatar,
           major,
           easy,
           useful,
@@ -30,6 +31,7 @@ class CommentList extends React.Component {
             easy={easy}
             useful={useful}
             like={like}
+            avatar={avatar}
             comment_date={comment_date}
             comment_content={comment_content}
           />

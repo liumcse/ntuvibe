@@ -275,7 +275,9 @@ export function userUpdateProfile(form: FormData) {
       type: actionTypes.USER_UPDATE_PROFILE_REQUESTED
     });
     await axios
-      .post(`${BASE_URL}/users/update_user_profile`, form)
+      .post(`${BASE_URL}/users/update_user_profile`, form, {
+        withCredentials: true
+      })
       .then(response => {
         return dispatch({
           type: actionTypes.USER_UPDATE_PROFILE_REQUESTED,

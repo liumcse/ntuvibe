@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import NavBar from "src/components/NavBar";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -55,6 +56,10 @@ class PageUserSetting extends React.Component<Props, States> {
     }
     return (
       <div className={styles.container}>
+        <SiteMetaHelmet
+          url="https://ntuvibe.com/users/setting"
+          title="User Setting - NTUVibe"
+        />
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.sidebar}>

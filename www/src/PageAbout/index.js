@@ -19,7 +19,7 @@ const PageAbout = () => (
       <p>
         Released in August 2018, it was started by a few students from School of
         Computer Science and Engineering at Nanyang Technological University.
-        NTUVibe is still under rapid development to prove you with better
+        NTUVibe is still under rapid development to provide you with better
         service.
       </p>
       <h1>Disclaimer</h1>

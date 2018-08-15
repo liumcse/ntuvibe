@@ -1,5 +1,4 @@
 import React from "react";
-import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -127,7 +126,7 @@ class NavBar extends React.Component {
             </div>
           ) : (
             <div className={styles.item}>
-              <Avatar url={profile.avatar} logout={this.handleLogout} />
+              <Avatar avatar={profile.avatar} />
             </div>
           )}
         </div>
@@ -156,7 +155,7 @@ class NavBar extends React.Component {
               </div>
             ) : (
               <div className={styles.rightButton}>
-                <Avatar url={profile.avatar} logout={this.handleLogout} />
+                <Avatar avatar={profile.avatar} />
               </div>
             )}
           </div>

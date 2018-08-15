@@ -74,7 +74,7 @@ class SettingProfile extends React.Component<Props, States> {
     form.append("username", username);
     form.append("major", major);
     form.append("avatar", avatar);
-    this.props.userUpdateProfile(form).then(location.reload);
+    this.props.userUpdateProfile(form).then(() => location.reload());
   };
 
   render() {

@@ -56,4 +56,10 @@
       box-shadow: 0px 0px 35px crimson;
     }
   }
+
+  @media (max-width: 768px) {
+    .displayNameInput, .majorInput {
+      width: auto;
+    }
+  }
 }
