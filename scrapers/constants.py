@@ -12,6 +12,8 @@ class CourseContentDetailType:
     na_to_as_core = "Not available as Core to Programme: "
     na_to_as_pe = "Not available as PE to Programme: "
     na_to_as_ue = "Not available as UE to Programme: "
+    na_to_as_ue_nationality = "Not available as UE to Nationality: "
+    na_to_as_ue_race = "Not available as UE to Race: "
     remark = "Remark:"
 
     NAME_TO_VALUE = dict((k, v) for k, v in locals().items())

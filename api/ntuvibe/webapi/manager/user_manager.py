@@ -49,6 +49,7 @@ def update_user_profile(user, **kwargs):
 	for key, val in kwargs.items():
 		if val is not None:
 			setattr(user.profile, key, val)
+	user.profile.save()
 
 
 # ========== logic related ==========
@@ -58,7 +59,8 @@ def _send_activate_account_email(email, token):
 	to = [email]
 	from_email = 'ntuvibe@gmail.com'
 
-	message = render_to_string('users/activate_account.html', {"email": email, 'token': token})
+	formatted_email = email.replace("@", "&").replace(".", "!")
+	message = render_to_string('users/activate_account.html', {"email": formatted_email, 'token': token})
 	send_mail(subject, message, from_email, to, html_message=message)
 
 
