@@ -135,9 +135,15 @@ class NavBar extends React.Component {
               <HelpButton />
             </Link>
           </div>
-          <div className={styles.item} onClick={() => popupTrigger(1)}>
-            <LoginButtonM />
-          </div>
+          {!profile ? (
+            <div className={styles.item} onClick={() => popupTrigger(1)}>
+              <LoginButtonM />
+            </div>
+          ) : (
+            <div className={styles.item}>
+              <Avatar url={profile.avatar} logout={this.handleLogout} />
+            </div>
+          )}
         </div>
         <div className={styles.navbar_elements}>
           <div className={styles.navbar_elements_left}>

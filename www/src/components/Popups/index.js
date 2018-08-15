@@ -21,7 +21,11 @@ class Popups extends React.Component {
       <React.Fragment>
         <Login open={loginOpen} closePopup={close} openSignUp={openSignUp} />
         <SignUp open={signUpOpen} closePopup={close} />
-        <RateCourse open={rateCourseOpen} closePopup={close} openLogin={openLogin} />
+        <RateCourse
+          open={rateCourseOpen}
+          closePopup={close}
+          openLogin={openLogin}
+        />
       </React.Fragment>
     );
   }

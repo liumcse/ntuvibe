@@ -1,10 +1,14 @@
 import React from "react";
 import NavBar from "src/components/NavBar";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
+
+import logo from "src/brand/logo-color.png";
 
 import * as styles from "./style.scss";
 
 const PageAbout = () => (
   <div className={styles.container}>
+    <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
     <NavBar />
     <div className={styles.content}>
       <h1>About</h1>
@@ -13,28 +17,43 @@ const PageAbout = () => (
         Technological University (NTU) to view course information and reviews.
       </p>
       <p>
-        Released in August 2018, it was started by a few mystical students from
-        School of Computer Science and Engineering at Nanyang Technological
-        University.
+        Released in August 2018, it was started by a few students from School of
+        Computer Science and Engineering at Nanyang Technological University.
+        NTUVibe is still under rapid development to prove you with better
+        service.
       </p>
       <h1>Disclaimer</h1>
       <p>
         All data (including but not limited to course information, class
-        schedule, exam schedule) are obtained from information accessible to the
-        general public, which can be searched via Google, or from the website of
-        Nanyang Technological University without requiring authorization.
+        schedule and exam schedule) are obtained directly from information open
+        to the general public via Google search or NTU website. No information
+        is privileged which requires authorization.
       </p>
       <p>
-        NTUVibe collects those open data and presents them in a way we believe
-        that provides the best user experience. Although NTUVibe may present the
-        data in a different way, data will never be altered.
+        NTUVibe may present the data in a different form to improve the user
+        experience. However, NTUVibe will never alter the original data.
       </p>
       <h1>Privacy policy</h1>
+      <p>
+        This page informs you of our policies regarding the collection, use, and
+        disclosure of personal data when you use our Service and the choices you
+        have associated with that data. This Privacy Policy for NTUVibe is
+        powered by <a href="FreePrivacyPolicy.com">Free Privacy Policy</a>.
+      </p>
+      <p>
+        We use your data to provide and improve the Service. By using the
+        Service, you agree to the collection and use of information in
+        accordance with this policy. Unless otherwise defined in this Privacy
+        Policy, terms used in this Privacy Policy have the same meanings as in
+        our Terms and Conditions, accessible from{" "}
+        <a href="https://ntuvibe.com">https://ntuvibe.com</a>.
+      </p>
       <h3>What information do we collect?</h3>
       <p>
         We collect information from you when you use our site. Upon entering our
-        site, your visit will be recorded for statistical purpose. When
-        registering on our side, you may be asked to enter your NTU Email.
+        site, your visit will be recorded solely for the purpose of statistics.
+        When registering on our side, you may be asked to enter your NTU Email
+        and your major of study.
       </p>
       <h3>What do we use your information for?</h3>
       <p>
@@ -66,10 +85,35 @@ const PageAbout = () => (
         believe release is appropriate to comply with the law, enforce our site
         policies, or protect ours or others rights, property, or safety.
       </p>
-      <h3>Your consent</h3>
+      <h3>Your Consent</h3>
       <p>By using our site, you consent to this privacy policy.</p>
-
-      <h5>&copy; 2018 NTUVibe &middot; Stay cute</h5>
+      <h3>Changes to this privacy policy</h3>
+      <p>
+        We may update our Privacy Policy from time to time. We will notify you
+        of any changes by posting the new Privacy Policy on this page. We will
+        let you know via email and/or a prominent notice on our Service, prior
+        to the change becoming effective and update the modified date at the
+        bottom of this Privacy Policy.
+      </p>
+      <p>
+        You are advised to review this Privacy Policy periodically for any
+        changes. Changes to this Privacy Policy are effective when they are
+        posted on this page. This policy was last modified on August 15, 2018.
+      </p>
+      <h3>Contact Us</h3>
+      <p>
+        If you have any questions about this Privacy Policy, please contact us:
+      </p>
+      <li>
+        By email: <a href="mailto:info@ntuvibe.com">info@ntuvibe.com</a>
+      </li>
+      <li>
+        Through Facebook Page:{" "}
+        <a href="https://facebook.com/ntuvibe">NTUVibe</a>
+      </li>
+      <div className={styles.footer}>
+        <img src={logo} alt="logo" />&copy; 2018 NTUVibe &middot; Stay cute{" "}
+      </div>
     </div>
   </div>
 );

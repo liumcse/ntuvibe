@@ -98,6 +98,18 @@
   .fbLike {
     // position: absolute;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .fbPage {
+      margin-left: 2rem;
+      color: white;
+      font-size: 0.85rem;
+      a {
+        color: white;
+        border-bottom: 1px dashed white;
+      }
+    }
   }
 
   .credit {
@@ -130,6 +142,19 @@
       margin-bottom: 5rem;
     }
 
+    .fbLike {
+      flex-direction: column;
+      .fbPage {
+        color: black;
+        margin-left: 0;
+        margin-top: 2rem;
+        a {
+          color: black;
+          border-bottom: 1px dashed black;
+        }
+      }
+    }
+
     .footer {
       font-size: 0.65rem;
       color: black;
@@ -149,6 +174,7 @@
 
     .tipM {
       display: inline;
+      text-align: center;
     }
   }
 }

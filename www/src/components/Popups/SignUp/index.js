@@ -27,12 +27,29 @@ class SignUp extends React.Component<Props, State> {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.open) {
+      document.addEventListener("keydown", this.keydownEvent);
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keydownEvent);
+  }
+
+  keydownEvent = event => {
+    if (event.key === "Enter") {
+      this.requestVerification();
+    }
+  };
+
   close = () => {
     // reset state before closing up
     this.setState({
       verificationRequested: false,
       emailSent: false
     });
+    document.removeEventListener("keydown", this.keydownEvent);
     this.props.closePopup();
   };
 

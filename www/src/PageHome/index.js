@@ -44,7 +44,7 @@ class PageHome extends React.PureComponent {
             </div>
             <div className={styles.links}>
               <Link to="/sitemap">Sitemap</Link>
-              {/* <Link to="/about">About</Link> */}
+              <Link to="/about">About</Link>
               <a href="https://medium.com/@NTUVibe">Blog</a>
               <Link to="/help">Help</Link>
               <a href="https://facebook.com/NTUVibe">Facebook</a>
@@ -57,9 +57,13 @@ class PageHome extends React.PureComponent {
               data-layout="button_count"
               data-action="like"
               data-size="large"
-              data-show-faces="true"
+              data-show-faces="false"
               data-share="false"
             />
+            <div className={styles.fbPage}>
+              Take a look at our{" "}
+              <a href="https://facebook.com/NTUVibe">Facebook Page</a>!
+            </div>
           </div>
           <div className={styles.credit}>
             Photo by{" "}
