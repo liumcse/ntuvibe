@@ -27,12 +27,29 @@ class SignUp extends React.Component<Props, State> {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.open) {
+      document.addEventListener("keydown", this.keydownEvent);
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keydownEvent);
+  }
+
+  keydownEvent = event => {
+    if (event.key === "Enter") {
+      this.requestVerification();
+    }
+  };
+
   close = () => {
     // reset state before closing up
     this.setState({
       verificationRequested: false,
       emailSent: false
     });
+    document.removeEventListener("keydown", this.keydownEvent);
     this.props.closePopup();
   };
 
@@ -82,8 +99,8 @@ class SignUp extends React.Component<Props, State> {
         <div className={styles.section}>
           {emailSent ? (
             <div>
-              ☄️ We have sent you an Email. Check your inbox and complete your
-              registration!
+              ☄️ We have sent you an Email. Check your inbox (or spam folder...
+              😢) and complete your registration!
             </div>
           ) : (
             <div className={styles.email_container}>

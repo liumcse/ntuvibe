@@ -20,7 +20,9 @@ ${urls.join("\n")}
       if (error) {
         console.log("Error occured when saving XML");
       } else {
-        console.log("Sitemap successfully generated");
+        console.log(
+          "Sitemap successfully generated! Next step: build and deploy. No copy & paste needed."
+        );
       }
     });
   })

@@ -269,6 +269,30 @@ export function userSignUp(authForm: FormData) {
   };
 }
 
+export function userUpdateProfile(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_UPDATE_PROFILE_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/update_user_profile`, form, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_UPDATE_PROFILE_REQUESTED,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_UPDATE_PROFILE_REQUESTED,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function fetchProfile() {
   return async function(dispatch: any) {
     dispatch({

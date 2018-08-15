@@ -10,7 +10,9 @@ import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
 import PageTransient from "./PageTransient";
+import PageUserSetting from "./PageUserSetting";
 import PageSitemap from "./PageSitemap";
+import PageAbout from "./PageAbout";
 import store from "./redux/store";
 
 import "react-select/dist/react-select.css";
@@ -38,8 +40,18 @@ class App extends React.PureComponent {
               />
               <Route
                 exact
+                path={ROUTES.ROUTE_USER_SETTING}
+                component={PageUserSetting}
+              />
+              <Route
+                exact
                 path={ROUTES.ROUTE_SITEMAP}
                 component={PageSitemap}
+              />
+              <Route
+                exact
+                path={ROUTES.ROUTE_ABOUT}
+                component={PageAbout}
               />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />

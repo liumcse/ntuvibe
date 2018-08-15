@@ -1,0 +1,44 @@
+@import 'functions';
+@import 'colors';
+@import 'typography';
+
+:local {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .innerContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0;
+    justify-content: center;
+  }
+
+  .sidebar {
+    // flex: 1;
+  }
+
+  .settingContainer {
+    // flex: 3;
+    margin-left: 3rem;
+    margin-top: 1.5rem;
+  }
+
+  .header {
+    @include raleway-medium;
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+
+    .settingContainer {
+      margin: 1rem;
+    }
+  }
+}

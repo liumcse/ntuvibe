@@ -7,6 +7,7 @@ export function search_course_by_code_or_title(
   courseList: CourseList,
   input: string
 ): CourseList {
+  if (input.length < 2) return []; // require two or more letters
   const result = courseList.filter((snippet: CourseListSnippet) => {
     return (
       // TODO: here's a performance issue

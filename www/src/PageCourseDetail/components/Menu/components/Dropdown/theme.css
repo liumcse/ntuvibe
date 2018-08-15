@@ -5,7 +5,7 @@
  .input {
   width: 100%;
   height: 2.5rem;
-  padding: 12px 2.5rem;
+  padding: 0 2.5rem;
   padding-right: 0;
   display: inline-block;
   border: none;
@@ -49,6 +49,8 @@
   -webkit-margin-after: 0;
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
+  padding: 0; /* for FireFox */
+  margin: 0;  /* for FireFox */
   list-style: none;
 }
 

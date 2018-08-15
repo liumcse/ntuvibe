@@ -10,7 +10,6 @@
     right: 0;
     z-index: 0;
     background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.jpg') no-repeat;
-    // background: rgba(0, 0, 0, 0.241) url('./assets/ss.png') no-repeat;
     background-blend-mode: overlay;
     background-size: cover;
     filter: blur(12px);
@@ -40,10 +39,19 @@
     margin-top: 15%;
   }
 
-  .button_container {
+  .tip {
     color: white;
     margin-top: 2rem;
     font-size: 0.85rem;
+  }
+
+  .tipM {
+    display: none;
+    width: 90%;
+    color: black;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    line-height: 2;
   }
 
   .badge {
@@ -55,12 +63,16 @@
     margin-right: 0.5rem;
   }
 
+  .emphasize {
+    @include lato-medium;
+  }
+
   .footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
     justify-content: center;
-    height: 3rem;
+    // height: 5rem;
     position: absolute;
     padding: 1rem 0;
     bottom: 0;
@@ -69,9 +81,35 @@
     text-align: center;
     width: 100%;
     z-index: 1;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     line-height: 1.5;
     white-space: pre-line;
+    .links {
+      display: block;
+      a {
+        margin: 0 1rem;
+        color: white;
+        font-size: 0.65rem;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .fbLike {
+    // position: absolute;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .fbPage {
+      margin-left: 2rem;
+      color: white;
+      font-size: 0.85rem;
+      a {
+        color: white;
+        border-bottom: 1px dashed white;
+      }
+    }
   }
 
   .credit {
@@ -91,6 +129,52 @@
     a {
       color: white;
       text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .background_image {
+      display: none;
+    }
+
+    .credit {
+      display: none;
+      margin-bottom: 5rem;
+    }
+
+    .fbLike {
+      flex-direction: column;
+      .fbPage {
+        color: black;
+        margin-left: 0;
+        margin-top: 2rem;
+        a {
+          color: black;
+          border-bottom: 1px dashed black;
+        }
+      }
+    }
+
+    .footer {
+      font-size: 0.65rem;
+      color: black;
+      .links {
+        display: none;
+      }
+    }
+
+    .course_search {
+      width: 90%;
+      margin-top: 2rem;
+    }
+
+    .tip {
+      display: none;
+    }
+
+    .tipM {
+      display: inline;
+      text-align: center;
     }
   }
 }

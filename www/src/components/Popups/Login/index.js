@@ -19,6 +19,22 @@ class Login extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.props.open) {
+      document.addEventListener("keydown", this.keydownEvent);
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keydownEvent);
+  }
+
+  keydownEvent = event => {
+    if (event.key === "Enter") {
+      this.handleSubmit();
+    }
+  };
+
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };
@@ -63,6 +79,11 @@ class Login extends React.Component {
       }
     });
   };
+
+  close = () => {
+    document.removeEventListener("keydown", this.keydownEvent);
+    this.props.closePopup();
+  }
 
   render() {
     return (
@@ -109,7 +130,7 @@ class Login extends React.Component {
           >
             {this.state.verificationRequested ? "Verifying..." : "Login"}
           </button>
-          <button onClick={this.props.closePopup}>Close</button>
+          <button onClick={this.close}>Close</button>
         </div>
       </Popup>
     );

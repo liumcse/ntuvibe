@@ -71,6 +71,7 @@ CommentCard.propTypes = {
   useful: PropTypes.number.isRequired,
   like: PropTypes.number.isRequired,
   comment_date: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
   comment_content: PropTypes.string
 };
 

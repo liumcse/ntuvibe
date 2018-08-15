@@ -21,17 +21,46 @@ class PageHome extends React.PureComponent {
           <div className={styles.course_search}>
             <Dropdown />
           </div>
-          <div className={styles.button_container}>
-            <span className={styles.badge}>PRO TIP</span> Use ARROW keys to
-            navigate and press ENTER to go to that page 🚀
+          <div className={styles.tip}>
+            <span className={styles.badge}>PRO TIP</span> Use{" "}
+            <span className={styles.emphasize}>ARROW</span> keys to navigate and
+            press <span className={styles.emphasize}>ENTER</span> to go to that
+            page 🚀
+          </div>
+          <div className={styles.tipM}>
+            <span className={styles.badge}>KICKSTART</span> Enter{" "}
+            <span className={styles.emphasize}>HE9091</span> and see what would
+            happen 🚀
           </div>
           <div className={styles.footer}>
-            <a style={{ visibility: "hidden" }} href="/sitemap">
-              Sitemap
-            </a>
-            &copy; 2018 NTUVibe &#183; Stay cute
-            <br />We&#39;re not affiliated with Nanyang Technological
-            University.
+            <div className={styles.line}>
+              &copy; 2018 NTUVibe &#183; Stay cute
+            </div>
+            <div className={styles.line}>
+              We&#39;re not affiliated with Nanyang Technological University.
+            </div>
+            <div className={styles.links}>
+              <Link to="/sitemap">Sitemap</Link>
+              <Link to="/about">About</Link>
+              <a href="https://medium.com/@ntuvibe">Blog</a>
+              <Link to="/help">Help</Link>
+              <a href="https://facebook.com/ntuvibe">Facebook</a>
+            </div>
+          </div>
+          <div className={styles.fbLike}>
+            <div
+              className="fb-like"
+              data-href="https://ntuvibe.com"
+              data-layout="button_count"
+              data-action="like"
+              data-size="large"
+              data-show-faces="false"
+              data-share="false"
+            />
+            <div className={styles.fbPage}>
+              Take a look at our{" "}
+              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
+            </div>
           </div>
           <div className={styles.credit}>
             Photo by{" "}

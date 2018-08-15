@@ -1,0 +1,41 @@
+@import 'functions';
+
+:local {
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 7rem;
+	}
+
+	.item {
+		padding: 8px 10px;
+		text-align: center;
+		margin-bottom: 0.5rem;
+    cursor: pointer;
+    background-color: #f5f5f5;
+  }
+  
+  .item:hover {
+    border-left: 3px solid darkcyan;
+    padding-left: 7px;
+  }
+
+	.warn:hover {
+    border-left: 3px solid crimson;
+    padding-left: 7px;    
+	}
+
+	.item:hover {
+		background-color: aliceblue;
+	}
+
+	.avatarImg {
+    width: 7rem;
+    height: auto;
+    border-radius: 7rem;
+    cursor: pointer;
+		@include medium-shadow;
+		margin-bottom: 1rem;
+  }
+}

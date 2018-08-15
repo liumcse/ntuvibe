@@ -16,7 +16,7 @@ def user_signup(request):
 	email_pattern = re.compile(".+@.+")
 	if not email_pattern.match(email):
 		raise Exception(StatusCode.INVALID_NTU_EMAIL)
-	if email.split('@')[-1] not in VALID_EMAIL_DOMAIN:
+	if email.split("@")[-1] not in VALID_EMAIL_DOMAIN:
 		raise Exception(StatusCode.INVALID_NTU_EMAIL)
 
 	user_manager.register_email(email)
@@ -25,8 +25,8 @@ def user_signup(request):
 @api_response()
 def check_activation_link(request):
 	params = request.GET
-	email = params.get('email', None)
-	token = params.get('token', None)
+	email = params.get("email", None)
+	token = params.get("token", None)
 	if not all([email, token]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
@@ -36,12 +36,12 @@ def check_activation_link(request):
 
 @api_response()
 def user_activate(request):
-	param = request.POST
-	email = param.get('email', None)
-	token = param.get('token', None)
-	username = param.get('username', None)
-	password = param.get('password', None)
-	major = param.get('major', None)
+	params = request.POST
+	email = params.get("email", None)
+	token = params.get("token", None)
+	username = params.get("username", None)
+	password = params.get("password", None)
+	major = params.get("major", None)
 
 	if not all([email, token, username, password]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
@@ -69,9 +69,9 @@ def user_activate(request):
 
 @api_response()
 def user_login(request):
-	param = request.POST
-	email = param.get('email', None)
-	password = param.get('password', None)
+	params = request.POST
+	email = params.get("email", None)
+	password = params.get("password", None)
 	if not all([email, password]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 
@@ -96,3 +96,21 @@ def user_logout(request):
 @api_response(login_required=True)
 def get_user_profile(request):
 	return user_manager.prepare_profile_data(request.user)
+
+
+@api_response(login_required=True)
+def update_user_profile(request):
+	user = request.user
+	params = request.POST
+	username = params.get("username", None)
+	major = params.get("major", None)
+	avatar = params.get("avatar", None)
+
+	user_with_same_username = user_manager.get_user_by_username(username)
+	if user_with_same_username and user_with_same_username.id != user.id:
+		raise Exception(StatusCode.DUPLICATE_USERNAME)
+	if username:
+		user.username = username
+		user.save()
+
+	user_manager.update_user_profile(request.user, major=major, avatar=avatar)
