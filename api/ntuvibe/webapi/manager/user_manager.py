@@ -49,6 +49,7 @@ def update_user_profile(user, **kwargs):
 	for key, val in kwargs.items():
 		if val is not None:
 			setattr(user.profile, key, val)
+	user.profile.save()
 
 
 # ========== logic related ==========
