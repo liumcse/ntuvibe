@@ -90,9 +90,7 @@ def check_username_contains_reserved_or_censored_words(username):
 	for word in reserved_words:
 		if word.value.lower() in username.lower():
 			return True
-
 	for word in censored_words:
 		if word.value.lower() in username.lower():
 			return True
-
 	return False
