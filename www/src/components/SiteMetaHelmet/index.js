@@ -10,13 +10,15 @@ const SiteMetaHelmet = props => (
     <meta property="og:description" content={props.description} />
     <link rel="canonical" href={props.url} />
     <title>{props.title}</title>
+    {props.children}
   </Helmet>
 );
 
 SiteMetaHelmet.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  children: PropTypes.object
 };
 
 export default SiteMetaHelmet;

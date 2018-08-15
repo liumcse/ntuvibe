@@ -291,9 +291,7 @@ class PageCourseDetail extends React.Component<Props> {
             <Heading
               count={count}
               code={courseCode}
-              rating={
-                ((like || like === 0) && like.toString().concat(" %")) || "- %"
-              }
+              rating={(count && like.toString().concat(" %")) || "- %"}
               title={title || ""}
             />
             <div className={styles.row_box}>

@@ -8,6 +8,7 @@
     flex-direction: column; // experiement
     min-height: 100vh;
     position: relative;
+    min-width: 1024px; // TODO: delete this to enable responsive design
   }
 
   .loading_placeholder {
@@ -148,6 +149,7 @@
       @include open-sans-medium;
       color: $complement;
       margin-right: 2rem;
+      width: 8rem;
     }
     .requirement_content {
       white-space: pre-line;

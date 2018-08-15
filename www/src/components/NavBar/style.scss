@@ -15,14 +15,18 @@
     // box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
   }
 
-  .userMenu {
-    display: flex;
-    flex-direction: column;
-    div {
-      margin: 1rem 0;
-      cursor: pointer;
-    }
+  .navbar_mobile {
+    display: none;
   }
+
+  // .userMenu {
+  //   display: flex;
+  //   flex-direction: column;
+  //   div {
+  //     margin: 1rem 0;
+  //     cursor: pointer;
+  //   }
+  // }
 
   .brand {
     @include american-typewriter;
@@ -97,19 +101,34 @@
     @include medium-shadow;
   }
 
-  // @media (min-width: 0) {
-  //   .navbar_elements_left {
-  //     display: none;
-  //   }
-  // }
+  @media (max-width: 768px) {
+    .navbar_container {
+      height: 4rem;
+      align-items: center;
+    }
 
-  // @media (min-width: 360px) {
-  //   // empty rule
-  // }
+    .navbar_elements {
+      display: none;
+    }
 
-  // @media (min-width: 768px) {
-  //   .navbar_elements_left {
-  //     display: flex;
-  //   }
-  // }
+    .navbar_mobile {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      .item {
+        display: flex;
+        align-items: center;
+        a {
+          padding: 0;
+          margin: 0;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
+    .avatarImg {
+      margin-bottom: 0;
+    }
+  }
 }
