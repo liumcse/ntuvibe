@@ -8,7 +8,12 @@ import * as styles from "./style.scss";
 
 const PageAbout = () => (
   <div className={styles.container}>
-    <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
+    <SiteMetaHelmet
+      url="https://ntuvibe.com/about"
+      title="About - NTUVibe"
+      description="NTUVibe is a knowledge sharing platform for students at Nanyang
+        Technological University (NTU) to view course information and reviews."
+    />
     <NavBar />
     <div className={styles.content}>
       <h1>About</h1>
@@ -31,7 +36,7 @@ const PageAbout = () => (
       </p>
       <p>
         NTUVibe may present the data in a different form to improve the user
-        experience. However, NTUVibe will never alter the original data.
+        experience. However, NTUVibe never alters the original data.
       </p>
       <h1>Privacy policy</h1>
       <p>
@@ -108,8 +113,7 @@ const PageAbout = () => (
         By email: <a href="mailto:info@ntuvibe.com">info@ntuvibe.com</a>
       </li>
       <li>
-        Through Facebook Page:{" "}
-        <a href="https://facebook.com/ntuvibe">NTUVibe</a>
+        At Facebook Page: <a href="https://facebook.com/ntuvibe">NTUVibe</a>
       </li>
       <div className={styles.footer}>
         <img src={logo} alt="logo" />&copy; 2018 NTUVibe &middot; Stay cute{" "}

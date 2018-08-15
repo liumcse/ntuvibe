@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 import NavBar from "src/components/NavBar";
 import Footer from "./components/Footer";
 import RatingBar from "./components/RatingBar";
-import Timetable from "./components/Timetable";
+import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
@@ -375,7 +375,7 @@ class PageCourseDetail extends React.Component<Props> {
             {courseSchedule &&
               Object.keys(courseSchedule).length > 0 && (
                 <div className={styles.table}>
-                  <Timetable data={courseSchedule} />
+                  <ClassSchedule data={courseSchedule} />
                 </div>
               )}
             {start_time &&

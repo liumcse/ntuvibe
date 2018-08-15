@@ -63,6 +63,15 @@ class SettingProfile extends React.Component<Props, States> {
       case "avatar_3":
         this.setState({ avatar: src, selectedAvatar: 3 });
         return;
+      case "avatar_4":
+        this.setState({ avatar: src, selectedAvatar: 4 });
+        return;
+      case "avatar_5":
+        this.setState({ avatar: src, selectedAvatar: 5 });
+        return;
+      case "avatar_6":
+        this.setState({ avatar: src, selectedAvatar: 6 });
+        return;
       default:
         return;
     }
@@ -122,6 +131,30 @@ class SettingProfile extends React.Component<Props, States> {
               className={selectedAvatar === 3 ? styles.selected : undefined}
               onClick={this.handleAvatarSelect}
               src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/bojack.png?alt=media&token=12a8eb3b-b7a7-416f-b7e9-1ae245958526"
+              width="96px"
+              height="96px"
+            />
+            <img
+              id="avatar_4"
+              className={selectedAvatar === 4 ? styles.selected : undefined}
+              onClick={this.handleAvatarSelect}
+              src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Cheryl_Tunt.jpg?alt=media&token=29741cd0-d4f2-41e5-ba6e-b97f334b5122"
+              width="96px"
+              height="96px"
+            />
+            <img
+              id="avatar_5"
+              className={selectedAvatar === 5 ? styles.selected : undefined}
+              onClick={this.handleAvatarSelect}
+              src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/archer.png?alt=media&token=8de16d53-c559-4034-9846-32990ccec04b"
+              width="96px"
+              height="96px"
+            />
+            <img
+              id="avatar_6"
+              className={selectedAvatar === 6 ? styles.selected : undefined}
+              onClick={this.handleAvatarSelect}
+              src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/lana-kane3.jpg?alt=media&token=9d60b20a-ea22-4423-a6ba-0b064935947d"
               width="96px"
               height="96px"
             />

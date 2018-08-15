@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "crimson-56c72"
+    "default": "crimson-56c72",
+    "test": "crimson-test-adb45"
   }
 }

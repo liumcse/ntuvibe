@@ -9,6 +9,8 @@
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack/webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack/webpack.prod.js",
+    "deploy:prod": "NODE_ENV=production webpack --config webpack/webpack.prod.js && firebase use default && firebase deploy",
+    "deploy:test": "NODE_ENV=production webpack --config webpack/webpack.prod.js && firebase use test && firebase deploy",
     "lint": "eslint --fix src",
     "test": "echo \"Error: currently no test specified\" && exit 1"
   },

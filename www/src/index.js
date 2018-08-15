@@ -13,6 +13,7 @@ import PageTransient from "./PageTransient";
 import PageUserSetting from "./PageUserSetting";
 import PageSitemap from "./PageSitemap";
 import PageAbout from "./PageAbout";
+import PageTimetable from "./PageTimetable";
 import store from "./redux/store";
 
 import "react-select/dist/react-select.css";
@@ -48,10 +49,11 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_SITEMAP}
                 component={PageSitemap}
               />
+              <Route exact path={ROUTES.ROUTE_ABOUT} component={PageAbout} />
               <Route
                 exact
-                path={ROUTES.ROUTE_ABOUT}
-                component={PageAbout}
+                path={ROUTES.ROUTE_TIMETABLE}
+                component={PageTimetable}
               />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />
