@@ -14,10 +14,7 @@ class PageHome extends React.PureComponent {
           title="NTUVibe - come join this vibrant online NTU community!"
           url="https://ntuvibe.com"
           description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
-        >
-          {/* enable responsive */}
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </SiteMetaHelmet>
+        />
         <div className={styles.background_image} />
         <div className={styles.container}>
           <NavBar />
