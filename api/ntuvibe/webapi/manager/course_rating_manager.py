@@ -71,6 +71,7 @@ def prepare_comments_data(rating_records):
 				"userid": user.pk,
 				"username": user.username,
 				"major": user.profile.major,
+				"avatar": user.profile.avatar,
 				"easy": rating.easy,
 				"useful": rating.useful,
 				"like": rating.like,
