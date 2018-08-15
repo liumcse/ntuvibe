@@ -77,29 +77,15 @@ const LoginButton = () => (
 );
 
 const Avatar = props => (
-  <Popup
-    overlayStyle={{ opacity: "0", cursor: "default" }}
-    contentStyle={{
-      zIndex: "99999",
-      maxHeight: "100%",
-      width: "auto"
-    }}
-    trigger={open => (
-      <img
-        className={styles.avatarImg}
-        src={
-          props.avatar ||
-          "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
-        }
-      />
-    )}
-    position="bottom right"
-    closeOnDocumentClick
-  >
-    <div className={styles.userMenu}>
-      <div onClick={props.logout}>Logout</div>
-    </div>
-  </Popup>
+  <Link to="/users/setting">
+    <img
+      className={styles.avatarImg}
+      src={
+        props.avatar ||
+        "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
+      }
+    />
+  </Link>
 );
 
 class NavBar extends React.Component {

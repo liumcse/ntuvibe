@@ -29,6 +29,7 @@ const initialState: State = {
     courseComment: null,
     loginRequest: null,
     signUpRequest: null,
+    updateProfile: null,
     validation: null,
     activation: null
   }
@@ -116,10 +117,6 @@ const course = (state = initialState.course, action: Action): CourseState => {
         courseComments: null,
         examSchedule: null
       };
-    case actionTypes.USER_LOGIN_SUCCESS:
-      return state;
-    case actionTypes.USER_LOGIN_FAILURE:
-      return state;
     default:
       // likely to be an error
       return state;
@@ -168,6 +165,16 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         signUpRequest: payload.data
+      };
+    case actionTypes.USER_UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        updateProfile: payload.data
+      };
+    case actionTypes.USER_UPDATE_PROFILE_FAILURE:
+      return {
+        ...state,
+        updateProfile: payload.data
       };
     case actionTypes.VALIDATE_ACTIVATION_SUCCESS:
       return {

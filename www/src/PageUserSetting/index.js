@@ -1,36 +1,68 @@
+// @flow
 import React from "react";
 import NavBar from "src/components/NavBar";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import * as styles from "./style.scss";
 import SideBar from "./components/SideBar";
-import ProfileGrid from "./components/ProfileGrid";
+import SettingProfile from "./components/SettingProfile";
 
-class PageUserSetting extends React.Component {
+type Props = null;
+
+type States = {
+  redirect: boolean,
+  tab: 0 | 1 | 2,
+  username: string,
+  major: string,
+  avatar: string
+};
+
+class PageUserSetting extends React.Component<Props, States> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab: 0,
+      redirect: false,
+      username: "",
+      major: "",
+      avatar: ""
+    };
+  }
+
+  componentDidMount() {
+    const { profile } = this.props;
+    if (profile) {
+      const { username, major, avatar } = profile;
+      this.setState({
+        username: username,
+        major: major,
+        avatar: avatar
+      });
+    } else {
+      this.setState({
+        redirect: true,
+        username: "Not logged in",
+        major: "How did you even see this page"
+      });
+    }
+  }
+
   render() {
+    const { redirect, username, major, avatar } = this.state;
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className={styles.container}>
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.sidebar}>
-            <SideBar />
+            <SideBar avatar={avatar} />
           </div>
           <div className={styles.settingContainer}>
             <div className={styles.header}>Public Profile</div>
-            <div className={styles.subHeader}>Display name</div>
-            <input className={styles.displayNameInput} />
-            <div className={styles.hint}>Your display name must be unique.</div>
-            <div className={styles.subHeader}>Major</div>
-            <input className={styles.majorInput} placeholder="Optional" />
-            <div className={styles.subHeader}>Profile Picture</div>
-            <div className={styles.hint}>
-              For now, you can choose from the following pictures.
-            </div>
-            <div className={styles.profileGrid}>
-              <ProfileGrid />
-            </div>
-            <div className={styles.save}>
-              <button>Update</button>
-            </div>
+            <SettingProfile username={username} major={major} />
           </div>
         </div>
       </div>
@@ -38,4 +70,16 @@ class PageUserSetting extends React.Component {
   }
 }
 
-export default PageUserSetting;
+const mapDispatchToProps = dispatch => null;
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    profile: user && user.profile
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PageUserSetting);

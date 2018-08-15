@@ -31,36 +31,4 @@
     padding-bottom: 1rem;
     border-bottom: 2px solid #ccc;
   }
-
-  .hint {
-    font-size: 0.85rem;
-    color: rgb(100, 100, 100);
-    margin-top: 1rem;
-  }
-
-  .subHeader {
-    @include open-sans-regular;
-    margin-top: 2rem;
-  }
-
-  .displayNameInput, .majorInput {
-    height: 2rem;
-    margin-top: 1rem;
-    padding: 0 1rem;
-    width: 25rem;
-    font-size: 1rem;
-  }
-
-  .profileGrid {
-    margin-top: 2rem;
-  }
-
-  .save {
-    margin-top: 2rem;
-    button {
-      background-color: $primary;
-      color: white;
-      padding: 0.5rem 1.5rem;
-    }
-  }
 }

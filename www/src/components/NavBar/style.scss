@@ -19,14 +19,14 @@
     display: none;
   }
 
-  .userMenu {
-    display: flex;
-    flex-direction: column;
-    div {
-      margin: 1rem 0;
-      cursor: pointer;
-    }
-  }
+  // .userMenu {
+  //   display: flex;
+  //   flex-direction: column;
+  //   div {
+  //     margin: 1rem 0;
+  //     cursor: pointer;
+  //   }
+  // }
 
   .brand {
     @include american-typewriter;
@@ -106,9 +106,11 @@
       height: 4rem;
       align-items: center;
     }
+
     .navbar_elements {
       display: none;
     }
+
     .navbar_mobile {
       display: flex;
       width: 100%;
@@ -124,22 +126,9 @@
         }
       }
     }
-    // .navbar_elements_left {
-    //   display: none;
-    // }
-    // .navbar_elements_right {
-    //   flex: 1;
-    //   justify-content: center;
-    // }
+
+    .avatarImg {
+      margin-bottom: 0;
+    }
   }
-
-  // @media (min-width: 360px) {
-  //   // empty rule
-  // }
-
-  // @media (max-width: 768px) {
-  //   .navbar_elements_left {
-  //     display: flex;
-  //   }
-  // }
 }

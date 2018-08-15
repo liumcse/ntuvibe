@@ -1,5 +1,8 @@
 // @flow
 import React from "react";
+import { connect } from "react-redux";
+
+import { userLogout } from "src/redux/actions";
 import * as styles from "./style.scss";
 
 type AvatarProps = {
@@ -7,7 +10,8 @@ type AvatarProps = {
 };
 
 type Props = {
-  avatar: string
+  avatar: string,
+  userLogout: void => void
 };
 
 const Avatar = (props: AvatarProps) => (
@@ -21,6 +25,13 @@ const Avatar = (props: AvatarProps) => (
 );
 
 class SideBar extends React.PureComponent<Props> {
+  handleLogout = () => {
+    this.props.userLogout();
+    setTimeout(() => {
+      location.reload();
+    }, 500);
+  };
+
   render() {
     return (
       <div className={styles.container}>
@@ -28,10 +39,23 @@ class SideBar extends React.PureComponent<Props> {
           <Avatar avatar={this.props.avatar} />
         </div>
         <div className={styles.item}>Profile</div>
-        <div className={styles.item}>Account</div>
+        {/* <div className={styles.item}>Account</div> */}
+        <div
+          className={styles.item.concat(" ").concat(styles.warn)}
+          onClick={this.handleLogout}
+        >
+          Sign out
+        </div>
       </div>
     );
   }
 }
 
-export default SideBar;
+const mapDispatchToProps = dispatch => ({
+  userLogout: () => dispatch(userLogout())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SideBar);

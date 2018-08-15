@@ -45,9 +45,9 @@ class PageHome extends React.PureComponent {
             <div className={styles.links}>
               <Link to="/sitemap">Sitemap</Link>
               <Link to="/about">About</Link>
-              <a href="https://medium.com/@NTUVibe">Blog</a>
+              <a href="https://medium.com/@ntuvibe">Blog</a>
               <Link to="/help">Help</Link>
-              <a href="https://facebook.com/NTUVibe">Facebook</a>
+              <a href="https://facebook.com/ntuvibe">Facebook</a>
             </div>
           </div>
           <div className={styles.fbLike}>
@@ -62,7 +62,7 @@ class PageHome extends React.PureComponent {
             />
             <div className={styles.fbPage}>
               Take a look at our{" "}
-              <a href="https://facebook.com/NTUVibe">Facebook Page</a>!
+              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
             </div>
           </div>
           <div className={styles.credit}>
