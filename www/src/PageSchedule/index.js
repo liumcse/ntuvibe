@@ -11,6 +11,13 @@ class PageSchedule extends React.Component {
       input: ""
     };
   }
+  download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
 
   handleInput = event => {
     this.setState({ input: event.target.value });
@@ -28,6 +35,10 @@ class PageSchedule extends React.Component {
     // }
     const output = tools.parseToJSON(tokenStream);
     // write to output
+    console.log(output);
+    const courseResult = tools.generateCIS(output);
+
+    this.download(courseResult, "Schedule.ics", "text/plain");
     outputTextarea.value = JSON.stringify(output, null, 2);
   };
 
