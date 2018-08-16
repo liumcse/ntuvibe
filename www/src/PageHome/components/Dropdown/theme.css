@@ -20,6 +20,10 @@
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
   background-position: 1rem 1rem; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: none;
 }
 
 .suggestionsContainerOpen {
