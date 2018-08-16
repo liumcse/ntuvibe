@@ -1,4 +1,4 @@
-@import 'colors';
+@import "colors";
 
 :local {
   .container {
@@ -9,19 +9,35 @@
   .innerContainer {
     margin-top: 2rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
   }
 
-  .inputArea, .outputArea {
-    width: 45%;
-    height: 20rem;
+  .inputArea
+  // , .outputArea 
+ {
+    margin-top: 5rem;
+    width: 80%;
+    height: 30rem;
+    padding: 2rem;
     font-size: 0.85rem;
+    border-radius: 10px;
+    border: $primary 1px solid;
   }
 
   .generate {
+    width: 80%;
+    height: 5rem;
+    font-size: 2rem;
     margin-top: 2rem;
     color: white;
-    background-color: crimson;
+    background-color: $primary;
+    transition: 0.8s;
+    border-radius: 10px;
+    &:hover {
+      box-shadow: 0 0 20px $primary;
+      transform: scale(1.01);
+    }
   }
 }
