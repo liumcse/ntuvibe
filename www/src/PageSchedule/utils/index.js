@@ -136,7 +136,9 @@ export function parseToJSON(tokenStream: string[][]) {
         processedWeek.push(parseInt(value, 10));
       }
     });
-    return processedWeek;
+    // include recess week calculation.
+    const result = processedWeek.map(value => (value > 7 ? value + 1 : value));
+    return result;
   };
 
   const processSchedule = (schedule: string[]): Object => {
