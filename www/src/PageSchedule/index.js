@@ -24,7 +24,7 @@ class PageSchedule extends React.Component {
   };
 
   generateOutput = () => {
-    const outputTextarea = document.querySelector("." + styles.outputArea);
+    // const outputTextarea = document.querySelector("." + styles.outputArea);
     const input = this.state.input;
     const tokenStream = tools.tokenize(input);
 
@@ -35,11 +35,12 @@ class PageSchedule extends React.Component {
     // }
     const output = tools.parseToJSON(tokenStream);
     // write to output
-    console.log(output);
-    const courseResult = tools.generateCIS(output);
+    const courseResult = tools.generateICS(output);
+    console.log(courseResult);
 
     this.download(courseResult, "Schedule.ics", "text/plain");
-    outputTextarea.value = JSON.stringify(output, null, 2);
+
+    // outputTextarea.value = JSON.stringify(output, null, 2);
   };
 
   render() {
@@ -53,16 +54,10 @@ class PageSchedule extends React.Component {
             spellCheck={false}
             data-gramm_editor="false" /* disable grammarly*/
           />
-          <textarea
-            className={styles.outputArea}
-            spellCheck={false}
-            readOnly
-            data-gramm_editor="false" /* disable grammarly*/
-          />
+          <button onClick={this.generateOutput} className={styles.generate}>
+            Generate
+          </button>
         </div>
-        <button onClick={this.generateOutput} className={styles.generate}>
-          Generate
-        </button>
       </div>
     );
   }
