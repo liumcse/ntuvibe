@@ -27,7 +27,7 @@ export function tokenize(charStream: string): string[][] {
   for (let i = emptyRemoved.length - 1; i >= 0; i--) {
     const content = emptyRemoved[i];
     if (content.includes("TOTAL") && content.includes("AU")) {
-      end = i;
+      end = i - 1;
       break;
     }
   }
