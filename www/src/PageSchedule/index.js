@@ -21,14 +21,14 @@ class PageSchedule extends React.Component {
     const input = this.state.input;
     const tokenStream = tools.tokenize(input);
 
-    console.log(tokenStream);
+    // console.log(tokenStream);
     // const lexer = new tools.Lexer(tokenStream);
     // while (!lexer.isEOF()) {
     //   console.log("consuming...", lexer.consume());
     // }
-    tools.parseToJSON(tokenStream);
+    const output = tools.parseToJSON(tokenStream);
     // write to output
-    outputTextarea.value = "success";
+    outputTextarea.value = JSON.stringify(output, null, 2);
   };
 
   render() {

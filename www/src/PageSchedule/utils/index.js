@@ -32,7 +32,7 @@ export function tokenize(charStream: string): string[][] {
     }
   }
   // remove useless part
-  const noiseRemoved = emptyRemoved.slice(start, end);
+  const noiseRemoved = emptyRemoved.slice(start, end + 1);
   // remove gap
   const gapRemoved = noiseRemoved.map(arr =>
     arr
@@ -68,7 +68,7 @@ export class Lexer {
   };
 
   consumeLine = () => {
-    if (this.isLastLine()) {
+    if (!this.hasNextLine()) {
       throw "No more lines!";
     }
     return this.tokenStream[this.linePosition++];
@@ -86,9 +86,9 @@ export class Lexer {
     return this.tokenStream[this.linePosition][this.tokenPosition + 1];
   };
 
-  isLastLine = () => {
-    return this.linePosition === this.numberOfLines - 1;
-  }
+  hasNextLine = () => {
+    return this.linePosition !== this.numberOfLines;
+  };
 
   isEOF = () => {
     return (
@@ -120,27 +120,71 @@ export class Lexer {
 // }
 
 export function parseToJSON(tokenStream: string[][]) {
+  // helper function
+  const processWeek = (week: string): string[] => {
+    const split = week.replace("TEACHING WK", "").split(",");
+    const processedWeek = [];
+    split.forEach(value => {
+      if (value.includes("-")) {
+        const splitDash = value.split("-");
+        const start = parseInt(splitDash[0], 10);
+        const end = parseInt(splitDash[1], 10);
+        for (let i = start; i <= end; i++) {
+          processedWeek.push(i);
+        }
+      } else {
+        processedWeek.push(parseInt(value, 10));
+      }
+    });
+    return processedWeek;
+  };
+
+  const processSchedule = (schedule: string[]): Object => {
+    if (!schedule) return null;
+    if (schedule[5] === "ONLINE COURSE") return null;
+    else {
+      const time = schedule[3].split("-");
+      const start_time = time[0];
+      const end_time = time[1];
+      return {
+        class_type: schedule[0],
+        group: schedule[1],
+        day: schedule[2],
+        start_time: start_time,
+        end_time: end_time,
+        venue: schedule[4],
+        remark: processWeek(schedule[5])
+      };
+    }
+  };
+
   const lexer = new Lexer(tokenStream);
   // initialize an empty json object
   const output = {};
   let courseCode = null;
   // star processing
-  console.log("Start processing");
-  while (!lexer.isLastLine()) {
+  while (lexer.hasNextLine()) {
     const line = lexer.consumeLine();
-    console.log(line);
     if (line.length === 15) {
       // is course code
       courseCode = line[0];
-      output[courseCode] = {}
+      output[courseCode] = {
+        ...output[courseCode],
+        title: line[1],
+        au: line[2],
+        course_type: line[3],
+        su: line[4],
+        ger_type: line[5],
+        index_number: line[6],
+        status: line[7],
+        choice: line[8],
+        schedule: [processSchedule(line.splice(9, 15))]
+      };
     } else {
       // is schedule
-
+      output[courseCode].schedule.push(processSchedule(line));
     }
-    // if (classifyToken(token) === "courseCode") {
-    //   courseCode = token;
-    //   console.log("course code ", courseCode);
-    // }
-    // if (isCourseCode(token)) console.log(isCourseCode(token), token);
   }
+
+  return output;
 }

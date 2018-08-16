@@ -46,16 +46,7 @@ class RateCourse extends React.Component {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          setTimeout(() => {
-            this.setState({
-              succeed: true,
-              easy: null,
-              useful: null,
-              like: null,
-              comment: ""
-            });
-            location.reload();
-          }, 500);
+          location.reload();
         } else {
           notificationDOM.innerHTML =
             (response && response.error_message) ||
@@ -125,7 +116,7 @@ class RateCourse extends React.Component {
         comment: comment_content
       });
       const commentTextarea = document.querySelector("." + styles.textarea);
-      commentTextarea.value = comment_content;
+      commentTextarea ? (commentTextarea.value = comment_content) : null;
     }
   };
 
@@ -146,8 +137,9 @@ class RateCourse extends React.Component {
     if (open && !profile) {
       // not logged in
       this.props.openLogin();
-    }
-    if (/* prevCourseCode !== thisCourseCode || */ prevProps.open !== open) {
+    } else if (
+      /* prevCourseCode !== thisCourseCode || */ prevProps.open !== open
+    ) {
       this.rehydrate();
     }
   }

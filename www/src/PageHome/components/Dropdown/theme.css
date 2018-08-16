@@ -14,7 +14,6 @@
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 1rem;
-  /* background: blue; */
   opacity: 0.8;
   background-image: url('./assets/search-solid.svg');
   background-size: 1.5rem 1.5rem;
@@ -69,12 +68,23 @@
 @media (max-width: 768px) {
   .input {
     /* height: 3rem; */
+    border-radius: 0;
+    border-bottom: 1px solid #dbdbdb;
+    background-position: 0 1rem;
+    padding: 0 2.5rem;
+    padding-right: 1rem;
   }
+
+  .input:focus {
+    border-bottom: 1px solid black;
+  }
+
   .suggestionsContainerOpen {
     width: 90%;
     min-height: 3rem;
     max-height: 70vh;
   }
+
   .suggestion {
     height: 3rem;
   }
