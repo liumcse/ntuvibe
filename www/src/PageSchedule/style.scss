@@ -1,6 +1,27 @@
+@import 'colors';
+
 :local {
   .container {
     display: flex;
     flex-direction: column;
+  }
+
+  .innerContainer {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .inputArea, .outputArea {
+    width: 45%;
+    height: 20rem;
+    font-size: 0.85rem;
+  }
+
+  .generate {
+    margin-top: 2rem;
+    color: white;
+    background-color: crimson;
   }
 }

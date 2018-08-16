@@ -124,6 +124,8 @@ class RateCourse extends React.Component {
         like: like,
         comment: comment_content
       });
+      const commentTextarea = document.querySelector("." + styles.textarea);
+      commentTextarea.value = comment_content;
     }
   };
 
@@ -132,20 +134,20 @@ class RateCourse extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const prevCourseCode =
-      prevProps &&
-      prevProps.location &&
-      prevProps.location.pathname.replace("/courses/", "");
-    const thisCourseCode = this.props.location.pathname.replace(
-      "/courses/",
-      ""
-    );
+    // const prevCourseCode =
+    //   prevProps &&
+    //   prevProps.location &&
+    //   prevProps.location.pathname.replace("/courses/", "");
+    // const thisCourseCode = this.props.location.pathname.replace(
+    //   "/courses/",
+    //   ""
+    // );
     const { profile, open } = this.props;
     if (open && !profile) {
       // not logged in
       this.props.openLogin();
     }
-    if (prevCourseCode !== thisCourseCode || prevProps.open !== open) {
+    if (/* prevCourseCode !== thisCourseCode || */ prevProps.open !== open) {
       this.rehydrate();
     }
   }
@@ -275,9 +277,7 @@ class RateCourse extends React.Component {
               className={styles.textarea}
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
-            >
-              {this.state.comment || null}
-            </textarea>
+            />
           </div>
           <div
             id="notification"
