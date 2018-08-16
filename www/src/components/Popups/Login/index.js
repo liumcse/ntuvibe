@@ -83,7 +83,7 @@ class Login extends React.Component {
   close = () => {
     document.removeEventListener("keydown", this.keydownEvent);
     this.props.closePopup();
-  }
+  };
 
   render() {
     return (
@@ -125,12 +125,14 @@ class Login extends React.Component {
         <div className={styles.action}>
           <button
             onClick={this.handleSubmit}
-            className={styles.highlight}
+            className={styles.button.concat(" ").concat(styles.highlight)}
             disabled={this.state.verificationRequested}
           >
             {this.state.verificationRequested ? "Verifying..." : "Login"}
           </button>
-          <button onClick={this.close}>Close</button>
+          <button className={styles.button} onClick={this.close}>
+            Close
+          </button>
         </div>
       </Popup>
     );

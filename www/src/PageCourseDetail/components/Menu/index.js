@@ -12,9 +12,6 @@ class Menu extends React.PureComponent {
     const { popupTrigger } = this.props;
     return (
       <div className={styles.menu}>
-        {/* <div className={styles.item}>Information</div>
-        <div className={styles.item}>Schedule</div>
-        <div className={styles.item}>Course Comments</div> */}
         <div className={styles.search}>
           <Dropdown />
         </div>

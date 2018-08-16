@@ -44,7 +44,7 @@
   }
 
   .section {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .description, .note {
@@ -58,14 +58,16 @@
 
   .note {
     font-size: 0.8rem;
+    margin-block-end: 0;
   }
 
   .action {
     margin-bottom: 2rem;
-    button {
-      margin-right: 3rem;
-      margin-top: 0 !important;
-    }
+  }
+
+  .button {
+    margin-right: 3rem;
+    margin-top: 1rem;
   }
 
   .highlight {

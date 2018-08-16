@@ -169,10 +169,10 @@ const parseDataToTable = (data: CourseSchedule) => {
 };
 
 const viewAll = () => {
-  const viewAllDOM = document.querySelector("#click-to-view-all");
+  // const viewAllDOM = document.querySelector("#click-to-view-all");
   const tableDOM = document.querySelector("#timetable");
   const fadeDOM = document.querySelector("#timetable-fade");
-  viewAllDOM.style.display = "none";
+  // viewAllDOM.style.display = "none";
   fadeDOM.style.display = "none";
   tableDOM.style.maxHeight = "none";
 };
@@ -183,9 +183,9 @@ const ClassSchedule = (props: Props) => {
       <div className={styles.title}>Schedule (Current Semester)</div>
       <div id="timetable" className={styles.table_container}>
         <div id="timetable-fade" onClick={viewAll} />
-        <div id="click-to-view-all" className={styles.expand} onClick={viewAll}>
+        {/* <div id="click-to-view-all" className={styles.expand} onClick={viewAll}>
           Click to view all
-        </div>
+        </div> */}
         <table>
           <tbody>
             <tr>

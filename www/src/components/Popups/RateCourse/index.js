@@ -272,6 +272,7 @@ class RateCourse extends React.Component {
           Any thing you'd like to comment on?
             </div>
             <textarea
+              className={styles.textarea}
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
             >
@@ -290,7 +291,7 @@ class RateCourse extends React.Component {
                   id="submit"
                   disabled={this.state.submitting}
                   onClick={this.submitRating}
-                  className={styles.highlight}
+                  className={styles.button.concat(" ").concat(styles.highlight)}
                   style={{
                     marginRight: "3rem"
                   }}
@@ -299,7 +300,12 @@ class RateCourse extends React.Component {
                 </button>
               </div>
               <div>
-                <button onClick={this.props.closePopup}>Close</button>
+                <button
+                  className={styles.button}
+                  onClick={this.props.closePopup}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
