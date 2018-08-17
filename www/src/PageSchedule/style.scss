@@ -1,4 +1,23 @@
 @import "colors";
+@import "typography";
+
+:global {
+  // react-big-calendar
+  // hate to use important
+  .rbc-toolbar {
+    flex-direction: row-reverse !important;
+  }
+
+  .rbc-btn-group {
+    // display: none !important;
+  }
+
+  .rbc-toolbar-label {
+    text-align: left !important;
+    @include open-sans-medium;
+    font-size: 2rem;
+  }
+}
 
 :local {
   .container {
@@ -14,15 +33,13 @@
     align-items: center;
   }
 
-  .inputArea
-  // , .outputArea 
- {
-    margin-top: 5rem;
+  .inputArea {
+    margin-top: 2rem;
     width: 80%;
     height: 30rem;
-    padding: 2rem;
+    // padding: 2rem;
     font-size: 0.85rem;
-    border-radius: 10px;
+    border-radius: 2px;
     border: $primary 1px solid;
   }
 
@@ -34,10 +51,14 @@
     color: white;
     background-color: $primary;
     transition: 0.8s;
-    border-radius: 10px;
     &:hover {
       box-shadow: 0 0 20px $primary;
       transform: scale(1.01);
     }
+  }
+
+  .calendarContainer {
+    padding: 1rem;
+    min-height: 10rem;
   }
 }

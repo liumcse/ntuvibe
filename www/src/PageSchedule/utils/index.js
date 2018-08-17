@@ -1,4 +1,6 @@
 // @flow
+import ics from "ics";
+
 export function tokenize(charStream: string): string[][] {
   if (!charStream) return [];
   // replace tab to space
@@ -99,26 +101,6 @@ export class Lexer {
   };
 }
 
-// turns out I don't need this either
-// function isCourseCode(token: string): string {
-//   const specialCharacterMatch = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
-//   const keywordMatch = /(LAB)|(SEM)/;
-//   const scheduleMatch = /(^LAB$)|(^LEC\/STUDIO$)|(^TUT$)|(^SEM$)/;
-//   const ignoreMatch = /(^PRJ$)|(^DES$)/;
-//   if (
-//     token.length === 6 &&
-//     !specialCharacterMatch.test(token) &&
-//     !keywordMatch.test(token) &&
-//     !ignoreMatch.test(token) &&
-//     !scheduleMatch.test(token) &&
-//     /\d/.test(token)
-//   ) {
-//     return "courseCode";
-//   } else {
-//     return null;
-//   }
-// }
-
 export function parseToJSON(tokenStream: string[][]) {
   // helper function
   const processWeek = (week: string): string[] => {
@@ -192,7 +174,6 @@ export function parseToJSON(tokenStream: string[][]) {
 }
 
 // download feature implementation
-const ics = require("ics");
 // The ics API use UTC-8 as the only time source, hence we will use UTC time to calculate timezone.
 
 // By calculation time offset is +8 Hours
@@ -214,7 +195,7 @@ const DAYTIME = 24 * 60 * 60 * 1000,
     SAT: 5,
     SUN: 6
   },
-  semesterStart = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME; // Semester start uses UTC time
+  SEMESTER_START = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME; // Semester start uses UTC time
 // JS Date module use 0 as the start of month, hence, 0 stands for January.
 
 const dateCalculation = (d, T) => {
@@ -246,7 +227,7 @@ export function generateICS(targetJson) {
       if (classOfCourse !== null)
         classOfCourse.remark.forEach(weekCount => {
           const calculatedTime =
-            semesterStart +
+            SEMESTER_START +
             weekCount * WEEKTIME +
             WEEKDAY[classOfCourse.day] * DAYTIME;
 

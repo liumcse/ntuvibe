@@ -8,6 +8,27 @@ import * as styles from "./style.scss";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
+// today
+const TODAY = new Date();
+// earliest class
+const START_TIME = new Date(
+  TODAY.getFullYear(),
+  TODAY.getMonth(),
+  TODAY.getDate(),
+  8,
+  30,
+  0
+);
+// latest class
+const END_TIME = new Date(
+  TODAY.getFullYear(),
+  TODAY.getMonth(),
+  TODAY.getDate(),
+  22,
+  30,
+  0
+);
+
 const events = [
   {
     id: 0,
@@ -138,18 +159,12 @@ class PageSchedule extends React.Component {
     // const outputTextarea = document.querySelector("." + styles.outputArea);
     const input = this.state.input;
     const tokenStream = tools.tokenize(input);
-
-    // console.log(tokenStream);
-    // const lexer = new tools.Lexer(tokenStream);
-    // while (!lexer.isEOF()) {
-    //   console.log("consuming...", lexer.consume());
-    // }
-    const output = tools.parseToJSON(tokenStream);
+    const json = tools.parseToJSON(tokenStream);
     // write to output
-    const courseResult = tools.generateICS(output);
+    const courseResult = tools.generateICS(json);
     console.log(courseResult);
 
-    this.download(courseResult, "Schedule.ics", "text/plain");
+    this.download(courseResult, "ClassSchedule.ics", "text/plain");
 
     // outputTextarea.value = JSON.stringify(output, null, 2);
   };
@@ -172,9 +187,10 @@ class PageSchedule extends React.Component {
         <div className={styles.calendarContainer}>
           <BigCalendar
             events={events}
-            step={15}
+            views={["month", "day", "week"]}
             localizer={moment}
-            timeslots={8}
+            min={START_TIME}
+            max={END_TIME}
             defaultView={BigCalendar.Views.WEEK}
             defaultDate={new Date(2015, 3, 12)}
           />
