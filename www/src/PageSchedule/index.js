@@ -84,6 +84,73 @@ class PageSchedule extends React.Component {
       <div className={styles.container}>
         <NavBar />
         <div className={styles.innerContainer}>
+          <div className={styles.textContainer}>
+            <div className={styles.header}>Where is my class?</div>
+            <div className={styles.text}>
+              With Vibe, you can create your class schedule and export it to
+              your favorite calendar app!
+            </div>
+            <div className={styles.text}>
+              Three steps only: go to stars planner, check course registered,
+              copy & paste.
+            </div>
+            <div className={styles.text}>
+              You only have to do once (per semester), and Vibe will do the rest
+              for you!
+            </div>
+            <div className={styles.picContainer}>
+              <div className={styles.picItem}>
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-17%20at%206.16.55%20PM.png?alt=media&token=3b363747-c898-48f6-b84f-7e30a0cf6b29"
+                  height="280px"
+                />
+                <div>
+                  Log in to{" "}
+                  <a href="https://www.ntu.edu.sg/Students/Undergraduate/AcademicServices/CourseRegistration/Pages/default.aspx">
+                    stars planner
+                  </a>
+                  and check registered courses
+                </div>
+              </div>
+              <div>
+                <div className={styles.picItem}>
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-17%20at%206.17.38%20PM.png?alt=media&token=33133d12-1a6d-4f4d-86a9-73a4cbf2708f"
+                    height="280px"
+                  />
+                  <div>Select all text and copy</div>
+                </div>
+              </div>
+              <div>
+                <div className={styles.picItem}>
+                  <textarea
+                    className={styles.input}
+                    placeholder="Student Automated Registration System..."
+                  />
+                  <div>Paste the text here</div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.text} style={{ textAlign: "center" }}>
+              <button className={styles.import}>
+                Import my class schedule
+              </button>
+            </div>
+          </div>
+          <div className={styles.calendarContainer}>
+            <BigCalendar
+              events={calendarEvents || events}
+              views={["work_week"]}
+              localizer={moment}
+              selectable={false}
+              step={30}
+              timeslots={2}
+              min={START_TIME}
+              max={END_TIME}
+              defaultView={BigCalendar.Views.WORK_WEEK}
+              defaultDate={new Date()}
+            />
+          </div>
           <textarea
             className={styles.inputArea}
             onChange={this.handleInput}
@@ -93,20 +160,6 @@ class PageSchedule extends React.Component {
           <button onClick={this.generateOutput} className={styles.generate}>
             Generate
           </button>
-        </div>
-        <div className={styles.calendarContainer}>
-          <BigCalendar
-            events={calendarEvents || events}
-            views={["work_week"]}
-            localizer={moment}
-            selectable={false}
-            step={30}
-            timeslots={2}
-            min={START_TIME}
-            max={END_TIME}
-            defaultView={BigCalendar.Views.WORK_WEEK}
-            defaultDate={new Date() /* now */}
-          />
         </div>
       </div>
     );

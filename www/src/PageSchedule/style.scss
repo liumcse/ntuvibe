@@ -12,6 +12,10 @@
     // display: none !important;
   }
 
+  .rbc-time-view {
+    border-bottom: none !important;
+  }
+
   .rbc-timeslot-group {
     // height of each slot. determined by how much information we want to show on each event slot
     min-height: 4rem !important;
@@ -20,8 +24,16 @@
   .rbc-toolbar-label {
     text-align: left !important;
     @include open-sans-medium;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
+
+  .rbc-event {
+    cursor: default !important;
+  }
+
+  // .rbc-event.rbc-selected {
+
+  // }
 
   .rbc-header {
     padding: 0.5rem 0 !important;
@@ -102,12 +114,49 @@
     flex-direction: column;
   }
 
-  .innerContainer {
-    margin-top: 2rem;
+  .textContainer {
     display: flex;
     flex-direction: column;
+    .header {
+      font-size: 2rem;
+      color: crimson;
+      @include raleway-medium;
+    }
+    .text {
+      margin-top: 1rem;
+    }
+  }
+
+  .picContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    .picItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div {
+        font-size: 0.85rem;
+        color: #7d7d7d;
+      }
+    }
+  }
+
+  .input {
+    font-size: 0.5rem;
+  }
+
+  .import {
+    margin-top: 1rem;
+    background-color: $primary;
+    color: white;
+  }
+
+  .innerContainer {
+    padding: 1rem 3rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .inputArea {
@@ -122,7 +171,6 @@
 
   .generate {
     width: 80%;
-    height: 5rem;
     font-size: 2rem;
     margin-top: 2rem;
     color: white;
@@ -136,8 +184,7 @@
 
   .calendarContainer {
     position: relative;
-    padding: 1rem;
     min-height: 10rem;
-    // font-size: 0.6rem;
+    margin-top: 100rem //debug;
   }
 }
