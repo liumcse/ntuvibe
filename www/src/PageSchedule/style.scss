@@ -3,7 +3,7 @@
 
 :global {
   // react-big-calendar
-  // hate to use important
+  // !important is really gross
   .rbc-toolbar {
     flex-direction: row-reverse !important;
   }
@@ -12,10 +12,87 @@
     // display: none !important;
   }
 
+  .rbc-timeslot-group {
+    // height of each slot. determined by how much information we want to show on each event slot
+    min-height: 4rem !important;
+  }
+
   .rbc-toolbar-label {
     text-align: left !important;
     @include open-sans-medium;
     font-size: 2rem;
+  }
+
+  .rbc-header {
+    padding: 0.5rem 0 !important;
+  }
+
+  .rbc-allday-cell {
+    display: none !important;
+  }
+
+  .rbc-time-content {
+    border-top: none !important;
+  }
+
+  .rbc-event-label {
+    font-size: 0.6rem !important;
+    margin-bottom: 0.1rem !important;
+    @include open-sans-medium;
+    white-space: normal !important;
+  }
+
+  .rbc-event-content {
+    white-space: pre-line !important;
+    font-size: 0.6rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .rbc-time-slot {
+    min-width: 6rem !important;
+    text-align: right !important;
+    padding-right: 0.5rem !important;
+    padding-top: 0.25rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .rbc-time-header-gutter {
+    min-width: 6rem !important;
+    border-bottom: 1px solid #DDD !important;
+  }
+
+  // .rbc-header:nth-child(1) {
+  //   // remove sunday
+  //   display: none !important;
+  // }
+  // .rbc-day-slot:nth-child(1) {
+  //   // remove sunday
+  //   display: none !important;
+  // }
+
+  .rbc-events-container {
+    right: 0px !important;
+    width: 97% !important;
+  }
+
+  .rbc-event {
+    border-radius: 2px !important;
+  }
+
+  .rbc-current-time-indicator {
+    left: 6rem !important;
+    width: calc(100% - 6rem) !important;
+    &::before {
+      display: block;
+      position: absolute;
+      left: -3px;
+      top: -3px;
+      content: " ";
+      background-color: #74ad31;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+    }
   }
 }
 
@@ -58,7 +135,9 @@
   }
 
   .calendarContainer {
+    position: relative;
     padding: 1rem;
     min-height: 10rem;
+    // font-size: 0.6rem;
   }
 }

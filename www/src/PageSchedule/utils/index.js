@@ -1,5 +1,5 @@
 // @flow
-import ics from "ics";
+const ics = require("ics");
 
 export function tokenize(charStream: string): string[][] {
   if (!charStream) return [];
@@ -198,7 +198,7 @@ const DAYTIME = 24 * 60 * 60 * 1000,
   SEMESTER_START = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME; // Semester start uses UTC time
 // JS Date module use 0 as the start of month, hence, 0 stands for January.
 
-const dateCalculation = (d, T) => {
+const dateCalculationForICS = (d, T) => {
   const original = new Date(
     parseInt(d.getFullYear(), 10),
     parseInt(d.getMonth(), 10),
@@ -219,6 +219,67 @@ const dateCalculation = (d, T) => {
   ];
 };
 
+const dateCalculationForCalendar = (d, T) => {
+  const original = new Date(
+    parseInt(d.getFullYear(), 10),
+    parseInt(d.getMonth(), 10),
+    parseInt(d.getDate(), 10),
+    parseInt(T.slice(0, 2), 10),
+    parseInt(T.slice(2, 4), 10),
+    0,
+    0
+  ).getTime();
+  return new Date(original + OFFSET);
+};
+
+export function generateCalendarEvent(json: Object): Object[] {
+  if (!json) return [];
+  let idCount = 0;
+  const events = [];
+  const courseList = Object.keys(json);
+  courseList.forEach(courseCode => {
+    const course = json[courseCode];
+    const { title } = course;
+    const scheduleList = course.schedule;
+    scheduleList.forEach(schedule => {
+      if (!schedule) return;
+      const {
+        day,
+        start_time,
+        end_time,
+        remark,
+        class_type,
+        group,
+        venue
+      } = schedule;
+      console.log(schedule);
+      remark.forEach(week => {
+        const calculatedTime =
+          SEMESTER_START + week * WEEKTIME + WEEKDAY[day] * DAYTIME;
+        const start = dateCalculationForCalendar(
+          new Date(calculatedTime),
+          start_time
+        );
+        const end = dateCalculationForCalendar(
+          new Date(calculatedTime),
+          end_time
+        );
+        const content = `${courseCode} ${class_type} ${group}\n${venue}`;
+        events.push({
+          id: idCount++,
+          title: content,
+          allDay: false,
+          start: start,
+          end: end
+        });
+      });
+    });
+  });
+
+  console.log("events", events);
+  return events;
+}
+
 export function generateICS(targetJson) {
   const JsonProcess = courseID => {
     const course = targetJson[courseID];
@@ -232,11 +293,11 @@ export function generateICS(targetJson) {
             WEEKDAY[classOfCourse.day] * DAYTIME;
 
           const event = {
-            start: dateCalculation(
+            start: dateCalculationForICS(
               new Date(calculatedTime),
               classOfCourse["start_time"]
             ),
-            end: dateCalculation(
+            end: dateCalculationForICS(
               new Date(calculatedTime),
               classOfCourse["end_time"]
             ),
@@ -249,7 +310,7 @@ export function generateICS(targetJson) {
               classOfCourse.group,
             categories: ["NTU course"],
             location: classOfCourse.venue,
-            geo: { lat: 1.29027, lon: 103.851959 },
+            geo: { lat: 1.29027, lon: 103.851959 }, // TODO: change to constant
             status: "CONFIRMED"
           };
           serialEvent.push(event);

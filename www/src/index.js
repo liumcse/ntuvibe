@@ -16,7 +16,6 @@ import PageAbout from "./PageAbout";
 import PageSchedule from "./PageSchedule";
 import store from "./redux/store";
 
-import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 import "./styles/app.scss";
 import "normalize.css";
 
