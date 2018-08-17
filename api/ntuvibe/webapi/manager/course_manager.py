@@ -65,6 +65,8 @@ def prepare_course_detail_data(course):
 		},
 		"as_pe": course.as_pe,
 		"as_ue": course.as_ue,
+		"offered_semester": eval(course.semesters),
+		"update_time": course.update_time,
 	}
 
 

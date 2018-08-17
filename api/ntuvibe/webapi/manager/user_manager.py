@@ -67,11 +67,6 @@ def _send_activate_account_email(email, token):
 
 
 def register_email(email):
-
-	user_with_same_email = get_user_by_email(email)
-	if user_with_same_email:
-		raise Exception(StatusCode.DUPLICATE_EMAIL)
-
 	_send_activate_account_email(email=email, token=generate_activation_token(email=email))
 
 

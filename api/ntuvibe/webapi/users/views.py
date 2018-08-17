@@ -12,6 +12,7 @@ def user_signup(request):
 	if email is None:
 		raise Exception(StatusCode.MISSING_PARAMETER)
 	user_manager.ensure_valid_email_format(email=email)
+	user_manager.ensure_unique_email(email=email)
 	user_manager.register_email(email)
 
 
@@ -56,7 +57,6 @@ def user_login(request):
 	username = user_manager.get_username_by_email(email)
 	if not username:
 		raise Exception(StatusCode.INVALID_EMAIL_PASSWORD)
-
 	user = authenticate(request, username=username, password=password)
 	if not user:
 		raise Exception(StatusCode.INVALID_EMAIL_PASSWORD)
@@ -84,6 +84,7 @@ def update_user_profile(request):
 	major = params.get("major", None)
 	avatar = params.get("avatar", None)
 	user_manager.ensure_unique_appropriate_username(username=username, user_id=user.id)
+
 	if username:
 		user.username = username
 		user.save()
