@@ -136,7 +136,9 @@ export function parseToJSON(tokenStream: string[][]) {
         processedWeek.push(parseInt(value, 10));
       }
     });
-    return processedWeek;
+    // include recess week calculation.
+    const result = processedWeek.map(value => (value > 7 ? value + 1 : value));
+    return result;
   };
 
   const processSchedule = (schedule: string[]): Object => {
@@ -187,4 +189,96 @@ export function parseToJSON(tokenStream: string[][]) {
   }
 
   return output;
+}
+
+// download feature implementation
+const ics = require("ics");
+// The ics API use UTC-8 as the only time source, hence we will use UTC time to calculate timezone.
+
+// By calculation time offset is +8 Hours
+// Since I use UTC as standard time, hour and minutes is in Singapore timezone (UTC+8)
+// Since frontend JS is browser specific.
+// Hence, when it apply to UTC time the real time offset is -8 Hours
+// Then I import the time to ics API, which use UTC-8 as standard.
+// Hence There is a -8 Hours Offset.
+// In total it is a +0 Hours Offset.
+const DAYTIME = 24 * 60 * 60 * 1000,
+  OFFSET = 0,
+  WEEKTIME = 7 * DAYTIME,
+  WEEKDAY = {
+    MON: 0,
+    TUE: 1,
+    WED: 2,
+    THU: 3,
+    FRI: 4,
+    SAT: 5,
+    SUN: 6
+  },
+  semesterStart = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME; // Semester start uses UTC time
+// JS Date module use 0 as the start of month, hence, 0 stands for January.
+
+const dateCalculation = (d, T) => {
+  const original = new Date(
+    parseInt(d.getFullYear(), 10),
+    parseInt(d.getMonth(), 10),
+    parseInt(d.getDate(), 10),
+    parseInt(T.slice(0, 2), 10),
+    parseInt(T.slice(2, 4), 10),
+    0,
+    0
+  ).getTime();
+  const calibrated = new Date(original + OFFSET);
+
+  return [
+    parseInt(calibrated.getFullYear(), 10),
+    parseInt(calibrated.getMonth(), 10) + 1,
+    parseInt(calibrated.getDate(), 10),
+    parseInt(calibrated.getHours(), 10),
+    parseInt(calibrated.getMinutes(), 10)
+  ];
+};
+
+export function generateICS(targetJson) {
+  const JsonProcess = courseID => {
+    const course = targetJson[courseID];
+    console.log(course.schedule);
+    course.schedule.forEach(classOfCourse => {
+      if (classOfCourse !== null)
+        classOfCourse.remark.forEach(weekCount => {
+          const calculatedTime =
+            semesterStart +
+            weekCount * WEEKTIME +
+            WEEKDAY[classOfCourse.day] * DAYTIME;
+
+          const event = {
+            start: dateCalculation(
+              new Date(calculatedTime),
+              classOfCourse["start_time"]
+            ),
+            end: dateCalculation(
+              new Date(calculatedTime),
+              classOfCourse["end_time"]
+            ),
+            title: courseID,
+            description:
+              course.title +
+              "\n" +
+              classOfCourse.class_type +
+              " " +
+              classOfCourse.group,
+            categories: ["NTU course"],
+            location: classOfCourse.venue,
+            geo: { lat: 1.29027, lon: 103.851959 },
+            status: "CONFIRMED"
+          };
+          serialEvent.push(event);
+        });
+    });
+  };
+
+  let serialEvent = [];
+  Object.keys(targetJson).forEach(JsonProcess);
+  const { error, value } = ics.createEvents(serialEvent);
+  if (!error) return value;
+  return null;
 }

@@ -122,13 +122,20 @@ class PageSchedule extends React.Component {
       input: ""
     };
   }
+  download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
 
   handleInput = event => {
     this.setState({ input: event.target.value });
   };
 
   generateOutput = () => {
-    const outputTextarea = document.querySelector("." + styles.outputArea);
+    // const outputTextarea = document.querySelector("." + styles.outputArea);
     const input = this.state.input;
     const tokenStream = tools.tokenize(input);
 
@@ -139,7 +146,12 @@ class PageSchedule extends React.Component {
     // }
     const output = tools.parseToJSON(tokenStream);
     // write to output
-    outputTextarea.value = JSON.stringify(output, null, 2);
+    const courseResult = tools.generateICS(output);
+    console.log(courseResult);
+
+    this.download(courseResult, "Schedule.ics", "text/plain");
+
+    // outputTextarea.value = JSON.stringify(output, null, 2);
   };
 
   render() {
@@ -153,16 +165,10 @@ class PageSchedule extends React.Component {
             spellCheck={false}
             data-gramm_editor="false" /* disable grammarly*/
           />
-          <textarea
-            className={styles.outputArea}
-            spellCheck={false}
-            readOnly
-            data-gramm_editor="false" /* disable grammarly*/
-          />
+          <button onClick={this.generateOutput} className={styles.generate}>
+            Generate
+          </button>
         </div>
-        <button onClick={this.generateOutput} className={styles.generate}>
-          Generate
-        </button>
         <div className={styles.calendarContainer}>
           <BigCalendar
             events={events}
