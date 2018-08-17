@@ -1,5 +1,30 @@
 // @flow
+// constants
 const ics = require("ics");
+// By calculation time offset is +8 Hours
+// Since I use UTC as standard time, hour and minutes is in Singapore timezone (UTC+8)
+// Since frontend JS is browser specific.
+// Hence, when it apply to UTC time the real time offset is -8 Hours
+// Then I import the time to ics API, which use UTC-8 as standard.
+// Hence There is a -8 Hours Offset.
+// In total it is a +0 Hours Offset.
+const DAYTIME = 24 * 60 * 60 * 1000;
+const OFFSET = 0;
+const WEEKTIME = 7 * DAYTIME;
+const WEEKDAY = {
+  MON: 0,
+  TUE: 1,
+  WED: 2,
+  THU: 3,
+  FRI: 4,
+  SAT: 5,
+  SUN: 6
+};
+
+// Semester start uses UTC time
+// JS Date module use 0 as the start of month, hence, 0 stands for January. Here we mean August 13th, 2018
+// - WEEKTIME because we do not wanna week 0 lol
+const SEMESTER_START = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME;
 
 export function tokenize(charStream: string): string[][] {
   if (!charStream) return [];
@@ -173,31 +198,22 @@ export function parseToJSON(tokenStream: string[][]) {
   return output;
 }
 
+export function calculateAcademicWeek(): string {
+  const weekDifference = parseInt(
+    ((new Date().getTime() - SEMESTER_START) / WEEKTIME).toString(),
+    10
+  );
+  if (weekDifference >= 1 && weekDifference <= 7) {
+    return `Week ${weekDifference}`;
+  } else if (weekDifference === 8) {
+    return "Recess Week 🎉";
+  } else if (weekDifference >= 9 && weekDifference <= 14) {
+    return `Week ${weekDifference - 1}`;
+  } else return null;
+}
+
 // download feature implementation
 // The ics API use UTC-8 as the only time source, hence we will use UTC time to calculate timezone.
-
-// By calculation time offset is +8 Hours
-// Since I use UTC as standard time, hour and minutes is in Singapore timezone (UTC+8)
-// Since frontend JS is browser specific.
-// Hence, when it apply to UTC time the real time offset is -8 Hours
-// Then I import the time to ics API, which use UTC-8 as standard.
-// Hence There is a -8 Hours Offset.
-// In total it is a +0 Hours Offset.
-const DAYTIME = 24 * 60 * 60 * 1000,
-  OFFSET = 0,
-  WEEKTIME = 7 * DAYTIME,
-  WEEKDAY = {
-    MON: 0,
-    TUE: 1,
-    WED: 2,
-    THU: 3,
-    FRI: 4,
-    SAT: 5,
-    SUN: 6
-  },
-  SEMESTER_START = new Date(2018, 7, 13, 0, 0, 0, 0).getTime() - WEEKTIME; // Semester start uses UTC time
-// JS Date module use 0 as the start of month, hence, 0 stands for January.
-
 const dateCalculationForICS = (d, T) => {
   const original = new Date(
     parseInt(d.getFullYear(), 10),
@@ -237,6 +253,11 @@ export function generateCalendarEvent(json: Object): Object[] {
   let idCount = 0;
   const events = [];
   const courseList = Object.keys(json);
+  let eventCategory = {};
+  courseList.forEach((courseCode, index) => {
+    eventCategory = { ...eventCategory, [courseCode]: index };
+  });
+  console.log(eventCategory);
   courseList.forEach(courseCode => {
     const course = json[courseCode];
     const { title } = course;
@@ -270,13 +291,13 @@ export function generateCalendarEvent(json: Object): Object[] {
           title: content,
           allDay: false,
           start: start,
-          end: end
+          end: end,
+          category: "category_".concat(eventCategory[courseCode])
         });
       });
     });
   });
 
-  console.log("events", events);
   return events;
 }
 

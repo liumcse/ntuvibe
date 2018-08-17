@@ -25,10 +25,20 @@
     text-align: left !important;
     @include open-sans-medium;
     font-size: 1.5rem;
+    border-left: 5px solid $primary;
+    padding-left: calc(1rem + 5px) !important;
+    padding-right: 0 !important;
   }
 
   .rbc-event {
+    z-index: -1 !important;
     cursor: default !important;
+    // border: none !important;
+    border-radius: 0 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 0 solid white !important;
   }
 
   // .rbc-event.rbc-selected {
@@ -87,10 +97,6 @@
     width: 97% !important;
   }
 
-  .rbc-event {
-    border-radius: 2px !important;
-  }
-
   .rbc-current-time-indicator {
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
@@ -106,12 +112,37 @@
       height: 8px;
     }
   }
+
+    // color by category
+    .category_1 {
+      background-color: #E70000 !important;
+      // border-bottom: 3px rgba(231, 0, 0, 0.8) !important;
+    }
+    .category_2 {
+      background-color: #FF8C00 !important;
+    }
+    .category_3 {
+      background-color: #888451 !important;  
+    }
+    .category_4 {
+      background-color: #00811F !important
+    }
+    .category_5 {
+      background-color: #760089 !important;
+    }
+    .category_6 {
+      background-color: #0044FF !important;
+    }
+    .category_7 {
+      background-color: black !important;
+    }
 }
 
 :local {
   .container {
     display: flex;
     flex-direction: column;
+
   }
 
   .textContainer {
@@ -136,6 +167,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 40%;
       div {
         font-size: 0.85rem;
         color: #7d7d7d;
@@ -154,7 +186,7 @@
   }
 
   .innerContainer {
-    padding: 1rem 3rem;
+    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
   }
@@ -182,9 +214,37 @@
     }
   }
 
-  .calendarContainer {
+  .scheduleContainer {
     position: relative;
     min-height: 10rem;
-    margin-top: 100rem //debug;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .calendarContainer {
+    margin-top: 1rem;
+  }
+
+  .weekIndicator {
+    // display: inline;
+    // background-color: $indicator;
+    // padding: 0.5rem 0.75rem;
+    // border-radius: 3px;
+    // color: white;;
+    @include lato-regular;
+    .week {
+      @include lato-medium;
+    }
+  }
+
+  .toolbar {
+    button {
+      margin-top: 1rem;
+      margin-right: 2rem;
+    }
+    .addToCalendar, .openInPDF {
+      background-color: $primary;
+      color: white;
+    }
   }
 }
