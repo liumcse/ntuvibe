@@ -18,10 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-proto-to-assign": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "ics": "git+https://github.com/ZaynJarvis/ics.git",
+    "ics": "git://github.com/ZaynJarvis/ics.git",
     "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
@@ -33,7 +30,6 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-router-sitemap": "^1.1.3",
-    "react-select": "^1.2.1",
     "reactjs-popup": "^1.1.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
@@ -46,7 +42,9 @@
     "babel-loader": "^7.1.5",
     "babel-plugin-dynamic-import-node": "^2.0.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-proto-to-assign": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
@@ -81,6 +79,8 @@
   },
   "babel": {
     "plugins": [
+      "transform-proto-to-assign",
+      "transform-object-assign",
       "dynamic-import-node",
       "syntax-dynamic-import"
     ],
