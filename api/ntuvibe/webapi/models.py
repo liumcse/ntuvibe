@@ -137,6 +137,17 @@ class ClassScheduleTab(AutoSaveModel):
 		]
 
 
+class CoursePeTab(AutoSaveModel):
+	id = models.BigAutoField(primary_key=True)
+	course_id = PositiveBigIntegerField(db_index=True)
+	pe_type = models.CharField(db_index=True, max_length=16)
+	create_time = models.PositiveIntegerField()
+	update_time = models.PositiveIntegerField()
+
+	class Meta:
+		db_table = u"webapi_course_pe_tab"
+
+
 class ExamScheduleTab(AutoSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	course_id = PositiveBigIntegerField(db_index=True)
