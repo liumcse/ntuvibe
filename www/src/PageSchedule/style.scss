@@ -18,7 +18,7 @@
 
   .rbc-timeslot-group {
     // height of each slot. determined by how much information we want to show on each event slot
-    min-height: 4rem !important;
+    min-height: 3rem !important;
   }
 
   .rbc-toolbar-label {
@@ -38,7 +38,11 @@
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
+    overflow-y: auto !important;
     // border-bottom: 0 solid white !important;
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
   }
 
   // .rbc-event.rbc-selected {

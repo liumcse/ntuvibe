@@ -175,7 +175,7 @@ class PageSchedule extends React.Component {
               >
                 Add to your calendar
               </button>
-              <button className={styles.openInPDF}>Open in PDF</button>
+              <button className={styles.openInPDF}>Good for print</button>
               <ImportSchedule
                 import={this.importSchedule}
                 trigger={
