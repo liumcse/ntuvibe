@@ -150,7 +150,7 @@ export function parseToJSON(tokenStream: string[][]) {
 
   const processSchedule = (schedule: string[]): Object => {
     if (!schedule) return null;
-    if (schedule[5] === "ONLINE COURSE") return null;
+    if (!schedule[5] || schedule[5] === "ONLINE COURSE") return null;
     else {
       const time = schedule[3].split("-");
       const start_time = time[0];
@@ -248,6 +248,74 @@ const dateCalculationForCalendar = (d, T) => {
   return new Date(original + OFFSET);
 };
 
+// LEC 13:30 - 14:30, LEC 14:30 - 15:30 can be merged into LEC 13:30 - 15:30
+// And this function is to achieve that
+// eslint-disable-next-line
+const mergeSchedule = (scheduleList: Object[]): Object[] => {
+  // helper function for comparing weeks
+  const compareWeeks = (weekA, weekB) => {
+    if (weekA.length !== weekB.length) return false;
+    for (let i = 0; i < weekA.length; i++) {
+      if (weekA[i] !== weekB[i]) return false;
+    }
+    return true;
+  };
+  // start processing
+  if (!scheduleList) return [];
+  const mergedSchedule = [];
+  for (let i = 0; i < scheduleList.length; i++) {
+    const thisSchedule = scheduleList[i];
+    if (!thisSchedule) break;
+    if (i === 0) {
+      mergedSchedule.push(thisSchedule);
+      continue;
+    }
+    const {
+      day,
+      start_time,
+      end_time,
+      remark,
+      class_type,
+      group,
+      venue
+    } = thisSchedule;
+    if (
+      !day ||
+      !start_time ||
+      !end_time ||
+      !remark ||
+      !class_type ||
+      !group ||
+      !venue
+    ) {
+      mergedSchedule.push(this.schedule);
+      continue;
+    }
+    const lastSchedule = scheduleList[i - 1];
+    const last_day = lastSchedule.day;
+    const last_end_time = lastSchedule.end_time;
+    const last_remark = lastSchedule.remark;
+    const last_class_type = lastSchedule.class_type;
+    const last_group = lastSchedule.group;
+    const last_venue = lastSchedule.venue;
+    if (
+      day === last_day &&
+      start_time === last_end_time &&
+      compareWeeks(remark, last_remark) &&
+      class_type === last_class_type &&
+      group === last_group &&
+      venue === last_venue
+    ) {
+      // can be merged
+      mergedSchedule[mergedSchedule.length - 1].end_time = end_time;
+    } else {
+      mergedSchedule.push(thisSchedule);
+    }
+  }
+
+  return mergedSchedule;
+};
+
 export function generateCalendarEvent(json: Object): Object[] {
   if (!json) return [];
   let idCount = 0;
@@ -257,11 +325,10 @@ export function generateCalendarEvent(json: Object): Object[] {
   courseList.forEach((courseCode, index) => {
     eventCategory = { ...eventCategory, [courseCode]: index };
   });
-  console.log(eventCategory);
   courseList.forEach(courseCode => {
     const course = json[courseCode];
-    const { title } = course;
-    const scheduleList = course.schedule;
+    let scheduleList = course.schedule;
+    scheduleList = mergeSchedule(scheduleList);
     scheduleList.forEach(schedule => {
       if (!schedule) return;
       const {

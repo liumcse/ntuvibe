@@ -31,14 +31,14 @@
   }
 
   .rbc-event {
-    z-index: -1 !important;
+    // z-index: -1 !important;
     cursor: default !important;
     // border: none !important;
     border-radius: 0 !important;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    border-bottom: 0 solid white !important;
+    // border-bottom: 0 solid white !important;
   }
 
   // .rbc-event.rbc-selected {
@@ -114,27 +114,33 @@
   }
 
     // color by category
+    .category_0 {
+      background-color: #E70000bd !important;
+      border-bottom: 5px solid #E70000 !important;
+    }
     .category_1 {
-      background-color: #E70000 !important;
-      // border-bottom: 3px rgba(231, 0, 0, 0.8) !important;
+      background-color: #FF8C00bd !important;
+      border-bottom: 5px solid #FF8C00 !important;
     }
     .category_2 {
-      background-color: #FF8C00 !important;
+      background-color: #888451bd !important;  
+      border-bottom: 5px solid #888451 !important;
     }
     .category_3 {
-      background-color: #888451 !important;  
+      background-color: #00811Fbd !important;
+      border-bottom: 5px solid #00811F !important;
     }
     .category_4 {
-      background-color: #00811F !important
+      background-color: #760089bd !important;
+      border-bottom: 5px solid #760089 !important;
     }
     .category_5 {
-      background-color: #760089 !important;
+      background-color: #0044FFbd !important;
+      border-bottom: 5px solid #0044FF !important;
     }
     .category_6 {
-      background-color: #0044FF !important;
-    }
-    .category_7 {
-      background-color: black !important;
+      background-color: #000000bd !important;
+      border-bottom: 5px solid #000000 !important;
     }
 }
 
