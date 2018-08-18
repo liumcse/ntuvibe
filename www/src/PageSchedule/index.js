@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
+import Footer from "./components/Footer";
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
@@ -204,6 +205,7 @@ class PageSchedule extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
