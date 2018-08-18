@@ -58,6 +58,8 @@ class PageSchedule extends React.Component {
     buttonGroup[0].innerHTML = "This Week";
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
+
+    this.forceUpdate();
   }
 
   handleInput = event => {
@@ -86,51 +88,64 @@ class PageSchedule extends React.Component {
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
-            <div className={styles.header}>Where is my class?</div>
-            <div className={styles.text}>
-              Every morning, we ask ourselves - do I have classes today? Where
-              and when?
-            </div>
-            <div className={styles.text}>
-              With Vibe, you can create your class schedule and export it to
-              your favorite calendar app!
-            </div>
-            <div className={styles.text}>
-              You only have to import once (per semester), and Vibe will do the
-              rest for you (truly yours :p)
-            </div>
+            <div className={styles.header}>Scheduler</div>
             <div
               className={styles.instructionContainer}
               style={{ display: !calendarEvents ? "block" : "none" }}
             >
+              <div className={styles.text}>
+                Create your <span className={styles.beautiful}>beautiful</span>{" "}
+                class schedule and add to your calendar!
+              </div>
               <div className={styles.picContainer}>
                 <div className={styles.picItem}>
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-17%20at%206.16.55%20PM.png?alt=media&token=3b363747-c898-48f6-b84f-7e30a0cf6b29"
+                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-18%20at%202.51.45%20PM.png?alt=media&token=ab0bed0f-200a-4d58-9809-d057000676d0"
                     width="100%"
                   />
                   <div>
-                    Log in to{" "}
-                    <a href="https://www.ntu.edu.sg/Students/Undergraduate/AcademicServices/CourseRegistration/Pages/default.aspx">
-                      stars planner
-                    </a>{" "}
-                    and check registered courses
+                    A weekly class schedule that can be added to your calendar
                   </div>
                 </div>
                 <div className={styles.picItem}>
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-17%20at%206.17.38%20PM.png?alt=media&token=33133d12-1a6d-4f4d-86a9-73a4cbf2708f"
+                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-18%20at%202.54.22%20PM.png?alt=media&token=9e163ca1-d184-44fd-b2a0-297af14b278e"
                     width="100%"
                   />
-                  <div>Select all text and copy</div>
+                  <div>By simple copy & paste</div>
                 </div>
               </div>
-              <div className={styles.text} style={{ textAlign: "center" }}>
+              <div className={styles.text}>
+                <span className={styles.tryItOut}>Try it out</span>
+              </div>
+              <div className={styles.text}>
+                <div className={styles.stepContainer}>
+                  <span className={styles.step}>1</span>
+                  <a href="http://www.ntu.edu.sg/Students/Undergraduate/AcademicServices/CourseRegistration/Pages/default.aspx">
+                    Log in to STARS Planner
+                  </a>
+                </div>
+                <div className={styles.stepContainer}>
+                  <span className={styles.step}>2</span> Check your course
+                  registered
+                </div>
+                <div className={styles.stepContainer}>
+                  <span className={styles.step}>3</span> Select all and copy
+                </div>
+              </div>
+              <div
+                className={styles.text}
+                style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
+              >
+                You only have to do once, and Vibe will do the rest (truly yours
+                :p)
+              </div>
+              <div className={styles.text}>
                 <ImportSchedule
                   import={this.importSchedule}
                   trigger={
                     <button className={styles.import}>
-                      Import new schedule
+                      Import your schedule
                     </button>
                   }
                 />
@@ -142,7 +157,7 @@ class PageSchedule extends React.Component {
             style={{
               display: calendarEvents
                 ? "block"
-                : "block" /* display only when imported */
+                : "none" /* display only when imported */
             }}
           >
             {tools.calculateAcademicWeek() ? (

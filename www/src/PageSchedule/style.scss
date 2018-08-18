@@ -41,7 +41,7 @@
     overflow-y: auto !important;
     // border-bottom: 0 solid white !important;
     &::-webkit-scrollbar {
-      width: 2px;
+      width: 0;
     }
   }
 
@@ -87,22 +87,12 @@
     border-bottom: 1px solid #DDD !important;
   }
 
-  // .rbc-header:nth-child(1) {
-  //   // remove sunday
-  //   display: none !important;
-  // }
-  // .rbc-day-slot:nth-child(1) {
-  //   // remove sunday
-  //   display: none !important;
-  // }
-
   .rbc-events-container {
     right: 0px !important;
     width: 97% !important;
   }
 
   .rbc-current-time-indicator {
-    display: block !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {
@@ -161,11 +151,37 @@
     flex-direction: column;
     .header {
       font-size: 2rem;
-      color: crimson;
+      color: $primary;
       @include raleway-medium;
     }
     .text {
       margin-top: 1rem;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+    .beautiful {
+      color: $indicator;
+      @include raleway-regular;
+    }
+    .tryItOut {
+      color: $primary;
+      font-size: 2rem;
+      @include open-sans-medium;
+      font-variant: all-petite-caps;
+    }
+    .stepContainer {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .step {
+      background-color: $indicator;
+      @include open-sans-medium;
+      font-size: 0.65rem;
+      color: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 5px;
+      margin-right: 1rem;
     }
   }
 
