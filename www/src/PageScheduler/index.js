@@ -1,17 +1,25 @@
+// @flow
 import React from "react";
+import { connect } from "react-redux";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
 import Footer from "./components/Footer";
 
 import { requireLogin } from "src/utils";
+import { saveSchedule } from "src/redux/actions";
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
+import calendar from "./assets/calendar.svg";
 import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+
+const calendarIcon = (
+  <img src={calendar} style={{ height: "1.5rem", width: "1.5rem" }} />
+);
 
 // today
 const TODAY = new Date();
@@ -36,12 +44,16 @@ const END_TIME = new Date(
 
 const events = [];
 
-class PageScheduler extends React.Component {
+type Props = {
+  schedule: ?Object,
+  saveSchedule: Object => void
+};
+
+class PageScheduler extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       input: "",
-      json: null,
       calendarEvents: null
     };
   }
@@ -61,11 +73,21 @@ class PageScheduler extends React.Component {
     buttonGroup[0].innerHTML = "This Week";
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
+    // generate calendar events from schedule in redux
+    if (this.props.schedule) {
+      this.generateCalendar(this.props.schedule);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.schedule !== this.props.schedule) {
+      this.generateCalendar(this.props.schedule);
+    }
   }
 
   clearSchedule = () => {
     if (confirm("Are you sure you want to clear your schedule?")) {
-      this.setState({ input: "", json: null, calendarEvents: null });
+      this.setState({ input: "", calendarEvents: null });
     }
   };
 
@@ -82,10 +104,12 @@ class PageScheduler extends React.Component {
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
-    // write to output
-    // const courseResult = tools.generateICS(json);
-    const calendarEvents = tools.generateCalendarEvent(json);
-    this.setState({ calendarEvents: calendarEvents, json: json });
+    this.props.saveSchedule(json); // write to redux
+  };
+
+  generateCalendar = schedule => {
+    const calendarEvents = tools.generateCalendarEvent(schedule);
+    this.setState({ calendarEvents: calendarEvents });
   };
 
   uploadSchedule = () => {
@@ -99,7 +123,7 @@ class PageScheduler extends React.Component {
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
-            <div className={styles.header}>Scheduler</div>
+            <div className={styles.header}>{calendarIcon} Scheduler</div>
             <div
               className={styles.instructionContainer}
               style={{ display: !calendarEvents ? "block" : "none" }}
@@ -222,4 +246,18 @@ class PageScheduler extends React.Component {
   }
 }
 
-export default PageScheduler;
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    schedule: user && user.schedule
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  saveSchedule: schedule => dispatch(saveSchedule(schedule))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PageScheduler);

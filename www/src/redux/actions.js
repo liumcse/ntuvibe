@@ -341,6 +341,13 @@ export function fetchUserCourseComment(courseCode: string) {
   };
 }
 
+export function saveSchedule(schedule: Object) {
+  return {
+    type: actionTypes.SAVE_SCHEDULE,
+    payload: schedule
+  };
+}
+
 export function clearCourseInformation() {
   return {
     type: actionTypes.CLEAR_COURSE_INFORMATION

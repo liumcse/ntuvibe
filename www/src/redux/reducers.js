@@ -31,7 +31,8 @@ const initialState: State = {
     signUpRequest: null,
     updateProfile: null,
     validation: null,
-    activation: null
+    activation: null,
+    schedule: null
   }
 };
 
@@ -195,6 +196,11 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         activation: payload.data
+      };
+    case actionTypes.SAVE_SCHEDULE:
+      return {
+        ...state,
+        schedule: payload
       };
     default:
       return state;
