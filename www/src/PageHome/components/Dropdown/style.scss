@@ -6,10 +6,10 @@
     padding: 0.5rem 2rem;
   }
 
-@media (max-width: 768px) {
-  .suggestion_title {
-    padding: 0.25rem 1rem;
-    font-size: 0.9rem;
+  @media (max-width: 768px) {
+    .suggestion_title {
+      padding: 0.25rem 1rem;
+      font-size: 0.9rem;
+    }
   }
-}
 }

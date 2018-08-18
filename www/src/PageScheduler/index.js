@@ -34,7 +34,7 @@ const END_TIME = new Date(
 
 const events = [];
 
-class PageSchedule extends React.Component {
+class PageScheduler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,6 +62,12 @@ class PageSchedule extends React.Component {
 
     this.forceUpdate();
   }
+
+  clearSchedule = () => {
+    if (confirm("Are you sure you want to clear your schedule?")) {
+      this.setState({ input: "", json: null, calendarEvents: null });
+    }
+  };
 
   handleInput = event => {
     this.setState({ input: event.target.value });
@@ -191,18 +197,14 @@ class PageSchedule extends React.Component {
               >
                 Add to your calendar
               </button>
-              <button className={styles.openInPDF}>Good for print</button>
-              <ImportSchedule
-                import={this.importSchedule}
-                trigger={
-                  <button
-                    style={{ backgroundColor: "crimson", color: "white" }}
-                  >
-                    Re-import schedule
-                  </button>
-                }
-              />
-            </div>
+              <button className={styles.sync}>Sync to all devices</button>
+              <button
+                onClick={this.clearSchedule}
+                style={{ backgroundColor: "crimson", color: "white" }}
+              >
+                Clear schedule
+              </button>
+            </div>{" "}
           </div>
         </div>
         <Footer />
@@ -211,4 +213,4 @@ class PageSchedule extends React.Component {
   }
 }
 
-export default PageSchedule;
+export default PageScheduler;

@@ -2,7 +2,7 @@ export const ROUTE_HOME = "/";
 export const ROUTE_HELP = "/help";
 export const ROUTE_SITEMAP = "/sitemap";
 export const ROUTE_ABOUT = "/about";
-export const ROUTE_SCHEDULE = "/schedule";
+export const ROUTE_SCHEDULER = "/scheduler";
 // Course
 export const ROUTE_COURSE_PAGE = "/courses/:courseCode";
 // User

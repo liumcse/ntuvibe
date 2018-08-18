@@ -6,6 +6,12 @@
   // !important is really gross
   .rbc-toolbar {
     flex-direction: row-reverse !important;
+    margin-bottom: 1rem !important;
+    span {
+      button {
+        box-shadow: none !important;
+      }
+    }
   }
 
   .rbc-btn-group {
@@ -93,6 +99,7 @@
   }
 
   .rbc-current-time-indicator {
+    // display: block !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {
@@ -108,35 +115,45 @@
     }
   }
 
-    // color by category
-    .category_0 {
-      background-color: #E70000bd !important;
-      border-bottom: 5px solid #E70000 !important;
+  // color by category
+  .category_0 {
+    background-color: #E70000bd !important;
+    border-bottom: 5px solid #E70000 !important;
+  }
+  .category_1 {
+    background-color: #FF8C00bd !important;
+    border-bottom: 5px solid #FF8C00 !important;
+  }
+  .category_2 {
+    background-color: #888451bd !important;  
+    border-bottom: 5px solid #888451 !important;
+  }
+  .category_3 {
+    background-color: #00811Fbd !important;
+    border-bottom: 5px solid #00811F !important;
+  }
+  .category_4 {
+    background-color: #760089bd !important;
+    border-bottom: 5px solid #760089 !important;
+  }
+  .category_5 {
+    background-color: #0044FFbd !important;
+    border-bottom: 5px solid #0044FF !important;
+  }
+  .category_6 {
+    background-color: #000000bd !important;
+    border-bottom: 5px solid #000000 !important;
+  }
+
+  @media (max-width: 768px) {
+    .rbc-btn-group {
+      display: none !important;
     }
-    .category_1 {
-      background-color: #FF8C00bd !important;
-      border-bottom: 5px solid #FF8C00 !important;
+
+    .rbc-time-header {
+      display: none !important;
     }
-    .category_2 {
-      background-color: #888451bd !important;  
-      border-bottom: 5px solid #888451 !important;
-    }
-    .category_3 {
-      background-color: #00811Fbd !important;
-      border-bottom: 5px solid #00811F !important;
-    }
-    .category_4 {
-      background-color: #760089bd !important;
-      border-bottom: 5px solid #760089 !important;
-    }
-    .category_5 {
-      background-color: #0044FFbd !important;
-      border-bottom: 5px solid #0044FF !important;
-    }
-    .category_6 {
-      background-color: #000000bd !important;
-      border-bottom: 5px solid #000000 !important;
-    }
+  }
 }
 
 :local {
@@ -196,6 +213,7 @@
       align-items: center;
       width: 40%;
       div {
+        padding-top: 1rem;
         font-size: 0.85rem;
         color: #7d7d7d;
       }
@@ -268,10 +286,21 @@
       margin-top: 1rem;
       margin-right: 2rem;
     }
-    .addToCalendar, .openInPDF {
+    .sync {
+      background-color: $primary;
+      color: white;
+    }
+    .addToCalendar {
       // background-color: $primary;
       // color: white;
       background-color: #ccc;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .innerContainer {
+      padding: 1rem 1.5rem;
+      padding-bottom: 3rem;
     }
   }
 }

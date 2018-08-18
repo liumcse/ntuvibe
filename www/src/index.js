@@ -13,7 +13,7 @@ import PageTransient from "./PageTransient";
 import PageUserSetting from "./PageUserSetting";
 import PageSitemap from "./PageSitemap";
 import PageAbout from "./PageAbout";
-import PageSchedule from "./PageSchedule";
+import PageScheduler from "./PageScheduler";
 import store from "./redux/store";
 
 import "./styles/app.scss";
@@ -51,8 +51,8 @@ class App extends React.PureComponent {
               <Route exact path={ROUTES.ROUTE_ABOUT} component={PageAbout} />
               <Route
                 exact
-                path={ROUTES.ROUTE_SCHEDULE}
-                component={PageSchedule}
+                path={ROUTES.ROUTE_SCHEDULER}
+                component={PageScheduler}
               />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />
