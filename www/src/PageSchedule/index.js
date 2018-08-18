@@ -38,6 +38,7 @@ class PageSchedule extends React.Component {
     super(props);
     this.state = {
       input: "",
+      json: null,
       calendarEvents: null
     };
   }
@@ -63,20 +64,10 @@ class PageSchedule extends React.Component {
     this.setState({ input: event.target.value });
   };
 
-  generateOutput = () => {
-    // const outputTextarea = document.querySelector("." + styles.outputArea);
-    const input = this.state.input;
-    const tokenStream = tools.tokenize(input);
-    const json = tools.parseToJSON(tokenStream);
-    // write to output
-    const courseResult = tools.generateICS(json);
-    const calendarEvents = tools.generateCalendarEvent(json);
-    this.setState({ calendarEvents: calendarEvents });
-    // console.log(courseResult);
-
-    // this.download(courseResult, "ClassSchedule.ics", "text/plain");
-
-    // outputTextarea.value = JSON.stringify(output, null, 2);
+  downloadCalendar = () => {
+    const { json } = this.state;
+    const icsContent = tools.generateICS(json);
+    this.download(icsContent, "ClassSchedule.ics", "text/plain");
   };
 
   importSchedule = input => {
@@ -85,7 +76,7 @@ class PageSchedule extends React.Component {
     // write to output
     // const courseResult = tools.generateICS(json);
     const calendarEvents = tools.generateCalendarEvent(json);
-    this.setState({ calendarEvents: calendarEvents });
+    this.setState({ calendarEvents: calendarEvents, json: json });
   };
 
   render() {
@@ -178,7 +169,10 @@ class PageSchedule extends React.Component {
               />
             </div>
             <div className={styles.toolbar}>
-              <button className={styles.addToCalendar}>
+              <button
+                className={styles.addToCalendar}
+                onClick={this.downloadCalendar}
+              >
                 Add to your calendar
               </button>
               <button className={styles.openInPDF}>Open in PDF</button>

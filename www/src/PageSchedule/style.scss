@@ -98,6 +98,7 @@
   }
 
   .rbc-current-time-indicator {
+    display: block !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {
@@ -249,8 +250,9 @@
       margin-right: 2rem;
     }
     .addToCalendar, .openInPDF {
-      background-color: $primary;
-      color: white;
+      // background-color: $primary;
+      // color: white;
+      background-color: #ccc;
     }
   }
 }

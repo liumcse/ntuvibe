@@ -264,7 +264,7 @@ const mergeSchedule = (scheduleList: Object[]): Object[] => {
   if (!scheduleList) return [];
   const mergedSchedule = [];
   for (let i = 0; i < scheduleList.length; i++) {
-    const thisSchedule = scheduleList[i];
+    const thisSchedule = scheduleList[i]; // enforce immutability
     if (!thisSchedule) break;
     if (i === 0) {
       mergedSchedule.push(thisSchedule);
@@ -288,10 +288,10 @@ const mergeSchedule = (scheduleList: Object[]): Object[] => {
       !group ||
       !venue
     ) {
-      mergedSchedule.push(this.schedule);
+      mergedSchedule.push(thisSchedule);
       continue;
     }
-    const lastSchedule = scheduleList[i - 1];
+    const lastSchedule = mergedSchedule[mergedSchedule.length - 1];
     const last_day = lastSchedule.day;
     const last_end_time = lastSchedule.end_time;
     const last_remark = lastSchedule.remark;
@@ -307,12 +307,16 @@ const mergeSchedule = (scheduleList: Object[]): Object[] => {
       venue === last_venue
     ) {
       // can be merged
-      mergedSchedule[mergedSchedule.length - 1].end_time = end_time;
+      // warning: do not mutate lastSchedule directly; instead, create a new object
+      mergedSchedule[mergedSchedule.length - 1] = {
+        ...lastSchedule,
+        end_time: end_time
+      };
     } else {
       mergedSchedule.push(thisSchedule);
     }
   }
-
+  console.log("merged", mergedSchedule);
   return mergedSchedule;
 };
 
@@ -371,8 +375,10 @@ export function generateCalendarEvent(json: Object): Object[] {
 export function generateICS(targetJson) {
   const JsonProcess = courseID => {
     const course = targetJson[courseID];
-    console.log(course.schedule);
-    course.schedule.forEach(classOfCourse => {
+    console.log("courseSchedule", course.schedule);
+    const scheduleList = mergeSchedule(course.schedule);
+    console.log("scheduleList", scheduleList);
+    scheduleList.forEach(classOfCourse => {
       if (classOfCourse !== null)
         classOfCourse.remark.forEach(weekCount => {
           const calculatedTime =
