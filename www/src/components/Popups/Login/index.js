@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import PropTypes from "prop-types";
 
-import { userLogin } from "src/redux/actions";
+import { userLogin, fetchProfile } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -72,9 +72,10 @@ class Login extends React.Component {
           this.setState({
             verificationRequested: false,
             succeed: true,
-            notification: "Login sucessful! Redirecting..."
+            notification: "Login sucessful!"
           });
-          setTimeout(() => location.reload(), 1500);
+          this.props.fetchProfile();
+          this.props.closePopup();
         }
       }
     });
@@ -143,6 +144,7 @@ Login.propTypes = {
   openSignUp: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired,
   userLogin: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
   loginRequest: PropTypes.object
 };
 
@@ -154,6 +156,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  fetchProfile: () => dispatch(fetchProfile()),
   userLogin: authForm => dispatch(userLogin(authForm))
 });
 

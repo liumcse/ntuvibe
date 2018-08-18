@@ -1,5 +1,7 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
+import store from "src/redux/store";
+import { popupTrigger } from "src/redux/actions";
 import moment from "moment";
 
 // TODO: the current search has severe performance issue. Write a better one
@@ -97,4 +99,15 @@ export function timestampToDuration(
   const end = new moment(endTime, "X");
   const duration = moment.duration(end.diff(start)).as("hours");
   return duration.toString().concat(" h");
+}
+
+export function requireLogin(callBack: Function): void {
+  const state = store.getState();
+  const profile = state && state.user && state.user.profile;
+  const { dispatch } = store;
+  if (!profile) {
+    dispatch(popupTrigger(1));
+  } else {
+    if (callBack) callBack();
+  }
 }

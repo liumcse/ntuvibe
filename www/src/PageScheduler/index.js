@@ -3,6 +3,8 @@ import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
 import Footer from "./components/Footer";
 
+import { requireLogin } from "src/utils";
+
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import * as tools from "./utils";
@@ -59,8 +61,6 @@ class PageScheduler extends React.Component {
     buttonGroup[0].innerHTML = "This Week";
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
-
-    this.forceUpdate();
   }
 
   clearSchedule = () => {
@@ -86,6 +86,10 @@ class PageScheduler extends React.Component {
     // const courseResult = tools.generateICS(json);
     const calendarEvents = tools.generateCalendarEvent(json);
     this.setState({ calendarEvents: calendarEvents, json: json });
+  };
+
+  uploadSchedule = () => {
+    console.log("You look beautiful");
   };
 
   render() {
@@ -197,7 +201,12 @@ class PageScheduler extends React.Component {
               >
                 Add to your calendar
               </button>
-              <button className={styles.sync}>Sync to all devices</button>
+              <button
+                className={styles.sync}
+                onClick={() => requireLogin(this.uploadSchedule)}
+              >
+                Sync to all devices
+              </button>
               <button
                 onClick={this.clearSchedule}
                 style={{ backgroundColor: "crimson", color: "white" }}
