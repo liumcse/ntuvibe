@@ -99,7 +99,7 @@
   }
 
   .rbc-current-time-indicator {
-    display: block !important;
+    // display: block !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {
@@ -268,6 +268,10 @@
     margin-top: 1rem;
   }
 
+  .calendarHint {
+    display: none;
+  }
+
   .weekContainer {
     margin: 1.5rem 0;
   }
@@ -286,7 +290,7 @@
 
   .toolbar {
     button {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       margin-right: 2rem;
     }
     .sync {
@@ -304,6 +308,15 @@
     .innerContainer {
       padding: 1rem 1.5rem;
       padding-bottom: 3rem;
+    }
+
+    .addToCalendar {
+      display: none;
+    }
+    
+    .calendarHint {
+      margin-top: 1.5rem;
+      display: block;
     }
   }
 }

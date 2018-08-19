@@ -373,7 +373,7 @@ class PageCourseDetail extends React.Component<Props> {
           </div>
           <div className={styles.section_c}>
             {courseSchedule &&
-              Object.keys(courseSchedule).length > 0 && (
+              Object.keys(courseSchedule).length > 1 && (
                 <div className={styles.table}>
                   <ClassSchedule data={courseSchedule} />
                 </div>

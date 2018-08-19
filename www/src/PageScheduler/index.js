@@ -99,7 +99,8 @@ class PageScheduler extends React.Component<Props> {
   }
 
   clearSchedule = () => {
-    if (confirm("Are you sure you want to clear your schedule?")) {
+    this.props.saveSchedule(null);
+    if (confirm("Are you sure you want to re-import your schedule?")) {
       this.setState({ input: "", calendarEvents: null });
     }
   };
@@ -110,7 +111,7 @@ class PageScheduler extends React.Component<Props> {
 
   downloadCalendar = () => {
     const { schedule } = this.props;
-    const icsContent = tools.generateICS(schedule);
+    const icsContent = tools.generateICS(JSON.parse(schedule));
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
   };
 
@@ -256,6 +257,15 @@ class PageScheduler extends React.Component<Props> {
                 defaultDate={new Date()}
               />
             </div>
+            <div
+              className={styles.text.concat(" ").concat(styles.calendarHint)}
+              style={{
+                color: "#7d7d7d",
+                fontSize: "0.9rem"
+              }}
+            >
+              On PC, you can download the whole semester into your calendar!
+            </div>
             <div className={styles.toolbar}>
               <button
                 className={styles.addToCalendar}
@@ -267,7 +277,7 @@ class PageScheduler extends React.Component<Props> {
                 className={styles.sync}
                 onClick={() => requireLogin(this.updateSchedule)}
               >
-                Sync to all devices
+                Save and sync
               </button>
               <button
                 onClick={this.clearSchedule}

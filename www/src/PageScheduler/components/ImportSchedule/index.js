@@ -19,14 +19,14 @@ class ImportSchedule extends React.PureComponent<Props> {
   import = (closePopup: Function): void => {
     const input = document.querySelector("." + styles.input).value;
     if (!input) {
-      alert("Hmmm did I see empty input?");
+      alert("Hmmm is that empty input?");
     } else {
       try {
         this.props.import(input);
         closePopup();
       } catch (error) {
         alert(
-          "We are sorry, but we can't read import your schedule. Make sure you copied everything on the \"Check Registered Course\" page.\nIf the problem persists, we appreciate if you can send us a feedback.\nBy the way, have you tried Chrome? Vibe doesn't work well on IE or Microsoft Edge :("
+          "We are sorry, but we can't import your schedule. Make sure you copied everything on the \"Print\\Check Registered Course\" page.\nIf the problem persists, we appreciate if you can send us a feedback.\nBy the way, have you tried Chrome? Vibe doesn't work well on IE or Microsoft Edge :("
         );
       }
     }
@@ -41,7 +41,7 @@ class ImportSchedule extends React.PureComponent<Props> {
             <div className={styles.inputContainer}>
               <textarea
                 className={styles.input}
-                placeholder="Past all text you copied from registered courses page into here..."
+                placeholder="Past all text you copied from Print/Check Courses Registered into here..."
                 spellCheck={false}
                 data-gramm_editor="false" /* disable grammarly*/
               />
