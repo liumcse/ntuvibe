@@ -6,8 +6,16 @@ import * as ReactGA from "react-ga";
 //   }
 // }
 
+// ReactGA.initialize("UA-113348736-2");
+
 export function initializeGA() {
   ReactGA.initialize("UA-113348736-2");
+}
+
+export function logPageview() {
+  if (process.env.NODE_ENV === "production") {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
 }
 
 export function logScheduleGeneration() {
@@ -31,13 +39,13 @@ export function logCourseVisit(code) {
     ReactGA.event({
       category: "Course",
       action: "View a course",
-      value: code
+      label: code
     });
   } else {
     ReactGA.event({
       category: "Development",
       action: "View a course",
-      value: code
+      label: code
     });
   }
 }

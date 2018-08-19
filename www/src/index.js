@@ -23,6 +23,7 @@ import "normalize.css";
 class App extends React.PureComponent {
   componentDidMount() {
     initializeGA();
+    // logPageview();
   }
 
   render() {
