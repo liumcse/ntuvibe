@@ -1,9 +1,9 @@
 import os
-import django
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../")
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../api/ntuvibe")
 sys.path.append("/home/ubuntu/.local/lib/python3.5/site-packages")
+import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ntuvibe.settings")
 django.setup()
 
