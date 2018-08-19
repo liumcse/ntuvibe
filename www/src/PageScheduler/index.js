@@ -196,11 +196,13 @@ class PageScheduler extends React.Component<Props> {
             }}
           >
             {tools.calculateAcademicWeek() ? (
-              <div className={styles.weekIndicator}>
-                💪 Today falls in{" "}
-                <span className={styles.week}>
-                  {tools.calculateAcademicWeek()}
-                </span>
+              <div className={styles.weekContainer}>
+                <div className={styles.weekIndicator}>
+                  💪 Today falls in{" "}
+                  <span className={styles.week}>
+                    {tools.calculateAcademicWeek()}
+                  </span>
+                </div>
               </div>
             ) : null}
             <div className={styles.calendarContainer}>
@@ -223,7 +225,7 @@ class PageScheduler extends React.Component<Props> {
                 className={styles.addToCalendar}
                 onClick={this.downloadCalendar}
               >
-                Add to your calendar
+                Download to your calendar
               </button>
               <button
                 className={styles.sync}

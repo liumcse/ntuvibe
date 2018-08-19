@@ -7,8 +7,9 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: $primary;
-    color: white;
+    background-color: white;
+    @include medium-shadow;
+    color: black;
     font-size: 0.6rem;
   }
 

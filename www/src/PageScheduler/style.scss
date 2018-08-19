@@ -178,7 +178,7 @@
     }
     .beautiful {
       color: $indicator;
-      @include raleway-regular;
+      @include raleway-medium;
     }
     .tryItOut {
       color: $primary;
@@ -262,19 +262,22 @@
   .scheduleContainer {
     position: relative;
     min-height: 10rem;
-    margin-top: 1rem;
   }
 
   .calendarContainer {
     margin-top: 1rem;
   }
 
+  .weekContainer {
+    margin: 1.5rem 0;
+  }
+
   .weekIndicator {
-    // display: inline;
-    // background-color: $indicator;
-    // padding: 0.5rem 0.75rem;
-    // border-radius: 3px;
-    // color: white;;
+    display: inline;
+    background-color: $indicator;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    color: white;
     @include lato-regular;
     .week {
       @include lato-medium;
