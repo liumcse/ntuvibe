@@ -7,7 +7,7 @@ import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "./components/Footer";
 
 import { requireLogin } from "src/utils";
-import { logScheduleGeneration } from "src/tracking";
+import { logPageview, logScheduleGeneration } from "src/tracking";
 import {
   saveSchedule,
   fetchUserSchedule,
@@ -85,6 +85,7 @@ class PageScheduler extends React.Component<Props> {
     // if (this.props.schedule) {
     //   this.generateCalendar(this.props.schedule);
     // }
+    logPageview();
     this.props.fetchUserSchedule();
   }
 

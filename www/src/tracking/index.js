@@ -1,4 +1,4 @@
-import * as ReactGA from "react-ga";
+import ReactGA from "react-ga";
 
 // function logPageview() {
 //   if (process.env.NODE_ENV === "production") {
@@ -8,14 +8,14 @@ import * as ReactGA from "react-ga";
 
 // ReactGA.initialize("UA-113348736-2");
 
-export function initializeGA() {
-  ReactGA.initialize("UA-113348736-2");
-}
+// export function initializeGA() {
+//   ReactGA.initialize("UA-113348736-2");
+// }
 
 export function logPageview() {
-  if (process.env.NODE_ENV === "production") {
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }
+  // if (process.env.NODE_ENV === "production") {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+  // }
 }
 
 export function logScheduleGeneration() {

@@ -253,9 +253,9 @@ class PageCourseDetail extends React.Component<Props> {
     } = this.props;
     const prevCourseCode = prevProps.match.params.courseCode || courseCode;
     if (prevCourseCode !== courseCode) {
-      this.fetchInformation();
-      logPageview(courseCode);
+      logPageview();
       logCourseVisit(courseCode);
+      this.fetchInformation();
     }
   }
 

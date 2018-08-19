@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
-import { initializeGA } from "./tracking";
+import { logPageview } from "./tracking";
+import ReactGA from "react-ga";
 import Popups from "./components/Popups";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
@@ -21,9 +22,18 @@ import "./styles/app.scss";
 import "normalize.css";
 
 class App extends React.PureComponent {
+  // componentDidMount() {
+  //   initializeGA();
+  //   logPageview();
+  // }
+
+  // componentDidMount() {
+  //   logPageview();
+  // }
+
   componentDidMount() {
-    initializeGA();
-    // logPageview();
+    ReactGA.initialize("UA-113348736-2");
+    logPageview(window.location.pathname);
   }
 
   render() {
