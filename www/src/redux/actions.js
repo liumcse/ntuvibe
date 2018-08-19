@@ -341,6 +341,59 @@ export function fetchUserCourseComment(courseCode: string) {
   };
 }
 
+export function fetchUserSchedule() {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.FETCH_USER_SCHEDULE_REQUESTED
+    });
+    await axios
+      .get(`${BASE_URL}/users/get_user_schedule`, { withCredentials: true })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.FETCH_USER_SCHEDULE_SUCCESS,
+          payload: response.data
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.FETCH_USER_SCHEDULE_FAILURE,
+          payload: {}
+        })
+      );
+  };
+}
+
+export function updateSchedule(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.UPDATE_SCHEDULE_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/update_user_schedule`, form, {
+        withCredentials: true
+      })
+      .then(response => {
+        return dispatch({
+          type: actionTypes.UPDATE_SCHEDULE_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.UPDATE_SCHEDULE_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
+export function saveSchedule(schedule: Object) {
+  return {
+    type: actionTypes.SAVE_SCHEDULE,
+    payload: schedule
+  };
+}
+
 export function clearCourseInformation() {
   return {
     type: actionTypes.CLEAR_COURSE_INFORMATION

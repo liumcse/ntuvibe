@@ -56,12 +56,11 @@
     margin-top: 1rem;
   }
 
-  textarea {
+  .textarea {
     margin-top: 2rem !important;
     height: 10rem;
     width: 100%;
     padding: 0.6rem 1.2rem;
-    resize: none;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -72,9 +71,9 @@
     border-spacing: 10rem;
   }
 
-  button {
+  .button {
     padding: 0.75rem 1.5rem;
-    margin-top: 1rem !important;
+    margin-top: 1rem;
     background: none;
     border-radius: 5px;
     border: 2px solid $primary;

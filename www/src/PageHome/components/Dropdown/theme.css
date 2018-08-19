@@ -14,12 +14,19 @@
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 1rem;
-  /* background: blue; */
   opacity: 0.8;
-  background-image: url('./assets/search-solid.svg');
+  background-image: url('./assets/search.svg');
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
   background-position: 1rem 1rem; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: none;
+}
+
+.input:focus {
+  background-image: url('./assets/search-active.svg');
 }
 
 .suggestionsContainerOpen {
@@ -65,12 +72,23 @@
 @media (max-width: 768px) {
   .input {
     /* height: 3rem; */
+    border-radius: 0;
+    border-bottom: 1px solid #dbdbdb;
+    background-position: 0 1rem;
+    padding: 0 2.5rem;
+    padding-right: 1rem;
   }
+
+  .input:focus {
+    border-bottom: 1px solid black;
+  }
+
   .suggestionsContainerOpen {
     width: 90%;
     min-height: 3rem;
     max-height: 70vh;
   }
+
   .suggestion {
     height: 3rem;
   }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 import PropTypes from "prop-types";
 
-import { userLogin } from "src/redux/actions";
+import { userLogin, fetchProfile } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -72,9 +72,10 @@ class Login extends React.Component {
           this.setState({
             verificationRequested: false,
             succeed: true,
-            notification: "Login sucessful! Redirecting..."
+            notification: "Login sucessful!"
           });
-          setTimeout(() => location.reload(), 1500);
+          this.props.fetchProfile();
+          this.props.closePopup();
         }
       }
     });
@@ -83,7 +84,7 @@ class Login extends React.Component {
   close = () => {
     document.removeEventListener("keydown", this.keydownEvent);
     this.props.closePopup();
-  }
+  };
 
   render() {
     return (
@@ -125,12 +126,14 @@ class Login extends React.Component {
         <div className={styles.action}>
           <button
             onClick={this.handleSubmit}
-            className={styles.highlight}
+            className={styles.button.concat(" ").concat(styles.highlight)}
             disabled={this.state.verificationRequested}
           >
             {this.state.verificationRequested ? "Verifying..." : "Login"}
           </button>
-          <button onClick={this.close}>Close</button>
+          <button className={styles.button} onClick={this.close}>
+            Close
+          </button>
         </div>
       </Popup>
     );
@@ -141,6 +144,7 @@ Login.propTypes = {
   openSignUp: PropTypes.func.isRequired,
   closePopup: PropTypes.func.isRequired,
   userLogin: PropTypes.func.isRequired,
+  fetchProfile: PropTypes.func.isRequired,
   loginRequest: PropTypes.object
 };
 
@@ -152,6 +156,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  fetchProfile: () => dispatch(fetchProfile()),
   userLogin: authForm => dispatch(userLogin(authForm))
 });
 

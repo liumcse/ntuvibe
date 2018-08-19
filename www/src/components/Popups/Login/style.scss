@@ -66,9 +66,6 @@
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-    div {
-      margin-bottom: 0.5rem;
-    }
   }
 
   .signUp {
@@ -77,10 +74,12 @@
   }
 
   .action {
+    margin-top: 2rem;
     margin-bottom: 2rem;
-    button {
-      margin-right: 3rem;
-    }
+  }
+
+  .button {
+    margin-right: 3rem;
   }
 
   .highlight {

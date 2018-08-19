@@ -14,10 +14,15 @@ const SiteMetaHelmet = props => (
   </Helmet>
 );
 
+SiteMetaHelmet.defaultProps = {
+  description:
+    "NTUVibe is a knowledge sharing platform for students at Nanyang Technological University (NTU) to view course information and reviews."
+};
+
 SiteMetaHelmet.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   children: PropTypes.object
 };
 
