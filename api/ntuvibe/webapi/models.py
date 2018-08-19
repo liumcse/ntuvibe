@@ -34,8 +34,9 @@ class AutoSaveModel(models.Model):
 
 class UserProfile(AutoSaveModel):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-	major = models.CharField(max_length=128)
-	avatar = models.CharField(max_length=512)
+	major = models.CharField(max_length=128, default="")
+	avatar = models.CharField(max_length=512, default="")
+	schedule = models.TextField(default="")  # store json string sent from frontend
 	create_time = models.PositiveIntegerField()
 	update_time = models.PositiveIntegerField()
 
@@ -46,7 +47,7 @@ class UserProfile(AutoSaveModel):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
 	if created:
-		UserProfile.objects.create(user=instance, major="", avatar="")
+		UserProfile.objects.create(user=instance, major="", avatar="", schedule="")
 
 
 @receiver(post_save, sender=User)
