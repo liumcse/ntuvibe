@@ -3,10 +3,15 @@ import React from "react";
 import { connect } from "react-redux";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "./components/Footer";
 
 import { requireLogin } from "src/utils";
-import { saveSchedule } from "src/redux/actions";
+import {
+  saveSchedule,
+  fetchUserSchedule,
+  updateSchedule
+} from "src/redux/actions";
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
@@ -45,8 +50,11 @@ const END_TIME = new Date(
 const events = [];
 
 type Props = {
-  schedule: ?Object,
-  saveSchedule: Object => void
+  schedule: ?string,
+  updateScheduleSuccess: ?Object,
+  saveSchedule: Object => void,
+  fetchUserSchedule: () => void,
+  updateSchedule: Object => void
 };
 
 class PageScheduler extends React.Component<Props> {
@@ -69,14 +77,19 @@ class PageScheduler extends React.Component<Props> {
   componentDidMount() {
     // change the button text
     const buttonGroup = document.querySelector(".rbc-btn-group").childNodes;
-    console.log(buttonGroup);
     buttonGroup[0].innerHTML = "This Week";
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
     // generate calendar events from schedule in redux
-    if (this.props.schedule) {
-      this.generateCalendar(this.props.schedule);
-    }
+    // if (this.props.schedule) {
+    //   this.generateCalendar(this.props.schedule);
+    // }
+    this.props.fetchUserSchedule();
+  }
+
+  componentWillUnmount() {
+    // clear schedule
+    this.props.saveSchedule(null);
   }
 
   componentDidUpdate(prevProps) {
@@ -104,22 +117,41 @@ class PageScheduler extends React.Component<Props> {
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
-    this.props.saveSchedule(json); // write to redux
+    this.props.saveSchedule(JSON.stringify(json)); // write to redux as string
   };
 
   generateCalendar = schedule => {
-    const calendarEvents = tools.generateCalendarEvent(schedule);
+    if (!schedule) return null;
+    const calendarEvents = tools.generateCalendarEvent(JSON.parse(schedule)); // get as string, parse to jSON
     this.setState({ calendarEvents: calendarEvents });
   };
 
-  uploadSchedule = () => {
-    console.log("You look beautiful");
+  updateSchedule = () => {
+    const { schedule } = this.props;
+    const form = new FormData();
+    form.append("schedule", schedule);
+    this.props
+      .updateSchedule(form)
+      .then(() => {
+        const { updateScheduleSuccess } = this.props;
+        if (updateScheduleSuccess && updateScheduleSuccess.success) {
+          alert("Success!");
+        } else {
+          alert("Something went wrong...");
+        }
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
     const { calendarEvents } = this.state;
     return (
       <div className={styles.container}>
+        <SiteMetaHelmet
+          url="https://ntuvibe.com/scheduler"
+          title="Scheduler - NTUVibe"
+          description="Create your beautiful class schedule and add to your calendar!"
+        />
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
@@ -156,13 +188,17 @@ class PageScheduler extends React.Component<Props> {
               <div className={styles.text}>
                 <div className={styles.stepContainer}>
                   <span className={styles.step}>1</span>
-                  <a href="http://www.ntu.edu.sg/Students/Undergraduate/AcademicServices/CourseRegistration/Pages/default.aspx">
-                    Log in to STARS Planner
+                  <a
+                    href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Log in to Check/Print Courses Registered
                   </a>
                 </div>
                 <div className={styles.stepContainer}>
-                  <span className={styles.step}>2</span> Check your course
-                  registered
+                  <span className={styles.step}>2</span> Go to the current
+                  semester
                 </div>
                 <div className={styles.stepContainer}>
                   <span className={styles.step}>3</span> Select all and copy
@@ -229,7 +265,7 @@ class PageScheduler extends React.Component<Props> {
               </button>
               <button
                 className={styles.sync}
-                onClick={() => requireLogin(this.uploadSchedule)}
+                onClick={() => requireLogin(this.updateSchedule)}
               >
                 Sync to all devices
               </button>
@@ -237,7 +273,7 @@ class PageScheduler extends React.Component<Props> {
                 onClick={this.clearSchedule}
                 style={{ backgroundColor: "crimson", color: "white" }}
               >
-                Clear schedule
+                Re-import
               </button>
             </div>{" "}
           </div>
@@ -251,12 +287,15 @@ class PageScheduler extends React.Component<Props> {
 const mapStateToProps = state => {
   const { user } = state;
   return {
-    schedule: user && user.schedule
+    schedule: user && user.schedule,
+    updateScheduleSuccess: user && user.updateScheduleSuccess
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  saveSchedule: schedule => dispatch(saveSchedule(schedule))
+  saveSchedule: schedule => dispatch(saveSchedule(schedule)),
+  fetchUserSchedule: () => dispatch(fetchUserSchedule()),
+  updateSchedule: form => dispatch(updateSchedule(form))
 });
 
 export default connect(

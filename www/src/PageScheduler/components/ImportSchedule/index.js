@@ -17,7 +17,6 @@ class ImportSchedule extends React.PureComponent<Props> {
   }
 
   import = (closePopup: Function): void => {
-    console.log("close", close);
     const input = document.querySelector("." + styles.input).value;
     if (!input) {
       alert("Hmmm did I see empty input?");
@@ -27,7 +26,7 @@ class ImportSchedule extends React.PureComponent<Props> {
         closePopup();
       } catch (error) {
         alert(
-          "We are sorry, but we can't read import your schedule. Make sure you copied everything on the \"Check Registered Course\" page.\nIf the problem persists, we appreciate if you can send us a feedback.\nBy the way, have you tried Chrome? Vibe doesn't work well on IE :("
+          "We are sorry, but we can't read import your schedule. Make sure you copied everything on the \"Check Registered Course\" page.\nIf the problem persists, we appreciate if you can send us a feedback.\nBy the way, have you tried Chrome? Vibe doesn't work well on IE or Microsoft Edge :("
         );
       }
     }

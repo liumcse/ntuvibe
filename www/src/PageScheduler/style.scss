@@ -99,7 +99,7 @@
   }
 
   .rbc-current-time-indicator {
-    // display: block !important;
+    display: block !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {

@@ -7,7 +7,7 @@ import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo.png";
 import blog from "./assets/blog.svg";
-import help from "./assets/help.svg";
+import calendar from "./assets/calendar.svg";
 import home from "./assets/home.svg";
 
 import * as styles from "./style.scss";
@@ -49,11 +49,11 @@ const BlogButton = () => (
   />
 );
 
-const HelpButton = () => (
+const CalendarButton = () => (
   <div
     style={{
       display: "inline-block",
-      background: "url(".concat(help).concat(") no-repeat"),
+      background: "url(".concat(calendar).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "1.25rem",
       width: "1.25rem"
@@ -110,16 +110,6 @@ class NavBar extends React.Component {
               <HomeButton />
             </Link>
           </div>
-          <div className={styles.item}>
-            <a href="https://medium.com/@ntuvibe">
-              <BlogButton />
-            </a>
-          </div>
-          <div className={styles.item}>
-            <Link to="/help">
-              <HelpButton />
-            </Link>
-          </div>
           {!profile ? (
             <div className={styles.item} onClick={() => popupTrigger(1)}>
               <LoginButtonM />
@@ -129,6 +119,16 @@ class NavBar extends React.Component {
               <Avatar avatar={profile.avatar} />
             </div>
           )}
+          <div className={styles.item}>
+            <Link to="/scheduler">
+              <CalendarButton />
+            </Link>
+          </div>
+          {/* <div className={styles.item}>
+            <a href="https://medium.com/@ntuvibe">
+              <BlogButton />
+            </a>
+          </div> */}
         </div>
         <div className={styles.navbar_elements}>
           <div className={styles.navbar_elements_left}>

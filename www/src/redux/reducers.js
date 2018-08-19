@@ -32,7 +32,8 @@ const initialState: State = {
     updateProfile: null,
     validation: null,
     activation: null,
-    schedule: null
+    schedule: null,
+    updateScheduleSuccess: null
   }
 };
 
@@ -201,6 +202,26 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         schedule: payload
+      };
+    case actionTypes.FETCH_USER_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        schedule: payload.data
+      };
+    case actionTypes.FETCH_USER_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        schedule: payload.data
+      };
+    case actionTypes.UPDATE_SCHEDULE_SUCCESS:
+      return {
+        ...state,
+        updateScheduleSuccess: payload.data
+      };
+    case actionTypes.UPDATE_SCHEDULE_FAILURE:
+      return {
+        ...state,
+        updateScheduleSuccess: payload.data
       };
     default:
       return state;

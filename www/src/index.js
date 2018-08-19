@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// import ReactGA from "react-ga";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -18,6 +19,9 @@ import store from "./redux/store";
 
 import "./styles/app.scss";
 import "normalize.css";
+
+// Google Analytics
+// ReactGA.initialize("UA-113348736-2");
 
 class App extends React.PureComponent {
   render() {

@@ -58,7 +58,7 @@ class PageHome extends React.PureComponent {
               data-share="false"
             />
             <div className={styles.fbPage}>
-              Send feedback our{" "}
+              Send feedback to our{" "}
               <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
             </div>
           </div>

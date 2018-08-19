@@ -8,12 +8,7 @@ import * as styles from "./style.scss";
 
 const PageAbout = () => (
   <div className={styles.container}>
-    <SiteMetaHelmet
-      url="https://ntuvibe.com/about"
-      title="About - NTUVibe"
-      description="NTUVibe is a knowledge sharing platform for students at Nanyang
-        Technological University (NTU) to view course information and reviews."
-    />
+    <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
     <NavBar />
     <div className={styles.content}>
       <div className={styles.header}>About</div>

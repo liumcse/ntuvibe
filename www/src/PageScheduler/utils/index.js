@@ -316,7 +316,7 @@ const mergeSchedule = (scheduleList: Object[]): Object[] => {
       mergedSchedule.push(thisSchedule);
     }
   }
-  console.log("merged", mergedSchedule);
+  // console.log("merged", mergedSchedule);
   return mergedSchedule;
 };
 
@@ -344,7 +344,7 @@ export function generateCalendarEvent(json: Object): Object[] {
         group,
         venue
       } = schedule;
-      console.log(schedule);
+      // console.log(schedule);
       remark.forEach(week => {
         const calculatedTime =
           SEMESTER_START + week * WEEKTIME + WEEKDAY[day] * DAYTIME;
@@ -375,9 +375,9 @@ export function generateCalendarEvent(json: Object): Object[] {
 export function generateICS(targetJson) {
   const JsonProcess = courseID => {
     const course = targetJson[courseID];
-    console.log("courseSchedule", course.schedule);
+    // console.log("courseSchedule", course.schedule);
     const scheduleList = mergeSchedule(course.schedule);
-    console.log("scheduleList", scheduleList);
+    // console.log("scheduleList", scheduleList);
     scheduleList.forEach(classOfCourse => {
       if (classOfCourse !== null)
         classOfCourse.remark.forEach(weekCount => {
