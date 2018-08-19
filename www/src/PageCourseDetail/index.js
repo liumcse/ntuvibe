@@ -12,6 +12,7 @@ import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import { remove_trailing_newline, cap_first_letter } from "src/utils";
+import { logCourseVisit } from "src/tracking";
 import type {
   CourseDetail,
   CourseRating,
@@ -219,6 +220,12 @@ const skeleton = (
 
 class PageCourseDetail extends React.Component<Props> {
   componentDidMount() {
+    const {
+      match: {
+        params: { courseCode }
+      }
+    } = this.props;
+    logCourseVisit(courseCode);
     this.fetchInformation();
   }
 

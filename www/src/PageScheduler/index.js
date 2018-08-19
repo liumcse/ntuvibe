@@ -7,6 +7,7 @@ import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "./components/Footer";
 
 import { requireLogin } from "src/utils";
+import { logScheduleGeneration } from "src/tracking";
 import {
   saveSchedule,
   fetchUserSchedule,
@@ -119,6 +120,7 @@ class PageScheduler extends React.Component<Props> {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
     this.props.saveSchedule(JSON.stringify(json)); // write to redux as string
+    logScheduleGeneration();
   };
 
   generateCalendar = schedule => {
