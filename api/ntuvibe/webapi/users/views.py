@@ -88,4 +88,18 @@ def update_user_profile(request):
 	if username:
 		user.username = username
 		user.save()
-	user_manager.update_user_profile(request.user, major=major, avatar=avatar)
+	user_manager.update_user_profile(user, major=major, avatar=avatar)
+
+
+@api_response(login_required=True)
+def get_user_schedule(request):
+	return user_manager.prepare_schedule_data(request.user)
+
+
+@api_response(login_required=True)
+def update_user_schedule(request):
+	params = request.POST
+	schedule = params.get("schedule", None)
+	if schedule is None:
+		raise Exception(StatusCode.MISSING_PARAMETER)
+	user_manager.update_user_profile(request.user, schedule=schedule)

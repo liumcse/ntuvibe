@@ -80,6 +80,10 @@ def prepare_profile_data(user):
 	}
 
 
+def prepare_schedule_data(user):
+	return user.profile.schedule
+
+
 def check_username_contains_reserved_or_censored_words(username):
 	reserved_words = get_all_reserved_words()
 	censored_words = get_all_censored_words()
