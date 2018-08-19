@@ -107,7 +107,7 @@ class SignUp extends React.Component<Props, State> {
               <input
                 className={styles.email}
                 onChange={this.handleInput}
-                placeholder="Email"
+                placeholder="Your NTU Email"
               />
             </div>
           )}
@@ -122,7 +122,7 @@ class SignUp extends React.Component<Props, State> {
         <div className={styles.action}>
           {!emailSent && (
             <button
-              className={styles.highlight}
+              className={styles.button.concat(" ").concat(styles.highlight)}
               onClick={this.requestVerification}
               disabled={verificationRequested}
             >
@@ -130,7 +130,9 @@ class SignUp extends React.Component<Props, State> {
             </button>
           )}
           {(!verificationRequested || emailSent) && (
-            <button onClick={this.close}>Close</button>
+            <button className={styles.button} onClick={this.close}>
+              Close
+            </button>
           )}
         </div>
       </Popup>

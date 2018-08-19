@@ -1,5 +1,7 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
+import store from "src/redux/store";
+import { popupTrigger } from "src/redux/actions";
 import moment from "moment";
 
 // TODO: the current search has severe performance issue. Write a better one
@@ -77,16 +79,16 @@ export function remove_trailing_newline(input: string): string {
 }
 
 export function timestampToDate(timestamp: number): string {
-  // subtract 28800 to adjust time zone
-  return moment(timestamp - 28800, "X").format("MMMM Do, YYYY");
+  // subtract 28800 to adjust time zone (- 8 Hours)
+  return moment(timestamp, "X").format("MMMM Do, YYYY");
 }
 
 export function timestampToDay(timestamp: number): string {
-  return moment(timestamp - 28800, "X").format("dddd");
+  return moment(timestamp, "X").format("dddd");
 }
 
 export function timestampToTime(timestamp: number): string {
-  return moment(timestamp - 28800, "X").format("hh:mm A");
+  return moment(timestamp, "X").format("hh:mm A");
 }
 
 export function timestampToDuration(
@@ -97,4 +99,15 @@ export function timestampToDuration(
   const end = new moment(endTime, "X");
   const duration = moment.duration(end.diff(start)).as("hours");
   return duration.toString().concat(" h");
+}
+
+export function requireLogin(callBack: Function): void {
+  const state = store.getState();
+  const profile = state && state.user && state.user.profile;
+  const { dispatch } = store;
+  if (!profile) {
+    dispatch(popupTrigger(1));
+  } else {
+    if (callBack) callBack();
+  }
 }

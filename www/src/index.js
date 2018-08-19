@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// import ReactGA from "react-ga";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -13,11 +14,14 @@ import PageTransient from "./PageTransient";
 import PageUserSetting from "./PageUserSetting";
 import PageSitemap from "./PageSitemap";
 import PageAbout from "./PageAbout";
+import PageScheduler from "./PageScheduler";
 import store from "./redux/store";
 
-import "react-select/dist/react-select.css";
 import "./styles/app.scss";
 import "normalize.css";
+
+// Google Analytics
+// ReactGA.initialize("UA-113348736-2");
 
 class App extends React.PureComponent {
   render() {
@@ -48,10 +52,11 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_SITEMAP}
                 component={PageSitemap}
               />
+              <Route exact path={ROUTES.ROUTE_ABOUT} component={PageAbout} />
               <Route
                 exact
-                path={ROUTES.ROUTE_ABOUT}
-                component={PageAbout}
+                path={ROUTES.ROUTE_SCHEDULER}
+                component={PageScheduler}
               />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />

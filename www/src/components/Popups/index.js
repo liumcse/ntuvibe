@@ -34,6 +34,7 @@ class Popups extends React.Component {
 Popups.propTypes = {
   loginOpen: PropTypes.bool.isRequired,
   signUpOpen: PropTypes.bool.isRequired,
+  openLogin: PropTypes.func.isRequired,
   rateCourseOpen: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   openSignUp: PropTypes.func.isRequired

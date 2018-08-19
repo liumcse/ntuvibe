@@ -46,16 +46,7 @@ class RateCourse extends React.Component {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          setTimeout(() => {
-            this.setState({
-              succeed: true,
-              easy: null,
-              useful: null,
-              like: null,
-              comment: ""
-            });
-            location.reload();
-          }, 500);
+          location.reload();
         } else {
           notificationDOM.innerHTML =
             (response && response.error_message) ||
@@ -124,6 +115,8 @@ class RateCourse extends React.Component {
         like: like,
         comment: comment_content
       });
+      const commentTextarea = document.querySelector("." + styles.textarea);
+      commentTextarea ? (commentTextarea.value = comment_content) : null;
     }
   };
 
@@ -132,20 +125,21 @@ class RateCourse extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const prevCourseCode =
-      prevProps &&
-      prevProps.location &&
-      prevProps.location.pathname.replace("/courses/", "");
-    const thisCourseCode = this.props.location.pathname.replace(
-      "/courses/",
-      ""
-    );
+    // const prevCourseCode =
+    //   prevProps &&
+    //   prevProps.location &&
+    //   prevProps.location.pathname.replace("/courses/", "");
+    // const thisCourseCode = this.props.location.pathname.replace(
+    //   "/courses/",
+    //   ""
+    // );
     const { profile, open } = this.props;
     if (open && !profile) {
       // not logged in
       this.props.openLogin();
-    }
-    if (prevCourseCode !== thisCourseCode || prevProps.open !== open) {
+    } else if (
+      /* prevCourseCode !== thisCourseCode || */ prevProps.open !== open
+    ) {
       this.rehydrate();
     }
   }
@@ -272,11 +266,10 @@ class RateCourse extends React.Component {
           Any thing you'd like to comment on?
             </div>
             <textarea
+              className={styles.textarea}
               onChange={this.handleInput}
               placeholder="Type your comment here... (optional)"
-            >
-              {this.state.comment || null}
-            </textarea>
+            />
           </div>
           <div
             id="notification"
@@ -290,7 +283,7 @@ class RateCourse extends React.Component {
                   id="submit"
                   disabled={this.state.submitting}
                   onClick={this.submitRating}
-                  className={styles.highlight}
+                  className={styles.button.concat(" ").concat(styles.highlight)}
                   style={{
                     marginRight: "3rem"
                   }}
@@ -299,7 +292,12 @@ class RateCourse extends React.Component {
                 </button>
               </div>
               <div>
-                <button onClick={this.props.closePopup}>Close</button>
+                <button
+                  className={styles.button}
+                  onClick={this.props.closePopup}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>

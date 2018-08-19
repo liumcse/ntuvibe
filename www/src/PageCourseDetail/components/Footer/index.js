@@ -1,6 +1,6 @@
 import React from "react";
 import * as styles from "./style.scss";
-import vibe from "src/brand/logo.png";
+import vibe from "src/brand/logo-color.png";
 
 const brand = (
   <div

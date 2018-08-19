@@ -9,7 +9,8 @@
     width: 100%;
     height: 6rem;
     background-color: $primary;
-    opacity: 1;
+    // background-color: white;
+    // opacity: 1;
     z-index: 2;
     @include disable-select;
     // box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
@@ -18,15 +19,6 @@
   .navbar_mobile {
     display: none;
   }
-
-  // .userMenu {
-  //   display: flex;
-  //   flex-direction: column;
-  //   div {
-  //     margin: 1rem 0;
-  //     cursor: pointer;
-  //   }
-  // }
 
   .brand {
     @include american-typewriter;
@@ -51,10 +43,7 @@
     flex: 1;
     justify-content: space-between;
     align-items: flex-end;
-    color: white;
     height: 100%;
-    // overflow: hidden;
-    // padding: 0 6rem;
     @include open-sans-medium;
     font-size: 1.2rem;
     &_left {
@@ -81,9 +70,13 @@
       a {
         padding-bottom: 1.5rem;
         color: white;
+        // color: $primary;
+
       }
       a:hover {
         color: white;
+        // color: $primary;
+
       }
     };
   }

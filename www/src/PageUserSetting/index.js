@@ -67,7 +67,7 @@ class PageUserSetting extends React.Component<Props, States> {
           </div>
           <div className={styles.settingContainer}>
             <div className={styles.header}>Public Profile</div>
-            <SettingProfile username={username} major={major} />
+            <SettingProfile username={username} major={major} avatar={avatar} />
           </div>
         </div>
       </div>

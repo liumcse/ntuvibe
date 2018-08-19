@@ -4,11 +4,11 @@
 
 :local {
   .footer {
+    @include medium-shadow;
     display: flex;
     justify-content: center;
     width: 100%;
     background-color: white;
-    @include medium-shadow;
     color: black;
     font-size: 0.6rem;
   }
