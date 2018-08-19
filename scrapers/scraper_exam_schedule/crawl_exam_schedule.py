@@ -64,7 +64,7 @@ def crawl():
 	parse_exam_details(detail_html)
 
 	global all_exam_details
-	write_json_file(json_path_current="data/exam_schedule.json", json_dict=all_exam_details)
+	# write_json_file(json_path_current="data/exam_schedule.json", json_dict=all_exam_details)
 	return all_exam_details
 
 

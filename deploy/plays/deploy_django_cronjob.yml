@@ -7,6 +7,7 @@
     - ../var.yml
   tasks:
     - include: ../tasks/task_copy_files.yml
+    - include: ../tasks/task_debug_option.yml
     - include: ../tasks/task_log.yml
     - include: ../tasks/task_start_uwsgi.yml
     - include: ../tasks/task_update_crontab.yml

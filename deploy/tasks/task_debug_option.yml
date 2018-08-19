@@ -1,0 +1,15 @@
+---
+# change DEBUG = False in settings.py
+
+- name: check remote setting file exists
+  stat: path={{ remote_root_dir }}/{{ app_name }}/api/{{ app_name }}/{{ app_name }}/settings.py
+  register: remote_setting_file_exist
+
+
+- name: update DEBUG option in setting file server side
+  replace:
+    path: "{{ remote_root_dir }}/{{ app_name }}/api/{{ app_name }}/{{ app_name }}/settings.py"
+    regexp: "^DEBUG\\s*=\\s*True"
+    replace: "DEBUG = False"
+  become: true
+  when: remote_setting_file_exist.stat.exists

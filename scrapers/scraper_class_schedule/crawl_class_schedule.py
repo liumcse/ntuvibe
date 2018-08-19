@@ -87,7 +87,7 @@ def crawl():
         time.sleep(0.1)
 
     global all_schedule_details
-    write_json_file(json_path_current="data/class_schedule.json", json_dict=all_schedule_details)
+    # write_json_file(json_path_current="data/class_schedule.json", json_dict=all_schedule_details)
     return all_schedule_details
 
 

@@ -1,5 +1,4 @@
 from webapi.models import CourseTab
-from webapi.utils import get_timestamp
 
 
 def get_course_by_course_id(course_id):
@@ -37,7 +36,7 @@ def get_courses(**kwargs):
 	return CourseTab.objects.filter(**kwargs)
 
 
-def add_course(course_code, course_title, au, constraint, grade_type, as_pe=False, as_ue=False, description=None, update_time=None):
+def add_course(course_code, course_title, au, constraint, grade_type, as_pe=False, as_ue=False, description=None):
 	CourseTab.objects.create(
 		course_code=course_code,
 		course_title=course_title,
@@ -47,8 +46,6 @@ def add_course(course_code, course_title, au, constraint, grade_type, as_pe=Fals
 		as_pe=as_pe,
 		as_ue=as_ue,
 		description="" if not description else description,
-		update_time=get_timestamp() if not update_time else update_time,
-		create_time=get_timestamp()
 	)
 
 
@@ -63,11 +60,13 @@ def prepare_course_detail_data(course):
 		"au": str(int(course.au)),
 		"description": course.description,
 		"constraint": {
-			"prerequisite": constraint["prerequisite"],
-			"mutex": constraint["mutex"],
+			"prerequisite": constraint.get("prerequisite", ""),
+			"mutex": constraint.get("mutex", ""),
 		},
 		"as_pe": course.as_pe,
 		"as_ue": course.as_ue,
+		"offered_semester": eval(course.semesters),
+		"update_time": course.update_time,
 	}
 
 

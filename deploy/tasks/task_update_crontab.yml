@@ -3,29 +3,32 @@
 
 - name: cronjob crawl course content
   cron:
+    user: "{{ ansible_ssh_user }}"
     name: "crawl course content"
     minute: "21"
     hour: "0"
-    weekday: "6"
-    job: "python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content.log 2>&1"
+    day: "3,19"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content.log 2>&1"
   become: true
 
 
 - name: cronjob crawl class schedule
   cron:
+    user: "{{ ansible_ssh_user }}"
     name: "crawl class schedule"
     minute: "59"
     hour: "0"
     weekday: "6"
-    job: "python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule.log 2>&1"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule.log 2>&1"
   become: true
 
 
 - name: cronjob crawl exam schedule
   cron:
+    user: "{{ ansible_ssh_user }}"
     name: "crawl exam schedule"
     minute: "35"
     hour: "1"
     weekday: "6"
-    job: "python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule.log 2>&1"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule.log 2>&1"
   become: true

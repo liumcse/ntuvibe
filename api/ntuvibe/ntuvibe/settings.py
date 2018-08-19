@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ntuvibe.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'ntubits_db',
+		'NAME': 'ntuvibe_db',
 		'USER': secret_settings.DATABASE_USER_DEFAULT,
 		'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
 		'HOST': 'localhost',
@@ -148,7 +148,14 @@ STATICFILES_DIRS = (
 )
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ("localhost:8080", "127.0.0.1:8000", "127.0.0.1:8080", "ntuvibe.com", "api.ntuvibe.com")
+CORS_ORIGIN_WHITELIST = (
+	"localhost:8080",
+	"127.0.0.1:8000",
+	"127.0.0.1:8080",
+	"ntuvibe.com",
+	"test.ntuvibe.com",
+	"api.ntuvibe.com"
+)
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

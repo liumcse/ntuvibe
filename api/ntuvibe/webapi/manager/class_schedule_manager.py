@@ -11,6 +11,7 @@ def get_class_schedules(**kwargs):
 
 def prepare_class_schedule_data(class_schedules):
 	index_to_slots = dict()
+	max_update_time = 0
 	for class_schedule in class_schedules:
 		index = class_schedule.index
 		start_time = class_schedule.start_time
@@ -26,5 +27,7 @@ def prepare_class_schedule_data(class_schedules):
 			"venue": class_schedule.venue,
 			"weeks": eval(class_schedule.weeks)
 		})
+		max_update_time = max(max_update_time, class_schedule.update_time)
 
+	index_to_slots.update({"update_time": max_update_time})
 	return index_to_slots
