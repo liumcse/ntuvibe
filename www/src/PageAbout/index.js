@@ -16,7 +16,7 @@ const PageAbout = () => (
     />
     <NavBar />
     <div className={styles.content}>
-      <h1>About</h1>
+      <div className={styles.header}>About</div>
       <p>
         NTUVibe is a knowledge sharing platform for students at Nanyang
         Technological University (NTU) to view course information and reviews.
@@ -27,7 +27,7 @@ const PageAbout = () => (
         NTUVibe is still under rapid development to provide you with better
         service.
       </p>
-      <h1>Disclaimer</h1>
+      <h2>Disclaimer</h2>
       <p>
         All data (including but not limited to course information, class
         schedule and exam schedule) are obtained directly from information open
@@ -38,7 +38,7 @@ const PageAbout = () => (
         NTUVibe may present the data in a different form to improve the user
         experience. However, NTUVibe never alters the original data.
       </p>
-      <h1>Privacy policy</h1>
+      <h2>Privacy policy</h2>
       <p>
         This page informs you of our policies regarding the collection, use, and
         disclosure of personal data when you use our Service and the choices you

@@ -96,8 +96,8 @@ class PageScheduler extends React.Component<Props> {
   };
 
   downloadCalendar = () => {
-    const { json } = this.state;
-    const icsContent = tools.generateICS(json);
+    const { schedule } = this.props;
+    const icsContent = tools.generateICS(schedule);
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
   };
 

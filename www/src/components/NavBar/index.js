@@ -140,15 +140,15 @@ class NavBar extends React.Component {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/">HOME</Link>
             </div>
-            {/* <div className={styles.navbar_elements_right_text}>
-              <Link to="/schedule">SCHEDULE</Link>
-            </div> */}
+            <div className={styles.navbar_elements_right_text}>
+              <Link to="/scheduler">SCHEDULER</Link>
+            </div>
             <div className={styles.navbar_elements_right_text}>
               <a href="https://medium.com/@ntuvibe">BLOG</a>
             </div>
-            <div className={styles.navbar_elements_right_text}>
+            {/* <div className={styles.navbar_elements_right_text}>
               <Link to="/help">HELP</Link>
-            </div>
+            </div> */}
             {!profile ? (
               <div
                 className={styles.rightButton}

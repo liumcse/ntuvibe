@@ -15,7 +15,7 @@
   box-sizing: border-box;
   font-size: 1rem;
   opacity: 0.8;
-  background-image: url('./assets/search-solid.svg');
+  background-image: url('./assets/search.svg');
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
   background-position: 1rem 1rem; 
@@ -23,6 +23,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: none;
+}
+
+.input:focus {
+  background-image: url('./assets/search-active.svg');
 }
 
 .suggestionsContainerOpen {

@@ -14,7 +14,7 @@
   box-sizing: border-box;
   font-size: 1rem;
   opacity: 1;
-  background-image: url('./assets/search-solid.svg');
+  background-image: url('./assets/search.svg');
   background-color: #00000000;
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
@@ -26,6 +26,7 @@
   color: black;
 }
 .input:focus {
+  background-image: url('./assets/search-active.svg');
   border-bottom: 1px solid black;
 }
 
