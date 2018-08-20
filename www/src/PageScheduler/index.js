@@ -7,7 +7,11 @@ import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "./components/Footer";
 
 import { requireLogin } from "src/utils";
-import { logPageview, logScheduleGeneration } from "src/tracking";
+import {
+  logPageview,
+  logScheduleGeneration,
+  logCalendarDownload
+} from "src/tracking";
 import {
   saveSchedule,
   fetchUserSchedule,
@@ -115,6 +119,7 @@ class PageScheduler extends React.Component<Props> {
     const { schedule } = this.props;
     const icsContent = tools.generateICS(JSON.parse(schedule));
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
+    logCalendarDownload();
   };
 
   importSchedule = input => {
@@ -159,7 +164,18 @@ class PageScheduler extends React.Component<Props> {
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
-            <div className={styles.header}>{calendarIcon} Scheduler</div>
+            <div className={styles.headerContainer}>
+              <div className={styles.header}>{calendarIcon} Scheduler</div>{" "}
+              <div
+                className={"fb-like".concat(" " + styles.fbLike)}
+                data-href="https://ntuvibe.com"
+                data-layout="button_count"
+                data-action="like"
+                data-size="large"
+                data-show-faces="false"
+                data-share="false"
+              />
+            </div>
             <div
               className={styles.instructionContainer}
               style={{ display: !calendarEvents ? "block" : "none" }}

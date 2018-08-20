@@ -18,6 +18,21 @@ export function logPageview() {
   // }
 }
 
+export function logCalendarDownload() {
+  const env = process.env.NODE_ENV;
+  if (env === "production") {
+    ReactGA.event({
+      category: "User",
+      action: "Download a calendar"
+    });
+  } else {
+    ReactGA.event({
+      category: "Development",
+      action: "Download a calendar"
+    });
+  }
+}
+
 export function logScheduleGeneration() {
   const env = process.env.NODE_ENV;
   if (env === "production") {

@@ -8,6 +8,7 @@ import * as styles from "./style.scss";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Card from "./components/Card";
 import Bubble from "./components/Bubble";
+import { logPageview } from "src/tracking";
 
 import fb from "./assets/facebook.svg";
 import md from "./assets/medium.svg";
@@ -25,6 +26,7 @@ const brand = (
 );
 
 const PageHelp = () => {
+  logPageview();
   return (
     <div className={styles.container}>
       <SiteMetaHelmet

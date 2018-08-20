@@ -225,6 +225,7 @@ class PageCourseDetail extends React.Component<Props> {
         params: { courseCode }
       }
     } = this.props;
+    logPageview();
     logCourseVisit(courseCode);
     this.fetchInformation();
   }
