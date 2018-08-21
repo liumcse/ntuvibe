@@ -282,7 +282,7 @@ class PageCourseDetail extends React.Component<Props> {
     const { courseCode } = this.props.match.params;
     const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
-    const { start_time, end_time } = examSchedule; // for examSchedule
+    const { start_time, end_time, update_time } = examSchedule; // for examSchedule
 
     return (
       <div className={styles.page_course_detail}>
@@ -393,7 +393,11 @@ class PageCourseDetail extends React.Component<Props> {
             {start_time &&
               end_time && (
                 <div className={styles.table}>
-                  <ExamSchedule startTime={start_time} endTime={end_time} />
+                  <ExamSchedule
+                    startTime={start_time}
+                    endTime={end_time}
+                    updateTime={update_time}
+                  />
                 </div>
               )}
           </div>

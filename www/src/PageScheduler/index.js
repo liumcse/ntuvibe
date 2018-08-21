@@ -199,10 +199,19 @@ class PageScheduler extends React.Component<Props> {
                     src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-18%20at%202.54.22%20PM.png?alt=media&token=9e163ca1-d184-44fd-b2a0-297af14b278e"
                     width="100%"
                   />
-                  <div>By simple copy & paste</div>
+                  <div>
+                    By simple copy & paste from{" "}
+                    <a
+                      href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Check/Print Courses Registered
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className={styles.text}>
+              {/* <div className={styles.text}>
                 <span className={styles.tryItOut}>Try it out</span>
               </div>
               <div className={styles.text}>
@@ -223,15 +232,8 @@ class PageScheduler extends React.Component<Props> {
                 <div className={styles.stepContainer}>
                   <span className={styles.step}>3</span> Select all and copy
                 </div>
-              </div>
-              <div
-                className={styles.text}
-                style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
-              >
-                You only have to do once, and Vibe will do the rest (truly yours
-                :p)
-              </div>
-              <div className={styles.text}>
+              </div> */}
+              <div className={styles.text} style={{ textAlign: "center" }}>
                 <ImportSchedule
                   import={this.importSchedule}
                   trigger={
@@ -241,6 +243,17 @@ class PageScheduler extends React.Component<Props> {
                   }
                 />
               </div>
+              {/* <div
+                className={styles.text}
+                style={{
+                  color: "#7d7d7d",
+                  fontSize: "0.9rem",
+                  textAlign: "center"
+                }}
+              >
+                You only have to do once, and Vibe will do the rest (truly yours
+                :p)
+              </div> */}
             </div>
           </div>
           <div

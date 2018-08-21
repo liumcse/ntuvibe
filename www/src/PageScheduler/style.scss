@@ -144,7 +144,16 @@
     background-color: #000000bd !important;
     border-bottom: 5px solid #000000 !important;
   }
-  .category_7, .category_8, .category_9, .category_10, .category_11 {
+  .category_7 {
+    background-color: #b300adbd !important;
+    border-bottom: 5px solid #b300ad !important;
+  }
+  .category_8 {
+    background-color: #801b1bbd !important;
+    border-bottom: 5px solid #801b1b !important;
+  }
+
+  .category_9, .category_10, .category_11, .category_12 {
     border-bottom: 5px solid #26598c !important;
     background-color: #26598cbd !important;
   }
@@ -227,6 +236,10 @@
         padding-top: 1rem;
         font-size: 0.85rem;
         color: #7d7d7d;
+      }
+      a {
+        font-size: 0.85rem;
+        // border-bottom: 1px solid;
       }
     }
   }
