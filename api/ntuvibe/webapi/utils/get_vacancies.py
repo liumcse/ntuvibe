@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
-from scrapers import request_manager
-from scrapers.constants import NULL_TD_VALUE, INDEX_VACANCIES_INDEX, INDEX_VACANCIES_VACANCIES, INDEX_VACANCIES_WAITLIST
+import request_manager
+from constants import NULL_TD_VALUE, INDEX_VACANCIES_INDEX, INDEX_VACANCIES_VACANCIES, INDEX_VACANCIES_WAITLIST
 
 def isIndexRow(first_3_cells_of_row):
     cells_not_empty = map(lambda td: td.text != NULL_TD_VALUE, first_3_cells_of_row)
     return all(cells_not_empty)
 
-def crawl(subj):
+def get(subj):
     res = request_manager.get_vacancies(subj)
     soup = BeautifulSoup(res, "html.parser")
     all_rows_except_header = soup.findAll("tr")[1:]
@@ -20,4 +20,4 @@ def crawl(subj):
     return vacancies_dict
 
 if __name__ == "__main__":
-    print(crawl("CZ1006"))
+    print(get("CZ1006"))
