@@ -46,7 +46,7 @@ class RateCourse extends React.Component {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
           notificationDOM.style.color = "$primary";
           notificationDOM.style.display = "block";
-          location.reload();
+          setTimeout(() => location.reload(), 1000);
         } else {
           notificationDOM.innerHTML =
             (response && response.error_message) ||
@@ -263,7 +263,7 @@ class RateCourse extends React.Component {
           <div className={styles.section}>
             <div className={styles.sub_header}>
               {/* eslint-disable-next-line */}
-          Any thing you'd like to comment on?
+              Any thing you'd like to comment on?
             </div>
             <textarea
               className={styles.textarea}
