@@ -44,7 +44,7 @@ class RateCourse extends React.Component {
           notificationDOM.style.display = "block";
         } else if (response.success && response.success === true) {
           notificationDOM.innerHTML = "Submitted successfully! Redirecting...";
-          notificationDOM.style.color = "$primary";
+          notificationDOM.style.color = "rgb(24,157,53)";
           notificationDOM.style.display = "block";
           setTimeout(() => location.reload(), 1000);
         } else {
