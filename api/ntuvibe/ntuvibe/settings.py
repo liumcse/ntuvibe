@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import sys
 from . import secret_settings
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../../")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -105,7 +108,15 @@ CACHES = {
 			"CLIENT_CLASS": "django_redis.client.DefaultClient",
 		},
 		"KEY_PREFIX": "activation_token"
-	}
+	},
+	"course_vacancy": {
+		"BACKEND": "django_redis.cache.RedisCache",
+		"LOCATION": "redis://127.0.0.1:6379/3",
+		"OPTIONS": {
+			"CLIENT_CLASS": "django_redis.client.DefaultClient",
+		},
+		"KEY_PREFIX": "course_vacancy"
+	},
 }
 
 
