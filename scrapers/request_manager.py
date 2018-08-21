@@ -49,6 +49,16 @@ def get_class_schedule_detail_html(semester, category):
                boption="CLoad",
                staff_access="false")
 
+def get_all_class_schedule_detail_html(semester):
+    return get(CLASS_SCHEDULE_DETAIL_URL,
+               acadsem=semester,
+               r_course_yr="",
+               r_search_type="F",
+               r_subj_code="",
+               boption="Search",
+               staff_access="false")
+
+
 
 def get_exam_schedule_main_html():
     return get(EXAM_SCHEDULE_MAIN_URL, p_opt=1, bOption="Next")
