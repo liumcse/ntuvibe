@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
 import login from "./assets/login.svg";
-import vibe from "src/brand/logo.png";
+import vibe from "src/brand/logo-color.png";
 import blog from "./assets/blog.svg";
 import calendar from "./assets/calendar.svg";
 import home from "./assets/home.svg";
@@ -15,11 +15,12 @@ import * as styles from "./style.scss";
 const brand = (
   <div
     style={{
-      display: "inline-block",
+      display: "flex",
+      alignItems: "center",
       background: "url(".concat(vibe).concat(") no-repeat"),
       backgroundSize: "contain",
-      height: "3rem",
-      width: "6rem"
+      height: "2.8rem",
+      width: "5.6rem"
     }}
   />
 );
@@ -27,12 +28,12 @@ const brand = (
 const HomeButton = () => (
   <div
     style={{
-      display: "inline-block",
+      display: "flex",
+      alignItems: "center",
       background: "url(".concat(home).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "1.25rem",
-      width: "1.25rem",
-      marginBottom: "-0.15rem"
+      width: "1.25rem"
     }}
   />
 );
@@ -40,7 +41,8 @@ const HomeButton = () => (
 const BlogButton = () => (
   <div
     style={{
-      display: "inline-block",
+      display: "flex",
+      alignItems: "center",
       background: "url(".concat(blog).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "1.25rem",
@@ -52,7 +54,8 @@ const BlogButton = () => (
 const CalendarButton = () => (
   <div
     style={{
-      display: "inline-block",
+      display: "flex",
+      alignItems: "center",
       background: "url(".concat(calendar).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "1.25rem",
@@ -138,13 +141,19 @@ class NavBar extends React.Component {
           </div>
           <div className={styles.navbar_elements_right}>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="/">HOME</Link>
+              <Link to="/">
+                <HomeButton /> Home
+              </Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="/scheduler">SCHEDULER</Link>
+              <Link to="/scheduler">
+                <CalendarButton /> Scheduler
+              </Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <a href="https://medium.com/@ntuvibe">BLOG</a>
+              <a href="https://medium.com/@ntuvibe">
+                <BlogButton /> Blog
+              </a>
             </div>
             {/* <div className={styles.navbar_elements_right_text}>
               <Link to="/help">HELP</Link>

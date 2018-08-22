@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 
 import { requireLogin } from "src/utils";
 import {
@@ -165,7 +165,9 @@ class PageScheduler extends React.Component<Props> {
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
             <div className={styles.headerContainer}>
-              <div className={styles.header}>{calendarIcon} Scheduler</div>{" "}
+              <div className={styles.header}>
+                <div>{calendarIcon}</div> Scheduler
+              </div>{" "}
               <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
@@ -186,19 +188,13 @@ class PageScheduler extends React.Component<Props> {
               </div>
               <div className={styles.picContainer}>
                 <div className={styles.picItem}>
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-18%20at%202.51.45%20PM.png?alt=media&token=ab0bed0f-200a-4d58-9809-d057000676d0"
-                    width="100%"
-                  />
+                  <img src="/instruct_1.png" width="100%" />
                   <div>
                     A weekly class schedule that can be added to your calendar
                   </div>
                 </div>
                 <div className={styles.picItem}>
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/Screen%20Shot%202018-08-18%20at%202.54.22%20PM.png?alt=media&token=9e163ca1-d184-44fd-b2a0-297af14b278e"
-                    width="100%"
-                  />
+                  <img src="/instruct_2.png" width="100%" />
                   <div>
                     By simple copy & paste from{" "}
                     <a

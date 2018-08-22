@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import NavBar from "src/components/NavBar";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
