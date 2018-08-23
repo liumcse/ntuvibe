@@ -32,7 +32,7 @@
 .suggestionsContainerOpen {
   margin-top: 0.5rem;
   position: absolute;
-  width: 50%; /* width must be the same with outer search container*/
+  width: 60%; /* width must be the same with outer search container*/
   background: white;
   overflow-y: auto;
   min-height: 3.5rem;
