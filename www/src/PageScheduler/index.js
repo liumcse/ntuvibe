@@ -207,28 +207,6 @@ class PageScheduler extends React.Component<Props> {
                   </div>
                 </div>
               </div>
-              {/* <div className={styles.text}>
-                <span className={styles.tryItOut}>Try it out</span>
-              </div>
-              <div className={styles.text}>
-                <div className={styles.stepContainer}>
-                  <span className={styles.step}>1</span>
-                  <a
-                    href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Log in to Check/Print Courses Registered
-                  </a>
-                </div>
-                <div className={styles.stepContainer}>
-                  <span className={styles.step}>2</span> Go to the current
-                  semester
-                </div>
-                <div className={styles.stepContainer}>
-                  <span className={styles.step}>3</span> Select all and copy
-                </div>
-              </div> */}
               <div className={styles.text} style={{ textAlign: "center" }}>
                 <ImportSchedule
                   import={this.importSchedule}
@@ -239,17 +217,6 @@ class PageScheduler extends React.Component<Props> {
                   }
                 />
               </div>
-              {/* <div
-                className={styles.text}
-                style={{
-                  color: "#7d7d7d",
-                  fontSize: "0.9rem",
-                  textAlign: "center"
-                }}
-              >
-                You only have to do once, and Vibe will do the rest (truly yours
-                :p)
-              </div> */}
             </div>
           </div>
           <div

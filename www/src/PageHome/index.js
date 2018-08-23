@@ -18,7 +18,12 @@ class PageHome extends React.PureComponent {
         <div className={styles.background_image} />
         <div className={styles.container}>
           <NavBar />
-          <div className={styles.course_search}>
+          <div className={styles.searchContainer}>
+            {/* <div className={styles.callForActionContainer}>
+              <div className={styles.callForAction}>
+                Contribute to Vibe by leaving your ratings
+              </div>
+            </div> */}
             <Dropdown />
           </div>
           <div className={styles.tip}>
@@ -31,6 +36,27 @@ class PageHome extends React.PureComponent {
             <span className={styles.badge}>KICKSTART</span> Enter{" "}
             <span className={styles.emphasize}>HE9091</span> and see what would
             happen 🚀
+          </div>
+          {/* <div className={styles.callForActionContainer}>
+            <div className={styles.callForAction}>
+              Be a contributor by submitting your course rating
+            </div>
+            <div className={styles.why.concat(" " + styles.badge)}>Learn why</div>
+          </div> */}
+          <div className={styles.fbLike}>
+            <div
+              className="fb-like"
+              data-href="https://ntuvibe.com"
+              data-layout="button_count"
+              data-action="like"
+              data-size="large"
+              data-show-faces="false"
+              data-share="false"
+            />
+            <div className={styles.fbPage}>
+              Send feedback to our{" "}
+              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
+            </div>
           </div>
           <div className={styles.footer}>
             <div className={styles.line}>
@@ -45,21 +71,6 @@ class PageHome extends React.PureComponent {
               <a href="https://medium.com/@ntuvibe">Blog</a>
               <Link to="/help">Help</Link>
               <a href="https://facebook.com/ntuvibe">Facebook</a>
-            </div>
-          </div>
-          <div className={styles.fbLike}>
-            <div
-              className="fb-like"
-              data-href="https://ntuvibe.com"
-              data-layout="button_count"
-              data-action="like"
-              data-size="large"
-              data-show-faces="false"
-              data-share="false"
-            />
-            <div className={styles.fbPage}>
-              Send feedback to our{" "}
-              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
             </div>
           </div>
           <div className={styles.credit}>

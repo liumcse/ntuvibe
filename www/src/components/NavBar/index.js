@@ -152,7 +152,11 @@ class NavBar extends React.Component {
               </Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <a href="https://medium.com/@ntuvibe">
+              <a
+                href="https://medium.com/@ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <BlogButton /> Blog
               </a>
             </div>

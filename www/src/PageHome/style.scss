@@ -33,8 +33,8 @@
     position: relative;
   }
 
-  .course_search {
-    width: 50%;
+  .searchContainer {
+    width: 60%;
     color: white;
     margin-top: 15%;
   }
@@ -112,6 +112,20 @@
     }
   }
 
+  .callForActionContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    .why {
+      margin-left: 1rem;
+      // background-color: #037bc1;
+      // padding: 0.25rem 0.5rem;
+      // border-radius: 5px;
+    }
+  }
+
   .credit {
     position: absolute;
     bottom: 0;
@@ -163,7 +177,7 @@
       }
     }
 
-    .course_search {
+    .searchContainer {
       width: 90%;
       margin-top: 2rem;
     }
