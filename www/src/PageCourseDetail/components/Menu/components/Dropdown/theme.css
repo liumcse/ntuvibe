@@ -24,6 +24,7 @@
   text-overflow: ellipsis;
   box-shadow: none;
   color: black;
+  outline: none;
 }
 .input:focus {
   background-image: url('./assets/search-active.svg');

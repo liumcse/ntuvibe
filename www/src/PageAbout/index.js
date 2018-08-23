@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "src/components/NavBar";
+import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { logPageview } from "src/tracking";
 
@@ -116,10 +117,8 @@ const PageAbout = () => {
         <li>
           At Facebook Page: <a href="https://facebook.com/ntuvibe">NTUVibe</a>
         </li>
-        <div className={styles.footer}>
-          <img src={logo} alt="logo" />&copy; 2018 NTUVibe &middot; Stay cute{" "}
-        </div>
       </div>
+      <Footer />
     </div>
   );
 };

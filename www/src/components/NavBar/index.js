@@ -20,7 +20,8 @@ const brand = (
       background: "url(".concat(vibe).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "2.8rem",
-      width: "5.6rem"
+      width: "5.6rem",
+      marginBottom: "0.5rem"
     }}
   />
 );
