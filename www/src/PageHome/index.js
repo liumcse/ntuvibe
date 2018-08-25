@@ -54,8 +54,14 @@ class PageHome extends React.PureComponent {
               data-share="false"
             />
             <div className={styles.fbPage}>
-              Send feedback to our{" "}
-              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
+              How can we do better? Tell us at{" "}
+              <a
+                href="https://facebook.com/ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook Page
+              </a>!
             </div>
           </div>
           <div className={styles.footer}>
@@ -68,9 +74,21 @@ class PageHome extends React.PureComponent {
             <div className={styles.links}>
               <Link to="/sitemap">Sitemap</Link>
               <Link to="/about">About</Link>
-              <a href="https://medium.com/@ntuvibe">Blog</a>
+              <a
+                href="https://medium.com/@ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </a>
               <Link to="/help">Help</Link>
-              <a href="https://facebook.com/ntuvibe">Facebook</a>
+              <a
+                href="https://facebook.com/ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
             </div>
           </div>
           <div className={styles.credit}>

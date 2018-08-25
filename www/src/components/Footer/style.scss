@@ -4,6 +4,7 @@
 
 :local {
   .footer {
+    @include open-sans-regular;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -28,10 +29,6 @@
     @include raleway-medium;
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
-  }
-
-  .content {
-    // empty rule
   }
 
   .first_row, .second_row {
