@@ -212,6 +212,14 @@ class PageScheduler extends React.Component<Props> {
                 You only have to do once, and Vibe will do the rest (truly yours
                 :p)
               </div>
+              <div
+                className={styles.text}
+                style={{ color: "#00772c", fontSize: "0.9rem" }}
+              >
+                REMINDER: On your calendar app, please add your schedule to a
+                new calendar in case you may want to delete the entire calendar
+                in the future.
+              </div>
               <div className={styles.text}>
                 <ImportSchedule
                   import={this.importSchedule}
@@ -259,10 +267,7 @@ class PageScheduler extends React.Component<Props> {
             </div>
             <div
               className={styles.text.concat(" ").concat(styles.calendarHint)}
-              style={{
-                color: "#7d7d7d",
-                fontSize: "0.9rem"
-              }}
+              style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
             >
               On PC, you can download the whole semester into your calendar!
             </div>
