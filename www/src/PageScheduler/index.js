@@ -254,12 +254,21 @@ class PageScheduler extends React.Component<Props> {
             </div>
             <div
               className={styles.text.concat(" ").concat(styles.calendarHint)}
+              style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
+            >
+              On PC, you can download the whole semester into your calendar!
+            </div>
+            <div
+              className={styles.text}
               style={{
-                color: "#7d7d7d",
+                marginTop: "1.5rem",
+                color: "#00772c",
                 fontSize: "0.9rem"
               }}
             >
-              On PC, you can download the whole semester into your calendar!
+              REMINDER: On your calendar app, please add your schedule to a new
+              calendar in case you want to delete the entire calendar in the
+              future.
             </div>
             <div className={styles.toolbar}>
               <button
