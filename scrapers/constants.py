@@ -1,5 +1,4 @@
 COURSE_CONTENT_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_subj_cont.main"
-COURSE_CONTENT_CATEGORY_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display"
 COURSE_CONTENT_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1"
 CHECK_VACANCIES_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_vacancy.check_vacancy2"
 
