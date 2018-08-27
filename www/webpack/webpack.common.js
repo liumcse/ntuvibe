@@ -150,7 +150,8 @@ const config = {
       {
         from: path.resolve(SRC_PATH, "brand/faviconit")
       },
-      { from: path.resolve(SRC_PATH, "brand/seo") }
+      { from: path.resolve(SRC_PATH, "brand/seo") },
+      { from: path.resolve(SRC_PATH, "brand/pic") }
     ])
   ]
 };

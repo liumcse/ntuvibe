@@ -99,7 +99,7 @@
   }
 
   .rbc-current-time-indicator {
-    // display: block !important;
+    display: none !important;
     left: 6rem !important;
     width: calc(100% - 6rem) !important;
     &::before {
@@ -144,6 +144,19 @@
     background-color: #000000bd !important;
     border-bottom: 5px solid #000000 !important;
   }
+  .category_7 {
+    background-color: #b300adbd !important;
+    border-bottom: 5px solid #b300ad !important;
+  }
+  .category_8 {
+    background-color: #801b1bbd !important;
+    border-bottom: 5px solid #801b1b !important;
+  }
+
+  .category_9, .category_10, .category_11, .category_12 {
+    border-bottom: 5px solid #26598c !important;
+    background-color: #26598cbd !important;
+  }
 
   @media (max-width: 768px) {
     .rbc-btn-group {
@@ -160,17 +173,31 @@
   .container {
     display: flex;
     flex-direction: column;
+  }
 
+  .headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    .header {
+      font-size: 2.5rem;
+      color: $primary;
+      @include raleway-medium;
+      display: flex;
+      align-items: center;
+      div {
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 
   .textContainer {
     display: flex;
     flex-direction: column;
-    .header {
-      font-size: 2rem;
-      color: $primary;
-      @include raleway-medium;
-    }
     .text {
       margin-top: 1rem;
       white-space: pre-line;
@@ -217,6 +244,10 @@
         font-size: 0.85rem;
         color: #7d7d7d;
       }
+      a {
+        font-size: 0.85rem;
+        // border-bottom: 1px solid;
+      }
     }
   }
 
@@ -231,7 +262,7 @@
   }
 
   .innerContainer {
-    padding: 2rem 3rem;
+    padding: 3rem 6rem;
     display: flex;
     flex-direction: column;
   }
@@ -306,8 +337,17 @@
 
   @media (max-width: 768px) {
     .innerContainer {
-      padding: 1rem 1.5rem;
+      padding: 1.5rem 1.5rem;
       padding-bottom: 3rem;
+    }
+
+    .headerContainer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .fbLike {
+      margin-top: 1rem;
     }
 
     .addToCalendar {

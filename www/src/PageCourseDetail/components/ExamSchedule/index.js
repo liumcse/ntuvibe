@@ -11,11 +11,12 @@ import * as styles from "./style.scss";
 
 type Props = {
   startTime: number,
-  endTime: number
+  endTime: number, 
+  updateTime: number
 };
 
 const ExamSchedule = (props: Props) => {
-  const { startTime, endTime } = props;
+  const { startTime, endTime, updateTime } = props;
   return (
     <div className={styles.container}>
       <div className={styles.title}>Final Exam</div>
@@ -36,6 +37,13 @@ const ExamSchedule = (props: Props) => {
             </tr>
           </tbody>
         </table>
+      </div>
+      <div className={styles.last_update}>
+        Exam time was last updated on{" "}
+        {timestampToDate(parseInt(updateTime, 10))} from{" "}
+        <a href="https://wis.ntu.edu.sg/webexe/owa/exam_timetable_und.main">
+          ntu.edu.sg
+        </a>.
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import { timestampToDate } from "src/utils";
 
 import type { CourseSchedule } from "src/FlowType/courses";
 
@@ -178,6 +179,7 @@ const viewAll = () => {
 };
 
 const ClassSchedule = (props: Props) => {
+  const { data } = props;
   return (
     <div className={styles.container}>
       <div className={styles.title}>Schedule (Current Semester)</div>
@@ -198,9 +200,16 @@ const ClassSchedule = (props: Props) => {
               <th>Location</th>
               <th>Remark</th>
             </tr>
-            {parseDataToTable(props.data)}
+            {parseDataToTable(data)}
           </tbody>
         </table>
+      </div>
+      <div className={styles.last_update}>
+        Class schedule was last updated on{" "}
+        {timestampToDate(parseInt(data.update_time, 10))} from{" "}
+        <a href="https://wish.wis.ntu.edu.sg/webexe/owa/aus_schedule.main">
+          ntu.edu.sg
+        </a>.
       </div>
     </div>
   );
