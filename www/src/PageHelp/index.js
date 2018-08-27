@@ -2,12 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import vibe from "src/brand/logo.png";
-import Footer from "src/PageCourseDetail/components/Footer";
+import Footer from "src/components/Footer";
 import * as styles from "./style.scss";
 
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Card from "./components/Card";
 import Bubble from "./components/Bubble";
+import { logPageview } from "src/tracking";
 
 import fb from "./assets/facebook.svg";
 import md from "./assets/medium.svg";
@@ -25,6 +26,7 @@ const brand = (
 );
 
 const PageHelp = () => {
+  logPageview();
   return (
     <div className={styles.container}>
       <SiteMetaHelmet
@@ -99,7 +101,7 @@ const PageHelp = () => {
               At Vibe, we believe that everyone has the right to be heard.
               <br />
               Therefore, we promise that Vibe will never filter or delete any
-              content made by our users.
+              content posted by our users.
               <br />
               However, we will take actions if your content shows or involves
               any of the following:

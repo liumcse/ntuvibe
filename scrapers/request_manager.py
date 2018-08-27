@@ -77,3 +77,7 @@ def get_exam_schedule_detail_html(academic_year, semester):
                p_exam_yr=academic_year,
                p_semester=semester,
                bOption="Next")
+
+
+def get_course_vacancy(subj):
+    return get(CHECK_VACANCIES_URL, subj=subj)

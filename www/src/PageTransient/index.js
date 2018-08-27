@@ -110,17 +110,25 @@ class PageTransient extends React.Component<Props> {
           <div className={styles.inputs}>
             <input className={styles.email} readOnly value={this.email} />
             <input
-            className={styles.password}
+              className={styles.password}
               onChange={this.handlePassword}
-              placeholder="Password (avoid using your NTU password)"
+              placeholder="Password"
               type="password"
             />
             <input
-            className={styles.username}
+              className={styles.username}
               onChange={this.handleUsername}
               placeholder="Display name (must be unique!)"
             />
-            <input className={styles.major} onChange={this.handleMajor} placeholder="Major (optional)" />
+            <input
+              className={styles.major}
+              onChange={this.handleMajor}
+              placeholder="Major (optional)"
+            />
+          </div>
+          <div className={styles.hint}>
+            We use sophisticated encryption technology - not a single person in
+            the world can see your password.
           </div>
           <button onClick={this.handleSubmit} className={styles.activate}>
             Activate

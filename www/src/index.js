@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import ReactGA from "react-ga";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import * as ROUTES from "./routes";
 import * as styles from "./style.scss";
+import { logPageview } from "./tracking";
+import ReactGA from "react-ga";
 import Popups from "./components/Popups";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
@@ -20,10 +21,21 @@ import store from "./redux/store";
 import "./styles/app.scss";
 import "normalize.css";
 
-// Google Analytics
-// ReactGA.initialize("UA-113348736-2");
-
 class App extends React.PureComponent {
+  // componentDidMount() {
+  //   initializeGA();
+  //   logPageview();
+  // }
+
+  // componentDidMount() {
+  //   logPageview();
+  // }
+
+  componentDidMount() {
+    ReactGA.initialize("UA-113348736-2");
+    logPageview(window.location.pathname);
+  }
+
   render() {
     return (
       <Provider store={store}>

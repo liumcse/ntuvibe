@@ -5,13 +5,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import NavBar from "src/components/NavBar";
-import Footer from "./components/Footer";
+import Footer from "src/components/Footer";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import { remove_trailing_newline, cap_first_letter } from "src/utils";
+import { logPageview, logCourseVisit } from "src/tracking";
 import type {
   CourseDetail,
   CourseRating,
@@ -219,6 +220,13 @@ const skeleton = (
 
 class PageCourseDetail extends React.Component<Props> {
   componentDidMount() {
+    const {
+      match: {
+        params: { courseCode }
+      }
+    } = this.props;
+    logPageview();
+    logCourseVisit(courseCode);
     this.fetchInformation();
   }
 
@@ -245,7 +253,11 @@ class PageCourseDetail extends React.Component<Props> {
       }
     } = this.props;
     const prevCourseCode = prevProps.match.params.courseCode || courseCode;
-    if (prevCourseCode !== courseCode) this.fetchInformation();
+    if (prevCourseCode !== courseCode) {
+      logPageview();
+      logCourseVisit(courseCode);
+      this.fetchInformation();
+    }
   }
 
   // eslint-disable-next-line
@@ -270,7 +282,7 @@ class PageCourseDetail extends React.Component<Props> {
     const { courseCode } = this.props.match.params;
     const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
-    const { start_time, end_time } = examSchedule; // for examSchedule
+    const { start_time, end_time, update_time } = examSchedule; // for examSchedule
 
     return (
       <div className={styles.page_course_detail}>
@@ -381,7 +393,11 @@ class PageCourseDetail extends React.Component<Props> {
             {start_time &&
               end_time && (
                 <div className={styles.table}>
-                  <ExamSchedule startTime={start_time} endTime={end_time} />
+                  <ExamSchedule
+                    startTime={start_time}
+                    endTime={end_time}
+                    updateTime={update_time}
+                  />
                 </div>
               )}
           </div>

@@ -86,9 +86,7 @@ class Dropdown extends React.Component<Props, States> {
   getSuggestionValue = suggestion => {
     // const { history } = this.props;
     // history.push("/courses/" + suggestion.code.toLowerCase());
-    return suggestion.code
-      .concat(" - ")
-      .concat(cap_first_letter(suggestion.title));
+    return suggestion.code.concat(" - ").concat(suggestion.title);
   };
 
   // Use your imagination to render suggestions.
@@ -97,7 +95,7 @@ class Dropdown extends React.Component<Props, States> {
       onClick={() => this.redirect(suggestion.code)}
       className={styles.suggestion_title}
     >
-      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
+      {suggestion.code.concat(" - ").concat(suggestion.title)}
     </div>
   );
 

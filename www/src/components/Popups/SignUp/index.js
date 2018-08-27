@@ -54,7 +54,7 @@ class SignUp extends React.Component<Props, State> {
   };
 
   requestVerification = () => {
-    const { email } = this.state;
+    const email = this.state.email && this.state.email.toLowerCase();
     if (
       !email.split("@") ||
       !(

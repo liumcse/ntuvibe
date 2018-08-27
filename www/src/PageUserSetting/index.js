@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import NavBar from "src/components/NavBar";
+import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -70,6 +71,7 @@ class PageUserSetting extends React.Component<Props, States> {
             <SettingProfile username={username} major={major} avatar={avatar} />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

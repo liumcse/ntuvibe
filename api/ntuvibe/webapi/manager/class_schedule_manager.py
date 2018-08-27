@@ -1,4 +1,7 @@
 from webapi.models import ClassScheduleTab
+from webapi.manager import cache_manager
+from webapi.utils import get_hour_from_timestamp
+from scrapers.scraper_course_vacancy import crawl_course_vacancy
 
 
 def get_class_schedule_by_id(id):
@@ -31,3 +34,11 @@ def prepare_class_schedule_data(class_schedules):
 
 	index_to_slots.update({"update_time": max_update_time})
 	return index_to_slots
+
+
+def prepare_course_vacancy_data(course_code):
+	current_hour = get_hour_from_timestamp()
+	if current_hour in range(9, 22+1):
+		return crawl_course_vacancy.get_course_vacancy_by_request(course_code)
+	else:
+		return cache_manager.get_course_vacancy_by_course_code(course_code)

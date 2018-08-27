@@ -41,7 +41,7 @@ class ImportSchedule extends React.PureComponent<Props> {
             <div className={styles.inputContainer}>
               <textarea
                 className={styles.input}
-                placeholder="Past all text you copied from Print/Check Courses Registered into here..."
+                placeholder="Paste all text you copied from Print/Check Courses Registered into here..."
                 spellCheck={false}
                 data-gramm_editor="false" /* disable grammarly*/
               />
