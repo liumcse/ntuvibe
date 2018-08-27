@@ -7,25 +7,22 @@ def get(url, *args, **kwargs):
 
 
 def post(url, headers, data, verify=False):
-    return requests.post(url, data=data, headers=headers, verify=verify)
+    return requests.post(url, data=data, headers=headers, verify=verify).text.encode('utf-8')
 
 
 def get_course_content_main_html():
     return get(COURSE_CONTENT_MAIN_URL)
 
 
-def get_course_content_category_list_html(semester):
-    return get(COURSE_CONTENT_CATEGORY_URL, acadsem=semester, acad="", semester="")
-
-
-def get_course_content_detail_html(semester, category):
-    return get(COURSE_CONTENT_DETAIL_URL,
-               acadsem=semester,
-               r_course_yr=category,
-               r_subj_code="Enter Keywords or Course Code",
-               boption="CLoad",
-               acad=semester[0:4],
-               semester=semester[-1])
+def get_course_content_detail_html(semester):
+    return post(COURSE_CONTENT_DETAIL_URL,
+                {},
+                {"acadsem":semester,
+                  "r_course_yr":"",
+                  "r_subj_code":"",
+                  "boption":"Search",
+                  "acad":semester[0:4],
+                  "semester":semester[-1]})
 
 
 def get_class_schedule_main_html():
