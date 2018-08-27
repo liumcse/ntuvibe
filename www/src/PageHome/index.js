@@ -18,7 +18,12 @@ class PageHome extends React.PureComponent {
         <div className={styles.background_image} />
         <div className={styles.container}>
           <NavBar />
-          <div className={styles.course_search}>
+          <div className={styles.searchContainer}>
+            {/* <div className={styles.callForActionContainer}>
+              <div className={styles.callForAction}>
+                Contribute to Vibe by leaving your ratings
+              </div>
+            </div> */}
             <Dropdown />
           </div>
           <div className={styles.tip}>
@@ -32,21 +37,12 @@ class PageHome extends React.PureComponent {
             <span className={styles.emphasize}>HE9091</span> and see what would
             happen 🚀
           </div>
-          <div className={styles.footer}>
-            <div className={styles.line}>
-              &copy; 2018 NTUVibe &#183; Stay cute
+          {/* <div className={styles.callForActionContainer}>
+            <div className={styles.callForAction}>
+              Be a contributor by submitting your course rating
             </div>
-            <div className={styles.line}>
-              We&#39;re not affiliated with Nanyang Technological University.
-            </div>
-            <div className={styles.links}>
-              <Link to="/sitemap">Sitemap</Link>
-              <Link to="/about">About</Link>
-              <a href="https://medium.com/@ntuvibe">Blog</a>
-              <Link to="/help">Help</Link>
-              <a href="https://facebook.com/ntuvibe">Facebook</a>
-            </div>
-          </div>
+            <div className={styles.why.concat(" " + styles.badge)}>Learn why</div>
+          </div> */}
           <div className={styles.fbLike}>
             <div
               className="fb-like"
@@ -58,8 +54,41 @@ class PageHome extends React.PureComponent {
               data-share="false"
             />
             <div className={styles.fbPage}>
-              Send feedback to our{" "}
-              <a href="https://facebook.com/ntuvibe">Facebook Page</a>!
+              How can we do better? Tell us at{" "}
+              <a
+                href="https://facebook.com/ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook Page
+              </a>!
+            </div>
+          </div>
+          <div className={styles.footer}>
+            <div className={styles.line}>
+              &copy; 2018 NTUVibe &#183; Stay cute
+            </div>
+            <div className={styles.line}>
+              We&#39;re not affiliated with Nanyang Technological University.
+            </div>
+            <div className={styles.links}>
+              <Link to="/sitemap">Sitemap</Link>
+              <Link to="/about">About</Link>
+              <a
+                href="https://medium.com/@ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </a>
+              <Link to="/help">Help</Link>
+              <a
+                href="https://facebook.com/ntuvibe"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
             </div>
           </div>
           <div className={styles.credit}>

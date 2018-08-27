@@ -43,4 +43,10 @@
     color: white;
     background-color: $primary;
   }
+  .hint {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: $text-hint;
+    font-size: 0.9rem;
+  }
 }

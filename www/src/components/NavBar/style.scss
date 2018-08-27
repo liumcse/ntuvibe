@@ -5,13 +5,14 @@
 :local {
   .navbar_container {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
-    height: 6rem;
-    background-color: $primary;
-    // background-color: white;
+    height: 5rem;
+    // background-color: $primary;
+    background-color: rgba(250, 250, 250, 0.7);
     // opacity: 1;
-    z-index: 2;
+    @include medium-shadow;
+    // z-index: 2;
     @include disable-select;
     // box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
   }
@@ -21,20 +22,17 @@
   }
 
   .brand {
-    @include american-typewriter;
     display: inline;
     color: white;
     // font-size: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .brandLink {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .navbar_elements {
@@ -42,10 +40,11 @@
     flex-direction: row;
     flex: 1;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     height: 100%;
-    @include open-sans-medium;
-    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    @include lato-medium;
+    font-size: 1.15rem;
     &_left {
       display: flex;
       height: 100%;
@@ -56,47 +55,48 @@
     &_right {
       display: flex;
       flex-direction: row;
-      align-items: flex-end;
+      // align-items: flex-end;
       margin-left: 3rem;
       margin-right: 6rem;
       &_text {
+        height: 5rem;
         margin-right: 5rem;
-        padding-bottom: 1.5rem;
-      }
-      &_text:hover {
-        border-bottom: 3px solid white;
-        padding-bottom: calc(1.5rem - 3px);
+        display: flex;
+        align-items: center;
       }
       a {
-        padding-bottom: 1.5rem;
-        color: white;
-        // color: $primary;
-
+        color: rgba(17, 17, 17, 0.5);
+        transition: color 0.25s;
+        display: flex;
+        align-items: center;
+        div {
+          margin-right: 1rem;
+        }
       }
       a:hover {
-        color: white;
-        // color: $primary;
-
+        color: $primary;
       }
     };
   }
 
   .right_button {
-    padding-bottom: 1.5rem;
+    height: 5rem;;
+    display: flex;
+    align-items: center;
   }
 
   .avatarImg {
     width: 3rem;
     height: auto;
     border-radius: 3rem;
-    margin-bottom: -0.5rem;
+    // margin-bottom: -0.5rem;
     cursor: pointer;
     @include medium-shadow;
   }
 
   @media (max-width: 768px) {
     .navbar_container {
-      height: 4rem;
+      height: 3rem;
       align-items: center;
     }
 
