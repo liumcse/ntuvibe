@@ -1,6 +1,7 @@
 COURSE_CONTENT_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_subj_cont.main"
 COURSE_CONTENT_CATEGORY_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display"
 COURSE_CONTENT_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1"
+CHECK_VACANCIES_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_vacancy.check_vacancy2"
 
 
 class CourseContentDetailType:
@@ -64,3 +65,8 @@ CONSTRING_KEYS.remove("grade_type")
 CONSTRING_KEYS.remove("remark")
 
 ONLINE_COURSE_REMARK = -1
+
+NULL_TD_VALUE = '\xa0'
+INDEX_VACANCIES_INDEX = 0
+INDEX_VACANCIES_VACANCIES = 1
+INDEX_VACANCIES_WAITLIST = 2
