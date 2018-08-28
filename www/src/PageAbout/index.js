@@ -43,7 +43,7 @@ const PageAbout = () => {
           and disclosure of personal data when you use our Service and the
           choices you have associated with that data. This Privacy Policy for
           NTUVibe is powered by{" "}
-          <a href="FreePrivacyPolicy.com">Free Privacy Policy</a>.
+          <a href="https://FreePrivacyPolicy.com">Free Privacy Policy</a>.
         </p>
         <p>
           We use your data to provide and improve the Service. By using the
