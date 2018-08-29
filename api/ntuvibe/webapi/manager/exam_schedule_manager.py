@@ -2,6 +2,8 @@ from webapi.models import ExamScheduleTab
 
 
 def prepare_exam_schedule_data(exam_schedule):
+	if not exam_schedule:
+		return {}
 	return {
 		"start_time": exam_schedule.start_time,
 		"end_time": exam_schedule.end_time,
