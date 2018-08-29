@@ -11,7 +11,11 @@ import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
-import { remove_trailing_newline, cap_first_letter } from "src/utils";
+import {
+  remove_trailing_newline,
+  cap_first_letter,
+  prettify_offering
+} from "src/utils";
 import { logPageview, logCourseVisit } from "src/tracking";
 import type {
   CourseDetail,
@@ -37,6 +41,7 @@ import {
 
 import no from "./assets/no.svg";
 import yes from "./assets/yes.svg";
+import exam from "./assets/exam.svg";
 
 const NO_DESCRIPTION =
   "This course has no description. Sad to see this happened...";
@@ -280,7 +285,15 @@ class PageCourseDetail extends React.Component<Props> {
     }
 
     const { courseCode } = this.props.match.params;
-    const { title, au, constraint, description, as_ue, as_pe } = courseDetail; // for courseDetail
+    const {
+      title,
+      au,
+      constraint,
+      description,
+      as_ue,
+      as_pe,
+      offered_semester
+    } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
     const { start_time, end_time, update_time } = examSchedule; // for examSchedule
 
@@ -312,6 +325,19 @@ class PageCourseDetail extends React.Component<Props> {
                   {(description && remove_trailing_newline(description)) ||
                     NO_DESCRIPTION}
                 </div>
+                {offered_semester &&
+                  offered_semester.length > 0 && (
+                    <div className={styles.requirement}>
+                      <div className={styles.label}>Offerings</div>
+                      <div className={styles.requirement_content}>
+                        {offered_semester
+                          .splice(0, 4)
+                          .reverse()
+                          .map(offering => prettify_offering(offering))
+                          .join(", ")}
+                      </div>
+                    </div>
+                  )}
                 {constraint &&
                   constraint.prerequisite &&
                   constraint.prerequisite.length > 0 && (
@@ -360,6 +386,9 @@ class PageCourseDetail extends React.Component<Props> {
                     <img
                       src={typeof as_pe === "boolean" && (as_pe ? yes : no)}
                     />Read as General Education Prescribed Elective
+                  </div>
+                  <div>
+                    <img src={exam} />Grade Type:
                   </div>
                 </div>
               </div>

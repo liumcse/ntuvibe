@@ -26,43 +26,12 @@ const brand = (
   />
 );
 
-const HomeButton = () => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      background: "url(".concat(home).concat(") no-repeat"),
-      backgroundSize: "contain",
-      height: "1.25rem",
-      width: "1.25rem"
-    }}
-  />
-);
+const HomeButton = () => <img className={styles.nav_button} src={home} />;
 
-const BlogButton = () => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      background: "url(".concat(blog).concat(") no-repeat"),
-      backgroundSize: "contain",
-      height: "1.25rem",
-      width: "1.25rem"
-    }}
-  />
-);
+const BlogButton = () => <img className={styles.nav_button} src={blog} />;
 
 const CalendarButton = () => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      background: "url(".concat(calendar).concat(") no-repeat"),
-      backgroundSize: "contain",
-      height: "1.25rem",
-      width: "1.25rem"
-    }}
-  />
+  <img className={styles.nav_button} src={calendar} />
 );
 
 const LoginButtonM = () => (
