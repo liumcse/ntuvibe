@@ -96,15 +96,9 @@ def crawl(semester=None):
 	print(get_date_time())
 	if not semester:
 		semester = get_latest_semester()
-	category_list_html = request_manager.get_course_content_category_list_html(semester)
-	category_list = parse_category_list(category_list_html)
 
-	for category in category_list:
-		print(category)
-		detail_html = request_manager.get_course_content_detail_html(semester, category)
-		parse_course_details(detail_html)
-
-		time.sleep(0.1)
+	detail_html = request_manager.get_course_content_detail_html(semester)
+	parse_course_details(detail_html)
 
 	global all_course_details
 	# write_json_file(json_path_current="data/course_content.json", json_dict=all_course_details)
