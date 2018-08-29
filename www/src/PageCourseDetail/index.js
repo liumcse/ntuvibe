@@ -292,7 +292,8 @@ class PageCourseDetail extends React.Component<Props> {
       description,
       as_ue,
       as_pe,
-      offered_semester
+      offered_semester,
+      grade_type
     } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
     const { start_time, end_time, update_time } = examSchedule; // for examSchedule
@@ -388,7 +389,8 @@ class PageCourseDetail extends React.Component<Props> {
                     />Read as General Education Prescribed Elective
                   </div>
                   <div>
-                    <img src={exam} />Grade Type:
+                    <img src={exam} />Grade Type -{" "}
+                    {grade_type === 1 ? "Pass / Fail" : "Letter Graded"}
                   </div>
                 </div>
               </div>

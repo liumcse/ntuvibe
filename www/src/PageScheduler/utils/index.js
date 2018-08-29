@@ -418,3 +418,14 @@ export function generateICS(targetJson) {
   if (!error) return value;
   return null;
 }
+
+export function getLatestClass(events) {
+  let latest = new Date("January 1, 00 00:00");
+  events.forEach(event => {
+    if (event.end.getHours() > latest.getHours()) {
+      latest = event.end;
+    }
+  });
+  console.log("latest", latest);
+  return latest;
+}

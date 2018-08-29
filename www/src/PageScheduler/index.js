@@ -154,6 +154,14 @@ class PageScheduler extends React.Component<Props> {
 
   render() {
     const { calendarEvents } = this.state;
+    let latestClass = null;
+    if (calendarEvents) {
+      latestClass = tools.getLatestClass(calendarEvents);
+      latestClass.setFullYear(TODAY.getFullYear());
+      latestClass.setMonth(TODAY.getMonth());
+      latestClass.setDate(TODAY.getDate());
+      latestClass.setHours(latestClass.getHours() + 1);
+    }
     return (
       <div className={styles.container}>
         <SiteMetaHelmet
@@ -247,7 +255,7 @@ class PageScheduler extends React.Component<Props> {
                 step={60}
                 timeslots={1}
                 min={START_TIME}
-                max={END_TIME}
+                max={latestClass || END_TIME}
                 defaultView={BigCalendar.Views.WORK_WEEK}
                 defaultDate={new Date()}
               />
