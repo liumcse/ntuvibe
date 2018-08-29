@@ -76,15 +76,8 @@ def crawl():
     main_site_html = request_manager.get_class_schedule_main_html()
     latest_semester = parse_latest_semester(main_site_html)
 
-    category_list_html = request_manager.get_class_schedule_category_list_html(latest_semester)
-    category_list = parse_category_list(category_list_html)
-
-    for category in category_list:
-        print(category)
-        detail_html = request_manager.get_class_schedule_detail_html(latest_semester, category)
-        parse_schedule_details(detail_html)
-
-        time.sleep(0.1)
+    detail_html = request_manager.get_all_class_schedule_detail_html(latest_semester)
+    parse_schedule_details(detail_html)
 
     global all_schedule_details
     # write_json_file(json_path_current="data/class_schedule.json", json_dict=all_schedule_details)
