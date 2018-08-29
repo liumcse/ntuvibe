@@ -1,13 +1,18 @@
 ---
 # start cronjobs by modifying crontab
 
+- name: ensure remote cronjobs log dir exists
+  file: path={{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }}/cronjobs state=directory
+  become: true
+
+
 - name: cronjob crawl course content
   cron:
     name: "crawl course content"
     minute: "21"
     hour: "0"
     day: "3,19"
-    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content.log 2>&1"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/course_content_to_db.py >> {{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }}/cronjobs/course_content.log 2>&1"
   become: true
 
 
@@ -17,7 +22,7 @@
     minute: "59"
     hour: "0"
     weekday: "6"
-    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule.log 2>&1"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/class_schedule_to_db.py >> {{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }}/cronjobs/class_schedule.log 2>&1"
   become: true
 
 
@@ -27,5 +32,5 @@
     minute: "35"
     hour: "1"
     weekday: "6"
-    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule_to_db.py >> {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule.log 2>&1"
+    job: "sudo python3 {{ remote_root_dir }}/{{ app_name }}/scrapers/cronjobs/exam_schedule_to_db.py >> {{ remote_root_dir }}/{{ remote_log_dir }}/{{ app_name }}/cronjobs/exam_schedule.log 2>&1"
   become: true
