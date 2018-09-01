@@ -14,17 +14,19 @@
     }
   }
 
-  .rbc-btn-group {
-    // display: none !important;
+  .rbc-time-view {
+    border: none !important;
   }
 
-  .rbc-time-view {
-    border-bottom: none !important;
+  .rbc-label {
+    @include lato-regular;
+    color: $text-hint;
   }
 
   .rbc-timeslot-group {
     // height of each slot. determined by how much information we want to show on each event slot
-    min-height: 3rem !important;
+    min-height: 3.5rem !important;
+    border-bottom: none !important;
   }
 
   .rbc-toolbar-label {
@@ -39,8 +41,9 @@
   .rbc-event {
     // z-index: -1 !important;
     cursor: default !important;
-    // border: none !important;
-    border-radius: 0 !important;
+    border: none !important;
+    padding: 0.3rem !important;
+    border-radius: 3px !important;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
@@ -50,10 +53,6 @@
       width: 0;
     }
   }
-
-  // .rbc-event.rbc-selected {
-
-  // }
 
   .rbc-header {
     padding: 0.5rem 0 !important;
@@ -69,8 +68,8 @@
 
   .rbc-event-label {
     font-size: 0.6rem !important;
-    margin-bottom: 0.1rem !important;
-    @include open-sans-medium;
+    // margin-bottom: 0.1rem !important;
+    @include open-sans-regular;
     white-space: normal !important;
   }
 
@@ -95,7 +94,7 @@
 
   .rbc-events-container {
     right: 0px !important;
-    width: 97% !important;
+    width: 98% !important;
   }
 
   .rbc-current-time-indicator {
@@ -117,8 +116,8 @@
 
   // color by category
   .category_0 {
-    background-color: #E70000bd !important;
-    border-bottom: 5px solid #E70000 !important;
+    background-color: #0044FFbd !important;
+    border-bottom: 5px solid #0044FF !important;
   }
   .category_1 {
     background-color: #FF8C00bd !important;
@@ -137,8 +136,8 @@
     border-bottom: 5px solid #760089 !important;
   }
   .category_5 {
-    background-color: #0044FFbd !important;
-    border-bottom: 5px solid #0044FF !important;
+    background-color: #801b1bbd !important;
+    border-bottom: 5px solid #801b1b !important;
   }
   .category_6 {
     background-color: #000000bd !important;
@@ -149,8 +148,8 @@
     border-bottom: 5px solid #b300ad !important;
   }
   .category_8 {
-    background-color: #801b1bbd !important;
-    border-bottom: 5px solid #801b1b !important;
+    background-color: #E70000bd !important;
+    border-bottom: 5px solid #E70000 !important;
   }
 
   .category_9, .category_10, .category_11, .category_12 {

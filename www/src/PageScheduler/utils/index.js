@@ -356,10 +356,13 @@ export function generateCalendarEvent(json: Object): Object[] {
           new Date(calculatedTime),
           end_time
         );
-        const content = `${courseCode} ${class_type} ${group}\n${venue}`;
+        // const content = `${courseCode} ${class_type} ${group}\n${venue}`;
         events.push({
           id: idCount++,
-          title: content,
+          title: courseCode,
+          type: class_type,
+          group: group,
+          location: venue,
           allDay: false,
           start: start,
           end: end,
@@ -417,4 +420,14 @@ export function generateICS(targetJson) {
   const { error, value } = ics.createEvents(serialEvent);
   if (!error) return value;
   return null;
+}
+
+export function getLatestClass(events) {
+  let latest = new Date("January 1, 00 00:00");
+  events.forEach(event => {
+    if (event.end.getHours() > latest.getHours()) {
+      latest = event.end;
+    }
+  });
+  return latest;
 }
