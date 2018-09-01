@@ -329,7 +329,7 @@ class PageCourseDetail extends React.Component<Props> {
                 {offered_semester &&
                   offered_semester.length > 0 && (
                     <div className={styles.requirement}>
-                      <div className={styles.label}>Offerings</div>
+                      <div className={styles.label}>Past Offered</div>
                       <div className={styles.requirement_content}>
                         {offered_semester
                           .splice(0, 4)
@@ -390,7 +390,9 @@ class PageCourseDetail extends React.Component<Props> {
                   </div>
                   <div>
                     <img src={exam} />Grade Type -{" "}
-                    {grade_type === 1 ? "Pass / Fail" : "Letter Graded"}
+                    {grade_type === 1
+                      ? "Pass / Fail"
+                      : "Letter Graded (A to F)"}
                   </div>
                 </div>
               </div>

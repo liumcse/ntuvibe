@@ -356,10 +356,13 @@ export function generateCalendarEvent(json: Object): Object[] {
           new Date(calculatedTime),
           end_time
         );
-        const content = `${courseCode} ${class_type} ${group}\n${venue}`;
+        // const content = `${courseCode} ${class_type} ${group}\n${venue}`;
         events.push({
           id: idCount++,
-          title: content,
+          title: courseCode,
+          type: class_type,
+          group: group,
+          location: venue,
           allDay: false,
           start: start,
           end: end,
@@ -426,6 +429,5 @@ export function getLatestClass(events) {
       latest = event.end;
     }
   });
-  console.log("latest", latest);
   return latest;
 }

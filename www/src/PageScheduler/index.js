@@ -104,6 +104,14 @@ class PageScheduler extends React.Component<Props> {
     }
   }
 
+  calendarEventRenderer = ({ event }) => (
+    <span style={{ lineHeight: "0.75rem" }}>
+      <strong>{event.title}</strong>
+      {` ${event.type} (${event.group})\n`}
+      {event.location}
+    </span>
+  );
+
   clearSchedule = () => {
     this.props.saveSchedule(null);
     if (confirm("Are you sure you want to re-import your schedule?")) {
@@ -258,6 +266,9 @@ class PageScheduler extends React.Component<Props> {
                 max={latestClass || END_TIME}
                 defaultView={BigCalendar.Views.WORK_WEEK}
                 defaultDate={new Date()}
+                components={{
+                  event: this.calendarEventRenderer
+                }}
               />
             </div>
             <div
