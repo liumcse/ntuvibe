@@ -7,25 +7,22 @@ def get(url, *args, **kwargs):
 
 
 def post(url, headers, data, verify=False):
-    return requests.post(url, data=data, headers=headers, verify=verify)
+    return requests.post(url, data=data, headers=headers, verify=verify).text.encode('utf-8')
 
 
 def get_course_content_main_html():
     return get(COURSE_CONTENT_MAIN_URL)
 
 
-def get_course_content_category_list_html(semester):
-    return get(COURSE_CONTENT_CATEGORY_URL, acadsem=semester, acad="", semester="")
-
-
-def get_course_content_detail_html(semester, category):
-    return get(COURSE_CONTENT_DETAIL_URL,
-               acadsem=semester,
-               r_course_yr=category,
-               r_subj_code="Enter Keywords or Course Code",
-               boption="CLoad",
-               acad=semester[0:4],
-               semester=semester[-1])
+def get_course_content_detail_html(semester):
+    return post(COURSE_CONTENT_DETAIL_URL,
+                {},
+                {"acadsem":semester,
+                  "r_course_yr":"",
+                  "r_subj_code":"",
+                  "boption":"Search",
+                  "acad":semester[0:4],
+                  "semester":semester[-1]})
 
 
 def get_class_schedule_main_html():
@@ -49,6 +46,16 @@ def get_class_schedule_detail_html(semester, category):
                boption="CLoad",
                staff_access="false")
 
+def get_all_class_schedule_detail_html(semester):
+    return get(CLASS_SCHEDULE_DETAIL_URL,
+               acadsem=semester,
+               r_course_yr="",
+               r_search_type="F",
+               r_subj_code="",
+               boption="Search",
+               staff_access="false")
+
+
 
 def get_exam_schedule_main_html():
     return get(EXAM_SCHEDULE_MAIN_URL, p_opt=1, bOption="Next")
@@ -67,3 +74,7 @@ def get_exam_schedule_detail_html(academic_year, semester):
                p_exam_yr=academic_year,
                p_semester=semester,
                bOption="Next")
+
+
+def get_course_vacancy(subj):
+    return get(CHECK_VACANCIES_URL, subj=subj)

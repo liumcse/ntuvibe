@@ -31,3 +31,13 @@ def ensure_valid_email_activation_token(email, token):
 def remove_activation_token_from_cache(email):
 	cache = caches["activation_token"]
 	cache.delete(email)
+
+
+def set_course_vacancy(course_code, course_vacancy):
+	cache = caches["course_vacancy"]
+	cache.set(course_code.upper(), course_vacancy, timeout=60*60*15)
+
+
+def get_course_vacancy_by_course_code(course_code):
+	cache = caches["course_vacancy"]
+	return cache.get(course_code.upper())

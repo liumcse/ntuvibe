@@ -42,6 +42,13 @@ def get_exam_schedule(request):
 
 
 @api_response()
+def get_course_vacancy(request):
+	params = request.GET
+	course_code = params.get("code", None)
+	return class_schedule_manager.prepare_course_vacancy_data(course_code)
+
+
+@api_response()
 def get_course_rating(request):
 	params = request.GET
 	course_code = params.get("code", None)

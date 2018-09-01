@@ -23,3 +23,9 @@ exam_schedule.json*
 # deploy
 *.retry
 *.zip
+
+# Mac .DS_Store
+.DS_Store
+
+# Notebooks
+notebooks

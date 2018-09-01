@@ -68,6 +68,10 @@ def get_formatted_datetime_from_timestamp(timestamp=get_timestamp()):
 	return datetime.fromtimestamp(timestamp).strftime("%d %b, %Y / %H:%M:%S")
 
 
+def get_hour_from_timestamp(timestamp=get_timestamp()):
+	return int(datetime.fromtimestamp(timestamp).strftime("%H"))
+
+
 def api_response(login_required=False):
 	def _api_response(func):
 		def _func(request, *args, **kwargs):
