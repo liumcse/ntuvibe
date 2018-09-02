@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "antd": "^3.8.4",
     "axios": "^0.18.0",
     "ics": "git://github.com/ZaynJarvis/ics.git",
     "moment": "^2.22.2",
