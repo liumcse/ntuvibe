@@ -332,8 +332,8 @@ class PageCourseDetail extends React.Component<Props> {
                       <div className={styles.label}>Past Offered</div>
                       <div className={styles.requirement_content}>
                         {offered_semester
-                          .splice(0, 4)
                           .reverse()
+                          .splice(0, 4)
                           .map(offering => prettify_offering(offering))
                           .join(", ")}
                       </div>

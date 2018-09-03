@@ -23,6 +23,10 @@
     color: $text-hint;
   }
 
+  .rbc-today {
+    background-color: rgba(0, 0, 0, .05) !important;
+  }
+
   .rbc-timeslot-group {
     // height of each slot. determined by how much information we want to show on each event slot
     min-height: 3.5rem !important;
@@ -56,6 +60,7 @@
 
   .rbc-header {
     padding: 0.5rem 0 !important;
+    background-color: white !important;
   }
 
   .rbc-allday-cell {
