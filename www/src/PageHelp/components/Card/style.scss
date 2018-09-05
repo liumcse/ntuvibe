@@ -1,6 +1,6 @@
-@import 'colors';
-@import 'functions';
-@import 'typography';
+@import '_colors';
+@import '_functions';
+@import '_typography';
 
 :local {
   .container {
@@ -19,7 +19,6 @@
     left: -1rem;
     top: -1rem;
     background-color: $primary;
-    opacity: 0.8;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 2.5rem;
