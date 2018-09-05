@@ -22,15 +22,6 @@ import "./styles/app.scss";
 import "normalize.css";
 
 class App extends React.PureComponent {
-  // componentDidMount() {
-  //   initializeGA();
-  //   logPageview();
-  // }
-
-  // componentDidMount() {
-  //   logPageview();
-  // }
-
   componentDidMount() {
     ReactGA.initialize("UA-113348736-2");
     logPageview(window.location.pathname);

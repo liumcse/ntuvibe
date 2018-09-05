@@ -13,9 +13,9 @@ import ReactGA from "react-ga";
 // }
 
 export function logPageview() {
-  // if (process.env.NODE_ENV === "production") {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-  // }
+  if (process.env.NODE_ENV === "production") {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
 }
 
 export function logCalendarDownload() {
@@ -25,12 +25,12 @@ export function logCalendarDownload() {
       category: "User",
       action: "Download a calendar"
     });
-  } else {
+  } /* else {
     ReactGA.event({
       category: "Development",
       action: "Download a calendar"
     });
-  }
+  } */
 }
 
 export function logScheduleGeneration() {
@@ -40,12 +40,12 @@ export function logScheduleGeneration() {
       category: "User",
       action: "Generate a schedule"
     });
-  } else {
+  } /* else {
     ReactGA.event({
       category: "Development",
       action: "Generate a schedule"
     });
-  }
+  } */
 }
 
 export function logCourseVisit(code) {
@@ -56,11 +56,11 @@ export function logCourseVisit(code) {
       action: "View a course",
       label: code
     });
-  } else {
+  } /* else {
     ReactGA.event({
       category: "Development",
       action: "View a course",
       label: code
     });
-  }
+  } */
 }
