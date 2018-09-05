@@ -7,7 +7,7 @@
 
 [build]
   base    = "www"
-  publish = "www\dist"
+  publish = "www/dist"
   command = "yarn build"
 
 # redirects rule
