@@ -19,11 +19,6 @@ class PageHome extends React.PureComponent {
         <div className={styles.container}>
           <NavBar />
           <div className={styles.searchContainer}>
-            {/* <div className={styles.callForActionContainer}>
-              <div className={styles.callForAction}>
-                Contribute to Vibe by leaving your ratings
-              </div>
-            </div> */}
             <Dropdown />
           </div>
           <div className={styles.tip}>
@@ -37,12 +32,6 @@ class PageHome extends React.PureComponent {
             <span className={styles.emphasize}>HE9091</span> and see what would
             happen 🚀
           </div>
-          {/* <div className={styles.callForActionContainer}>
-            <div className={styles.callForAction}>
-              Be a contributor by submitting your course rating
-            </div>
-            <div className={styles.why.concat(" " + styles.badge)}>Learn why</div>
-          </div> */}
           <div className={styles.fbLike}>
             <div
               className="fb-like"
@@ -61,7 +50,8 @@ class PageHome extends React.PureComponent {
                 rel="noopener noreferrer"
               >
                 Facebook Page
-              </a>!
+              </a>
+              !
             </div>
           </div>
           <div className={styles.footer}>
