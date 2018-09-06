@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import * as ROUTES from "./routes";
-import * as styles from "./style.scss";
 import { logPageview } from "./tracking";
 import ReactGA from "react-ga";
 import Popups from "./components/Popups";
@@ -13,6 +12,7 @@ import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
 import PageTransient from "./PageTransient";
 import PageUserSetting from "./PageUserSetting";
+import PageSignUp from "./PageSignUp";
 import PageSitemap from "./PageSitemap";
 import PageAbout from "./PageAbout";
 import PageScheduler from "./PageScheduler";
@@ -20,6 +20,7 @@ import store from "./redux/store";
 
 import "./styles/app.scss";
 import "normalize.css";
+import "antd/dist/antd.css";
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -31,7 +32,7 @@ class App extends React.PureComponent {
     return (
       <Provider store={store}>
         <Router>
-          <div className={styles.app_container}>
+          <div>
             <Switch>
               <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
               <Route
@@ -50,6 +51,7 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_USER_SETTING}
                 component={PageUserSetting}
               />
+              <Route exact path={ROUTES.ROUTE_SIGN_UP} component={PageSignUp} />
               <Route
                 exact
                 path={ROUTES.ROUTE_SITEMAP}

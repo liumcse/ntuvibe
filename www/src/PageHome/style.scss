@@ -68,6 +68,7 @@
   }
 
   .footer {
+    @include lato-regular;
     display: flex;
     flex-direction: column;
     align-items: center;
