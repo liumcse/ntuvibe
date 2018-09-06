@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./styles.scss";
+// import * as styles from "./styles.scss";
 
 import {
   Form,
@@ -144,6 +144,7 @@ class PageSignUp extends React.Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
+        <Button type="primary">Primary</Button>
         <FormItem {...formItemLayout} label="E-mail">
           {getFieldDecorator("email", {
             rules: [
