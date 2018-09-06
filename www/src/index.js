@@ -20,7 +20,7 @@ import store from "./redux/store";
 
 import "./styles/app.scss";
 import "normalize.css";
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
 
 class App extends React.PureComponent {
   componentDidMount() {
