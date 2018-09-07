@@ -107,7 +107,7 @@ class SignUp extends React.Component<Props, State> {
               <input
                 className={styles.email}
                 onChange={this.handleInput}
-                placeholder="Your NTU Email"
+                placeholder="your-ntu-email@e.ntu.edu.sg"
               />
             </div>
           )}
