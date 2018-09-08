@@ -14,9 +14,11 @@ import {
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
-import theme from "./theme.css";
+// import * as theme from "./theme.scss";
 
 type Props = {
+  // style
+  theme: Object,
   // from redux
   courseList: CourseList,
   fetchCourseList: () => void,
@@ -32,7 +34,7 @@ type States = {
   isLoading: boolean
 };
 
-class Dropdown extends React.Component<Props, States> {
+class Search extends React.Component<Props, States> {
   constructor() {
     super();
     this.state = {
@@ -157,8 +159,7 @@ class Dropdown extends React.Component<Props, States> {
     // Finally, render it!
     return (
       <Autosuggest
-        id={"pageHome"}
-        theme={theme}
+        theme={this.props.theme}
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -185,5 +186,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Dropdown)
+  )(Search)
 );

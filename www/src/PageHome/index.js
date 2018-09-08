@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
-import Dropdown from "./components/Dropdown";
+import Search from "src/components/Search";
+
 import * as styles from "./style.scss";
+import * as theme from "./theme.scss";
 
 class PageHome extends React.PureComponent {
   render() {
@@ -15,11 +17,11 @@ class PageHome extends React.PureComponent {
           url="https://ntuvibe.com"
           description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />
-        <div className={styles.background_image} />
+        {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
           <NavBar />
           <div className={styles.searchContainer}>
-            <Dropdown />
+            <Search theme={theme} />
           </div>
           <div className={styles.tip}>
             <span className={styles.badge}>PRO TIP</span> Use{" "}
