@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import Popup from "reactjs-popup";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import { connect } from "react-redux";
 import { userSignUp } from "src/redux/actions";
 

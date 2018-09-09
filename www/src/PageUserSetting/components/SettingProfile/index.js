@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import { userUpdateProfile } from "src/redux/actions";
 
 import * as styles from "./style.scss";

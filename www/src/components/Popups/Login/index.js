@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import Popup from "reactjs-popup";
 import PropTypes from "prop-types";
 

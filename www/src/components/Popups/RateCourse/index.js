@@ -1,6 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";

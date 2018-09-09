@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { popupTrigger } from "src/redux/actions";
-import { Button } from "antd";
+import Button from "antd/lib/button";
 
 import Search from "src/components/Search";
 
