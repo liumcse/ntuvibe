@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
+import { Button } from "antd";
 import { userUpdateProfile } from "src/redux/actions";
 
 import * as styles from "./style.scss";
@@ -161,7 +162,9 @@ class SettingProfile extends React.Component<Props, States> {
           </div>
         </div>
         <div className={styles.save}>
-          <button onClick={this.handleUpdate}>Update</button>
+          <Button type="primary" onClick={this.handleUpdate}>
+            Update
+          </Button>
         </div>
       </div>
     );

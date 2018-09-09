@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Button } from "antd";
 import Popup from "reactjs-popup";
 import PropTypes from "prop-types";
 
@@ -118,22 +119,23 @@ class Login extends React.Component {
             onClick={() => this.props.openSignUp()}
           >
             Create one
-          </span>.
+          </span>
         </div>
         {this.state.notification ? (
           <div className={styles.notification}>{this.state.notification}</div>
         ) : null}
         <div className={styles.action}>
-          <button
+          <Button
+            type="primary"
             onClick={this.handleSubmit}
             className={styles.button.concat(" ").concat(styles.highlight)}
             disabled={this.state.verificationRequested}
           >
             {this.state.verificationRequested ? "Verifying..." : "Login"}
-          </button>
-          <button className={styles.button} onClick={this.close}>
+          </Button>
+          <Button className={styles.button} onClick={this.close}>
             Close
-          </button>
+          </Button>
         </div>
       </Popup>
     );

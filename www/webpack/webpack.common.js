@@ -33,6 +33,10 @@ const config = {
         exclude: ["node_modules"],
         use: [{ loader: "babel-loader" }]
       },
+      // {
+      //   test: /\.svg$/,
+      //   use: ["@svgr/webpack"]
+      // },
       {
         test: [
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
@@ -63,6 +67,28 @@ const config = {
               config: {
                 path: path.resolve(PROJECT_ROOT, "postcss.config.js")
               }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader", // compiles Less to CSS
+            options: {
+              modifyVars: {
+                "@primary-color": "#1362b1",
+                "@font-family": "Open Sans, sans-serif",
+                "@font-size-base": "16px"
+              },
+              javascriptEnabled: true
             }
           }
         ]

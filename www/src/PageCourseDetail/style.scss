@@ -70,6 +70,7 @@
     }
     .rating_overall {
       color: $indicator;
+      text-align: right;
       @include american-typewriter;
     }
     // the following &_row is deprecated

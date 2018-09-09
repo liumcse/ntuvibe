@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import Popup from "reactjs-popup";
+import { Button } from "antd";
 import * as styles from "./style.scss";
 
 type Props = {
@@ -47,12 +48,13 @@ class ImportSchedule extends React.PureComponent<Props> {
               />
             </div>
             <div className={styles.importButtonContainer}>
-              <button
+              <Button
+                type="primary"
                 className={styles.button}
                 onClick={() => this.import(close)}
               >
                 Import
-              </button>
+              </Button>
             </div>
           </div>
         )}

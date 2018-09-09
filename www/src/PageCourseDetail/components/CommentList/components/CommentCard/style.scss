@@ -59,9 +59,12 @@
       &_right {
         margin-left: 2rem;
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-around;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-row-gap: 0.5rem;
       }
     }
   }
