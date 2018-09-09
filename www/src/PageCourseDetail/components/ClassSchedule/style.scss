@@ -1,6 +1,6 @@
-@import "typography";
-@import "colors";
-@import "functions";
+@import "_typography";
+@import "_colors";
+@import "_functions";
 
 :global {
   #timetable {
@@ -72,7 +72,7 @@
     .indexA {
       background-color: #f5f4f490;
       border-left: 5px solid $primary;
-      padding-left: calc(1.5rem - 5px);
+      padding-left: calc(1.5rem - 2.5px);
     }
 
     .indexB {

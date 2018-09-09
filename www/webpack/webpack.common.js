@@ -33,6 +33,10 @@ const config = {
         exclude: ["node_modules"],
         use: [{ loader: "babel-loader" }]
       },
+      // {
+      //   test: /\.svg$/,
+      //   use: ["@svgr/webpack"]
+      // },
       {
         test: [
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
@@ -42,7 +46,55 @@ const config = {
         use: [{ loader: "file-loader" }]
       },
       {
-        test: /\.s?css$/,
+        test: /\.css$/,
+        exclude: ["node_modules"],
+        use: [
+          {
+            loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
+          },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              minimize: true,
+              sourceMap: true,
+              camelCase: true
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                path: path.resolve(PROJECT_ROOT, "postcss.config.js")
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader", // compiles Less to CSS
+            options: {
+              modifyVars: {
+                "@primary-color": "#1362b1",
+                "@font-family": "Open Sans, sans-serif",
+                "@font-size-base": "16px"
+              },
+              javascriptEnabled: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
         exclude: ["node_modules"],
         use: [
           {
@@ -53,7 +105,6 @@ const config = {
             options: {
               minimize: true,
               sourceMap: true,
-              localIdentName: "[hash:base64:10]",
               importLoaders: 1,
               modules: true,
               camelCase: true

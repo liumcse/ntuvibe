@@ -200,7 +200,7 @@ export function parseToJSON(tokenStream: string[][]) {
 
 export function calculateAcademicWeek(): string {
   const weekDifference = parseInt(
-    ((new Date().getTime() - SEMESTER_START) / WEEKTIME).toString(),
+    ((new Date().getTime() - SEMESTER_START + 86400000) / WEEKTIME).toString(),
     10
   );
   if (weekDifference >= 1 && weekDifference <= 7) {

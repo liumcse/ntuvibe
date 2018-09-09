@@ -1,6 +1,6 @@
-@import 'typography';
-@import 'colors';
-@import 'functions';
+@import '_typography';
+@import '_colors';
+@import '_functions';
 
 :local {
   .header {
@@ -30,7 +30,7 @@
     background-image: url('../assets/password.svg');
   }
 
-  input {
+  .email, .password {
     width: 75%;
     height: 3rem;
     padding: 12px 3rem;

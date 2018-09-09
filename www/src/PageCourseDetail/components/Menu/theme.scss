@@ -1,45 +1,47 @@
 .container { 
-  /* background: red; */
-  /* height: 10rem; */
   color: green;
   width: 100%;
  }
  .input {
   width: 100%;
-  height: 3.5rem;
-  padding: 0 3.5rem;
-  /* margin: 8px 0; */
+  height: 2.5rem;
+  padding: 0 2.5rem;
+  padding-right: 1rem;
   display: inline-block;
   border: none;
-  border-radius: 5px;
+  border-radius: 0;
+  border-bottom: 1px solid #dbdbdb;
   box-sizing: border-box;
   font-size: 1rem;
-  opacity: 0.8;
+  opacity: 1;
   background-image: url('./assets/search.svg');
+  background-color: #00000000;
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
-  background-position: 1rem 1rem; 
+  background-position: 0.25rem 0.5rem; 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: none;
+  color: black;
+  outline: none;
 }
-
 .input:focus {
   background-image: url('./assets/search-active.svg');
+  border-bottom: 1px solid black;
 }
 
+
 .suggestionsContainerOpen {
-  margin-top: 0.5rem;
-  position: absolute;
-  width: 60%; /* width must be the same with outer search container*/
+  margin-top: 1rem;
   background: white;
   overflow-y: auto;
   min-height: 3.5rem;
-  max-height: 35vh;
+  max-height: 50vh;
   border-radius: 5px;
   line-height: 2.5rem;
-  z-index: 1000;
+  width: calc(50% - 6rem); /* width must be the same with outer search container*/
+  position: absolute;
   box-shadow: 0 2px 10px rgba(0,0,0,.15);
 }
 
@@ -49,12 +51,13 @@
   -webkit-margin-after: 0;
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
-  list-style: none;
   padding: 0; /* for FireFox */
   margin: 0;  /* for FireFox */
+  list-style: none;
 }
 
 .suggestion {
+  /* padding: 0.5rem 2rem; */
   height: 3.5rem;
   color: black;
   cursor: pointer;
@@ -67,30 +70,4 @@
 .suggestionHighlighted {
   background: #0C63AA !important;
   color: white !important;
-}
-
-@media (max-width: 768px) {
-  .input {
-    /* height: 3rem; */
-    border-radius: 0;
-    border-bottom: 1px solid #dbdbdb;
-    background-position: 0 1rem;
-    padding: 0 2.5rem;
-    padding-right: 1rem;
-    outline: none;
-  }
-
-  .input:focus {
-    border-bottom: 1px solid black;
-  }
-
-  .suggestionsContainerOpen {
-    width: 90%;
-    min-height: 3rem;
-    max-height: 70vh;
-  }
-
-  .suggestion {
-    height: 3rem;
-  }
 }

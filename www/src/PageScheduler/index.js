@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
+import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
@@ -227,9 +228,9 @@ class PageScheduler extends React.Component<Props> {
                 <ImportSchedule
                   import={this.importSchedule}
                   trigger={
-                    <button className={styles.import}>
+                    <Button type="primary" className={styles.import}>
                       Import your schedule
-                    </button>
+                    </Button>
                   }
                 />
               </div>
@@ -290,24 +291,26 @@ class PageScheduler extends React.Component<Props> {
               future.
             </div>
             <div className={styles.toolbar}>
-              <button
+              <Button
                 className={styles.addToCalendar}
                 onClick={this.downloadCalendar}
               >
                 Download to your calendar
-              </button>
-              <button
+              </Button>
+              <Button
+                type="primary"
                 className={styles.sync}
                 onClick={() => requireLogin(this.updateSchedule)}
               >
                 Save and sync
-              </button>
-              <button
+              </Button>
+              <Button
+                type="danger"
                 onClick={this.clearSchedule}
                 style={{ backgroundColor: "crimson", color: "white" }}
               >
                 Re-import
-              </button>
+              </Button>
             </div>{" "}
           </div>
         </div>

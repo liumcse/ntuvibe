@@ -1,6 +1,6 @@
-@import 'functions';
-@import 'colors';
-@import 'typography';
+@import '_functions';
+@import '_colors';
+@import '_typography';
 
 :local {
   .hint {
@@ -28,11 +28,6 @@
 
   .save {
     margin-top: 2rem;
-    button {
-      background-color: $primary;
-      color: white;
-      padding: 0.5rem 1.5rem;
-    }
   }
 
   .gridContainer {

@@ -1,79 +1,57 @@
-@import "colors";
-@import "typography";
-@import "functions";
+@import "_colors";
+@import "_typography";
+@import "_functions";
 
 :local {
-  .footer {
-    @include open-sans-regular;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: white;
-    // @include medium-shadow;
+  .container {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     color: black;
-    font-size: 0.75rem;
+    padding: 1.5rem 6rem;
+    background-color: white;
+    @include lato-regular;
+    font-size: 0.85rem;
+    color: $text-hint;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
+  .innerContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 1rem;
     align-items: center;
-    align-content: center;
-    justify-content: center;
-    padding: 1.5rem 0;
-    width: 60%;
-  }
-
-  .header {
-    @include raleway-medium;
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .first_row, .second_row {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
     justify-content: space-between;
   }
 
-  .first_row {
-    margin-bottom: 2.5rem;
-    @include raleway-regular;
-    line-height: 1.05rem;
-    // display: none;
+  .img {
+    height: 2rem;
+    width: 4rem;
   }
 
-  .second_row {
-    // border-top: 1px solid rgba(255,255,255,0.5);
-    // padding-top: 2.5rem;
-    align-items: center;
-    line-height: 1.05rem;
-  }
-
-  .col {
-    display: flex;
-    flex-direction: column;
-    max-width: 25%;
-  }
-
-  .brand {
-    font-size: 2rem;
-    margin-right: 2rem;
-    @include american-typewriter;
-    // @include modern-antiqua;
-  }
-
-  @media (min-width: 0) {
-    .first_row {
-      // display: none;
+  .links {
+    display: grid;
+    grid-template-columns: repeat(9, auto); // change the number 9 if you add/delete links
+    grid-column-gap: 0.5rem;
+    justify-content: center;
+    a {
+      color: $text-hint;
+      text-decoration: underline;
     }
   }
 
-  @media (min-width: 768px) {
-    .first_row {
-      // display: flex;
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+    }
+
+    .innerContainer {
+      display: block;
+    }
+
+    .text {
+      display: none;
+    }
+
+    .brand {
+      display: none;
     }
   }
 }

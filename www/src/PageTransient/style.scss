@@ -1,6 +1,6 @@
-@import 'functions';
-@import 'typography';
-@import 'colors';
+@import '_functions';
+@import '_typography';
+@import '_colors';
 
 :local {
   .container {
@@ -38,10 +38,6 @@
     .major {
       background-image: url('./assets/major.svg');
     }
-  }
-  .activate {
-    color: white;
-    background-color: $primary;
   }
   .hint {
     margin-top: 0;
