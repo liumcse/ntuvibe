@@ -11,7 +11,7 @@ import * as styles from "./style.scss";
 
 type Props = {
   startTime: number,
-  endTime: number, 
+  endTime: number,
   updateTime: number
 };
 
@@ -43,7 +43,8 @@ const ExamSchedule = (props: Props) => {
         {timestampToDate(parseInt(updateTime, 10))} from{" "}
         <a href="https://wis.ntu.edu.sg/webexe/owa/exam_timetable_und.main">
           ntu.edu.sg
-        </a>.
+        </a>
+        .
       </div>
     </div>
   );

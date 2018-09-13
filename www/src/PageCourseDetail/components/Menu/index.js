@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { popupTrigger } from "src/redux/actions";
+import RateCourse from "src/components/Popups/_RateCourse";
 import Button from "antd/lib/button";
 
 import Search from "src/components/Search";
@@ -18,9 +19,11 @@ class Menu extends React.PureComponent {
           <Search theme={theme} />
         </div>
         <div className={styles.actions}>
-          <div className={styles.action} onClick={() => popupTrigger(3)}>
+          <div className={styles.action}>
             {/* <button className={styles.rateCourse}>Rate the course</button> */}
-            <Button type="primary">Rate the course</Button>
+            <RateCourse
+              trigger={<Button type="primary">Rate the course</Button>}
+            />
           </div>
         </div>
       </div>

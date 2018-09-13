@@ -131,10 +131,7 @@ class PageTransient extends React.Component<Props> {
             We use sophisticated encryption technology - not a single person in
             the world can see your password.
           </div>
-          <Button
-            type="primary"
-            onClick={this.handleSubmit}
-          >
+          <Button type="primary" onClick={this.handleSubmit}>
             Activate
           </Button>
         </div>

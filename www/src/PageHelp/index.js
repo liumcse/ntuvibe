@@ -63,8 +63,9 @@ const PageHelp = () => {
             <div className={styles.card_heading}>Make a Search</div>
             <div className={styles.card_content}>
               Be it a course code, course title or just random word - we support
-              partial match.<br /> Use ARROW keys to navigate and press ENTER to
-              go to that course - or you can just click.
+              partial match.
+              <br /> Use ARROW keys to navigate and press ENTER to go to that
+              course - or you can just click.
             </div>
           </Card>
         </div>
@@ -123,7 +124,8 @@ const PageHelp = () => {
               Note: above content is adopted from{" "}
               <a href="https://code.fb.com/codeofconduct/">
                 Open Source Code of Conduct - Facebook Code
-              </a>.
+              </a>
+              .
             </div>
           </Card>
         </div>

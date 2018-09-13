@@ -209,7 +209,8 @@ const ClassSchedule = (props: Props) => {
         {timestampToDate(parseInt(data.update_time, 10))} from{" "}
         <a href="https://wish.wis.ntu.edu.sg/webexe/owa/aus_schedule.main">
           ntu.edu.sg
-        </a>.
+        </a>
+        .
       </div>
     </div>
   );
