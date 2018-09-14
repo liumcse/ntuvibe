@@ -6,12 +6,23 @@
   #timetable {
     max-height: 25rem;
   }
+
   #timetable-fade {
     cursor: pointer;
     position: absolute;
     width: 100%;
     height: 25rem;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  }
+
+  @media (max-width: 768px) {
+    #timetable-fade {
+      display: none;
+    }
+
+    #timetable {
+      max-height: none;
+    }
   }
 }
 
@@ -44,7 +55,12 @@
   .table_container {
     margin-top: 2rem;
     position: relative;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+
     .expand {
       position: absolute;
       top: 23rem;
@@ -85,6 +101,12 @@
       text-align: left;
       background-color: white;
       color: black;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .table_container {
+      margin-top: 0;
     }
   }
 }

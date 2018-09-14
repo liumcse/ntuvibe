@@ -22,6 +22,12 @@
 
   .table_container {
     margin-top: 2rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+
     table {
       width: 100%;
       @include medium-shadow;
@@ -41,6 +47,12 @@
       text-align: left;
       background-color: white;
       color: black;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .table_container {
+      margin-top: 0.5rem;
     }
   }
 }

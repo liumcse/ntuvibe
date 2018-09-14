@@ -2,6 +2,7 @@
   color: green;
   width: 100%;
  }
+
  .input {
   width: 100%;
   height: 2.5rem;
@@ -31,7 +32,6 @@
   border-bottom: 1px solid black;
 }
 
-
 .suggestionsContainerOpen {
   margin-top: 1rem;
   background: white;
@@ -58,7 +58,6 @@
 }
 
 .suggestion {
-  /* padding: 0.5rem 2rem; */
   height: 3.5rem;
   color: black;
   cursor: pointer;
@@ -71,4 +70,10 @@
 .suggestionHighlighted {
   background: #0C63AA !important;
   color: white !important;
+}
+
+@media (max-width: 768px) {
+  .suggestionsContainerOpen {
+    width: calc(100% - 2rem);
+  }
 }
