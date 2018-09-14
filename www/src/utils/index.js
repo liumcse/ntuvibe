@@ -57,6 +57,20 @@ export function cap_first_letter(input: string): string {
   return cappedString.join(" ");
 }
 
+export function prettify_offering(input: string): string {
+  if (input === "" || !input) return "";
+  const splittedString = input.split("_");
+  const ay_1 = parseInt(splittedString[0], 10) - 2000;
+  const ay_2 = ay_1 + 1;
+  const sem = splittedString[1] === "1" ? "Sem 1" : "Sem 2";
+  return ay_1
+    .toString()
+    .concat("/")
+    .concat(ay_2.toString())
+    .concat(" ")
+    .concat(sem);
+}
+
 export function remove_trailing_newline(input: string): string {
   if (!input || input.length === 0) return "";
   const splittedString = input.split("\n");
