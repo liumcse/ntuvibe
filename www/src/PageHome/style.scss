@@ -7,7 +7,6 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    min-height: 100vh;
     background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.png');
     background-size: cover;
     background-position: top;
@@ -18,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // width: 100%;
+    // justify-content: space-between;
     min-height: 100vh;
     flex: 1;
     position: relative;
@@ -60,6 +59,7 @@
 
   .footer {
     @include lato-regular;
+    // align-self: flex-end;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,6 +94,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 6rem;
     .fbPage {
       margin-left: 1rem;
       color: white;
