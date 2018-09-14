@@ -8,13 +8,13 @@ import { withRouter } from "react-router";
 import { fetchCourseList } from "src/redux/actions";
 import {
   search_course_by_code_or_title,
-  course_code_is_valid
+  course_code_is_valid,
+  cap_first_letter
 } from "src/utils";
 
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
-// import * as theme from "./theme.scss";
 
 type Props = {
   // style
@@ -87,7 +87,9 @@ class Search extends React.Component<Props, States> {
   getSuggestionValue = suggestion => {
     // const { history } = this.props;
     // history.push("/courses/" + suggestion.code.toLowerCase());
-    return suggestion.code.concat(" - ").concat(suggestion.title);
+    return suggestion.code
+      .concat(" - ")
+      .concat(cap_first_letter(suggestion.title));
   };
 
   // Use your imagination to render suggestions.
@@ -96,7 +98,7 @@ class Search extends React.Component<Props, States> {
       onClick={() => this.redirect(suggestion.code)}
       className={styles.suggestion_title}
     >
-      {suggestion.code.concat(" - ").concat(suggestion.title)}
+      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
     </div>
   );
 

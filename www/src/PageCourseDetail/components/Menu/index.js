@@ -7,7 +7,7 @@ import Button from "antd/lib/button";
 import Search from "src/components/Search";
 
 import * as styles from "./style.scss";
-import * as theme from "./theme.scss";
+import * as theme from "./dropdown-theme.scss";
 
 class Menu extends React.PureComponent {
   render() {
