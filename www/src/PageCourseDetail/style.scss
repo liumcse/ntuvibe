@@ -97,6 +97,11 @@
     }
   }
 
+  .course_code, .rating_overall {
+    font-size: 2rem;
+    @include raleway-bold;
+  }
+
 
   .course_info {
     flex: 1;
