@@ -6,7 +6,7 @@ import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Search from "src/components/Search";
 
 import * as styles from "./style.scss";
-import * as theme from "./theme.scss";
+import * as theme from "./dropdown-theme.scss";
 
 class PageHome extends React.PureComponent {
   render() {
@@ -73,7 +73,7 @@ class PageHome extends React.PureComponent {
               >
                 Blog
               </a>
-              <Link to="/help">Help</Link>
+              {/* <Link to="/help">Help</Link> */}
               <a
                 href="https://facebook.com/ntuvibe"
                 target="_blank"

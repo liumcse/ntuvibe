@@ -13,10 +13,6 @@
     resize: none;
   }
 
-  a {
-    text-decoration: none;
-  }
-
   // materialize button effect
   // button {
   //   padding: 0.5rem 1.25rem;
@@ -54,6 +50,10 @@
 
   input {
     outline: none;
+  }
+
+  a, a:visited, a:active, a:hover {
+    text-decoration: none;
   }
 
   .popup-overlay {

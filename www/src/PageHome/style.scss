@@ -3,18 +3,6 @@
 @import '_typography';
 
 :local {
-  // .background_image {
-  //   height: 100%;
-  //   position: fixed;
-  //   left: 0;
-  //   right: 0;
-  //   z-index: 0;
-  //   background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.png') no-repeat;
-  //   background-blend-mode: overlay;
-  //   background-size: cover;
-  //   transform: scale(1.1); // scale the image larger to hide white border
-  // }
-  
   .home_page {
     display: flex;
     align-content: center;
@@ -148,6 +136,9 @@
     a {
       color: white;
       text-decoration: underline;
+      &:hover {
+        color: white;
+      }
     }
   }
 
@@ -158,6 +149,10 @@
       margin: 0;
       font-size: 0.65rem;
       background: none;
+      box-shadow: none;
+      a:hover {
+        color: white;
+      }
     }
 
     .fbLike {

@@ -65,6 +65,7 @@
         display: grid;
         grid-template-rows: auto auto auto;
         grid-row-gap: 0.5rem;
+        align-self: flex-start;
       }
     }
   }
