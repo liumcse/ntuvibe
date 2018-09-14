@@ -22,7 +22,7 @@ const Footer = () => (
         >
           Blog
         </a>
-        <span>|</span>
+        {/* <span>|</span> */}
         {/* <Link to="/help">Help</Link> */}
         <span>|</span>
         <a
