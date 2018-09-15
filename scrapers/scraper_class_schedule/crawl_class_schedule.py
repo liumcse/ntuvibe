@@ -76,7 +76,7 @@ def crawl():
     main_site_html = request_manager.get_class_schedule_main_html()
     latest_semester = parse_latest_semester(main_site_html)
 
-    detail_html = request_manager.get_all_class_schedule_detail_html(latest_semester)
+    detail_html = request_manager.get_class_schedule_detail_html(latest_semester)
     parse_schedule_details(detail_html)
 
     global all_schedule_details

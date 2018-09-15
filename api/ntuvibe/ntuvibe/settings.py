@@ -164,8 +164,7 @@ CORS_ORIGIN_WHITELIST = (
 	"127.0.0.1:8000",
 	"127.0.0.1:8080",
 	"ntuvibe.com",
-	"test.ntuvibe.com",
-	"api.ntuvibe.com"
+	"*ntuvibe.com"
 )
 
 
