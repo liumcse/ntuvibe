@@ -22,8 +22,8 @@ const Footer = () => (
         >
           Blog
         </a>
-        <span>|</span>
-        <Link to="/help">Help</Link>
+        {/* <span>|</span> */}
+        {/* <Link to="/help">Help</Link> */}
         <span>|</span>
         <a
           href="https://facebook.com/ntuvibe"

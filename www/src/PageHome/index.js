@@ -6,7 +6,7 @@ import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Search from "src/components/Search";
 
 import * as styles from "./style.scss";
-import * as theme from "./theme.scss";
+import * as theme from "./dropdown-theme.scss";
 
 class PageHome extends React.PureComponent {
   render() {
@@ -31,8 +31,8 @@ class PageHome extends React.PureComponent {
           </div>
           <div className={styles.tipM}>
             <span className={styles.badge}>KICKSTART</span> Enter{" "}
-            <span className={styles.emphasize}>HE9091</span> and see what would
-            happen 🚀
+            <span className={styles.emphasize}>HE9091</span> and see what
+            happens 🚀
           </div>
           <div className={styles.fbLike}>
             <div
@@ -73,7 +73,7 @@ class PageHome extends React.PureComponent {
               >
                 Blog
               </a>
-              <Link to="/help">Help</Link>
+              {/* <Link to="/help">Help</Link> */}
               <a
                 href="https://facebook.com/ntuvibe"
                 target="_blank"
@@ -82,10 +82,12 @@ class PageHome extends React.PureComponent {
                 Facebook
               </a>
             </div>
-          </div>
-          <div className={styles.credit}>
-            Photo by{" "}
-            <a href="https://www.instagram.com/david_lequn_chen/">Chen Lequn</a>
+            <div className={styles.credit}>
+              Photo by{" "}
+              <a href="https://www.instagram.com/david_lequn_chen/">
+                Chen Lequn
+              </a>
+            </div>
           </div>
         </div>
       </div>

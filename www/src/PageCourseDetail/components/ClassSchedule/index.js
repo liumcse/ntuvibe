@@ -171,8 +171,8 @@ const parseDataToTable = (data: CourseSchedule) => {
 
 const viewAll = () => {
   // const viewAllDOM = document.querySelector("#click-to-view-all");
-  const tableDOM = document.querySelector("#timetable");
   const fadeDOM = document.querySelector("#timetable-fade");
+  const tableDOM = document.querySelector("#timetable");
   // viewAllDOM.style.display = "none";
   fadeDOM.style.display = "none";
   tableDOM.style.maxHeight = "none";
