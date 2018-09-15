@@ -1,6 +1,6 @@
-@import 'functions';
-@import 'colors';
-@import 'typography';
+@import '_functions';
+@import '_colors';
+@import '_typography';
 
 :local {
   .container {
@@ -13,10 +13,6 @@
     flex-direction: row;
     margin: 2rem 0;
     justify-content: center;
-  }
-
-  .sidebar {
-    // flex: 1;
   }
 
   .settingContainer {

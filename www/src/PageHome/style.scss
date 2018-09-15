@@ -1,33 +1,23 @@
-@import 'functions';
-@import 'colors';
-@import 'typography';
+@import '_functions';
+@import '_colors';
+@import '_typography';
 
 :local {
-  .background_image {
-    height: 100%;
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 0;
-    background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.jpg') no-repeat;
-    background-blend-mode: overlay;
-    background-size: cover;
-    filter: blur(12px);
-    transform: scale(1.1); // scale the image larger to hide white border
-  }
-  
   .home_page {
     display: flex;
     align-content: center;
     justify-content: center;
-    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.png');
+    background-size: cover;
+    background-position: top;
+    background-blend-mode: overlay;
   }
 
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // width: 100%;
+    // justify-content: space-between;
     min-height: 100vh;
     flex: 1;
     position: relative;
@@ -48,7 +38,7 @@
   .tipM {
     display: none;
     width: 90%;
-    color: black;
+    color: white;
     margin-top: 2rem;
     font-size: 0.85rem;
     line-height: 2;
@@ -68,13 +58,15 @@
   }
 
   .footer {
+    @include lato-regular;
+    // align-self: flex-end;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     // height: 5rem;
     position: absolute;
-    padding: 1rem 0;
+    padding: 1rem 0.5rem;
     bottom: 0;
     // margin-top: 35%;
     color: white;
@@ -96,11 +88,13 @@
   }
 
   .fbLike {
-    // position: absolute;
+    padding: 0 1rem;
     margin-top: 2rem;
+    text-align: center;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 6rem;
     .fbPage {
       margin-left: 1rem;
       color: white;
@@ -143,35 +137,35 @@
     a {
       color: white;
       text-decoration: underline;
+      &:hover {
+        color: white;
+      }
     }
   }
 
   @media (max-width: 768px) {
-    .background_image {
-      display: none;
-    }
-
     .credit {
-      display: none;
-      margin-bottom: 5rem;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      font-size: 0.65rem;
+      background: none;
+      box-shadow: none;
+      a:hover {
+        color: white;
+      }
     }
 
     .fbLike {
       flex-direction: column;
       .fbPage {
-        color: black;
         margin-left: 0;
-        margin-top: 2rem;
-        a {
-          color: black;
-          border-bottom: 1px dashed black;
-        }
+        margin-top: 1rem;
       }
     }
 
     .footer {
       font-size: 0.65rem;
-      color: black;
       .links {
         display: none;
       }
@@ -179,7 +173,6 @@
 
     .searchContainer {
       width: 90%;
-      margin-top: 2rem;
     }
 
     .tip {

@@ -8,15 +8,17 @@ import { withRouter } from "react-router";
 import { fetchCourseList } from "src/redux/actions";
 import {
   search_course_by_code_or_title,
-  course_code_is_valid
+  course_code_is_valid,
+  cap_first_letter
 } from "src/utils";
 
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 
 import * as styles from "./style.scss";
-import theme from "./theme.css";
 
 type Props = {
+  // style
+  theme: Object,
   // from redux
   courseList: CourseList,
   fetchCourseList: () => void,
@@ -32,7 +34,7 @@ type States = {
   isLoading: boolean
 };
 
-class Dropdown extends React.Component<Props, States> {
+class Search extends React.Component<Props, States> {
   constructor() {
     super();
     this.state = {
@@ -85,7 +87,9 @@ class Dropdown extends React.Component<Props, States> {
   getSuggestionValue = suggestion => {
     // const { history } = this.props;
     // history.push("/courses/" + suggestion.code.toLowerCase());
-    return suggestion.code.concat(" - ").concat(suggestion.title);
+    return suggestion.code
+      .concat(" - ")
+      .concat(cap_first_letter(suggestion.title));
   };
 
   // Use your imagination to render suggestions.
@@ -94,7 +98,7 @@ class Dropdown extends React.Component<Props, States> {
       onClick={() => this.redirect(suggestion.code)}
       className={styles.suggestion_title}
     >
-      {suggestion.code.concat(" - ").concat(suggestion.title)}
+      {suggestion.code.concat(" - ").concat(cap_first_letter(suggestion.title))}
     </div>
   );
 
@@ -157,8 +161,7 @@ class Dropdown extends React.Component<Props, States> {
     // Finally, render it!
     return (
       <Autosuggest
-        id={"pageHome"}
-        theme={theme}
+        theme={this.props.theme}
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -185,5 +188,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Dropdown)
+  )(Search)
 );

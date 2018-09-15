@@ -1,5 +1,6 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import Button from "antd/lib/button";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -279,7 +280,8 @@ class RateCourse extends React.Component {
           <div className={styles.action}>
             <div className={styles.row}>
               <div>
-                <button
+                <Button
+                  type="primary"
                   id="submit"
                   disabled={this.state.submitting}
                   onClick={this.submitRating}
@@ -289,15 +291,15 @@ class RateCourse extends React.Component {
                   }}
                 >
                   {this.state.submitting ? "Submitting.." : "Submit"}
-                </button>
+                </Button>
               </div>
               <div>
-                <button
+                <Button
                   className={styles.button}
                   onClick={this.props.closePopup}
                 >
                   Close
-                </button>
+                </Button>
               </div>
             </div>
           </div>

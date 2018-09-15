@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
-import Dropdown from "./components/Dropdown";
+import Search from "src/components/Search";
+
 import * as styles from "./style.scss";
+import * as theme from "./dropdown-theme.scss";
 
 class PageHome extends React.PureComponent {
   render() {
@@ -15,16 +17,11 @@ class PageHome extends React.PureComponent {
           url="https://ntuvibe.com"
           description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />
-        <div className={styles.background_image} />
+        {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
           <NavBar />
           <div className={styles.searchContainer}>
-            {/* <div className={styles.callForActionContainer}>
-              <div className={styles.callForAction}>
-                Contribute to Vibe by leaving your ratings
-              </div>
-            </div> */}
-            <Dropdown />
+            <Search theme={theme} />
           </div>
           <div className={styles.tip}>
             <span className={styles.badge}>PRO TIP</span> Use{" "}
@@ -34,15 +31,9 @@ class PageHome extends React.PureComponent {
           </div>
           <div className={styles.tipM}>
             <span className={styles.badge}>KICKSTART</span> Enter{" "}
-            <span className={styles.emphasize}>HE9091</span> and see what would
-            happen 🚀
+            <span className={styles.emphasize}>HE9091</span> and see what
+            happens 🚀
           </div>
-          {/* <div className={styles.callForActionContainer}>
-            <div className={styles.callForAction}>
-              Be a contributor by submitting your course rating
-            </div>
-            <div className={styles.why.concat(" " + styles.badge)}>Learn why</div>
-          </div> */}
           <div className={styles.fbLike}>
             <div
               className="fb-like"
@@ -61,7 +52,8 @@ class PageHome extends React.PureComponent {
                 rel="noopener noreferrer"
               >
                 Facebook Page
-              </a>!
+              </a>
+              !
             </div>
           </div>
           <div className={styles.footer}>
@@ -81,7 +73,7 @@ class PageHome extends React.PureComponent {
               >
                 Blog
               </a>
-              <Link to="/help">Help</Link>
+              {/* <Link to="/help">Help</Link> */}
               <a
                 href="https://facebook.com/ntuvibe"
                 target="_blank"
@@ -90,10 +82,12 @@ class PageHome extends React.PureComponent {
                 Facebook
               </a>
             </div>
-          </div>
-          <div className={styles.credit}>
-            Photo by{" "}
-            <a href="https://www.instagram.com/david_lequn_chen/">Chen Lequn</a>
+            <div className={styles.credit}>
+              Photo by{" "}
+              <a href="https://www.instagram.com/david_lequn_chen/">
+                Chen Lequn
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import Popup from "reactjs-popup";
+import Button from "antd/lib/button";
 import { connect } from "react-redux";
 import { userSignUp } from "src/redux/actions";
 
@@ -107,7 +108,7 @@ class SignUp extends React.Component<Props, State> {
               <input
                 className={styles.email}
                 onChange={this.handleInput}
-                placeholder="Your NTU Email"
+                placeholder="your-ntu-email@e.ntu.edu.sg"
               />
             </div>
           )}
@@ -121,18 +122,19 @@ class SignUp extends React.Component<Props, State> {
         </div>
         <div className={styles.action}>
           {!emailSent && (
-            <button
+            <Button
+              type="primary"
               className={styles.button.concat(" ").concat(styles.highlight)}
               onClick={this.requestVerification}
               disabled={verificationRequested}
             >
               {verificationRequested ? "Sending..." : "Let's Rock!"}
-            </button>
+            </Button>
           )}
           {(!verificationRequested || emailSent) && (
-            <button className={styles.button} onClick={this.close}>
+            <Button className={styles.button} onClick={this.close}>
               Close
-            </button>
+            </Button>
           )}
         </div>
       </Popup>

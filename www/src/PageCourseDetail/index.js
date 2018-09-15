@@ -186,15 +186,7 @@ const skeleton = (
           <div className={styles.course_info_right}>
             <div
               style={{ width: "100%" }}
-              className={styles.rating_useful
-                .concat(" ")
-                .concat(styles.loading_placeholder)}
-            >
-              xxoo
-            </div>
-            <div
-              style={{ width: "100%" }}
-              className={styles.rating_easy
+              className={styles.rating
                 .concat(" ")
                 .concat(styles.loading_placeholder)}
             >
@@ -314,64 +306,70 @@ class PageCourseDetail extends React.Component<Props> {
         <Menu />
         <div className={styles.content}>
           <div className={styles.section_a}>
-            <Heading
-              count={count}
-              code={courseCode}
-              rating={(count && like.toString().concat(" %")) || "- %"}
-              title={title || ""}
-            />
+            <div className={styles.heading}>
+              <div className={styles.course_code}>
+                {courseCode.toUpperCase()}
+              </div>
+              <div className={styles.rating_overall}>
+                {(count && like.toString().concat(" %")) || "- %"}
+              </div>
+              <div className={styles.heading_course_title}>{title || ""}</div>
+              <div className={styles.number_of_rating}>
+                {!count || count < RATING_THRESHOLD
+                  ? NO_RATING
+                  : count.toString().concat(" ratings")}
+              </div>
+            </div>
             <div className={styles.row_box}>
               <div className={styles.course_info}>
                 <div className={styles.course_description}>
                   {(description && remove_trailing_newline(description)) ||
                     NO_DESCRIPTION}
                 </div>
-                {offered_semester &&
-                  offered_semester.length > 0 && (
-                    <div className={styles.requirement}>
-                      <div className={styles.label}>Past Offered</div>
-                      <div className={styles.requirement_content}>
-                        {offered_semester
-                          .splice(0, 4)
-                          .reverse()
-                          .map(offering => prettify_offering(offering))
-                          .join(", ")}
-                      </div>
-                    </div>
-                  )}
-                {constraint &&
-                  constraint.prerequisite &&
-                  constraint.prerequisite.length > 0 && (
-                    <div className={styles.requirement}>
-                      <div className={styles.label}>Prerequisites </div>
-                      <div className={styles.requirement_content}>
-                        {constraint.prerequisite.join("\n")}
-                      </div>
-                    </div>
-                  )}
-                {constraint &&
-                  constraint.mutex &&
-                  constraint.mutex.length > 0 && (
-                    <div className={styles.requirement}>
-                      <div className={styles.label}>Antirequisites</div>
-                      <div className={styles.requirement_content}>
-                        {constraint.mutex}
-                      </div>
-                    </div>
-                  )}
+                <div className={styles.bottom_left}>
+                  {offered_semester &&
+                    offered_semester.length > 0 && (
+                      <React.Fragment>
+                        <div className={styles.label}>Past Offered</div>
+                        <div className={styles.requirement_content}>
+                          {offered_semester
+                            .reverse()
+                            .splice(0, 4)
+                            .map(offering => prettify_offering(offering))
+                            .join(", ")}
+                        </div>
+                      </React.Fragment>
+                    )}
+                  {constraint &&
+                    constraint.prerequisite &&
+                    constraint.prerequisite.length > 0 && (
+                      <React.Fragment>
+                        <div className={styles.label}>Prerequisites </div>
+                        <div className={styles.requirement_content}>
+                          {constraint.prerequisite.join("\n")}
+                        </div>
+                      </React.Fragment>
+                    )}
+                  {constraint &&
+                    constraint.mutex &&
+                    constraint.mutex.length > 0 && (
+                      <React.Fragment>
+                        <div className={styles.label}>Antirequisites</div>
+                        <div className={styles.requirement_content}>
+                          {constraint.mutex}
+                        </div>
+                      </React.Fragment>
+                    )}
+                </div>
               </div>
               <div className={styles.middle_placeholder} />
               <div className={styles.course_info_right}>
-                <div className={styles.rating_useful}>
+                <div className={styles.rating}>
                   <RatingBar
-                    label={"Useful"}
-                    value={(useful && useful.toString().concat("%")) || "0%"}
-                  />
-                </div>
-                <div className={styles.rating_easy}>
-                  <RatingBar
-                    label={"Easy"}
-                    value={(easy && easy.toString().concat("%")) || "0%"}
+                    usefulValue={
+                      (useful && useful.toString().concat("%")) || "0%"
+                    }
+                    easyValue={(easy && easy.toString().concat("%")) || "0%"}
                   />
                 </div>
                 <div className={styles.au}>
@@ -381,15 +379,18 @@ class PageCourseDetail extends React.Component<Props> {
                   <div>
                     <img
                       src={typeof as_ue === "boolean" && (as_ue ? yes : no)}
-                    />Read as Unrestricted Elective
+                    />
+                    Read as Unrestricted Elective
                   </div>
                   <div>
                     <img
                       src={typeof as_pe === "boolean" && (as_pe ? yes : no)}
-                    />Read as General Education Prescribed Elective
+                    />
+                    Read as General Education Prescribed Elective
                   </div>
                   <div>
-                    <img src={exam} />Grade Type -{" "}
+                    <img src={exam} />
+                    Grade Type -{" "}
                     {grade_type === 1
                       ? "Pass / Fail"
                       : "Letter Graded (A to F)"}

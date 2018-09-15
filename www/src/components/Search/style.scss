@@ -4,5 +4,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0.5rem 1.5rem;
+    // font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .suggestion_title {
+      padding: 0.25rem 1rem;
+    }
   }
 }

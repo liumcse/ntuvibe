@@ -1,6 +1,6 @@
-@import 'typography';
-@import 'functions';
-@import 'colors';
+@import '_typography';
+@import '_functions';
+@import '_colors';
 
 :local {
   .page_course_detail {
@@ -8,7 +8,7 @@
     flex-direction: column; // experiement
     min-height: 100vh;
     position: relative;
-    min-width: 1024px; // TODO: delete this to enable responsive design
+    // min-width: 960px; // TODO: delete this to enable responsive design
   }
 
   .loading_placeholder {
@@ -56,9 +56,20 @@
   }
 
   .heading {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    align-items: start;
+    justify-content: space-between;
     color: $secondary;
+    .rating_overall {
+      color: $indicator;
+      text-align: right;
+      @include american-typewriter;
+    }
+    // the following &_row is deprecated
     &_row {
       display: flex;
       justify-content: space-between;
@@ -78,15 +89,17 @@
     &_course_title {
       font-size: 1.5rem;
       @include raleway-bold;
-      margin-top: 1rem;
-      margin-right: 1rem;
     }
     .number_of_rating {
       color: $grey;
       font-size: 0.85rem;
-      margin-top: 1rem;
       text-align: right;
     }
+  }
+
+  .course_code, .rating_overall {
+    font-size: 2rem;
+    @include raleway-bold;
   }
 
 
@@ -94,14 +107,15 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    .course_description {
-      white-space: pre-line;
-      @include lato-regular;
-      margin-top: 2rem;
-      text-align: justify;
-      line-height: 1.75rem;
-      font-size: 1rem;
-    }
+  }
+
+  .course_description {
+    white-space: pre-line;
+    @include lato-regular;
+    margin-top: 2rem;
+    text-align: justify;
+    line-height: 1.75rem;
+    font-size: 1rem;
   }
 
   .middle_placeholder {
@@ -112,32 +126,50 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    .rating_useful {
-      @include disable-select;
-      margin-top: 2rem;
-    }
-    .rating_easy {
-      @include disable-select;
+  }
+
+  .rating {
+    @include disable-select;
+    margin-top: 2rem;
+  }
+  .au {
+    margin-top: 2.5rem;
+    @include american-typewriter;
+    font-size: 2rem;
+  }
+  .availability {
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    line-height: 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    div {
       margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
     }
-    .au {
-      margin-top: 2.5rem;
-      @include american-typewriter;
-      font-size: 2rem;
+    img {
+      @include disable-select;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 1.2rem;
     }
-    .availability {
-      margin-top: 1rem;
-      div {
-        margin-top: 1.5rem;
-        display: flex;
-        align-items: center;
-      }
-      img {
-        @include disable-select;
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 1.2rem;
-      }
+  }
+
+  .bottom_left {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 1rem;
+    grid-row-gap: 2rem;
+    margin-top: 2rem;
+    .label {
+      @include open-sans-medium;
+      color: $complement;
+    }
+    .requirement_content {
+      white-space: pre-line;
+      font-size: 0.85rem;
+      line-height: 1.5rem;
     }
   }
 
@@ -166,13 +198,6 @@
     line-height: 1.5;
   }
 
-  .availability {
-    text-overflow: ellipsis;
-    overflow-wrap: break-word;
-    line-height: 1.5rem;
-    font-size: 0.9rem;
-  }
-
   .header {
     @include raleway-medium;
     color: $secondary;
@@ -197,50 +222,99 @@
     border-bottom: 1px dashed $primary;
   }
 
-  // @media (min-width: 0px) {
-  //   .content {
-  //     padding: 1.5rem;
-  //   }
-  //   .heading {
-  //     &_row {
-  //       flex-direction: column;
-  //       .course_code {
-  //         margin-bottom: 1rem;
-  //       }
-  //     }
-  //     &_course_title {
-  //       margin-top: 1rem;
-  //     }
-  //   }
-  //   .row_box {
-  //     flex-direction: column;
-  //   }
-  //   .number_of_rating {
-  //     display: inline;
-  //   }
-  // }
+  @media (max-width: 768px) {
+    .content {
+      margin-bottom: 0;
+    }
 
-  // @media (min-width: 360px) {
-  //   // empty rule
-  // }
+    .heading {
+      grid-template-columns: auto auto;
+      grid-row-gap: 0.5rem;
 
-  // @media (min-width: 768px) {
-  //   .content {
-  //     padding: 2rem 4rem;
-  //   }
-  //   .heading {
-  //     &_row {
-  //       flex-direction: row;
-  //     }
-  //   }
-  //   .row_box {
-  //     flex-direction: row;
-  //   }
-  // }
+      .rating_overall {
+        // text-align: left;
+        align-self: center;
+      }
 
-  // @media (min-width: 1024px) {
-  //   .content {
-  //     padding: 3rem 6rem;
-  //   }
-  // }
+      .number_of_rating {
+        // text-align: left;
+      }
+
+      .course_code, .rating_overall {
+        font-size: 1.5rem;
+        @include raleway-bold;
+      }
+
+      &_course_title {
+        font-size: 1rem;
+        @include raleway-bold;
+      }
+    }
+
+    .availability {
+      margin-top: 0;
+      font-size: 0.75rem;
+      div {
+        margin-top: 1rem;
+      }
+    }  
+
+    .rating {
+      margin-top: 1.25rem;
+    }
+    .au {
+      margin-top: 1rem;
+    }  
+
+    .course_description {
+      margin-top: 1rem;
+    }
+
+    .requirement {
+      margin-top: 1rem;
+    }
+
+    .bottom_left {
+      grid-row-gap: 1rem;
+      margin-top: 1rem;
+
+      .requirement_content {
+        font-size: 0.75rem;
+      }
+    }
+
+    .row_box {
+      flex-direction: column;
+    }
+    
+    .section_a, .section_b, .section_c {
+      padding: 1.5rem;
+    }
+
+    .section_b, .section_c {
+      padding-top: 0;
+    }
+
+    .section_c {
+      padding-bottom: 0;
+    }
+
+    .no_comment {
+      margin: 1rem 0;
+    }
+
+    .comment_list {
+      margin-top: 1rem;
+    }
+
+    .header {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .table {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+    }
+  }
 }

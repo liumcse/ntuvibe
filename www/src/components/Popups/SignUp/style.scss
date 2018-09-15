@@ -1,6 +1,6 @@
-@import 'typography';
-@import 'colors';
-@import 'functions';
+@import '_typography';
+@import '_colors';
+@import '_functions';
 
 :local {
   .header {
@@ -23,14 +23,10 @@
   }
 
   .email {
-    background-image: url('../assets/email.svg');
-  }
-
-  input {
     width: 75%;
     height: 3rem;
     padding: 12px 3rem;
-    /* margin: 8px 0; */
+    background-image: url('../assets/email.svg');
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 5px;

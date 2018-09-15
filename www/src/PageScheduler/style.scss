@@ -1,5 +1,5 @@
-@import "colors";
-@import "typography";
+@import "_colors";
+@import "_typography";
 
 :global {
   // react-big-calendar
@@ -21,6 +21,10 @@
   .rbc-label {
     @include lato-regular;
     color: $text-hint;
+  }
+
+  .rbc-today {
+    background-color: rgba(0, 0, 0, .05) !important;
   }
 
   .rbc-timeslot-group {
@@ -56,6 +60,7 @@
 
   .rbc-header {
     padding: 0.5rem 0 !important;
+    background-color: white !important;
   }
 
   .rbc-allday-cell {
@@ -336,7 +341,7 @@
 
   @media (max-width: 768px) {
     .innerContainer {
-      padding: 1.5rem 1.5rem;
+      padding: 1.5rem;
       padding-bottom: 3rem;
     }
 

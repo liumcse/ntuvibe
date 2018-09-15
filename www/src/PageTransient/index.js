@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import Button from "antd/lib/button";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -130,9 +131,12 @@ class PageTransient extends React.Component<Props> {
             We use sophisticated encryption technology - not a single person in
             the world can see your password.
           </div>
-          <button onClick={this.handleSubmit} className={styles.activate}>
+          <Button
+            type="primary"
+            onClick={this.handleSubmit}
+          >
             Activate
-          </button>
+          </Button>
         </div>
       </div>
     );
