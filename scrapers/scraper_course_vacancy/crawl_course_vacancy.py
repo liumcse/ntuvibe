@@ -17,8 +17,8 @@ def get_course_vacancy_by_request(course_code):
 	first_3_texts_of_index_rows = map(lambda x: list(map(lambda y: y.text.strip(), x)), first_3_cells_of_index_rows)
 	vacancies_dict = {
 		row[INDEX_VACANCIES_INDEX]: {
-			"vacancy": row[INDEX_VACANCIES_VACANCIES],
-			"waitlist": row[INDEX_VACANCIES_WAITLIST],
+			"vacancy": int(row[INDEX_VACANCIES_VACANCIES]),
+			"waitlist": int(row[INDEX_VACANCIES_WAITLIST]),
 		}
 		for row in first_3_texts_of_index_rows
 	}
