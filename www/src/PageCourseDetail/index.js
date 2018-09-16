@@ -39,9 +39,9 @@ import {
   popupTrigger
 } from "../redux/actions";
 
-import no from "./assets/no.svg";
-import yes from "./assets/yes.svg";
-import exam from "./assets/exam.svg";
+import no from "src/assets/svgs/no.svg";
+import yes from "src/assets/svgs/yes.svg";
+import exam from "src/assets/svgs/exam.svg";
 
 const NO_DESCRIPTION =
   "This course has no description. Sad to see this happened...";

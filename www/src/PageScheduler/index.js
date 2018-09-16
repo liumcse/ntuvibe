@@ -21,7 +21,7 @@ import {
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-import calendar from "./assets/calendar.svg";
+import calendar from "src/assets/svgs/calendar.svg";
 import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
