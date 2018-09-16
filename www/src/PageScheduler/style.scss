@@ -69,6 +69,9 @@
 
   .rbc-time-content {
     border-top: none !important;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 
   .rbc-event-label {
@@ -163,6 +166,14 @@
   }
 
   @media (max-width: 768px) {
+    .rbc-calendar {
+      overflow-x: auto;
+    }
+    
+    .rbc-time-content {
+      width: 250% !important;
+    }
+
     .rbc-btn-group {
       display: none !important;
     }

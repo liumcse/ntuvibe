@@ -30,6 +30,10 @@ class NavBar extends React.Component {
     this.props.fetchProfile();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.profile !== nextProps.profile;
+  }
+
   handleLogout = () => {
     this.props.userLogout();
     setTimeout(() => {

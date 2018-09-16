@@ -13,7 +13,7 @@ class PageHome extends React.PureComponent {
     return (
       <div className={styles.home_page}>
         <SiteMetaHelmet
-          title="NTUVibe - come join this vibrant online NTU community!"
+          title="NTUVibe - Come Join This Vibrant Online NTU Community!"
           url="https://ntuvibe.com"
           description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />

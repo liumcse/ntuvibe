@@ -97,7 +97,10 @@
 
   @media (max-width: 768px) {
     .popup-content {
-      width: 85% !important;
+      width: 95% !important;
+      height: 95% !important;
+      padding: 1rem !important;
+      max-height: 100vh !important;
     }
   }
 }

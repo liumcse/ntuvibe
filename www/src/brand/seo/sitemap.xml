@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://ntuvibe.com</loc><priority>0.5</priority></url>
-<url><loc>https://ntuvibe.com/help</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/about</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/scheduler</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/sitemap</loc><priority>0.5</priority></url>
@@ -2223,4 +2222,18 @@
 <url><loc>https://ntuvibe.com/courses/bs3033</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/courses/hg2017</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/courses/e3002l</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/re6003</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/re6012</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/re6007</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0032</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0065</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0056</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0058</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/re6011</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/re6004</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0073</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0005</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/sp0001</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/cs4073</loc><priority>0.5</priority></url>
+<url><loc>https://ntuvibe.com/courses/cs2028</loc><priority>0.5</priority></url>
 </urlset>

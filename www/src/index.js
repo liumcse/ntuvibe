@@ -74,4 +74,5 @@ class App extends React.PureComponent {
   }
 }
 
+ReactGA.initialize("UA-113348736-2");
 ReactDOM.render(<App />, document.getElementById("app"));
