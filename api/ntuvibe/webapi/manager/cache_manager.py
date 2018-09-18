@@ -61,9 +61,15 @@ def ensure_valid_email_password_reset_token(email, token):
 		token_type="password_reset_token"
 	)
 
-def remove_activation_token_from_cache(email):
-	cache = caches["activation_token"]
+def remove_token_from_cache(email, token_type):
+	cache = caches[token_type]
 	cache.delete(email)
+
+def remove_activation_token_from_cache(email):
+	remove_token_from_cache(email=email, token_type="activation_token")
+
+def remove_password_reset_token_from_cache(email):
+	remove_token_from_cache(email=email, token_type="password_reset_token")
 
 
 def set_course_vacancy(course_code, course_vacancy):
