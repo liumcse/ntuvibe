@@ -144,6 +144,7 @@ class PageSignUp extends React.Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
+        <Button type="primary">Primary</Button>
         <FormItem {...formItemLayout} label="E-mail">
           {getFieldDecorator("email", {
             rules: [

@@ -24,7 +24,6 @@ import "antd/dist/antd.less";
 
 class App extends React.PureComponent {
   componentDidMount() {
-    ReactGA.initialize("UA-113348736-2");
     logPageview(window.location.pathname);
   }
 
@@ -51,7 +50,7 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_USER_SETTING}
                 component={PageUserSetting}
               />
-              <Route exact path={ROUTES.ROUTE_SIGN_UP} component={PageSignUp} />
+              {/* <Route exact path={ROUTES.ROUTE_SIGN_UP} component={PageSignUp} /> */}
               <Route
                 exact
                 path={ROUTES.ROUTE_SITEMAP}
