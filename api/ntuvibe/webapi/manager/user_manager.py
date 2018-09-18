@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 
-from .cache_manager import generate_activation_token
+from .cache_manager import generate_and_register_activation_token
 from .system_manager import get_all_reserved_words, get_all_censored_words
 from webapi.constants import StatusCode, VALID_EMAIL_DOMAIN
 
@@ -67,7 +67,7 @@ def _send_activate_account_email(email, token):
 
 
 def register_email(email):
-	_send_activate_account_email(email=email, token=generate_activation_token(email=email))
+	_send_activate_account_email(email=email, token=generate_and_register_activation_token(email=email))
 
 
 def prepare_profile_data(user):
