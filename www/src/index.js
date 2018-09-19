@@ -12,7 +12,7 @@ import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
 import PageTransient from "./PageTransient";
 import PageUserSetting from "./PageUserSetting";
-import PageSignUp from "./PageSignUp";
+// import PageSignUp from "./PageSignUp";
 import PageSitemap from "./PageSitemap";
 import PageAbout from "./PageAbout";
 import PageScheduler from "./PageScheduler";
@@ -31,7 +31,7 @@ class App extends React.PureComponent {
     return (
       <Provider store={store}>
         <Router>
-          <div>
+          <React.Fragment>
             <Switch>
               <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
               <Route
@@ -66,7 +66,7 @@ class App extends React.PureComponent {
               <Route path={"/"} component={PageHome} />
             </Switch>
             <Popups />
-          </div>
+          </React.Fragment>
         </Router>
       </Provider>
     );
