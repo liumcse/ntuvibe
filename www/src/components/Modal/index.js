@@ -12,10 +12,6 @@ class Modal extends React.Component<Props> {
     this.trigger = props.trigger.getBoundingClientRect();
   }
 
-  addClickEvent = () => {
-
-  };
-
   componentDidMount() {
     console.log(this.trigger);
     this.addClickEvent();

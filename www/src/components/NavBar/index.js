@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
+import Login from "src/components/Modal/Login";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo-color.png";
 import calendar from "./assets/calendar.svg";
@@ -26,12 +27,18 @@ const brand = (
 );
 
 class NavBar extends React.Component {
+  state = { visible: false };
+
+  showModal = () => {
+    this.setState({ visible: true });
+  };
+
+  hideModal = () => {
+    this.setState({ visible: false });
+  };
+
   componentDidMount() {
     this.props.fetchProfile();
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return this.props.profile !== nextProps.profile;
   }
 
   handleLogout = () => {
@@ -42,84 +49,31 @@ class NavBar extends React.Component {
   };
 
   render() {
-    const { popupTrigger } = this.props;
+    // const { popupTrigger } = this.props;
     const { profile } = this.props;
     return (
-      <div className={styles.navbar_container}>
-        <div className={styles.navbar_mobile}>
-          <div className={styles.item}>
-            <Link to="/">
-              <img className={styles.nav_button} src={home} />
-            </Link>
-          </div>
-          {!profile ? (
-            <div className={styles.item} onClick={() => popupTrigger(1)}>
-              <img
-                src={login}
-                style={{
-                  height: "1.25rem",
-                  width: "1.25rem",
-                  cursor: "pointer"
-                }}
-              />
-            </div>
-          ) : (
+      <React.Fragment>
+        <div className={styles.navbar_container}>
+          <Login visible={this.state.visible} hideModal={this.hideModal} />
+          <div className={styles.navbar_mobile}>
             <div className={styles.item}>
-              <Link to="/users/setting">
-                <img
-                  className={styles.avatarImg}
-                  src={
-                    profile.avatar ||
-                    "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
-                  }
-                />
+              <Link to="/">
+                <img className={styles.nav_button} src={home} />
               </Link>
             </div>
-          )}
-          <div className={styles.item}>
-            <Link to="/scheduler">
-              <img className={styles.nav_button} src={calendar} />
-            </Link>
-          </div>
-        </div>
-        <div className={styles.navbar_elements}>
-          <div className={styles.navbar_elements_left}>
-            <Link className={styles.brandLink} to="/">
-              <div className={styles.brand}>{brand}</div>
-            </Link>
-          </div>
-          <div className={styles.navbar_elements_right}>
-            <div className={styles.navbar_elements_right_text}>
-              <Link to="/">Home</Link>
-            </div>
-            <div className={styles.navbar_elements_right_text}>
-              <Link to="/scheduler">Scheduler</Link>
-            </div>
-            <div className={styles.navbar_elements_right_text}>
-              <a
-                href="https://medium.com/@ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog
-              </a>
-            </div>
             {!profile ? (
-              <div
-                className={styles.rightButton}
-                onClick={() => popupTrigger(1)}
-              >
+              <div className={styles.item} onClick={this.showModal}>
                 <img
                   src={login}
                   style={{
-                    height: "1.5rem",
-                    width: "1.5rem",
+                    height: "1.25rem",
+                    width: "1.25rem",
                     cursor: "pointer"
                   }}
                 />
               </div>
             ) : (
-              <div className={styles.rightButton}>
+              <div className={styles.item}>
                 <Link to="/users/setting">
                   <img
                     className={styles.avatarImg}
@@ -131,9 +85,62 @@ class NavBar extends React.Component {
                 </Link>
               </div>
             )}
+            <div className={styles.item}>
+              <Link to="/scheduler">
+                <img className={styles.nav_button} src={calendar} />
+              </Link>
+            </div>
+          </div>
+          <div className={styles.navbar_elements}>
+            <div className={styles.navbar_elements_left}>
+              <Link className={styles.brandLink} to="/">
+                <div className={styles.brand}>{brand}</div>
+              </Link>
+            </div>
+            <div className={styles.navbar_elements_right}>
+              <div className={styles.navbar_elements_right_text}>
+                <Link to="/">Home</Link>
+              </div>
+              <div className={styles.navbar_elements_right_text}>
+                <Link to="/scheduler">Scheduler</Link>
+              </div>
+              <div className={styles.navbar_elements_right_text}>
+                <a
+                  href="https://medium.com/@ntuvibe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Blog
+                </a>
+              </div>
+              {!profile ? (
+                <div className={styles.rightButton} onClick={this.showModal}>
+                  <img
+                    src={login}
+                    style={{
+                      height: "1.5rem",
+                      width: "1.5rem",
+                      cursor: "pointer"
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className={styles.rightButton}>
+                  <Link to="/users/setting">
+                    <img
+                      className={styles.avatarImg}
+                      src={
+                        profile.avatar ||
+                        "https://firebasestorage.googleapis.com/v0/b/crimson-56c72.appspot.com/o/6rZOCAVe_400x400.jpg?alt=media&token=7b928473-d476-4075-82bf-0ab6d905bdc1"
+                      }
+                    />
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -21,22 +21,6 @@ class RateCourse extends React.PureComponent<Props> {
   //     visible: props.
   //   }
   // }
-
-  state = { visible: false };
-
-  showModal = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false
-    });
-  };
-
   render() {
     return (
       <Modal
@@ -45,8 +29,8 @@ class RateCourse extends React.PureComponent<Props> {
         onCancel={this.props.hideModal}
         footer={[
           <Button key="back">Cancel</Button>,
-          <Button key="submit" type="primary">
-            Submit
+          <Button key="post" type="primary">
+            Post
           </Button>
         ]}
       >
@@ -66,21 +50,21 @@ class RateCourse extends React.PureComponent<Props> {
             </Option>
           </Select>
           <div className={styles.label}>
-            Is what I learned useful? My answer would be
+            For the course content, I find this course
           </div>
           <Select style={{ width: "100%" }}>
             <Option value="100" style={{ color: "#28a745" }}>
               Useful
             </Option>
             <Option value="50" style={{ color: "#c99027" }}>
-              Not sure
+              No opinion
             </Option>
             <Option value="0" style={{ color: "#cb2431" }}>
               Not useful
             </Option>
           </Select>
           <div className={styles.label}>
-            In general, my experience with this course was
+            Overall, my experience with this course was
           </div>
           <Select style={{ width: "100%" }}>
             <Option value="100" style={{ color: "#28a745" }}>
