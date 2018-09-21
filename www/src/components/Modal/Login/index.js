@@ -17,6 +17,7 @@ const FormItem = Form.Item;
 type FormProps = {
   form: any,
   loginRequest: Object,
+  hideModal: () => void,
   fetchProfile: () => void,
   userLogin: () => void
 };
@@ -55,9 +56,9 @@ class LoginForm extends React.Component<FormProps> {
               alert(error_message);
               this.setState({ requested: false });
             } else {
-              alert("Success");
               this.setState({ succeed: true, requested: false });
               this.props.fetchProfile();
+              this.props.hideModal();
             }
           }
         });
@@ -115,26 +116,42 @@ class LoginForm extends React.Component<FormProps> {
   }
 }
 
-const mapStateToProps = state => {
-  const { user } = state;
-  return {
-    loginRequest: user && user.loginRequest
-  };
-};
+// const mapStateToProps = state => {
+//   const { user } = state;
+//   return {
+//     loginRequest: user && user.loginRequest
+//   };
+// };
 
-const mapDispatchToProps = dispatch => ({
-  fetchProfile: () => dispatch(fetchProfile()),
-  userLogin: authForm => dispatch(userLogin(authForm))
-});
+// const mapDispatchToProps = dispatch => ({
+//   fetchProfile: () => dispatch(fetchProfile()),
+//   userLogin: authForm => dispatch(userLogin(authForm))
+// });
 
-const WrappedLoginForm = Form.create()(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(LoginForm)
-);
+// const WrappedLoginForm = Form.create()(
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(LoginForm)
+// );
 
 class Login extends React.PureComponent<Props> {
+  WrappedLoginForm = Form.create()(
+    connect(
+      state => {
+        const { user } = state;
+        return {
+          loginRequest: user && user.loginRequest
+        };
+      },
+      dispatch => ({
+        hideModal: this.props.hideModal,
+        fetchProfile: () => dispatch(fetchProfile()),
+        userLogin: authForm => dispatch(userLogin(authForm))
+      })
+    )(LoginForm)
+  );
+
   render() {
     return (
       <Modal
@@ -144,7 +161,7 @@ class Login extends React.PureComponent<Props> {
         footer={null}
       >
         <div style={{ margin: "auto" }}>
-          <WrappedLoginForm />
+          <this.WrappedLoginForm />
         </div>
       </Modal>
     );

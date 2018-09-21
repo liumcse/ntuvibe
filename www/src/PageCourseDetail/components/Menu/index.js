@@ -1,6 +1,8 @@
+// @flow
 import React from "react";
+import { withRouter } from "react-router";
+
 import RateCourse from "src/components/Modal/RateCourse";
-import Modal from "antd/lib/modal";
 import Button from "antd/lib/button";
 // eslint-disable-next-line
 import Icon from "antd/lib/icon";
@@ -10,7 +12,13 @@ import Search from "src/components/Search";
 import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
-class Menu extends React.PureComponent {
+type Props = {
+  match: Object,
+  location: Object,
+  history: Object
+};
+
+class Menu extends React.PureComponent<Props> {
   state = { visible: false };
 
   showModal = () => {
@@ -22,9 +30,18 @@ class Menu extends React.PureComponent {
   };
 
   render() {
+    const {
+      match: {
+        params: { courseCode: courseCode }
+      }
+    } = this.props;
     return (
       <React.Fragment>
-        <RateCourse visible={this.state.visible} hideModal={this.hideModal} />
+        <RateCourse
+          visible={this.state.visible}
+          hideModal={this.hideModal}
+          courseCode={courseCode.toUpperCase()}
+        />
         <div className={styles.menu}>
           <div className={styles.search}>
             <Search theme={theme} />
@@ -51,4 +68,4 @@ class Menu extends React.PureComponent {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);
