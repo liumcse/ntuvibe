@@ -9,6 +9,10 @@ import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
 class PageHome extends React.PureComponent {
+  componentDidMount() {
+    // eslint-disable-next-line
+    FB.XFBML.parse();  // call this function to re-render FB-like button
+  }
   render() {
     return (
       <div className={styles.home_page}>
