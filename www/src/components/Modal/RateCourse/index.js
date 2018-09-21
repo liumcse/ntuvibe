@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
 import Alert from "antd/lib/alert";
@@ -22,7 +23,11 @@ type Props = {
   // from redux
   courseComment: Object,
   submitCourseRating: () => void,
-  courseRatingSubmission: Object
+  courseRatingSubmission: Object,
+  // from router
+  match: Object,
+  location: Object,
+  history: Object
 };
 
 class RateCourse extends React.Component<Props> {
@@ -39,9 +44,13 @@ class RateCourse extends React.Component<Props> {
   };
 
   submit = () => {
+    const {
+      match: {
+        params: { courseCode: courseCode }
+      }
+    } = this.props;
     // validate
     const { easy, useful, like, comment } = this.state;
-    const { courseCode } = this.props;
     if (easy === null || useful === null || like === null) {
       this.setState({
         showAlert: true,
@@ -122,10 +131,15 @@ class RateCourse extends React.Component<Props> {
   }
 
   render() {
+    const {
+      match: {
+        params: { courseCode: courseCode }
+      }
+    } = this.props;
     return (
       <Modal
         centered
-        title={"RATE ".concat(this.props.courseCode)}
+        title={"RATE ".concat(courseCode && courseCode.toUpperCase())}
         visible={this.props.visible}
         onCancel={this.props.hideModal}
         footer={[
@@ -221,7 +235,9 @@ const mapDispatchToProps = dispatch => ({
   fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RateCourse);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RateCourse)
+);

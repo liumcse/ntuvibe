@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 
 import NavBar from "src/components/NavBar";
 import Footer from "src/components/Footer";
+import Modal from "src/components/Modal";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
@@ -386,7 +387,7 @@ class PageCourseDetail extends React.Component<Props> {
                 Nobody has published their comments - so you can{" "}
                 <span
                   className={styles.beTheFirst}
-                  onClick={() => this.props.popupTrigger(3)}
+                  onClick={() => Modal.showRateCourse()}
                 >
                   be the first one!
                 </span>

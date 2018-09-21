@@ -1,25 +1,42 @@
 // @flow
 import React from "react";
-import "./style.scss";
+import Login from "./Login";
+import RateCourse from "./RateCourse";
 
-type Props = {
-  trigger: any
-};
+class Modal extends React.Component {
+  static state = {
+    showRateCourse: false,
+    showLogin: false
+  };
 
-class Modal extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.trigger = props.trigger.getBoundingClientRect();
-  }
+  static hideAll = () => {
+    Modal.state = {
+      showRateCourse: false,
+      showLogin: false
+    };
+    Modal.forceUpdate();
+  };
 
-  componentDidMount() {
-    console.log(this.trigger);
-    this.addClickEvent();
-  }
+  static showLogin = () => {
+    Modal.state = { showLogin: true, showRateCourse: false };
+    Modal.forceUpdate();
+  };
+
+  static showRateCourse = () => {
+    Modal.state = { showRateCourse: true, showLogin: false };
+  };
 
   render() {
     // return the trigger so nothing changes in appearance
-    return this.trigger;
+    return (
+      <React.Fragment>
+        <Login visible={Modal.state.showLogin} hideModal={Modal.hideAll} />
+        <RateCourse
+          visible={Modal.state.showRateCourse}
+          hideModal={Modal.hideAll}
+        />
+      </React.Fragment>
+    );
   }
 }
 

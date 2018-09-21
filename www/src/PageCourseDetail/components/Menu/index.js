@@ -13,9 +13,9 @@ import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
 type Props = {
-  match: Object,
-  location: Object,
-  history: Object
+  // match: Object,
+  // location: Object,
+  // history: Object
 };
 
 class Menu extends React.PureComponent<Props> {
@@ -30,18 +30,9 @@ class Menu extends React.PureComponent<Props> {
   };
 
   render() {
-    const {
-      match: {
-        params: { courseCode: courseCode }
-      }
-    } = this.props;
     return (
       <React.Fragment>
-        <RateCourse
-          visible={this.state.visible}
-          hideModal={this.hideModal}
-          courseCode={courseCode.toUpperCase()}
-        />
+        <RateCourse visible={this.state.visible} hideModal={this.hideModal} />
         <div className={styles.menu}>
           <div className={styles.search}>
             <Search theme={theme} />
@@ -68,4 +59,4 @@ class Menu extends React.PureComponent<Props> {
   }
 }
 
-export default withRouter(Menu);
+export default Menu;

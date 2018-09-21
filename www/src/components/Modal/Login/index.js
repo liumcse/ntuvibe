@@ -10,7 +10,7 @@ import Form from "antd/lib/form";
 
 import { userLogin, fetchProfile } from "src/redux/actions";
 
-import * as styles from "./style.scss";
+// import * as styles from "./style.scss";
 
 const FormItem = Form.Item;
 
