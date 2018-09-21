@@ -155,6 +155,7 @@ class Login extends React.PureComponent<Props> {
   render() {
     return (
       <Modal
+        centered
         title="LOGIN"
         visible={this.props.visible}
         onCancel={this.props.hideModal}

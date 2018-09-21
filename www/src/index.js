@@ -66,6 +66,7 @@ class App extends React.PureComponent {
               <Route path={"/"} component={PageHome} />
             </Switch>
             <Popups />
+            {/* Modals */}
           </React.Fragment>
         </Router>
       </Provider>

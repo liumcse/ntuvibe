@@ -71,13 +71,6 @@ type Props = {
   history: Object
 };
 
-type HeadingProps = {
-  code: string,
-  rating: string,
-  title: string,
-  count: number
-};
-
 const HeadingSkeleton = () => (
   <div className={styles.heading}>
     <div className={styles.heading_row}>

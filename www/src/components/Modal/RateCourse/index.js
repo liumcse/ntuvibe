@@ -124,6 +124,7 @@ class RateCourse extends React.Component<Props> {
   render() {
     return (
       <Modal
+        centered
         title={"RATE ".concat(this.props.courseCode)}
         visible={this.props.visible}
         onCancel={this.props.hideModal}
@@ -148,10 +149,7 @@ class RateCourse extends React.Component<Props> {
           <div className={styles.label}>
             In terms of difficulty, I find this course
           </div>
-          <Select
-            style={{ width: "100%" }}
-            onChange={this.handleEasyChange}
-          >
+          <Select style={{ width: "100%" }} onChange={this.handleEasyChange}>
             <Option value="100" style={{ color: "#28a745" }}>
               Easy
             </Option>
@@ -165,10 +163,7 @@ class RateCourse extends React.Component<Props> {
           <div className={styles.label}>
             For the course content, I find this course
           </div>
-          <Select
-            style={{ width: "100%" }}
-            onChange={this.handleUsefulChange}
-          >
+          <Select style={{ width: "100%" }} onChange={this.handleUsefulChange}>
             <Option value="100" style={{ color: "#28a745" }}>
               Useful
             </Option>
@@ -182,10 +177,7 @@ class RateCourse extends React.Component<Props> {
           <div className={styles.label}>
             Overall, my experience with this course was
           </div>
-          <Select
-            style={{ width: "100%" }}
-            onChange={this.handleLikeChange}
-          >
+          <Select style={{ width: "100%" }} onChange={this.handleLikeChange}>
             <Option value="100" style={{ color: "#28a745" }}>
               Positive
             </Option>
