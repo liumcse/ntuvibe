@@ -1,8 +1,7 @@
 // @flow
 import React from "react";
-import { withRouter } from "react-router";
 
-import RateCourse from "src/components/Modal/RateCourse";
+import withRateCourseModal from "src/components/Modal/withRateCourseModal";
 import Button from "antd/lib/button";
 // eslint-disable-next-line
 import Icon from "antd/lib/icon";
@@ -13,33 +12,20 @@ import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
 type Props = {
-  // match: Object,
-  // location: Object,
-  // history: Object
+  showRateCourseModal: () => void
 };
 
 class Menu extends React.PureComponent<Props> {
-  state = { visible: false };
-
-  showModal = () => {
-    this.setState({ visible: true });
-  };
-
-  hideModal = () => {
-    this.setState({ visible: false });
-  };
-
   render() {
     return (
       <React.Fragment>
-        <RateCourse visible={this.state.visible} hideModal={this.hideModal} />
         <div className={styles.menu}>
           <div className={styles.search}>
             <Search theme={theme} />
           </div>
           <div className={styles.actions}>
             <div className={styles.action}>
-              <Button type="primary" onClick={this.showModal}>
+              <Button type="primary" onClick={this.props.showRateCourseModal}>
                 Rate the course
               </Button>
             </div>
@@ -48,7 +34,7 @@ class Menu extends React.PureComponent<Props> {
         <Button
           className={styles.roundButton}
           style={{ position: "fixed", display: "none" }}
-          onClick={this.showModal}
+          onClick={this.props.showRateCourseModal}
           type="primary"
           shape="circle"
           size="large"
@@ -59,4 +45,4 @@ class Menu extends React.PureComponent<Props> {
   }
 }
 
-export default Menu;
+export default withRateCourseModal(Menu);

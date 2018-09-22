@@ -1,7 +1,7 @@
+// @flow
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
 import Login from "src/components/Modal/Login";
@@ -26,17 +26,16 @@ const brand = (
   />
 );
 
-class NavBar extends React.Component {
-  state = { visible: false };
+type Props = {
+  // from modal
+  showLoginModal: () => void,
+  // from redux
+  profile: Object,
+  fetchProfile: () => void,
+  userLogout: () => void
+};
 
-  showModal = () => {
-    this.setState({ visible: true });
-  };
-
-  hideModal = () => {
-    this.setState({ visible: false });
-  };
-
+class NavBar extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchProfile();
   }
@@ -54,7 +53,7 @@ class NavBar extends React.Component {
     return (
       <React.Fragment>
         <div className={styles.navbar_container}>
-          <Login visible={this.state.visible} hideModal={this.hideModal} />
+          {/* <Login visible={this.state.visible} hideModal={this.hideModal} /> */}
           <div className={styles.navbar_mobile}>
             <div className={styles.item}>
               <Link to="/">
@@ -62,7 +61,7 @@ class NavBar extends React.Component {
               </Link>
             </div>
             {!profile ? (
-              <div className={styles.item} onClick={this.showModal}>
+              <div className={styles.item} onClick={this.props.showLoginModal}>
                 <img
                   src={login}
                   style={{
@@ -114,7 +113,10 @@ class NavBar extends React.Component {
                 </a>
               </div>
               {!profile ? (
-                <div className={styles.rightButton} onClick={this.showModal}>
+                <div
+                  className={styles.rightButton}
+                  onClick={this.props.showLoginModal}
+                >
                   <img
                     src={login}
                     style={{
@@ -145,13 +147,6 @@ class NavBar extends React.Component {
   }
 }
 
-NavBar.propTypes = {
-  profile: PropTypes.object,
-  popupTrigger: PropTypes.func.isRequired,
-  fetchProfile: PropTypes.func.isRequired,
-  userLogout: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => {
   const { user } = state;
   return {
@@ -168,4 +163,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavBar);
+)(Login(NavBar));

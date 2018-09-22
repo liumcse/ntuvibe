@@ -6,11 +6,11 @@ import { withRouter } from "react-router";
 
 import NavBar from "src/components/NavBar";
 import Footer from "src/components/Footer";
-import Modal from "src/components/Modal";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
+import withRateCourseModal from "src/components/Modal/withRateCourseModal";
 
 import {
   remove_trailing_newline,
@@ -51,6 +51,8 @@ const NO_RATING = "No rating yet";
 const RATING_THRESHOLD = 0; // we don't set threshold - yet
 
 type Props = {
+  // modal
+  showRateCourseModal: () => void,
   // from redux
   fetchCourseDetail: string => void,
   fetchCourseRating: string => void,
@@ -387,7 +389,7 @@ class PageCourseDetail extends React.Component<Props> {
                 Nobody has published their comments - so you can{" "}
                 <span
                   className={styles.beTheFirst}
-                  onClick={() => Modal.showRateCourse()}
+                  onClick={this.props.showRateCourseModal}
                 >
                   be the first one!
                 </span>
@@ -446,5 +448,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(PageCourseDetail)
+  )(withRateCourseModal(PageCourseDetail))
 );

@@ -2,13 +2,9 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-
 import Alert from "antd/lib/alert";
-import Button from "antd/lib/button";
-import Modal from "antd/lib/modal";
 import Select from "antd/lib/select";
 import Input from "antd/lib/input";
-
 import { submitCourseRating, fetchUserCourseComment } from "src/redux/actions";
 
 import * as styles from "./style.scss";
@@ -18,7 +14,6 @@ const { TextArea } = Input;
 
 type Props = {
   visible: boolean,
-  hideModal: () => void,
   courseCode: string,
   // from redux
   courseComment: Object,
@@ -30,7 +25,7 @@ type Props = {
   history: Object
 };
 
-class RateCourse extends React.Component<Props> {
+class RatingForm extends React.Component<Props> {
   state = {
     easy: null,
     useful: null,
@@ -131,26 +126,8 @@ class RateCourse extends React.Component<Props> {
   }
 
   render() {
-    const {
-      match: {
-        params: { courseCode: courseCode }
-      }
-    } = this.props;
     return (
-      <Modal
-        centered
-        title={"RATE ".concat(courseCode && courseCode.toUpperCase())}
-        visible={this.props.visible}
-        onCancel={this.props.hideModal}
-        footer={[
-          <Button key="back" onClick={this.props.hideModal}>
-            Cancel
-          </Button>,
-          <Button key="post" type="primary" onClick={this.submit}>
-            Post
-          </Button>
-        ]}
-      >
+      <React.Fragment>
         <Alert
           message={this.state.alertMessage}
           type={this.state.alertType}
@@ -215,7 +192,7 @@ class RateCourse extends React.Component<Props> {
             We protect your privacy & your right to stay anonymous
           </a>
         </div>
-      </Modal>
+      </React.Fragment>
     );
   }
 }
@@ -239,5 +216,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(RateCourse)
+  )(RatingForm)
 );

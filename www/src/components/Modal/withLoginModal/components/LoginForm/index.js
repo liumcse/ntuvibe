@@ -1,16 +1,13 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-
 import Button from "antd/lib/button";
-import Modal from "antd/lib/modal";
 import Input from "antd/lib/input";
 import Icon from "antd/lib/icon";
 import Form from "antd/lib/form";
-
 import { userLogin, fetchProfile } from "src/redux/actions";
 
-// import * as styles from "./style.scss";
+import "./style.scss";
 
 const FormItem = Form.Item;
 
@@ -22,13 +19,9 @@ type FormProps = {
   userLogin: () => void
 };
 
-type Props = {
-  visible: boolean,
-  hideModal: () => void
-};
-
 class LoginForm extends React.Component<FormProps> {
   state = {
+    visible: false,
     requested: false,
     succeed: false
   };
@@ -116,57 +109,18 @@ class LoginForm extends React.Component<FormProps> {
   }
 }
 
-// const mapStateToProps = state => {
-//   const { user } = state;
-//   return {
-//     loginRequest: user && user.loginRequest
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   fetchProfile: () => dispatch(fetchProfile()),
-//   userLogin: authForm => dispatch(userLogin(authForm))
-// });
-
-// const WrappedLoginForm = Form.create()(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(LoginForm)
-// );
-
-class Login extends React.PureComponent<Props> {
-  WrappedLoginForm = Form.create()(
-    connect(
-      state => {
-        const { user } = state;
-        return {
-          loginRequest: user && user.loginRequest
-        };
-      },
-      dispatch => ({
-        hideModal: this.props.hideModal,
-        fetchProfile: () => dispatch(fetchProfile()),
-        userLogin: authForm => dispatch(userLogin(authForm))
-      })
-    )(LoginForm)
-  );
-
-  render() {
-    return (
-      <Modal
-        centered
-        title="LOGIN"
-        visible={this.props.visible}
-        onCancel={this.props.hideModal}
-        footer={null}
-      >
-        <div style={{ margin: "auto" }}>
-          <this.WrappedLoginForm />
-        </div>
-      </Modal>
-    );
-  }
-}
-
-export default Login;
+export default Form.create()(
+  connect(
+    (state, props) => {
+      const { user } = state;
+      return {
+        hideModal: props.hideModal,
+        loginRequest: user && user.loginRequest
+      };
+    },
+    dispatch => ({
+      fetchProfile: () => dispatch(fetchProfile()),
+      userLogin: authForm => dispatch(userLogin(authForm))
+    })
+  )(LoginForm)
+);

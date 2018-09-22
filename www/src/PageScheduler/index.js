@@ -86,10 +86,6 @@ class PageScheduler extends React.Component<Props> {
     buttonGroup[0].innerHTML = "This Week";
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
-    // generate calendar events from schedule in redux
-    // if (this.props.schedule) {
-    //   this.generateCalendar(this.props.schedule);
-    // }
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
