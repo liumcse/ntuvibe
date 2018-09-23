@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Alert from "antd/lib/alert";
 import Select from "antd/lib/select";
 import Input from "antd/lib/input";
+import Button from "antd/lib/button";
 import { submitCourseRating, fetchUserCourseComment } from "src/redux/actions";
 
 import * as styles from "./style.scss";
@@ -110,12 +111,13 @@ class RatingForm extends React.Component<Props> {
 
   rehydrate = () => {
     const { courseComment } = this.props;
-    if (courseComment) {
+    if (Object.keys(courseComment).length > 0) {
+      // if courseComment is NOT {}
       const { easy, useful, like, comment_content } = courseComment;
       this.setState({
-        easy: easy,
-        useful: useful,
-        like: like,
+        easy: easy && easy.toString(),
+        useful: useful && useful.toString(),
+        like: like && like.toString(),
         comment: comment_content
       });
     }
@@ -191,6 +193,11 @@ class RatingForm extends React.Component<Props> {
           <a target="_blank" href="/">
             We protect your privacy & your right to stay anonymous
           </a>
+        </div>
+        <div style={{ marginTop: "1rem", textAlign: "right" }}>
+          <Button type="primary" onClick={this.submit}>
+            Post
+          </Button>
         </div>
       </React.Fragment>
     );

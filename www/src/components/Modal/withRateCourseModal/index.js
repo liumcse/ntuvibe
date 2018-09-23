@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { withRouter } from "react-router";
 import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 
@@ -19,6 +20,10 @@ function withRateCourseModal(WrappedComponent) {
       this.setState({ visible: false });
     };
 
+    submit = () => {
+      // empty here, we modify this function inside RatingForm
+    };
+
     render() {
       return (
         <React.Fragment>
@@ -27,16 +32,9 @@ function withRateCourseModal(WrappedComponent) {
             title={"RATE THE COURSE"}
             visible={this.state.visible}
             onCancel={this.hideModal}
-            footer={[
-              <Button key="back" onClick={this.hideModal}>
-                Cancel
-              </Button>,
-              <Button key="post" type="primary" onClick={this.submit}>
-                Post
-              </Button>
-            ]}
+            footer={null}
           >
-            <RatingForm />
+            <RatingForm submit={this.submit} />
           </Modal>
           <WrappedComponent
             showRateCourseModal={this.showModal}
