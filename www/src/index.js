@@ -7,7 +7,6 @@ import * as ROUTES from "./routes";
 import { logPageview } from "./tracking";
 import ReactGA from "react-ga";
 import Popups from "./components/Popups";
-import Modal from "./components/Modal";
 import PageHome from "./PageHome/index";
 import PageCourseDetail from "./PageCourseDetail";
 import PageHelp from "./PageHelp";
@@ -67,8 +66,6 @@ class App extends React.PureComponent {
               <Route path={"/"} component={PageHome} />
             </Switch>
             <Popups />
-            {/* Modals */}
-            <Modal />
           </React.Fragment>
         </Router>
       </Provider>

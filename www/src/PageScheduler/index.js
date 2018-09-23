@@ -89,7 +89,7 @@ class PageScheduler extends React.Component<Props> {
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
-    FB.XFBML.parse();  // call this function to re-render FB-like button
+    if (FB && FB.XFBML) FB.XFBML.parse();  // call this function to re-render FB-like button
   }
 
   componentWillUnmount() {

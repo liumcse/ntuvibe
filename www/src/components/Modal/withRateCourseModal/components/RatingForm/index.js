@@ -111,8 +111,11 @@ class RatingForm extends React.Component<Props> {
 
   rehydrate = () => {
     const { courseComment } = this.props;
-    if (Object.keys(courseComment).length > 0) {
-      // if courseComment is NOT {}
+    if (
+      courseComment &&
+      courseComment !== undefined &&
+      Object.keys(courseComment).length > 0
+    ) {
       const { easy, useful, like, comment_content } = courseComment;
       this.setState({
         easy: easy && easy.toString(),
@@ -142,7 +145,11 @@ class RatingForm extends React.Component<Props> {
           <div className={styles.label}>
             In terms of difficulty, I find this course
           </div>
-          <Select style={{ width: "100%" }} onChange={this.handleEasyChange}>
+          <Select
+            style={{ width: "100%" }}
+            onChange={this.handleEasyChange}
+            defaultValue={this.state.easy && { key: this.state.easy }}
+          >
             <Option value="100" style={{ color: "#28a745" }}>
               Easy
             </Option>
@@ -156,7 +163,11 @@ class RatingForm extends React.Component<Props> {
           <div className={styles.label}>
             For the course content, I find this course
           </div>
-          <Select style={{ width: "100%" }} onChange={this.handleUsefulChange}>
+          <Select
+            style={{ width: "100%" }}
+            onChange={this.handleUsefulChange}
+            defaultValue={this.state.useful && { key: this.state.useful }}
+          >
             <Option value="100" style={{ color: "#28a745" }}>
               Useful
             </Option>
@@ -170,7 +181,11 @@ class RatingForm extends React.Component<Props> {
           <div className={styles.label}>
             Overall, my experience with this course was
           </div>
-          <Select style={{ width: "100%" }} onChange={this.handleLikeChange}>
+          <Select
+            style={{ width: "100%" }}
+            onChange={this.handleLikeChange}
+            defaultValue={this.state.like && { key: this.state.like }}
+          >
             <Option value="100" style={{ color: "#28a745" }}>
               Positive
             </Option>

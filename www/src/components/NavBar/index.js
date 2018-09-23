@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
-import Login from "src/components/Modal/Login";
+import withLoginModal from "src/components/Modal/withLoginModal";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo-color.png";
 import calendar from "./assets/calendar.svg";
@@ -163,4 +163,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login(NavBar));
+)(withLoginModal(NavBar));

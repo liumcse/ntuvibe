@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-import { withRouter } from "react-router";
-import Button from "antd/lib/button";
+// import { withRouter } from "react-router";
+// import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
 
 import RatingForm from "./components/RatingForm";
