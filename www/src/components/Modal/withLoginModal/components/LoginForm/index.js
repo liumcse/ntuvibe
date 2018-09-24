@@ -5,6 +5,7 @@ import Button from "antd/lib/button";
 import Input from "antd/lib/input";
 import Icon from "antd/lib/icon";
 import Form from "antd/lib/form";
+import withSignUpModal from "../../../withSignUpModal";
 import { userLogin, fetchProfile } from "src/redux/actions";
 
 import "./style.scss";
@@ -14,6 +15,7 @@ const FormItem = Form.Item;
 type FormProps = {
   form: any,
   loginRequest: Object,
+  showSignUpModal: () => void,
   hideModal: () => void,
   fetchProfile: () => void,
   userLogin: () => void
@@ -24,6 +26,11 @@ class LoginForm extends React.Component<FormProps> {
     visible: false,
     requested: false,
     succeed: false
+  };
+
+  switchToSignUp = () => {
+    this.props.showSignUpModal();
+    this.props.hideModal();
   };
 
   handleSubmit = e => {
@@ -68,8 +75,7 @@ class LoginForm extends React.Component<FormProps> {
             rules: [
               {
                 required: true,
-                message: "Enter a valid NTU Email address",
-                pattern: /^.\w*@(e.)?(ntu.edu.sg)/
+                message: "Enter your NTU Email address"
               }
             ]
           })(
@@ -91,7 +97,10 @@ class LoginForm extends React.Component<FormProps> {
           )}
         </FormItem>
         <FormItem>
-          No account? <a href="">Create one</a>
+          No account?{" "}
+          <a onClick={this.switchToSignUp} href="#">
+            Create one
+          </a>
           {/* <a className="login-form-forgot" href="">
             Forgot password
           </a> */}
@@ -122,5 +131,5 @@ export default Form.create()(
       fetchProfile: () => dispatch(fetchProfile()),
       userLogin: authForm => dispatch(userLogin(authForm))
     })
-  )(LoginForm)
+  )(withSignUpModal(LoginForm))
 );

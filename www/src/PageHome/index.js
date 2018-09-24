@@ -11,7 +11,7 @@ import * as theme from "./dropdown-theme.scss";
 class PageHome extends React.PureComponent {
   componentDidMount() {
     // eslint-disable-next-line
-    if (FB && FB.XFBML) FB.XFBML.parse();  // call this function to re-render FB-like button
+    if (FB !== undefined&& FB && FB.XFBML !== undefined && FB.XFBML) FB.XFBML.parse();  // call this function to re-render FB-like button
   }
   render() {
     return (

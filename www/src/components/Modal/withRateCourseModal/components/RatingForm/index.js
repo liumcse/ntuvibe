@@ -148,7 +148,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleEasyChange}
-            defaultValue={this.state.easy && { key: this.state.easy }}
+            value={this.state.easy}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Easy
@@ -166,7 +166,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleUsefulChange}
-            defaultValue={this.state.useful && { key: this.state.useful }}
+            value={this.state.useful}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Useful
@@ -184,7 +184,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleLikeChange}
-            defaultValue={this.state.like && { key: this.state.like }}
+            value={this.state.like}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Positive
@@ -199,15 +199,19 @@ class RatingForm extends React.Component<Props> {
         </div>
         <TextArea
           placeholder="Your comment. This is optional (but highly appreciated!)"
-          defaultValue={this.state.comment}
+          value={this.state.comment}
           style={{ marginTop: "1rem" }}
           autosize={{ minRows: 3 }}
           onChange={this.handleInput}
         />
-        <div style={{ marginTop: "1rem", fontSize: "0.85rem" }}>
+        <div
+          style={{ marginTop: "1rem", fontSize: "0.85rem", textAlign: "right" }}
+        >
+          You are free to{" "}
           <a target="_blank" href="/">
-            We protect your privacy & your right to stay anonymous
-          </a>
+            stay anonymous
+          </a>{" "}
+          🤡
         </div>
         <div style={{ marginTop: "1rem", textAlign: "right" }}>
           <Button type="primary" onClick={this.submit}>

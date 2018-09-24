@@ -3,10 +3,9 @@ import React from "react";
 // import { withRouter } from "react-router";
 // import Button from "antd/lib/button";
 import Modal from "antd/lib/modal";
+import SignUpForm from "./components/SignUpForm";
 
-import RatingForm from "./components/RatingForm";
-
-function withRateCourseModal(WrappedComponent) {
+function withSignUpModal(WrappedComponent) {
   return class extends React.Component {
     state = {
       visible: false
@@ -25,21 +24,18 @@ function withRateCourseModal(WrappedComponent) {
         <React.Fragment>
           <Modal
             centered
-            title={"RATE THE COURSE"}
+            title={"SIGN UP"}
             visible={this.state.visible}
             onCancel={this.hideModal}
             footer={null}
           >
-            <RatingForm />
+            <SignUpForm hideModal={this.hideModal} />
           </Modal>
-          <WrappedComponent
-            showRateCourseModal={this.showModal}
-            {...this.props}
-          />
+          <WrappedComponent showSignUpModal={this.showModal} {...this.props} />
         </React.Fragment>
       );
     }
   };
 }
 
-export default withRateCourseModal;
+export default withSignUpModal;

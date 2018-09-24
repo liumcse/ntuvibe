@@ -26,6 +26,18 @@
     color: $primary !important;
   }
 
+  .ant-modal-mask {
+    background-color: rgba(255,255,255,.8) !important;
+  }
+
+  .ant-modal-content {
+    box-shadow: 0 2px 10px rgba(0,0,0,.15) !important;
+  }
+
+  .ant-modal-header, .ant-modal-body, .ant-modal-content {
+    border-radius: 0 !important;
+  }
+
   .popup-overlay {
     position: absolute !important;
     background-color: rgba(255,255,255,.8) !important;
