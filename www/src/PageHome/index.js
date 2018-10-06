@@ -42,7 +42,7 @@ class PageHome extends React.PureComponent {
               data-action="like"
               data-size="large"
               data-show-faces="false"
-              data-share="false"
+              data-share="true"
             />
             <div className={styles.fbPage}>
               How can we do better? Tell us at{" "}
