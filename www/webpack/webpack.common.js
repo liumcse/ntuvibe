@@ -23,7 +23,10 @@ const config = {
   },
   resolve: {
     alias: {
-      src: SRC_PATH
+      src: SRC_PATH,
+      "@components": SRC_PATH + "/components",
+      "@redux": SRC_PATH + "/redux",
+      "@assets": SRC_PATH + "/assets"
     }
   },
   module: {

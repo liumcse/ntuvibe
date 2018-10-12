@@ -1,20 +1,16 @@
 // @flow
-import axios from "axios";
+import * as api from "src/api";
 import * as actionTypes from "./action_types";
 
 // import type { Action } from "src/FlowType/acitons";
-
-const BASE_URL = "https://api.ntuvibe.com";
-// const BASE_URL = "http://13.250.11.130";
-// const BASE_URL = "http://localhost:3001/api";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
     dispatch({
       type: actionTypes.FETCH_COURSE_DETAIL_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`)
+    api
+      .fetchCourseDetail(courseCode)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_SUCCESS,
@@ -35,8 +31,8 @@ export function fetchCourseRating(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_COURSE_RATING_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_course_rating?code=${courseCode}`)
+    api
+      .fetchCourseRating(courseCode)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_SUCCESS,
@@ -57,8 +53,8 @@ export function fetchCourseList() {
     dispatch({
       type: actionTypes.FETCH_COURSE_LIST_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_course_list`)
+    api
+      .fetchCourseList()
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_SUCCESS,
@@ -79,8 +75,8 @@ export function fetchCourseSchedule(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_COURSE_SCHEDULE_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_class_schedule?code=${courseCode}`)
+    api
+      .fetchCourseSchedule(courseCode)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS,
@@ -101,8 +97,8 @@ export function fetchExamSchedule(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_EXAM_SCHEDULE_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_exam_schedule?code=${courseCode}`)
+    api
+      .fetchExamSchedule(courseCode)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS,
@@ -123,8 +119,8 @@ export function fetchCourseComments(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_COURSE_COMMENTS_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/courses/get_course_comments?code=${courseCode}`)
+    api
+      .fetchCourseComments(courseCode)
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_SUCCESS,
@@ -145,10 +141,8 @@ export function submitCourseRating(courseRatingForm: FormData) {
     dispatch({
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/courses/submit_course_rating`, courseRatingForm, {
-        withCredentials: true
-      })
+    await api
+      .submitCourseRating(courseRatingForm)
       .then(response => {
         return dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_SUCCESS,
@@ -169,10 +163,8 @@ export function validateActivation(token: string, email: string) {
     dispatch({
       type: actionTypes.VALIDATE_ACTIVATION_REQUESTED
     });
-    await axios
-      .get(
-        `${BASE_URL}/users/check_activation_link?token=${token}&email=${email}`
-      )
+    await api
+      .validateActivation(token, email)
       .then(response =>
         dispatch({
           type: actionTypes.VALIDATE_ACTIVATION_SUCCESS,
@@ -193,8 +185,8 @@ export function userActivate(form: FormData) {
     dispatch({
       type: actionTypes.USER_ACTIVATE_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/activate`, form)
+    await api
+      .userActivate(form)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_ACTIVATE_SUCCESS,
@@ -215,10 +207,8 @@ export function userLogin(authForm: FormData) {
     dispatch({
       type: actionTypes.USER_LOGIN_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/login`, authForm, {
-        withCredentials: true
-      })
+    await api
+      .userLogin(authForm)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_LOGIN_SUCCESS,
@@ -236,10 +226,8 @@ export function userLogin(authForm: FormData) {
 
 export function userLogout() {
   return async function(dispatch: any) {
-    axios
-      .post(`${BASE_URL}/users/logout`, null, {
-        withCredentials: true
-      })
+    api
+      .userLogout()
       .then(response => {
         return dispatch({ type: actionTypes.USER_LOGOUT });
       })
@@ -252,8 +240,8 @@ export function userSignUp(authForm: FormData) {
     dispatch({
       type: actionTypes.USER_SIGNUP_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/signup`, authForm)
+    await api
+      .userSignUp(authForm)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_SIGNUP_SUCCESS,
@@ -274,10 +262,8 @@ export function userUpdateProfile(form: FormData) {
     dispatch({
       type: actionTypes.USER_UPDATE_PROFILE_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/update_user_profile`, form, {
-        withCredentials: true
-      })
+    await api
+      .userUpdateProfile(form)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_UPDATE_PROFILE_REQUESTED,
@@ -298,10 +284,8 @@ export function fetchProfile() {
     dispatch({
       type: actionTypes.FETCH_PROFILE_REQUESTED
     });
-    axios
-      .get(`${BASE_URL}/users/get_user_profile`, {
-        withCredentials: true
-      })
+    api
+      .fetchProfile()
       .then(response => {
         return dispatch({
           type: actionTypes.FETCH_PROFILE_SUCCESS,
@@ -322,10 +306,8 @@ export function fetchUserCourseComment(courseCode: string) {
     dispatch({
       type: actionTypes.FETCH_USER_COURSE_COMMENT_REQUESTED
     });
-    await axios
-      .get(`${BASE_URL}/courses/get_user_course_comment?code=${courseCode}`, {
-        withCredentials: true
-      })
+    await api
+      .fetchUserCourseComment(courseCode)
       .then(response => {
         return dispatch({
           type: actionTypes.FETCH_USER_COURSE_COMMENT_SUCCESS,
@@ -346,8 +328,8 @@ export function fetchUserSchedule() {
     dispatch({
       type: actionTypes.FETCH_USER_SCHEDULE_REQUESTED
     });
-    await axios
-      .get(`${BASE_URL}/users/get_user_schedule`, { withCredentials: true })
+    await api
+      .fetchUserSchedule()
       .then(response => {
         return dispatch({
           type: actionTypes.FETCH_USER_SCHEDULE_SUCCESS,
@@ -368,10 +350,8 @@ export function updateSchedule(form: FormData) {
     dispatch({
       type: actionTypes.UPDATE_SCHEDULE_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/update_user_schedule`, form, {
-        withCredentials: true
-      })
+    await api
+      .updateSchedule(form)
       .then(response => {
         return dispatch({
           type: actionTypes.UPDATE_SCHEDULE_SUCCESS,
