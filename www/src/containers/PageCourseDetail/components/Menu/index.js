@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 
-import withRateCourseModal from "src/components/Modal/withRateCourseModal";
+// import withRateCourseModal from "src/components/Modal/withRateCourseModal";
 import Button from "antd/lib/button";
 // eslint-disable-next-line
 import Icon from "antd/lib/icon";
@@ -12,7 +12,8 @@ import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
 type Props = {
-  showRateCourseModal: () => void
+  // showRateCourseModal: () => void
+  showModal: () => void
 };
 
 class Menu extends React.PureComponent<Props> {
@@ -25,7 +26,7 @@ class Menu extends React.PureComponent<Props> {
           </div>
           <div className={styles.actions}>
             <div className={styles.action}>
-              <Button type="primary" onClick={this.props.showRateCourseModal}>
+              <Button type="primary" onClick={this.props.showModal}>
                 Rate the course
               </Button>
             </div>
@@ -34,7 +35,7 @@ class Menu extends React.PureComponent<Props> {
         <Button
           className={styles.roundButton}
           style={{ position: "fixed", display: "none" }}
-          onClick={this.props.showRateCourseModal}
+          onClick={this.props.showModal}
           type="primary"
           shape="circle"
           size="large"
@@ -45,4 +46,4 @@ class Menu extends React.PureComponent<Props> {
   }
 }
 
-export default withRateCourseModal(Menu);
+export default Menu;

@@ -10,7 +10,6 @@ import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-import withRateCourseModal from "src/components/Modal/withRateCourseModal";
 
 import {
   remove_trailing_newline,
@@ -26,7 +25,6 @@ import type {
   ExamSchedule as CourseExamSchedule
 } from "src/FlowType/courses";
 
-import * as styles from "./style.scss";
 import Menu from "./components/Menu";
 import CommentList from "./components/CommentList";
 import {
@@ -37,12 +35,14 @@ import {
   fetchCourseSchedule,
   fetchUserCourseComment,
   fetchExamSchedule,
-  popupTrigger
-} from "../redux/actions";
+  showModal
+} from "@redux/actions";
 
 import no from "src/assets/svgs/no.svg";
 import yes from "src/assets/svgs/yes.svg";
 import exam from "src/assets/svgs/exam.svg";
+
+import * as styles from "./style.scss";
 
 const NO_DESCRIPTION =
   "This course has no description. Sad to see this happened...";
@@ -52,7 +52,8 @@ const RATING_THRESHOLD = 0; // we don't set threshold - yet
 
 type Props = {
   // modal
-  showRateCourseModal: () => void,
+  showModal: (string, Object) => void,
+  hideModal: () => void,
   // from redux
   fetchCourseDetail: string => void,
   fetchCourseRating: string => void,
@@ -282,7 +283,13 @@ class PageCourseDetail extends React.Component<Props> {
           }
         />
         <NavBar />
-        <Menu />
+        <Menu
+          showModal={() =>
+            this.props.showModal("RATE_COURSE", {
+              courseCode: courseCode
+            })
+          }
+        />
         <div className={styles.content}>
           <div className={styles.section_a}>
             <div className={styles.heading}>
@@ -389,7 +396,11 @@ class PageCourseDetail extends React.Component<Props> {
                 Nobody has published their comments - so you can{" "}
                 <span
                   className={styles.beTheFirst}
-                  onClick={this.props.showRateCourseModal}
+                  onClick={() =>
+                    this.props.showModal("RATE_COURSE", {
+                      courseCode: courseCode
+                    })
+                  }
                 >
                   be the first one!
                 </span>
@@ -441,12 +452,13 @@ const mapDispatchToProps = dispatch => ({
   fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
   fetchUserCourseComment: courseCode =>
     dispatch(fetchUserCourseComment(courseCode)),
-  popupTrigger: option => dispatch(popupTrigger(option))
+  showModal: (modalType, modalProps) =>
+    dispatch(showModal(modalType, modalProps))
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRateCourseModal(PageCourseDetail))
+  )(PageCourseDetail)
 );

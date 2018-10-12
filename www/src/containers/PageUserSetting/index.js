@@ -77,7 +77,7 @@ class PageUserSetting extends React.Component<Props, States> {
   }
 }
 
-const mapDispatchToProps = dispatch => null;
+// const mapDispatchToProps = dispatch => null;
 
 const mapStateToProps = state => {
   const { user } = state;
@@ -87,6 +87,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
+  /* mapDispatchToProps */
 )(PageUserSetting);

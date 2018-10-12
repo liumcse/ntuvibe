@@ -4,7 +4,7 @@ import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { logPageview } from "src/tracking";
 
-import logo from "src/brand/logo-color.png";
+// import logo from "src/brand/logo-color.png";
 
 import * as styles from "./style.scss";
 

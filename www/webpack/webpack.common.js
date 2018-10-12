@@ -24,9 +24,11 @@ const config = {
   resolve: {
     alias: {
       src: SRC_PATH,
+      "@containers": SRC_PATH + "/containers",
       "@components": SRC_PATH + "/components",
       "@redux": SRC_PATH + "/redux",
-      "@assets": SRC_PATH + "/assets"
+      "@assets": SRC_PATH + "/assets",
+      "@tracking": SRC_PATH + "/tracking"
     }
   },
   module: {

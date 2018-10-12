@@ -1,12 +1,9 @@
 // @flow
 import React from "react";
-import { withRouter } from "react-router";
-import { connect } from "react-redux";
 import Alert from "antd/lib/alert";
 import Select from "antd/lib/select";
 import Input from "antd/lib/input";
 import Button from "antd/lib/button";
-import { submitCourseRating, fetchUserCourseComment } from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -16,14 +13,9 @@ const { TextArea } = Input;
 type Props = {
   visible: boolean,
   courseCode: string,
-  // from redux
   courseComment: Object,
   submitCourseRating: () => void,
-  courseRatingSubmission: Object,
-  // from router
-  match: Object,
-  location: Object,
-  history: Object
+  courseRatingSubmission: Object
 };
 
 class RatingForm extends React.Component<Props> {
@@ -40,11 +32,7 @@ class RatingForm extends React.Component<Props> {
   };
 
   submit = () => {
-    const {
-      match: {
-        params: { courseCode: courseCode }
-      }
-    } = this.props;
+    const { courseCode } = this.props;
     // validate
     const { easy, useful, like, comment } = this.state;
     if (easy === null || useful === null || like === null) {
@@ -64,7 +52,6 @@ class RatingForm extends React.Component<Props> {
       this.props.submitCourseRating(form).then(() => {
         const response = this.props.courseRatingSubmission;
         if (!response) {
-          alert("Something went wrong... Is your Internet alright?");
           this.setState({
             requested: false,
             showAlert: true,
@@ -198,7 +185,7 @@ class RatingForm extends React.Component<Props> {
           </Select>
         </div>
         <TextArea
-          placeholder="Your comment. This is optional (but highly appreciated!)"
+          placeholder="Your comment. Optional but highly appreciated!"
           value={this.state.comment}
           style={{ marginTop: "1rem" }}
           autosize={{ minRows: 3 }}
@@ -211,7 +198,7 @@ class RatingForm extends React.Component<Props> {
           <a target="_blank" href="/">
             stay anonymous
           </a>{" "}
-          🤡
+          👨‍💻
         </div>
         <div style={{ marginTop: "1rem", textAlign: "right" }}>
           <Button type="primary" onClick={this.submit}>
@@ -223,24 +210,19 @@ class RatingForm extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => {
-  const { course, user } = state;
-  return {
-    courseRatingSubmission: course && course.courseRatingSubmission,
-    courseComment: user && user.courseComment,
-    profile: user && user.profile
-  };
-};
+// const mapStateToProps = state => {
+//   const { course, user } = state;
+//   return {
+//     courseRatingSubmission: course && course.courseRatingSubmission,
+//     courseComment: user && user.courseComment,
+//     profile: user && user.profile
+//   };
+// };
 
-const mapDispatchToProps = dispatch => ({
-  submitCourseRating: courseRatingForm =>
-    dispatch(submitCourseRating(courseRatingForm)),
-  fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
-});
+// const mapDispatchToProps = dispatch => ({
+//   submitCourseRating: courseRatingForm =>
+//     dispatch(submitCourseRating(courseRatingForm)),
+//   fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
+// });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(RatingForm)
-);
+export default RatingForm;

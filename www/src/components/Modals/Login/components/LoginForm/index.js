@@ -1,12 +1,9 @@
 // @flow
 import React from "react";
-import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import Input from "antd/lib/input";
 import Icon from "antd/lib/icon";
 import Form from "antd/lib/form";
-import withSignUpModal from "../../../withSignUpModal";
-import { userLogin, fetchProfile } from "src/redux/actions";
 
 import "./style.scss";
 
@@ -30,7 +27,7 @@ class LoginForm extends React.Component<FormProps> {
 
   switchToSignUp = () => {
     this.props.showSignUpModal();
-    this.props.hideModal();
+    // this.props.hideModal();
   };
 
   handleSubmit = e => {
@@ -56,9 +53,10 @@ class LoginForm extends React.Component<FormProps> {
               alert(error_message);
               this.setState({ requested: false });
             } else {
-              this.setState({ succeed: true, requested: false });
+              this.setState({ succeed: true, requested: true });
               this.props.fetchProfile();
-              this.props.hideModal();
+              // this.props.hideModal();
+              setInterval(() => location.reload(), 1000);
             }
           }
         });
@@ -118,18 +116,4 @@ class LoginForm extends React.Component<FormProps> {
   }
 }
 
-export default Form.create()(
-  connect(
-    (state, props) => {
-      const { user } = state;
-      return {
-        hideModal: props.hideModal,
-        loginRequest: user && user.loginRequest
-      };
-    },
-    dispatch => ({
-      fetchProfile: () => dispatch(fetchProfile()),
-      userLogin: authForm => dispatch(userLogin(authForm))
-    })
-  )(withSignUpModal(LoginForm))
-);
+export default Form.create()(LoginForm);

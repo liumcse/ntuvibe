@@ -17,7 +17,7 @@ type FormProps = {
   userSignUp: () => void
 };
 
-class LoginForm extends React.Component<FormProps> {
+class SignUpForm extends React.Component<FormProps> {
   state = {
     visible: false,
     requested: false,
@@ -88,5 +88,5 @@ export default Form.create()(
     dispatch => ({
       userSignUp: form => dispatch(userSignUp(form))
     })
-  )(LoginForm)
+  )(SignUpForm)
 );

@@ -1,8 +1,6 @@
 // @flow
 import * as api from "src/api";
-import * as actionTypes from "./action_types";
-
-// import type { Action } from "src/FlowType/acitons";
+import * as actionTypes from "./actionTypes";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
@@ -380,15 +378,18 @@ export function clearCourseInformation() {
   };
 }
 
-export function popupTrigger(popup: 0 | 1 | 2 | 3) {
-  switch (popup) {
-    case 1:
-      return { type: actionTypes.POPUP_TRIGGER, payload: 1 };
-    case 2:
-      return { type: actionTypes.POPUP_TRIGGER, payload: 2 };
-    case 3:
-      return { type: actionTypes.POPUP_TRIGGER, payload: 3 };
-    default:
-      return { type: actionTypes.POPUP_TRIGGER, payload: 0 }; // close all
-  }
+export function showModal(modalType: string, modalProps: Object) {
+  return {
+    type: actionTypes.MODAL_SHOW,
+    payload: {
+      modalType,
+      modalProps
+    }
+  };
+}
+
+export function hideModal() {
+  return {
+    type: actionTypes.MODAL_HIDE
+  };
 }

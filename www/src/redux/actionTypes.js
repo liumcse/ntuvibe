@@ -78,5 +78,6 @@ export const FETCH_USER_SCHEDULE_REQUESTED = "FETCH_USER_SCHEDULE_REQUESTED";
 export const FETCH_USER_SCHEDULE_SUCCESS = "FETCH_USER_SCHEDULE_SUCCESS";
 export const FETCH_USER_SCHEDULE_FAILURE = "FETCH_USER_SCHEDULE_FAILURE";
 
-// ======================================================== POPUP
-export const POPUP_TRIGGER = "POPUP_TRIGGER";
+// ======================================================== MODAL
+export const MODAL_SHOW = "MODAL_SHOW";
+export const MODAL_HIDE = "MODAL_HIDE";

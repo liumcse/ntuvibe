@@ -3,20 +3,20 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import * as ROUTES from "./routes";
-import { logPageview } from "./tracking";
+import * as ROUTES from "src/routes";
+import { logPageview } from "src/tracking";
 import ReactGA from "react-ga";
-import Popups from "./components/Popups";
-import PageHome from "./PageHome/index";
-import PageCourseDetail from "./PageCourseDetail";
-import PageHelp from "./PageHelp";
-import PageTransient from "./PageTransient";
-import PageUserSetting from "./PageUserSetting";
-// import PageSignUp from "./PageSignUp";
-import PageSitemap from "./PageSitemap";
-import PageAbout from "./PageAbout";
-import PageScheduler from "./PageScheduler";
-import store from "./redux/store";
+import PageHome from "@containers/PageHome";
+import PageCourseDetail from "@containers/PageCourseDetail";
+import PageHelp from "@containers/PageHelp";
+import PageTransient from "@containers/PageTransient";
+import PageUserSetting from "@containers/PageUserSetting";
+// import PageSignUp from "@containers/PageSignUp";
+import PageSitemap from "@containers/PageSitemap";
+import PageAbout from "@containers/PageAbout";
+import PageScheduler from "@containers/PageScheduler";
+import ModalContainer from "@containers/ModalContainer";
+import store from "src/redux/store";
 
 import "./styles/app.scss";
 import "normalize.css";
@@ -30,8 +30,9 @@ class App extends React.PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <React.Fragment>
+        <React.Fragment>
+          <ModalContainer />
+          <Router>
             <Switch>
               <Route exact path={ROUTES.ROUTE_HOME} component={PageHome} />
               <Route
@@ -65,9 +66,8 @@ class App extends React.PureComponent {
               {/* fallback */}
               <Route path={"/"} component={PageHome} />
             </Switch>
-            <Popups />
-          </React.Fragment>
-        </Router>
+          </Router>
+        </React.Fragment>
       </Provider>
     );
   }
