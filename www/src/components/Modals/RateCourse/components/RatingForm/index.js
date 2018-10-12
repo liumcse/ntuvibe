@@ -49,8 +49,8 @@ class RatingForm extends React.Component<Props> {
       form.append("like", like.toString());
       form.append("useful", useful.toString());
       form.append("comment", comment);
-      this.props.submitCourseRating(form).then(() => {
-        const response = this.props.courseRatingSubmission;
+      this.props.submitCourseRating(form).then(response => {
+        console.log(response);
         if (!response) {
           this.setState({
             requested: false,

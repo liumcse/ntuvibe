@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://api.ntuvibe.com";
+axios.defaults.timeout = 10000;
 
 export function fetchCourseDetail(courseCode) {
   return axios.get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`);

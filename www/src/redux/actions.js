@@ -1,6 +1,7 @@
 // @flow
 import * as api from "src/api";
 import * as actionTypes from "./actionTypes";
+import { resolve } from "url";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
@@ -136,6 +137,7 @@ export function fetchCourseComments(courseCode: string) {
 
 export function submitCourseRating(courseRatingForm: FormData) {
   return async function(dispatch: any) {
+    console.log("Called");
     dispatch({
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
     });
@@ -147,12 +149,12 @@ export function submitCourseRating(courseRatingForm: FormData) {
           payload: response
         });
       })
-      .catch(error =>
-        dispatch({
+      .catch(error => {
+        return dispatch({
           type: actionTypes.SUBMIT_COURSE_RATING_FAILURE,
           payload: error.response
-        })
-      );
+        });
+      });
   };
 }
 

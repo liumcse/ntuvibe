@@ -190,9 +190,9 @@ const config = {
         useShortDoctype: true
       }
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: "async"
-    }),
+    // new ScriptExtHtmlWebpackPlugin({
+    //   defaultAttribute: "async"
+    // }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
