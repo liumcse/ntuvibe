@@ -1,12 +1,7 @@
 // @flow
 import { combineReducers } from "redux";
 import * as actionTypes from "./actionTypes";
-import type {
-  CourseState,
-  PopupState,
-  UserState,
-  State
-} from "src/FlowType/states";
+import type { CourseState, UserState, State } from "src/FlowType/states";
 import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
