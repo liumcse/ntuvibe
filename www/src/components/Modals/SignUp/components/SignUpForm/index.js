@@ -39,6 +39,7 @@ class SignUpForm extends React.Component<FormProps> {
           this.setState({ requested: false, succeed: true });
           alert("An activation Email has been sent to your inbox!");
           // TODO: handle exception
+          this.props.hideModal();
         });
       }
     });
