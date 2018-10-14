@@ -1,9 +1,14 @@
+// @flow
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
-import { popupTrigger, fetchProfile, userLogout } from "src/redux/actions";
+import {
+  popupTrigger,
+  fetchProfile,
+  userLogout,
+  showModal
+} from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo-color.png";
 import calendar from "./assets/calendar.svg";
@@ -25,7 +30,16 @@ const brand = (
   />
 );
 
-class NavBar extends React.Component {
+type Props = {
+  // from modal
+  showModal: () => void,
+  // from redux
+  profile: Object,
+  fetchProfile: () => void,
+  userLogout: () => void
+};
+
+class NavBar extends React.Component<Props> {
   componentDidMount() {
     this.props.fetchProfile();
   }
@@ -38,7 +52,6 @@ class NavBar extends React.Component {
   };
 
   render() {
-    const { popupTrigger } = this.props;
     const { profile } = this.props;
     return (
       <div className={styles.navbar_container}>
@@ -49,7 +62,10 @@ class NavBar extends React.Component {
             </Link>
           </div>
           {!profile ? (
-            <div className={styles.item} onClick={() => popupTrigger(1)}>
+            <div
+              className={styles.item}
+              onClick={() => this.props.showModal("LOGIN")}
+            >
               <img
                 src={login}
                 style={{
@@ -103,7 +119,7 @@ class NavBar extends React.Component {
             {!profile ? (
               <div
                 className={styles.rightButton}
-                onClick={() => popupTrigger(1)}
+                onClick={() => this.props.showModal("LOGIN")}
               >
                 <img
                   src={login}
@@ -134,13 +150,6 @@ class NavBar extends React.Component {
   }
 }
 
-NavBar.propTypes = {
-  profile: PropTypes.object,
-  popupTrigger: PropTypes.func.isRequired,
-  fetchProfile: PropTypes.func.isRequired,
-  userLogout: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => {
   const { user } = state;
   return {
@@ -151,7 +160,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   popupTrigger: option => dispatch(popupTrigger(option)),
   fetchProfile: () => dispatch(fetchProfile()),
-  userLogout: () => dispatch(userLogout())
+  userLogout: () => dispatch(userLogout()),
+  showModal: (modalType, modalProps) =>
+    dispatch(showModal(modalType, modalProps))
 });
 
 export default connect(

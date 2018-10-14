@@ -1,12 +1,7 @@
 // @flow
 import { combineReducers } from "redux";
-import * as actionTypes from "./action_types";
-import type {
-  CourseState,
-  PopupState,
-  UserState,
-  State
-} from "src/FlowType/states";
+import * as actionTypes from "./actionTypes";
+import type { CourseState, UserState, State } from "src/FlowType/states";
 import type { Action } from "src/FlowType/actions";
 
 const initialState: State = {
@@ -19,10 +14,9 @@ const initialState: State = {
     courseComments: null,
     examSchedule: null
   },
-  popup: {
-    loginOpen: false,
-    signUpOpen: false,
-    rateCourseOpen: false
+  modal: {
+    modalType: null,
+    modalProps: null
   },
   user: {
     profile: null,
@@ -228,37 +222,26 @@ const user = (state = initialState.user, action: Action): UserState => {
   }
 };
 
-const popup = (state = initialState.popup, action: Action): PopupState => {
+const modal = (state = initialState.modal, action: Action) => {
   const { type, payload } = action;
-  if (type === actionTypes.POPUP_TRIGGER) {
-    switch (payload) {
-      case 1:
-        // open Login
-        return {
-          ...initialState.popup,
-          loginOpen: true
-        };
-      case 2:
-        // open SignUp
-        return {
-          ...initialState.popup,
-          signUpOpen: true
-        };
-      case 3:
-        // open RateCourse
-        return {
-          ...initialState.popup,
-          rateCourseOpen: true
-        };
-      default:
-        // close all
-        return initialState.popup;
-    }
-  } else {
-    return state;
+  switch (type) {
+    case actionTypes.MODAL_SHOW:
+      return {
+        ...state,
+        modalType: payload.modalType,
+        modalProps: payload.modalProps
+      };
+    case actionTypes.MODAL_HIDE:
+      return {
+        ...state,
+        modalType: null,
+        modalProps: null
+      };
+    default:
+      return state;
   }
 };
 
-const rootReducer = combineReducers({ course, popup, user });
+const rootReducer = combineReducers({ course, user, modal });
 
 export default rootReducer;

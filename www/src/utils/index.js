@@ -42,7 +42,6 @@ export function cap_first_letter(input: string): string {
   if (input === "" || !input) return "";
   const splittedString = input.split(" ");
   if (!splittedString || splittedString === undefined) return "";
-  console.log(splittedString);
   const loweredString = splittedString.map(
     (word: string) =>
       ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"].includes(

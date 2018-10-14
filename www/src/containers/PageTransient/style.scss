@@ -1,0 +1,57 @@
+@import '_functions';
+@import '_typography';
+@import '_colors';
+
+:local {
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  .header {
+    margin-top: 0 ;
+  }
+  .innerContainer {
+    margin: 2rem;
+    padding: 1.5rem 3rem;
+    width: 50%;
+    @include medium-shadow;
+  }
+  .inputs {
+    width: 80%;
+    text-align: center;
+    input {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      background-size: 1.5rem 1.5rem;
+      background-repeat: no-repeat;
+      background-position: 0.75rem 0.75rem; 
+      @include medium-shadow;
+      height: 3rem;
+      padding: 12px 3rem;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      opacity: 0.8;  
+    }
+    .email {
+      background-image: url('../assets/svgs/email.svg');
+    }
+    .password {
+      background-image: url('../assets/svgs/password.svg');
+    }
+    .username {
+      background-image: url('../assets/svgs/user.svg');
+    }
+    .major {
+      background-image: url('../assets/svgs/major.svg');
+    }
+  }
+  .hint {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: $text-hint;
+    font-size: 0.9rem;
+  }
+}

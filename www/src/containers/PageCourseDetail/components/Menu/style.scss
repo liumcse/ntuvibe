@@ -1,0 +1,72 @@
+@import '_colors';
+@import '_functions';
+
+:local {
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    color: white;
+    @include disable-select;
+
+    &::after {
+      box-shadow: inset 0px 4px 8px -3px rgba(17, 17, 17, .06);
+      bottom: -5px;
+      content: "";
+      height: 5px;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  .search {
+    width: calc(50% - 6rem);
+    margin: 0 6rem;
+    margin-right: 0;
+  }
+
+  .actions {
+    // width: 100%;
+    display: flex;
+    // justify-content: center;
+    justify-content: flex-end;
+    margin-left: 3rem;
+    margin-right: 6rem;
+  }
+
+  // the following part adopts material design
+  .action {
+    margin: 0.75rem;
+  }
+
+  .roundButton {
+    right: 1rem;
+    bottom: 2rem;
+    z-index: 99;
+    @include medium-shadow;
+  }
+
+  @media (max-width: 768px) {
+    .actions {
+      display: none;
+    }
+
+    .roundButton {
+      display: inline !important;
+    }
+
+    .search {
+      width: 100%;
+      margin: 0;
+      padding: 0 1rem;
+      margin: 0.5rem 0;
+    }
+  }
+}
