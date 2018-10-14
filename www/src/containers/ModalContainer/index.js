@@ -49,13 +49,13 @@ const ModalContainer = props => {
 };
 
 const mapStateToProps = state => {
-  const { modal, user } = state;
+  const { modal, user, course } = state;
   return {
     modalType: modal && modal.modalType,
     modalProps: modal && modal.modalProps, // for future use if need to pass props
     courseComment: user && user.courseComment,
-    courseRatingSubmission: user && user.courseRatingSubmission,
-    loginRequest: user && user.loginRequest
+    loginRequest: user && user.loginRequest,
+    courseRatingSubmission: course && course.courseRatingSubmission
   };
 };
 

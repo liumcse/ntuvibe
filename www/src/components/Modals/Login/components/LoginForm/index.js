@@ -55,8 +55,7 @@ class LoginForm extends React.Component<FormProps> {
             } else {
               this.setState({ succeed: true, requested: true });
               this.props.fetchProfile();
-              // this.props.hideModal();
-              setInterval(() => location.reload(), 1000);
+              location.reload(); // refresh immediately
             }
           }
         });

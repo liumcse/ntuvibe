@@ -11,7 +11,6 @@ import PageCourseDetail from "@containers/PageCourseDetail";
 import PageHelp from "@containers/PageHelp";
 import PageTransient from "@containers/PageTransient";
 import PageUserSetting from "@containers/PageUserSetting";
-// import PageSignUp from "@containers/PageSignUp";
 import PageSitemap from "@containers/PageSitemap";
 import PageAbout from "@containers/PageAbout";
 import PageScheduler from "@containers/PageScheduler";

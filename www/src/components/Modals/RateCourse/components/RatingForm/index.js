@@ -49,8 +49,8 @@ class RatingForm extends React.Component<Props> {
       form.append("like", like.toString());
       form.append("useful", useful.toString());
       form.append("comment", comment);
-      this.props.submitCourseRating(form).then(response => {
-        console.log(response);
+      this.props.submitCourseRating(form).then(() => {
+        const response = this.props.courseRatingSubmission;
         if (!response) {
           this.setState({
             requested: false,
@@ -209,20 +209,5 @@ class RatingForm extends React.Component<Props> {
     );
   }
 }
-
-// const mapStateToProps = state => {
-//   const { course, user } = state;
-//   return {
-//     courseRatingSubmission: course && course.courseRatingSubmission,
-//     courseComment: user && user.courseComment,
-//     profile: user && user.profile
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   submitCourseRating: courseRatingForm =>
-//     dispatch(submitCourseRating(courseRatingForm)),
-//   fetchUserCourseComment: () => dispatch(fetchUserCourseComment())
-// });
 
 export default RatingForm;

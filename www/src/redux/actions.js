@@ -137,7 +137,6 @@ export function fetchCourseComments(courseCode: string) {
 
 export function submitCourseRating(courseRatingForm: FormData) {
   return async function(dispatch: any) {
-    console.log("Called");
     dispatch({
       type: actionTypes.SUBMIT_COURSE_RATING_REQUESTED
     });
