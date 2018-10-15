@@ -34,7 +34,7 @@ def user_exists_by_email(email):
 	return bool(get_user_by_email(email=email))
 
 
-def create_or_update_user_by_email(email, username, password=None, is_active=True):
+def create_or_update_user_by_email(email, username=None, password=None, is_active=True):
 	user = get_user_by_email(email=email)
 	if user:
 		if username:

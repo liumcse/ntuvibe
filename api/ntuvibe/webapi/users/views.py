@@ -70,12 +70,12 @@ def reset_password(request):
 	params = request.POST
 	email = params.get("email", None)
 	token = params.get("token", None)
-	newPassword = params.get("newPassword", None)
-	if not all([email, token, newPassword]):
+	password = params.get("password", None)
+	if not all([email, token, password]):
 		raise Exception(StatusCode.MISSING_PARAMETER)
 	cache_manager.ensure_valid_email_password_reset_token(email, token)
 
-	user = user_manager.create_or_update_user_by_email(email=email, username=username, password=newPassword, is_active=True)
+	user = user_manager.create_or_update_user_by_email(email=email, password=password, is_active=True)
 	cache_manager.remove_password_reset_token_from_cache(email=email)
 
 
