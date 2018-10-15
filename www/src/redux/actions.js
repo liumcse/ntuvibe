@@ -184,10 +184,7 @@ export function validatePasswordReset(token: string, email: string) {
     dispatch({
       type: actionTypes.VALIDATE_PASSWORD_RESET_REQUESTED
     });
-    await axios
-      .get(
-        `${BASE_URL}/users/check_reset_password_link?token=${token}&email=${email}`
-      )
+    await api.validatePasswordReset
       .then(response =>
         dispatch({
           type: actionTypes.VALIDATE_PASSWORD_RESET_SUCCESS,
@@ -230,8 +227,8 @@ export function userResetPassword(form: FormData) {
     dispatch({
       type: actionTypes.USER_PASSWORD_RESET_REQUESTED
     });
-    await axios
-      .post(`${BASE_URL}/users/reset_password`, form)
+    await api
+      .userResetPassword(form)
       .then(response => {
         return dispatch({
           type: actionTypes.USER_PASSWORD_RESET_SUCCESS,
