@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import * as ROUTES from "src/routes";
 import { logPageview } from "src/tracking";
 import ReactGA from "react-ga";
+import PageResetPassword from "@containers//PageResetPassword";
 import PageHome from "@containers/PageHome";
 import PageCourseDetail from "@containers/PageCourseDetail";
 import PageHelp from "@containers/PageHelp";
@@ -44,6 +45,11 @@ class App extends React.PureComponent {
                 exact
                 path={ROUTES.ROUTE_CREATE_ACCOUNT}
                 component={PageTransient}
+              />
+              <Route
+                exact
+                path={ROUTES.ROUTE_RESET_PASSWORD}
+                component={PageResetPassword}
               />
               <Route
                 exact
