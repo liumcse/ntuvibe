@@ -179,6 +179,30 @@ export function validateActivation(token: string, email: string) {
   };
 }
 
+export function validatePasswordReset(token: string, email: string) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.VALIDATE_PASSWORD_RESET_REQUESTED
+    });
+    await axios
+      .get(
+        `${BASE_URL}/users/check_reset_password_link?token=${token}&email=${email}`
+      )
+      .then(response =>
+        dispatch({
+          type: actionTypes.VALIDATE_PASSWORD_RESET_SUCCESS,
+          payload: response.data
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: actionTypes.VALIDATE_PASSWORD_RESET_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function userActivate(form: FormData) {
   return async function(dispatch: any) {
     dispatch({
@@ -195,6 +219,28 @@ export function userActivate(form: FormData) {
       .catch(error =>
         dispatch({
           type: actionTypes.USER_ACTIVATE_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
+export function userResetPassword(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_PASSWORD_RESET_REQUESTED
+    });
+    await axios
+      .post(`${BASE_URL}/users/reset_password`, form)
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_PASSWORD_RESET_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_PASSWORD_RESET_FAILURE,
           payload: error.response
         })
       );

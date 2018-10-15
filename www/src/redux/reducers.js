@@ -182,6 +182,16 @@ const user = (state = initialState.user, action: Action): UserState => {
         ...state,
         validation: payload.data
       };
+    case actionTypes.VALIDATE_PASSWORD_RESET_SUCCESS:
+      return {
+        ...state,
+        passwordResetValidation: payload
+      };
+    case actionTypes.VALIDATE_PASSWORD_RESET_FAILURE:
+      return {
+        ...state,
+        passwordResetValidation: payload.data
+      };
     case actionTypes.USER_ACTIVATE_SUCCESS:
       return {
         ...state,
@@ -191,6 +201,16 @@ const user = (state = initialState.user, action: Action): UserState => {
       return {
         ...state,
         activation: payload.data
+      };
+    case actionTypes.USER_PASSWORD_RESET_SUCCESS:
+      return {
+        ...state,
+        passwordReset: payload.data
+      };
+    case actionTypes.USER_PASSWORD_RESET_FAILURE:
+      return {
+        ...state,
+        passwordReset: payload.data
       };
     case actionTypes.SAVE_SCHEDULE:
       return {
