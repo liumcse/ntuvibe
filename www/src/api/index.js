@@ -59,6 +59,10 @@ export function userResetPassword(form) {
   return axios.post(`${BASE_URL}/users/reset_password`, form);
 }
 
+export function userRequestPasswordReset(form) {
+  return axios.post(`${BASE_URL}/users/request_password_reset`, form);
+}
+
 export function userLogin(authForm) {
   return axios.post(`${BASE_URL}/users/login`, authForm, {
     withCredentials: true

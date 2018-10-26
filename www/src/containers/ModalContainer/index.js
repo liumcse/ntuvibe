@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import RateCourse from "@components/Modals/RateCourse";
 import Login from "@components/Modals/Login";
 import SignUp from "@components/Modals/SignUp";
+import PasswordReset from "@components/Modals/PasswordReset";
 import {
   showModal,
   hideModal,
   submitCourseRating,
   fetchProfile,
   userLogin,
-  userSignUp
+  userSignUp,
+  userRequestPasswordReset
 } from "@redux/actions";
 
 const ModalContainer = props => {
@@ -23,6 +25,7 @@ const ModalContainer = props => {
           fetchProfile={props.fetchProfile}
           userLogin={props.userLogin}
           showSignUpModal={() => props.showModal("SIGN_UP")}
+          showPasswordResetModal={() => props.showModal("PASSWORD_RESET")}
         />
       );
     case "RATE_COURSE":
@@ -35,12 +38,20 @@ const ModalContainer = props => {
           courseRatingSubmission={props.courseRatingSubmission}
         />
       );
-    case "SIGN_UP":
+      case "SIGN_UP":
       return (
         <SignUp
           {...props.modalProps}
           hideModal={props.hideModal}
           userSignUp={props.userSignUp}
+        />
+      );
+      case "PASSWORD_RESET":
+      return (
+        <PasswordReset
+          {...props.modalProps}
+          hideModal={props.hideModal}
+          userRequestPasswordReset={props.userRequestPasswordReset}
         />
       );
     default:

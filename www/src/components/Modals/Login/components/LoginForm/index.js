@@ -13,6 +13,7 @@ type FormProps = {
   form: any,
   loginRequest: Object,
   showSignUpModal: () => void,
+  showPasswordResetModal: () => void,
   hideModal: () => void,
   fetchProfile: () => void,
   userLogin: () => void
@@ -27,6 +28,11 @@ class LoginForm extends React.Component<FormProps> {
 
   switchToSignUp = () => {
     this.props.showSignUpModal();
+    // this.props.hideModal();
+  };
+
+  switchToPasswordReset = () => {
+    this.props.showPasswordResetModal();
     // this.props.hideModal();
   };
 
@@ -98,9 +104,9 @@ class LoginForm extends React.Component<FormProps> {
           <a onClick={this.switchToSignUp} href="#">
             Create one
           </a>
-          {/* <a className="login-form-forgot" href="">
+          <a className="login-form-forgot" onClick={this.switchToPasswordReset} href="#">
             Forgot password
-          </a> */}
+          </a>
           <Button
             disabled={this.state.requested}
             type="primary"

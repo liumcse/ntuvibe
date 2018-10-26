@@ -244,6 +244,28 @@ export function userResetPassword(form: FormData) {
   };
 }
 
+export function userRequestPasswordReset(form: FormData) {
+  return async function(dispatch: any) {
+    dispatch({
+      type: actionTypes.USER_PASSWORD_RESET_REQUESTED
+    });
+    await api
+      .userRequestPasswordReset(form)
+      .then(response => {
+        return dispatch({
+          type: actionTypes.USER_PASSWORD_RESET_SUCCESS,
+          payload: response
+        });
+      })
+      .catch(error =>
+        dispatch({
+          type: actionTypes.USER_PASSWORD_RESET_FAILURE,
+          payload: error.response
+        })
+      );
+  };
+}
+
 export function userLogin(authForm: FormData) {
   return async function(dispatch: any) {
     dispatch({
