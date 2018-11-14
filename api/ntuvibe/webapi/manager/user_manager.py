@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 
-from .cache_manager import generate_activation_token
+from .cache_manager import generate_and_register_activation_token, generate_and_register_password_reset_token
 from .system_manager import get_all_reserved_words, get_all_censored_words
 from webapi.constants import StatusCode, VALID_EMAIL_DOMAIN
 
@@ -30,11 +30,15 @@ def get_username_by_email(email):
 		return user.username
 	return None
 
+def user_exists_by_email(email):
+	return bool(get_user_by_email(email=email))
 
-def create_or_update_user_by_email(email, username, password=None, is_active=True):
+
+def create_or_update_user_by_email(email, username=None, password=None, is_active=True):
 	user = get_user_by_email(email=email)
 	if user:
-		user.username = username
+		if username:
+			user.username = username
 		if password:
 			user.set_password(password)
 		user.is_active = is_active
@@ -56,19 +60,44 @@ def update_user_profile(user, **kwargs):
 
 # ========== logic related ==========
 
+def send_email_from_template(subject, from_email, to, template, **kwargs):
+	message = render_to_string(template, kwargs)
+	send_mail(subject, message, from_email, to, html_message=message)
+
 def _send_activate_account_email(email, token):
 	subject = "Welcome to NTUVibe - Account Activation"
 	to = [email]
 	from_email = 'ntuvibe@gmail.com'
 
 	formatted_email = email.replace("@", "&").replace(".", "!")
-	message = render_to_string('users/activate_account.html', {"email": formatted_email, 'token': token})
-	send_mail(subject, message, from_email, to, html_message=message)
+	send_email_from_template(
+		subject=subject,
+		from_email=from_email,
+		to=to,
+		template='users/activate_account.html',
+		email=formatted_email,
+		token=token)
+
+def _send_reset_password_email(email, token):
+	subject = "NTUVibe - Password Reset"
+	to = [email]
+	from_email = 'ntuvibe@gmail.com'
+
+	formatted_email = email.replace("@", "&").replace(".", "!")
+	send_email_from_template(
+		subject=subject,
+		from_email=from_email,
+		to=to,
+		template='users/reset_password.html',
+		email=formatted_email,
+		token=token)
 
 
 def register_email(email):
-	_send_activate_account_email(email=email, token=generate_activation_token(email=email))
+	_send_activate_account_email(email=email, token=generate_and_register_activation_token(email=email))
 
+def reset_password_email(email):
+	_send_reset_password_email(email=email, token=generate_and_register_password_reset_token(email=email))
 
 def prepare_profile_data(user):
 	return {
@@ -108,8 +137,11 @@ def ensure_valid_email_format(email):
 
 
 def ensure_unique_email(email):
-	user_with_same_email = get_user_by_email(email)
-	if user_with_same_email:
+	if user_exists_by_email(email):
+		raise Exception(StatusCode.DUPLICATE_EMAIL)
+
+def ensure_existing_email(email):
+	if not user_exists_by_email(email):
 		raise Exception(StatusCode.DUPLICATE_EMAIL)
 
 

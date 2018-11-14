@@ -117,6 +117,14 @@ CACHES = {
 		},
 		"KEY_PREFIX": "course_vacancy"
 	},
+	"password_reset_token": {
+		"BACKEND": "django_redis.cache.RedisCache",
+		"LOCATION": "redis://127.0.0.1:6379/4",
+		"OPTIONS": {
+			"CLIENT_CLASS": "django_redis.client.DefaultClient",
+		},
+		"KEY_PREFIX": "password_reset_token"
+	},
 }
 
 

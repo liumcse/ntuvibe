@@ -45,8 +45,22 @@ export function validateActivation(token, email) {
   );
 }
 
+export function validatePasswordReset(token, email) {
+  return axios.get(
+    `${BASE_URL}/users/check_reset_password_link?token=${token}&email=${email}`
+  );
+}
+
 export function userActivate(form) {
   return axios.post(`${BASE_URL}/users/activate`, form);
+}
+
+export function userResetPassword(form) {
+  return axios.post(`${BASE_URL}/users/reset_password`, form);
+}
+
+export function userRequestPasswordReset(form) {
+  return axios.post(`${BASE_URL}/users/request_password_reset`, form);
 }
 
 export function userLogin(authForm) {

@@ -45,6 +45,39 @@ def user_activate(request):
 	login(request, user)
 	cache_manager.remove_activation_token_from_cache(email=email)
 
+@api_response()
+def user_request_password_reset(request):
+	params = request.POST
+	email = params.get("email", None)
+	if email is None:
+		raise Exception(StatusCode.MISSING_PARAMETER)
+	user_manager.ensure_valid_email_format(email=email)
+	# only send an email when a user with this email exists
+	if user_manager.user_exists_by_email(email):
+		user_manager.reset_password_email(email)
+
+@api_response()
+def check_reset_password_link(request):
+	params = request.GET
+	email = params.get("email", None)
+	token = params.get("token", None)
+	if not all([email, token]):
+		raise Exception(StatusCode.MISSING_PARAMETER)
+	cache_manager.ensure_valid_email_password_reset_token(email, token)
+
+@api_response()
+def reset_password(request):
+	params = request.POST
+	email = params.get("email", None)
+	token = params.get("token", None)
+	password = params.get("password", None)
+	if not all([email, token, password]):
+		raise Exception(StatusCode.MISSING_PARAMETER)
+	cache_manager.ensure_valid_email_password_reset_token(email, token)
+
+	user = user_manager.create_or_update_user_by_email(email=email, password=password, is_active=True)
+	cache_manager.remove_password_reset_token_from_cache(email=email)
+
 
 @api_response()
 def user_login(request):

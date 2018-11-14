@@ -11,4 +11,7 @@ urlpatterns = [
 	path('update_user_profile', views.update_user_profile),
 	path('get_user_schedule', views.get_user_schedule),
 	path('update_user_schedule', views.update_user_schedule),
+	path('request_password_reset', views.user_request_password_reset),
+	path('check_reset_password_link', views.check_reset_password_link),
+	path('reset_password', views.reset_password),
 ]
