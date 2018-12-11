@@ -135,7 +135,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleEasyChange}
-            value={this.state.easy.toString()}
+            value={this.state.easy === 0 ? "0" : this.state.easy}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Easy
@@ -153,7 +153,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleUsefulChange}
-            value={this.state.useful.toString()}
+            value={this.state.useful === 0 ? "0" : this.state.useful}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Useful
@@ -171,7 +171,7 @@ class RatingForm extends React.Component<Props> {
           <Select
             style={{ width: "100%" }}
             onChange={this.handleLikeChange}
-            value={this.state.like.toString()}
+            value={this.state.like === 0 ? "0" : this.state.like}
           >
             <Option value="100" style={{ color: "#28a745" }}>
               Positive
