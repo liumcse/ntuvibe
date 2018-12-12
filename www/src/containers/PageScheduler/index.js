@@ -183,7 +183,7 @@ class PageScheduler extends React.Component<Props> {
               <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
               </div>{" "}
-              <div
+              {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
                 data-layout="button_count"
@@ -191,7 +191,7 @@ class PageScheduler extends React.Component<Props> {
                 data-size="large"
                 data-show-faces="false"
                 data-share="false"
-              />
+              /> */}
             </div>
             <div
               className={styles.instructionContainer}

@@ -104,7 +104,11 @@ class LoginForm extends React.Component<FormProps> {
           <a onClick={this.switchToSignUp} href="#">
             Create one
           </a>
-          <a className="login-form-forgot" onClick={this.switchToPasswordReset} href="#">
+          <a
+            className="login-form-forgot"
+            onClick={this.switchToPasswordReset}
+            href="#"
+          >
             Forgot password
           </a>
           <Button
