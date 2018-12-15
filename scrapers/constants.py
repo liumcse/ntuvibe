@@ -6,8 +6,8 @@ CLASS_SCHEDULE_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE
 
 EXAM_SCHEDULE_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/exam_timetable_und.MainSubmit"
 EXAM_SCHEDULE_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/exam_timetable_und.Get_detail"
-
-EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE = "3"
+EXAM_SCHEDULE_SEMESTER_VALUE_1 = "3"
+EXAM_SCHEDULE_SEMESTER_VALUE_2 = "100"
 
 COURSE_VACANCIES_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_vacancy.check_vacancy2"
 
@@ -68,3 +68,5 @@ NULL_TD_VALUE = '\xa0'
 INDEX_VACANCIES_INDEX = 0
 INDEX_VACANCIES_VACANCIES = 1
 INDEX_VACANCIES_WAITLIST = 2
+
+VALID_COURSE_NUMBER_LOWER_BOUND = 200
