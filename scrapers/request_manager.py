@@ -47,6 +47,12 @@ def get_exam_schedule_main_html():
 
 
 def get_exam_schedule_detail_html(academic_year, semester):
+	if semester == "1":
+		useful_semester_value = EXAM_SCHEDULE_SEMESTER_VALUE_1
+	elif semester == "2":
+		useful_semester_value = EXAM_SCHEDULE_SEMESTER_VALUE_2
+	else:
+		raise Exception("Invalid Semester for Request!")
 	return get(
 		EXAM_SCHEDULE_DETAIL_URL,
 		p_exam_dt="",
@@ -56,7 +62,7 @@ def get_exam_schedule_detail_html(academic_year, semester):
 		p_venue="",
 		p_matric="",
 		academic_session="Semester %s Academic Year %s-%s" % (semester, int(academic_year), int(academic_year)+1),
-		p_plan_no=EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE,
+		p_plan_no=useful_semester_value,
 		p_exam_yr=academic_year,
 		p_semester=semester,
 		bOption="Next"

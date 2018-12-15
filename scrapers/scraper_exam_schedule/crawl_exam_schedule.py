@@ -1,20 +1,21 @@
 import re
 from bs4 import BeautifulSoup
-from scrapers.constants import EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE
 from scrapers import request_manager
 from scrapers.utils import write_json_file, get_date_time
+from scrapers.constants import VALID_COURSE_NUMBER_LOWER_BOUND
 
 
 def parse_latest_semester(main_site_html):
 
 	soup = BeautifulSoup(main_site_html, "html.parser")
-	latest_semester_input = soup.find("input", attrs={"name": "p_plan_no", "value": EXAM_SCHEDULE_USEFUL_SEMESTER_VALUE})
-	latest_semester_text = latest_semester_input.next_sibling  # "\nAY2018-19 SEM 1\n"
-
-	match = re.match("AY(\d{4})-\d{2} SEM (\d{1})", latest_semester_text.strip())
-	if match:
-		latest_academic_year = match.group(1)
-		latest_semester = match.group(2)
+	latest_semester_input = soup.find("input", attrs={"name": "p_plan_no"})
+	candidate_semesters_text = latest_semester_input.parent.get_text()  # "\nAY2018-19 SEM 1\n"
+	semester_pattern = "\nAY(\d{4})-\d{2} SEM (\d{1})\n"
+	candidate_semesters = re.findall(semester_pattern, candidate_semesters_text)
+	# e.g. candidate_semesters = [('2018', '1')]
+	# e.g. candidate_semesters = [('2018', '1'), ('2018', '2')]
+	if candidate_semesters:
+		latest_academic_year, latest_semester = max(candidate_semesters, key=lambda x: x[0]+x[1])
 	else:
 		raise Exception
 
@@ -25,16 +26,19 @@ def parse_exam_details(detail_html):
 
 	soup = BeautifulSoup(detail_html, "html.parser")
 
-	exam_detail_table = soup.find("div", attrs={"id": "ui_body_container"}).find_all("table")[1]
-	exam_detail_rows = exam_detail_table.find("tr").find_all("tr")[1:-1]
+	for exam_detail_table in soup.find("div", attrs={"id": "ui_body_container"}).find_all("table"):
+		if len(exam_detail_table.find_all("tr")) >= VALID_COURSE_NUMBER_LOWER_BOUND:
+			print("Large number of records found successfully!")
+			exam_detail_rows = exam_detail_table.find_all("tr")[1:-1]
 
-	global all_exam_details
-	for tr in exam_detail_rows:
-		course_code, exam_detail = parse_row(tr)
-		if not all_exam_details.get(course_code):
-			all_exam_details[course_code] = exam_detail
-		else:
-			raise Exception
+			global all_exam_details
+			for tr in exam_detail_rows:
+				course_code, exam_detail = parse_row(tr)
+				if not all_exam_details.get(course_code):
+					all_exam_details[course_code] = exam_detail
+				else:
+					raise Exception
+			break
 
 
 def parse_row(tr):
@@ -59,6 +63,7 @@ def crawl():
 	print(get_date_time())
 	main_site_html = request_manager.get_exam_schedule_main_html()
 	latest_academic_year, latest_semester = parse_latest_semester(main_site_html)
+	print(latest_academic_year + ";" + latest_semester)
 
 	detail_html = request_manager.get_exam_schedule_detail_html(latest_academic_year, latest_semester)
 	parse_exam_details(detail_html)
