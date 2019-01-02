@@ -89,7 +89,13 @@ class PageScheduler extends React.Component<Props> {
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
-    if (window.FB && typeof(window.FB) !== "undefined" && window.FB.XFBML && typeof(window.FB.XFBML) !== "undefined") window.FB.XFBML.parse();  // call this function to re-render FB-like button
+    if (
+      window.FB &&
+      typeof window.FB !== "undefined" &&
+      window.FB.XFBML &&
+      typeof window.FB.XFBML !== "undefined"
+    )
+      window.FB.XFBML.parse(); // call this function to re-render FB-like button
   }
 
   componentWillUnmount() {
@@ -124,8 +130,11 @@ class PageScheduler extends React.Component<Props> {
 
   downloadCalendar = () => {
     const { schedule } = this.props;
-    const icsContent = tools.generateICS(JSON.parse(schedule));
-    this.download(icsContent, "ClassSchedule.ics", "text/plain");
+    tools
+      .generateICS(JSON.parse(schedule))
+      .then(icsContent =>
+        this.download(icsContent, "ClassSchedule.ics", "text/plain")
+      );
     logCalendarDownload();
   };
 
