@@ -1,6 +1,8 @@
 // @flow
 // constants
+import { fetchExamSchedule } from "src/api";
 const ics = require("ics");
+
 // By calculation time offset is +8 Hours
 // Since I use UTC as standard time, hour and minutes is in Singapore timezone (UTC+8)
 // Since frontend JS is browser specific.
@@ -216,24 +218,26 @@ export function calculateAcademicWeek(): string {
 // download feature implementation
 // The ics API use UTC-8 as the only time source, hence we will use UTC time to calculate timezone.
 const dateCalculationForICS = (d, T) => {
-  const original = new Date(
-    parseInt(d.getFullYear(), 10),
-    parseInt(d.getMonth(), 10),
-    parseInt(d.getDate(), 10),
-    parseInt(T.slice(0, 2), 10),
-    parseInt(T.slice(2, 4), 10),
-    0,
-    0
-  ).getTime();
-  const calibrated = new Date(original + OFFSET);
-
-  return [
-    parseInt(calibrated.getFullYear(), 10),
-    parseInt(calibrated.getMonth(), 10) + 1,
-    parseInt(calibrated.getDate(), 10),
-    parseInt(calibrated.getHours(), 10),
-    parseInt(calibrated.getMinutes(), 10)
+  let generateArrayResult = src => [
+    parseInt(src.getFullYear(), 10),
+    parseInt(src.getMonth(), 10) + 1,
+    parseInt(src.getDate(), 10),
+    parseInt(src.getHours(), 10),
+    parseInt(src.getMinutes(), 10)
   ];
+  if (T) {
+    const original = new Date(
+      parseInt(d.getFullYear(), 10),
+      parseInt(d.getMonth(), 10),
+      parseInt(d.getDate(), 10),
+      parseInt(T.slice(0, 2), 10),
+      parseInt(T.slice(2, 4), 10),
+      0,
+      0
+    ).getTime();
+    const calibrated = new Date(original + OFFSET);
+    return generateArrayResult(calibrated);
+  } else return generateArrayResult(d);
 };
 
 const dateCalculationForCalendar = (d, T) => {
@@ -345,7 +349,6 @@ export function generateCalendarEvent(json: Object): Object[] {
         group,
         venue
       } = schedule;
-      // console.log(schedule);
       remark.forEach(week => {
         const calculatedTime =
           SEMESTER_START + week * WEEKTIME + WEEKDAY[day] * DAYTIME;
@@ -376,12 +379,10 @@ export function generateCalendarEvent(json: Object): Object[] {
   return events;
 }
 
-export function generateICS(targetJson) {
-  const JsonProcess = courseID => {
-    const course = targetJson[courseID];
-    // console.log("courseSchedule", course.schedule);
+export function generateICS(manifest) {
+  const courseTimeGenerator = courseID => {
+    const course = manifest[courseID];
     const scheduleList = mergeSchedule(course.schedule);
-    // console.log("scheduleList", scheduleList);
     scheduleList.forEach(classOfCourse => {
       if (classOfCourse !== null)
         classOfCourse.remark.forEach(weekCount => {
@@ -415,9 +416,23 @@ export function generateICS(targetJson) {
         });
     });
   };
+  const examTimeGenerator = courseID => {
+    fetchExamSchedule(courseID).then(response => {
+      const event = {
+        start: dateCalculationForICS(new Date(response.start_time * 1000)),
+        end: dateCalculationForICS(new Date(response.end_time * 1000)),
+        title: "Exam: " + courseID,
+        description: courseID + " Examination",
+        categories: ["NTU exam"],
+        status: "CONFIRMED"
+      };
+      serialEvent.push(event);
+    });
+  };
 
   let serialEvent = [];
-  Object.keys(targetJson).forEach(JsonProcess);
+  Object.keys(manifest).forEach(courseTimeGenerator);
+  Object.keys(manifest).forEach(examTimeGenerator);
   const { error, value } = ics.createEvents(serialEvent);
   if (!error) return value;
   return null;
