@@ -9,6 +9,7 @@ django.setup()
 
 from webapi.models import *
 from scrapers.scraper_exam_schedule import crawl_exam_schedule
+from scrapers.constants import VALID_COURSE_NUMBER_LOWER_BOUND
 import datetime
 
 
@@ -36,5 +37,8 @@ def record_exam_schedule(course_code, exam_schedule):
 
 if __name__ == "__main__":
 	exam_schedules = crawl_exam_schedule.crawl()
-	for course_code, exam_schedule in exam_schedules.items():
-		record_exam_schedule(course_code, exam_schedule)
+	print("Number of exam schedules: " + str(len(exam_schedules.items())))
+	if len(exam_schedules.items()) >= VALID_COURSE_NUMBER_LOWER_BOUND:
+		ExamScheduleTab.objects.all().delete()
+		for course_code, exam_schedule in exam_schedules.items():
+			record_exam_schedule(course_code, exam_schedule)

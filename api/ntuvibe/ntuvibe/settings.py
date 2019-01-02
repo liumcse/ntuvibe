@@ -167,14 +167,11 @@ STATICFILES_DIRS = (
 )
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = (
-	"localhost:8080",
-	"127.0.0.1:8000",
-	"127.0.0.1:8080",
-	"ntuvibe.com",
-	"*ntuvibe.com"
+CORS_ORIGIN_REGEX_WHITELIST = (
+	r"^(https?://)?localhost:\d{4}$",
+	r"^(https?://)?127\.0\.0\.1:\d{4}$",
+	r"^(https?://)?([\w\-]+\.)?ntuvibe\.com$",
 )
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
