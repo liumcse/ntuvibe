@@ -26,6 +26,8 @@ import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 
+// DEBUG
+import * as api from "src/api";
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 const calendarIcon = (
@@ -68,7 +70,8 @@ class PageScheduler extends React.Component<Props> {
     super(props);
     this.state = {
       input: "",
-      calendarEvents: null
+      calendarEvents: null,
+      exam: {}
     };
   }
 
@@ -104,7 +107,7 @@ class PageScheduler extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.schedule !== this.props.schedule) {
+    if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
       this.generateCalendar(this.props.schedule);
     }
   }
@@ -129,9 +132,11 @@ class PageScheduler extends React.Component<Props> {
   };
 
   downloadCalendar = () => {
+    console.log(this.state.exam);
     const { schedule } = this.props;
+
     tools
-      .generateICS(JSON.parse(schedule))
+      .icsHelper(JSON.parse(schedule), this.state.exam)
       .then(icsContent =>
         this.download(icsContent, "ClassSchedule.ics", "text/plain")
       );
@@ -142,12 +147,13 @@ class PageScheduler extends React.Component<Props> {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
     this.props.saveSchedule(JSON.stringify(json)); // write to redux as string
+    api.saveSchedule(JSON.stringify(json)).then(console.log);
     logScheduleGeneration();
   };
 
   generateCalendar = schedule => {
     if (!schedule) return null;
-    const calendarEvents = tools.generateCalendarEvent(JSON.parse(schedule)); // get as string, parse to jSON
+    const calendarEvents = tools.calendarHelper(JSON.parse(schedule)); // get as string, parse to jSON
     this.setState({ calendarEvents: calendarEvents });
   };
 
