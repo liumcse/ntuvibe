@@ -27,8 +27,6 @@ import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 
-// DEBUG
-import * as api from "src/api";
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 const calendarIcon = (
@@ -109,7 +107,11 @@ class PageScheduler extends React.Component<Props> {
 
   componentDidUpdate(prevProps) {
     if (prevProps.schedule !== this.props.schedule) {
-      this.generateCalendar();
+      tools.examTime(this.props.schedule).then(exam =>
+        this.setState({ exam }, () => {
+          this.generateCalendar();
+        })
+      );
     }
   }
 
