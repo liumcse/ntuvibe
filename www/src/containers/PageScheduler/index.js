@@ -132,22 +132,17 @@ class PageScheduler extends React.Component<Props> {
   };
 
   downloadCalendar = () => {
-    console.log(this.state.exam);
     const { schedule } = this.props;
-
-    tools
-      .icsHelper(JSON.parse(schedule), this.state.exam)
-      .then(icsContent =>
-        this.download(icsContent, "ClassSchedule.ics", "text/plain")
-      );
+    let icsContent = tools.icsHelper(JSON.parse(schedule), this.state.exam);
+    this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
 
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
-    this.props.saveSchedule(JSON.stringify(json)); // write to redux as string
-    api.saveSchedule(JSON.stringify(json)).then(console.log);
+    this.props.saveSchedule(JSON.stringify(json));
+    tools.examTime(json).then(exam => this.setState({ exam }));
     logScheduleGeneration();
   };
 

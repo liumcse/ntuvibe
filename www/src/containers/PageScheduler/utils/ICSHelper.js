@@ -1,6 +1,5 @@
-import { ics } from "ics";
+import * as ics from "ics";
 import { OFFSET, SEMESTER_START, WEEKDAY, DAYTIME, WEEKTIME } from "./config";
-import { fetchExamSchedule } from "src/api";
 import { mergeSchedule } from "./config";
 
 // download feature implementation
@@ -28,9 +27,9 @@ const dateCalculationForICS = (d, T) => {
   } else return generateArrayResult(d);
 };
 
-export async function icsHelper(manifest) {
+export function icsHelper(schedule, exam) {
   const courseTimeGenerator = courseID => {
-    const course = manifest[courseID];
+    const course = schedule[courseID];
     const scheduleList = mergeSchedule(course.schedule);
     scheduleList.forEach(classOfCourse => {
       if (classOfCourse !== null)
@@ -66,29 +65,24 @@ export async function icsHelper(manifest) {
     });
   };
   const examTimeGenerator = async courseID => {
-    let response = await fetchExamSchedule(courseID);
-    const result = response.data.data;
-    if (result.start_time) {
-      const event = {
-        start: dateCalculationForICS(new Date(result.start_time * 1000)),
-        end: dateCalculationForICS(new Date(result.end_time * 1000)),
-        title: "Exam: " + courseID,
-        description: courseID + " Examination",
-        categories: ["NTU exam"],
-        location: "",
-        geo: { lat: 1.29027, lon: 103.851959 }, // TODO: change to constant
-        status: "CONFIRMED"
-      };
-      serialEvent.push(event);
-    }
-  };
-  const timeGenerator = async src => {
-    courseTimeGenerator(src);
-    await examTimeGenerator(src);
+    const src = exam[courseID];
+    const event = {
+      start: dateCalculationForICS(new Date(src.start_time * 1000)),
+      end: dateCalculationForICS(new Date(src.end_time * 1000)),
+      title: "Exam: " + courseID,
+      description: courseID + " Examination",
+      categories: ["NTU exam"],
+      location: "",
+      geo: { lat: 1.29027, lon: 103.851959 }, // TODO: change to constant
+      status: "CONFIRMED"
+    };
+    serialEvent.push(event);
   };
 
   let serialEvent = [];
-  await Promise.all(Object.keys(manifest).map(timeGenerator));
+  Object.keys(schedule).map(courseTimeGenerator);
+  Object.keys(exam).map(examTimeGenerator);
+  console.log(serialEvent);
   const { error, value } = ics.createEvents(serialEvent);
   if (!error) return value;
   return null;
