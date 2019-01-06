@@ -379,7 +379,7 @@ export function generateCalendarEvent(json: Object): Object[] {
   return events;
 }
 
-export function generateICS(manifest) {
+export async function generateICS(manifest) {
   const courseTimeGenerator = courseID => {
     const course = manifest[courseID];
     const scheduleList = mergeSchedule(course.schedule);
@@ -416,23 +416,30 @@ export function generateICS(manifest) {
         });
     });
   };
-  const examTimeGenerator = courseID => {
-    fetchExamSchedule(courseID).then(response => {
+  const examTimeGenerator = async courseID => {
+    let response = await fetchExamSchedule(courseID);
+    const result = response.data.data;
+    if (result.start_time) {
       const event = {
-        start: dateCalculationForICS(new Date(response.start_time * 1000)),
-        end: dateCalculationForICS(new Date(response.end_time * 1000)),
+        start: dateCalculationForICS(new Date(result.start_time * 1000)),
+        end: dateCalculationForICS(new Date(result.end_time * 1000)),
         title: "Exam: " + courseID,
         description: courseID + " Examination",
         categories: ["NTU exam"],
+        location: "",
+        geo: { lat: 1.29027, lon: 103.851959 }, // TODO: change to constant
         status: "CONFIRMED"
       };
       serialEvent.push(event);
-    });
+    }
+  };
+  const timeGenerator = async src => {
+    courseTimeGenerator(src);
+    await examTimeGenerator(src);
   };
 
   let serialEvent = [];
-  Object.keys(manifest).forEach(courseTimeGenerator);
-  Object.keys(manifest).forEach(examTimeGenerator);
+  await Promise.all(Object.keys(manifest).map(timeGenerator));
   const { error, value } = ics.createEvents(serialEvent);
   if (!error) return value;
   return null;
