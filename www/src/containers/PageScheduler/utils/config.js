@@ -148,7 +148,6 @@ export const mergeSchedule = scheduleList => {
       mergedSchedule.push(thisSchedule);
     }
   }
-  // console.log("merged", mergedSchedule);
   return mergedSchedule;
 };
 

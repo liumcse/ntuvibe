@@ -1,0 +1,21 @@
+@import "_colors";
+
+:local {
+  table {
+    margin-top: 20px;
+    color: grey;
+    text-align: center;
+  }
+  th,
+  td {
+    padding: 8px 30px;
+  }
+  th {
+    padding: 10px 30px;
+    background-color: #666;
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}

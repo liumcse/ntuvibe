@@ -20,7 +20,6 @@ export function calendarHelper(schedule, exam) {
   const events = [];
   const courseList = Object.keys(schedule);
   const examList = Object.keys(exam);
-  console.log("examList" + examList);
   let eventCategory = {};
   courseList.forEach((courseCode, index) => {
     eventCategory = { ...eventCategory, [courseCode]: index };

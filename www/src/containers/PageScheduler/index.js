@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
+import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "src/components/Footer";
 
@@ -152,7 +153,6 @@ class PageScheduler extends React.Component<Props> {
 
   generateCalendar = () => {
     if (!this.props.schedule || !this.state.exam) return null;
-    console.log(this.state.exam);
     const calendarEvents = tools.calendarHelper(
       JSON.parse(this.props.schedule),
       this.state.exam
@@ -288,6 +288,7 @@ class PageScheduler extends React.Component<Props> {
                 }}
               />
             </div>
+            {this.state.exam && <ExamSchedule exam={this.state.exam} />}
             <div
               className={styles.text.concat(" ").concat(styles.calendarHint)}
               style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
