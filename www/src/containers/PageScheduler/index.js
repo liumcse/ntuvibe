@@ -71,7 +71,7 @@ class PageScheduler extends React.Component<Props> {
     this.state = {
       input: "",
       calendarEvents: null,
-      exam: {}
+      exam: null
     };
   }
 
@@ -107,8 +107,8 @@ class PageScheduler extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
-      this.generateCalendar(this.props.schedule);
+    if (prevProps.schedule !== this.props.schedule) {
+      this.generateCalendar();
     }
   }
 
@@ -142,13 +142,21 @@ class PageScheduler extends React.Component<Props> {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
     this.props.saveSchedule(JSON.stringify(json));
-    tools.examTime(json).then(exam => this.setState({ exam }));
+    tools.examTime(json).then(exam =>
+      this.setState({ exam }, () => {
+        this.generateCalendar();
+      })
+    );
     logScheduleGeneration();
   };
 
-  generateCalendar = schedule => {
-    if (!schedule) return null;
-    const calendarEvents = tools.calendarHelper(JSON.parse(schedule)); // get as string, parse to jSON
+  generateCalendar = () => {
+    if (!this.props.schedule || !this.state.exam) return null;
+    console.log(this.state.exam);
+    const calendarEvents = tools.calendarHelper(
+      JSON.parse(this.props.schedule),
+      this.state.exam
+    );
     this.setState({ calendarEvents: calendarEvents });
   };
 

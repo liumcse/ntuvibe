@@ -6,9 +6,7 @@ export const examTime = async schedule => {
     Object.keys(schedule).map(async courseID => {
       let res = await fetchExamSchedule(courseID);
       let record = res.data.data;
-      let object = {};
-      object[courseID] = record;
-      if (record.start_time) Object.assign(result, object);
+      if (record.start_time) Object.assign(result, { [courseID]: record });
     })
   );
   return result;

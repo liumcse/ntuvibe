@@ -14,17 +14,19 @@ const dateCalculationForCalendar = (d, T) => {
   return new Date(original + OFFSET);
 };
 
-export function calendarHelper(json) {
-  if (!json) return [];
+export function calendarHelper(schedule, exam) {
+  if (!schedule) return [];
   let idCount = 0;
   const events = [];
-  const courseList = Object.keys(json);
+  const courseList = Object.keys(schedule);
+  const examList = Object.keys(exam);
+  console.log("examList" + examList);
   let eventCategory = {};
   courseList.forEach((courseCode, index) => {
     eventCategory = { ...eventCategory, [courseCode]: index };
   });
   courseList.forEach(courseCode => {
-    const course = json[courseCode];
+    const course = schedule[courseCode];
     let scheduleList = course.schedule;
     scheduleList = mergeSchedule(scheduleList);
     scheduleList.forEach(schedule => {
@@ -64,6 +66,17 @@ export function calendarHelper(json) {
       });
     });
   });
-
+  examList.forEach(courseCode => {
+    const examTime = exam[courseCode];
+    events.push({
+      id: idCount++,
+      title: courseCode,
+      type: "Exam",
+      group: "Examination",
+      allDay: false,
+      start: new Date(examTime.start_time * 1000),
+      end: new Date(examTime.end_time * 1000)
+    });
+  });
   return events;
 }
