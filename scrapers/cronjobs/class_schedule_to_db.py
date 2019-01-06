@@ -88,5 +88,8 @@ def record_class_schedule(course_code, class_schedule):
 
 if __name__ == "__main__":
 	class_schedules = crawl_class_schedule.crawl()
-	for course_code, class_schedule in class_schedules.items():
-		record_class_schedule(course_code, class_schedule)
+	print("Number of class schedules: " + str(len(class_schedules.items())))
+	if len(class_schedules.items()) >= VALID_COURSE_NUMBER_LOWER_BOUND:
+		ClassScheduleTab.objects.all().delete()
+		for course_code, class_schedule in class_schedules.items():
+			record_class_schedule(course_code, class_schedule)
