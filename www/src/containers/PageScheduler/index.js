@@ -106,7 +106,7 @@ class PageScheduler extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.schedule !== this.props.schedule) {
+    if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
       tools.examTime(this.props.schedule).then(exam =>
         this.setState({ exam }, () => {
           this.generateCalendar();

@@ -1,6 +1,7 @@
 import { fetchExamSchedule } from "src/api";
 
 export const examTime = async schedule => {
+  if (!schedule) return null;
   let result = {};
   await Promise.all(
     Object.keys(schedule).map(async courseID => {
