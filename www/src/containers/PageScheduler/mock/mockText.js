@@ -1,4 +1,4 @@
-Student Automated Registration System
+`Student Automated Registration System
 
 Check/Print Courses Registered for 2018-2019 Semester 2
 
@@ -40,3 +40,4 @@ TOTAL AU REGISTERED 22.0
 
 © 2001-2019 Nanyang Technological UniversityBack   | Close
 
+`;
