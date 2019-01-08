@@ -202,7 +202,17 @@ class PageScheduler extends React.Component<Props> {
             <div className={styles.headerContainer}>
               <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
-              </div>{" "}
+              </div>
+              {this.state.exam && (
+                <ExamSchedule
+                  exam={this.state.exam}
+                  trigger={
+                    <Button type="primary" className={styles.exam}>
+                      View Exam Schedule
+                    </Button>
+                  }
+                />
+              )}
               {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
@@ -231,7 +241,7 @@ class PageScheduler extends React.Component<Props> {
                 <div className={styles.picItem}>
                   <img src="/instruct_2.png" width="100%" />
                   <div>
-                    By simple copy & paste from{" "}
+                    By simple copy &amp; paste from{" "}
                     <a
                       href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
                       target="_blank"
@@ -290,7 +300,6 @@ class PageScheduler extends React.Component<Props> {
                 }}
               />
             </div>
-            {this.state.exam && <ExamSchedule exam={this.state.exam} />}
             <div
               className={styles.text.concat(" ").concat(styles.calendarHint)}
               style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
