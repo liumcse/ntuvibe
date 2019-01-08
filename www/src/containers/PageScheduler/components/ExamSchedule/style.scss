@@ -5,6 +5,7 @@
     margin-top: 20px;
     color: grey;
     text-align: center;
+    box-shadow: -1px -2px 2px #d2d3d290;
   }
   th,
   td {
@@ -12,10 +13,8 @@
   }
   th {
     padding: 10px 30px;
-    background-color: #666;
-    color: white;
   }
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #d3d2d390;
   }
 }
