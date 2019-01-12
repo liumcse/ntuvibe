@@ -27,7 +27,7 @@ class ExamSchedule extends React.Component<Props> {
         contentStyle={{
           padding: "0 !important",
           border: "red solid 3px !important",
-          width: "40vw",
+          width: "50vw",
           borderRadius: "10px 10px 0 0",
           overflow: "hidden"
         }}
