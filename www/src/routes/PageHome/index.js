@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-
+import { THIS_YEAR } from "src/global";
 import Search from "src/components/Search";
 
 import * as styles from "./style.scss";
@@ -24,19 +24,18 @@ class PageHome extends React.PureComponent {
         {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
           <NavBar />
+          <div className={styles.bannerContainer}>
+            <a href="#">
+              <div>
+                <span style={{ color: "red" }}>2</span>
+                <span style={{ color: "darkviolet" }}>0</span>
+                <span style={{ color: "black" }}>1</span>
+                <span style={{ color: "green" }}>9</span>
+              </div>
+            </a>
+          </div>
           <div className={styles.searchContainer}>
             <Search theme={theme} />
-          </div>
-          <div className={styles.tip}>
-            <span className={styles.badge}>PRO TIP</span> Use{" "}
-            <span className={styles.emphasize}>ARROW</span> keys to navigate and
-            press <span className={styles.emphasize}>ENTER</span> to go to that
-            page 🚀
-          </div>
-          <div className={styles.tipM}>
-            <span className={styles.badge}>KICKSTART</span> Enter{" "}
-            <span className={styles.emphasize}>HE9091</span> and see what
-            happens 🚀
           </div>
           <div className={styles.fbLike}>
             <div
@@ -49,20 +48,20 @@ class PageHome extends React.PureComponent {
               data-share="false"
             />
             <div className={styles.fbPage}>
-              How can we do better? Tell us at{" "}
+              New year, new beginning. See{" "}
               <a
                 href="https://facebook.com/ntuvibe"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Facebook Page
+                what's new
               </a>
               !
             </div>
           </div>
           <div className={styles.footer}>
             <div className={styles.line}>
-              &copy; 2018 NTUVibe &#183; Stay cute
+              &copy; {THIS_YEAR} NTUVibe &#183; Stay cute
             </div>
             <div className={styles.line}>
               We&#39;re not affiliated with Nanyang Technological University.
@@ -77,7 +76,6 @@ class PageHome extends React.PureComponent {
               >
                 Blog
               </a>
-              {/* <Link to="/help">Help</Link> */}
               <a
                 href="https://facebook.com/ntuvibe"
                 target="_blank"
@@ -88,7 +86,11 @@ class PageHome extends React.PureComponent {
             </div>
             <div className={styles.credit}>
               Photo by{" "}
-              <a href="https://www.instagram.com/david_lequn_chen/">
+              <a
+                href="https://www.instagram.com/david_lequn_chen/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Chen Lequn
               </a>
             </div>

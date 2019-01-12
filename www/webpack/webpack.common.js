@@ -24,7 +24,7 @@ const config = {
   resolve: {
     alias: {
       src: SRC_PATH,
-      "@containers": SRC_PATH + "/containers",
+      "@routes": SRC_PATH + "/routes",
       "@components": SRC_PATH + "/components",
       "@redux": SRC_PATH + "/redux",
       "@assets": SRC_PATH + "/assets",
@@ -38,10 +38,6 @@ const config = {
         exclude: ["node_modules"],
         use: [{ loader: "babel-loader" }]
       },
-      // {
-      //   test: /\.svg$/,
-      //   use: ["@svgr/webpack"]
-      // },
       {
         test: [
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,

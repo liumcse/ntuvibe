@@ -7,7 +7,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.png');
+    // background: linear-gradient(45deg, rgba(8, 6, 20, 0.5), rgba(83, 160, 253, 0.5) 45%, rgba(225, 142, 7, 0.5)), url('./assets/background.png');
     background-size: cover;
     background-position: top;
     background-blend-mode: overlay;
@@ -23,14 +23,22 @@
     position: relative;
   }
 
+  .bannerContainer {
+    @include graduate;
+    @include disable-select;
+    margin-top: 8%;
+    font-size: 4rem;
+  }
+
   .searchContainer {
     width: 60%;
-    color: white;
-    margin-top: 15%;
+    // color: white;
+    // margin-top: 15%;
+    margin-top: 2rem;
   }
 
   .tip {
-    color: white;
+    // color: white;
     margin-top: 2rem;
     font-size: 0.85rem;
   }
@@ -69,7 +77,7 @@
     padding: 1rem 0.5rem;
     bottom: 0;
     // margin-top: 35%;
-    color: white;
+    // color: white;
     text-align: center;
     width: 100%;
     z-index: 1;
@@ -80,7 +88,7 @@
       display: block;
       a {
         margin: 0 1rem;
-        color: white;
+        // color: white;
         font-size: 0.65rem;
         text-decoration: underline;
       }
@@ -97,10 +105,10 @@
     margin-bottom: 6rem;
     .fbPage {
       margin-left: 1rem;
-      color: white;
+      // color: white;
       font-size: 0.85rem;
       a {
-        color: white;
+        // color: white;
         border-bottom: 1px dashed white;
       }
     }
@@ -111,7 +119,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    // color: white;
     .why {
       margin-left: 1rem;
       // background-color: #037bc1;
@@ -121,13 +129,14 @@
   }
 
   .credit {
+    display: none;
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 0.5rem 1.25rem;
+    padding: 0.3rem 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-radius: 10px;
     background: linear-gradient(140deg,#193b84 15%,#037bc1);
     color: white;

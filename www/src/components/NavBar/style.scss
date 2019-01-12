@@ -8,13 +8,9 @@
     align-items: center;
     width: 100%;
     height: 5rem;
-    // background-color: $primary;
-    background-color: rgba(250, 250, 250, 0.7);
-    // opacity: 1;
-    @include medium-shadow;
-    // z-index: 2;
+    // background-color: rgba(250, 250, 250, 0.7);
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
     @include disable-select;
-    // box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
   }
 
   .nav_button {
