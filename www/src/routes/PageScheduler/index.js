@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
+import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "src/components/Footer";
 
@@ -68,7 +69,8 @@ class PageScheduler extends React.Component<Props> {
     super(props);
     this.state = {
       input: "",
-      calendarEvents: null
+      calendarEvents: null,
+      exam: null
     };
   }
 
@@ -89,7 +91,13 @@ class PageScheduler extends React.Component<Props> {
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
-    if (window.FB && typeof(window.FB) !== "undefined" && window.FB.XFBML && typeof(window.FB.XFBML) !== "undefined") window.FB.XFBML.parse();  // call this function to re-render FB-like button
+    if (
+      window.FB &&
+      typeof window.FB !== "undefined" &&
+      window.FB.XFBML &&
+      typeof window.FB.XFBML !== "undefined"
+    )
+      window.FB.XFBML.parse(); // call this function to re-render FB-like button
   }
 
   componentWillUnmount() {
@@ -98,8 +106,12 @@ class PageScheduler extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.schedule !== this.props.schedule) {
-      this.generateCalendar(this.props.schedule);
+    if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
+      tools.examTime(JSON.parse(this.props.schedule)).then(exam =>
+        this.setState({ exam }, () => {
+          this.generateCalendar();
+        })
+      );
     }
   }
 
@@ -124,7 +136,7 @@ class PageScheduler extends React.Component<Props> {
 
   downloadCalendar = () => {
     const { schedule } = this.props;
-    const icsContent = tools.generateICS(JSON.parse(schedule));
+    let icsContent = tools.icsHelper(JSON.parse(schedule), this.state.exam);
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
@@ -132,13 +144,21 @@ class PageScheduler extends React.Component<Props> {
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
-    this.props.saveSchedule(JSON.stringify(json)); // write to redux as string
+    this.props.saveSchedule(JSON.stringify(json));
+    tools.examTime(json).then(exam =>
+      this.setState({ exam }, () => {
+        this.generateCalendar();
+      })
+    );
     logScheduleGeneration();
   };
 
-  generateCalendar = schedule => {
-    if (!schedule) return null;
-    const calendarEvents = tools.generateCalendarEvent(JSON.parse(schedule)); // get as string, parse to jSON
+  generateCalendar = () => {
+    if (!this.props.schedule || !this.state.exam) return null;
+    const calendarEvents = tools.calendarHelper(
+      JSON.parse(this.props.schedule),
+      this.state.exam
+    );
     this.setState({ calendarEvents: calendarEvents });
   };
 
@@ -182,7 +202,17 @@ class PageScheduler extends React.Component<Props> {
             <div className={styles.headerContainer}>
               {/* <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
-              </div>{" "} */}
+              </div>
+              {this.state.exam && (
+                <ExamSchedule
+                  exam={this.state.exam}
+                  trigger={
+                    <Button type="primary" className={styles.exam}>
+                      View Exam Schedule
+                    </Button>
+                  }
+                />
+              )}
               {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
@@ -211,7 +241,7 @@ class PageScheduler extends React.Component<Props> {
                 <div className={styles.picItem}>
                   <img src="/instruct_2.png" width="100%" />
                   <div>
-                    By simple copy & paste from{" "}
+                    By simple copy &amp; paste from{" "}
                     <a
                       href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
                       target="_blank"
