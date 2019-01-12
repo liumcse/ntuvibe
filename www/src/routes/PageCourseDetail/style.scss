@@ -12,9 +12,9 @@
   }
 
   .loading_placeholder {
-    @include medium-shadow;
-    color: rgb(235, 235, 235) !important;
-    background-color: rgb(235, 235, 235) !important;
+    // @include medium-shadow;
+    color: #f2f2f2 !important;
+    background-color: #f2f2f2 !important;
   }
 
   .content {

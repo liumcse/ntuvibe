@@ -180,9 +180,9 @@ class PageScheduler extends React.Component<Props> {
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
             <div className={styles.headerContainer}>
-              <div className={styles.header}>
+              {/* <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
-              </div>{" "}
+              </div>{" "} */}
               {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
