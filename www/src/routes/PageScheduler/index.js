@@ -21,16 +21,16 @@ import {
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-import calendar from "src/assets/svgs/calendar.svg";
+// import calendar from "src/assets/svgs/calendar.svg";
 import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-const calendarIcon = (
-  <img src={calendar} style={{ height: "1.5rem", width: "1.5rem" }} />
-);
+// const calendarIcon = (
+//   <img src={calendar} style={{ height: "1.5rem", width: "1.5rem" }} />
+// );
 
 // today
 const TODAY = new Date();

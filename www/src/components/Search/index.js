@@ -4,6 +4,7 @@ import React from "react";
 import Autosuggest from "react-autosuggest";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { Spin, Icon } from "antd";
 
 import { fetchCourseList } from "src/redux/actions";
 import {
@@ -46,6 +47,13 @@ class Search extends React.Component<Props, States> {
     window.addEventListener("keydown", this.keydownEvent);
   }
 
+  componentDidUpdate() {
+    // this.setState({
+    //   isLoading:
+    //     this.props.courseList === null || this.props.courseList.length === 0
+    // });
+  }
+
   componentWillUnmount() {
     window.removeEventListener("keydown", this.keydownEvent);
   }
@@ -67,13 +75,13 @@ class Search extends React.Component<Props, States> {
       clearTimeout(this.lastRequestId);
     }
 
-    this.setState({
-      isLoading: true
-    });
+    // this.setState({
+    //   isLoading: true
+    // });
 
     this.lastRequestId = setTimeout(() => {
       this.setState({
-        isLoading: false,
+        // isLoading: false,
         suggestions: this.getSuggestions(value)
       });
     }, 200);
@@ -128,7 +136,9 @@ class Search extends React.Component<Props, States> {
   };
 
   componentDidMount() {
-    this.props.fetchCourseList();
+    if (this.props.courseList === null || this.props.courseList.length === 0) {
+      this.props.fetchCourseList();
+    }
   }
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -149,18 +159,20 @@ class Search extends React.Component<Props, States> {
 
   render() {
     const { value, suggestions } = this.state;
+    const loaded =
+      this.props.courseList !== null && this.props.courseList.length > 0;
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       autoFocus: true,
-      placeholder:
-        " Type the code or title of a course (e.g. CZ3003 or Algorithms)",
+      placeholder: "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
       value,
+      disabled: !loaded,
       onChange: this.onChange
     };
 
     // Finally, render it!
-    return (
+    return loaded ? (
       <Autosuggest
         theme={this.props.theme}
         suggestions={suggestions}
@@ -170,6 +182,10 @@ class Search extends React.Component<Props, States> {
         renderSuggestion={this.renderSuggestion}
         inputProps={inputProps}
       />
+    ) : (
+      <div style={{ textAlign: "center" }}>
+        <Icon type="loading" style={{ fontSize: "2.5rem" }} spin />
+      </div>
     );
   }
 }

@@ -1,7 +1,6 @@
 // @flow
 import * as api from "src/api";
 import * as actionTypes from "./actionTypes";
-import { resolve } from "url";
 
 export function fetchCourseDetail(courseCode: string) {
   return async function(dispatch: any) {
@@ -16,7 +15,7 @@ export function fetchCourseDetail(courseCode: string) {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_FAILURE,
           payload: {}
@@ -38,7 +37,7 @@ export function fetchCourseRating(courseCode: string) {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_COURSE_RATING_FAILURE,
           payload: {}
@@ -60,7 +59,7 @@ export function fetchCourseList() {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_COURSE_LIST_FAILURE,
           payload: {}
@@ -82,7 +81,7 @@ export function fetchCourseSchedule(courseCode: string) {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_COURSE_SCHEDULE_FAILURE,
           payload: {}
@@ -104,7 +103,7 @@ export function fetchExamSchedule(courseCode: string) {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_EXAM_SCHEDULE_FAILURE,
           payload: {}
@@ -126,7 +125,7 @@ export function fetchCourseComments(courseCode: string) {
           payload: response.data
         })
       )
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_COURSE_COMMENTS_FAILURE,
           payload: []
@@ -179,7 +178,7 @@ export function validateActivation(token: string, email: string) {
   };
 }
 
-export function validatePasswordReset(token: string, email: string) {
+export function validatePasswordReset() {
   return async function(dispatch: any) {
     dispatch({
       type: actionTypes.VALIDATE_PASSWORD_RESET_REQUESTED
@@ -292,7 +291,7 @@ export function userLogout() {
   return async function(dispatch: any) {
     api
       .userLogout()
-      .then(response => {
+      .then(() => {
         return dispatch({ type: actionTypes.USER_LOGOUT });
       })
       .catch(() => console.log("Logout error..."));
@@ -356,7 +355,7 @@ export function fetchProfile() {
           payload: response.data
         });
       })
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_PROFILE_FAILURE,
           payload: {}
@@ -378,7 +377,7 @@ export function fetchUserCourseComment(courseCode: string) {
           payload: response.data
         });
       })
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_USER_COURSE_COMMENT_FAILURE,
           payload: {}
@@ -400,7 +399,7 @@ export function fetchUserSchedule() {
           payload: response.data
         });
       })
-      .catch(error =>
+      .catch(() =>
         dispatch({
           type: actionTypes.FETCH_USER_SCHEDULE_FAILURE,
           payload: {}

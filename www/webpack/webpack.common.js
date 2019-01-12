@@ -7,7 +7,7 @@ const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -186,9 +186,9 @@ const config = {
         useShortDoctype: true
       }
     }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: "async"
-    // }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: "async"
+    }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
