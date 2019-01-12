@@ -1,0 +1,24 @@
+:local {
+  .innerContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 6rem;
+  }
+
+  .leftContainer {
+    flex: 1;
+    padding: 2rem 2rem 2rem 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: vertical;
+    .search {
+      width: 100%;
+    }
+  }
+
+  .rightContainer {
+    flex: 3;
+    padding: 2rem 0 2rem 2rem;
+    padding-left: 2rem;
+  }
+}

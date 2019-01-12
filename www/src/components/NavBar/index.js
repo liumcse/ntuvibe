@@ -3,12 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {
-  popupTrigger,
-  fetchProfile,
-  userLogout,
-  showModal
-} from "src/redux/actions";
+import { fetchProfile, userLogout, showModal } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo-color.png";
 import calendar from "./assets/calendar.svg";
@@ -158,7 +153,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  popupTrigger: option => dispatch(popupTrigger(option)),
   fetchProfile: () => dispatch(fetchProfile()),
   userLogout: () => dispatch(userLogout()),
   showModal: (modalType, modalProps) =>

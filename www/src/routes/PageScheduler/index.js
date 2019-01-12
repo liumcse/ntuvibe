@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
-import ExamSchedule from "./components/ExamSchedule";
+// import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "src/components/Footer";
 

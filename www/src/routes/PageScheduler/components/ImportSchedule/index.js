@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import Popup from "reactjs-popup";
 import Button from "antd/lib/button";
@@ -22,7 +21,7 @@ class ImportSchedule extends React.PureComponent<Props> {
     this.setState({ importing: true });
     const input = document.querySelector("." + styles.input).value;
     if (!input) {
-      alert("Hmmm is that empty input?");
+      alert("Input is empty!");
     } else {
       try {
         this.props.import(input);

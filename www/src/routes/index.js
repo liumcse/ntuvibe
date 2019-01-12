@@ -3,6 +3,7 @@ export const ROUTE_HELP = "/help";
 export const ROUTE_SITEMAP = "/sitemap";
 export const ROUTE_ABOUT = "/about";
 export const ROUTE_SCHEDULER = "/scheduler";
+export const ROUTE_BROWSE = "/browse";
 // Course
 export const ROUTE_COURSE_PAGE = "/courses/:courseCode";
 // User

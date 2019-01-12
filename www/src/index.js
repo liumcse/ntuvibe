@@ -15,6 +15,7 @@ import PageUserSetting from "@routes/PageUserSetting";
 import PageSitemap from "@routes/PageSitemap";
 import PageAbout from "@routes/PageAbout";
 import PageScheduler from "@routes/PageScheduler";
+import PageBrowse from "@routes/PageBrowse";
 import ModalContainer from "@routes/ModalContainer";
 import store from "src/redux/store";
 
@@ -68,6 +69,7 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_SCHEDULER}
                 component={PageScheduler}
               />
+              <Route exact path={ROUTES.ROUTE_BROWSE} component={PageBrowse} />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />
             </Switch>

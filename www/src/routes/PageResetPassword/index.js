@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 
-import { validatePasswordReset, userResetPassword, userLogin } from "src/redux/actions";
+import {
+  validatePasswordReset,
+  userResetPassword,
+  userLogin
+} from "src/redux/actions";
 
 import * as styles from "./style.scss";
 
@@ -94,9 +98,7 @@ class PageResetPassword extends React.Component<Props> {
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           <h1 className={styles.header}>Forgot Password?</h1>
-          <p>
-            Fret not! Type in your new password here to reset!
-          </p>
+          <p>Fret not! Type in your new password here to reset!</p>
           <div className={styles.inputs}>
             <input className={styles.email} readOnly value={this.email} />
             <input
@@ -116,10 +118,7 @@ class PageResetPassword extends React.Component<Props> {
             We use sophisticated encryption technology - not a single person in
             the world can see your password.
           </div>
-          <Button
-            type="primary"
-            onClick={this.handleSubmit}
-          >
+          <Button type="primary" onClick={this.handleSubmit}>
             Reset Password
           </Button>
         </div>
@@ -131,7 +130,7 @@ class PageResetPassword extends React.Component<Props> {
 const mapStateToProps = state => {
   const { user } = state;
   return {
-    passwordResetValidation: user && user.passwordResetValidation,
+    passwordResetValidation: user && user.passwordResetValidation
   };
 };
 
