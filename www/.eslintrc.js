@@ -21,7 +21,8 @@ module.exports = {
     semi: ["error", "always"],
     eqeqeq: 'error',
     "no-console": 0,
-    "react/display-name" :0,
+    "react/display-name" : 0,
+    "react/no-unescaped-entities": 0,
 
     // Prettier
     "prettier/prettier": "error",

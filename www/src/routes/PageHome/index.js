@@ -4,7 +4,6 @@ import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { THIS_YEAR } from "src/global";
 import Search from "src/components/Search";
-
 import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
@@ -38,7 +37,7 @@ class PageHome extends React.PureComponent {
             <Search theme={theme} />
           </div>
           <div className={styles.fbLike}>
-            <div
+            {/* <div
               className="fb-like"
               data-href="https://ntuvibe.com"
               data-layout="button_count"
@@ -46,7 +45,7 @@ class PageHome extends React.PureComponent {
               data-size="large"
               data-show-faces="false"
               data-share="false"
-            />
+            /> */}
             <div className={styles.fbPage}>
               New year, new beginning. See{" "}
               <a
@@ -84,7 +83,7 @@ class PageHome extends React.PureComponent {
                 Facebook
               </a>
             </div>
-            <div className={styles.credit}>
+            {/* <div className={styles.credit}>
               Photo by{" "}
               <a
                 href="https://www.instagram.com/david_lequn_chen/"
@@ -93,7 +92,7 @@ class PageHome extends React.PureComponent {
               >
                 Chen Lequn
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

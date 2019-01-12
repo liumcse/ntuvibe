@@ -4,7 +4,7 @@ import React from "react";
 import Autosuggest from "react-autosuggest";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Spin, Icon } from "antd";
+import { Icon } from "antd";
 
 import { fetchCourseList } from "src/redux/actions";
 import {
@@ -165,7 +165,8 @@ class Search extends React.Component<Props, States> {
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       autoFocus: true,
-      placeholder: "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
+      placeholder:
+        "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
       value,
       disabled: !loaded,
       onChange: this.onChange
