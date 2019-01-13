@@ -11,6 +11,7 @@
   .container {
     border: 1px solid rgba(0, 0, 0, .05);
     background-color: rgba(0, 0, 0, 0.01);
+    text-align: left;
     padding: 1rem;
     transition: ease;
     transition-delay: 0s;
@@ -24,5 +25,11 @@
 
   .container:hover {
     @include medium-shadow;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      font-size: 80%;
+    }
   }
 }

@@ -187,16 +187,16 @@ class PageBrowser extends React.Component {
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>
-            <div className={styles.label}>Any keywords in mind?</div>
+            {/* <div className={styles.label}>Any keywords in mind?</div> */}
             <div className={styles.searchContainer}>
               <input
                 className={styles.searchInput}
                 defaultValue={this.state.keywords}
-                placeholder="Calculus, ES8006..."
+                placeholder="Keywords: Calculus, ES8006..."
                 onChange={this.handleInput}
               />
             </div>
-            <div className={styles.label}>Add filters</div>
+            {/* <div className={styles.label}>Add filters</div> */}
             <div className={styles.tagContainer}>
               {Object.keys(filters).map(key => (
                 <CheckableTag
@@ -253,7 +253,7 @@ class PageBrowser extends React.Component {
               ))
             ) : this.state.result.length > 0 ? (
               <React.Fragment>
-                <h1 style={{ marginBottom: 0 }}>
+                <h1 className={styles.header} style={{ marginBottom: 0 }}>
                   {this.state.result.length} results
                 </h1>
                 {this.state.loaded.map((course, index) => (
@@ -291,7 +291,7 @@ class PageBrowser extends React.Component {
                 </InfiniteScroll> */}
               </React.Fragment>
             ) : (
-              <h1>No result</h1>
+              <h1 className={styles.header}>No result</h1>
             )}
           </div>
         </div>

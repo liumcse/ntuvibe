@@ -35,7 +35,8 @@
     }
     .tagContainer {
       @include disable-select;
-      margin-bottom: 0.25rem;
+      // margin-bottom: 0.25rem;
+      margin: 0.25rem 0;
       .tag {
         border: 1px solid #1362b1 !important;
         margin: 0 1rem 0.75rem 0;
@@ -46,7 +47,7 @@
     }
     .buttonContainer {
       width: 100%;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       margin-bottom: 1rem;
       .searchButton {
         width: 100%;
@@ -63,5 +64,45 @@
     padding: 2rem 0 2rem 6rem;
     white-space: pre-line;
     overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+    .innerContainer {
+      flex-direction: column;
+      height: auto;
+      padding: 1.5rem;
+    }
+
+    .leftContainer {
+      padding: 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      .credits {
+        display: none;
+      }
+      .searchButton {
+        margin-top: -0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      // .buttonContainer {
+      //   margin-bottom: 0.5rem;
+      // }
+    }
+
+    .rightContainer {
+      padding: 0;
+      text-align: center;
+      overflow-y: hidden;
+      .header {
+        margin-top: 1rem;
+        margin-bottom: -0.5rem !important;
+      }
+      .loadMoreContainer {
+        width: 100%;
+        button {
+          width: 100%;
+        }
+      }
+    }
   }
 }

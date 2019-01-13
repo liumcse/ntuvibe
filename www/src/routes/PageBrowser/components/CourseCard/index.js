@@ -19,7 +19,7 @@ const CourseCard = props => {
   const title = cap_first_letter(props.title);
   const description = remove_trailing_newline(props.description)
     .split(" ")
-    .slice(0, 150)
+    .slice(0, window.innerWidth < 768 ? 50 : 150)
     .join(" ")
     .concat("...");
   const { as_ue, as_pe, grade_type } = props;
