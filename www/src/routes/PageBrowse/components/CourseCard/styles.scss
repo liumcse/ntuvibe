@@ -1,0 +1,28 @@
+@import '_functions';
+
+:local {
+  .hyper, .hyper:visited, .hyper:hover {
+    color: black;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+  }
+
+  .container {
+    border: 1px solid rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, 0.01);
+    padding: 1rem;
+    transition: ease;
+    transition-delay: 0s;
+    transition-duration: 0.15s;
+    transition-property: box-shadow;
+  }
+
+  .tagContainer {
+    margin-bottom: 1rem;
+  }
+
+  .container:hover {
+    @include medium-shadow;
+  }
+}

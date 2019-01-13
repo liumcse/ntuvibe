@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+	path(r'get_course_by_search', views.get_course_by_search),
 	path(r'get_course_list', views.get_course_list),
 	path(r'get_course_detail', views.get_course_detail),
 	path(r'get_class_schedule', views.get_class_schedule),
