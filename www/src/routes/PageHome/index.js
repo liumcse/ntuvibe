@@ -24,14 +24,14 @@ class PageHome extends React.PureComponent {
         <div className={styles.container}>
           <NavBar />
           <div className={styles.bannerContainer}>
-            <a href="#">
+            <Link to="/browser">
               <div>
                 <span style={{ color: "red" }}>2</span>
                 <span style={{ color: "darkviolet" }}>0</span>
                 <span style={{ color: "black" }}>1</span>
                 <span style={{ color: "green" }}>9</span>
               </div>
-            </a>
+            </Link>
           </div>
           <div className={styles.searchContainer}>
             <Search theme={theme} />
@@ -47,15 +47,8 @@ class PageHome extends React.PureComponent {
               data-share="false"
             /> */}
             <div className={styles.fbPage}>
-              New year, new beginning. See{" "}
-              <a
-                href="https://facebook.com/ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                what's new
-              </a>
-              !
+              New year, new beginning.{" "}
+              <Link to="/browser">Try out Course Browser</Link>!
             </div>
           </div>
           <div className={styles.footer}>

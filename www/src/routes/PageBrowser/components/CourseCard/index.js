@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Tag, Skeleton } from "antd";
 import { remove_trailing_newline, cap_first_letter } from "src/utils";
 import * as styles from "./styles.scss";
@@ -6,11 +7,11 @@ import * as styles from "./styles.scss";
 const CourseCard = props => {
   if (props.skeleton) {
     return (
-      <a className={styles.hyper} style={{ cursor: "default" }} href="#">
+      <Link className={styles.hyper} style={{ cursor: "default" }} to="#">
         <div className={styles.container}>
           <Skeleton active />
         </div>
-      </a>
+      </Link>
     );
   }
 
@@ -24,9 +25,9 @@ const CourseCard = props => {
   const { as_ue, as_pe, grade_type } = props;
 
   return (
-    <a
+    <Link
       className={styles.hyper}
-      href={`/courses/${code}`}
+      to={`/courses/${code}`}
       /* eslint-disable-next-line react/jsx-no-target-blank */
       target="_blank"
     >
@@ -39,7 +40,7 @@ const CourseCard = props => {
         </div>
         <p>{description}</p>
       </div>
-    </a>
+    </Link>
   );
 };
 

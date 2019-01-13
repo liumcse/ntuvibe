@@ -100,9 +100,12 @@ class NavBar extends React.Component<Props> {
               <Link to="/">Home</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="/scheduler">Scheduler</Link>
+                <Link to="/browser">Browser</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
+              <Link to="/scheduler">Scheduler</Link>
+            </div>
+            {/* <div className={styles.navbar_elements_right_text}>
               <a
                 href="https://medium.com/@ntuvibe"
                 target="_blank"
@@ -110,7 +113,7 @@ class NavBar extends React.Component<Props> {
               >
                 Blog
               </a>
-            </div>
+            </div> */}
             {!profile ? (
               <div
                 className={styles.rightButton}

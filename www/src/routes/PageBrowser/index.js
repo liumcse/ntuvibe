@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import * as api from "src/api";
+import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import NavBar from "src/components/NavBar";
 import Footer from "src/components/Footer";
 import CourseCard from "./components/CourseCard";
@@ -18,7 +19,7 @@ const filters = {
   // 4: "No final exam"
 };
 
-class PageBrowse extends React.Component {
+class PageBrowser extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -178,10 +179,15 @@ class PageBrowse extends React.Component {
   render() {
     return (
       <div className={styles.container}>
+        <SiteMetaHelmet
+          title="Course Browser - NTUVibe"
+          url="https://ntuvibe.com/browser"
+          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
+        />
         <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>
-            <div className={styles.label}>Do you have any keywords?</div>
+            <div className={styles.label}>Any keywords in mind?</div>
             <div className={styles.searchContainer}>
               <input
                 className={styles.searchInput}
@@ -227,6 +233,7 @@ class PageBrowse extends React.Component {
                     : `Search (${this.state.countdown})`}
               </Button>
             </div>
+            <div className={styles.credits}>For reference only.</div>
             <div className={styles.credits}>
               Design inspired by{" "}
               <a
@@ -236,6 +243,7 @@ class PageBrowse extends React.Component {
               >
                 Google Careers
               </a>
+              .
             </div>
           </div>
           <div className={styles.rightContainer}>
@@ -293,4 +301,4 @@ class PageBrowse extends React.Component {
   }
 }
 
-export default withRouter(PageBrowse);
+export default withRouter(PageBrowser);
