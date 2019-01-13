@@ -100,7 +100,9 @@ class PageBrowser extends React.Component {
 
   handleKeydown = e => {
     if (e.keyCode !== 13) return false; // if key is not ENTER
-    this.requestSearch();
+    if (this.state.countdown === 0) {
+      this.requestSearch();
+    }
   };
 
   handleButtonClick = () => {
@@ -134,10 +136,6 @@ class PageBrowser extends React.Component {
   componentDidMount() {
     const searchDOM = document.querySelector(".".concat(styles.searchInput));
     searchDOM.addEventListener("keydown", this.handleKeydown);
-    const containerDOM = document.querySelector(
-      ".".concat(styles.rightContainer)
-    );
-    containerDOM.addEventListener("scroll", this.handleScroll);
     // start timing
     setInterval(() => {
       if (this.state.countdown > 0)
