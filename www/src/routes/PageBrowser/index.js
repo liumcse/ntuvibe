@@ -92,7 +92,7 @@ class PageBrowser extends React.Component {
     // start searching
     history.replace({
       ...history.location,
-      pathname: "/browse",
+      pathname: "/browser",
       search: "search=" + query
     });
     this.startSearch(query);
