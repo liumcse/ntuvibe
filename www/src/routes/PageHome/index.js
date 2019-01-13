@@ -49,7 +49,7 @@ class PageHome extends React.PureComponent {
             <div className={styles.fbPage}>
               New year, new beginning.
               <br />
-              Try out <Link to="/browser">Course Browser</Link> on computer!
+              Try out <Link to="/browser">Course Browser</Link>!
             </div>
           </div>
           <div className={styles.footer}>
