@@ -23,19 +23,18 @@ const PageAbout = () => {
         <p>
           Released in August 2018, it was started by a few students from School
           of Computer Science and Engineering at Nanyang Technological
-          University. NTUVibe is still under rapid development to provide you
-          with better service.
+          University.
         </p>
         <h2>Disclaimer</h2>
         <p>
           All data (including but not limited to course information, class
-          schedule and exam schedule) are obtained directly from information
-          open to the general public via Google search or NTU website. No
-          information is privileged which requires authorization.
+          schedule and exam schedule) are obtained directly from Google search
+          or NTU website. No information is privileged which requires
+          authorization.
         </p>
         <p>
-          NTUVibe may present the data in a different form to improve the user
-          experience. However, NTUVibe never alters the original data.
+          NTUVibe may present the data in a way we believe to enhance user
+          experience. However, NTUVibe never alters the content.
         </p>
         <h2>Privacy policy</h2>
         <p>
