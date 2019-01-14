@@ -32,7 +32,7 @@ const CourseCard = props => {
       target="_blank"
     >
       <div className={styles.container}>
-        <h2>{title}</h2>
+        <h2>{code + " - " + title}</h2>
         <div className={styles.tagContainer}>
           <Tag>{grade_type ? "Pass / Fail" : "Letter Graded"}</Tag>
           {as_ue && <Tag>Available as UE</Tag>}

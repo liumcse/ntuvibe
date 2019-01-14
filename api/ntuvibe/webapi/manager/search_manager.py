@@ -29,9 +29,9 @@ def get_courses_by_search(keywords=None, filter=None, sort=0):
 			if x == "1":
 				output = output.filter(grade_type__exact="1")
 			if x == "2":
-				output = output.filter(as_ue__exact="1")
-			if x == "3":
 				output = output.filter(as_pe__exact="1")
+			if x == "3":
+				output = output.filter(as_ue__exact="1")
 			if x == "4":
 				# todo
 				pass
