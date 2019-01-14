@@ -251,7 +251,7 @@ class PageBrowser extends React.Component {
               ))
             ) : this.state.result.length > 0 ? (
               <React.Fragment>
-                <h1 className={styles.header} style={{ marginBottom: 0 }}>
+                <h1 className={styles.header}>
                   {this.state.result.length} results
                 </h1>
                 {this.state.loaded.map((course, index) => (
