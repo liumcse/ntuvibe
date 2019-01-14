@@ -6,6 +6,7 @@ import NavBar from "src/components/NavBar";
 import Footer from "src/components/Footer";
 import CourseCard from "./components/CourseCard";
 import { Tag, Menu, Button, message } from "antd";
+import { logPageview } from "src/tracking";
 // import InfiniteScroll from "react-infinite-scroll-component";
 import * as styles from "./styles.scss";
 
@@ -95,6 +96,7 @@ class PageBrowser extends React.Component {
       pathname: "/browser",
       search: "search=" + query
     });
+    logPageview();
     this.startSearch(query);
   };
 
@@ -134,6 +136,7 @@ class PageBrowser extends React.Component {
   };
 
   componentDidMount() {
+    logPageview();
     const searchDOM = document.querySelector(".".concat(styles.searchInput));
     searchDOM.addEventListener("keydown", this.handleKeydown);
     // start timing
