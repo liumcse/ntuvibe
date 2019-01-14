@@ -1,0 +1,111 @@
+@import '_typography';
+@import 'functions';
+
+:local {
+  .innerContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 6rem;
+    height: calc(100vh - 10rem - 1px);
+    // overflow-y: hidden;
+  }
+
+  .leftContainer {
+    flex: 1;
+    padding: 2rem 6rem 2rem 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    .label {
+      display: block;
+      margin-bottom: 1rem;
+      // font-weight: bolder;
+      @include lato-medium;
+    }
+    .searchContainer {
+      width: 100%;
+    }
+    .searchInput {
+      width: 100%;
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      border: 2px solid #d8d9d9;
+      appearance: none;
+    }
+    .tagContainer {
+      @include disable-select;
+      // margin-bottom: 0.25rem;
+      margin: 0.25rem 0;
+      .tag {
+        border: 1px solid #1362b1 !important;
+        margin: 0 1rem 0.75rem 0;
+      }
+    }
+    .dropdown {
+      margin-top: 0.5rem;
+    }
+    .buttonContainer {
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      .searchButton {
+        width: 100%;
+      }
+    }
+    .credits {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .rightContainer {
+    flex: 3;
+    padding: 2rem 0 2rem 6rem;
+    white-space: pre-line;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .innerContainer {
+      flex-direction: column;
+      height: auto;
+      padding: 1.5rem;
+    }
+
+    .leftContainer {
+      padding: 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      .credits {
+        display: none;
+      }
+      .searchButton {
+        margin-top: -0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      // .buttonContainer {
+      //   margin-bottom: 0.5rem;
+      // }
+    }
+
+    .rightContainer {
+      padding: 0;
+      text-align: center;
+      overflow-y: hidden;
+      .header {
+        margin-top: 1rem;
+        margin-bottom: -0.5rem !important;
+      }
+      .loadMoreContainer {
+        width: 100%;
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

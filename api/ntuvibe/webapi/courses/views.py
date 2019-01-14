@@ -6,7 +6,17 @@ from webapi.manager import (
 	course_rating_manager,
 	class_schedule_manager,
 	exam_schedule_manager,
+	search_manager,
 )
+
+@api_response()
+def get_course_by_search(request):
+	params = request.GET
+	keywords = params.get("search", None)
+	filter = params.get("filter", None)
+	sort = params.get("sort", None)
+	courses = search_manager.get_courses_by_search(keywords=keywords, filter=filter, sort=sort)
+	return search_manager.prepare_search_result(courses)
 
 
 @api_response()

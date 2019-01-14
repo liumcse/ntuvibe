@@ -5,7 +5,7 @@
 :global {
   #app {
     // default font is open-sans
-    @include open-sans-regular;
+    // @include open-sans-regular;
     font-size: 16px;
     position: relative;
   }
@@ -18,8 +18,8 @@
     outline: none;
   }
 
-  a, a:visited, a:active, a:hover {
-    text-decoration: none;
+  a:visited, a:active, a:hover, a {
+    text-decoration: none !important;
   }
 
   .ant-modal-title {

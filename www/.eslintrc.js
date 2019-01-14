@@ -16,13 +16,13 @@ module.exports = {
   },
   plugins: ["react", "prettier", "json"],
   rules: {
-    // indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     eqeqeq: 'error',
     "no-console": 0,
-    "react/display-name" :0,
+    "react/display-name" : 0,
+    "react/no-unescaped-entities": 0,
 
     // Prettier
     "prettier/prettier": "error",

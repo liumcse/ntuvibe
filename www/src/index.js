@@ -3,19 +3,20 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import * as ROUTES from "src/routes";
+import * as ROUTES from "@routes";
 import { logPageview } from "src/tracking";
 import ReactGA from "react-ga";
-import PageResetPassword from "@containers//PageResetPassword";
-import PageHome from "@containers/PageHome";
-import PageCourseDetail from "@containers/PageCourseDetail";
-import PageHelp from "@containers/PageHelp";
-import PageTransient from "@containers/PageTransient";
-import PageUserSetting from "@containers/PageUserSetting";
-import PageSitemap from "@containers/PageSitemap";
-import PageAbout from "@containers/PageAbout";
-import PageScheduler from "@containers/PageScheduler";
-import ModalContainer from "@containers/ModalContainer";
+import PageResetPassword from "@routes/PageResetPassword";
+import PageHome from "@routes/PageHome";
+import PageCourseDetail from "@routes/PageCourseDetail";
+import PageHelp from "@routes/PageHelp";
+import PageTransient from "@routes/PageTransient";
+import PageUserSetting from "@routes/PageUserSetting";
+import PageSitemap from "@routes/PageSitemap";
+import PageAbout from "@routes/PageAbout";
+import PageScheduler from "@routes/PageScheduler";
+import PageBrowser from "@routes/PageBrowser";
+import ModalContainer from "@routes/ModalContainer";
 import store from "src/redux/store";
 
 import "./styles/app.scss";
@@ -68,6 +69,7 @@ class App extends React.PureComponent {
                 path={ROUTES.ROUTE_SCHEDULER}
                 component={PageScheduler}
               />
+              <Route exact path={ROUTES.ROUTE_BROWSER} component={PageBrowser} />
               {/* fallback */}
               <Route path={"/"} component={PageHome} />
             </Switch>
@@ -78,5 +80,6 @@ class App extends React.PureComponent {
   }
 }
 
+// Google Analytics initialization
 ReactGA.initialize("UA-113348736-2");
 ReactDOM.render(<App />, document.getElementById("app"));
