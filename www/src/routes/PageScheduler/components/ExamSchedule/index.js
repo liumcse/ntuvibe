@@ -32,7 +32,7 @@ class ExamSchedule extends React.Component<Props> {
           overflow: "hidden"
         }}
       >
-        <table style={styles.table}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th colSpan="3" className={styles.header}>
