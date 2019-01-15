@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
-// import ExamSchedule from "./components/ExamSchedule";
+import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "src/components/Footer";
 
@@ -140,7 +140,9 @@ class PageScheduler extends React.Component<Props> {
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
-
+  x = () => {
+    this;
+  };
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
@@ -203,16 +205,7 @@ class PageScheduler extends React.Component<Props> {
               {/* <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
               </div>
-              {this.state.exam && (
-                <ExamSchedule
-                  exam={this.state.exam}
-                  trigger={
-                    <Button type="primary" className={styles.exam}>
-                      View Exam Schedule
-                    </Button>
-                  }
-                />
-              )}
+              
               {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"
@@ -325,6 +318,16 @@ class PageScheduler extends React.Component<Props> {
               >
                 Download to your calendar
               </Button>
+              {this.state.exam && (
+                <ExamSchedule
+                  exam={this.state.exam}
+                  trigger={
+                    <Button type="primary" className={styles.exam}>
+                      View Exam Schedule
+                    </Button>
+                  }
+                />
+              )}
               <Button
                 type="primary"
                 className={styles.sync}

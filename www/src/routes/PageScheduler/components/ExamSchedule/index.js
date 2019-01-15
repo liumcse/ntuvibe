@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import Popup from "reactjs-popup";
 import * as styles from "./style.scss";
@@ -31,7 +32,7 @@ class ExamSchedule extends React.Component<Props> {
           overflow: "hidden"
         }}
       >
-        <table style={styles.table}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th colSpan="3" className={styles.header}>
