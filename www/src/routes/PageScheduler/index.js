@@ -140,7 +140,9 @@ class PageScheduler extends React.Component<Props> {
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
-
+  x = () => {
+    this;
+  };
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
@@ -273,16 +275,6 @@ class PageScheduler extends React.Component<Props> {
                 </div>
               </div>
             ) : null}
-            {this.state.exam && (
-              <ExamSchedule
-                exam={this.state.exam}
-                trigger={
-                  <Button type="primary" className={styles.exam}>
-                    View Exam Schedule
-                  </Button>
-                }
-              />
-            )}
             <div className={styles.calendarContainer}>
               <BigCalendar
                 eventPropGetter={event => ({ className: event.category })}
@@ -326,6 +318,16 @@ class PageScheduler extends React.Component<Props> {
               >
                 Download to your calendar
               </Button>
+              {this.state.exam && (
+                <ExamSchedule
+                  exam={this.state.exam}
+                  trigger={
+                    <Button type="primary" className={styles.exam}>
+                      View Exam Schedule
+                    </Button>
+                  }
+                />
+              )}
               <Button
                 type="primary"
                 className={styles.sync}
