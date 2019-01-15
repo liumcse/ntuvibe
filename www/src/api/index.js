@@ -1,7 +1,12 @@
 import axios from "axios";
 
 const BASE_URL = "https://api.ntuvibe.com";
+// const BASE_URL = "http://127.0.0.1:8000";
 axios.defaults.timeout = 20000;
+
+export function searchCourses(query) {
+  return axios.get(`${BASE_URL}/courses/get_course_by_search?search=${query}`);
+}
 
 export function fetchCourseDetail(courseCode) {
   return axios.get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`);

@@ -37,7 +37,7 @@ class PasswordResetForm extends React.Component<FormProps> {
         // send request
         this.props.userRequestPasswordReset(form).then(() => {
           this.setState({ requested: false, succeed: true });
-          alert("An activation Email has been sent to your inbox!");
+          alert("A password reset Email has been sent to your inbox!");
           // TODO: handle exception
           this.props.hideModal();
         });

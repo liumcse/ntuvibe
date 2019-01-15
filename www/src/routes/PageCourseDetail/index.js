@@ -75,50 +75,46 @@ type Props = {
   history: Object
 };
 
-const HeadingSkeleton = () => (
-  <div className={styles.heading}>
-    <div className={styles.heading_row}>
-      <div
-        className={styles.course_code
-          .concat(" ")
-          .concat(styles.loading_placeholder)}
-      >
-        CZ9999
-      </div>
-      <div
-        className={styles.rating_overall
-          .concat(" ")
-          .concat(styles.loading_placeholder)}
-      >
-        - %
-      </div>
-    </div>
-    <div className={styles.heading_row}>
-      <div
-        className={styles.heading_course_title
-          .concat(" ")
-          .concat(styles.loading_placeholder)}
-      >
-        SOME COURSE
-      </div>
-      <div
-        className={styles.number_of_rating
-          .concat(" ")
-          .concat(styles.loading_placeholder)}
-      >
-        99 ratings
-      </div>
-    </div>
-  </div>
-);
-
 const skeleton = (
   <div className={styles.page_course_detail}>
     <NavBar />
     <Menu />
     <div className={styles.content}>
       <div className={styles.section_a}>
-        <HeadingSkeleton />
+        <div className={styles.heading}>
+          <div className={styles.heading_row}>
+            <div
+              className={styles.course_code
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              CZ9999
+            </div>
+            {/* <div
+              className={styles.rating_overall
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              - %
+            </div> */}
+          </div>
+          <div className={styles.heading_row}>
+            <div
+              className={styles.heading_course_title
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              SOME COURSE
+            </div>
+            <div
+              className={styles.number_of_rating
+                .concat(" ")
+                .concat(styles.loading_placeholder)}
+            >
+              99 ratings
+            </div>
+          </div>
+        </div>
         <div className={styles.row_box}>
           <div className={styles.course_info}>
             <div

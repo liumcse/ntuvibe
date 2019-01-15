@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as styles from "./style.scss";
 import vibe from "src/brand/logo-color.png";
+import { THIS_YEAR } from "src/global";
 
 const Footer = () => (
   // eslint-disable-next-line
   <div className={styles.container}>
     <div className={styles.innerContainer}>
       <div className={styles.text}>
-        <span>&copy; 2018 NTUVibe &middot; Stay cute</span>
+        <span>&copy; {THIS_YEAR} NTUVibe &middot; Stay cute</span>
       </div>
       <div className={styles.links}>
         <Link to="/sitemap">Sitemap</Link>

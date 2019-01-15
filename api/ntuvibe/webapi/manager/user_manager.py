@@ -65,9 +65,9 @@ def send_email_from_template(subject, from_email, to, template, **kwargs):
 	send_mail(subject, message, from_email, to, html_message=message)
 
 def _send_activate_account_email(email, token):
-	subject = "Welcome to NTUVibe - Account Activation"
+	subject = "Welcome to NTUVibe! Account Activation"
 	to = [email]
-	from_email = 'ntuvibe@gmail.com'
+	from_email = 'NTUVibe <info@ntuvibe.com>'
 
 	formatted_email = email.replace("@", "&").replace(".", "!")
 	send_email_from_template(
@@ -79,9 +79,9 @@ def _send_activate_account_email(email, token):
 		token=token)
 
 def _send_reset_password_email(email, token):
-	subject = "NTUVibe - Password Reset"
+	subject = "Password Reset for NTUVibe"
 	to = [email]
-	from_email = 'ntuvibe@gmail.com'
+	from_email = 'NTUVibe <info@ntuvibe.com>'
 
 	formatted_email = email.replace("@", "&").replace(".", "!")
 	send_email_from_template(

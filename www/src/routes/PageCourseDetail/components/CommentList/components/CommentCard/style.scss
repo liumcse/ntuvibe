@@ -30,7 +30,7 @@
     border-radius: 5px;
     padding: 1rem 2rem;
     display: flex;
-    @include medium-shadow;
+    // @include medium-shadow;
     &_left {
       flex: 4;
       display: flex;

@@ -1,5 +1,5 @@
 from webapi.models import CourseTab
-
+import urllib
 
 def get_course_by_course_id(course_id):
 	return CourseTab.objects.filter(id=course_id).first()
@@ -19,17 +19,6 @@ def get_course_id_by_course_code(course_code):
 
 def get_courses_by_course_title(course_title):
 	return CourseTab.objects.filter(title=course_title)
-
-
-def get_courses_by_search(course_code=None, course_title=None):
-	if course_title is None and course_code is None:
-		return []
-	course = CourseTab.objects
-	if course_code:
-		course = course.filter(course_code__icontains=course_code)
-	if course_title:
-		course = course.filter(course_title__icontains=course_title)
-	return course
 
 
 def get_courses(**kwargs):

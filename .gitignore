@@ -9,6 +9,8 @@ www/dist
 .idea
 venv
 *.pyc
+*/.vscode
+.vscode
 
 # Django
 api/ntuvibe/webapi/migrations
@@ -29,3 +31,6 @@ exam_schedule.json*
 
 # Notebooks
 notebooks
+
+# Experimental
+services
