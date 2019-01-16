@@ -15,7 +15,7 @@ const SRC_PATH = path.resolve(__dirname, "../src");
 const PROJECT_ROOT = path.resolve(__dirname, "../");
 
 const config = {
-  entry: ["babel-polyfill", SRC_PATH + "/index.js"],
+  entry: ["@babel/polyfill", SRC_PATH + "/index.js"],
   output: {
     filename: "[name].[hash].js",
     publicPath: "/",
@@ -35,7 +35,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: ["node_modules"],
+        exclude: /node_modules/,
         use: [{ loader: "babel-loader" }]
       },
       {
@@ -43,12 +43,11 @@ const config = {
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
           /\/typefaces\/.*\.svg/
         ],
-        exclude: ["node_modules"],
+        exclude: /node_modules/,
         use: [{ loader: "file-loader" }]
       },
       {
         test: /\.css$/,
-        exclude: ["node_modules"],
         use: [
           {
             loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
@@ -96,7 +95,6 @@ const config = {
       },
       {
         test: /\.scss$/,
-        exclude: ["node_modules"],
         use: [
           {
             loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
