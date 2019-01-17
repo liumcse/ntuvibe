@@ -171,14 +171,10 @@ const config = {
       template: PROJECT_ROOT + "/index.html",
       minify: {
         collapseWhitespace: true,
-        minifyCSS: true,
         minifyJS: true,
-        minifyURLs: false,
-        removeComments: true,
-        removeEmptyAttributes: true
+        removeComments: true
       }
     }),
-    new PreloadWebpackPlugin(),
     // new ScriptExtHtmlWebpackPlugin({
     //   defaultAttribute: "async"
     // }),
@@ -191,6 +187,7 @@ const config = {
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     }),
+    new PreloadWebpackPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.resolve(SRC_PATH, "brand/faviconit")
