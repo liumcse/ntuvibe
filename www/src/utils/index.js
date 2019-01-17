@@ -1,7 +1,6 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 import store from "src/redux/store";
-import { popupTrigger } from "src/redux/actions";
 import moment from "moment";
 
 // TODO: the current search has severe performance issue. Write a better one

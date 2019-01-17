@@ -2,12 +2,13 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+// const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -169,24 +170,18 @@ const config = {
     new HtmlWebpackPlugin({
       template: PROJECT_ROOT + "/index.html",
       minify: {
-        html5: true,
         collapseWhitespace: true,
         minifyCSS: true,
         minifyJS: true,
         minifyURLs: false,
-        removeAttributeQuotes: true,
         removeComments: true,
-        removeEmptyAttributes: true,
-        removeOptionalTags: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributese: true,
-        useShortDoctype: true
+        removeEmptyAttributes: true
       }
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: "async"
-    }),
+    new PreloadWebpackPlugin(),
+    // new ScriptExtHtmlWebpackPlugin({
+    //   defaultAttribute: "async"
+    // }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
