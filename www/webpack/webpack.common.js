@@ -2,7 +2,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const PreloadWebpackPlugin = require("preload-webpack-plugin");
+// const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -158,7 +158,7 @@ const config = {
         cache: true,
         parallel: true,
         uglifyOptions: {
-          compress: false,
+          compress: {},
           ecma: 6,
           mangle: true
         },
@@ -171,23 +171,23 @@ const config = {
       template: PROJECT_ROOT + "/index.html",
       minify: {
         collapseWhitespace: true,
+        preserveLineBreaks: true,
         minifyJS: true,
         removeComments: true
       }
     }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: "async"
-    // }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: devMode ? "[name].css" : "[name].[hash].css",
-      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-    }),
-    new PreloadWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+    // new PreloadWebpackPlugin({
+    //   rel: "preload",
+    //   include: ["main", "vendors~main"]
+    // }),
+    // new ScriptExtHtmlWebpackPlugin({
+    //   preload: /\.css$/,
+    //   defaultAttribute: "async"
+    // }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(SRC_PATH, "brand/faviconit")
