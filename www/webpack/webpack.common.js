@@ -134,21 +134,10 @@ const config = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all",
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: "~",
-      name: true,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
+          chunks: "all"
         }
       }
     },
@@ -179,10 +168,12 @@ const config = {
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: devMode ? "[name].css" : "[name].[hash].css",
+      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
+    }),
     // new PreloadWebpackPlugin({
-    //   rel: "preload",
-    //   include: ["main", "vendors~main"]
+    //   fileWhitelist: [/\.css/]
     // }),
     // new ScriptExtHtmlWebpackPlugin({
     //   preload: /\.css$/,
