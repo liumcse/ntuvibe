@@ -4,57 +4,47 @@ import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
-import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import Footer from "src/components/Footer";
+import ImportedPage from "./components/ImportedPage";
 
-import { requireLogin } from "src/utils";
-import {
-  logPageview,
-  logScheduleGeneration,
-  logCalendarDownload
-} from "src/tracking";
+import { logPageview, logScheduleGeneration } from "src/tracking";
 import {
   saveSchedule,
   fetchUserSchedule,
   updateSchedule
 } from "src/redux/actions";
 
-import BigCalendar from "react-big-calendar";
-import moment from "moment";
-// import calendar from "src/assets/svgs/calendar.svg";
 import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
-
-BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 // const calendarIcon = (
 //   <img src={calendar} style={{ height: "1.5rem", width: "1.5rem" }} />
 // );
 
 // today
-const TODAY = new Date();
+// const TODAY = new Date();
 // earliest class
-const START_TIME = new Date(
-  TODAY.getFullYear(),
-  TODAY.getMonth(),
-  TODAY.getDate(),
-  8,
-  30,
-  0
-);
-// latest class
-const END_TIME = new Date(
-  TODAY.getFullYear(),
-  TODAY.getMonth(),
-  TODAY.getDate(),
-  22,
-  30,
-  0
-);
+// const START_TIME = new Date(
+//   TODAY.getFullYear(),
+//   TODAY.getMonth(),
+//   TODAY.getDate(),
+//   8,
+//   30,
+//   0
+// );
+// // latest class
+// const END_TIME = new Date(
+//   TODAY.getFullYear(),
+//   TODAY.getMonth(),
+//   TODAY.getDate(),
+//   22,
+//   30,
+//   0
+// );
 
-const events = [];
+// const events = [];
 
 type Props = {
   schedule: ?string,
@@ -74,20 +64,9 @@ class PageScheduler extends React.Component<Props> {
     };
   }
 
-  download(content, fileName, contentType) {
-    let a = document.createElement("a");
-    let file = new Blob([content], { type: contentType });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-  }
-
   componentDidMount() {
     // change the button text
-    const buttonGroup = document.querySelector(".rbc-btn-group").childNodes;
-    buttonGroup[0].innerHTML = "This Week";
-    buttonGroup[1].innerHTML = "<";
-    buttonGroup[2].innerHTML = ">";
+
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
@@ -117,6 +96,14 @@ class PageScheduler extends React.Component<Props> {
     }
   }
 
+  download(content, fileName, contentType) {
+    let a = document.createElement("a");
+    let file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
+
   calendarEventRenderer = ({ event }) => (
     <span style={{ lineHeight: "0.75rem" }}>
       <strong>{event.title}</strong>
@@ -125,26 +112,6 @@ class PageScheduler extends React.Component<Props> {
     </span>
   );
 
-  clearSchedule = () => {
-    this.props.saveSchedule(null);
-    if (confirm("Are you sure you want to re-import your schedule?")) {
-      this.setState({ input: "", calendarEvents: [] });
-    }
-  };
-
-  handleInput = event => {
-    this.setState({ input: event.target.value });
-  };
-
-  downloadCalendar = () => {
-    const { schedule } = this.props;
-    let icsContent = tools.icsHelper(JSON.parse(schedule), this.state.exam);
-    this.download(icsContent, "ClassSchedule.ics", "text/plain");
-    logCalendarDownload();
-  };
-  x = () => {
-    this;
-  };
   importSchedule = input => {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
@@ -166,23 +133,6 @@ class PageScheduler extends React.Component<Props> {
     this.setState({ calendarEvents: calendarEvents });
   };
 
-  updateSchedule = () => {
-    const { schedule } = this.props;
-    const form = new FormData();
-    form.append("schedule", schedule);
-    this.props
-      .updateSchedule(form)
-      .then(() => {
-        const { updateScheduleSuccess } = this.props;
-        if (updateScheduleSuccess && updateScheduleSuccess.success) {
-          alert("Success!");
-        } else {
-          alert("Something went wrong...");
-        }
-      })
-      .catch(error => console.log(error));
-  };
-
   placeholderPage = () => (
     <div
       style={{
@@ -195,12 +145,12 @@ class PageScheduler extends React.Component<Props> {
   unimportedPage = () => (
     <div
       className={styles.instructionContainer}
-      style={{
-        display:
-          this.state.calendarEvents && this.state.calendarEvents.length === 0
-            ? "block"
-            : "none"
-      }}
+      // style={{
+      //   display:
+      //     this.state.calendarEvents && this.state.calendarEvents.length === 0
+      //       ? "block"
+      //       : "none"
+      // }}
     >
       <div className={styles.text}>
         Create your <span className={styles.beautiful}>beautiful</span> class
@@ -237,106 +187,6 @@ class PageScheduler extends React.Component<Props> {
       </div>
     </div>
   );
-  importedPage = () => {
-    const { calendarEvents } = this.state;
-    let latestClass = null;
-    if (calendarEvents && calendarEvents.length > 0) {
-      latestClass = tools.getLatestClass(calendarEvents);
-      latestClass.setFullYear(TODAY.getFullYear());
-      latestClass.setMonth(TODAY.getMonth());
-      latestClass.setDate(TODAY.getDate());
-      latestClass.setHours(latestClass.getHours() + 1);
-    }
-    return (
-      <div
-        className={styles.scheduleContainer}
-        style={{
-          display:
-            this.state.calendarEvents && this.state.calendarEvents.length > 0
-              ? "block"
-              : "none" /* display only when imported */
-        }}
-      >
-        {tools.calculateAcademicWeek() ? (
-          <div className={styles.weekContainer}>
-            <div className={styles.weekIndicator}>
-              💪 Today falls in{" "}
-              <span className={styles.week}>
-                {tools.calculateAcademicWeek()}
-              </span>
-            </div>
-          </div>
-        ) : null}
-        <div className={styles.calendarContainer}>
-          <BigCalendar
-            eventPropGetter={event => ({ className: event.category })}
-            events={this.state.calendarEvents || events}
-            views={["work_week"]}
-            localizer={moment}
-            selectable={false}
-            step={60}
-            timeslots={1}
-            min={START_TIME}
-            max={latestClass || END_TIME}
-            defaultView={BigCalendar.Views.WORK_WEEK}
-            defaultDate={new Date()}
-            components={{
-              event: this.calendarEventRenderer
-            }}
-          />
-        </div>
-        <div
-          className={styles.text.concat(" ").concat(styles.calendarHint)}
-          style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
-        >
-          On PC, you can download the whole semester into your calendar!
-        </div>
-        <div
-          className={styles.text}
-          style={{
-            marginTop: "1.5rem",
-            color: "#00772c",
-            fontSize: "0.9rem"
-          }}
-        >
-          REMINDER: On your calendar app, please add your schedule to a new
-          calendar in case you want to delete the entire calendar in the future.
-        </div>
-        <div className={styles.toolbar}>
-          <Button
-            className={styles.addToCalendar}
-            onClick={this.downloadCalendar}
-          >
-            Download to your calendar
-          </Button>
-          {this.state.exam && (
-            <ExamSchedule
-              exam={this.state.exam}
-              trigger={
-                <Button type="primary" className={styles.exam}>
-                  View Exam Schedule
-                </Button>
-              }
-            />
-          )}
-          <Button
-            type="primary"
-            className={styles.sync}
-            onClick={() => requireLogin(this.updateSchedule)}
-          >
-            Save and sync
-          </Button>
-          <Button
-            type="danger"
-            onClick={this.clearSchedule}
-            style={{ backgroundColor: "crimson", color: "white" }}
-          >
-            Re-import
-          </Button>
-        </div>{" "}
-      </div>
-    );
-  };
 
   render() {
     return (
@@ -364,9 +214,16 @@ class PageScheduler extends React.Component<Props> {
           data-share="false"
         /> */}
             </div>
-            {this.placeholderPage()}
-            {this.unimportedPage()}
-            {this.importedPage()}
+            {!this.state.calendarEvents ? (
+              this.placeholderPage()
+            ) : this.state.calendarEvents.length === 0 ? (
+              this.unimportedPage()
+            ) : (
+              <ImportedPage
+                calendarEvents={this.state.calendarEvents}
+                exam={this.state.exam}
+              />
+            )}
           </div>
         </div>
         <Footer />
