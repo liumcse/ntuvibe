@@ -183,69 +183,47 @@ class PageScheduler extends React.Component<Props> {
       .catch(error => console.log(error));
   };
   unimportedPage = () => (
-    <div className={styles.innerContainer}>
-      <div className={styles.textContainer}>
-        <div className={styles.headerContainer}>
-          {/* <div className={styles.header}>
-          <div>{calendarIcon}</div> Scheduler
+    <div
+      className={styles.instructionContainer}
+      style={{
+        display:
+          this.state.calendarEvents && this.state.calendarEvents.length === 0
+            ? "block"
+            : "none"
+      }}
+    >
+      <div className={styles.text}>
+        Create your <span className={styles.beautiful}>beautiful</span> class
+        schedule and add to your calendar!
+      </div>
+      <div className={styles.picContainer}>
+        <div className={styles.picItem}>
+          <img src="/instruct_1.png" width="100%" />
+          <div>A weekly class schedule that can be added to your calendar</div>
         </div>
-        
-        {/* <div
-          className={"fb-like".concat(" " + styles.fbLike)}
-          data-href="https://ntuvibe.com"
-          data-layout="button_count"
-          data-action="like"
-          data-size="large"
-          data-show-faces="false"
-          data-share="false"
-        /> */}
-        </div>
-        <div
-          className={styles.instructionContainer}
-          style={{
-            display:
-              this.state.calendarEvents &&
-              this.state.calendarEvents.length === 0
-                ? "block"
-                : "none"
-          }}
-        >
-          <div className={styles.text}>
-            Create your <span className={styles.beautiful}>beautiful</span>{" "}
-            class schedule and add to your calendar!
-          </div>
-          <div className={styles.picContainer}>
-            <div className={styles.picItem}>
-              <img src="/instruct_1.png" width="100%" />
-              <div>
-                A weekly class schedule that can be added to your calendar
-              </div>
-            </div>
-            <div className={styles.picItem}>
-              <img src="/instruct_2.png" width="100%" />
-              <div>
-                By simple copy &amp; paste from{" "}
-                <a
-                  href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Check/Print Courses Registered
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className={styles.text} style={{ textAlign: "center" }}>
-            <ImportSchedule
-              import={this.importSchedule}
-              trigger={
-                <Button type="primary" className={styles.import}>
-                  Import your schedule
-                </Button>
-              }
-            />
+        <div className={styles.picItem}>
+          <img src="/instruct_2.png" width="100%" />
+          <div>
+            By simple copy &amp; paste from{" "}
+            <a
+              href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Check/Print Courses Registered
+            </a>
           </div>
         </div>
+      </div>
+      <div className={styles.text} style={{ textAlign: "center" }}>
+        <ImportSchedule
+          import={this.importSchedule}
+          trigger={
+            <Button type="primary" className={styles.import}>
+              Import your schedule
+            </Button>
+          }
+        />
       </div>
     </div>
   );
@@ -359,8 +337,27 @@ class PageScheduler extends React.Component<Props> {
           description="Create your beautiful class schedule and add to your calendar!"
         />
         <NavBar />
-        {this.unimportedPage()}
-        {this.importedPage()}
+        <div className={styles.innerContainer}>
+          <div className={styles.textContainer}>
+            <div className={styles.headerContainer}>
+              {/* <div className={styles.header}>
+          <div>{calendarIcon}</div> Scheduler
+        </div>
+        
+        {/* <div
+          className={"fb-like".concat(" " + styles.fbLike)}
+          data-href="https://ntuvibe.com"
+          data-layout="button_count"
+          data-action="like"
+          data-size="large"
+          data-show-faces="false"
+          data-share="false"
+        /> */}
+            </div>
+            {this.unimportedPage()}
+            {this.importedPage()}
+          </div>
+        </div>
         <Footer />
       </div>
     );
