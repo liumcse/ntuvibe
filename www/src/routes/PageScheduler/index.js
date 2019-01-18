@@ -182,6 +182,16 @@ class PageScheduler extends React.Component<Props> {
       })
       .catch(error => console.log(error));
   };
+
+  placeholderPage = () => (
+    <div
+      style={{
+        height: "80vh",
+        display: !this.state.calendarEvents ? "block" : "none"
+      }}
+    />
+  );
+
   unimportedPage = () => (
     <div
       className={styles.instructionContainer}
@@ -354,6 +364,7 @@ class PageScheduler extends React.Component<Props> {
           data-share="false"
         /> */}
             </div>
+            {this.placeholderPage()}
             {this.unimportedPage()}
             {this.importedPage()}
           </div>
