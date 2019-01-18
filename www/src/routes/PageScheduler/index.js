@@ -106,12 +106,14 @@ class PageScheduler extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
-      tools.examTime(JSON.parse(this.props.schedule)).then(exam =>
-        this.setState({ exam }, () => {
-          this.generateCalendar();
-        })
-      );
+    if (prevProps.schedule !== this.props.schedule) {
+      if (this.props.schedule)
+        tools.examTime(JSON.parse(this.props.schedule)).then(exam =>
+          this.setState({ exam }, () => {
+            this.generateCalendar();
+          })
+        );
+      else this.setState({ calendarEvents: [] });
     }
   }
 
@@ -126,7 +128,7 @@ class PageScheduler extends React.Component<Props> {
   clearSchedule = () => {
     this.props.saveSchedule(null);
     if (confirm("Are you sure you want to re-import your schedule?")) {
-      this.setState({ input: "", calendarEvents: null });
+      this.setState({ input: "", calendarEvents: [] });
     }
   };
 
@@ -180,17 +182,175 @@ class PageScheduler extends React.Component<Props> {
       })
       .catch(error => console.log(error));
   };
-
-  render() {
+  unimportedPage = () => (
+    <div className={styles.innerContainer}>
+      <div className={styles.textContainer}>
+        <div className={styles.headerContainer}>
+          {/* <div className={styles.header}>
+          <div>{calendarIcon}</div> Scheduler
+        </div>
+        
+        {/* <div
+          className={"fb-like".concat(" " + styles.fbLike)}
+          data-href="https://ntuvibe.com"
+          data-layout="button_count"
+          data-action="like"
+          data-size="large"
+          data-show-faces="false"
+          data-share="false"
+        /> */}
+        </div>
+        <div
+          className={styles.instructionContainer}
+          style={{
+            display:
+              this.state.calendarEvents &&
+              this.state.calendarEvents.length === 0
+                ? "block"
+                : "none"
+          }}
+        >
+          <div className={styles.text}>
+            Create your <span className={styles.beautiful}>beautiful</span>{" "}
+            class schedule and add to your calendar!
+          </div>
+          <div className={styles.picContainer}>
+            <div className={styles.picItem}>
+              <img src="/instruct_1.png" width="100%" />
+              <div>
+                A weekly class schedule that can be added to your calendar
+              </div>
+            </div>
+            <div className={styles.picItem}>
+              <img src="/instruct_2.png" width="100%" />
+              <div>
+                By simple copy &amp; paste from{" "}
+                <a
+                  href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Check/Print Courses Registered
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className={styles.text} style={{ textAlign: "center" }}>
+            <ImportSchedule
+              import={this.importSchedule}
+              trigger={
+                <Button type="primary" className={styles.import}>
+                  Import your schedule
+                </Button>
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+  importedPage = () => {
     const { calendarEvents } = this.state;
     let latestClass = null;
-    if (calendarEvents) {
+    if (calendarEvents && calendarEvents.length > 0) {
       latestClass = tools.getLatestClass(calendarEvents);
       latestClass.setFullYear(TODAY.getFullYear());
       latestClass.setMonth(TODAY.getMonth());
       latestClass.setDate(TODAY.getDate());
       latestClass.setHours(latestClass.getHours() + 1);
     }
+    return (
+      <div
+        className={styles.scheduleContainer}
+        style={{
+          display:
+            this.state.calendarEvents && this.state.calendarEvents.length > 0
+              ? "block"
+              : "none" /* display only when imported */
+        }}
+      >
+        {tools.calculateAcademicWeek() ? (
+          <div className={styles.weekContainer}>
+            <div className={styles.weekIndicator}>
+              💪 Today falls in{" "}
+              <span className={styles.week}>
+                {tools.calculateAcademicWeek()}
+              </span>
+            </div>
+          </div>
+        ) : null}
+        <div className={styles.calendarContainer}>
+          <BigCalendar
+            eventPropGetter={event => ({ className: event.category })}
+            events={this.state.calendarEvents || events}
+            views={["work_week"]}
+            localizer={moment}
+            selectable={false}
+            step={60}
+            timeslots={1}
+            min={START_TIME}
+            max={latestClass || END_TIME}
+            defaultView={BigCalendar.Views.WORK_WEEK}
+            defaultDate={new Date()}
+            components={{
+              event: this.calendarEventRenderer
+            }}
+          />
+        </div>
+        <div
+          className={styles.text.concat(" ").concat(styles.calendarHint)}
+          style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
+        >
+          On PC, you can download the whole semester into your calendar!
+        </div>
+        <div
+          className={styles.text}
+          style={{
+            marginTop: "1.5rem",
+            color: "#00772c",
+            fontSize: "0.9rem"
+          }}
+        >
+          REMINDER: On your calendar app, please add your schedule to a new
+          calendar in case you want to delete the entire calendar in the future.
+        </div>
+        <div className={styles.toolbar}>
+          <Button
+            className={styles.addToCalendar}
+            onClick={this.downloadCalendar}
+          >
+            Download to your calendar
+          </Button>
+          {this.state.exam && (
+            <ExamSchedule
+              exam={this.state.exam}
+              trigger={
+                <Button type="primary" className={styles.exam}>
+                  View Exam Schedule
+                </Button>
+              }
+            />
+          )}
+          <Button
+            type="primary"
+            className={styles.sync}
+            onClick={() => requireLogin(this.updateSchedule)}
+          >
+            Save and sync
+          </Button>
+          <Button
+            type="danger"
+            onClick={this.clearSchedule}
+            style={{ backgroundColor: "crimson", color: "white" }}
+          >
+            Re-import
+          </Button>
+        </div>{" "}
+      </div>
+    );
+  };
+
+  render() {
     return (
       <div className={styles.container}>
         <SiteMetaHelmet
@@ -199,152 +359,8 @@ class PageScheduler extends React.Component<Props> {
           description="Create your beautiful class schedule and add to your calendar!"
         />
         <NavBar />
-        <div className={styles.innerContainer}>
-          <div className={styles.textContainer}>
-            <div className={styles.headerContainer}>
-              {/* <div className={styles.header}>
-                <div>{calendarIcon}</div> Scheduler
-              </div>
-              
-              {/* <div
-                className={"fb-like".concat(" " + styles.fbLike)}
-                data-href="https://ntuvibe.com"
-                data-layout="button_count"
-                data-action="like"
-                data-size="large"
-                data-show-faces="false"
-                data-share="false"
-              /> */}
-            </div>
-            <div
-              className={styles.instructionContainer}
-              style={{ display: !calendarEvents ? "block" : "none" }}
-            >
-              <div className={styles.text}>
-                Create your <span className={styles.beautiful}>beautiful</span>{" "}
-                class schedule and add to your calendar!
-              </div>
-              <div className={styles.picContainer}>
-                <div className={styles.picItem}>
-                  <img src="/instruct_1.png" width="100%" />
-                  <div>
-                    A weekly class schedule that can be added to your calendar
-                  </div>
-                </div>
-                <div className={styles.picItem}>
-                  <img src="/instruct_2.png" width="100%" />
-                  <div>
-                    By simple copy &amp; paste from{" "}
-                    <a
-                      href="https://sso.wis.ntu.edu.sg/webexe88/owa/sso_redirect.asp?t=1&app=https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Check/Print Courses Registered
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.text} style={{ textAlign: "center" }}>
-                <ImportSchedule
-                  import={this.importSchedule}
-                  trigger={
-                    <Button type="primary" className={styles.import}>
-                      Import your schedule
-                    </Button>
-                  }
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className={styles.scheduleContainer}
-            style={{
-              display: calendarEvents
-                ? "block"
-                : "none" /* display only when imported */
-            }}
-          >
-            {tools.calculateAcademicWeek() ? (
-              <div className={styles.weekContainer}>
-                <div className={styles.weekIndicator}>
-                  💪 Today falls in{" "}
-                  <span className={styles.week}>
-                    {tools.calculateAcademicWeek()}
-                  </span>
-                </div>
-              </div>
-            ) : null}
-            <div className={styles.calendarContainer}>
-              <BigCalendar
-                eventPropGetter={event => ({ className: event.category })}
-                events={calendarEvents || events}
-                views={["work_week"]}
-                localizer={moment}
-                selectable={false}
-                step={60}
-                timeslots={1}
-                min={START_TIME}
-                max={latestClass || END_TIME}
-                defaultView={BigCalendar.Views.WORK_WEEK}
-                defaultDate={new Date()}
-                components={{
-                  event: this.calendarEventRenderer
-                }}
-              />
-            </div>
-            <div
-              className={styles.text.concat(" ").concat(styles.calendarHint)}
-              style={{ color: "#7d7d7d", fontSize: "0.9rem" }}
-            >
-              On PC, you can download the whole semester into your calendar!
-            </div>
-            <div
-              className={styles.text}
-              style={{
-                marginTop: "1.5rem",
-                color: "#00772c",
-                fontSize: "0.9rem"
-              }}
-            >
-              REMINDER: On your calendar app, please add your schedule to a new
-              calendar in case you want to delete the entire calendar in the
-              future.
-            </div>
-            <div className={styles.toolbar}>
-              <Button
-                className={styles.addToCalendar}
-                onClick={this.downloadCalendar}
-              >
-                Download to your calendar
-              </Button>
-              {this.state.exam && (
-                <ExamSchedule
-                  exam={this.state.exam}
-                  trigger={
-                    <Button type="primary" className={styles.exam}>
-                      View Exam Schedule
-                    </Button>
-                  }
-                />
-              )}
-              <Button
-                type="primary"
-                className={styles.sync}
-                onClick={() => requireLogin(this.updateSchedule)}
-              >
-                Save and sync
-              </Button>
-              <Button
-                type="danger"
-                onClick={this.clearSchedule}
-                style={{ backgroundColor: "crimson", color: "white" }}
-              >
-                Re-import
-              </Button>
-            </div>{" "}
-          </div>
-        </div>
+        {this.unimportedPage()}
+        {this.importedPage()}
         <Footer />
       </div>
     );
