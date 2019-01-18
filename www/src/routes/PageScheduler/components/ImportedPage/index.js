@@ -3,15 +3,12 @@ import moment from "moment";
 import Button from "antd/lib/button";
 import ExamSchedule from "../ExamSchedule";
 import BigCalendar from "react-big-calendar";
+import { connect } from "react-redux";
 import { requireLogin } from "src/utils";
 import * as tools from "../../utils";
 import * as styles from "../../style.scss";
 import { logCalendarDownload } from "src/tracking";
-import {
-  saveSchedule,
-  fetchUserSchedule,
-  updateSchedule
-} from "src/redux/actions";
+import { saveSchedule, updateSchedule } from "src/redux/actions";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
@@ -38,8 +35,11 @@ const END_TIME = new Date(
 
 type Props = {
   exam: ?Object,
+  schedule: ?string,
+  updateScheduleSuccess: ?Object,
   calendarEvents: Object[],
-  clearSchedule: () => void
+  saveSchedule: Object => void,
+  updateSchedule: Object => void
 };
 
 class ImportedPage extends React.Component<Props> {
@@ -53,6 +53,7 @@ class ImportedPage extends React.Component<Props> {
     buttonGroup[1].innerHTML = "<";
     buttonGroup[2].innerHTML = ">";
   }
+
   updateSchedule = () => {
     const { schedule } = this.props;
     const form = new FormData();
@@ -69,6 +70,15 @@ class ImportedPage extends React.Component<Props> {
       })
       .catch(error => console.log(error));
   };
+
+  download(content, fileName, contentType) {
+    let a = document.createElement("a");
+    let file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
+
   clearSchedule = () => {
     this.props.saveSchedule(null);
     if (confirm("Are you sure you want to re-import your schedule?")) {
@@ -78,13 +88,11 @@ class ImportedPage extends React.Component<Props> {
 
   downloadCalendar = () => {
     const { schedule } = this.props;
-    let icsContent = tools.icsHelper(JSON.parse(schedule), this.state.exam);
+    let icsContent = tools.icsHelper(JSON.parse(schedule), this.props.exam);
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
-  x = () => {
-    this;
-  };
+
   render() {
     const { calendarEvents } = this.props;
     const { exam } = this.props;
@@ -180,4 +188,20 @@ class ImportedPage extends React.Component<Props> {
   }
 }
 
-export default ImportedPage;
+const mapStateToProps = state => {
+  const { user } = state;
+  return {
+    schedule: user && user.schedule,
+    updateScheduleSuccess: user && user.updateScheduleSuccess
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  saveSchedule: schedule => dispatch(saveSchedule(schedule)),
+  updateSchedule: form => dispatch(updateSchedule(form))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ImportedPage);

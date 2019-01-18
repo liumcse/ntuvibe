@@ -9,11 +9,7 @@ import Footer from "src/components/Footer";
 import ImportedPage from "./components/ImportedPage";
 
 import { logPageview, logScheduleGeneration } from "src/tracking";
-import {
-  saveSchedule,
-  fetchUserSchedule,
-  updateSchedule
-} from "src/redux/actions";
+import { saveSchedule, fetchUserSchedule } from "src/redux/actions";
 
 import * as tools from "./utils";
 import * as styles from "./style.scss";
@@ -48,10 +44,8 @@ import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.c
 
 type Props = {
   schedule: ?string,
-  updateScheduleSuccess: ?Object,
-  saveSchedule: Object => void,
   fetchUserSchedule: () => void,
-  updateSchedule: Object => void
+  saveSchedule: Object => void
 };
 
 class PageScheduler extends React.Component<Props> {
@@ -96,14 +90,6 @@ class PageScheduler extends React.Component<Props> {
     }
   }
 
-  download(content, fileName, contentType) {
-    let a = document.createElement("a");
-    let file = new Blob([content], { type: contentType });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-  }
-
   calendarEventRenderer = ({ event }) => (
     <span style={{ lineHeight: "0.75rem" }}>
       <strong>{event.title}</strong>
@@ -143,15 +129,7 @@ class PageScheduler extends React.Component<Props> {
   );
 
   unimportedPage = () => (
-    <div
-      className={styles.instructionContainer}
-      // style={{
-      //   display:
-      //     this.state.calendarEvents && this.state.calendarEvents.length === 0
-      //       ? "block"
-      //       : "none"
-      // }}
-    >
+    <div className={styles.instructionContainer}>
       <div className={styles.text}>
         Create your <span className={styles.beautiful}>beautiful</span> class
         schedule and add to your calendar!
@@ -235,15 +213,13 @@ class PageScheduler extends React.Component<Props> {
 const mapStateToProps = state => {
   const { user } = state;
   return {
-    schedule: user && user.schedule,
-    updateScheduleSuccess: user && user.updateScheduleSuccess
+    schedule: user && user.schedule
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   saveSchedule: schedule => dispatch(saveSchedule(schedule)),
-  fetchUserSchedule: () => dispatch(fetchUserSchedule()),
-  updateSchedule: form => dispatch(updateSchedule(form))
+  fetchUserSchedule: () => dispatch(fetchUserSchedule())
 });
 
 export default connect(
