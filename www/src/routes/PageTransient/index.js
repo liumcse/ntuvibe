@@ -8,6 +8,7 @@ import { withRouter } from "react-router";
 import { validateActivation, userActivate, userLogin } from "src/redux/actions";
 
 import * as styles from "./style.scss";
+import { message } from "antd";
 
 type Props = {
   // from redux
@@ -65,7 +66,7 @@ class PageTransient extends React.Component<Props> {
   handleSubmit = () => {
     const { token, email, username, password, major } = this.state;
     if (!username || !password) {
-      alert("Please fill in all areas!");
+      message.warning("Please fill in all areas!");
     } else {
       const form = new FormData();
       form.append("token", token);

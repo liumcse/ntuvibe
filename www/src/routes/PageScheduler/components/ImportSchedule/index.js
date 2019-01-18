@@ -2,6 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import Button from "antd/lib/button";
 import * as styles from "./style.scss";
+import { message } from "antd";
 
 type Props = {
   import: string => void,
@@ -21,12 +22,12 @@ class ImportSchedule extends React.PureComponent<Props> {
     this.setState({ importing: true });
     const input = document.querySelector("." + styles.input).value;
     if (!input) {
-      alert("Input is empty!");
+      message.warning("Input is empty!");
     } else {
       try {
         this.props.import(input);
       } catch (error) {
-        alert(
+        message.error(
           "We are sorry, but we can't import your schedule. Make sure you copied everything on the \"Print\\Check Registered Course\" page.\nIf the problem persists, we appreciate if you can send us a feedback.\nBy the way, have you tried Chrome? Vibe doesn't work well on IE or Microsoft Edge :("
         );
       }
