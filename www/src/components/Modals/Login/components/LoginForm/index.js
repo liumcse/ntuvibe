@@ -4,7 +4,7 @@ import Button from "antd/lib/button";
 import Input from "antd/lib/input";
 import Icon from "antd/lib/icon";
 import Form from "antd/lib/form";
-
+import { message } from "antd";
 import "./style.scss";
 
 const FormItem = Form.Item;
@@ -51,12 +51,12 @@ class LoginForm extends React.Component<FormProps> {
         this.props.userLogin(authForm).then(() => {
           const { loginRequest } = this.props;
           if (!loginRequest) {
-            alert("Something went wrong... Please try again later");
+            message.warning("Something went wrong... Please try again later");
             this.setState({ requested: false });
           } else {
             const { success, error_message } = loginRequest;
             if (!success) {
-              alert(error_message);
+              message.warning(error_message, 5);
               this.setState({ requested: false });
             } else {
               this.setState({ succeed: true, requested: true });
@@ -95,7 +95,7 @@ class LoginForm extends React.Component<FormProps> {
             <Input
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
-              placeholder="Password"
+              placeholder="Password for NTUVibe"
             />
           )}
         </FormItem>

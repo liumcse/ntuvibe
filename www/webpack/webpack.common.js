@@ -7,7 +7,7 @@ const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -24,7 +24,7 @@ const config = {
   resolve: {
     alias: {
       src: SRC_PATH,
-      "@containers": SRC_PATH + "/containers",
+      "@routes": SRC_PATH + "/routes",
       "@components": SRC_PATH + "/components",
       "@redux": SRC_PATH + "/redux",
       "@assets": SRC_PATH + "/assets",
@@ -38,10 +38,6 @@ const config = {
         exclude: ["node_modules"],
         use: [{ loader: "babel-loader" }]
       },
-      // {
-      //   test: /\.svg$/,
-      //   use: ["@svgr/webpack"]
-      // },
       {
         test: [
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
@@ -190,9 +186,9 @@ const config = {
         useShortDoctype: true
       }
     }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: "async"
-    // }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: "async"
+    }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),

@@ -3,12 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {
-  popupTrigger,
-  fetchProfile,
-  userLogout,
-  showModal
-} from "src/redux/actions";
+import { fetchProfile, userLogout, showModal } from "src/redux/actions";
 import login from "./assets/login.svg";
 import vibe from "src/brand/logo-color.png";
 import calendar from "./assets/calendar.svg";
@@ -105,9 +100,12 @@ class NavBar extends React.Component<Props> {
               <Link to="/">Home</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-              <Link to="/scheduler">Scheduler</Link>
+                <Link to="/browser">Browser</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
+              <Link to="/scheduler">Scheduler</Link>
+            </div>
+            {/* <div className={styles.navbar_elements_right_text}>
               <a
                 href="https://medium.com/@ntuvibe"
                 target="_blank"
@@ -115,7 +113,7 @@ class NavBar extends React.Component<Props> {
               >
                 Blog
               </a>
-            </div>
+            </div> */}
             {!profile ? (
               <div
                 className={styles.rightButton}
@@ -158,7 +156,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  popupTrigger: option => dispatch(popupTrigger(option)),
   fetchProfile: () => dispatch(fetchProfile()),
   userLogout: () => dispatch(userLogout()),
   showModal: (modalType, modalProps) =>
