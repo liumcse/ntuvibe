@@ -168,7 +168,7 @@ class Search extends React.Component<Props, States> {
     const inputProps = {
       autoFocus: true,
       placeholder:
-        " Type the code or title of a course (e.g. CZ3003 or Algorithms)",
+        "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
       value,
       disabled: !loaded,
       onChange: this.onChange
