@@ -26,6 +26,7 @@ import moment from "moment";
 import * as tools from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
+import { message } from "antd";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
@@ -173,9 +174,9 @@ class PageScheduler extends React.Component<Props> {
       .then(() => {
         const { updateScheduleSuccess } = this.props;
         if (updateScheduleSuccess && updateScheduleSuccess.success) {
-          alert("Success!");
+          message.success("Success!");
         } else {
-          alert("Something went wrong...");
+          message.error("Something went wrong...");
         }
       })
       .catch(error => console.log(error));

@@ -4,7 +4,7 @@ import React from "react";
 import Autosuggest from "react-autosuggest";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Icon } from "antd";
+import { Icon, message } from "antd";
 
 import { fetchCourseList } from "src/redux/actions";
 import {
@@ -66,6 +66,8 @@ class Search extends React.Component<Props, States> {
       const code = value.split(" - ")[0].toLowerCase();
       if (course_code_is_valid(courseList, code)) {
         this.redirect(code);
+      } else {
+        message.error("Nothing was found based on your keyword");
       }
     }
   };

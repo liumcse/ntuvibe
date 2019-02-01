@@ -3,6 +3,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import Button from "antd/lib/button";
 import * as styles from "./style.scss";
+import { message } from "antd";
 
 type Props = {
   import: string => void,
@@ -22,7 +23,7 @@ class ImportSchedule extends React.PureComponent<Props> {
     this.setState({ importing: true });
     const input = document.querySelector("." + styles.input).value;
     if (!input) {
-      alert("Hmmm is that empty input?");
+      message.warning("Hmmm is that empty input?");
     } else {
       try {
         this.props.import(input);
