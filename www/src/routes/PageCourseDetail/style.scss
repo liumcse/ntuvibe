@@ -111,6 +111,7 @@
 
   .course_description {
     white-space: pre-line;
+    word-break: break-word;
     @include lato-regular;
     margin-top: 2rem;
     text-align: justify;
