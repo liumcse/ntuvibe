@@ -112,7 +112,7 @@ class PageBrowser extends React.Component {
   };
 
   startSearch = async query => {
-    this.setState({ ...this.state, isSearching: true, countdown: 10 });
+    this.setState({ ...this.state, isSearching: true, countdown: 5 });
     try {
       const {
         data: { data: data }
@@ -272,24 +272,6 @@ class PageBrowser extends React.Component {
                 >
                   <Button onClick={this.loadMore}>Load more</Button>
                 </div>
-                {/* <InfiniteScroll
-                  dataLength={this.state.result.length}
-                  next={this.loadMore}
-                  hasMore={true}
-                  loader={<CourseCard skeleton />}
-                  endMessage={
-                    <p style={{ textAlign: "center" }}>
-                      <b>Yay! You have seen it all</b>
-                    </p>
-                  }
-                  scrollableTarget={document.querySelector(
-                    "." + styles.rightContainer
-                  )}
-                >
-                  {this.state.loaded.map((course, index) => (
-                    <CourseCard key={index} {...course} />
-                  ))}
-                </InfiniteScroll> */}
               </React.Fragment>
             ) : (
               <h1 className={styles.header}>No result</h1>
