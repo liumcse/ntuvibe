@@ -26,10 +26,10 @@ class PageHome extends React.PureComponent {
           <div className={styles.bannerContainer}>
             <Link to="/browser">
               <div>
-                <span style={{ color: "red" }}>2</span>
-                <span style={{ color: "darkviolet" }}>0</span>
-                <span style={{ color: "black" }}>1</span>
-                <span style={{ color: "green" }}>9</span>
+                <span style={{ color: "#ff6578" }}>2</span>
+                <span style={{ color: "#ffe619" }}>0</span>
+                <span style={{ color: "#498a46" }}>1</span>
+                <span style={{ color: "#24b8e8" }}>9</span>
               </div>
             </Link>
           </div>

@@ -34,3 +34,4 @@ notebooks
 
 # Experimental
 services
+*.code-workspace

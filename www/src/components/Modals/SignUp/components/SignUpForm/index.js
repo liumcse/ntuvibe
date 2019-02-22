@@ -1,10 +1,11 @@
 // @flow
 import React from "react";
-import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import Input from "antd/lib/input";
 import Icon from "antd/lib/icon";
 import Form from "antd/lib/form";
+import { message } from "antd";
+import { connect } from "react-redux";
 import { userSignUp } from "src/redux/actions";
 
 import "./style.scss";
@@ -37,7 +38,10 @@ class SignUpForm extends React.Component<FormProps> {
         // send request
         this.props.userSignUp(form).then(() => {
           this.setState({ requested: false, succeed: true });
-          alert("An activation Email has been sent to your inbox!");
+          message.success(
+            "An activation Email has been sent to your inbox!",
+            5
+          );
           // TODO: handle exception
           this.props.hideModal();
         });

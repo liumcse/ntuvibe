@@ -12,6 +12,7 @@ import {
 } from "src/redux/actions";
 
 import * as styles from "./style.scss";
+import { message } from "antd";
 
 type Props = {
   // from redux
@@ -64,9 +65,9 @@ class PageResetPassword extends React.Component<Props> {
   handleSubmit = () => {
     const { token, email, password, passwordAgain } = this.state;
     if (!password || !passwordAgain) {
-      alert("Please fill in all areas!");
+      message.warning("Please fill in all areas!");
     } else if (password !== passwordAgain) {
-      alert("Two password inputs are different!");
+      message.warning("Two password inputs are different!");
     } else {
       const form = new FormData();
       form.append("token", token);

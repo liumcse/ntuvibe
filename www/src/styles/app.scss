@@ -55,27 +55,27 @@
     border: none !important;
   }
 
-  /* width */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 5px;
-  }
+  // /* width */
+  // ::-webkit-scrollbar {
+  //   width: 8px;
+  //   height: 5px;
+  // }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: white; 
-  }
+  // /* Track */
+  // ::-webkit-scrollbar-track {
+  //   background: white; 
+  // }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 10px;
-  }
+  // /* Handle */
+  // ::-webkit-scrollbar-thumb {
+  //   background: #888; 
+  //   border-radius: 10px;
+  // }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+  // /* Handle on hover */
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: #555; 
+  // }
 
   @media (max-width: 768px) {
     .popup-content {

@@ -30,10 +30,8 @@ export function course_code_is_valid(
   courseList: CourseList,
   code: string
 ): boolean {
-  return (
-    courseList.filter(
-      (snippet: CourseListSnippet) => snippet.code.toLowerCase() === code
-    ).length > 0
+  return courseList.some(
+    (snippet: CourseListSnippet) => snippet.code.toLowerCase() === code
   );
 }
 
