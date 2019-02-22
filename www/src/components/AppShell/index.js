@@ -12,7 +12,7 @@ const AppShell = props => (
     <Router>
       <div className={styles.container}>
         <NavBar />
-        {props.children}
+        <div className={styles.children}>{props.children}</div>
         <Footer />
       </div>
     </Router>

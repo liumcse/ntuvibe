@@ -81,7 +81,7 @@ class App extends React.PureComponent {
       <AppShell>
         <ModalContainer />
         <Switch>
-          <Route exact path={ROUTES.ROUTE_HOME} component={LoadingSpinner} />
+          <Route exact path={ROUTES.ROUTE_HOME} component={AsyncPageHome} />
           <Route
             exact
             path={ROUTES.ROUTE_COURSE_PAGE}
