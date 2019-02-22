@@ -15,7 +15,7 @@ import "normalize.css";
 import "antd/dist/antd.less";
 
 const LoadingSpinner = () => (
-  <Spin indicator={<Icon type="loading" style={{ fontSize: "3rem" }} spin />} />
+  <Icon type="loading" style={{ fontSize: "4rem", marginBottom: "2rem" }} />
 );
 
 const AsyncPageResetPassword = Loadable({
@@ -73,6 +73,7 @@ class App extends React.PureComponent {
     logPageview(window.location.pathname);
     AsyncPageBrowser.preload();
     AsyncPageScheduler.preload();
+    AsyncPageHome.preload();
   }
 
   render() {
@@ -80,7 +81,7 @@ class App extends React.PureComponent {
       <AppShell>
         <ModalContainer />
         <Switch>
-          <Route exact path={ROUTES.ROUTE_HOME} component={AsyncPageHome} />
+          <Route exact path={ROUTES.ROUTE_HOME} component={LoadingSpinner} />
           <Route
             exact
             path={ROUTES.ROUTE_COURSE_PAGE}

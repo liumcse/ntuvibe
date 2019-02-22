@@ -105,15 +105,6 @@ class NavBar extends React.Component<Props> {
             <div className={styles.navbar_elements_right_text}>
               <Link to="/scheduler">Scheduler</Link>
             </div>
-            {/* <div className={styles.navbar_elements_right_text}>
-              <a
-                href="https://medium.com/@ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog
-              </a>
-            </div> */}
             {!profile ? (
               <div
                 className={styles.rightButton}
