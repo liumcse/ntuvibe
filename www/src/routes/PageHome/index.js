@@ -9,7 +9,7 @@ import * as theme from "./dropdown-theme.scss";
 class PageHome extends React.PureComponent {
   componentDidMount() {
     // eslint-disable-next-line
-    if (window.FB && typeof(window.FB) !== "undefined" && window.FB.XFBML && typeof(window.FB.XFBML) !== "undefined") window.FB.XFBML.parse();  // call this function to re-render FB-like button
+    // if (window.FB && typeof(window.FB) !== "undefined" && window.FB.XFBML && typeof(window.FB.XFBML) !== "undefined") window.FB.XFBML.parse();  // call this function to re-render FB-like button
   }
   render() {
     return (
@@ -35,15 +35,6 @@ class PageHome extends React.PureComponent {
             <Search theme={theme} />
           </div>
           <div className={styles.fbLike}>
-            {/* <div
-              className="fb-like"
-              data-href="https://ntuvibe.com"
-              data-layout="button_count"
-              data-action="like"
-              data-size="large"
-              data-show-faces="false"
-              data-share="false"
-            /> */}
             <div className={styles.fbPage}>
               New year, new beginning. Try out{" "}
               <Link to="/browser">Course Browser</Link>!

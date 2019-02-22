@@ -15,7 +15,15 @@ import "normalize.css";
 import "antd/dist/antd.less";
 
 const LoadingSpinner = () => (
-  <Icon type="loading" style={{ fontSize: "4rem", marginBottom: "2rem" }} />
+  <div
+    style={{
+      display: "block",
+      textAlign: "center",
+      marginTop: "calc(10% + 4rem)"
+    }}
+  >
+    <Icon type="loading" style={{ fontSize: "4rem" }} />
+  </div>
 );
 
 const AsyncPageResetPassword = Loadable({
