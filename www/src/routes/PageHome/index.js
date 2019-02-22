@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "src/components/NavBar";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { THIS_YEAR } from "src/global";
 import Search from "src/components/Search";
@@ -22,7 +21,6 @@ class PageHome extends React.PureComponent {
         />
         {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
-          <NavBar />
           <div className={styles.bannerContainer}>
             <Link to="/browser">
               <div>
@@ -50,42 +48,6 @@ class PageHome extends React.PureComponent {
               New year, new beginning. Try out{" "}
               <Link to="/browser">Course Browser</Link>!
             </div>
-          </div>
-          <div className={styles.footer}>
-            <div className={styles.line}>
-              &copy; {THIS_YEAR} NTUVibe &#183; Stay cute
-            </div>
-            <div className={styles.line}>
-              We&#39;re not affiliated with Nanyang Technological University.
-            </div>
-            <div className={styles.links}>
-              <Link to="/sitemap">Sitemap</Link>
-              <Link to="/about">About</Link>
-              <a
-                href="https://medium.com/@ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog
-              </a>
-              <a
-                href="https://facebook.com/ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </div>
-            {/* <div className={styles.credit}>
-              Photo by{" "}
-              <a
-                href="https://www.instagram.com/david_lequn_chen/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Chen Lequn
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

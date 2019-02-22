@@ -100,7 +100,7 @@ class NavBar extends React.Component<Props> {
               <Link to="/">Home</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-                <Link to="/browser">Browser</Link>
+              <Link to="/browser">Browser</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
               <Link to="/scheduler">Scheduler</Link>

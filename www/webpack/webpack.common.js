@@ -8,6 +8,7 @@ const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 // const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
@@ -156,6 +157,7 @@ const config = {
     ]
   },
   plugins: [
+    new CompressionPlugin(),
     new HtmlWebpackPlugin({
       template: PROJECT_ROOT + "/index.html",
       minify: {

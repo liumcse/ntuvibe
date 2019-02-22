@@ -2,7 +2,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import vibe from "src/brand/logo.png";
-import Footer from "src/components/Footer";
 import * as styles from "./style.scss";
 
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
@@ -152,9 +151,6 @@ const PageHelp = () => {
           <Bubble alt="Facebook" img={fb} link="https://facebook.com/ntuvibe" />
           <Bubble alt="Medium" img={md} link="https://medium.com/@ntuvibe" />
         </div>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

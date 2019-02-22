@@ -1,6 +1,4 @@
 import React from "react";
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { logPageview } from "src/tracking";
 
@@ -13,7 +11,6 @@ const PageAbout = () => {
   return (
     <div className={styles.container}>
       <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
-      <NavBar />
       <div className={styles.content}>
         <div className={styles.header}>About</div>
         <p>
@@ -117,7 +114,6 @@ const PageAbout = () => {
           At Facebook Page: <a href="https://facebook.com/ntuvibe">NTUVibe</a>
         </li>
       </div>
-      <Footer />
     </div>
   );
 };

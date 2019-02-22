@@ -1,11 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-
 import { withRouter } from "react-router";
-
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
@@ -77,7 +73,6 @@ type Props = {
 
 const skeleton = (
   <div className={styles.page_course_detail}>
-    <NavBar />
     <Menu />
     <div className={styles.content}>
       <div className={styles.section_a}>
@@ -187,7 +182,6 @@ const skeleton = (
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 );
 
@@ -278,7 +272,6 @@ class PageCourseDetail extends React.Component<Props> {
             NO_DESCRIPTION
           }
         />
-        <NavBar />
         <Menu
           showModal={() =>
             this.props.showModal("RATE_COURSE", {
@@ -422,7 +415,6 @@ class PageCourseDetail extends React.Component<Props> {
               )}
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
