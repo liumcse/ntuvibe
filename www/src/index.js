@@ -1,73 +1,71 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Spin, Icon } from "antd";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
 import ReactGA from "react-ga";
 
 import * as ROUTES from "@routes";
 import { logPageview } from "@tracking";
 import ModalContainer from "@routes/ModalContainer";
-import store from "@redux/store";
 import AppShell from "@components/AppShell";
 
 import "./styles/app.scss";
 import "normalize.css";
 import "antd/dist/antd.less";
 
-const LoadingSpin = () => (
+const LoadingSpinner = () => (
   <Spin indicator={<Icon type="loading" style={{ fontSize: "3rem" }} spin />} />
 );
 
 const AsyncPageResetPassword = Loadable({
   loader: () => import("@routes/PageResetPassword"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageUserSetting = Loadable({
   loader: () => import("@routes/PageUserSetting"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageCourseDetail = Loadable({
   loader: () => import("@routes/PageCourseDetail"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageHelp = Loadable({
   loader: () => import("@routes/PageHelp"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageTransient = Loadable({
   loader: () => import("@routes/PageTransient"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageSitemap = Loadable({
   loader: () => import("@routes/PageSitemap"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageAbout = Loadable({
   loader: () => import("@routes/PageAbout"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageScheduler = Loadable({
   loader: () => import("@routes/PageScheduler"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageHome = Loadable({
   loader: () => import("@routes/PageHome"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 const AsyncPageBrowser = Loadable({
   loader: () => import("@routes/PageBrowser"),
-  loading: () => <LoadingSpin />
+  loading: () => <LoadingSpinner />
 });
 
 class App extends React.PureComponent {
