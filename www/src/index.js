@@ -79,9 +79,6 @@ const AsyncPageBrowser = Loadable({
 class App extends React.PureComponent {
   componentDidMount() {
     logPageview(window.location.pathname);
-    AsyncPageBrowser.preload();
-    AsyncPageScheduler.preload();
-    AsyncPageHome.preload();
   }
 
   render() {
