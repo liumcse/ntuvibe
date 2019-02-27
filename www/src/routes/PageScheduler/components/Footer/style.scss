@@ -24,7 +24,7 @@
   }
 
   .header {
-    @include raleway-medium;
+    font-weight: 600;
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
@@ -38,7 +38,6 @@
 
   .first_row {
     margin-bottom: 2.5rem;
-    @include raleway-regular;
     line-height: 1.05rem;
     // display: none;
   }
@@ -59,7 +58,6 @@
   .brand {
     font-size: 2rem;
     margin-right: 2rem;
-    @include american-typewriter;
     // @include modern-antiqua;
   }
 

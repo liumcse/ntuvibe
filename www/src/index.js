@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Spin, Icon } from "antd";
+import { Icon } from "antd";
 import { Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
 import ReactGA from "react-ga";

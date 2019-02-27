@@ -3,10 +3,15 @@
 @import '_functions';
 
 :global {
+  :root {
+    font-size: 18px !important;  // Set font size for root html. Default is 16px
+  }
+
+  body {
+    font-size: 18px !important;
+  }
+
   #app {
-    // default font is open-sans
-    // @include open-sans-regular;
-    font-size: 16px;
     position: relative;
   }
 
@@ -47,37 +52,20 @@
 
   .popup-content {
     font-variant: none;
-    // padding: 0 2rem !important;
-    // overflow-y: auto;
-    // max-height: 75vh;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0,0,0,.15);
     border: none !important;
   }
 
-  // /* width */
-  // ::-webkit-scrollbar {
-  //   width: 8px;
-  //   height: 5px;
-  // }
-
-  // /* Track */
-  // ::-webkit-scrollbar-track {
-  //   background: white; 
-  // }
-
-  // /* Handle */
-  // ::-webkit-scrollbar-thumb {
-  //   background: #888; 
-  //   border-radius: 10px;
-  // }
-
-  // /* Handle on hover */
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: #555; 
-  // }
-
   @media (max-width: 768px) {
+    :root {
+      font-size: 16px !important;
+    }
+
+    body {
+      font-size: 16px !important;
+    }
+
     .popup-content {
       width: 95% !important;
       height: 95% !important;

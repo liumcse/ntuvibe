@@ -2,14 +2,13 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const PreloadWebpackPlugin = require("preload-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-// const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
 const OUTPUT_PATH = path.resolve(__dirname, "../dist");
@@ -86,9 +85,8 @@ const config = {
             loader: "less-loader", // compiles Less to CSS
             options: {
               modifyVars: {
-                "@primary-color": "#1362b1",
-                "@font-family": "Open Sans, sans-serif",
-                "@font-size-base": "16px"
+                "@font-family": "'Open Sans', sans-serif",
+                "@primary-color": "#00b3e0"
               },
               javascriptEnabled: true
             }
@@ -177,10 +175,10 @@ const config = {
     // new PreloadWebpackPlugin({
     //   fileWhitelist: [/\.css/]
     // }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   preload: /\.css$/,
-    //   defaultAttribute: "async"
-    // }),
+    new ScriptExtHtmlWebpackPlugin({
+      preload: /\.css$/,
+      defaultAttribute: "async"
+    }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(SRC_PATH, "brand/faviconit")

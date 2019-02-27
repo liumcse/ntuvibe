@@ -67,7 +67,6 @@
     .rating_overall {
       color: $indicator;
       text-align: right;
-      @include american-typewriter;
     }
     // the following &_row is deprecated
     &_row {
@@ -76,19 +75,18 @@
       flex-direction: row;
       .course_code, .rating_overall {
         font-size: 2rem;
-        @include raleway-bold;
+        font-weight: bold;
       }
       .course_code {
         margin-right: 1rem;
       }
       .rating_overall {
         color: $indicator;
-        @include american-typewriter;
       }
     }
     &_course_title {
       font-size: 1.5rem;
-      @include raleway-bold;
+      font-weight: bold;
     }
     .number_of_rating {
       color: $grey;
@@ -99,7 +97,7 @@
 
   .course_code, .rating_overall {
     font-size: 2rem;
-    @include raleway-bold;
+    font-weight: bold;
   }
 
 
@@ -135,7 +133,6 @@
   }
   .au {
     margin-top: 2.5rem;
-    @include american-typewriter;
     font-size: 2rem;
   }
   .availability {
@@ -200,7 +197,7 @@
   }
 
   .header {
-    @include raleway-medium;
+    font-weight: 600;
     color: $secondary;
     font-size: 1.5rem;
     margin-top: 3rem;
@@ -243,12 +240,12 @@
 
       .course_code, .rating_overall {
         font-size: 1.5rem;
-        @include raleway-bold;
+        font-weight: bold;
       }
 
       &_course_title {
         font-size: 1rem;
-        @include raleway-bold;
+        font-weight: bold;
       }
     }
 
@@ -258,14 +255,14 @@
       div {
         margin-top: 1rem;
       }
-    }  
+    }
 
     .rating {
       margin-top: 1.25rem;
     }
     .au {
       margin-top: 1rem;
-    }  
+    }
 
     .course_description {
       margin-top: 1rem;
