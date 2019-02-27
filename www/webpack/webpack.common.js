@@ -86,7 +86,7 @@ const config = {
             options: {
               modifyVars: {
                 "@font-family": "'Open Sans', sans-serif",
-                "@primary-color": "#00b3e0"
+                "@primary-color": "#24b8e8"
               },
               javascriptEnabled: true
             }
