@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { fetchProfile, userLogout, showModal } from "src/redux/actions";
 import login from "./assets/login.svg";
-import vibe from "src/brand/logo-color.png";
+import vibe from "src/brand/vibe.png";
 import calendar from "./assets/calendar.svg";
 import home from "./assets/home.svg";
 
@@ -19,8 +19,7 @@ const brand = (
       background: "url(".concat(vibe).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "2.8rem",
-      width: "5.6rem",
-      marginBottom: "0.5rem"
+      width: "5.6rem"
     }}
   />
 );
