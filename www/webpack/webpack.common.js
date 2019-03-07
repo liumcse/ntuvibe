@@ -84,10 +84,7 @@ const config = {
           {
             loader: "less-loader", // compiles Less to CSS
             options: {
-              modifyVars: {
-                "@font-family": "'Open Sans', sans-serif",
-                "@primary-color": "#24b8e8"
-              },
+              modifyVars: require(SRC_PATH + "/styles/antd-override.js"),
               javascriptEnabled: true
             }
           }

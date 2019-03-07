@@ -274,8 +274,6 @@
 
   .import {
     margin-top: 1rem;
-    background-color: $primary;
-    color: white;
   }
 
   .exam {
@@ -307,12 +305,12 @@
     font-size: 2rem;
     margin-top: 2rem;
     color: white;
-    background-color: $primary;
-    transition: 0.8s;
-    &:hover {
-      box-shadow: 0 0 20px $primary;
-      transform: scale(1.01);
-    }
+    // background-color: $primary;
+    // transition: 0.8s;
+    // &:hover {
+    //   box-shadow: 0 0 20px $primary;
+    //   transform: scale(1.01);
+    // }
   }
 
   .scheduleContainer {
@@ -340,7 +338,7 @@
     color: white;
     @include lato-regular;
     .week {
-      @include lato-medium;
+      @include lato-bold;
     }
   }
 

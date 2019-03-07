@@ -248,7 +248,7 @@ class PageScheduler extends React.Component<Props> {
                   import={this.importSchedule}
                   trigger={
                     <Button type="primary" className={styles.import}>
-                      Import your schedule
+                      Create Now
                     </Button>
                   }
                 />

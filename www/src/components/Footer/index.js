@@ -13,9 +13,7 @@ const Footer = () => (
       </div>
       <div className={styles.links}>
         <Link to="/sitemap">Sitemap</Link>
-        <span>|</span>
         <Link to="/about">About</Link>
-        <span>|</span>
         <a
           href="https://medium.com/@ntuvibe"
           target="_blank"
@@ -23,9 +21,6 @@ const Footer = () => (
         >
           Blog
         </a>
-        {/* <span>|</span> */}
-        {/* <Link to="/help">Help</Link> */}
-        <span>|</span>
         <a
           href="https://facebook.com/ntuvibe"
           target="_blank"

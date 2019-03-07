@@ -43,7 +43,7 @@
     align-items: center;
     height: 100%;
     color: rgb(0, 0, 0);
-    @include lato-medium;
+    @include lato-regular;
     font-size: 1.15rem;
     &_left {
       display: flex;
@@ -72,9 +72,6 @@
         div {
           margin-right: 1rem;
         }
-      }
-      a:hover {
-        color: $primary;
       }
     };
   }
