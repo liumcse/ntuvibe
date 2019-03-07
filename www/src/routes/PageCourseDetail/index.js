@@ -302,19 +302,18 @@ class PageCourseDetail extends React.Component<Props> {
                     NO_DESCRIPTION}
                 </div>
                 <div className={styles.bottom_left}>
-                  {offered_semester &&
-                    offered_semester.length > 0 && (
-                      <React.Fragment>
-                        <div className={styles.label}>Past Offered</div>
-                        <div className={styles.requirement_content}>
-                          {offered_semester
-                            .reverse()
-                            .splice(0, 4)
-                            .map(offering => prettify_offering(offering))
-                            .join(", ")}
-                        </div>
-                      </React.Fragment>
-                    )}
+                  {offered_semester && offered_semester.length > 0 && (
+                    <React.Fragment>
+                      <div className={styles.label}>Past Offered</div>
+                      <div className={styles.requirement_content}>
+                        {offered_semester
+                          .reverse()
+                          .splice(0, 4)
+                          .map(offering => prettify_offering(offering))
+                          .join(", ")}
+                      </div>
+                    </React.Fragment>
+                  )}
                   {constraint &&
                     constraint.prerequisite &&
                     constraint.prerequisite.length > 0 && (
@@ -397,22 +396,20 @@ class PageCourseDetail extends React.Component<Props> {
             )}
           </div>
           <div className={styles.section_c}>
-            {courseSchedule &&
-              Object.keys(courseSchedule).length > 1 && (
-                <div className={styles.table}>
-                  <ClassSchedule data={courseSchedule} />
-                </div>
-              )}
-            {start_time &&
-              end_time && (
-                <div className={styles.table}>
-                  <ExamSchedule
-                    startTime={start_time}
-                    endTime={end_time}
-                    updateTime={update_time}
-                  />
-                </div>
-              )}
+            {courseSchedule && Object.keys(courseSchedule).length > 1 && (
+              <div className={styles.table}>
+                <ClassSchedule data={courseSchedule} />
+              </div>
+            )}
+            {start_time && end_time && (
+              <div className={styles.table}>
+                <ExamSchedule
+                  startTime={start_time}
+                  endTime={end_time}
+                  updateTime={update_time}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -265,6 +265,7 @@
 
     .course_description {
       margin-top: 1rem;
+      @include lato-regular;
     }
 
     .requirement {
