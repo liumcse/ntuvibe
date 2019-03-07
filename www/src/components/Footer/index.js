@@ -12,7 +12,6 @@ const Footer = () => (
         <span>&copy; {THIS_YEAR} NTUVibe &middot; Stay cute</span>
       </div>
       <div className={styles.links}>
-        <Link to="/sitemap">Sitemap</Link>
         <Link to="/about">About</Link>
         <a
           href="https://medium.com/@ntuvibe"
