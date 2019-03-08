@@ -12,8 +12,8 @@
 
 # redirects rule
 [[redirects]]
-  from = "/developers"
-  to = "/developers/index.html"
+  from = "/developers/*"
+  to = "/developers/*"
   status = 200
 
 # The following redirect is intended for use with most SPA's that handles routing internally.

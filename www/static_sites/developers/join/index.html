@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link ref="dns-prefetch" href="https://www.google-analytics.com">
+  <title>Developers - NTUVibe</title>
+
+  <style>
+    .container {
+      padding: 1rem 2rem;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Application for Front End Developer</h1>
+    <p>Thank you for your interest in making NTUVibe better!</p>
+    <h4>A Message to You</h4>
+    <p>You must be a member of Nanyang Technological University to be eligible for the role. For instance, you can be a
+      candidate pursuing Bachelors or Masters degree at NTU.</p>
+    <p>It is not required that you major in certain fields. We welcome everyone to apply as long as you think you can
+      code!</p>
+    <form name="contact" method="POST" data-netlify="true">
+      <p>
+        <label>Your Name: <input type="text" name="name" /></label>
+      </p>
+      <p>
+        <label>Your Email: <input type="email" name="email" /></label>
+      </p>
+      <p>
+        <label>Your Role: <select name="role[]" multiple>
+            <option value="leader">Leader</option>
+            <option value="follower">Follower</option>
+          </select></label>
+      </p>
+      <p>
+        <label>Message: <textarea name="message"></textarea></label>
+      </p>
+      <p>
+        <button type="submit">Send</button>
+      </p>
+    </form>
+  </div>
+</body>
+
+</html>

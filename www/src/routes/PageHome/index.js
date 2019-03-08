@@ -36,8 +36,18 @@ class PageHome extends React.PureComponent {
           </div>
           <div className={styles.fbLike}>
             <div className={styles.fbPage}>
-              New year, new beginning. Try out{" "}
-              <Link to="/browser">Course Browser</Link>!
+              {/* New year, new beginning. Try out{" "}
+              <Link to="/browser">Course Browser</Link>! */}
+              We are evolving 👋
+              <a
+                href="/developers"
+                style={{
+                  borderBottom: "2px solid black",
+                  color: "black"
+                }}
+              >
+                Join as a developer
+              </a>
             </div>
           </div>
         </div>
