@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { fetchProfile, userLogout, showModal } from "src/redux/actions";
 import login from "./assets/login.svg";
-import vibe from "src/brand/logo-color.png";
+import vibe from "src/brand/vibe.png";
 import calendar from "./assets/calendar.svg";
 import home from "./assets/home.svg";
 
@@ -19,8 +19,7 @@ const brand = (
       background: "url(".concat(vibe).concat(") no-repeat"),
       backgroundSize: "contain",
       height: "2.8rem",
-      width: "5.6rem",
-      marginBottom: "0.5rem"
+      width: "5.6rem"
     }}
   />
 );
@@ -100,20 +99,11 @@ class NavBar extends React.Component<Props> {
               <Link to="/">Home</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
-                <Link to="/browser">Browser</Link>
+              <Link to="/browser">Browser</Link>
             </div>
             <div className={styles.navbar_elements_right_text}>
               <Link to="/scheduler">Scheduler</Link>
             </div>
-            {/* <div className={styles.navbar_elements_right_text}>
-              <a
-                href="https://medium.com/@ntuvibe"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog
-              </a>
-            </div> */}
             {!profile ? (
               <div
                 className={styles.rightButton}

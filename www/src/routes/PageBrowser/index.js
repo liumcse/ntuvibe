@@ -2,8 +2,6 @@ import React from "react";
 import { withRouter } from "react-router";
 import * as api from "src/api";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import CourseCard from "./components/CourseCard";
 import { Tag, Menu, Button, message } from "antd";
 import { logPageview } from "src/tracking";
@@ -185,7 +183,6 @@ class PageBrowser extends React.Component {
           url="https://ntuvibe.com/browser"
           description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />
-        <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>
             {/* <div className={styles.label}>Any keywords in mind?</div> */}
@@ -278,7 +275,6 @@ class PageBrowser extends React.Component {
             )}
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
