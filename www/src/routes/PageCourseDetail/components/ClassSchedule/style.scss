@@ -33,7 +33,7 @@
   }
 
   .title {
-    @include raleway-medium;
+    font-weight: 600;
     color: $secondary;
     font-size: 1.2rem;
   }

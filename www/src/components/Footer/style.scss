@@ -10,12 +10,12 @@
     background-color: white;
     @include lato-regular;
     font-size: 0.85rem;
-    color: $text-hint;
+    color: #5f6368;
   }
 
   .innerContainer {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-column-gap: 1rem;
     align-items: center;
     justify-content: space-between;
@@ -28,11 +28,11 @@
 
   .links {
     display: grid;
-    grid-template-columns: repeat(9, auto); // change the number 9 if you add/delete links
-    grid-column-gap: 0.5rem;
+    grid-template-columns: repeat(3, auto); // change the number 9 if you add/delete links
+    grid-column-gap: 1.5rem;
     justify-content: center;
     a {
-      color: $text-hint;
+      color: #5f6368;
       text-decoration: underline;
     }
   }

@@ -34,97 +34,102 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
-	'webapi',
-	'corsheaders',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'webapi',
+    'corsheaders',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
-	'corsheaders.middleware.CorsMiddleware',
-	'django.middleware.security.SecurityMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	# 'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'ntuvibe.urls'
 
 TEMPLATES = [
-	{
-		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [
-			os.path.join(BASE_DIR, 'templates'),
-		],
-		'APP_DIRS': True,
-		'OPTIONS': {
-			'context_processors': [
-				'django.template.context_processors.debug',
-				'django.template.context_processors.request',
-				'django.contrib.auth.context_processors.auth',
-				'django.contrib.messages.context_processors.messages',
-			],
-		},
-	},
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'ntuvibe.wsgi.application'
+
+GRAPHENE = {
+    'SCHEMA': 'webapi.graphql.schema.schema'  # Where your Graphene schema lives
+}
 
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'ntuvibe_db',
-		'USER': secret_settings.DATABASE_USER_DEFAULT,
-		'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
-		'HOST': 'localhost',
-		'PORT': '3306',
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ntuvibe_db',
+                'USER': secret_settings.DATABASE_USER_DEFAULT,
+                'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
+                'HOST': 'localhost',
+                'PORT': '3306',
+    }
 }
 
 
 CACHES = {
-	"default": {
-		"BACKEND": "django_redis.cache.RedisCache",
-		"LOCATION": "redis://127.0.0.1:6379/0",
-		"OPTIONS": {
-			"CLIENT_CLASS": "django_redis.client.DefaultClient",
-		}
-	},
-	"activation_token": {
-		"BACKEND": "django_redis.cache.RedisCache",
-		"LOCATION": "redis://127.0.0.1:6379/1",
-		"OPTIONS": {
-			"CLIENT_CLASS": "django_redis.client.DefaultClient",
-		},
-		"KEY_PREFIX": "activation_token"
-	},
-	"course_vacancy": {
-		"BACKEND": "django_redis.cache.RedisCache",
-		"LOCATION": "redis://127.0.0.1:6379/3",
-		"OPTIONS": {
-			"CLIENT_CLASS": "django_redis.client.DefaultClient",
-		},
-		"KEY_PREFIX": "course_vacancy"
-	},
-	"password_reset_token": {
-		"BACKEND": "django_redis.cache.RedisCache",
-		"LOCATION": "redis://127.0.0.1:6379/4",
-		"OPTIONS": {
-			"CLIENT_CLASS": "django_redis.client.DefaultClient",
-		},
-		"KEY_PREFIX": "password_reset_token"
-	},
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/0",
+        "OPTIONS": {
+                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    "activation_token": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "activation_token"
+    },
+    "course_vacancy": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/3",
+        "OPTIONS": {
+                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "course_vacancy"
+    },
+    "password_reset_token": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/4",
+        "OPTIONS": {
+                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "password_reset_token"
+    },
 }
 
 
@@ -132,18 +137,18 @@ CACHES = {
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-	{
-		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-	},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 
@@ -163,14 +168,14 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-	os.path.realpath(os.path.dirname(__file__)) + '/../static',
+    os.path.realpath(os.path.dirname(__file__)) + '/../static',
 )
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_REGEX_WHITELIST = (
-	r"^(https?://)?localhost:\d{4}$",
-	r"^(https?://)?127\.0\.0\.1:\d{4}$",
-	r"^(https?://)?([\w\-]+\.)?ntuvibe\.com$",
+    r"^(https?://)?localhost:\d{4}$",
+    r"^(https?://)?127\.0\.0\.1:\d{4}$",
+    r"^(https?://)?([\w\-]+\.)?ntuvibe\.com$",
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -187,64 +192,64 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
 log_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "log"))
 if log_dir and not os.path.exists(log_dir):
-	os.mkdir(log_dir)
+    os.mkdir(log_dir)
 LOGGING = {
-	'version': 1,
-	'disable_existing_loggers': True,
-	'formatters': {
-		'standard': {
-			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(process)d:%(thread)d|%(filename)s:%(lineno)d|%(module)s.%(funcName)s|%(message)s',
-			'datefmt': '%Y-%m-%d %H:%M:%S',
-		},
-		'short': {
-			'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(message)s',
-			'datefmt': '%Y-%m-%d %H:%M:%S',
-		},
-		'data': {
-			'format': '%(asctime)s.%(msecs)03d|%(message)s',
-			'datefmt': '%Y-%m-%d %H:%M:%S',
-		},
-	},
-	'handlers': {
-		'file_fatal': {
-			'level': 'CRITICAL',
-			'class': 'logging.handlers.TimedRotatingFileHandler',
-			'filename': os.path.join(log_dir, 'fatal.log').replace('\\', '/'),
-			'when': 'MIDNIGHT',
-			'formatter': 'standard',
-		},
-		'file_error': {
-			'level': 'ERROR',
-			'class': 'logging.handlers.TimedRotatingFileHandler',
-			'filename': os.path.join(log_dir, 'error.log').replace('\\', '/'),
-			'when': 'MIDNIGHT',
-			'formatter': 'standard',
-		},
-		'file_info': {
-			'level': 'DEBUG',
-			'class': 'logging.handlers.TimedRotatingFileHandler',
-			'filename': os.path.join(log_dir, 'info.log').replace('\\', '/'),
-			'when': 'MIDNIGHT',
-			'formatter': 'short',
-		},
-		'file_data': {
-			'level': 'DEBUG',
-			'class': 'logging.handlers.TimedRotatingFileHandler',
-			'filename': os.path.join(log_dir, 'data.log').replace('\\', '/'),
-			'when': 'MIDNIGHT',
-			'formatter': 'data',
-		},
-	},
-	'loggers': {
-		'main': {
-			'handlers': ['file_fatal', 'file_error', 'file_info'],
-			'level': 'DEBUG',
-			'propagate': True,
-		},
-		'data': {
-			'handlers': ['file_data'],
-			'level': 'DEBUG',
-			'propagate': True,
-		},
-	}
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(process)d:%(thread)d|%(filename)s:%(lineno)d|%(module)s.%(funcName)s|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+        'short': {
+            'format': '%(asctime)s.%(msecs)03d|%(levelname)s|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+        'data': {
+            'format': '%(asctime)s.%(msecs)03d|%(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S',
+        },
+    },
+    'handlers': {
+        'file_fatal': {
+            'level': 'CRITICAL',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(log_dir, 'fatal.log').replace('\\', '/'),
+            'when': 'MIDNIGHT',
+            'formatter': 'standard',
+        },
+        'file_error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(log_dir, 'error.log').replace('\\', '/'),
+            'when': 'MIDNIGHT',
+            'formatter': 'standard',
+        },
+        'file_info': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(log_dir, 'info.log').replace('\\', '/'),
+            'when': 'MIDNIGHT',
+            'formatter': 'short',
+        },
+        'file_data': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(log_dir, 'data.log').replace('\\', '/'),
+            'when': 'MIDNIGHT',
+            'formatter': 'data',
+        },
+    },
+    'loggers': {
+        'main': {
+            'handlers': ['file_fatal', 'file_error', 'file_info'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'data': {
+            'handlers': ['file_data'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
 }

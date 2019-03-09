@@ -1,7 +1,6 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
 import store from "src/redux/store";
-import { popupTrigger } from "src/redux/actions";
 import moment from "moment";
 
 // TODO: the current search has severe performance issue. Write a better one
@@ -40,13 +39,10 @@ export function cap_first_letter(input: string): string {
   if (input === "" || !input) return "";
   const splittedString = input.split(" ");
   if (!splittedString || splittedString === undefined) return "";
-  const loweredString = splittedString.map(
-    (word: string) =>
-      ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"].includes(
-        word
-      )
-        ? word
-        : word.toLowerCase()
+  const loweredString = splittedString.map((word: string) =>
+    ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"].includes(word)
+      ? word
+      : word.toLowerCase()
   );
   const cappedString = loweredString.map((word: string) => {
     const firstLetter = word[0];
@@ -123,6 +119,7 @@ export function requireLogin(callBack: Function): void {
   const profile = state && state.user && state.user.profile;
   const { dispatch } = store;
   if (!profile) {
+    // TODO: fix this
     dispatch(popupTrigger(1));
   } else {
     if (callBack) callBack();

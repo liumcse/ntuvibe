@@ -2,11 +2,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import Button from "antd/lib/button";
-import NavBar from "src/components/NavBar";
 import ImportSchedule from "./components/ImportSchedule";
 import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-import Footer from "src/components/Footer";
 
 import { requireLogin } from "src/utils";
 import {
@@ -92,13 +90,13 @@ class PageScheduler extends React.Component<Props> {
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
-    if (
-      window.FB &&
-      typeof window.FB !== "undefined" &&
-      window.FB.XFBML &&
-      typeof window.FB.XFBML !== "undefined"
-    )
-      window.FB.XFBML.parse(); // call this function to re-render FB-like button
+    // if (
+    //   window.FB &&
+    //   typeof window.FB !== "undefined" &&
+    //   window.FB.XFBML &&
+    //   typeof window.FB.XFBML !== "undefined"
+    // )
+    //   window.FB.XFBML.parse(); // call this function to re-render FB-like button
   }
 
   componentWillUnmount() {
@@ -199,7 +197,6 @@ class PageScheduler extends React.Component<Props> {
           title="Scheduler - NTUVibe"
           description="Create your beautiful class schedule and add to your calendar!"
         />
-        <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
             <div className={styles.headerContainer}>
@@ -251,7 +248,7 @@ class PageScheduler extends React.Component<Props> {
                   import={this.importSchedule}
                   trigger={
                     <Button type="primary" className={styles.import}>
-                      Import your schedule
+                      Create Now
                     </Button>
                   }
                 />
@@ -346,7 +343,6 @@ class PageScheduler extends React.Component<Props> {
             </div>{" "}
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

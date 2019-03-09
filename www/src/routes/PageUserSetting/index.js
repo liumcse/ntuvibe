@@ -1,7 +1,5 @@
 // @flow
 import React from "react";
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -61,7 +59,6 @@ class PageUserSetting extends React.Component<Props, States> {
           url="https://ntuvibe.com/users/setting"
           title="User Setting - NTUVibe"
         />
-        <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.sidebar}>
             <SideBar avatar={avatar} />
@@ -71,7 +68,6 @@ class PageUserSetting extends React.Component<Props, States> {
             <SettingProfile username={username} major={major} avatar={avatar} />
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
