@@ -36,9 +36,6 @@ class PageHome extends React.PureComponent {
           </div>
           <div className={styles.fbLike}>
             <div className={styles.fbPage}>
-              {/* New year, new beginning. Try out{" "}
-              <Link to="/browser">Course Browser</Link>! */}
-              We are evolving 👋
               <a
                 href="/developers"
                 style={{
@@ -46,7 +43,7 @@ class PageHome extends React.PureComponent {
                   color: "black"
                 }}
               >
-                Join as a developer
+                We are looking for developers 👋
               </a>
             </div>
           </div>

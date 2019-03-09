@@ -28,9 +28,9 @@ const Footer = () => (
           Facebook
         </a>
       </div>
-      <div className={styles.brand}>
+      {/* <div className={styles.brand}>
         <img className={styles.img} src={vibe} />
-      </div>
+      </div> */}
     </div>
   </div>
 );
