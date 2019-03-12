@@ -38,7 +38,7 @@ const ModalContainer = props => {
           courseRatingSubmission={props.courseRatingSubmission}
         />
       );
-      case "SIGN_UP":
+    case "SIGN_UP":
       return (
         <SignUp
           {...props.modalProps}
@@ -46,7 +46,7 @@ const ModalContainer = props => {
           userSignUp={props.userSignUp}
         />
       );
-      case "PASSWORD_RESET":
+    case "PASSWORD_RESET":
       return (
         <PasswordReset
           {...props.modalProps}

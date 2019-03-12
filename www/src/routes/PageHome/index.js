@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
+// eslint-disable-next-line no-unused-vars
 import { THIS_YEAR } from "src/global";
 import Search from "src/components/Search";
 import * as styles from "./style.scss";
@@ -35,7 +36,7 @@ class PageHome extends React.PureComponent {
             <Search theme={theme} />
           </div>
           {/* TODO: un-comment below */}
-          {/* <div className={styles.fbLike}>
+          <div className={styles.fbLike}>
             <div className={styles.fbPage}>
               <a
                 href="/developers"
@@ -47,7 +48,7 @@ class PageHome extends React.PureComponent {
                 We are looking for developers 👋
               </a>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     );

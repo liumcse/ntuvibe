@@ -1,6 +1,6 @@
 :local {
   .sitemap {
-    padding: 1rem;
+    padding: 3rem 6rem;
   }
 
   .container {
@@ -15,6 +15,12 @@
     }
     a:hover {
       color: crimson;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section_a {
+      padding: 1.5rem;
     }
   }
 }

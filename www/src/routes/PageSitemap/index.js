@@ -36,7 +36,6 @@ class PageSitemap extends React.Component {
             {/* <a href={`${BASE_URL}/help`}>HELP</a> */}
             {courseListDOM}
           </div>
-          <h5>&copy; NTUVibe</h5>
         </div>
       );
     }
