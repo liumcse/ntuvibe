@@ -227,8 +227,8 @@ class PageBrowser extends React.Component {
                 {this.state.isSearching
                   ? "Searching..."
                   : this.state.countdown === 0
-                    ? "Search"
-                    : `Search (${this.state.countdown})`}
+                  ? "Search"
+                  : `Search (${this.state.countdown})`}
               </Button>
             </div>
             <div className={styles.credits}>For reference only.</div>
