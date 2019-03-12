@@ -81,14 +81,17 @@ class PageBrowser extends React.Component {
   requestSearch = () => {
     const { keywords, selectedTags, sort } = this.state;
     const { history } = this.props;
-    let trimmedKeywords = keywords.trim();
+    let trimmedKeywords = keywords
+      .trim()
+      .split(" ")
+      .join("+");
     if (trimmedKeywords === "" && selectedTags.length === 0) {
       message.error("Please provide more information!");
       return true;
     }
     // build query
-    const encodeKeywords = encodeURIComponent(keywords);
-    const encodeFilters = encodeURIComponent(selectedTags.join(" "));
+    const encodeKeywords = encodeURIComponent(trimmedKeywords);
+    const encodeFilters = encodeURIComponent(selectedTags.join("+"));
     const query = `${encodeKeywords}&filter=${encodeFilters}&sort=${sort}`;
     // start searching
     history.replace({
@@ -230,8 +233,8 @@ class PageBrowser extends React.Component {
                 {this.state.isSearching
                   ? "Searching..."
                   : this.state.countdown === 0
-                    ? "Search"
-                    : `Search (${this.state.countdown})`}
+                  ? "Search"
+                  : `Search (${this.state.countdown})`}
               </Button>
             </div>
             <div className={styles.credits}>For reference only.</div>
