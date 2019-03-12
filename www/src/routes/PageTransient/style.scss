@@ -24,7 +24,7 @@
       margin-bottom: 1.5rem;
       background-size: 1.5rem 1.5rem;
       background-repeat: no-repeat;
-      background-position: 0.75rem 0.75rem; 
+      background-position: 0.75rem 0.75rem;
       @include medium-shadow;
       height: 3rem;
       padding: 12px 3rem;
@@ -33,7 +33,7 @@
       border-radius: 5px;
       box-sizing: border-box;
       font-size: 1rem;
-      opacity: 0.8;  
+      opacity: 0.8;
     }
     .email {
       background-image: url('../assets/svgs/email.svg');
