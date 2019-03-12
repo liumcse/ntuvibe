@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack/webpack.dev.js",
     "sitemap": "node ./scripts/sitemap.js",
-    "build": "yarn sitemap &&  NODE_ENV=production webpack --config webpack/webpack.prod.js",
+    "build": "yarn sitemap && NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "lint": "eslint --fix src",
     "test": "echo \"Error: currently no test specified\" && exit 1"
   },
