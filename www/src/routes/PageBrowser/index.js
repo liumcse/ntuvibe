@@ -79,14 +79,17 @@ class PageBrowser extends React.Component {
   requestSearch = () => {
     const { keywords, selectedTags, sort } = this.state;
     const { history } = this.props;
-    let trimmedKeywords = keywords.trim();
+    let trimmedKeywords = keywords
+      .trim()
+      .split(" ")
+      .join("+");
     if (trimmedKeywords === "" && selectedTags.length === 0) {
       message.error("Please provide more information!");
       return true;
     }
     // build query
-    const encodeKeywords = encodeURIComponent(keywords);
-    const encodeFilters = encodeURIComponent(selectedTags.join(" "));
+    const encodeKeywords = encodeURIComponent(trimmedKeywords);
+    const encodeFilters = encodeURIComponent(selectedTags.join("+"));
     const query = `${encodeKeywords}&filter=${encodeFilters}&sort=${sort}`;
     // start searching
     history.replace({
@@ -110,7 +113,7 @@ class PageBrowser extends React.Component {
   };
 
   startSearch = async query => {
-    this.setState({ ...this.state, isSearching: true, countdown: 5 });
+    this.setState({ ...this.state, isSearching: true /*, countdown: 5 */ });
     try {
       const {
         data: { data: data }
@@ -130,7 +133,9 @@ class PageBrowser extends React.Component {
   };
 
   handleInput = e => {
-    this.setState({ ...this.state, keywords: e.target.value });
+    this.setState({ ...this.state, keywords: e.target.value }, () =>
+      this.requestSearch()
+    );
   };
 
   componentDidMount() {
@@ -161,7 +166,7 @@ class PageBrowser extends React.Component {
       this.startSearch(query);
       this.setState({
         ...this.state,
-        countdown: 5,
+        /* countdown: 5, */
         keywords: params.get("search"),
         selectedTags: params.get("filter")
           ? params.get("filter").split(" ")
@@ -185,7 +190,6 @@ class PageBrowser extends React.Component {
         />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>
-            {/* <div className={styles.label}>Any keywords in mind?</div> */}
             <div className={styles.searchContainer}>
               <input
                 className={styles.searchInput}
@@ -194,7 +198,6 @@ class PageBrowser extends React.Component {
                 onChange={this.handleInput}
               />
             </div>
-            {/* <div className={styles.label}>Add filters</div> */}
             <div className={styles.tagContainer}>
               {Object.keys(filters).map(key => (
                 <CheckableTag
@@ -207,16 +210,6 @@ class PageBrowser extends React.Component {
                 </CheckableTag>
               ))}
             </div>
-            {/* <div className={styles.label}>
-              <span style={{ marginRight: "1rem" }}>
-                Customize your search result:{" "}
-              </span>
-              <Dropdown overlay={this.menu} className={styles.dropdown}>
-                <Button>
-                  Sort by <Icon type="down" />
-                </Button>
-              </Dropdown>
-            </div> */}
             <div className={styles.buttonContainer}>
               <Button
                 className={styles.searchButton}

@@ -6,8 +6,7 @@ const path = require("path");
 const INCLUDED = `<url><loc>https://ntuvibe.com</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/about</loc><priority>0.5</priority></url>
 <url><loc>https://ntuvibe.com/scheduler</loc><priority>0.5</priority></url>
-<url><loc>https://ntuvibe.com/browser</loc><priority>0.5</priority></url>
-<url><loc>https://ntuvibe.com/sitemap</loc><priority>0.5</priority></url>`;
+<url><loc>https://ntuvibe.com/browser</loc><priority>0.5</priority></url>`;
 
 const PATH_OUTPUT = path.resolve(__dirname, "../src/brand/seo");
 

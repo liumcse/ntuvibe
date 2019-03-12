@@ -1,46 +1,47 @@
 import graphene
 from graphene_django import DjangoObjectType
+from django.db.models import Q
 from webapi.models import *
+import urllib
+import re
+import itertools
 
 
-class Courses(DjangoObjectType):
+def build_regex_from_keyword_list(keyword_list):
+    """This function builds regex pattern from a list of keywords
+
+    :param keyword_list: list of keywords
+    :type keyword_list: List
+    :return: regex
+    :rtype: str
+    """
+    splitted_keywords = urllib.parse.unquote(keyword_list).split("+")
+    permutated_keyword_list = list(
+        itertools.permutations(splitted_keywords))
+    regex_pre_build = list(
+        map(lambda x: "(.*" + "+.*".join(x) + ".*)+", permutated_keyword_list))
+    regex = re.compile("|".join(regex_pre_build)).pattern
+    return regex
+
+
+class CourseType(DjangoObjectType):
 
     class Meta:
         model = CourseTab
 
 
-class CourseRatings(DjangoObjectType):
-
-    class Meta:
-        model = CourseRatingTab
-
-
-class ClassSchedules(DjangoObjectType):
-    class Meta:
-        model = ClassScheduleTab
-
-
 class Query(graphene.ObjectType):
-    courses = graphene.List(Courses)
-    courseRatings = graphene.List(CourseRatings)
-    classSchedules = graphene.List(ClassSchedules)
+    courses = graphene.List(
+        CourseType, keywords=graphene.String())
 
-    def resolve_courses(self, info):
+    def resolve_courses(self, info, **kwargs):
+        keywords = kwargs.get("keywords")
+
+        if keywords is not None:
+            regex = build_regex_from_keyword_list(keyword_list=keywords)
+            return CourseTab.objects.filter(Q(course_code__iregex=regex) | Q(course_title__iregex=regex) | Q(description__iregex=regex))
+
         return CourseTab.objects.all()
-
-    def resolve_classSchedules(self, info):
-        return ClassScheduleTab.objects.all()
-
-    # def resolve_courseRatings(self, info):
-    #     return CourseRatingTab.objects.all()
-
-    def resolve_courseRatings(self, info, **kwargs):
-        if "courseCode" in kwargs:
-            courseCode = kwargs.get("courseCode")
-            course = CourseTab.objects.get(course_code=courseCode)
-            if course:
-                course_id = course.id
-                return CourseRatingTab.objects.get(id=course_id)
 
 
 schema = graphene.Schema(query=Query)
