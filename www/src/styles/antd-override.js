@@ -1,6 +1,26 @@
 module.exports = {
   "@primary-color": "#888888",
-  "@font-family": "Open Sans, sans-serif"
+  "@primary-5": "@white",
+  "@item-active-bg": "@primary-5",
+  "@item-hover-bg": "@primary-5",
+  "@font-family": "Open Sans, sans-serif",
+  // Animations
+  "@animation-duration-slow": "0s",
+  "@animation-duration-base": "0s",
+  "@animation-duration-fast": "0s",
+  // Buttons
+  "@btn-primary-color": "@black",
+  "@btn-primary-shadow": "none",
+  "@btn-primary-bg": "inherit",
+  "@btn-default-color": "@black",
+  "@btn-default-bg": "inherit",
+  "@btn-border-radius-sm": 0,
+  "@btn-shadow": "none",
+  "@btn-border-radius-base": 0,
+  // Links
+  "@link-color": "@black",
+  "@link-decoration": "none",
+  "@link-hover-decoration": "none"
 };
 
 // === ALL DEFAULT VARIABLES ===
