@@ -1,8 +1,8 @@
-<h1 align="center">
+<p align="center">
   <img src="./images/logos/logo.png?raw=true" width="200">
-</h1>
+</p>
 
-<p align="center">Building the largest and greatest student-maintained open source project in the history of Nanyang Technological University.</p>
+<p align="center">Build the largest and greatest student-run open source project in the history of NTU.</p>
 
 <p align="center">
   <a href="https://github.com/prettier/prettier">
@@ -12,10 +12,10 @@
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)" />
   </a>
   <br/>
-  <a href="https://img.shields.io/github/stars/liumcse/ntuvibe.svg?style=social">
+  <a href="https://github.com/liumcse/ntuvibe/stargazers">
     <img src="https://img.shields.io/github/stars/liumcse/ntuvibe.svg?style=social" />
   </a>
-  <a href="https://img.shields.io/github/watchers/liumcse/ntuvibe.svg?style=social">
+  <a href="https://github.com/liumcse/ntuvibe/watchers">
     <img src="https://img.shields.io/github/watchers/liumcse/ntuvibe.svg?style=social" />
   </a>
 </p>
