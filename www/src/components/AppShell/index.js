@@ -20,7 +20,7 @@ const AppShell = props => (
 );
 
 AppShell.propTypes = {
-  children: PropTypes.array.isRequired
+  children: PropTypes.element.isRequired
 };
 
 export default AppShell;
