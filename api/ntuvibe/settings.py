@@ -11,10 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import sys
 from . import secret_settings
-
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../../")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +24,10 @@ SECRET_KEY = secret_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# if os.environ.get("DOCKER_CONTAINER_FLAG"):
+#     DEBUG = False
+# else:
+#     DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -90,25 +91,25 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ntuvibe_db',
-                'USER': secret_settings.DATABASE_USER_DEFAULT,
-                'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
-                'HOST': 'localhost',
-                'PORT': '3306',
+        'USER': secret_settings.DATABASE_USER_DEFAULT,
+        'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
+        'HOST': 'db' if os.environ.get("DOCKER_CONTAINER_FLAG") else '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
-
+CACHE_HOST = 'cache' if os.environ.get("DOCKER_CONTAINER_FLAG") else '127.0.0.1'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/0",
+        "LOCATION": "redis://" + CACHE_HOST + ":6379/0",
         "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "activation_token": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://" + CACHE_HOST + ":6379/1",
         "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -116,7 +117,7 @@ CACHES = {
     },
     "course_vacancy": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/3",
+        "LOCATION": "redis://" + CACHE_HOST + ":6379/3",
         "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -124,7 +125,7 @@ CACHES = {
     },
     "password_reset_token": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/4",
+        "LOCATION": "redis://" + CACHE_HOST + ":6379/4",
         "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -165,11 +166,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR
+STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.realpath(os.path.dirname(__file__)) + '/../static',
-)
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_REGEX_WHITELIST = (

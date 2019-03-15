@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    volumes:
+      - /tmp/docker/db:/var/lib/mysql
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=ntuvibe_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"
+
+  cache:
+    image: redis:latest
+    restart: unless-stopped
+    volumes:
+      - /tmp/docker/cache:/data
+    ports:
+      - "6380:6379"
+
+  web:
+    build: .
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+      - cache
