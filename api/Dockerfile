@@ -7,6 +7,7 @@ ENV DOCKER_CONTAINER_FLAG 1
 
 # create root directory for our project in the container
 RUN mkdir /code
+RUN mkdir /uwsgi
 
 # Copy the current directory contents into the container at /code
 ADD . /code

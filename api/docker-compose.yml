@@ -6,14 +6,7 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     volumes:
-      - /tmp/docker/db:/var/lib/mysql
-    environment:
-      - MYSQL_HOST=localhost
-      - MYSQL_PORT=3306
-      - MYSQL_DATABASE=ntuvibe_db
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_ROOT_PASSWORD=root
+      - /data/docker/mysql:/var/lib/mysql
     ports:
       - "3307:3306"
 
@@ -21,14 +14,14 @@ services:
     image: redis:latest
     restart: unless-stopped
     volumes:
-      - /tmp/docker/cache:/data
+      - /data/docker/cache:/data
     ports:
       - "6380:6379"
 
   web:
     build: .
-    ports:
-      - "8001:8000"
+    volumes:
+      - /data/docker/uwsgi:/uwsgi
     depends_on:
       - db
       - cache

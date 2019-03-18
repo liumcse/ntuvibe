@@ -23,11 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = secret_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# if os.environ.get("DOCKER_CONTAINER_FLAG"):
-#     DEBUG = False
-# else:
-#     DEBUG = True
+if os.environ.get("DOCKER_CONTAINER_FLAG"):
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -93,12 +92,12 @@ DATABASES = {
         'NAME': 'ntuvibe_db',
         'USER': secret_settings.DATABASE_USER_DEFAULT,
         'PASSWORD': secret_settings.DATABASE_PASSWORD_DEFAULT,
-        'HOST': 'db' if os.environ.get("DOCKER_CONTAINER_FLAG") else '127.0.0.1',
+        'HOST': '127.0.0.1' if DEBUG else 'db',
         'PORT': '3306',
     }
 }
 
-CACHE_HOST = 'cache' if os.environ.get("DOCKER_CONTAINER_FLAG") else '127.0.0.1'
+CACHE_HOST = '127.0.0.1' if DEBUG else 'cache'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
