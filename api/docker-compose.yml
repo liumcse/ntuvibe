@@ -22,6 +22,8 @@ services:
     build: .
     volumes:
       - /data/docker/uwsgi:/uwsgi
+      - /data/docker/log/ntuvibe_main:/api/ntuvibe/log
+      - /data/docker/log/ntuvibe_scrapers:/log_scrapers
     depends_on:
       - db
       - cache
