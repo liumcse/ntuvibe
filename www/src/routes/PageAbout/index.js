@@ -1,6 +1,4 @@
 import React from "react";
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 import { logPageview } from "src/tracking";
 
@@ -13,28 +11,28 @@ const PageAbout = () => {
   return (
     <div className={styles.container}>
       <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
-      <NavBar />
       <div className={styles.content}>
-        <div className={styles.header}>About</div>
+        <h2>About NTUVibe</h2>
         <p>
-          NTUVibe is a knowledge sharing platform for students at Nanyang
-          Technological University (NTU) to view course information and reviews.
+          NTUVibe is a student-run online platform committed to making
+          information more open and accessible by everyone at Nanyang
+          Technological University. Launched in 2018, NTUVibe has helped
+          thousands of students plan courses, create timetables and most
+          importantly, make well-informed decisions.
         </p>
-        <p>
-          Released in August 2018, it was started by a few students from School
-          of Computer Science and Engineering at Nanyang Technological
-          University.
-        </p>
-        <h2>Disclaimer</h2>
         <p>
           All data (including but not limited to course information, class
           schedule and exam schedule) are obtained directly from Google search
-          or NTU website. No information is privileged which requires
-          authorization.
+          or NTU website. No information is privileged (i.e. requires
+          authorization).
         </p>
         <p>
-          NTUVibe may present the data in a way we believe to enhance user
-          experience. However, NTUVibe never alters the content.
+          NTUVibe may present information in a different way to enhance user
+          experience. However, NTUVibe does not alter the content in any way.
+        </p>
+        <p>
+          For more information, contact{" "}
+          <a href="mailto:info@ntuvibe.com">info@ntuvibe.com</a>
         </p>
         <h2>Privacy policy</h2>
         <p>
@@ -117,7 +115,6 @@ const PageAbout = () => {
           At Facebook Page: <a href="https://facebook.com/ntuvibe">NTUVibe</a>
         </li>
       </div>
-      <Footer />
     </div>
   );
 };

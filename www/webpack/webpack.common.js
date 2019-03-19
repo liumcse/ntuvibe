@@ -7,6 +7,7 @@ const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 // constants
@@ -15,7 +16,7 @@ const SRC_PATH = path.resolve(__dirname, "../src");
 const PROJECT_ROOT = path.resolve(__dirname, "../");
 
 const config = {
-  entry: ["babel-polyfill", SRC_PATH + "/index.js"],
+  entry: ["@babel/polyfill", SRC_PATH + "/index.js"],
   output: {
     filename: "[name].[hash].js",
     publicPath: "/",
@@ -35,7 +36,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: ["node_modules"],
+        exclude: /node_modules/,
         use: [{ loader: "babel-loader" }]
       },
       {
@@ -43,12 +44,11 @@ const config = {
           /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)/,
           /\/typefaces\/.*\.svg/
         ],
-        exclude: ["node_modules"],
+        exclude: /node_modules/,
         use: [{ loader: "file-loader" }]
       },
       {
         test: /\.css$/,
-        exclude: ["node_modules"],
         use: [
           {
             loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
@@ -84,11 +84,7 @@ const config = {
           {
             loader: "less-loader", // compiles Less to CSS
             options: {
-              modifyVars: {
-                "@primary-color": "#1362b1",
-                "@font-family": "Open Sans, sans-serif",
-                "@font-size-base": "16px"
-              },
+              modifyVars: require(SRC_PATH + "/styles/antd-override.js"),
               javascriptEnabled: true
             }
           }
@@ -96,7 +92,6 @@ const config = {
       },
       {
         test: /\.scss$/,
-        exclude: ["node_modules"],
         use: [
           {
             loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader
@@ -135,21 +130,10 @@ const config = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all",
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: "~",
-      name: true,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
+          chunks: "all"
         }
       }
     },
@@ -159,7 +143,7 @@ const config = {
         cache: true,
         parallel: true,
         uglifyOptions: {
-          compress: false,
+          compress: {},
           ecma: 6,
           mangle: true
         },
@@ -168,35 +152,29 @@ const config = {
     ]
   },
   plugins: [
+    new CompressionPlugin(),
     new HtmlWebpackPlugin({
       template: PROJECT_ROOT + "/index.html",
       minify: {
-        html5: true,
         collapseWhitespace: true,
-        minifyCSS: true,
+        preserveLineBreaks: true,
         minifyJS: true,
-        minifyURLs: false,
-        removeAttributeQuotes: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-        removeOptionalTags: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributese: true,
-        useShortDoctype: true
+        removeComments: true
       }
-    }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: "async"
     }),
     new CleanWebpackPlugin([OUTPUT_PATH], {
       root: PROJECT_ROOT
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
+    }),
+    // new PreloadWebpackPlugin({
+    //   fileWhitelist: [/\.css/]
+    // }),
+    new ScriptExtHtmlWebpackPlugin({
+      preload: /\.css$/,
+      defaultAttribute: "async"
     }),
     new CopyWebpackPlugin([
       {

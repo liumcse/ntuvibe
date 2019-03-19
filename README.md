@@ -1,37 +1,56 @@
-# NTUVibe
+<p align="center">
+  <img src="./images/logos/logo.png?raw=true" width="200">
+</p>
 
-Please understand that the project is __currently strictly confidential__. One day we will make it open source; however, for now, please refrain from talking about it with you friends.
+<p align="center">Build the largest and greatest student-run open source project in the history of NTU.</p>
 
-Update: NTUVibe is released on August 14, 2018. However, we continue to stay anonymous until the time is right.
+<p align="center">
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" />
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)" />
+  </a>
+  <br/>
+  <a href="https://github.com/liumcse/ntuvibe/stargazers">
+    <img src="https://img.shields.io/github/stars/liumcse/ntuvibe.svg?style=social" />
+  </a>
+  <a href="https://github.com/liumcse/ntuvibe/watchers">
+    <img src="https://img.shields.io/github/watchers/liumcse/ntuvibe.svg?style=social" />
+  </a>
+</p>
 
-## Naming
+## NTUVibe
 
-The name **NTUVibe** is good to me.
+NTUVibe is a student-run online platform committed to making information at Nanyang Technological University more open and accessible. Launched in August 2018, NTUVibe has helped thousands of students plan courses, create timetables and most importantly, make well-informed decisions.
 
-## Mission
+## Development
 
-We aim to create a platform where NTU students can plan their timetable, rating courses, make comment on courses and maybe more.
+Start with cloning this repository
 
-## Project architecture
+#### Front End
 
-### Front-end 
+1. Go to `www`.
+2. Install Node 8 or later. We use `yarn` as package manager.
+3. Run `yarn` to install dependencies.
+4. Run `yarn start` to start the development server.
+5. Open `http://localhost:8080` to view the front end.
 
-React + Redux model, a single page application with various routes.
+#### Back End
+
+1. Go to `api`.
+2. TODO: finish the doc.
+
+## Architecture
+
+### Front-end
+
+React + Redux model, a single page application with multiple routes.
 
 ### Back-end
 
-Implement a REST API server using Python Django (Python 3+).
+Python Django (Python 3+), Redis, MySQL.
 
-## Developers in China
+## Contributing
 
-Connect to your new VPN with these details:
-
-* Server IP: 138.197.215.14
-* IPsec PSK: NsdYzvNHao2Cjmzq
-* Username: vpnuser
-* Password: WhS77mN9risoA9zk
-
-Important notes:   https://git.io/vpnnotes
-
-Setup VPN clients: https://git.io/vpnclients
-
+**Working on your first Pull Request?** You can learn how from this _free_ series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)

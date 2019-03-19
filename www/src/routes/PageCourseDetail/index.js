@@ -1,11 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-
 import { withRouter } from "react-router";
-
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
 import ExamSchedule from "./components/ExamSchedule";
@@ -77,7 +73,6 @@ type Props = {
 
 const skeleton = (
   <div className={styles.page_course_detail}>
-    <NavBar />
     <Menu />
     <div className={styles.content}>
       <div className={styles.section_a}>
@@ -187,7 +182,6 @@ const skeleton = (
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 );
 
@@ -275,10 +269,9 @@ class PageCourseDetail extends React.Component<Props> {
           url={`https://ntuvibe.com/courses/${courseCode}`}
           description={
             (description && remove_trailing_newline(description)) ||
-            NO_DESCRIPTION
+            "Search for courses at Nanyang Technological University. Read course reviews and build your personalized timetable."
           }
         />
-        <NavBar />
         <Menu
           showModal={() =>
             this.props.showModal("RATE_COURSE", {
@@ -309,19 +302,18 @@ class PageCourseDetail extends React.Component<Props> {
                     NO_DESCRIPTION}
                 </div>
                 <div className={styles.bottom_left}>
-                  {offered_semester &&
-                    offered_semester.length > 0 && (
-                      <React.Fragment>
-                        <div className={styles.label}>Past Offered</div>
-                        <div className={styles.requirement_content}>
-                          {offered_semester
-                            .reverse()
-                            .splice(0, 4)
-                            .map(offering => prettify_offering(offering))
-                            .join(", ")}
-                        </div>
-                      </React.Fragment>
-                    )}
+                  {offered_semester && offered_semester.length > 0 && (
+                    <React.Fragment>
+                      <div className={styles.label}>Past Offered</div>
+                      <div className={styles.requirement_content}>
+                        {offered_semester
+                          .reverse()
+                          .splice(0, 4)
+                          .map(offering => prettify_offering(offering))
+                          .join(", ")}
+                      </div>
+                    </React.Fragment>
+                  )}
                   {constraint &&
                     constraint.prerequisite &&
                     constraint.prerequisite.length > 0 && (
@@ -404,25 +396,22 @@ class PageCourseDetail extends React.Component<Props> {
             )}
           </div>
           <div className={styles.section_c}>
-            {courseSchedule &&
-              Object.keys(courseSchedule).length > 1 && (
-                <div className={styles.table}>
-                  <ClassSchedule data={courseSchedule} />
-                </div>
-              )}
-            {start_time &&
-              end_time && (
-                <div className={styles.table}>
-                  <ExamSchedule
-                    startTime={start_time}
-                    endTime={end_time}
-                    updateTime={update_time}
-                  />
-                </div>
-              )}
+            {courseSchedule && Object.keys(courseSchedule).length > 1 && (
+              <div className={styles.table}>
+                <ClassSchedule data={courseSchedule} />
+              </div>
+            )}
+            {start_time && end_time && (
+              <div className={styles.table}>
+                <ExamSchedule
+                  startTime={start_time}
+                  endTime={end_time}
+                  updateTime={update_time}
+                />
+              </div>
+            )}
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

@@ -4,7 +4,6 @@
 
 :local {
   .container {
-    @include raleway-regular;
     display: flex;
     flex-direction: column;
     background-color: #f5f5f5;
@@ -47,12 +46,7 @@
     background-color: white;
     color: #333;
   }
-  .ntu {
-    // @include american-typewriter-bold;
-  }
   .heading_1 {
-    // @include american-typewriter;
-    // @include modern-antiqua;
     font-size: 2rem;
     margin-bottom: 2rem;
   }
@@ -71,7 +65,6 @@
     border-radius: 2px;
   }
   .heading_4 {
-    // @include lato-medium;
     @include open-sans-regular;
     font-size: 1.8rem;
     margin-bottom: 3rem;
@@ -82,7 +75,7 @@
     font-size: 1rem;
     &_heading {
       color: $primary;
-      @include lato-medium;
+      @include lato-bold;
       margin-bottom: 1rem;
       font-size: 1.2rem;
     }

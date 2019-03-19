@@ -8,9 +8,7 @@ www/dist
 # IDE
 .idea
 venv
-*.pyc
-*/.vscode
-.vscode
+**/*.pyc
 
 # Django
 api/ntuvibe/webapi/migrations
@@ -34,4 +32,3 @@ notebooks
 
 # Experimental
 services
-*.code-workspace

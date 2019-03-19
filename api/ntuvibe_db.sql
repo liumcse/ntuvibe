@@ -1,3 +1,28 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.7.25)
+# Database: ntuvibe_db
+# Generation Time: 2019-03-18 06:13:13 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table auth_group
+# ------------------------------------------------------------
+
 CREATE TABLE `auth_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
@@ -104,6 +129,25 @@ CREATE TABLE `django_session` (
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+# Dump of table webapi_censored_word_tab
+# ------------------------------------------------------------
+
+CREATE TABLE `webapi_censored_word_tab` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` varchar(64) NOT NULL,
+  `create_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `webapi_censored_word_tab_value_f8904834` (`value`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table webapi_class_schedule_tab
+# ------------------------------------------------------------
+
 CREATE TABLE `webapi_class_schedule_tab` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `course_id` bigint(20) NOT NULL,
@@ -132,6 +176,27 @@ CREATE TABLE `webapi_config_tab` (
   KEY `webapi_config_tab_key_f9a90213` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+# Dump of table webapi_course_pe_tab
+# ------------------------------------------------------------
+
+CREATE TABLE `webapi_course_pe_tab` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `course_id` bigint(20) NOT NULL,
+  `pe_type` varchar(16) NOT NULL,
+  `create_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `webapi_course_pe_tab_course_id_fa5499d8` (`course_id`),
+  KEY `webapi_course_pe_tab_pe_type_8f3769c1` (`pe_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table webapi_course_rating_tab
+# ------------------------------------------------------------
+
 CREATE TABLE `webapi_course_rating_tab` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
@@ -139,7 +204,7 @@ CREATE TABLE `webapi_course_rating_tab` (
   `useful` int(11) NOT NULL,
   `easy` int(11) NOT NULL,
   `like` int(11) NOT NULL,
-  `comment` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` longtext NOT NULL,
   `create_time` int(10) unsigned NOT NULL,
   `update_time` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
@@ -206,6 +271,25 @@ CREATE TABLE `webapi_professor_tab` (
   KEY `webapi_professor_tab_course_id_3a6c8c4b` (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
+# Dump of table webapi_reserved_word_tab
+# ------------------------------------------------------------
+
+CREATE TABLE `webapi_reserved_word_tab` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `value` varchar(64) NOT NULL,
+  `create_time` int(10) unsigned NOT NULL,
+  `update_time` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `webapi_reserved_word_tab_value_65e57c6b` (`value`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+# Dump of table webapi_user_profile_tab
+# ------------------------------------------------------------
+
 CREATE TABLE `webapi_user_profile_tab` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `major` varchar(128) NOT NULL,
@@ -213,6 +297,7 @@ CREATE TABLE `webapi_user_profile_tab` (
   `create_time` int(10) unsigned NOT NULL,
   `update_time` int(10) unsigned NOT NULL,
   `user_id` int(11) NOT NULL,
+  `schedule` longtext NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `webapi_user_profile_tab_user_id_a9395101_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)

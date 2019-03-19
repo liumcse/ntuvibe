@@ -2,8 +2,6 @@ import React from "react";
 import { withRouter } from "react-router";
 import * as api from "src/api";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
-import NavBar from "src/components/NavBar";
-import Footer from "src/components/Footer";
 import CourseCard from "./components/CourseCard";
 import { Tag, Menu, Button, message } from "antd";
 import { logPageview } from "src/tracking";
@@ -115,7 +113,7 @@ class PageBrowser extends React.Component {
   };
 
   startSearch = async query => {
-    this.setState({ ...this.state, isSearching: true, countdown: 5 });
+    this.setState({ ...this.state, isSearching: true /*, countdown: 5 */ });
     try {
       const {
         data: { data: data }
@@ -166,7 +164,7 @@ class PageBrowser extends React.Component {
       this.startSearch(query);
       this.setState({
         ...this.state,
-        countdown: 5,
+        /* countdown: 5, */
         keywords: params.get("search"),
         selectedTags: params.get("filter")
           ? params.get("filter").split(" ")
@@ -186,21 +184,17 @@ class PageBrowser extends React.Component {
         <SiteMetaHelmet
           title="Course Browser - NTUVibe"
           url="https://ntuvibe.com/browser"
-          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />
-        <NavBar />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>
-            {/* <div className={styles.label}>Any keywords in mind?</div> */}
             <div className={styles.searchContainer}>
               <input
                 className={styles.searchInput}
                 defaultValue={this.state.keywords}
-                placeholder="Keywords: Calculus, ES8006..."
+                placeholder="Keywords"
                 onChange={this.handleInput}
               />
             </div>
-            {/* <div className={styles.label}>Add filters</div> */}
             <div className={styles.tagContainer}>
               {Object.keys(filters).map(key => (
                 <CheckableTag
@@ -213,16 +207,6 @@ class PageBrowser extends React.Component {
                 </CheckableTag>
               ))}
             </div>
-            {/* <div className={styles.label}>
-              <span style={{ marginRight: "1rem" }}>
-                Customize your search result:{" "}
-              </span>
-              <Dropdown overlay={this.menu} className={styles.dropdown}>
-                <Button>
-                  Sort by <Icon type="down" />
-                </Button>
-              </Dropdown>
-            </div> */}
             <div className={styles.buttonContainer}>
               <Button
                 className={styles.searchButton}
@@ -281,7 +265,6 @@ class PageBrowser extends React.Component {
             )}
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
