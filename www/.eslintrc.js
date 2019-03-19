@@ -5,7 +5,13 @@ module.exports = {
     node: true
   },
   parser: "babel-eslint",
-  extends: ["eslint:recommended", "plugin:react/recommended", "prettier", "prettier/react",],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "plugin:jest/recommended"
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -14,14 +20,13 @@ module.exports = {
     ecmaVersion: 7,
     sourceType: "module"
   },
-  plugins: ["react", "prettier", "json"],
+  plugins: ["react", "prettier", "json", "jest"],
   rules: {
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
-    eqeqeq: 'error',
-    "no-console": 0,
-    "react/display-name" : 0,
+    eqeqeq: "error",
+    "react/display-name": 0,
     "react/no-unescaped-entities": 0,
 
     // Prettier
