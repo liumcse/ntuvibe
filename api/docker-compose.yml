@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    volumes:
+      - /data/docker/mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+  cache:
+    image: redis:latest
+    restart: unless-stopped
+    volumes:
+      - /data/docker/cache:/data
+    ports:
+      - "6380:6379"
+
+  web:
+    build: .
+    volumes:
+      - /data/docker/uwsgi:/uwsgi
+      - /data/docker/log/ntuvibe_main:/api/ntuvibe/log
+      - /data/docker/log/ntuvibe_scrapers:/log_scrapers
+    depends_on:
+      - db
+      - cache

@@ -1,5 +1,0 @@
-ansible_become_method: "sudo"
-remote_root_dir: "/data/release/"
-remote_backup_dir: "backup/"
-remote_log_dir: "log/"
-remote_app_log_dir: "log"  # notes: not "log/"
