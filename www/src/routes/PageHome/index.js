@@ -11,11 +11,7 @@ class PageHome extends React.PureComponent {
   render() {
     return (
       <div className={styles.home_page}>
-        <SiteMetaHelmet
-          title="NTUVibe - Come Join This Vibrant Online NTU Community!"
-          url="https://ntuvibe.com"
-          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
-        />
+        <SiteMetaHelmet title="NTUVibe" url="https://ntuvibe.com" />
         {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
           <div className={styles.bannerContainer}>

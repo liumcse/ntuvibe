@@ -184,7 +184,6 @@ class PageBrowser extends React.Component {
         <SiteMetaHelmet
           title="Course Browser - NTUVibe"
           url="https://ntuvibe.com/browser"
-          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
         />
         <div className={styles.innerContainer}>
           <div className={styles.leftContainer}>

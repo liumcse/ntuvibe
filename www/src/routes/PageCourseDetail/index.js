@@ -269,7 +269,7 @@ class PageCourseDetail extends React.Component<Props> {
           url={`https://ntuvibe.com/courses/${courseCode}`}
           description={
             (description && remove_trailing_newline(description)) ||
-            NO_DESCRIPTION
+            "Search for courses at Nanyang Technological University. Read course reviews and build your personalized timetable."
           }
         />
         <Menu

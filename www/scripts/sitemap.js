@@ -10,8 +10,6 @@ const INCLUDED = `<url><loc>https://ntuvibe.com</loc><priority>0.5</priority></u
 
 const PATH_OUTPUT = path.resolve(__dirname, "../src/brand/seo");
 
-console.log(PATH_OUTPUT, `${PATH_OUTPUT}/sitemap.xml`);
-
 axios
   .get("https://api.ntuvibe.com/courses/get_course_list")
   .then(response => {
