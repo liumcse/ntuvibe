@@ -12,31 +12,29 @@ const PageAbout = () => {
     <div className={styles.container}>
       <SiteMetaHelmet url="https://ntuvibe.com/about" title="About - NTUVibe" />
       <div className={styles.content}>
-        {/* <div className={styles.header}>About</div> */}
+        <h2>About NTUVibe</h2>
         <p>
-          NTUVibe is a student-run online platform dedicated to making
+          NTUVibe is a student-run online platform committed to making
           information more open and accessible by everyone at Nanyang
-          Technological University. Founded in 2018, NTUVibe has helped
+          Technological University. Launched in 2018, NTUVibe has helped
           thousands of students plan courses, create timetables and most
           importantly, make well-informed decisions.
         </p>
-        {/* <p>
-          Released in August 2018, it was started by a few students from School
-          of Computer Science and Engineering at Nanyang Technological
-          University.
-        </p> */}
-        <h1>Disclaimer</h1>
         <p>
           All data (including but not limited to course information, class
           schedule and exam schedule) are obtained directly from Google search
-          or NTU website. No information is privileged which requires
-          authorization.
+          or NTU website. No information is privileged (i.e. requires
+          authorization).
         </p>
         <p>
-          NTUVibe may present the data in a way we believe to enhance user
-          experience. However, NTUVibe never alters the content.
+          NTUVibe may present information in a different way to enhance user
+          experience. However, NTUVibe does not alter the content in any way.
         </p>
-        <h1>Privacy policy</h1>
+        <p>
+          For more information, contact{" "}
+          <a href="mailto:info@ntuvibe.com">info@ntuvibe.com</a>
+        </p>
+        <h2>Privacy policy</h2>
         <p>
           This page informs you of our policies regarding the collection, use,
           and disclosure of personal data when you use our Service and the

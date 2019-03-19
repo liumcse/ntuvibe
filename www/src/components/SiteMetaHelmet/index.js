@@ -7,7 +7,13 @@ const SiteMetaHelmet = props => (
     <meta name="description" content={props.description} />
     <meta property="og:url" content={props.url} />
     <meta property="og:title" content={props.title} />
-    <meta property="og:description" content={props.description} />
+    <meta
+      property="og:description"
+      content={
+        props.description ||
+        "Search for courses at Nanyang Technological University. Read course reviews and build your personalized timetable."
+      }
+    />
     <link rel="canonical" href={props.url} />
     <title>{props.title}</title>
     {props.children}
@@ -15,8 +21,9 @@ const SiteMetaHelmet = props => (
 );
 
 SiteMetaHelmet.defaultProps = {
+  title: "NTUVibe",
   description:
-    "NTUVibe is a knowledge sharing platform for students at Nanyang Technological University (NTU) to view course information and reviews."
+    "Search for courses at Nanyang Technological University. Read course reviews and build your personalized timetable."
 };
 
 SiteMetaHelmet.propTypes = {

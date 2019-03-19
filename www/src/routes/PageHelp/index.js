@@ -28,11 +28,7 @@ const PageHelp = () => {
   logPageview();
   return (
     <div className={styles.container}>
-      <SiteMetaHelmet
-        title="Help - NTUVibe"
-        url="https://ntuvibe.com/help"
-        description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
-      />
+      <SiteMetaHelmet title="Help - NTUVibe" url="https://ntuvibe.com/help" />
       <div className={styles.goBack}>
         <Link to="/">Home</Link>
       </div>

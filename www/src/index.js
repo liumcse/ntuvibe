@@ -92,7 +92,7 @@ class App extends React.PureComponent {
             path={ROUTES.ROUTE_COURSE_PAGE}
             component={AsyncPageCourseDetail}
           />
-          <Route exact path={ROUTES.ROUTE_HELP} component={AsyncPageHelp} />
+          {/* <Route exact path={ROUTES.ROUTE_HELP} component={AsyncPageHelp} /> */}
           <Route
             exact
             path={ROUTES.ROUTE_CREATE_ACCOUNT}
