@@ -5,14 +5,14 @@
   .innerContainer {
     display: flex;
     flex-direction: row;
-    padding: 0 6rem;
+    padding: 0;
     height: calc(100vh - 10rem - 1px);
     // overflow-y: hidden;
   }
 
   .leftContainer {
     flex: 1;
-    padding: 3rem 0 2rem 0;
+    padding: 3rem 0 2rem 6rem;
     // border-right: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
       // margin-bottom: 0.25rem;
       margin: 0.25rem 0;
       .tag {
-        border: 1px solid #1362b1 !important;
+        // border: 1px solid #1362b1 !important;
         margin: 0 1rem 0.75rem 0;
       }
     }
@@ -61,12 +61,12 @@
 
   .rightContainer {
     flex: 3;
-    padding: 2rem 0 2rem 6rem;
+    padding: 2rem 6rem 2rem 3rem;
     white-space: pre-line;
     overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
   }
 
   @media (max-width: 768px) {

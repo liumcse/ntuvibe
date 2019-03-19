@@ -80,21 +80,6 @@ exports[`PageHome renders correctly 1`] = `
         </i>
       </div>
     </div>
-    <div>
-      <div>
-        <a
-          href="/developers"
-          style={
-            Object {
-              "borderBottom": "2px solid black",
-              "color": "black",
-            }
-          }
-        >
-          We are looking for developers 👋
-        </a>
-      </div>
-    </div>
   </div>
 </div>
 `;

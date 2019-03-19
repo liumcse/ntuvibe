@@ -133,9 +133,7 @@ class PageBrowser extends React.Component {
   };
 
   handleInput = e => {
-    this.setState({ ...this.state, keywords: e.target.value }, () =>
-      this.requestSearch()
-    );
+    this.setState({ ...this.state, keywords: e.target.value });
   };
 
   componentDidMount() {
@@ -194,7 +192,7 @@ class PageBrowser extends React.Component {
               <input
                 className={styles.searchInput}
                 defaultValue={this.state.keywords}
-                placeholder="Keywords: Calculus, ES8006..."
+                placeholder="Keywords"
                 onChange={this.handleInput}
               />
             </div>

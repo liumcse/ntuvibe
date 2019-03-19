@@ -31,8 +31,7 @@ class PageHome extends React.PureComponent {
           <div className={styles.searchContainer}>
             <Search theme={theme} />
           </div>
-          {/* TODO: un-comment below */}
-          <div className={styles.fbLike}>
+          {/* <div className={styles.fbLike}>
             <div className={styles.fbPage}>
               <a
                 href="/developers"
@@ -44,7 +43,7 @@ class PageHome extends React.PureComponent {
                 We are looking for developers 👋
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

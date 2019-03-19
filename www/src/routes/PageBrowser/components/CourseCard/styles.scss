@@ -25,7 +25,7 @@
   }
 
   .container:hover {
-    @include medium-shadow;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
   }
 
   @media (max-width: 768px) {

@@ -10,7 +10,7 @@ module.exports = {
     "plugin:react/recommended",
     "prettier",
     "prettier/react",
-    "jest"
+    "plugin:jest/recommended"
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -20,13 +20,12 @@ module.exports = {
     ecmaVersion: 7,
     sourceType: "module"
   },
-  plugins: ["react", "prettier", "json"],
+  plugins: ["react", "prettier", "json", "jest"],
   rules: {
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     eqeqeq: "error",
-    "no-console": 0,
     "react/display-name": 0,
     "react/no-unescaped-entities": 0,
 
