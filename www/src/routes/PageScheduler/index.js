@@ -195,7 +195,7 @@ class PageScheduler extends React.Component<Props> {
         <SiteMetaHelmet
           url="https://ntuvibe.com/scheduler"
           title="Scheduler - NTUVibe"
-          description="Create your beautiful class schedule and add to your calendar!"
+          description="Create a beautiful timetable personalized for you."
         />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
@@ -203,7 +203,6 @@ class PageScheduler extends React.Component<Props> {
               {/* <div className={styles.header}>
                 <div>{calendarIcon}</div> Scheduler
               </div>
-              
               {/* <div
                 className={"fb-like".concat(" " + styles.fbLike)}
                 data-href="https://ntuvibe.com"

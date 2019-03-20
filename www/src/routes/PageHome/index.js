@@ -8,18 +8,10 @@ import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
 
 class PageHome extends React.PureComponent {
-  componentDidMount() {
-    // eslint-disable-next-line
-    // if (window.FB && typeof(window.FB) !== "undefined" && window.FB.XFBML && typeof(window.FB.XFBML) !== "undefined") window.FB.XFBML.parse();  // call this function to re-render FB-like button
-  }
   render() {
     return (
       <div className={styles.home_page}>
-        <SiteMetaHelmet
-          title="NTUVibe - Come Join This Vibrant Online NTU Community!"
-          url="https://ntuvibe.com"
-          description="NTUVibe is a knowledge sharing platform for students at Nanyang Technological University to view course information and course reviews."
-        />
+        <SiteMetaHelmet title="NTUVibe" url="https://ntuvibe.com" />
         {/* <div className={styles.background_image} /> */}
         <div className={styles.container}>
           <div className={styles.bannerContainer}>
@@ -35,8 +27,7 @@ class PageHome extends React.PureComponent {
           <div className={styles.searchContainer}>
             <Search theme={theme} />
           </div>
-          {/* TODO: un-comment below */}
-          <div className={styles.fbLike}>
+          {/* <div className={styles.fbLike}>
             <div className={styles.fbPage}>
               <a
                 href="/developers"
@@ -48,7 +39,7 @@ class PageHome extends React.PureComponent {
                 We are looking for developers 👋
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
