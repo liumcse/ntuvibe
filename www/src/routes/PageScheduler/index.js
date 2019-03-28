@@ -146,12 +146,13 @@ class PageScheduler extends React.Component<Props> {
     const tokenStream = tools.tokenize(input);
     const json = tools.parseToJSON(tokenStream);
     this.props.saveSchedule(JSON.stringify(json));
-    tools.examTime(json).then(exam =>
+    const examTimePromise = tools.examTime(json).then(exam =>
       this.setState({ exam }, () => {
         this.generateCalendar();
       })
     );
     logScheduleGeneration();
+    return examTimePromise
   };
 
   generateCalendar = () => {
