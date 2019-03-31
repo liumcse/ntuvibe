@@ -56,7 +56,6 @@ class ImportSchedule extends React.PureComponent<Props> {
               type="primary"
               className={styles.button}
               onClick={() => this.import()}
-              disabled={this.state.importing}
             >
               {"Import" + (this.state.importing ? "ing..." : "")}
             </Button>
