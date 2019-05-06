@@ -97,11 +97,11 @@ and then paste the following content into the vim/nano editor
 # auto-renewal of ssl certificate
 30 2 * * 1 sudo /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log
 #Ansible: crawl course content
-21 0 3,19 * * sudo docker exec -it api_web_1 sh -c "python3 /api/scrapers/cronjobs/course_content_to_db.py >> /log_scrapers/course_content.log 2>&1"
+21 0 3,19 * * sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/course_content_to_db.py >> /log_scrapers/course_content.log 2>&1"
 #Ansible: crawl class schedule
-59 0 * * 6 sudo docker exec -it api_web_1 sh -c "python3 /api/scrapers/cronjobs/class_schedule_to_db.py >> /log_scrapers/class_schedule.log 2>&1"
+59 0 * * 6 sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/class_schedule_to_db.py >> /log_scrapers/class_schedule.log 2>&1"
 #Ansible: crawl exam schedule
-35 1 * * 6 sudo sudo docker exec -it api_web_1 sh -c "python3 /api/scrapers/cronjobs/exam_schedule_to_db.py >> /log_scrapers/exam_schedule.log 2>&1"
+35 1 * * 6 sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/exam_schedule_to_db.py >> /log_scrapers/exam_schedule.log 2>&1"
 ```
 save the file, quit
 * Do `sudo crontab -l` again to verify that the cronjobs are correctly updated
