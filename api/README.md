@@ -42,13 +42,13 @@ eval "$(docker-machine env ntuvibe)"
 ```
 6. Shutdown previously running containers:
 ```bash
-cd $ROOT
+cd $ROOT/api
 docker-compose down
 ```
 7. Build and start new containers:
 ```bash
-cd $ROOT
-docker-compose up --build
+cd $ROOT/api
+docker-compose up --build -d
 ```
 8. Leave NTUVibe server
 ```bash
@@ -96,11 +96,13 @@ and then paste the following content into the vim/nano editor
 ```
 # auto-renewal of ssl certificate
 30 2 * * 1 sudo /usr/local/sbin/le-renew-webroot >> /var/log/le-renewal.log
-#Ansible: crawl course content
+# crawl course content
 21 0 3,19 * * sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/course_content_to_db.py >> /log_scrapers/course_content.log 2>&1"
-#Ansible: crawl class schedule
+# crawl course content (graduate courses)
+30 0 3,19 * * sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/course_content_graduate_to_db.py >> /log_scrapers/course_content_graduate.log 2>&1"
+# crawl class schedule
 59 0 * * 6 sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/class_schedule_to_db.py >> /log_scrapers/class_schedule.log 2>&1"
-#Ansible: crawl exam schedule
+# crawl exam schedule
 35 1 * * 6 sudo docker exec api_web_1 sh -c "python3 /api/scrapers/cronjobs/exam_schedule_to_db.py >> /log_scrapers/exam_schedule.log 2>&1"
 ```
 save the file, quit

@@ -26,6 +26,22 @@ def get_course_content_detail_html(semester):
 	)
 
 
+def get_course_content_graduate_main_html():
+	return get(COURSE_CONTENT_GRADUATE_MAIN_URL, in_acad="")
+
+
+def get_course_content_graduate_semester_html(semester):
+	return get(COURSE_CONTENT_GRADUATE_SEMESTER_URL, in_acad=semester)
+
+
+def get_course_content_graduate_detail_html(semester, category):
+	return get(
+		COURSE_CONTENT_GRADUATE_DETAIL_URL,
+		s_acad=semester,
+		s_course=category,
+	)
+
+
 def get_class_schedule_main_html():
 	return get(CLASS_SCHEDULE_MAIN_URL)
 

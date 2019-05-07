@@ -10,6 +10,7 @@ from scrapers.constants import *
 from scrapers.scraper_class_schedule import crawl_class_schedule
 import datetime
 import re
+import json
 
 
 def get_course_id_by_course_code(course_code):
@@ -22,11 +23,11 @@ def get_course_id_by_course_code(course_code):
 
 def get_weeks_string_from_remark(remark):
 	if not remark.strip():
-		return str([i for i in range(1, 14)])
+		return json.dumps([i for i in range(1, 14)])
 	if "Online Course" in remark:
-		return str([ONLINE_COURSE_REMARK])
+		return json.dumps([ONLINE_COURSE_REMARK])
 	if "Teaching Wk" not in remark:
-		return str([])
+		return json.dumps([])
 	weeks = []
 	for splitted in remark.split(","):
 		result = re.sub("[\sA-Za-z]", "", splitted).split("-")
@@ -37,7 +38,7 @@ def get_weeks_string_from_remark(remark):
 				weeks.append(week)
 		else:
 			print("wrong remark format: %s", remark)
-	return str(weeks)
+	return json.dumps(weeks)
 
 
 def record_class_schedule(course_code, class_schedule):

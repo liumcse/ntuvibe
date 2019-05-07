@@ -1,6 +1,10 @@
 COURSE_CONTENT_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_subj_cont.main"
 COURSE_CONTENT_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1"
 
+COURSE_CONTENT_GRADUATE_MAIN_URL = "https://wis.ntu.edu.sg/pls/webexe88/pgr$query_subject_content.display"
+COURSE_CONTENT_GRADUATE_SEMESTER_URL = "https://wis.ntu.edu.sg/pls/webexe88/pgr$query_subject_content.display"
+COURSE_CONTENT_GRADUATE_DETAIL_URL = "https://wis.ntu.edu.sg/pls/webexe88/pgr$query_subject_content.display_content_load"
+
 CLASS_SCHEDULE_MAIN_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/aus_schedule.main"
 CLASS_SCHEDULE_DETAIL_URL = "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display1"
 

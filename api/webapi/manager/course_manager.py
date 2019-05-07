@@ -1,5 +1,6 @@
+import json
 from webapi.models import CourseTab
-import urllib
+
 
 def get_course_by_course_id(course_id):
 	return CourseTab.objects.filter(id=course_id).first()
@@ -43,7 +44,7 @@ def prepare_course_list_data(courses):
 
 
 def prepare_course_detail_data(course):
-	constraint = eval(course.constraint)
+	constraint = json.loads(course.constraint.replace("\'", "\""))
 	return {
 		"title": course.course_title,
 		"au": str(int(course.au)),
@@ -55,7 +56,7 @@ def prepare_course_detail_data(course):
 		"as_pe": course.as_pe,
 		"as_ue": course.as_ue,
 		"grade_type": course.grade_type,
-		"offered_semester": eval(course.semesters),
+		"offered_semester": json.loads(course.semesters.replace("\'", "\"")),
 		"update_time": course.update_time,
 	}
 
