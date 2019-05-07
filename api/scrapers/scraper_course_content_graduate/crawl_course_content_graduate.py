@@ -53,6 +53,20 @@ def parse_course_details(detail_html):
 		course_code = course_code_list[idx]
 		all_course_details[course_code] = course_detail
 
+	# handle "pass/fail" courses
+	for font in soup.find_all("font", attrs={"size": "2", "color": "#990000"}, text="Pass/Fail Grade"):
+		tr = font.find_previous("tr").find_previous("tr")
+		# e.g. of tr:
+		# <tr>
+		#   <td width="10%"><b><font color="#0000FF" size="2">B6095</font></b></td>
+		#   <td width="80%"><b><font color="#0000FF" size="2">TITLE</font></b></td>
+		#   <td width="10%"><b><font color="#0000FF" size="2">  3.0 AU </font></b></td>
+		# </tr>
+
+		course_code_font = tr.find_all("font", attrs={"size": "2", "color": "#0000FF"})[0]
+		course_code = course_code_font.text
+		all_course_details[course_code].update({"grade_type": "Pass/Fail"})
+
 
 def get_latest_semester():
 	main_site_html = request_manager.get_course_content_graduate_main_html()
