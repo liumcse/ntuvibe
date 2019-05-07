@@ -17,7 +17,7 @@ def record_course_content(semester, course_code, course_content):
 		"au": float(course_content["au"]),
 		"description": course_content["description"],
 		"constraint": json.dumps({"is_for_graduate": True}),
-		"grade_type": GradeType.READABLE_TO_ID["Default"],
+		"grade_type": GradeType.READABLE_TO_ID[course_content.get("grade_type", "Default")],
 		"as_pe": False,
 		"as_ue": False,
 	}
