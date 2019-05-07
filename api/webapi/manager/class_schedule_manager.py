@@ -1,3 +1,4 @@
+import json
 from webapi.models import ClassScheduleTab
 from webapi.manager import cache_manager
 from webapi.utils import get_hour_from_timestamp
@@ -28,7 +29,7 @@ def prepare_class_schedule_data(class_schedules):
 			"start_time": "{:02d}:{:02d}".format(start_time.hour, start_time.minute),
 			"end_time": "{:02d}:{:02d}".format(end_time.hour, end_time.minute),
 			"venue": class_schedule.venue,
-			"weeks": eval(class_schedule.weeks)
+			"weeks": json.loads(class_schedule.weeks.replace("\'", "\""))
 		})
 		max_update_time = max(max_update_time, class_schedule.update_time)
 
