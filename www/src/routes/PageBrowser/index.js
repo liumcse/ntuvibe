@@ -89,7 +89,7 @@ class PageBrowser extends React.Component {
     }
     // build query
     const encodeKeywords = encodeURIComponent(trimmedKeywords);
-    const encodeFilters = encodeURIComponent(selectedTags.join("+"));
+    const encodeFilters = encodeURIComponent(selectedTags.join(" "));
     const query = `${encodeKeywords}&filter=${encodeFilters}&sort=${sort}`;
     // start searching
     history.replace({
