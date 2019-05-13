@@ -15,19 +15,6 @@ def parse_latest_semester(main_site_html):
 	return latest_semester
 
 
-def parse_category_list(semester_html):
-	category_list = []
-
-	soup = BeautifulSoup(semester_html, "html.parser")
-	options = soup.find("select", attrs={"name": "r_course_yr"}).find_all("option")
-
-	for option in options:
-		if option["value"]:
-			category_list.append(option["value"])
-
-	return category_list
-
-
 def get_tables_in_special_case(soup):
 	tables = []
 	for tr in soup.find_all("tr")[1:]:

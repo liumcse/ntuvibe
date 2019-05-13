@@ -38,8 +38,8 @@ Start with cloning this repository
 
 #### Back End
 
-1. Go to `api`.
-2. TODO: finish the doc.
+1. Go to `api/`.
+2. See the `REAEME.md` under folder `api/`.
 
 ## Architecture
 
