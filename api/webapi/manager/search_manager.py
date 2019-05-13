@@ -37,7 +37,6 @@ def get_courses_by_search(keywords=None, filter=None, sort=0):
     if keywords is None and filter is None:
         return []
     regex = build_regex_from_keyword_list(keywords)
-    print(regex)
     output = CourseTab.objects.filter(Q(course_code__iregex=regex)
                                       | Q(course_title__iregex=regex) | Q(description__iregex=regex))
     # apply filters
