@@ -11,8 +11,6 @@ jobs:
     steps:
       - checkout:
           path: ./www
-      - run: yarn install
-      - run: yarn test
 
       # Download and cache dependencies
       # - restore_cache:
