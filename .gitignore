@@ -1,6 +1,9 @@
 # dependency
 www/node_modules
 api/ENV
+**/ENV
+**/env
+**/venv
 
 # build
 www/dist
