@@ -90,7 +90,7 @@ class PageScheduler extends React.Component<Props> {
     logPageview();
     this.props.fetchUserSchedule();
     // eslint-disable-next-line
-    // if (
+		// if (
     //   window.FB &&
     //   typeof window.FB !== "undefined" &&
     //   window.FB.XFBML &&
@@ -152,7 +152,7 @@ class PageScheduler extends React.Component<Props> {
       })
     );
     logScheduleGeneration();
-    return examTimePromise
+    return examTimePromise;
   };
 
   generateCalendar = () => {
@@ -178,7 +178,7 @@ class PageScheduler extends React.Component<Props> {
           message.error("Something went wrong...");
         }
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log(error)); // eslint-disable-line
   };
 
   render() {
