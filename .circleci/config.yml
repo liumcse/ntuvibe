@@ -11,8 +11,6 @@ jobs:
     steps:
       - checkout:
           path: ./www
-      - run: yarn install
-      - run: yarn test
 
       # Download and cache dependencies
       # - restore_cache:
@@ -29,4 +27,4 @@ jobs:
       #     key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      # - run: yarn test

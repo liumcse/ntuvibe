@@ -5,10 +5,15 @@ api/ENV
 # build
 www/dist
 
+# cache
+**/__pycache
+
 # IDE
 .idea
 venv
 **/*.pyc
+**/.vscode
+**/*.code-workspace
 
 # Django
 api/ntuvibe/webapi/migrations
