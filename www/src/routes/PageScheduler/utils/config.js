@@ -20,9 +20,9 @@ export const WEEKDAY = {
 
 // Semester start uses UTC time
 // JS Date module use 0 as the start of month, hence, 0 stands for January. Here we mean August 13th, 2018
-// - WEEKTIME because we do not wanna week 0
+// - WEEKTIME because we do not want week 0
 export const SEMESTER_START =
-  new Date(2019, 0, 14, 0, 0, 0, 0).getTime() - WEEKTIME;
+  new Date(2019, 7, 12, 0, 0, 0, 0).getTime() - WEEKTIME;
 // TODO: get semester start from backend
 
 // turns out I don't need a complex lexer... lol, but it was fun
