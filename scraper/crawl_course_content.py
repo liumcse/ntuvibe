@@ -18,18 +18,21 @@ def parse_latest_semester(main_site_html):
 
 def get_tables_in_special_case(soup):
     tables = []
+    current_table = BeautifulSoup('', "html.parser")  # Bind current_table to list
     for tr in soup.find_all("tr")[1:]:
         tds = tr.find_all("td")
-        current_table = []  # Bind current_table to list
         if len(tds) == 4:
+            tables.append(current_table)
             tds[-1].extract()
             tr.wrap(soup.new_tag("table"))
             current_table = tr.parent
-            tables.append(current_table)
-        else:
-            current_table.append(tr)
+        current_table.append(tr)
+    tables.append(current_table)
     for table in tables:
-        table.find_all("tr")[-1].extract()
+        if len(table.find_all("tr")) > 0:
+            table.find_all("tr")[-1].extract()
+        else:
+            print(table)
     return tables
 
 
@@ -54,6 +57,10 @@ def parse_course_details(detail_html):
 
         # put remaining text into a deque
         texts = deque([td.text for td in table.find_all("td")])
+        
+        if len(texts) == 0:
+            continue
+
         course_code = texts.popleft()
         if all_course_details.get(course_code):
             continue
