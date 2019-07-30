@@ -38,15 +38,16 @@ def parse_schedule_details(detail_html):
         index_table = tables[i+1]
 
         course_code = course_general_table.find("td").text
+        print("course_code", course_code)
         course_title = course_general_table.find(
             "td").find_next_sibling("td").text
+        print("course_title", course_title)
         if all_schedule_details.get(course_code):
             continue
 
         indices = dict()  # index:str, slots:list
         for tr in index_table.find_all("tr")[1:]:
             index_field, slot = parse_row(tr)
-            current_index = -1  # Bind current_index to int
             if index_field:
                 current_index = index_field
                 indices[current_index] = [slot]
@@ -79,7 +80,7 @@ def crawl():
     print(get_date_time())
     main_site_html = request_manager.get_class_schedule_main_html()
     latest_semester = parse_latest_semester(main_site_html)
-
+    print("latest_semester", latest_semester)
     detail_html = request_manager.get_class_schedule_detail_html(
         latest_semester)
     parse_schedule_details(detail_html)

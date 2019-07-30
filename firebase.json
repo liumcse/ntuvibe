@@ -22,8 +22,8 @@
         "destination": "/index.html"
       },
       {
-        "source": "/api/v2/**",
-        "function": "webApi"
+        "source": "/v2/**",
+        "function": "api"
       }
     ]
   }
