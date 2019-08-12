@@ -1,12 +1,16 @@
 # dependency
 www/node_modules
 api/ENV
+**/ENV
+**/env
+**/venv
 
 # build
 www/dist
 
 # cache
 **/__pycache
+**/*.cache
 
 # IDE
 .idea
