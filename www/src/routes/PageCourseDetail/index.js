@@ -347,7 +347,7 @@ class PageCourseDetail extends React.Component<Props> {
                   />
                 </div>
                 <div className={styles.au}>
-                  {(au && au.concat(" AU")) || "-".concat(" AU")}
+                  {(au && String(au).concat(" AU")) || "-".concat(" AU")}
                 </div>
                 <div className={styles.availability}>
                   <div>

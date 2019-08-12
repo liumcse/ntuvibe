@@ -57,7 +57,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
     case actionTypes.FETCH_COURSE_LIST_SUCCESS:
       return {
         ...state,
-        courseList: payload.data
+        courseList: payload
       };
     case actionTypes.FETCH_COURSE_LIST_FAILURE:
       return {
@@ -119,6 +119,7 @@ const course = (state = initialState.course, action: Action): CourseState => {
   }
 };
 
+// eslint-disable-next-line
 const user = (state = initialState.user, action: Action): UserState => {
   const { type, payload } = action;
   switch (type) {
