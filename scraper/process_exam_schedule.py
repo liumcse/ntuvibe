@@ -31,6 +31,7 @@ def save(db, course_code, exam_schedule):
         start_str, "%d %B %Y %I.%M %p").timestamp()
     end_time = start_time + int(60.0 * 60.0 * float(exam_schedule["duration"]))
     data = {
+        "last_update": datetime.datetime.now(),
         "start_time": start_time,
         "end_time": end_time
     }
