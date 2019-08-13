@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const BASE_URL = "https://api.ntuvibe.com";
+const BASE_URL_V2 =
+  "https://asia-east2-ntuvibe-55156.cloudfunctions.net/api/v2";
 
 axios.defaults.timeout = 20000;
 
@@ -17,7 +19,7 @@ export function fetchCourseRating(courseCode) {
 }
 
 export function fetchCourseList() {
-  return axios.get(`${BASE_URL}/courses/get_course_list`);
+  return axios.get(`${BASE_URL_V2}/course_list`);
 }
 
 export function fetchCourseSchedule(courseCode) {

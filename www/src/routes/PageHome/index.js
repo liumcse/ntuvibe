@@ -25,9 +25,7 @@ class PageHome extends React.PureComponent {
             </Link>
           </div>
           <div className={styles.searchContainer}>
-            <div style={{ textAlign: "center" }}>
-              We're updating. Come back later!
-            </div>
+            <Search theme={theme} />
           </div>
           {/* <div className={styles.fbLike}>
             <div className={styles.fbPage}>

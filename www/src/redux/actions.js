@@ -289,12 +289,9 @@ export function userLogin(authForm: FormData) {
 
 export function userLogout() {
   return async function(dispatch: any) {
-    api
-      .userLogout()
-      .then(() => {
-        return dispatch({ type: actionTypes.USER_LOGOUT });
-      })
-      .catch(() => console.log("Logout error..."));
+    api.userLogout().then(() => {
+      return dispatch({ type: actionTypes.USER_LOGOUT });
+    });
   };
 }
 
