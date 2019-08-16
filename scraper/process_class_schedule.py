@@ -24,8 +24,13 @@ def get_weeks_string_from_remark(remark):
     return weeks
 
 
+def delete_all_schedules_in_db(db):
+    docs = db.collection("schedules").stream()
+    for doc in docs:
+        doc.reference.delete()
+
+
 def save(db, course_code, class_schedule):
-    # TODO(liumcse): delete out of date schedule
     data = {
         "last_update": datetime.datetime.now(),
         "schedules": []
@@ -81,6 +86,8 @@ if __name__ == "__main__":
     db = firestore.client()
 
     class_schedules = crawl()
+    delete_all_schedules_in_db(db)
+    print("Deleted")
     count = 0
     total_count = len(class_schedules.items())
     for course_code, class_schedule in class_schedules.items():

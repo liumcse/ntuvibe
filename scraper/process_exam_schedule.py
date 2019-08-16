@@ -24,6 +24,12 @@ def get_weeks_string_from_remark(remark):
     return weeks
 
 
+def delete_all_schedules_in_db(db):
+    docs = db.collection("exams").stream()
+    for doc in docs:
+        doc.reference.delete()
+
+
 def save(db, course_code, exam_schedule):
     # TODO(liumcse): delete out of date schedule
     start_str = exam_schedule["date"] + " " + exam_schedule["time"]

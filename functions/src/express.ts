@@ -2,7 +2,6 @@ import * as express from 'express';
 import {Course} from './types';
 import {db} from './instances';
 import * as bodyParser from 'body-parser';
-import { QueryDocumentSnapshot } from '@google-cloud/firestore';
 
 const app = express();
 const main = express();
@@ -10,19 +9,14 @@ const main = express();
 main.use('/v2', app);
 main.use(bodyParser.json());
 
-export async function getCourseList() {
-  const courseListSnapshot = await db.collection('courses').get();
-  const result: Course[] = [];
-
-  courseListSnapshot.forEach((doc: QueryDocumentSnapshot) => {
-    const course_code = doc.id
-    const data = doc.data();
-    result.push({
-      title: data.course_title,
-      code: course_code,
-    });
-  });
-
+export async function getCourseListFromCache() {
+  const cacheRef = await db.collection('cache');
+  const snapshot = await cacheRef.doc('courses').get();
+  let result = [];
+  if (typeof snapshot.data() !== 'undefined') {
+    // @ts-ignore
+    result = JSON.parse(snapshot.data().data);
+  }
   return result;
 }
 
@@ -41,13 +35,19 @@ export async function getExamSchedule(code: string) {
   return examSchedule.data();
 }
 
-app.get('/test', (request, response) => {
-  response.send('Hello, World!');
-});
+app.get('/', (request, response) => {
+  response.send(`<pre><code>Hello! Here's a list of APIs available:
+    /course_list            returns a list of courses with their code, title, and level (undergrad/postgrad)
+    /course_detail/:code    returns details of a specific course
+    /class_schedule/:code   returns class schedules of a specific course
+    /exam_schedule/:code    returns exam schedules of a specific course
+  </code></pre>`)
+})
+
 
 app.get('/course_list', async (request, response) => {
   try {
-    const result: Course[] = await getCourseList();
+    const result: Course[] = await getCourseListFromCache();
     response.json(result);
   } catch(e) {
     response.status(500).send(`

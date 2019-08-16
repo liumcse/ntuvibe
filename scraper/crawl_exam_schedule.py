@@ -1,7 +1,7 @@
 import re
 from bs4 import BeautifulSoup
 import request_manager
-from utils import write_json_file, get_date_time
+from utils import get_date_time
 from constants import VALID_COURSE_NUMBER_LOWER_BOUND
 
 
