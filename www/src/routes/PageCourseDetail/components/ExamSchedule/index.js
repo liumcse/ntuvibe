@@ -40,7 +40,7 @@ const ExamSchedule = (props: Props) => {
       </div>
       <div className={styles.last_update}>
         Exam time was last updated on{" "}
-        {timestampToDate(parseInt(updateTime, 10))} from{" "}
+        {timestampToDate(parseInt(updateTime["_seconds"], 10))} from{" "}
         <a href="https://wis.ntu.edu.sg/webexe/owa/exam_timetable_und.main">
           ntu.edu.sg
         </a>

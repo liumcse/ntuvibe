@@ -248,7 +248,7 @@ class PageCourseDetail extends React.Component<Props> {
 
     const { courseCode } = this.props.match.params;
     const {
-      title,
+      course_title,
       au,
       constraint,
       description,
@@ -258,13 +258,13 @@ class PageCourseDetail extends React.Component<Props> {
       grade_type
     } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
-    const { start_time, end_time, update_time } = examSchedule; // for examSchedule
+    const { start_time, end_time, last_update } = examSchedule; // for examSchedule
 
     return (
       <div className={styles.page_course_detail}>
         <SiteMetaHelmet
           title={`${courseCode.toUpperCase()} - ${cap_first_letter(
-            title
+            course_title
           )} - NTUVibe`}
           url={`https://ntuvibe.com/courses/${courseCode}`}
           description={
@@ -288,7 +288,9 @@ class PageCourseDetail extends React.Component<Props> {
               <div className={styles.rating_overall}>
                 {(count && like.toString().concat(" %")) || "- %"}
               </div>
-              <div className={styles.heading_course_title}>{title || ""}</div>
+              <div className={styles.heading_course_title}>
+                {course_title || ""}
+              </div>
               <div className={styles.number_of_rating}>
                 {!count || count < RATING_THRESHOLD
                   ? NO_RATING
@@ -351,24 +353,22 @@ class PageCourseDetail extends React.Component<Props> {
                 </div>
                 <div className={styles.availability}>
                   <div>
-                    <img
-                      src={typeof as_ue === "boolean" && (as_ue ? yes : no)}
-                    />
+                    <img src={as_ue ? yes : no} />
                     Read as Unrestricted Elective
                   </div>
                   <div>
-                    <img
-                      src={typeof as_pe === "boolean" && (as_pe ? yes : no)}
-                    />
+                    <img src={as_pe ? yes : no} />
                     Read as General Education Prescribed Elective
                   </div>
-                  <div>
-                    <img src={exam} />
-                    Grade Type -{" "}
-                    {grade_type === 1
-                      ? "Pass / Fail"
-                      : "Letter Graded (A to F)"}
-                  </div>
+                  {typeof grade_type !== "undefined" && (
+                    <div>
+                      <img src={exam} />
+                      Grade Type -{" "}
+                      {grade_type === 1
+                        ? "Pass / Fail"
+                        : "Letter Graded (A to F)"}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -396,7 +396,7 @@ class PageCourseDetail extends React.Component<Props> {
             )}
           </div>
           <div className={styles.section_c}>
-            {courseSchedule && Object.keys(courseSchedule).length > 1 && (
+            {courseSchedule && Object.keys(courseSchedule).length > 0 && (
               <div className={styles.table}>
                 <ClassSchedule data={courseSchedule} />
               </div>
@@ -406,7 +406,7 @@ class PageCourseDetail extends React.Component<Props> {
                 <ExamSchedule
                   startTime={start_time}
                   endTime={end_time}
-                  updateTime={update_time}
+                  updateTime={last_update}
                 />
               </div>
             )}

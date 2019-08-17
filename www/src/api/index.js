@@ -11,7 +11,7 @@ export function searchCourses(query) {
 }
 
 export function fetchCourseDetail(courseCode) {
-  return axios.get(`${BASE_URL}/courses/get_course_detail?code=${courseCode}`);
+  return axios.get(`${BASE_URL_V2}/course_detail/${courseCode}`);
 }
 
 export function fetchCourseRating(courseCode) {
@@ -23,11 +23,11 @@ export function fetchCourseList() {
 }
 
 export function fetchCourseSchedule(courseCode) {
-  return axios.get(`${BASE_URL}/courses/get_class_schedule?code=${courseCode}`);
+  return axios.get(`${BASE_URL_V2}/class_schedule/${courseCode}`);
 }
 
 export function fetchExamSchedule(courseCode) {
-  return axios.get(`${BASE_URL}/courses/get_exam_schedule?code=${courseCode}`);
+  return axios.get(`${BASE_URL_V2}/exam_schedule/${courseCode}`);
 }
 
 export function fetchCourseComments(courseCode) {

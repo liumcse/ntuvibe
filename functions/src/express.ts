@@ -9,6 +9,9 @@ const main = express();
 main.use('/v2', app);
 main.use(bodyParser.json());
 
+/**
+ * Returns a list of all courses (code, title, postgrad) in JSON format.
+ */
 export async function getCourseListFromCache() {
   const cacheRef = await db.collection('cache');
   const snapshot = await cacheRef.doc('courses').get();
@@ -19,20 +22,31 @@ export async function getCourseListFromCache() {
   }
   return result;
 }
-
+/**
+ * Returns detail of a course in JSON format.
+ * @param code Course code. E.g. 'CZ3006', case sensitive
+ */
 export async function getCourseDetail(code: string) {
   const courseDetail = await db.collection('courses').doc(code).get();
-  return courseDetail.data();
+  return courseDetail.data() || {};
 }
 
+/**
+ * Returns a list of class schedules of a course in JSON format.
+ * @param code Course code. E.g. 'CZ3006', case sensitive
+ */
 export async function getClassSchedule(code: string) {
   const classSchedule = await db.collection('schedules').doc(code).get();
-  return classSchedule.data();
+  return classSchedule.data() || {};
 }
 
+/**
+ * Returns exam schedule of a course in JSON format.
+ * @param code Course code. E.g. 'CZ3006', case sensitive
+ */
 export async function getExamSchedule(code: string) {
   const examSchedule = await db.collection('exams').doc(code).get();
-  return examSchedule.data();
+  return examSchedule.data() || {};
 }
 
 app.get('/', (request, response) => {
