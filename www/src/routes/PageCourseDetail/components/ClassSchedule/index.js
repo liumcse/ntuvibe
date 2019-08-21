@@ -2,13 +2,7 @@
 import * as React from "react";
 import { timestampToDate } from "src/utils";
 
-import type { CourseSchedule } from "src/FlowType/courses";
-
 import * as styles from "./style.scss";
-
-type Props = {
-  data: CourseSchedule
-};
 
 type WeekdayProps = {
   day: number
@@ -124,7 +118,15 @@ const mergeRedundantSchedule = scheduleList => {
   return newScheduleList;
 };
 
-const parseDataToTable = (data: CourseSchedule) => {
+const parseDataToTable = data => {
+  for (const schedule of (data && data["schedules"]) || []) {
+    if (!data[schedule["index"]]) {
+      data[schedule["index"]] = [];
+    }
+    data[schedule["index"]].push(schedule);
+  }
+  delete data["schedules"];
+  data["update_time"] = data["last_update"]["_seconds"];
   const indexList = Object.keys(data);
   let indexToggle = false;
   let generatedTable = [];
@@ -178,8 +180,7 @@ const viewAll = () => {
   tableDOM.style.maxHeight = "none";
 };
 
-const ClassSchedule = (props: Props) => {
-  const { data } = props;
+const ClassSchedule = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Schedule (Current Semester)</div>

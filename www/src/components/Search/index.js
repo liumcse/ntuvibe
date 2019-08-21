@@ -77,13 +77,8 @@ class Search extends React.Component<Props, States> {
       clearTimeout(this.lastRequestId);
     }
 
-    // this.setState({
-    //   isLoading: true
-    // });
-
     this.lastRequestId = setTimeout(() => {
       this.setState({
-        // isLoading: false,
         suggestions: this.getSuggestions(value)
       });
     }, 200);
@@ -95,14 +90,11 @@ class Search extends React.Component<Props, States> {
   };
 
   getSuggestionValue = suggestion => {
-    // const { history } = this.props;
-    // history.push("/courses/" + suggestion.code.toLowerCase());
     return suggestion.code
       .concat(" - ")
       .concat(cap_first_letter(suggestion.title));
   };
 
-  // Use your imagination to render suggestions.
   renderSuggestion = suggestion => (
     <div
       onClick={() => this.redirect(suggestion.code)}
@@ -112,7 +104,6 @@ class Search extends React.Component<Props, States> {
     </div>
   );
 
-  // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
     if (!value || value === undefined) return [];
     const { courseList } = this.props;
@@ -143,16 +134,10 @@ class Search extends React.Component<Props, States> {
     }
   }
 
-  // Autosuggest will call this function every time you need to update suggestions.
-  // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
-    // this.setState({
-    //   suggestions: this.getSuggestions(value)
-    // });
     this.loadSuggestions(value);
   };
 
-  // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []
@@ -164,11 +149,12 @@ class Search extends React.Component<Props, States> {
     const loaded =
       this.props.courseList !== null && this.props.courseList.length > 0;
 
-    // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder:
         "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
       value,
+      autocorrect: "off",
+      autocapitalize: "none",
       disabled: !loaded,
       onChange: this.onChange
     };

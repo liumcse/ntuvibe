@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from collections import deque
 import request_manager
 from constants import CourseContentDetailType
-from utils import write_json_file, get_date_time
+from utils import get_date_time
 
 
 def parse_latest_semester(main_site_html):

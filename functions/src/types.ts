@@ -11,5 +11,6 @@ export interface Course {
   as_pe?: boolean;
   pe_type?: string[];
   grade_type?: 0 | 1;
-  offeredSemester?: string[];
+  semesters?: string[];
+  postgrad?: boolean;
 }

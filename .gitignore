@@ -41,3 +41,6 @@ notebooks
 
 # Experimental
 services
+
+# Sensetive
+**/serviceKey.json

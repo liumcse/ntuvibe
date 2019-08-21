@@ -1,14 +1,11 @@
 import traceback
 import firebase_admin
 from firebase_admin import firestore
-from flask import Flask, jsonify, make_response
-from crawl_course_content import crawl as crawl_course_content
-from crawl_course_content_graduate import crawl as crawl_course_content_graduate
-from crawl_class_schedule import crawl as crawl_class_schedule
-from crawl_exam_schedule import crawl as crawl_exam_schedule
+from flask import Flask, make_response
 import process_course_content
 import process_class_schedule
 import process_exam_schedule
+import process_additional_info
 
 firebase_admin.initialize_app()
 db = firestore.client()
@@ -18,7 +15,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def help():
-    return "Hi!"  # TODO(liumcse): Display help.
+    return """
+    <pre><code>
+    Hello! The following endpoints are available:
+        /crawl_course:              crawl course information and save to database.
+        /crawl_class_schedule:      crawl class schedule and save to database. This operation will delete all existing schedule.
+        /crawl_exam_schedule:       crawl exam schedule and save to database. This operation will delete all existing exam schedule.
+        /crawl_additional_info:     crawl additional information for each course.
+    """
 
 
 @app.route('/crawl_course')
@@ -38,6 +42,9 @@ def crawl_course():
 def crawl_class_schedule():
     try:
         crawl_result = process_class_schedule.crawl()
+        if not crawl_result:
+            raise Exception
+        process_class_schedule.delete_all_schedules_in_db(db)
         for course_code, class_schedule in crawl_result.items():
             process_class_schedule.save(
                 db, course_code, class_schedule)
@@ -50,6 +57,9 @@ def crawl_class_schedule():
 def crawl_exam_schedule():
     try:
         crawl_result = process_exam_schedule.crawl()
+        if not crawl_result:
+            raise Exception
+        process_exam_schedule.delete_all_schedules_in_db(db)
         for course_code, exam_schedule in crawl_result.items():
             process_exam_schedule.save(
                 db, course_code, exam_schedule)
@@ -58,34 +68,16 @@ def crawl_exam_schedule():
         return make_response(traceback.format_exc(), 400)
 
 
-# @app.route('/course_content_graduate')
-# def course_content_graduate():
-#     try:
-#         data = crawl_course_content_graduate()
-#         return jsonify(data)
-#     except Exception as e:
-#         response = make_response(traceback.format_exc(), 400)
-#         return response
-
-
-# @app.route('/class_schedule')
-# def class_schedule():
-#     try:
-#         data = crawl_class_schedule()
-#         return jsonify(data)
-#     except Exception as e:
-#         response = make_response(traceback.format_exc(), 400)
-#         return response
-
-
-# @app.route('/exam_schedule')
-# def exam_schedule():
-#     try:
-#         data = crawl_exam_schedule()
-#         return jsonify(data)
-#     except Exception as e:
-#         response = make_response(traceback.format_exc(), 400)
-#         return response
+@app.route('/crawl_additional_info')
+def crawl_additional_info():
+    try:
+        crawl_result = process_class_schedule.crawl()
+        for course_code, exam_schedule in crawl_result.items():
+            process_additional_info.save(
+                db, course_code, exam_schedule)
+        return make_response('ok', 200)
+    except Exception as e:
+        return make_response(traceback.format_exc(), 400)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,6 @@
-import time
 from bs4 import BeautifulSoup
 import request_manager
-from utils import write_json_file, get_date_time
+from utils import get_date_time
 
 
 def parse_latest_semester(main_site_html):
@@ -38,10 +37,8 @@ def parse_schedule_details(detail_html):
         index_table = tables[i+1]
 
         course_code = course_general_table.find("td").text
-        print("course_code", course_code)
         course_title = course_general_table.find(
             "td").find_next_sibling("td").text
-        print("course_title", course_title)
         if all_schedule_details.get(course_code):
             continue
 

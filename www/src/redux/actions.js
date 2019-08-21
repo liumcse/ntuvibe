@@ -12,7 +12,7 @@ export function fetchCourseDetail(courseCode: string) {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_DETAIL_SUCCESS,
-          payload: response.data
+          payload: response
         })
       )
       .catch(() =>
@@ -78,7 +78,7 @@ export function fetchCourseSchedule(courseCode: string) {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_COURSE_SCHEDULE_SUCCESS,
-          payload: response.data
+          payload: response
         })
       )
       .catch(() =>
@@ -100,7 +100,7 @@ export function fetchExamSchedule(courseCode: string) {
       .then(response =>
         dispatch({
           type: actionTypes.FETCH_EXAM_SCHEDULE_SUCCESS,
-          payload: response.data
+          payload: response
         })
       )
       .catch(() =>
