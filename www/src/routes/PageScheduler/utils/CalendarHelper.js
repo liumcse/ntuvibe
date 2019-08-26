@@ -50,7 +50,6 @@ export function calendarHelper(schedule, exam) {
           new Date(calculatedTime),
           end_time
         );
-        // const content = `${courseCode} ${class_type} ${group}\n${venue}`;
         events.push({
           id: idCount++,
           title: courseCode,

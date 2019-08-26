@@ -80,9 +80,8 @@ export function icsHelper(schedule, exam) {
   };
 
   let serialEvent = [];
-  Object.keys(schedule).map(courseTimeGenerator);
-  Object.keys(exam).map(examTimeGenerator);
-  console.log(serialEvent);
+  Object.keys(schedule).forEach(courseTimeGenerator);
+  Object.keys(exam).forEach(examTimeGenerator);
   const { error, value } = ics.createEvents(serialEvent);
   if (!error) return value;
   return null;

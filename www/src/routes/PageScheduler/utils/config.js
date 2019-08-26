@@ -169,7 +169,7 @@ export function getLatestClass(events) {
   let latest = new Date("January 1, 00 00:00");
   events.forEach(event => {
     if (event.end.getHours() > latest.getHours()) {
-      latest = event.end;
+      latest = new Date(event.end.getTime());
     }
   });
   return latest;
