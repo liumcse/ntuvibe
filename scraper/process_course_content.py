@@ -47,8 +47,7 @@ if __name__ == "__main__":
     firebase_admin.initialize_app(cred)
     db = firestore.client()
 
-    # semester = get_latest_semester()
-    semester = "2018_1"
+    semester = get_latest_semester()
     crawl_result = crawl(semester)
     total_count = len(crawl_result.items())
     count = 0
