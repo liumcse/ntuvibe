@@ -1,6 +1,6 @@
 import {db} from './instances';
 import {Course} from './types';
-import { QueryDocumentSnapshot } from '@google-cloud/firestore';
+import {QueryDocumentSnapshot} from '@google-cloud/firestore';
 
 export async function getCourseList() {
   const courseListSnapshot = await db.collection('courses').get();

@@ -254,7 +254,7 @@ class PageCourseDetail extends React.Component<Props> {
       description,
       as_ue,
       as_pe,
-      offered_semester,
+      semesters,
       grade_type
     } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
@@ -304,13 +304,15 @@ class PageCourseDetail extends React.Component<Props> {
                     NO_DESCRIPTION}
                 </div>
                 <div className={styles.bottom_left}>
-                  {offered_semester && offered_semester.length > 0 && (
+                  {semesters && semesters.length > 0 && (
                     <React.Fragment>
                       <div className={styles.label}>Past Offered</div>
                       <div className={styles.requirement_content}>
-                        {offered_semester
-                          .reverse()
-                          .splice(0, 4)
+                        {semesters
+                          .sort((a, b) =>
+                            parseInt(b.slice(0, 4) - parseInt(a.slice(0, 4)))
+                          )
+                          .slice(0, 4)
                           .map(offering => prettify_offering(offering))
                           .join(", ")}
                       </div>

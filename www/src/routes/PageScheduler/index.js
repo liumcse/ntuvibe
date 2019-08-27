@@ -20,17 +20,12 @@ import {
 
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-// import calendar from "src/assets/svgs/calendar.svg";
-import * as tools from "./utils";
+import * as utils from "./utils";
 import * as styles from "./style.scss";
 import "!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css";
 import { message } from "antd";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
-
-// const calendarIcon = (
-//   <img src={calendar} style={{ height: "1.5rem", width: "1.5rem" }} />
-// );
 
 // today
 const TODAY = new Date();
@@ -89,14 +84,6 @@ class PageScheduler extends React.Component<Props> {
     buttonGroup[2].innerHTML = ">";
     logPageview();
     this.props.fetchUserSchedule();
-    // eslint-disable-next-line
-    // if (
-    //   window.FB &&
-    //   typeof window.FB !== "undefined" &&
-    //   window.FB.XFBML &&
-    //   typeof window.FB.XFBML !== "undefined"
-    // )
-    //   window.FB.XFBML.parse(); // call this function to re-render FB-like button
   }
 
   componentWillUnmount() {
@@ -106,7 +93,7 @@ class PageScheduler extends React.Component<Props> {
 
   componentDidUpdate(prevProps) {
     if (this.props.schedule && prevProps.schedule !== this.props.schedule) {
-      tools.examTime(JSON.parse(this.props.schedule)).then(exam =>
+      utils.examTime(JSON.parse(this.props.schedule)).then(exam =>
         this.setState({ exam }, () => {
           this.generateCalendar();
         })
@@ -135,7 +122,7 @@ class PageScheduler extends React.Component<Props> {
 
   downloadCalendar = () => {
     const { schedule } = this.props;
-    let icsContent = tools.icsHelper(JSON.parse(schedule), this.state.exam);
+    let icsContent = utils.icsHelper(JSON.parse(schedule), this.state.exam);
     this.download(icsContent, "ClassSchedule.ics", "text/plain");
     logCalendarDownload();
   };
@@ -143,10 +130,10 @@ class PageScheduler extends React.Component<Props> {
     this;
   };
   importSchedule = input => {
-    const tokenStream = tools.tokenize(input);
-    const json = tools.parseToJSON(tokenStream);
+    const tokenStream = utils.tokenize(input);
+    const json = utils.parseToJSON(tokenStream);
     this.props.saveSchedule(JSON.stringify(json));
-    const examTimePromise = tools.examTime(json).then(exam =>
+    const examTimePromise = utils.examTime(json).then(exam =>
       this.setState({ exam }, () => {
         this.generateCalendar();
       })
@@ -157,7 +144,7 @@ class PageScheduler extends React.Component<Props> {
 
   generateCalendar = () => {
     if (!this.props.schedule || !this.state.exam) return null;
-    const calendarEvents = tools.calendarHelper(
+    const calendarEvents = utils.calendarHelper(
       JSON.parse(this.props.schedule),
       this.state.exam
     );
@@ -185,7 +172,7 @@ class PageScheduler extends React.Component<Props> {
     const { calendarEvents } = this.state;
     let latestClass = null;
     if (calendarEvents) {
-      latestClass = tools.getLatestClass(calendarEvents);
+      latestClass = utils.getLatestClass(calendarEvents);
       latestClass.setFullYear(TODAY.getFullYear());
       latestClass.setMonth(TODAY.getMonth());
       latestClass.setDate(TODAY.getDate());
@@ -200,20 +187,7 @@ class PageScheduler extends React.Component<Props> {
         />
         <div className={styles.innerContainer}>
           <div className={styles.textContainer}>
-            <div className={styles.headerContainer}>
-              {/* <div className={styles.header}>
-                <div>{calendarIcon}</div> Scheduler
-              </div>
-              {/* <div
-                className={"fb-like".concat(" " + styles.fbLike)}
-                data-href="https://ntuvibe.com"
-                data-layout="button_count"
-                data-action="like"
-                data-size="large"
-                data-show-faces="false"
-                data-share="false"
-              /> */}
-            </div>
+            <div className={styles.headerContainer} />
             <div
               className={styles.instructionContainer}
               style={{ display: !calendarEvents ? "block" : "none" }}
@@ -263,12 +237,12 @@ class PageScheduler extends React.Component<Props> {
                 : "none" /* display only when imported */
             }}
           >
-            {tools.calculateAcademicWeek() ? (
+            {utils.calculateAcademicWeek() ? (
               <div className={styles.weekContainer}>
                 <div className={styles.weekIndicator}>
                   💪 Today falls in{" "}
                   <span className={styles.week}>
-                    {tools.calculateAcademicWeek()}
+                    {utils.calculateAcademicWeek()}
                   </span>
                 </div>
               </div>
@@ -340,7 +314,7 @@ class PageScheduler extends React.Component<Props> {
               >
                 Re-import
               </Button>
-            </div>{" "}
+            </div>
           </div>
         </div>
       </div>
