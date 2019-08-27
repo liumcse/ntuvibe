@@ -153,8 +153,8 @@ class Search extends React.Component<Props, States> {
       placeholder:
         "Type the code or title of a course (e.g. CZ3003 or Algorithms)",
       value,
-      autocorrect: "off",
-      autocapitalize: "none",
+      autoCorrect: "off",
+      autoCapitalize: "none",
       disabled: !loaded,
       onChange: this.onChange
     };

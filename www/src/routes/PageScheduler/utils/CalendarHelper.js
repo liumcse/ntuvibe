@@ -72,8 +72,8 @@ export function calendarHelper(schedule, exam) {
       type: "Exam",
       group: "Examination",
       allDay: false,
-      start: new Date(examTime.start_time * 1000),
-      end: new Date(examTime.end_time * 1000)
+      start: new Date(examTime.start_time),
+      end: new Date(examTime.end_time)
     });
   });
   return events;
