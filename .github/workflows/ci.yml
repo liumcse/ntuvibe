@@ -1,0 +1,45 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build-front-end:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Go to front end directory
+      - run: |
+          cd www
+      - name: Install and build
+        run: |
+          yarn
+          yarn build
+  test-front-end:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Go to front end directory
+      - run: |
+          cd www
+      - name: Install and test
+        run: |
+          yarn
+          yarn test
