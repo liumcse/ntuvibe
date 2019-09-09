@@ -13,7 +13,6 @@
     "lint": "eslint --fix src",
     "test": "jest"
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "@svgr/webpack": "^2.3.0",
@@ -84,5 +83,16 @@
     "webpack": "^4.16.5",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
