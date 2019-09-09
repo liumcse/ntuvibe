@@ -6,7 +6,7 @@ export interface Course {
   constraint?: {
     prerequisite?: string[];
     mutex?: string[];
-  }
+  };
   as_ue?: boolean;
   as_pe?: boolean;
   pe_type?: string[];
