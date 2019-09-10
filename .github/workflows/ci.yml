@@ -1,4 +1,4 @@
-name: Node CI
+name: Presubmit
 
 on: [push]
 
@@ -21,6 +21,7 @@ jobs:
           cd www
           yarn
           yarn build
+
   test-front-end:
     runs-on: ubuntu-latest
 
