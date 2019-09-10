@@ -17,7 +17,7 @@
   "dependencies": {
     "@svgr/webpack": "^2.3.0",
     "antd": "^3.9.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "ics": "git://github.com/ZaynJarvis/ics.git",
     "less": "^3.8.1",
     "moment": "^2.22.2",
