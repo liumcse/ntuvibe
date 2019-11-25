@@ -16,7 +16,10 @@ type Props = {
 };
 
 const ExamSchedule = (props: Props) => {
-  const { startTime, endTime, updateTime } = props;
+  let { startTime, endTime, updateTime } = props;
+  // Shift timezone by 8 hours back
+  startTime = startTime - 8 * 60 * 60 * 1000;
+  endTime = endTime - 8 * 60 * 60 * 1000;
   return (
     <div className={styles.container}>
       <div className={styles.title}>Final Exam</div>
