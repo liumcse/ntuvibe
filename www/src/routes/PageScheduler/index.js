@@ -290,16 +290,6 @@ class PageScheduler extends React.Component<Props> {
               >
                 Download to your calendar
               </Button>
-              {this.state.exam && (
-                <ExamSchedule
-                  exam={this.state.exam}
-                  trigger={
-                    <Button type="primary" className={styles.exam}>
-                      View Exam Schedule
-                    </Button>
-                  }
-                />
-              )}
               <Button
                 type="primary"
                 className={styles.sync}

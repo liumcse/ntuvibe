@@ -1,5 +1,6 @@
 // @flow
 import type { CourseList, CourseListSnippet } from "src/FlowType/courses";
+import { showModal } from "src/redux/actions";
 import store from "src/redux/store";
 import moment from "moment";
 
@@ -119,8 +120,7 @@ export function requireLogin(callBack: Function): void {
   const profile = state && state.user && state.user.profile;
   const { dispatch } = store;
   if (!profile) {
-    // TODO: fix this
-    dispatch(popupTrigger(1));
+    dispatch(showModal("LOGIN"));
   } else {
     if (callBack) callBack();
   }
