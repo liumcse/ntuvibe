@@ -180,10 +180,12 @@ const viewAll = () => {
   tableDOM.style.maxHeight = "none";
 };
 
-const ClassSchedule = ({ data }) => {
+const ClassSchedule = ({ data, currentOffering }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Schedule (Current Semester)</div>
+      <div className={styles.title}>
+        Schedule ({currentOffering || "Current Semester"})
+      </div>
       <div id="timetable" className={styles.table_container}>
         <div id="timetable-fade" onClick={viewAll} />
         {/* <div id="click-to-view-all" className={styles.expand} onClick={viewAll}>
