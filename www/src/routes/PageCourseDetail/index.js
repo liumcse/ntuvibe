@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import RatingBar from "./components/RatingBar";
 import ClassSchedule from "./components/ClassSchedule";
-// import ExamSchedule from "./components/ExamSchedule";
+import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import {
@@ -30,7 +30,7 @@ import {
   fetchCourseComments,
   fetchCourseSchedule,
   fetchUserCourseComment,
-  // fetchExamSchedule,
+  fetchExamSchedule,
   showModal
 } from "@redux/actions";
 
@@ -210,7 +210,7 @@ class PageCourseDetail extends React.Component<Props> {
     this.props.fetchCourseRating(code);
     this.props.fetchCourseComments(code);
     this.props.fetchCourseSchedule(code);
-    // this.props.fetchExamSchedule(code);
+    this.props.fetchExamSchedule(code);
   };
 
   componentDidUpdate(prevProps) {
@@ -233,14 +233,14 @@ class PageCourseDetail extends React.Component<Props> {
       courseDetail,
       courseRating,
       courseComments,
-      courseSchedule
-      // examSchedule
+      courseSchedule,
+      examSchedule
     } = this.props;
     if (
       !courseDetail ||
       !courseRating ||
       !courseComments ||
-      // !examSchedule ||
+      !examSchedule ||
       !courseSchedule
     ) {
       return skeleton;
@@ -258,7 +258,7 @@ class PageCourseDetail extends React.Component<Props> {
       grade_type
     } = courseDetail; // for courseDetail
     const { count, like, useful, easy } = courseRating; // for courseRating
-    // const { start_time, end_time, last_update } = examSchedule; // for examSchedule
+    const { start_time, end_time, last_update } = examSchedule; // for examSchedule
 
     return (
       <div className={styles.page_course_detail}>
@@ -309,21 +309,9 @@ class PageCourseDetail extends React.Component<Props> {
                       <div className={styles.label}>Past Offered</div>
                       <div className={styles.requirement_content}>
                         {semesters
-                          .sort((a, b) => {
-                            // TODO(liumcse): refactor into a function
-                            const [yearA, yearB] = [
-                              parseInt(a.slice(0, 4)),
-                              parseInt(b.slice(0, 4))
-                            ];
-                            if (yearA === yearB) {
-                              const [semA, semB] = [
-                                parseInt(a.slice(5)),
-                                parseInt(b.slice(5))
-                              ];
-                              return semB - semA;
-                            }
-                            return yearB - yearA;
-                          })
+                          .sort((a, b) =>
+                            parseInt(b.slice(0, 4) - parseInt(a.slice(0, 4)))
+                          )
                           .slice(0, 4)
                           .map(offering => prettify_offering(offering))
                           .join(", ")}
@@ -415,7 +403,7 @@ class PageCourseDetail extends React.Component<Props> {
                 <ClassSchedule data={courseSchedule} />
               </div>
             )}
-            {/* {start_time && end_time && (
+            {start_time && end_time && (
               <div className={styles.table}>
                 <ExamSchedule
                   startTime={start_time}
@@ -423,7 +411,7 @@ class PageCourseDetail extends React.Component<Props> {
                   updateTime={last_update}
                 />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
@@ -448,7 +436,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCourseRating: courseCode => dispatch(fetchCourseRating(courseCode)),
   fetchCourseComments: courseCode => dispatch(fetchCourseComments(courseCode)),
   fetchCourseSchedule: courseCode => dispatch(fetchCourseSchedule(courseCode)),
-  // fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
+  fetchExamSchedule: courseCode => dispatch(fetchExamSchedule(courseCode)),
   fetchUserCourseComment: courseCode =>
     dispatch(fetchUserCourseComment(courseCode)),
   showModal: (modalType, modalProps) =>
