@@ -79,49 +79,51 @@ class App extends React.PureComponent {
   render() {
     return (
       <AppShell>
-        <ModalContainer />
-        <Switch>
-          <Route exact path={ROUTES.ROUTE_HOME} component={AsyncPageHome} />
-          <Route
-            exact
-            path={ROUTES.ROUTE_COURSE_PAGE}
-            component={AsyncPageCourseDetail}
-          />
-          <Route
-            exact
-            path={ROUTES.ROUTE_CREATE_ACCOUNT}
-            component={AsyncPageTransient}
-          />
-          <Route
-            exact
-            path={ROUTES.ROUTE_RESET_PASSWORD}
-            component={AsyncPageResetPassword}
-          />
-          <Route
-            exact
-            path={ROUTES.ROUTE_USER_SETTING}
-            component={AsyncPageUserSetting}
-          />
-          {/* <Route exact path={ROUTES.ROUTE_SIGN_UP} component={PageSignUp} /> */}
-          <Route
-            exact
-            path={ROUTES.ROUTE_SITEMAP}
-            component={AsyncPageSitemap}
-          />
-          <Route exact path={ROUTES.ROUTE_ABOUT} component={AsyncPageAbout} />
-          <Route
-            exact
-            path={ROUTES.ROUTE_SCHEDULER}
-            component={AsyncPageScheduler}
-          />
-          <Route
-            exact
-            path={ROUTES.ROUTE_BROWSER}
-            component={AsyncPageBrowser}
-          />
-          {/* fallback */}
-          <Route path={"/"} component={AsyncPageHome} />
-        </Switch>
+        <React.Fragment>
+          <ModalContainer />
+          <Switch>
+            <Route exact path={ROUTES.ROUTE_HOME} component={AsyncPageHome} />
+            <Route
+              exact
+              path={ROUTES.ROUTE_COURSE_PAGE}
+              component={AsyncPageCourseDetail}
+            />
+            <Route
+              exact
+              path={ROUTES.ROUTE_CREATE_ACCOUNT}
+              component={AsyncPageTransient}
+            />
+            <Route
+              exact
+              path={ROUTES.ROUTE_RESET_PASSWORD}
+              component={AsyncPageResetPassword}
+            />
+            <Route
+              exact
+              path={ROUTES.ROUTE_USER_SETTING}
+              component={AsyncPageUserSetting}
+            />
+            {/* <Route exact path={ROUTES.ROUTE_SIGN_UP} component={PageSignUp} /> */}
+            <Route
+              exact
+              path={ROUTES.ROUTE_SITEMAP}
+              component={AsyncPageSitemap}
+            />
+            <Route exact path={ROUTES.ROUTE_ABOUT} component={AsyncPageAbout} />
+            <Route
+              exact
+              path={ROUTES.ROUTE_SCHEDULER}
+              component={AsyncPageScheduler}
+            />
+            <Route
+              exact
+              path={ROUTES.ROUTE_BROWSER}
+              component={AsyncPageBrowser}
+            />
+            {/* fallback */}
+            <Route path={"/"} component={AsyncPageHome} />
+          </Switch>
+        </React.Fragment>
       </AppShell>
     );
   }

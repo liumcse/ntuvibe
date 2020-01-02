@@ -1,1 +1,1 @@
-export const THIS_YEAR = "2019";
+export const THIS_YEAR = "2020";
