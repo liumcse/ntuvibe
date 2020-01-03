@@ -12,7 +12,7 @@ exports[`PageHome renders correctly 1`] = `
           <span
             style={
               Object {
-                "color": "#ff6578",
+                "color": "rgb(60, 126, 130)",
               }
             }
           >
@@ -21,29 +21,11 @@ exports[`PageHome renders correctly 1`] = `
           <span
             style={
               Object {
-                "color": "#ffe619",
+                "color": "rgb(255, 131, 131)",
               }
             }
           >
             0
-          </span>
-          <span
-            style={
-              Object {
-                "color": "#498a46",
-              }
-            }
-          >
-            1
-          </span>
-          <span
-            style={
-              Object {
-                "color": "#24b8e8",
-              }
-            }
-          >
-            9
           </span>
         </div>
       </a>
