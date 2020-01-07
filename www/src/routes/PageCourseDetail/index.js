@@ -260,21 +260,23 @@ class PageCourseDetail extends React.Component<Props> {
     const { count, like, useful, easy } = courseRating; // for courseRating
     // const { start_time, end_time, last_update } = examSchedule; // for examSchedule
 
-    const offerings = semesters
-      .sort((a, b) => {
-        // TODO(liumcse): refactor into a function
-        const [yearA, yearB] = [
-          parseInt(a.slice(0, 4)),
-          parseInt(b.slice(0, 4))
-        ];
-        if (yearA === yearB) {
-          const [semA, semB] = [parseInt(a.slice(5)), parseInt(b.slice(5))];
-          return semB - semA;
-        }
-        return yearB - yearA;
-      })
-      .slice(0, 4)
-      .map(offering => prettify_offering(offering));
+    const offerings =
+      semesters &&
+      semesters
+        .sort((a, b) => {
+          // TODO(liumcse): refactor into a function
+          const [yearA, yearB] = [
+            parseInt(a.slice(0, 4)),
+            parseInt(b.slice(0, 4))
+          ];
+          if (yearA === yearB) {
+            const [semA, semB] = [parseInt(a.slice(5)), parseInt(b.slice(5))];
+            return semB - semA;
+          }
+          return yearB - yearA;
+        })
+        .slice(0, 4)
+        .map(offering => prettify_offering(offering));
 
     // Add current semester into course schedule
     const currentOffering =
