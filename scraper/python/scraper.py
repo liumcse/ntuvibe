@@ -1,5 +1,6 @@
 import click
 from crawlers.course_content_crawler import CourseContentCrawler
+from crawlers.class_schedule_crawler import ClassScheduleCrawler
 
 
 @click.group()
@@ -12,10 +13,12 @@ def cli():
 @click.argument('target')
 def crawl(semester: str, target: str):
     """Crawls information from NTU website and outputs in JSON format."""
-    print("Crawl called, semester is", semester, ", target is", target)
     if target == 'course_content':
         crawler = CourseContentCrawler()
-        print(crawler.crawl())
+        print(crawler.crawl(semester))
+    elif target == 'class_schedule':
+        crawler = ClassScheduleCrawler()
+        print(crawler.crawl(semester))
     else:
         raise Exception('Invalid parameter')
 

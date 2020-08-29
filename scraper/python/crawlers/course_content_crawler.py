@@ -77,10 +77,7 @@ class CourseContentCrawler:
             self.course_details[course_code] = course_detail
 
     def crawl(self, semester=None) -> {str, dict}:
-        """
-        Crawls course content
-        :return:
-        """
+        """Crawls course content."""
         if not semester:
             semester = get_latest_semester()
         html = RequestManager.get_course_content_detail_html(semester)

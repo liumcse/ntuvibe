@@ -1,10 +1,10 @@
 import unittest
-from .course_content_crawler import CourseContentCrawler
+from .class_schedule_crawler import ClassScheduleCrawler
 
 
 class TestCourseContentCrawler(unittest.TestCase):
     def setUp(self):
-        self.crawler = CourseContentCrawler()
+        self.crawler = ClassScheduleCrawler()
 
     def test_crawl(self):
         result = self.crawler.crawl()
