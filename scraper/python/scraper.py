@@ -5,6 +5,7 @@ from crawlers.class_schedule_crawler import ClassScheduleCrawler
 
 @click.group()
 def cli():
+    """A placer function that groups commands together."""
     pass
 
 
