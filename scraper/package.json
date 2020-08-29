@@ -1,0 +1,6 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "main": "scraper.ts",
+  "license": "MIT"
+}
