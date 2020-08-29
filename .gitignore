@@ -1,6 +1,5 @@
 # dependency
 **/node_modules
-api/ENV
 **/ENV
 **/env
 **/venv
