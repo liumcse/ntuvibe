@@ -39,6 +39,7 @@ exports[`PageHome renders correctly 1`] = `
         }
       >
         <i
+          aria-label="icon: loading"
           className="anticon anticon-loading"
           style={
             Object {
@@ -51,6 +52,7 @@ exports[`PageHome renders correctly 1`] = `
             className="anticon-spin"
             data-icon="loading"
             fill="currentColor"
+            focusable="false"
             height="1em"
             viewBox="0 0 1024 1024"
             width="1em"
