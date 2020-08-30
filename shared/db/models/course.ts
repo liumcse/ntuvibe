@@ -2,6 +2,7 @@ import { CourseType } from "./typings";
 import { getDbInstance } from "../connections/connections";
 import { Db, Collection } from "mongodb";
 
+/** Model for course. */
 class Course {
   private db: Db;
   private collection: Collection;
@@ -31,12 +32,9 @@ class Course {
     return result;
   }
 
-  /**
-   * Returns course object with matching course code.
-   * @param courseCode
-   */
+  /** Returns course object with matching course code. */
   async getCourseByCode(courseCode: string): Promise<CourseType | null> {
-    return await this.getCourse({ course_code: courseCode });
+    return await this.getCourse({ course_code: courseCode.toUpperCase() });
   }
 
   /** Returns an array of all courses. */
@@ -67,16 +65,9 @@ class Course {
   async saveOneCourse(course: CourseType) {
     // Preprocess the course object
     course.course_code = course.course_code.toUpperCase();
-    course.course_title = course.course_title.toUpperCase();
     // Insert to db
     await this.collection.insertOne(course);
   }
 }
-
-/** Modal for course. */
-// const Course = mongoose.model<CourseType & mongoose.Document>(
-//   "Course",
-//   courseSchema
-// );
 
 export { Course };

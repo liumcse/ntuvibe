@@ -11,7 +11,10 @@ let client: MongoClient;
 /** Connects to database. */
 export async function connectToDb(dbUri?: string) {
   if (!client) {
-    client = new MongoClient(dbUri || DB_URI, { useNewUrlParser: true });
+    client = new MongoClient(dbUri || DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   }
   await client.connect();
 }

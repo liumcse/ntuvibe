@@ -45,7 +45,6 @@ describe("Course", () => {
     const response = await db
       .collection("courses")
       .findOne({ course_code: "CZ2001" });
-    (testCourse as any)["_id"] = response["_id"];
     expect(response).toEqual(testCourse);
   });
 

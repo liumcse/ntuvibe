@@ -12,7 +12,7 @@ export interface CourseType {
   as_ue: boolean;
   as_pe: boolean;
   grade_type: boolean;
-  semesters: [string];
+  semesters: string[];
   description: string;
   last_update: Date;
   postgrad: boolean;
@@ -21,16 +21,14 @@ export interface CourseType {
 /** Type definition of class schedule. */
 export interface ClassScheduleType {
   course_code: string;
-  schedules: [
-    {
-      class_index: string;
-      class_type: string;
-      class_group: string;
-      start_time: string;
-      end_time: string;
-      venue: string;
-      day: 1 | 2 | 3 | 4 | 5 | 6;
-      weeks: [number];
-    }
-  ];
+  schedules: {
+    class_index: string;
+    class_type: string;
+    class_group: string;
+    start_time: string;
+    end_time: string;
+    venue: string;
+    day: 1 | 2 | 3 | 4 | 5 | 6;
+    weeks: number[];
+  }[];
 }
