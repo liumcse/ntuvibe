@@ -3,7 +3,7 @@ name: Presubmit
 on: [push]
 
 jobs:
-  build-and-test-front-end:
+  front-end:
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,7 +26,7 @@ jobs:
         run: yarn test
         working-directory: www
 
-  test-shared:
+  shared:
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,7 +46,7 @@ jobs:
         run: yarn test
         working-directory: shared
 
-  build-cloud-functions:
+  functions:
     runs-on: ubuntu-latest
 
     strategy:
@@ -59,8 +59,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and build
-        run: |
-          cd functions
-          yarn
-          yarn build
+      - name: Install dependencies
+        run: yarn
+        working-directory: functions
+      - name: Build
+        run: yarn build
+        working-directory: functions

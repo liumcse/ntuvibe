@@ -5,6 +5,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": " >= 10.14.2"
+  },
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack/webpack.dev.js",
     "sitemap": "node ./scripts/sitemap.js",
