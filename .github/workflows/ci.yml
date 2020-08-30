@@ -3,7 +3,7 @@ name: Presubmit
 on: [push]
 
 jobs:
-  front-end:
+  front_end:
     runs-on: ubuntu-latest
 
     strategy:
