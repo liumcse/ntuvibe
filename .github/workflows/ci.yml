@@ -16,11 +16,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and build
-        run: |
-          yarn
-          yarn build
-          yarn test
+      - name: Install dependencies
+        run: yarn
+        working-directory: www
+      - name: Build
+        run: yarn build
+        working-directory: www
+      - name: Run tests
+        run: yarn test
         working-directory: www
 
   test-shared:
@@ -36,11 +39,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and build
-        run: |
-          yarn
-          yarn test
-        working-directory: shared
+        - name: Install dependencies
+          run: yarn
+          working-directory: shared
+        - name: Run tests
+          run: yarn test
+          working-directory: shared
 
   build-cloud-functions:
     runs-on: ubuntu-latest
