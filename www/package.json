@@ -1,8 +1,7 @@
 {
-  "name": "NTUVibe",
+  "name": "www",
   "version": "0.1.0",
   "private": true,
-  "description": "NTUVibe",
   "directories": {
     "test": "test"
   },
