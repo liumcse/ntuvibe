@@ -45,3 +45,4 @@ services
 
 # Sensetive
 **/serviceKey.json
+**/.env

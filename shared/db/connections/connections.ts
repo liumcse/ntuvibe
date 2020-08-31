@@ -1,9 +1,5 @@
 import { MongoClient, Db } from "mongodb";
-
-const USERNAME = "admin";
-const PASSWORD = "admin";
-const DB_NAME = "db";
-const DB_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.vz30l.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+import * as config from "../../config";
 
 let db: Db;
 let client: MongoClient;
@@ -11,18 +7,20 @@ let client: MongoClient;
 /** Connects to database. */
 export async function connectToDb(dbUri?: string) {
   if (!client) {
-    client = new MongoClient(dbUri || DB_URI, {
+    client = new MongoClient(dbUri || config.DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
   }
-  await client.connect();
+  if (!client.isConnected()) {
+    await client.connect();
+  }
 }
 
 /** Returns a DB instance. */
 export function getDbInstance() {
   if (!db) {
-    db = client.db(DB_NAME);
+    db = client.db(config.DB_NAME);
   }
   return db;
 }
