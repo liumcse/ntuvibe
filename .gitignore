@@ -1,9 +1,10 @@
 # dependency
-www/node_modules
+**/node_modules
 api/ENV
 **/ENV
 **/env
 **/venv
+**/yarn.lock
 
 # build
 www/dist
@@ -44,3 +45,4 @@ services
 
 # Sensetive
 **/serviceKey.json
+**/.env

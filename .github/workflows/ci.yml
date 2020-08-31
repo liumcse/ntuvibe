@@ -3,7 +3,7 @@ name: Presubmit
 on: [push]
 
 jobs:
-  build-front-end:
+  front_end:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,13 +16,43 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and build
-        run: |
-          cd www
-          yarn
-          yarn build
+      - name: Install dependencies
+        run: yarn
+        working-directory: www
+      - name: Build
+        run: yarn build
+        working-directory: www
+      - name: Run tests
+        run: yarn test
+        working-directory: www
 
-  test-front-end:
+  shared:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_USERNAME: admin
+      DB_PASSWORD: admin
+      DB_NAME: db
+      DB_HOST: cluster0.vz30l.mongodb.net
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn
+        working-directory: shared
+      - name: Run tests
+        run: yarn test
+        working-directory: shared
+
+  functions:
     runs-on: ubuntu-latest
 
     strategy:
@@ -35,27 +65,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and test
-        run: |
-          cd www
-          yarn
-          yarn test
-
-  build-cloud-functions:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install and build
-        run: |
-          cd functions
-          yarn
-          yarn build
+      - name: Install dependencies
+        run: yarn
+        working-directory: functions
+      - name: Build
+        run: yarn build
+        working-directory: functions
