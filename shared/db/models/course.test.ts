@@ -2,15 +2,31 @@ import { Course } from "./course";
 import { connectToDb, getDbInstance } from "../connections/connections";
 import { CourseType } from "./typings";
 import { Db } from "mongodb";
+import { MongoMemoryServer } from "mongodb-memory-server";
+
+jest.setTimeout(15000);
+
+let mongod: MongoMemoryServer;
+let testUri: string;
+
+async function setUpDb() {
+  mongod = new MongoMemoryServer();
+  testUri = await mongod.getConnectionString();
+}
 
 describe("Course", () => {
   let course: Course;
   let db: Db;
 
   beforeAll(async () => {
-    await connectToDb(process.env.MONGO_URI);
+    await setUpDb();
+    await connectToDb(testUri);
     db = getDbInstance();
     course = new Course();
+  });
+
+  afterAll(async () => {
+    await mongod.stop();
   });
 
   beforeEach(async () => {

@@ -2,15 +2,31 @@ import { ClassSchedule } from "./class_schedule";
 import { Db } from "mongodb";
 import { connectToDb, getDbInstance } from "../connections/connections";
 import { ClassScheduleType } from "./typings";
+import { MongoMemoryServer } from "mongodb-memory-server";
+
+jest.setTimeout(15000);
+
+let mongod: MongoMemoryServer;
+let testUri: string;
+
+async function setUpDb() {
+  mongod = new MongoMemoryServer();
+  testUri = await mongod.getConnectionString();
+}
 
 describe("ClassSchedule", () => {
   let classSchedule: ClassSchedule;
   let db: Db;
 
   beforeAll(async () => {
-    await connectToDb(process.env.MONGO_URI);
+    await setUpDb();
+    await connectToDb(testUri);
     db = getDbInstance();
     classSchedule = new ClassSchedule();
+  });
+
+  afterAll(async () => {
+    await mongod.stop();
   });
 
   beforeEach(async () => {
