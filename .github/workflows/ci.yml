@@ -29,6 +29,12 @@ jobs:
   shared:
     runs-on: ubuntu-latest
 
+    env:
+      DB_USERNAME: admin
+      DB_PASSWORD: admin
+      DB_NAME: db
+      DB_HOST: cluster0.vz30l.mongodb.net
+
     strategy:
       matrix:
         node-version: [10.x]
