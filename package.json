@@ -9,6 +9,7 @@
   },
   "workspaces": [
     "shared",
-    "www"
+    "www",
+    "scraper"
   ]
 }

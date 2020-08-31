@@ -1,4 +1,7 @@
 import click
+import json
+import os
+import pathlib
 from crawlers.course_content_crawler import CourseContentCrawler
 from crawlers.class_schedule_crawler import ClassScheduleCrawler
 
@@ -16,10 +19,14 @@ def crawl(semester: str, target: str):
     """Crawls information from NTU website and outputs in JSON format."""
     if target == 'course_content':
         crawler = CourseContentCrawler()
-        print(crawler.crawl(semester))
+        sanitized = json.dumps(crawler.crawl(semester), sort_keys=False, indent=4)
+        with open(os.path.join(os.getcwd(), 'output/course_content.json'), 'w+') as f:
+            f.write(sanitized)
     elif target == 'class_schedule':
         crawler = ClassScheduleCrawler()
-        print(crawler.crawl(semester))
+        sanitized = json.dumps(crawler.crawl(semester), sort_keys=False, indent=4)
+        with open(os.path.join(os.getcwd(), 'output/class_schedule.json'), 'w+') as f:
+            f.write(sanitized)
     else:
         raise Exception('Invalid parameter')
 
