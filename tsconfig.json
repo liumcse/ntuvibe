@@ -9,7 +9,6 @@
     "strict": true,
     "target": "es2017",
     "baseUrl": "./",
-    "types": ["node"],
     "paths": {
       "@root/*": ["./*"]
     },
