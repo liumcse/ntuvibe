@@ -82,3 +82,5 @@ export async function scrapeClassSchedule(semester?: string): Promise<object> {
     });
   });
 }
+
+scrapeCourseContent();
