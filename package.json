@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "run:scraper": "ts-node-dev scraper/scraper.ts"
+    "run:scraper": "ts-node scraper/scraper.ts"
   },
   "engines": {
     "node": " >= 10.14.2"
