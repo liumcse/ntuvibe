@@ -4,6 +4,9 @@
   "repository": "git@github.com:liumcse/ntuvibe.git",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "run:scraper": "ts-node-dev scraper/scraper.ts"
+  },
   "engines": {
     "node": " >= 10.14.2"
   },

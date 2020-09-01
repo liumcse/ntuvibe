@@ -41,7 +41,7 @@ async function initialize() {
  * Returns course content in JSON format.
  * @param semester E.g. 2020_1 or 2020_2
  */
-async function scrapeCourseContent(semester?: string): Promise<object> {
+export async function scrapeCourseContent(semester?: string): Promise<object> {
   await initialize();
   await execCommandAsync(
     `scraper crawl course_content ${semester ? `--semester=${semester}` : ""}`
@@ -64,7 +64,7 @@ async function scrapeCourseContent(semester?: string): Promise<object> {
  * Returns class schedule in JSON format.
  * @param semester E.g. 2020_1 or 2020_2
  */
-async function scrapeClassSchedule(semester?: string): Promise<object> {
+export async function scrapeClassSchedule(semester?: string): Promise<object> {
   await initialize();
   await execCommandAsync(
     `scraper crawl class_schedule ${semester ? `--semester=${semester}` : ""}`
@@ -82,6 +82,3 @@ async function scrapeClassSchedule(semester?: string): Promise<object> {
     });
   });
 }
-
-// scrapeCourseContent();
-scrapeClassSchedule().then((anything) => console.log(anything));
