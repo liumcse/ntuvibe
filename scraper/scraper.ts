@@ -30,7 +30,8 @@ function execCommandAsync(command: string) {
 /** Initialize by installing CLI. */
 async function initialize() {
   // Install dependencies
-  await execCommandAsync(`pip3 install ${CLI_DIRECTORY}`);
+  await execCommandAsync(`python3 ${CLI_DIRECTORY}/setup.py install`);
+  console.log("CLI installed.");
   // Create folder
   if (!fs.existsSync(path.join(__dirname, "./output"))) {
     fs.mkdirSync(path.join(__dirname, "./output"));
@@ -83,4 +84,4 @@ export async function scrapeClassSchedule(semester?: string): Promise<object> {
   });
 }
 
-scrapeCourseContent();
+scrapeCourseContent().then((x) => console.log(x));
