@@ -30,7 +30,7 @@ function execCommandAsync(command: string) {
 /** Initialize by installing CLI. */
 async function initialize() {
   // Install dependencies
-  await execCommandAsync(`python3 ${CLI_DIRECTORY}/setup.py install`);
+  await execCommandAsync(`cd ${CLI_DIRECTORY} && python3 setup.py install`);
   console.log("CLI installed.");
   // Create folder
   if (!fs.existsSync(path.join(__dirname, "./output"))) {
@@ -45,7 +45,9 @@ async function initialize() {
 export async function scrapeCourseContent(semester?: string): Promise<object> {
   await initialize();
   await execCommandAsync(
-    `scraper crawl course_content ${semester ? `--semester=${semester}` : ""}`
+    `scraper crawl course_content ${
+      semester ? `--semester=${semester}` : ""
+    } --output_file=${COURSE_CONTENT_OUTPUT_LOCATION}`
   );
   return new Promise((resolve, reject) => {
     fs.readFile(COURSE_CONTENT_OUTPUT_LOCATION, (err, data) => {
@@ -68,7 +70,9 @@ export async function scrapeCourseContent(semester?: string): Promise<object> {
 export async function scrapeClassSchedule(semester?: string): Promise<object> {
   await initialize();
   await execCommandAsync(
-    `scraper crawl class_schedule ${semester ? `--semester=${semester}` : ""}`
+    `scraper crawl class_schedule ${
+      semester ? `--semester=${semester}` : ""
+    } --output_file=${CLASS_SCHEDULE_OUTPUT_LOCATION}`
   );
   return new Promise((resolve, reject) => {
     fs.readFile(CLASS_SCHEDULE_OUTPUT_LOCATION, (err, data) => {
