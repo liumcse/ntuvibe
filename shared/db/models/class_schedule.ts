@@ -34,6 +34,11 @@ class ClassSchedule {
     });
   }
 
+  /** Deletes all class schedules. */
+  async deleteAll() {
+    await this.collection.deleteMany({});
+  }
+
   /** Inserts a course into database. */
   async saveOneClassSchedule(classSchedule: ClassScheduleType) {
     // Preprocess the class schedule object

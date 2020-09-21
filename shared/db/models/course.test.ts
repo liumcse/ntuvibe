@@ -50,14 +50,12 @@ describe("Course", () => {
         na_to_all: ["SMT"],
         mutex: "BIUBIUBIU",
       },
-      as_ue: true,
-      as_pe: true,
-      grade_type: true,
+      pass_fail: true,
       semesters: ["2019_2"],
       last_update: testDate,
       postgrad: false,
     };
-    await course.saveOneCourse(testCourse);
+    await course.saveOne(testCourse);
     const response = await db
       .collection("courses")
       .findOne({ course_code: "CZ2001" });
@@ -77,15 +75,13 @@ describe("Course", () => {
         na_to_all: ["SMT"],
         mutex: "BIUBIUBIU",
       },
-      as_ue: true,
-      as_pe: true,
-      grade_type: true,
+      pass_fail: true,
       semesters: ["2019_2"],
       last_update: testDate,
       postgrad: false,
     };
     await db.collection("courses").insertOne(testCourse);
-    const response = await course.getCourseByCode("CZ2001");
+    const response = await course.getOneByCode("CZ2001");
     expect(response).toEqual(testCourse);
   });
 
@@ -103,9 +99,7 @@ describe("Course", () => {
           na_to_all: ["SMT"],
           mutex: "BIUBIUBIU",
         },
-        as_ue: true,
-        as_pe: true,
-        grade_type: true,
+        pass_fail: true,
         semesters: ["2019_2"],
         last_update: testDate,
         postgrad: false,
@@ -121,16 +115,14 @@ describe("Course", () => {
           na_to_all: ["SMT"],
           mutex: "BIUBIUBIU",
         },
-        as_ue: true,
-        as_pe: true,
-        grade_type: true,
+        pass_fail: true,
         semesters: ["2019_1"],
         last_update: testDate,
         postgrad: false,
       },
     ];
     await db.collection("courses").insertMany(testCourses);
-    const response = await course.getAllCourses();
+    const response = await course.getAll();
     expect(response).toEqual(testCourses);
   });
 });

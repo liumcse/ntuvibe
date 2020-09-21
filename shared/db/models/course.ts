@@ -19,9 +19,7 @@ class Course {
         course_title: 1,
         au: 1,
         constraint: 1,
-        as_ue: 1,
-        as_pe: 1,
-        grade_type: 1,
+        pass_fail: 1,
         semesters: 1,
         description: 1,
         last_update: 1,
@@ -33,20 +31,18 @@ class Course {
   }
 
   /** Returns course object with matching course code. */
-  async getCourseByCode(courseCode: string): Promise<CourseType | null> {
+  async getOneByCode(courseCode: string): Promise<CourseType | null> {
     return await this.getCourse({ course_code: courseCode.toUpperCase() });
   }
 
   /** Returns an array of all courses. */
-  async getAllCourses(): Promise<CourseType[]> {
+  async getAll(): Promise<CourseType[]> {
     const projection = {
       course_code: 1,
       course_title: 1,
       au: 1,
       constraint: 1,
-      as_ue: 1,
-      as_pe: 1,
-      grade_type: 1,
+      pass_fail: 1,
       semesters: 1,
       description: 1,
       last_update: 1,
@@ -61,12 +57,34 @@ class Course {
       .toArray();
   }
 
+  /** Update a course. */
+  async updateOne(courseCode: string, fields: object) {
+    courseCode = courseCode.toUpperCase();
+    await this.collection.updateOne(
+      {
+        course_code: courseCode,
+      },
+      {
+        $set: fields,
+      },
+      { upsert: false }
+    );
+  }
+
   /** Inserts a course into database. */
-  async saveOneCourse(course: CourseType) {
+  async saveOne(course: CourseType) {
     // Preprocess the course object
     course.course_code = course.course_code.toUpperCase();
-    // Insert to db
-    await this.collection.insertOne(course);
+    // Update if exists, insert if not exists
+    await this.collection.updateOne(
+      {
+        course_code: course.course_code,
+      },
+      { $set: course },
+      {
+        upsert: true,
+      }
+    );
   }
 }
 
