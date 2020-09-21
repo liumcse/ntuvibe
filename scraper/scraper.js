@@ -24,7 +24,7 @@ function execCommandAsync(command) {
 /** Initialize by installing CLI. */
 async function initialize() {
     // Install dependencies
-    await execCommandAsync(`cd ${CLI_DIRECTORY} && apt-get install python3-setuptools && python3 setup.py install`);
+    await execCommandAsync(`cd ${CLI_DIRECTORY} && python3 setup.py install`);
     console.log("CLI installed.");
     // Create folder
     if (!fs.existsSync(path.join(__dirname, "./output"))) {
