@@ -56,9 +56,14 @@ describe("Course", () => {
       postgrad: false,
     };
     await course.saveOne(testCourse);
-    const response = await db
-      .collection("courses")
-      .findOne({ course_code: "CZ2001" });
+    const response = await db.collection("courses").findOne(
+      { course_code: "CZ2001" },
+      {
+        projection: {
+          _id: 0,
+        },
+      }
+    );
     expect(response).toEqual(testCourse);
   });
 

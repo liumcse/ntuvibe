@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const child_process_1 = require("child_process");
 const path = require("path");
 const fs = require("fs");
-const connections_1 = require("../shared/db/connections/connections");
-const course_1 = require("../shared/db/models/course");
-const class_schedule_1 = require("../shared/db/models/class_schedule");
+const connections_1 = require("@root/shared/db/connections/connections");
+const course_1 = require("@root/shared/db/models/course");
+const class_schedule_1 = require("@root/shared/db/models/class_schedule");
 /** Directory location of CLI. */
 const CLI_DIRECTORY = path.join(__dirname, "./python");
 /** File location of course content output. */
