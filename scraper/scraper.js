@@ -123,6 +123,7 @@ async function scrapeClassSchedule(semester) {
 }
 exports.scrapeClassSchedule = scrapeClassSchedule;
 async function taskCourseContent(semester) {
+    console.log("Start scraping and saving course content");
     // Connect to DB
     await connections_1.connectToDb();
     // Scrape course content and adds to DB
@@ -162,6 +163,7 @@ async function taskCourseContent(semester) {
     console.log("Done scraping and saving course content");
 }
 async function taskClassSchedule(semester) {
+    console.log("Start scraping and saving class schedules");
     // Connect to DB
     await connections_1.connectToDb();
     // Scrape course content and adds to DB
@@ -197,6 +199,7 @@ async function taskClassSchedule(semester) {
     console.log("Done scraping and saving class schedules");
 }
 async function taskAdditionalInfo(semester) {
+    console.log("Start scraping and saving additional info");
     // Connect to DB
     await connections_1.connectToDb();
     // Scrape course content and adds to DB
@@ -216,10 +219,9 @@ async function taskAdditionalInfo(semester) {
     }
     console.log("Done scraping and saving additional info");
 }
-// taskCourseContent("2019_2");
-// taskCourseContent("2019_1");
-// taskCourseContent("2018_2");
-// taskCourseContent("2018_1");
-// taskCourseContent();
-// taskClassSchedule();
-taskAdditionalInfo();
+async function main() {
+    await taskCourseContent();
+    await taskClassSchedule();
+    await taskAdditionalInfo();
+}
+main();
