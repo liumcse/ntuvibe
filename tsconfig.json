@@ -1,4 +1,5 @@
 {
+  "exclude": ["functions", "**/*.test.ts"],
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitReturns": true,
