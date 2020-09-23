@@ -33,6 +33,7 @@ const NUM_TO_DAY = {
 /** Whether CLI is installed. */
 let cliInstalled = false;
 
+/** Executes shell command async. */
 function execCommandAsync(command: string) {
   return new Promise((resolve, reject) => {
     exec(command, (err) => {
@@ -45,7 +46,7 @@ function execCommandAsync(command: string) {
   });
 }
 
-/** Parse remark into weeks */
+/** Parse remark into weeks. */
 function getWeeksFromRemark(remark: string) {
   if (!remark) {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];

@@ -1,1 +1,2 @@
+# This file exists so that Heroku will recognize this repo as a Python app and install dependencies required for Scraper CLI
 setuptools==50.3.0
