@@ -9,13 +9,18 @@ export interface CourseType {
     na_to_all: string[];
     mutex: string;
   };
-  as_ue: boolean;
-  as_pe: boolean;
-  grade_type: boolean;
+  as_ue?: boolean;
+  as_pe?: boolean;
+  pass_fail: boolean;
   semesters: string[];
   description: string;
   last_update: Date;
   postgrad: boolean;
+}
+
+export interface AdditionalInfo {
+  as_ue: boolean;
+  as_pe: boolean;
 }
 
 /** Type definition of class schedule. */

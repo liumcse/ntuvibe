@@ -1,7 +1,18 @@
 import os
+from bs4 import BeautifulSoup
+from .request_manager import RequestManager
 import time
 import json
 import datetime
+
+
+def get_latest_semester() -> str:
+    """Returns the latest semester"""
+    html = RequestManager.get_course_content_main_html()
+    soup = BeautifulSoup(html, "html.parser")
+    latest_semester = soup.find(
+        "select", attrs={"name": "acadsem"}).find_all("option")[-1]["value"]
+    return latest_semester
 
 
 def get_timestamp():
