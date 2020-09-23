@@ -58,16 +58,18 @@ class Course {
   }
 
   /** Update a course. */
-  async updateOne(courseCode: string, fields: object) {
+  async updateOne(courseCode: string, updatedContent: object) {
     courseCode = courseCode.toUpperCase();
     await this.collection.updateOne(
       {
         course_code: courseCode,
       },
       {
-        $set: fields,
+        $set: updatedContent,
       },
-      { upsert: false }
+      {
+        upsert: false,
+      }
     );
   }
 
@@ -80,7 +82,9 @@ class Course {
       {
         course_code: course.course_code,
       },
-      { $set: course },
+      {
+        $set: course,
+      },
       {
         upsert: true,
       }

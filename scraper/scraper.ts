@@ -20,7 +20,7 @@ const CLASS_SCHEDULE_OUTPUT_LOCATION = path.join(
   "./output/class_schedule.json"
 );
 /** Map short form of day to number. */
-const NUM_TO_DAY = {
+const DAY_TO_NUM = {
   MON: 1,
   TUE: 2,
   WED: 3,
@@ -75,7 +75,7 @@ function getWeeksFromRemark(remark: string) {
 }
 
 /** Initialize by installing CLI. */
-async function initialize() {
+export async function initialize() {
   if (cliInstalled) return;
   // Install dependencies
   await execCommandAsync(`cd ${CLI_DIRECTORY} && python3 setup.py install`);
@@ -208,7 +208,7 @@ async function taskClassSchedule(semester?: string) {
           start_time: schedule["time"].split("-")[0] as string,
           end_time: schedule["time"].split("-")[1] as string,
           venue: schedule["venue"] as string,
-          day: (NUM_TO_DAY as any)[schedule["day"]],
+          day: (DAY_TO_NUM as any)[schedule["day"]],
           weeks: getWeeksFromRemark(schedule["remark"]),
         });
       }
@@ -246,4 +246,6 @@ async function main() {
   await taskAdditionalInfo();
 }
 
-main();
+if (require && require.main === module) {
+  main();
+}
