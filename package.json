@@ -5,7 +5,12 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "run:scraper": "ts-node scraper/scraper.ts"
+    "build": "tsc",
+    "run:scraper": "ts-node scraper/scraper.ts",
+    "run:api": "node dist/api_v2/app.js"
+  },
+  "_moduleAliases": {
+    "@root": "./"
   },
   "engines": {
     "node": " >= 10.14.2"
@@ -13,9 +18,11 @@
   "workspaces": [
     "shared",
     "www",
-    "scraper"
+    "scraper",
+    "api_v2"
   ],
   "dependencies": {
+    "module-alias": "^2.2.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }
