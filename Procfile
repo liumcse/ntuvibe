@@ -1,0 +1,1 @@
+web_api: yarn build && yarn api:run

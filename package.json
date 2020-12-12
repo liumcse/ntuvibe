@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "run:scraper": "ts-node scraper/scraper.ts",
-    "run:api": "node dist/api_v2/app.js"
+    "api:run": "node dist/api_v2/app.js",
+    "api:debug": "ts-node-dev api_v2/app.ts"
   },
   "_moduleAliases": {
     "@root": "./"
@@ -24,6 +25,7 @@
   "dependencies": {
     "module-alias": "^2.2.2",
     "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0",
     "typescript": "^4.0.3"
   }
 }
