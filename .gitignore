@@ -5,7 +5,7 @@
 **/venv
 
 # build
-www/dist
+**/dist
 
 # cache
 **/__pycache

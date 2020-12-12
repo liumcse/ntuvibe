@@ -1,5 +1,5 @@
 {
-  "exclude": ["functions", "**/*.test.ts"],
+  "exclude": ["functions", "scraper", "**/*.test.ts"],
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitReturns": true,
@@ -9,8 +9,9 @@
     "strict": true,
     "target": "es2017",
     "baseUrl": "./",
+    "outDir": "dist",
     "paths": {
       "@root/*": ["./*"]
-    },
-  },
+    }
+  }
 }
