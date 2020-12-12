@@ -1,1 +1,1 @@
-web_api: yarn build && yarn api:run
+web_api: node dist/api_v2/app.js

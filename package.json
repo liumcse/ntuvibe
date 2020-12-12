@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "postinstall": "tsc",
     "build": "tsc",
     "run:scraper": "ts-node scraper/scraper.ts",
     "api:run": "node dist/api_v2/app.js",
