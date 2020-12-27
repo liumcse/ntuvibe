@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Button from "antd/lib/button";
 import ImportSchedule from "./components/ImportSchedule";
-import ExamSchedule from "./components/ExamSchedule";
+// import ExamSchedule from "./components/ExamSchedule";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 
 import { requireLogin } from "src/utils";
@@ -326,7 +326,4 @@ const mapDispatchToProps = dispatch => ({
   updateSchedule: form => dispatch(updateSchedule(form))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PageScheduler);
+export default connect(mapStateToProps, mapDispatchToProps)(PageScheduler);

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as styles from "./style.scss";
-import vibe from "src/brand/logo-color.png";
-import { THIS_YEAR } from "src/global";
+// import vibe from "src/brand/logo-color.png";
+import { THIS_YEAR } from "src/constants";
 
 const Footer = () => (
   // eslint-disable-next-line

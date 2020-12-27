@@ -463,8 +463,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PageCourseDetail)
+  connect(mapStateToProps, mapDispatchToProps)(PageCourseDetail)
 );

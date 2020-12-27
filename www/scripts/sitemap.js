@@ -26,12 +26,13 @@ ${urls.join("\n")}
 </urlset>`;
     fs.writeFile(`${PATH_OUTPUT}/sitemap.xml`, output, error => {
       if (error) {
-        console.log("❗️  Error occurred during saving XML", error);
+        throw new Error("❗️  Error occurred during saving XML", error);
       } else {
+        // eslint-disable-next-line no-console
         console.log("👏  Sitemap successfully generated!");
       }
     });
   })
   .catch(error => {
-    console.log("❗️  Error occurred!", error);
+    throw new Error("❗️  Error occurred!", error);
   });

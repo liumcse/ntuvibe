@@ -1,5 +1,11 @@
 import * as ics from "ics";
-import { OFFSET, SEMESTER_START, WEEKDAY, DAYTIME, WEEKTIME } from "./config";
+import {
+  OFFSET,
+  SEMESTER_START,
+  WEEKDAY,
+  DAYTIME,
+  WEEKTIME
+} from "../../../constants";
 import { mergeSchedule } from "./config";
 
 // download feature implementation

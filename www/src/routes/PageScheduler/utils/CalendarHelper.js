@@ -1,4 +1,10 @@
-import { OFFSET, SEMESTER_START, WEEKDAY, DAYTIME, WEEKTIME } from "./config";
+import {
+  OFFSET,
+  SEMESTER_START,
+  WEEKDAY,
+  DAYTIME,
+  WEEKTIME
+} from "../../../constants";
 import { mergeSchedule } from "./config";
 
 const dateCalculationForCalendar = (d, T) => {
