@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SiteMetaHelmet from "src/components/SiteMetaHelmet";
 // eslint-disable-next-line no-unused-vars
-import { THIS_YEAR } from "src/global";
+import { THIS_YEAR } from "src/constants";
 import Search from "src/components/Search";
 import * as styles from "./style.scss";
 import * as theme from "./dropdown-theme.scss";
