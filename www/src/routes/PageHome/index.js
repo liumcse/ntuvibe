@@ -18,7 +18,7 @@ class PageHome extends React.PureComponent {
             <Link to="/browser">
               <div>
                 <span style={{ color: "rgb(60, 126, 130)" }}>2</span>
-                <span style={{ color: "rgb(255, 131, 131)" }}>0</span>
+                <span style={{ color: "rgb(255, 131, 131)" }}>2</span>
               </div>
             </Link>
           </div>
