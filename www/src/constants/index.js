@@ -1,5 +1,5 @@
 // ====================== Home page
-export const THIS_YEAR = "2020";
+export const THIS_YEAR = "2022";
 
 // ====================== Calendar
 /** By calculation time offset is +8 Hours
@@ -26,4 +26,4 @@ export const WEEKDAY = {
 // Semester start uses UTC time
 // JS Date module use 0 as the start of month, hence, 0 stands for January.
 export const SEMESTER_START =
-  new Date(2021, 0, 11, 0, 0, 0, 0).getTime() - WEEKTIME;
+  new Date(2022, 7, 8, 0, 0, 0, 0).getTime() - WEEKTIME;
